@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import App from './components/App'
-import { HashRouter } from 'react-router-dom'
+import { HashRouter, BrowserRouter } from 'react-router-dom'
 import { CookiesProvider } from 'react-cookie'; 
 require('spatial-navigation-js')
 // import SpatialNavigation from 'react-js-spatial-navigation'

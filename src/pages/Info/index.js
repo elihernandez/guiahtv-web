@@ -10,7 +10,7 @@ export default function Info(){
                   <div className="center-content">
                         <NavLink to="/"><Logo/></NavLink>
                         <h2 className="text">
-                              Disfruta de la mejor plataforma de contenido exclusivo y espiritual para toda la familia.
+                              Disfruta de la mejor plataforma de <br/> contenido exclusivo y espiritual para <br/> toda la familia.
                         </h2>
                         <h3 className="text">
                               Disfruta en donde quieras, cancela cuando quieras.
@@ -22,7 +22,7 @@ export default function Info(){
                         </div>
                         <div className="bottom-info">
                               <div className="logo">
-                                    <img src="../src/assets/images/logos/guiahtv/logo_foreground.png"/>
+                                    <img src="build/assets/images/logos/guiahtv/logo_foreground.png"/>
                               </div>
                               <h5>MÚSICA | TV EN VIVO | PELÍCULAS | CONCIERTOS | CLÍNICAS | SERIES | ZONA KIDS | PPV Y MUCHO MÁS</h5>
                               <ul>
