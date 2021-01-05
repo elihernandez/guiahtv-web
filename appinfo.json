@@ -8,8 +8,8 @@
     "title": "Guíah TV",
     "bgColor": "#00acec",
     "iconColor": "#00acec",
-    "icon": "iconcolor80x80.png",
-    "largeIcon": "iconcolor130x130.png",
+    "icon": "build/assets/images/logos/guiahtv/iconcolor80x80.png",
+    "largeIcon": "build/assets/images/logos/guiahtv/iconcolor130x130.png",
     "resolution": "1280x720",
     "disableBackHistoryAPI": true,
     "handlesRelaunch": true
