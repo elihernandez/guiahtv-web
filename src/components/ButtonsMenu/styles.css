@@ -1,0 +1,52 @@
+.buttons-sections{
+    position: relative;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .buttons{
+        width: 90%;
+        display: flex;
+        justify-content: center;
+
+        .item-button{
+            position: relative;
+            flex: 0 0 calc(100%/5);
+            transition: all .2s ease;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            .title-section{
+                position: absolute;
+                font-size: 20px;
+                font-weight: 600;
+                color: white;
+                top: 30%;
+                left: 15%;
+            }
+
+            img{
+                position: relative;
+                width: 90%;
+                height: auto;
+                border: 3px solid transparent;
+                
+            }
+
+            &:focus img{
+                border: 3px solid white !important;
+                border-top-left-radius: 28px;
+                border-bottom-right-radius: 28px;
+            }
+
+            &:hover{
+                transform: scale(1.1);
+                cursor: pointer;
+            }
+
+        }
+    }
+}

@@ -1,0 +1,148 @@
+.spotlight{
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+
+    .carousel-spotlight{
+        position: relative;
+        height: auto;
+        
+        .carousel-content{
+            position: absolute;
+            width: 100%;
+            height: auto;
+            /* // border: 1px solid red; */
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+
+            ul{
+                position: relative;
+                width: 80%;
+                left: 10%;
+                height: auto;
+                list-style: none;
+                padding: 0 !important;
+                margin: 0 !important;
+                /* // border: 1px solid blue; */
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: flex-start;
+                align-content: flex-start;
+                overflow: visible;
+                /* // transition: all .3s ease; */
+
+                li{
+                    position: relative;
+                    flex: 0 0 calc(100% / 1);
+                    height: auto;
+                    opacity: 0;
+                    transition: all 1300ms ease;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+
+                    &.active{
+                        opacity: 1;
+
+                        img{
+                           /* // border: 2px solid white; */
+                        }
+                    }
+        
+        
+                    &.no-active{
+                        opacity: 1;
+                    }
+        
+                    img{
+                        padding: 5px;
+                        position: relative;
+                        top: 0;
+                        width: calc(95%);
+                        height: auto;
+                        border-radius: 20px;
+                    }
+                }
+            }
+        }
+    
+        .carousel-indicators{
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100vw;
+            min-height: 500px;
+
+            ul{
+                position: absolute;
+                list-style: none;
+                display: inline-flex;
+                padding: 0 !important;
+                margin: 0 !important;
+                bottom: 5%;
+        
+                li{
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: rgba(255, 255, 255, 0.5);
+                    margin: 5px;
+        
+                    &.active{
+                        background-color: rgba(255, 255, 255, 1);
+                        /* // transform: scale(1.6); */
+                    }
+                }
+            }
+        }
+
+        .carousel-control-prev{
+            position: absolute;
+            color: rgba(255, 255, 255, 0.5);
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 8%;
+            font-size: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+
+            &:hover{
+                background: linear-gradient(90deg,  rgba(24,25,28, 0.75), transparent);
+                cursor: pointer;
+                color: white;
+            }
+        }
+
+        .carousel-control-next{
+            position: absolute;
+            color: rgba(255, 255, 255, 0.3);
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 8%;
+            font-size: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+
+            &:hover{
+                background: linear-gradient(-90deg,  rgba(24,25,28, 0.75), transparent);
+                cursor: pointer;
+                color: white;
+            }
+        }
+    }
+
+    svg{
+        padding: 50px;
+    }
+}

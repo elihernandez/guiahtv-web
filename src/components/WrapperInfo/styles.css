@@ -1,0 +1,17 @@
+@import '../../scss/style-base.css';
+
+.wrapper-home{
+      position: relative;
+      width: calc(100% - 150px);
+      min-height: auto;
+      background-image: url(../../assets/images/backgrounds/background-login.webp);
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding: 0 75px;
+}
+
+@media (--laptop-large-viewport) {
+      .wrapper-home{
+            background-size: cover;
+      }
+}
