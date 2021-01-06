@@ -18,7 +18,7 @@
             width: 6vh;
             height: 6vh;
             border-radius: 50%;
-            border-top: .5vh solid var(--color-guide-blue);
+            border-top: .5vh solid $color-guide-blue;
             border-right: .5vh solid transparent;
             animation: spinner 1s linear infinite;
         }
@@ -33,7 +33,7 @@
             width: 6vh;
             height: 6vh;
             border-radius: 50%;
-            border-top: .5vh solid var(--color-guide-purple);
+            border-top: .5vh solid $color-guide-purple;
             border-right: .5vh solid transparent;
             animation: spinner 1s linear infinite;
         }
@@ -93,7 +93,7 @@
             width: 6vh;
             height: 6vh;
             border-radius: 50%;
-            border-top: .5vh solid var(--color-guide-blue);
+            border-top: .5vh solid $color-guide-blue;
             border-right: .5vh solid transparent;
             animation: spinner 1s linear infinite;
         }
@@ -109,7 +109,7 @@
             width: 6vh;
             height: 6vh;
             border-radius: 50%;
-            border-top: .5vh solid var(--color-guide-purple);
+            border-top: .5vh solid $color-guide-purple;
             border-right: .5vh solid transparent;
             animation: spinner 1s linear infinite;
         }

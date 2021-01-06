@@ -1,6 +1,8 @@
 $color-guide-black: #18191c;
 $color-guide-blue: #00aeef;
 $color-guide-purple: #662d91;
+$color-background-app: #18191C;
+
 @custom-media --laptop-large-viewport (max-width: 1440px);
 @custom-media --laptop-medium-viewport (max-width: 1024px);
 @custom-media --tablet-medium-viewport (max-width: 768px);
@@ -8,8 +10,8 @@ $color-guide-purple: #662d91;
 @custom-media --movil-medium-viewport (max-width: 375px);
 @custom-media --movil-small-viewport (max-width: 320px);
 
-:root{
+/* :root{
       --color-guide-black: #18191c;
       --color-guide-blue: #00aeef;
       --color-guide-purple: #662d91;
-}
+} */

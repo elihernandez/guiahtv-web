@@ -1,4 +1,3 @@
-import React from 'react'
 const { detect } = require('detect-browser');
 const browser = detect();
 import { v4 as uuidv4 } from 'uuid';

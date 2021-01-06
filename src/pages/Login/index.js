@@ -1,8 +1,8 @@
-import React, {useState, useContext} from 'react'
+import React, { useState, useContext } from 'react'
 import { useCookies } from 'react-cookie';
 import Logo from '../../components/Logo/index'
 import getLogin from '../../services/getLogin'
-import {NavLink, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import encryptString from '../../js/Encrypt/encrypt'
 import { LoaderSpinnerBlue as Loader } from '../../components/Loaders/Loaders'
 import UserContext from '../../context/UserContext'
@@ -70,9 +70,7 @@ export default function Login(){
                     <div className="background-svg"></div>
                     <div className="background-image"></div>
                     <div className="content-form">
-                        <NavLink to="/">
-                            <Logo />
-                        </NavLink>
+                        <Logo />
                         <h3>Inicia sesión</h3>
                         <form onSubmit={handleSubmit}>
                             {
@@ -107,6 +105,7 @@ export default function Login(){
                                     className="username"
                                     placeholder="Correo electrónico"
                                     value={username}
+                                    autoComplete="username"
                                     onChange={(e) => setUsername(e.target.value)}
                                 />
                             </div>
@@ -115,6 +114,7 @@ export default function Login(){
                                     type="password"
                                     className="password"
                                     placeholder="Contraseña"
+                                    autoComplete="current-password"
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>

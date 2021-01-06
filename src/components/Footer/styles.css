@@ -1,0 +1,95 @@
+.footer-content{
+      .footer-wrapper{
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            margin-top: 250px;
+            padding-bottom: 25px;
+      
+            .logo{
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                  margin-bottom: 15px;
+      
+                  img{
+                        width: 50px;
+                        height: auto;
+                        opacity: .8;
+                  }
+            }
+      
+            .services-text{
+                  font-size: 14px;
+                  font-weight: 500;
+                  text-align: center;
+            }
+      
+            .footer-links{
+                  color: white;
+                  padding: 0;
+                  list-style: none;
+                  display: flex;
+                  flex-direction: row;
+      
+                  
+                  .footer-link-item{
+                        font-size: 14px;
+                        margin: 0 15px;
+                 
+                        .footer-link{
+                              text-decoration: none;
+                              color: white;
+                        }
+                  }
+            }
+      }
+      
+      @media (--laptop-large-viewport) {
+            .footer-wrapper{
+                  margin-top: 150px !important;
+            }
+      
+      }
+      
+      @media (--laptop-medium-viewport) {
+            .footer-wrapper{
+                  margin-top: 150px;
+            }
+      }
+      
+      @media (--tablet-medium-viewport) {
+            .footer-wrapper{
+                  .services-text{
+                        font-size: 14px;
+                        font-weight: 500;
+                        text-align: center;
+                  }
+      
+                  .footer-links{
+                        color: white;
+                        padding: 0;
+                        list-style: none;
+                        display: flex;
+                        flex-direction: column;
+      
+                        
+                        .footer-link-item{
+                              font-size: 14px;
+                              margin: 5px 0;
+                              text-align: center;
+                              
+                              .footer-link{
+                                    text-decoration: none;
+                                    color: white;
+                              }
+                        }
+                  }
+            }
+            
+      }
+}

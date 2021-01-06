@@ -1,6 +1,6 @@
 import React from 'react';
-import {useAuth} from '../../hooks/useAuth'
-import {Route, Redirect} from "react-router-dom";
+import { useAuth } from '../../hooks/useAuth'
+import { Redirect } from "react-router-dom";
 
 export function CheckAuth({children}){
     const cookies = useAuth()
@@ -8,7 +8,7 @@ export function CheckAuth({children}){
 
     return (
       <>
-      {cookies.memclid ? children : <Redirect to='/login'/>}     
+        {cookies.memclid ? children : <Redirect to='/login'/>}     
       </> 
     )
 }

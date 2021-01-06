@@ -3,7 +3,7 @@
     font-style: normal;
     font-weight: 100;
     font-display: swap;
-    src: url('../../../assets/fonts/Roboto/Roboto-Thin.ttf');
+    src: url('../assets/fonts/Roboto/Roboto-Thin.ttf');
 }
 
 @font-face {
@@ -11,7 +11,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url('../../../assets/fonts/Roboto/Roboto-Light.ttf');
+    src: url('../assets/fonts/Roboto/Roboto-Light.ttf');
 }
 
 @font-face {
@@ -19,7 +19,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../../../assets/fonts/Roboto/Roboto-Regular.ttf');
+    src: url('../assets/fonts/Roboto/Roboto-Regular.ttf');
 }
 
 @font-face {
@@ -27,7 +27,7 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url('../../../assets/fonts/Roboto/Roboto-Medium.ttf');
+    src: url('../assets/fonts/Roboto/Roboto-Medium.ttf');
 }
 
 @font-face {
@@ -35,7 +35,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('../../../assets/fonts/Roboto/Roboto-Bold.ttf');
+    src: url('../assets/fonts/Roboto/Roboto-Bold.ttf');
 }
 
 
@@ -44,5 +44,5 @@
     font-style: normal;
     font-weight: 900;
     font-display: swap;
-    src: url('../../../assets/fonts/Roboto/Roboto-Black.ttf');
+    src: url('../assets/fonts/Roboto/Roboto-Black.ttf');
 }

@@ -1,17 +1,14 @@
-/* @import './fonts/Roboto/styles.css';
+@import './fonts/Roboto/styles.css';
 @import './fonts/Poppins/styles.css';
-@import './fonts/HurmeGeometricSans/styles.css'; */
+@import './fonts/HurmeGeometricSans/styles.css';
+@import './style-base.css';
 
 html,
 body {
-  height: 100%;
-  width: 100%;
   margin: 0;
   padding: 0;
-  background: #18191C;
+  background: $color-background-app;
   font-family: "Poppins", sans-serif !important;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 h1,
@@ -26,19 +23,18 @@ p {
   color: white;
 }
 
+.app-content {
+  position: relative;
+  width: 100%;
+}
+
 .gradient-overlay{
   position: absolute;
   width: 100%;
   height: 100%;
-  /* // background: linear-gradient(to bottom, #a11f3c 0%, #9352b3 100%);
-  // background: linear-gradient(270deg, #052767 0%, #00aeef 100%) */
+  /* background: linear-gradient(to bottom, #a11f3c 0%, #9352b3 100%);
+  background: linear-gradient(270deg, #052767 0%, #00aeef 100%); */
   opacity: .2;
-}
-
-.section-content {
-  position: relative;
-  width: 100%;
-  height: auto;
 }
 
 .focusable {
