@@ -37,12 +37,7 @@
             }
         }
 
-        h3{
-            margin-top: 50px !important;
-            font-size: 32px;
-            font-weight: 500;
-        }
-
+        
         form{
             position: relative;
             display: flex;
@@ -50,6 +45,13 @@
             flex-direction: column;
             justify-content: center;
             margin-top: 20px;
+
+            .title-form{
+                margin-top: 25px !important;
+                margin-bottom: 25px !important;
+                font-size: 32px;
+                font-weight: 500;
+            }
 
             .group-form{
 
@@ -74,12 +76,16 @@
                 padding: 12px 15px;
                 margin-bottom: 10px;
 
-                a{
-                    color: white;
+                .text-error{
+                    font-size: 16px;
+
+                    .link-error{
+                        color: white;
+                    }
                 }
             }
 
-            button{
+            .btn-submit-login{
                 margin-top: 30px;
                 position: relative;
                 width: 100%;
@@ -106,7 +112,7 @@
             flex-direction: row;
             justify-content: space-between;
 
-            a{
+            .link-help{
                 font-weight: 300;
                 font-size: 14px;
                 text-decoration: none;
@@ -114,37 +120,39 @@
             }
 
             .group-rememberme{
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                align-content: center;
-
-                p{
-                    margin-left: 5px !important;
-                    font-size: 14px;
-                    font-weight: 300;
-                    color: rgba(255, 255, 255, 0.75);
-                }
-
-                input{
-                    height: 15px;
-                    width: 15px;
-                    border: none;
-                    background: rgba(255, 255, 255, 0.2) !important;
-                    background-color: rgba(255, 255, 255, 0.2) !important;
+                &.row{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    align-content: center;
+    
+                    p{
+                        margin-left: 5px !important;
+                        font-size: 14px;
+                        font-weight: 300;
+                        color: rgba(255, 255, 255, 0.75);
+                    }
+    
+                    .input-checkbox{
+                        height: 15px;
+                        width: 15px;
+                        border: none;
+                        background: rgba(255, 255, 255, 0.2) !important;
+                        background-color: rgba(255, 255, 255, 0.2) !important;
+                    }
                 }
             }
         }
 
-        .first-time{
+        .bottom-info{
             margin-top: 75px !important;
             font-weight: 300;
             color: rgba(255, 255, 255, 0.75);
             font-size: 14px;
 
-            a{
+            .link-register{
                 color: white;
-                font-weight: 300;
+                font-weight: 400;
                 text-decoration: none;
                 font-size: 17px;
                 margin-left: 5px;

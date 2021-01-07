@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import NavLink from '../../components/NavLink/index'
 import Logo from '../../components/Logo/index'
 import Spotlight from '../../components/Spotlight/index'
 import ButtonsMenu from '../../components/ButtonsMenu/index'
 import './styles.css'
 
-export default function HomePage(){
+export function Home(){
     return (
         <>
             <div className="top-menu">

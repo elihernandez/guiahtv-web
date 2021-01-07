@@ -8,11 +8,13 @@ export default function encryptString(str, numSalts){
                               if(!err){
                                     resolve(hash)
                               }else{
-                                    reject(err)
+                                    let error = new Error("Error en hash encrypt")
+                                    reject(error)
                               }
                         })
                   }else{
-                        reject(err)
+                        let error = new Error("Error en salt encrypt")
+                        reject(error)
                   }
             })
       })

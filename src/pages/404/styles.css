@@ -1,52 +1,88 @@
-.page-not-found{
-      position: relative;
-      width: 100%;
-      min-height: calc(100vh - 70px);
-      padding: 35px 50px;
-
-      .logo img{
-            width: 10%;
-            height: auto;
-      }
-
-      .message-container{
+.page-404{
+      .page-404-wrapper{
             position: relative;
-            width: calc(100vw - 100px);
-            padding-top: 150px; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            h3{
-                  font-size: 70px;
-                  font-weight: 600;
-            }
-            
-            p{
-                  width: 50%;
-                  font-size: 25px;
-                  font-weight: 300;
-                  text-align: center;
-                  margin-top: 25px !important;
+            width: calc(100% - 100px);
+            min-height: calc(100vh - 70px);
+            padding: 35px 25px;
+      
+            .logo img{
+                  width: 200px;
+                  height: auto;
             }
 
-            button{
-                  color: rgba(255, 255, 255, 0.5);
-                  font-size: 25px;
-                  margin-top: 50px;
-                  border-radius: 5px;
-                  padding: 12px 30px;
-                  border: 2px solid rgba(255, 255, 255, 0.5);
-                  background: transparent;
-                  transition: all .15s ease;
+            @media (--tablet-medium-viewport) {
+                  .logo {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        padding-left: 50px;
 
-                  &:hover{
-                        cursor: pointer;
-                        color: black;
-                        border: 3px solid rgba(255, 255, 255, 1);
-                        background: white;
+                        img{
+                              width: 200px;
+                              height: auto;
+                        }
+                  }
+            }
+      
+            .message-container{
+                  position: relative;
+                  width: calc(100vw - 50px);
+                  padding-top: 150px; 
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+      
+                  .title-text{
+                        font-size: 70px;
+                        font-weight: 600;
+                        text-align: center;
+                  }
+
+                  @media (--movil-large-viewport) {
+                        .title-text{
+                              font-size: 45px;
+                        }
+                  }
+                  
+                  p{
+                        max-width: 1000px;
+                        font-size: 25px;
+                        font-weight: 300;
+                        text-align: center;
+                        margin-top: 25px !important;
+                  }
+
+                  @media (--movil-large-viewport) {
+                        p{
+                              font-size: 20px;
+                        }
+                  }
+      
+                  .btn-link-to-home{
+                        color: rgba(255, 255, 255, 0.5);
+                        font-size: 25px;
+                        margin-top: 50px;
+                        border-radius: 5px;
+                        padding: 12px 30px;
+                        border: 2px solid rgba(255, 255, 255, 0.5);
+                        background: transparent;
+                        transition: all .15s ease;
+      
+                        &:hover{
+                              cursor: pointer;
+                              color: black;
+                              border: 3px solid rgba(255, 255, 255, 1);
+                              background: white;
+                        }
+                  }
+
+                  @media (--movil-large-viewport) {
+                        .btn-link-to-home{
+                              font-size: 20px;
+                        }
                   }
             }
       }
 }
+

@@ -4,7 +4,7 @@ import Logo from "../../components/Logo/index";
 import { Footer } from "../../components/Footer/index";
 import "./styles.css";
 
-export default function Info() {
+export function Info() {
       return (
             <div className="wrapper-home">
                   <div className="wrapper-background" />
@@ -15,10 +15,10 @@ export default function Info() {
                               Disfruta de la mejor plataforma de <br /> contenido exclusivo y
                               espiritual para <br /> toda la familia.
                         </h1>
-                        <h2 className="secondary-text">
+                        <h2 className="subtitle-text">
                               Disfruta en donde quieras, cancela cuando quieras.
                         </h2>
-                        <div className="group-info">
+                        <div className="group-info row">
                               <p>¿Quieres ver Guíah TV ya?</p>
                               <a className="link-register" data-uia="link-register-label" href="https://guiah.tv/axs/registro">
                                     <button type="button" className="btn-register">Registrarme</button>
