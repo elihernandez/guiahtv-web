@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import getSpotlight from '../../services/getSpotlight'
 import CarouselClass from '../../classes/carouselCenterClass'
-import { LoaderSpinnerPurple } from '../Loaders/Loaders'
+import { LoaderSpinnerPurple } from '../Loader/index'
 import 'dom-node-polyfills'
 import './styles.css'
 
 function Content({data, index}){
-    var className = index == 0 ? 'active' : 'no-active'
+    const className = index == 0 ? 'active' : 'no-active'
+    const altImg = `spotlight-image-${index}`
     return (
         <li className={className}>
-            <img src={data.ImgLandscape}/>
+            <img src={data.ImgLandscape} alt={altImg}/>
         </li> 
     )
 }

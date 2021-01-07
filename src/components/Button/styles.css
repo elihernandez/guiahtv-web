@@ -1,0 +1,36 @@
+@import '../../scss/style-base.css';
+
+button{
+      border: none;
+      color: white;
+      transition: all .15s ease;
+      border-radius: 4px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+
+      &.uppercase{
+            text-transform: uppercase;
+      }
+
+      &.primary{
+            background: $color-guide-blue;
+      }
+
+      &.transparent{
+            background: transparent;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+      }
+
+      &.transparent.white:hover{
+            background: white;
+            color: black;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.75);
+      }
+
+      &.gradient-background{
+            background: linear-gradient(270deg, $color-guide-blue 0%, $color-guide-purple 100%);
+      }
+
+      &:hover{
+            cursor: pointer;
+      }
+}

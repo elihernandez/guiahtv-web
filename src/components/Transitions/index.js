@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 import '../../pages/Login/animates.scss'
-import { Transition } from "react-transition-group";
+import { Transition } from "react-transition-group"
 
 const duration = 300;
 
@@ -13,5 +13,5 @@ export default function TransitionApp({ children, state }) {
             </div>
           )}
       </Transition>
-    );
+    )
   }

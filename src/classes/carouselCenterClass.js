@@ -4,9 +4,9 @@ export default class Carousel {
     constructor (elementId, timeInterval) {
         this.element = document.querySelector("."+elementId)
         this.parent = this.element.children[0].children[0]
-        this.positionX = 0;
-        this.time = timeInterval;
-        this.timer;
+        this.positionX = 0
+        this.time = timeInterval
+        this.timer
     }
 
     animationEnd(){
@@ -24,27 +24,27 @@ export default class Carousel {
             t.style.transform =  "translate3d(-200%, 0, 0)"
         })
 
-        var carouselIndicators = this.element.children[1].children[0].children;
+        var carouselIndicators = this.element.children[1].children[0].children
         for (var index = 0; index < carouselIndicators.length; index++) {
-            var element = carouselIndicators[index];
+            var element = carouselIndicators[index]
             if(element.classList.contains("active")){
-                break;
+                break
             }
         }
 
         if(!element.previousElementSibling){
-            var previousElement = carouselIndicators[carouselIndicators.length - 1];
-            element.classList.remove("active");
-            previousElement.classList.add("active");
+            var previousElement = carouselIndicators[carouselIndicators.length - 1]
+            element.classList.remove("active")
+            previousElement.classList.add("active")
         }else{
-            var previousElement = element.previousElementSibling;
-            element.classList.remove("active");
-            previousElement.classList.add("active");
+            var previousElement = element.previousElementSibling
+            element.classList.remove("active")
+            previousElement.classList.add("active")
         }
     }
 
     next() {
-        var t = this.parent;
+        var t = this.parent
         cssTransition(t, {
             transform: 'translate3d(-200%, 0, 0)'
         }, 300, function(){
@@ -54,31 +54,31 @@ export default class Carousel {
             t.style.transform =  "translate3d(-100%, 0, 0)"
         })
 
-        var carouselIndicators = this.element.children[1].children[0].children;
+        var carouselIndicators = this.element.children[1].children[0].children
         for (var index = 0; index < carouselIndicators.length; index++) {
-            var element = carouselIndicators[index];
+            var element = carouselIndicators[index]
             if(element.classList.contains("active")){
-                break;
+                break
             }
         }
 
         if(!element.nextElementSibling){
-            var nextElement = carouselIndicators[0];
-            element.classList.remove("active");
-            nextElement.classList.add("active");
-            nextElement.classList.remove("no-active");
-            element.classList.add("no-active");
+            var nextElement = carouselIndicators[0]
+            element.classList.remove("active")
+            nextElement.classList.add("active")
+            nextElement.classList.remove("no-active")
+            element.classList.add("no-active")
         }else{
-            var nextElement = element.nextElementSibling;
-            element.classList.remove("active");
-            nextElement.classList.add("active");
-            nextElement.classList.remove("no-active");
-            element.classList.add("no-active");
+            var nextElement = element.nextElementSibling
+            element.classList.remove("active")
+            nextElement.classList.add("active")
+            nextElement.classList.remove("no-active")
+            element.classList.add("no-active")
         }
     }
 
     init() {
-        var t = this;
+        var t = this
         var firstChild = this.parent.firstChild
         // console.log(firstChild)
         var lastChild = this.parent.lastChild
@@ -93,7 +93,7 @@ export default class Carousel {
             //console.log('animation complete')
         })
         this.timer = setInterval(function(){
-            t.next();
+            t.next()
         }, this.time)
     }
 }

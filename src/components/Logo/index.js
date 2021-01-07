@@ -1,11 +1,13 @@
 import React from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
 
-export default function Logo(){
+export default function Logo({color}){
+    const imgSrc = `build/assets/images/logos/guiahtv/guiahtv-logo-${color}.png`
+
     return (
         <NavLink to="/">
             <div className="logo">
-                <img src="build/assets/images/logos/guiahtv/guiahtv-logo-blue.png"/>
+                <img src={imgSrc} alt="guiahtv-logo"/>
             </div>
         </NavLink>
     )
@@ -14,7 +16,7 @@ export default function Logo(){
 export function IconLogo(){
     return (
         <div className="logo">
-            <img src="build/assets/images/logos/guiahtv/logo_foreground.png" />
+            <img src="build/assets/images/logos/guiahtv/logo_foreground.png" alt="guiahtv-icon-logo"/>
         </div>
     )
 }

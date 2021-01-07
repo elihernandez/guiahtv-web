@@ -7,11 +7,11 @@ import './styles.css'
 
 export function Home(){
     return (
-        <>
+        <div className="wrapper-home">
             <div className="top-menu">
                 <div className="section-content">
                     <div className="left-section">
-                        <Logo/>
+                        <Logo color="blue"/>
                         <NavLink/>
                     </div>
                     <div className="right-section">
@@ -26,6 +26,7 @@ export function Home(){
             <div className="buttons-sections">
                 <ButtonsMenu/>
             </div>
-        </>
+        </div>
+
     )
 }

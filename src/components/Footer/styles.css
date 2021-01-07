@@ -1,4 +1,6 @@
 .footer-content{
+      padding: 0 10px;
+      
       .footer-wrapper{
             position: relative;
             z-index: 3;
@@ -38,12 +40,15 @@
       
                   
                   .footer-link-item{
-                        font-size: 14px;
                         margin: 0 15px;
                  
                         .footer-link{
                               text-decoration: none;
                               color: white;
+
+                              .title-link{
+                                    font-size: 14px;
+                              }
                         }
                   }
             }

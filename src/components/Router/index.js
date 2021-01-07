@@ -1,19 +1,19 @@
-import React, { useEffect, useContext } from "react";
-import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
-import UserContext from "../../context/UserContext";
-import { CheckAuth } from "./checkAuth";
-import { useAuth } from "../../hooks/useAuth";
-import { Info } from "../../pages/Info/index";
-import { Login } from "../../pages/Login/index";
-import { Home } from "../../pages/Home/index";
-import { Page404 } from "../../pages/404/index";
+import React, { useEffect, useContext } from "react"
+import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
+import UserContext from "../../context/UserContext"
+import { CheckAuth } from "./checkAuth"
+import { useAuth } from "../../hooks/useAuth"
+import { Info } from "../../pages/Info/index"
+import { Login } from "../../pages/Login/index"
+import { Home } from "../../pages/Home/index"
+import { Page404 } from "../../pages/404/index"
 
 export default function BaseRouter() {
     const cookies = useAuth();
-    const { setUser } = useContext(UserContext);
+    const { setUserAuth } = useContext(UserContext);
 
     useEffect(() => {
-        setUser(cookies);
+        setUserAuth(cookies);
     });
 
     return (

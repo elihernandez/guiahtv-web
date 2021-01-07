@@ -1,9 +1,8 @@
 @import '../../scss/style-base.css';
 
-.wrapper-home{
+.wrapper-main-home{
       position: relative;
       width: 100%;
-      min-height: auto;
       background: black;
 
       .wrapper-background{
@@ -28,14 +27,13 @@
 }
 
 @media (--laptop-large-viewport) {
-      .wrapper-home{
+      .wrapper-main-home{
             background-size: cover;
       }
 }
 
-
 @media (--tablet-medium-viewport) {
-      .wrapper-home{
+      .wrapper-main-home{
             background-size: cover;
             
             .wrapper-background{
@@ -44,7 +42,7 @@
                   width: 100vw;
                   min-height: 100%;
                   margin-top: -200px;
-                  background-image: url(../../assets/images/backgrounds/background-login-movil.jpg);
+                  background-image: url(../../assets/images/backgrounds/background-login-movil.webp);
                   background-size: cover;
                   background-repeat: no-repeat;
                   opacity: .5;
@@ -87,14 +85,11 @@
 
       .group-info{
             margin-top: 50px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
             
-            &.row{
-                  display: flex;
-                  flex-direction: row;
-                  align-items: center;
-                  align-content: center;
-            }
-
             p{
                   font-size: 17px;
                   margin-right: 25px !important;
@@ -103,36 +98,13 @@
             }
 
             button{
-                  background: $color-guide-blue;
-                  border: none;
-                  color: white;
                   font-size: 20px;
                   padding: 15px 40px;
-                  transition: all .15s ease;
                   letter-spacing: .5px;
                   font-weight: 300 !important;
-                  border-radius: 4px;
-                  text-transform: uppercase;
-                  
-                  &.btn-register{
-                        margin-right: 20px !important;
-                        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.75);
-      
-                        &:hover{
-                              cursor: pointer;
-                        }
-                  }
-
-                  &.btn-login{
-                        background: transparent;
-
-                        &:hover{
-                              cursor: pointer;
-                              background: white;
-                              color: black;
-                        }
-                  }
+                  margin-right: 20px !important;
             }
+                  
       }
 }
 
@@ -153,12 +125,12 @@
             padding-left: 40px;
             padding-top: 100px;
 
-            .subtitle-text{
+            .title-text{
                   font-size: 35px;
                   line-height: 50px;
             }
 
-            h3{
+            .subtitle-text{
                   font-size: 22px;  
             }
 
