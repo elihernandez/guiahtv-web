@@ -1,9 +1,14 @@
-import {fetch as fetchPolyfill} from 'whatwg-fetch'
+import {API_URL} from './settings'
+const axios = require('axios')
 
-export default function getButtonsMenu(){
-    return fetchPolyfill(`https://lap55.com/json/api/cs/leon_home_bm`)
-    .then(res => res.json())
-    .then(data => {
-      return data
-    })
+export function getButtonsMenu(){
+  const apiURL = `${API_URL}/cs/leon_home_bm`
+
+  return axios.get(apiURL)
+  .then(function (response) {
+        return response.data
+  })
+  .catch(function (error) {
+        return (error)
+  })
 }

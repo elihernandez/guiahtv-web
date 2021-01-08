@@ -1,10 +1,14 @@
-// import {fetch as fetchPolyfill} from 'whatwg-fetch'
-import fetch from 'unfetch'
+import {API_URL} from './settings'
+const axios = require('axios')
 
-export default function getSpotlight(){
-    return fetch(`https://lap55.com/json/api/sl/leon/home_spotlight`)
-    .then(res => res.json())
-    .then(data => {
-      return data
-    })
+export function getSpotlight(){
+  const apiURL = `${API_URL}/sl/leon/home_spotlight`
+
+  return axios.get(apiURL)
+  .then(function (response) {
+        return response.data
+  })
+  .catch(function (error) {
+        return (error)
+  })
 }

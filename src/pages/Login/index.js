@@ -45,6 +45,16 @@ function GroupFormError({error}){
         )
     }
 
+    if(error.limit){
+        return (
+            <div className="group-form-error">
+                <p className="text-error">
+                    Excedes el límite de dispositivos permitidos. <Link className="link-error" href="https://guiah.tv/axs/Login">Revisa tu cuenta.</Link>
+                </p>
+            </div>
+        )
+    }
+
     return null
 }
 
@@ -53,7 +63,7 @@ export function Login() {
     const [password, setPassword] = useState('')
     const [cookies, setCookie] = useCookies()
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState({ default: false, email: false, password: false })
+    const [error, setError] = useState({ default: false, email: false, password: false, limit: false })
     const { userAuth, setUserAuth } = useContext(UserContext)
     const history = useHistory()
 
@@ -64,6 +74,7 @@ export function Login() {
                 setError({
                     email: true,
                     password: false,
+                    limit: false,
                     default: false,
                 })
                 break;
@@ -71,13 +82,23 @@ export function Login() {
                 setCookie('memclem', username, { path: '/' })
                 setCookie('memclid', SuscriberID, { path: '/' })
                 setUserAuth(cookies)
-                history.push("/inicio");
+                history.push("/inicio")
                 break
             case 3: // Password incorrecta
                 setLoading(false)
                 setError({
                     email: false,
                     password: true,
+                    limit: false,
+                    default: false
+                })
+                break
+            case 6: // Excede límite de dispositivos permitidos
+                setLoading(false)
+                setError({
+                    email: false,
+                    password: false,
+                    limit: true,
                     default: false
                 })
                 break
@@ -86,6 +107,7 @@ export function Login() {
                 setError({
                     email: false,
                     password: false,
+                    limit: false,
                     default: true
                 })
                 break
@@ -103,6 +125,7 @@ export function Login() {
             setError({
                 email: false,
                 password: false,
+                limit: false,
                 default: true
             })
         }
