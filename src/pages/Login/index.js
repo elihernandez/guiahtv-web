@@ -141,62 +141,62 @@ export function Login() {
         <>
             {
                 loading
-                    ? <LoaderSpinner color="blue" />
-                    : <div className="wrapper-login">
-                        <div className="background-svg" />
-                        <div className="background-image" />
-                        <div className="content-form">
-                            <Logo color="blue" />
-                            <form className="login-form" onSubmit={handleSubmit}>
-                                <H1 className="title-form">Inicia sesión</H1>
-                                <GroupFormError error={error}/>
-                                <div className="group-form">
-                                    <label htmlFor="username"/>
-                                    <input
-                                        type="text"
-                                        className="username"
-                                        name="username"
-                                        id="username"
-                                        placeholder="Correo electrónico"
-                                        value={username}
-                                        autoComplete="on"
-                                        required
-                                        autoFocus
-                                        data-uia="login-field"
-                                        onChange={(e) => setUsername(e.target.value)}
-                                    />
+                    ?   <LoaderSpinner color="blue" />
+                    :   <div className="wrapper-login">
+                            <div className="background-svg" />
+                            <div className="background-image" />
+                            <div className="content-form">
+                                <Logo color="blue" />
+                                <form className="login-form" onSubmit={handleSubmit}>
+                                    <H1 className="title-form">Inicia sesión</H1>
+                                    <GroupFormError error={error}/>
+                                    <div className="group-form">
+                                        <label htmlFor="username"/>
+                                        <input
+                                            type="text"
+                                            className="username"
+                                            name="username"
+                                            id="username"
+                                            placeholder="Correo electrónico"
+                                            value={username}
+                                            autoComplete="on"
+                                            required
+                                            autoFocus
+                                            data-uia="login-field"
+                                            onChange={(e) => setUsername(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="group-form">
+                                        <label htmlFor="password"/>
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            id="password"
+                                            className="password"
+                                            placeholder="Contraseña"
+                                            autoComplete="on"
+                                            required
+                                            data-uia="login-field"
+                                            onChange={(e) => setPassword(e.target.value)}
+                                        />
+                                    </div>
+                                    <ButtonUI type="submit" className="gradient-background uppercase btn-submit-login" text="Iniciar sesión" />
+                                </form>
+                                <div className="group-info">
+                                    <div className="group-rememberme row">
+                                        <label htmlFor="checkbox-rememberme"/>
+                                        <input type="checkbox" id="checkbox-rememberme" className="input-checkbox"/>
+                                        <p>Recuérdame</p>
+                                    </div>
+                                    <Link className="link-help" href="https://guiah.tv/axs/ForgotPassword">¿Necesitas ayuda?</Link>
                                 </div>
-                                <div className="group-form">
-                                    <label htmlFor="password"/>
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        id="password"
-                                        className="password"
-                                        placeholder="Contraseña"
-                                        autoComplete="on"
-                                        required
-                                        data-uia="login-field"
-                                        onChange={(e) => setPassword(e.target.value)}
-                                    />
+                                <div className="bottom-info">
+                                    <p>¿Primera vez en Guíah TV?
+                                    <Link className="link-register" href="https://guiah.tv/axs/registro">Registrarme</Link>
+                                    </p>
                                 </div>
-                                <ButtonUI type="submit" className="gradient-background uppercase btn-submit-login" text="Iniciar sesión" />
-                            </form>
-                            <div className="group-info">
-                                <div className="group-rememberme row">
-                                    <label htmlFor="checkbox-rememberme"/>
-                                    <input type="checkbox" id="checkbox-rememberme" className="input-checkbox"/>
-                                    <p>Recuérdame</p>
-                                </div>
-                                <Link className="link-help" href="https://guiah.tv/axs/ForgotPassword">¿Necesitas ayuda?</Link>
-                            </div>
-                            <div className="bottom-info">
-                                <p>¿Primera vez en Guíah TV?
-                                <Link className="link-register" href="https://guiah.tv/axs/registro">Registrarme</Link>
-                                </p>
                             </div>
                         </div>
-                    </div>
             }
         </>
     )

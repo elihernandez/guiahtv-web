@@ -7,7 +7,7 @@ export function Page404() {
       return (
             <div className="page-404">
                   <div className="page-404-wrapper">
-                        <Logo />
+                        <Logo color="blue" />
                         <div className="message-container">
                               <h3 className="title-text">¿Te perdiste?</h3>
                               <p>

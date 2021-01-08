@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react"
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
 import UserContext from "../../context/UserContext"
+import { TopMenu } from "../TopMenu/index"
 import { useAuth } from "../../hooks/useAuth"
 import { Info } from "../../pages/Info/index"
 import { Login } from "../../pages/Login/index"
@@ -26,38 +27,42 @@ export default function BaseRouter() {
     })
 
     return (
-        <HashRouter>
-            <Switch>
-                <Route exact path="/">
-                    {cookies.memclid ? <Redirect to="/inicio" /> : <Info />}
-                </Route>
+        <>
+            <HashRouter>
+                <Switch>
+                    <Route exact path="/">
+                        {cookies.memclid ? <Redirect to="/inicio" /> : <Info />}
+                    </Route>
 
-                <Route path="/registro">
-                    <CheckAuth>
-                        <Home />
-                    </CheckAuth>
-                </Route>
+                    <Route path="/registro">
+                        <CheckAuth>
+                            <Home />
+                        </CheckAuth>
+                    </Route>
 
-                <Route path="/login">
-                    {cookies.memclid ? <Redirect to="/inicio" /> : <Login />}
-                </Route>
+                    <Route path="/login">
+                        {cookies.memclid ? <Redirect to="/inicio" /> : <Login />}
+                    </Route>
 
-                <Route exact path="/inicio">
-                    <CheckAuth>
-                        <Home />
-                    </CheckAuth>
-                </Route>
+                    <Route exact path="/inicio">
+                        <CheckAuth>
+                            <TopMenu /> 
+                            <Home />
+                        </CheckAuth>
+                    </Route>
 
-                <Route exact path="/musica">
-                    <CheckAuth>
-                        <Music />
-                    </CheckAuth>
-                </Route>
+                    <Route exact path="/musica">
+                        <CheckAuth>
+                            <TopMenu />
+                            <Music />
+                        </CheckAuth>
+                    </Route>
 
-                <Route path="*">
-                    <Page404 />
-                </Route>
-            </Switch>
-        </HashRouter>
+                    <Route path="*">
+                        <Page404 />
+                    </Route>
+                </Switch>
+            </HashRouter>
+        </>
     )
 }

@@ -7,7 +7,6 @@ import './styles.css'
 export function Home() {
     return (
         <div className="wrapper-home">
-            <Navbar />
             <Spotlight />
             <ButtonsMenu />
         </div>
