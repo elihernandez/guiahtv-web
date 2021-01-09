@@ -1,0 +1,388 @@
+@import '../../scss/style-base.css';
+
+.wrapper-music{
+      position: absolute;
+      width: 100%;
+      height: calc(100vh - 112px);
+      /* border: 1px solid red; */
+      overflow: hidden;
+
+      .music-content{
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+
+            .sidebar{
+                  position: relative;
+                  width: 275px;
+                  height: calc(100vh - 335px);
+                  padding: 50px 50px;
+                  overflow-y: scroll;
+                  /* border: 1px solid red; */
+
+                  .list-section{
+                        margin-bottom: 75px !important;
+
+                        &:last-child{
+                              margin-bottom: 0 !important;
+                        }
+
+                        .list-title{
+                              font-size: 17px;
+                              color: #757575;
+                              font-weight: 600;
+                              margin-bottom: 40px !important;
+                              padding-left: 20px !important;
+                              text-transform: uppercase;
+                        }
+
+                        .list-menu{
+                              list-style: none;
+
+                              .list-item{
+                                    font-weight: 500;
+                                    font-size: 17px;
+                                    padding: 10px 20px;
+                                    border-radius: 50px;
+                                    margin: 15px 0;
+
+                                    i{
+                                          margin-right: 20px;
+                                          min-width: 25px;
+                                          text-align: center;
+                                    }
+
+                                    &.active{
+                                       background: $color-guide-blue;    
+                                    }
+                              }
+                        }
+
+                  }
+
+                  &::-webkit-scrollbar {
+                        -webkit-appearance: none;
+                  }
+      
+                  &::-webkit-scrollbar:vertical{
+                        width: 6px;
+                  }
+      
+                  &::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+                        display: none;
+                  }
+      
+                  &::-webkit-scrollbar-thumb {
+                        background-color: #797979;
+                        border-radius: 20px;
+                  }
+      
+                  &::-webkit-scrollbar-track {
+                        border-radius: 10px;  
+                  }
+            }
+
+            .content-section{
+                  position: relative;
+                  width: calc(100vw - 275px);
+                  height: calc(100vh - 285px);
+                  padding: 25px 25px;
+                  overflow-y: scroll;
+                  /* border: 1px solid red; */
+
+                  .title-section{
+                        font-weight: 500;
+                        font-size: 32px;
+                  }
+
+                  .list-content{
+                        /* border: 1px solid blue; */
+                        position: relative;
+                        margin-top: 25px;
+
+                        .list{
+                              position: relative;
+                              list-style: none;
+                              display: flex;
+                              flex-direction: row;
+                              justify-content: flex-start;
+                              flex-wrap: wrap;
+
+                              .item{
+                                    position: relative;
+                                    flex: 0 0 calc(100% / 6.9);
+                                    margin-right: 35px;
+                                    margin-bottom: 60px;
+
+                                    &:hover{
+                                          cursor: pointer;
+                                    }
+
+                                    .img{
+                                          position: relative;
+                                          width: 200px;
+                                          height: 200px;
+                                          border-radius: 10px;
+                                          background: #424242;
+                                          overflow: hidden;
+
+                                          img{
+                                                position: relative;
+                                                width: auto;
+                                                height: 100%;
+                                                border-radius: 10px;
+                                                text-align: center;
+                                                /* overflow: hidden; */
+                                          }
+
+                                          .more-content{
+                                                position: absolute;
+                                                width: 100%;
+                                                height: 100%;
+                                                top: 0;
+                                                background: rgba(0, 0, 0, 0.5);
+                                                display: flex;
+                                                flex-direction: row;
+                                                justify-content: center;
+                                                align-items: center;
+                                                
+                                                button{
+                                                     background: transparent;
+                                                      border: 2px solid white;
+                                                      width: 50px;
+                                                      height: 50px;
+                                                      border-radius: 50%;
+
+                                                     i{
+                                                           font-size: 20px;
+                                                           margin-left: 5px !important;
+                                                     }
+                                                }
+                                          }
+
+                                    }
+
+                                    .info{
+                                          display: flex;
+                                          flex-direction: row;
+                                          justify-content: space-between;
+                                          align-items: center;
+                                          margin-top: 8px;
+
+                                          .title{
+                                                font-weight: 400;
+                                                font-size: 16px;
+                                                color: white;
+                                          }
+
+                                          i{
+                                                color: white;
+                                                padding-right: 5px;
+                                          }
+                                    }
+
+                                    &:nth-child(6n){
+                                          margin-right: 0 !important;
+                                    }
+                              }
+
+                        }
+                  }
+
+                  &::-webkit-scrollbar {
+                        -webkit-appearance: none;
+                  }
+      
+                  &::-webkit-scrollbar:vertical{
+                        width: 6px;
+                  }
+      
+                  &::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+                        display: none;
+                  }
+      
+                  &::-webkit-scrollbar-thumb {
+                        background-color: #797979;
+                        border-radius: 20px;
+                  }
+      
+                  &::-webkit-scrollbar-track {
+                        border-radius: 10px;  
+                  }
+            }
+      }
+
+      .player-wrapper{
+            position: absolute;
+            bottom: 0;
+            height: 110px;
+            width: 100%;
+
+            .progress-time-wrapper{
+                  position: relative;
+                  width: 100%;
+                  height: auto;
+
+                  .progress-content{
+                        width: 100%;
+                        height: 5px;
+                        background: rgba(255, 255, 255, 0.4);
+
+                        .current-progress{
+                              position: absolute;
+                              width: 35%;
+                              height: 5px;
+                              background: $color-guide-blue;
+                        }
+                  }
+            }
+
+            .player-content-wrapper{
+                  position: relative;
+                  width: 100vw;
+                  height: 100px;
+                  padding: 0 30px;
+
+                  .player-content{
+                        position: relative;
+                        width: calc(100% - 60px);
+                        height: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                        align-content: center;
+                        align-items: center;
+
+                        .current-music-info{
+                              display: flex;
+                              flex-direction: row;
+                              align-content: center;
+                              align-items: center;
+
+                              .image-artist{
+                                    height: 60px;
+
+                                    img{
+                                          width: 60px;
+                                          height: 100%;
+                                          border-radius: 5px;
+                                    }
+                              }
+
+                              .info-artist{
+                                    margin-left: 15px;
+
+                                    h2{
+                                          font-size: 20px;
+                                          font-weight: 500;  
+                                    } 
+
+                                    h3{
+                                          font-size: 15px;
+                                          font-weight: 500;  
+                                          color: #bdbdbd;
+                                    } 
+                              }
+                        }
+
+                        .current-music-time{
+                             h3{
+                                    font-size: 17px;
+                                    font-weight: 600;  
+                                    color: #bdbdbd;
+                             } 
+                        }
+
+                        .buttons-player{
+                              .list-buttons{
+                                    list-style: none;
+                                    display: flex;
+                                    flex-direction: row;
+
+                                    .button-item{
+                                          width: 50px;
+                                          height: 50px;
+                                          font-size: 20px;
+                                          margin: 0 20px;
+                                          display: flex;
+                                          flex-direction: row;
+                                          justify-content: center;
+                                          align-items: center;
+                                          border-radius: 50%;
+                                          color: #bdbdbd;
+
+                                          &.active{
+                                                background: $color-guide-blue;
+                                                color: white;
+                                                font-size: 22px;
+                                          }
+
+                                          i.fa-play{
+                                                margin-left: 3px !important;
+                                          }
+                                    }
+                              }
+                        }
+
+                        .volume-music-content{
+                              display: flex;
+                              flex-direction: row;
+                              align-items: center;
+
+                              i{
+                                    font-size: 20px;
+                                    margin: 0 20px;
+                                    color: #bdbdbd;
+                              }
+
+                              .wrapper-volume-music{
+                                    position: relative;
+                                    width: 125px;
+                                    height: 4px;
+                                    
+                                    .volume-content{
+                                          position: relative;
+                                          width: 100%;
+                                          height: 100%;
+                                          background: rgba(255, 255, 255, 0.4);
+                                          border-radius: 5px;
+
+                                          .current-volume{
+                                                position: relative;
+                                                width: 75%;
+                                                height: 100%;
+                                                background: $color-guide-blue;
+                                                border-radius: 5px; 
+                                                
+                                                .drop-volume{
+                                                      position: absolute;
+                                                      width: 15px;
+                                                      height: 15px;
+                                                      background: $color-guide-blue;
+                                                      border-radius: 50%;
+                                                      right: -8px;
+                                                      top: -5px;
+                                                }
+                                          }
+                                    }
+                              }
+                        }
+
+                        .adds{
+                              ul{
+                                    list-style: none;
+                                    display: flex;
+                                    flex-direction: row;
+
+                                    li{
+                                          margin: 0 25px;
+                                          font-size: 20px;
+                                          color: #bdbdbd;
+                                    }
+                              }
+                        }
+                  }
+            }
+      }
+}
