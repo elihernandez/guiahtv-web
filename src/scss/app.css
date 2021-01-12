@@ -29,6 +29,10 @@ ol {
   color: white;
 }
 
+ul, ol{
+  list-style: none;
+}
+
 .app-content {
   position: relative;
   width: 100%;

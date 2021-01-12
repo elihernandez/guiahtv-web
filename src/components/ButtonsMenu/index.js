@@ -41,7 +41,6 @@ export function ButtonsMenu(){
         const requestButtons = async () => {
             try{
                 const response = await getButtonsMenu()
-                console.log(response)
                 if(response.length == 1) throw new Error('No se pudo obtener la información.')
                 setButtons(response)
 

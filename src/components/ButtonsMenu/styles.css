@@ -1,23 +1,28 @@
 .buttons-sections{
     position: relative;
-    margin-top: 80px;
-    margin-bottom: 50px;
+    width: 100%;
+    margin: 50px 0;
+    padding: 0 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
 
     .buttons-list{
-        width: 90%;
+        width: 100%;
         display: flex;
         justify-content: center;
+        /* border: 1px solid green; */
 
         .item-button{
             position: relative;
             flex: 0 0 calc(100%/5);
-            transition: all .2s ease;
+            transition: all .15s ease;
             display: flex;
             flex-direction: row;
             justify-content: center;
+            /* border: 1px solid blue; */
 
             .title-section{
                 position: absolute;
@@ -25,7 +30,8 @@
                 font-weight: 600;
                 color: white;
                 top: 30%;
-                left: 15%;
+                left: 20%;
+                text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
             }
 
             img{

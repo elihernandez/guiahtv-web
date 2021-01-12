@@ -1,16 +1,19 @@
-.top-menu{
-    position: sticky;
-    padding: 15px 25px 15px 25px;
-    /* border: 1px solid red; */
+$height-top-menu: 100px;
 
-    .section-content{
+.top-menu{
+    position: absolute;
+    width: 100%;
+    padding: 0 25px;
+    box-sizing: border-box;
+
+    .section-wrapper{
         position: relative;
+        height: $height-top-menu;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         align-content: center;
-        /* // border: 1px solid blue; */
 
         .left-section{
             position: relative;
@@ -21,9 +24,11 @@
             align-content: center;
 
             .logo img{
-                width: 200px;
+                width: 150px;
                 height: auto;
             }
+
+            /* .navbar{} */
         }
 
         .right-section{
@@ -60,4 +65,8 @@
             }
         }   
     }
+}
+
+.section-content.w-padding-top{
+    padding-top: $height-top-menu;
 }
