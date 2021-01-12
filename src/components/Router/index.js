@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from "react"
-import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
+import React, { Fragment,  useEffect, useContext } from "react"
+import { HashRouter, Switch, Route, Redirect, useRouteMatch, useParams } from "react-router-dom"
 import UserContext from "../../context/UserContext"
 import { TopMenu } from "../TopMenu/index"
 import { useAuth } from "../../hooks/useAuth"
@@ -12,9 +12,9 @@ import { Music } from "../../pages/Music/index"
 function CheckAuth({children}){
     const cookies = useAuth();
     return (
-        <React.Fragment>
+        <Fragment>
             {cookies.memclid ? children : <Redirect to='/login'/>}      
-        </React.Fragment>
+        </Fragment>
     )
 }
 
@@ -51,14 +51,14 @@ export default function BaseRouter() {
                         </CheckAuth>
                     </Route>
 
-                    <Route exact path="/musica">
+                    <Route path="/musica">
                         <CheckAuth>
                             <TopMenu />
                             <Music />
                         </CheckAuth>
                     </Route>
 
-                    <Route path="*">
+                    <Route exact path="/*">
                         <Page404 />
                     </Route>
                 </Switch>

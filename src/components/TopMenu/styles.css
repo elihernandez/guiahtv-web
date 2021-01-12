@@ -1,6 +1,7 @@
 .top-menu{
     position: sticky;
-    padding: 25px 25px 25px 25px;
+    padding: 15px 25px 15px 25px;
+    /* border: 1px solid red; */
 
     .section-content{
         position: relative;

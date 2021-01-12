@@ -4,7 +4,6 @@
       position: absolute;
       width: 100%;
       height: calc(100vh - 112px);
-      /* border: 1px solid red; */
       overflow: hidden;
 
       .music-content{
@@ -19,6 +18,7 @@
                   height: calc(100vh - 335px);
                   padding: 50px 50px;
                   overflow-y: scroll;
+                  
                   /* border: 1px solid red; */
 
                   .list-section{
@@ -39,24 +39,38 @@
 
                         .list-menu{
                               list-style: none;
+                        
+                              a{
+                                    text-decoration: none;
+                                    color: white;
 
-                              .list-item{
-                                    font-weight: 500;
-                                    font-size: 17px;
-                                    padding: 10px 20px;
-                                    border-radius: 50px;
-                                    margin: 15px 0;
-
-                                    i{
-                                          margin-right: 20px;
-                                          min-width: 25px;
-                                          text-align: center;
+                                    .list-item{
+                                          font-weight: 500;
+                                          font-size: 17px;
+                                          padding: 10px 20px;
+                                          border-radius: 50px;
+                                          margin: 15px 0;
+      
+                                          i{
+                                                margin-right: 20px;
+                                                min-width: 25px;
+                                                text-align: center;
+                                          }
+      
+                                          /* &.active{
+                                             background: $color-guide-blue; 
+                                             box-shadow: 0 5px 20px rgba(0,0,0, 0.25); 
+                                          } */
                                     }
 
                                     &.active{
-                                       background: $color-guide-blue;    
+                                          .list-item{
+                                                background: $color-guide-blue; 
+                                                box-shadow: 0 5px 20px rgba(0,0,0, 0.25); 
+                                          }   
                                     }
                               }
+
                         }
 
                   }
@@ -97,7 +111,6 @@
                   }
 
                   .list-content{
-                        /* border: 1px solid blue; */
                         position: relative;
                         margin-top: 25px;
 
@@ -218,6 +231,7 @@
             bottom: 0;
             height: 110px;
             width: 100%;
+            background-color: $color-background-app;
 
             .progress-time-wrapper{
                   position: relative;
@@ -250,7 +264,7 @@
                         height: 100%;
                         display: flex;
                         flex-direction: row;
-                        justify-content: space-around;
+                        justify-content: space-evenly;
                         align-content: center;
                         align-items: center;
 
@@ -274,12 +288,12 @@
                                     margin-left: 15px;
 
                                     h2{
-                                          font-size: 20px;
+                                          font-size: 17px;
                                           font-weight: 500;  
                                     } 
 
                                     h3{
-                                          font-size: 15px;
+                                          font-size: 14px;
                                           font-weight: 500;  
                                           color: #bdbdbd;
                                     } 
@@ -311,6 +325,7 @@
                                           align-items: center;
                                           border-radius: 50%;
                                           color: #bdbdbd;
+                                          cursor: pointer;
 
                                           &.active{
                                                 background: $color-guide-blue;
