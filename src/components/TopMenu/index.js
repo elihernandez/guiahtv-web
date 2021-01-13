@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Navbar } from '../Navbar/index'
 import { UserMenu } from '../UserMenu/index'
 import Logo from '../Logo/index'
@@ -21,22 +21,22 @@ function NavbarTopMenu(){
 }
 
 export function TopMenu() {
-
-      var topMenu = document.querySelector('.top-menu')
-      var previousScroll = 0
+      const topMenu = useRef(null)
+      let previousScroll = 0
+      let scroll = 0
+      
       window.onscroll = function() {
-            var scroll = window.scrollY;
-            // var scroll = $(this).scrollTop();
+            scroll = window.scrollY;
             if (scroll > previousScroll && scroll > 50){
-                 topMenu.classList.add('bgcolor')
+                  topMenu.current.classList.add('bgcolor')
             } else {
-                 topMenu.classList.remove('bgcolor')
+                  topMenu.current.classList.remove('bgcolor')
             }
             previousScroll = scroll   
       }
 
       return (
-            <div className="top-menu">
+            <div className="top-menu" ref={topMenu}>
                   <div className="section-wrapper">
                         <div className="left-section">
                               <Logo color="blue" />

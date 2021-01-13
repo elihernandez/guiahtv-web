@@ -32,13 +32,13 @@ function Header(){
                   <span className="icons">
                         <div className="play-music">
                               Reproducir
-                              <i class="fas fa-play"></i>
+                              <i className="fas fa-play"></i>
                         </div>
                         <div className="like-artist">
-                              <i class="fas fa-heart"></i>
+                              <i className="fas fa-heart"></i>
                         </div>
                         <div className="share-artist">
-                              <i class="fas fa-share-alt"></i>
+                              <i className="fas fa-share-alt"></i>
                         </div>
                   </span>
             </div>
@@ -130,7 +130,7 @@ function PopularSongs(){
                                     3:50
                               </div>
                               <div className="extras">
-                                    <i class="fas fa-plus"></i>
+                                    <i className="fas fa-plus"></i>
                               </div>
                         </li>
                         <li className="item-song">
@@ -145,7 +145,7 @@ function PopularSongs(){
                                     3:15
                               </div>
                               <div className="extras">
-                                    <i class="fas fa-plus"></i>
+                                    <i className="fas fa-plus"></i>
                               </div>
                         </li>
                         <li className="item-song">
@@ -160,7 +160,7 @@ function PopularSongs(){
                                     2:45
                               </div>
                               <div className="extras">
-                                    <i class="fas fa-plus"></i>
+                                    <i className="fas fa-plus"></i>
                               </div>
                         </li>
                         <li className="item-song">
@@ -175,7 +175,7 @@ function PopularSongs(){
                                     3:25
                               </div>
                               <div className="extras">
-                                    <i class="fas fa-plus"></i>
+                                    <i className="fas fa-plus"></i>
                               </div>
                         </li>
                         <li className="item-song">
@@ -190,7 +190,7 @@ function PopularSongs(){
                                     4:30
                               </div>
                               <div className="extras">
-                                    <i class="fas fa-plus"></i>
+                                    <i className="fas fa-plus"></i>
                               </div>
                         </li>
                         <li className="item-song">

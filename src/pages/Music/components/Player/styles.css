@@ -1,0 +1,178 @@
+@import '../../../../scss/style-base.css';
+
+.player-wrapper{
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: $height-player-music;
+      background-color: $color-background-app;
+      /* border: 1px solid blue; */
+      /* display: none; */
+
+      .progress-time-wrapper{
+            position: relative;
+            width: 100%;
+            height: auto;
+
+            .progress-content{
+                  width: 100%;
+                  height: 5px;
+                  background: rgba(255, 255, 255, 0.4);
+
+                  .current-progress{
+                        position: absolute;
+                        width: 35%;
+                        height: 5px;
+                        background: $color-guide-blue;
+                  }
+            }
+      }
+
+      .player-content-wrapper{
+            position: relative;
+            width: 100vw;
+            height: $height-player-music;
+            padding: 0 30px;
+
+            .player-content{
+                  position: relative;
+                  width: calc(100% - 60px);
+                  height: 100%;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-evenly;
+                  align-content: center;
+                  align-items: center;
+
+                  .current-music-info{
+                        display: flex;
+                        flex-direction: row;
+                        align-content: center;
+                        align-items: center;
+
+                        .image-artist{
+                              height: 60px;
+
+                              img{
+                                    width: 60px;
+                                    height: 100%;
+                                    border-radius: 5px;
+                              }
+                        }
+
+                        .info-artist{
+                              margin-left: 15px;
+
+                              h2{
+                                    font-size: 17px;
+                                    font-weight: 500;  
+                              } 
+
+                              h3{
+                                    font-size: 14px;
+                                    font-weight: 500;  
+                                    color: #bdbdbd;
+                              } 
+                        }
+                  }
+
+                  .current-music-time{
+                       h3{
+                              font-size: 17px;
+                              font-weight: 600;  
+                              color: #bdbdbd;
+                       } 
+                  }
+
+                  .buttons-player{
+                        .list-buttons{
+                              list-style: none;
+                              display: flex;
+                              flex-direction: row;
+
+                              .button-item{
+                                    width: 50px;
+                                    height: 50px;
+                                    font-size: 20px;
+                                    margin: 0 20px;
+                                    display: flex;
+                                    flex-direction: row;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border-radius: 50%;
+                                    color: #bdbdbd;
+                                    cursor: pointer;
+
+                                    &.active{
+                                          background: $color-guide-blue;
+                                          color: white;
+                                          font-size: 22px;
+                                    }
+
+                                    i.fa-play{
+                                          margin-left: 3px !important;
+                                    }
+                              }
+                        }
+                  }
+
+                  .volume-music-content{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                        i{
+                              font-size: 20px;
+                              margin: 0 20px;
+                              color: #bdbdbd;
+                        }
+
+                        .wrapper-volume-music{
+                              position: relative;
+                              width: 125px;
+                              height: 4px;
+                              
+                              .volume-content{
+                                    position: relative;
+                                    width: 100%;
+                                    height: 100%;
+                                    background: rgba(255, 255, 255, 0.4);
+                                    border-radius: 5px;
+
+                                    .current-volume{
+                                          position: relative;
+                                          width: 75%;
+                                          height: 100%;
+                                          background: $color-guide-blue;
+                                          border-radius: 5px; 
+                                          
+                                          .drop-volume{
+                                                position: absolute;
+                                                width: 15px;
+                                                height: 15px;
+                                                background: $color-guide-blue;
+                                                border-radius: 50%;
+                                                right: -8px;
+                                                top: -5px;
+                                          }
+                                    }
+                              }
+                        }
+                  }
+
+                  .adds{
+                        ul{
+                              list-style: none;
+                              display: flex;
+                              flex-direction: row;
+
+                              li{
+                                    margin: 0 25px;
+                                    font-size: 20px;
+                                    color: #bdbdbd;
+                              }
+                        }
+                  }
+            }
+      }
+}
