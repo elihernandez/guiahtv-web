@@ -1,5 +1,4 @@
 @import '../../scss/style-base.css';
-$height-top-menu: 60px;
 
 .top-menu{
     position: fixed;

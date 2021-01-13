@@ -10,6 +10,14 @@ $color-background-app: #18191C;
 @custom-media --movil-medium-viewport (max-width: 375px);
 @custom-media --movil-small-viewport (max-width: 320px);
 
+
+/* Top Menu */
+$height-top-menu: 60px;
+
+/* Music */
+$height-player-music: 100px;
+
+
 /* :root{
       --color-guide-black: #18191c;
       --color-guide-blue: #00aeef;

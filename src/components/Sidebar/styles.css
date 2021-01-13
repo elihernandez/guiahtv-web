@@ -1,0 +1,77 @@
+@import '../../scss/style-base.css';
+
+.sidebar{
+      position: relative;
+      overflow-y: scroll;
+      box-sizing: border-box;
+
+      .list-section{
+            margin-bottom: 75px !important;
+
+            &:last-child{
+                  margin-bottom: 0 !important;
+            }
+
+            .list-title{
+                  font-size: 16px;
+                  color: #757575;
+                  font-weight: 600;
+                  margin-bottom: 30px !important;
+                  padding-left: 20px !important;
+                  text-transform: uppercase;
+            }
+
+            .list-menu{
+                  list-style: none;
+            
+                  a{
+                        text-decoration: none;
+                        color: white;
+
+                        .list-item{
+                              font-weight: 500;
+                              font-size: 15px;
+                              padding: 10px 20px;
+                              border-radius: 50px;
+                              margin: 15px 0;
+
+                              i{
+                                    margin-right: 20px;
+                                    min-width: 25px;
+                                    text-align: center;
+                              }
+                        }
+
+                        &.active{
+                              .list-item{
+                                    background: $color-guide-blue; 
+                                    box-shadow: 0 5px 20px rgba(0,0,0, 0.25); 
+                              }   
+                        }
+                  }
+
+            }
+
+      }
+
+      &::-webkit-scrollbar {
+            -webkit-appearance: none;
+      }
+
+      &::-webkit-scrollbar:vertical{
+            width: 6px;
+      }
+
+      &::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+            display: none;
+      }
+
+      &::-webkit-scrollbar-thumb {
+            background-color: #797979;
+            border-radius: 20px;
+      }
+
+      &::-webkit-scrollbar-track {
+            border-radius: 10px;  
+      }
+}

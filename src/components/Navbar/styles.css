@@ -7,7 +7,7 @@
             flex-direction: row;
     
             .navbar-item{
-                margin: 0 10px;
+                margin: 0 5px;
                 padding: 5px 15px;
                 min-width: 80px;
                 transition: all .3s ease;
@@ -43,7 +43,7 @@
                     i, p{
                         font-size: 14px;
                         font-weight: 600;
-                        margin: 0 15px;
+                        margin: 0 10px;
                         color: rgba(255, 255, 255, 0.5);
                         transition: all .15s ease;
                     }
