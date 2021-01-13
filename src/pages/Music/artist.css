@@ -3,8 +3,9 @@
 .section-artist{
       position: relative;
       width: calc(100vw - 275px);
-      height: calc(100vh - 285px);
+      height: calc(100vh - 170px);
       padding: 0 25px 25px 25px;
+      box-sizing: border-box;
       overflow-y: scroll;
       
       &::-webkit-scrollbar {

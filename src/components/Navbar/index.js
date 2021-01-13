@@ -11,9 +11,10 @@ export function Navbar({ navLinks, classNavbar, classItems }) {
             <div className="section-wrapper">
                 <ul className="navbar-list">
                     {
-                        navLinks.map(({ title, href }) => {
+                        navLinks.map(({ title, href, icon }) => {
                             return  <li key={title} className="navbar-item">
                                         <NavLink to={href} className={classItem} activeClassName="active">
+                                            <i className={icon}></i>
                                             <p>{title}</p>
                                         </NavLink>
                                     </li>

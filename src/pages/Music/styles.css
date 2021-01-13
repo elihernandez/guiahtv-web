@@ -1,25 +1,29 @@
 @import '../../scss/style-base.css';
 
+$height-player-music: 100px;
+
 .wrapper-music{
       position: absolute;
       width: 100%;
-      height: calc(100vh - 112px);
+      height: calc(100vh - $height-player-music);
+      /* border: 1px solid red; */
       overflow: hidden;
 
       .music-content{
             width: 100%;
+            /* height: 100vh; */
             position: relative;
             display: flex;
             flex-direction: row;
+            /* border: 1px solid green; */
 
             .sidebar{
                   position: relative;
-                  width: 275px;
-                  height: calc(100vh - 335px);
+                  width: 350px;
+                  height: calc(100vh - 170px);
                   padding: 50px 50px;
                   overflow-y: scroll;
-                  
-                  /* border: 1px solid red; */
+                  box-sizing: border-box;
 
                   .list-section{
                         margin-bottom: 75px !important;
@@ -100,10 +104,10 @@
             .content-section{
                   position: relative;
                   width: calc(100vw - 275px);
-                  height: calc(100vh - 285px);
-                  padding: 25px 25px;
+                  height: calc(100vh - 170px);
+                  padding: 20px 50px 50px 50px;
                   overflow-y: scroll;
-                  /* border: 1px solid red; */
+                  box-sizing: border-box;
 
                   .title-section{
                         font-weight: 500;
@@ -226,175 +230,178 @@
             }
       }
 
-      .player-wrapper{
-            position: absolute;
-            bottom: 0;
-            height: 110px;
+}
+
+.player-wrapper{
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: $height-player-music;
+      background-color: $color-background-app;
+      /* border: 1px solid blue; */
+      /* display: none; */
+
+      .progress-time-wrapper{
+            position: relative;
             width: 100%;
-            background-color: $color-background-app;
+            height: auto;
 
-            .progress-time-wrapper{
-                  position: relative;
+            .progress-content{
                   width: 100%;
-                  height: auto;
+                  height: 5px;
+                  background: rgba(255, 255, 255, 0.4);
 
-                  .progress-content{
-                        width: 100%;
+                  .current-progress{
+                        position: absolute;
+                        width: 35%;
                         height: 5px;
-                        background: rgba(255, 255, 255, 0.4);
-
-                        .current-progress{
-                              position: absolute;
-                              width: 35%;
-                              height: 5px;
-                              background: $color-guide-blue;
-                        }
+                        background: $color-guide-blue;
                   }
             }
+      }
 
-            .player-content-wrapper{
+      .player-content-wrapper{
+            position: relative;
+            width: 100vw;
+            height: $height-player-music;
+            padding: 0 30px;
+
+            .player-content{
                   position: relative;
-                  width: 100vw;
-                  height: 100px;
-                  padding: 0 30px;
+                  width: calc(100% - 60px);
+                  height: 100%;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-evenly;
+                  align-content: center;
+                  align-items: center;
 
-                  .player-content{
-                        position: relative;
-                        width: calc(100% - 60px);
-                        height: 100%;
+                  .current-music-info{
                         display: flex;
                         flex-direction: row;
-                        justify-content: space-evenly;
                         align-content: center;
                         align-items: center;
 
-                        .current-music-info{
-                              display: flex;
-                              flex-direction: row;
-                              align-content: center;
-                              align-items: center;
+                        .image-artist{
+                              height: 60px;
 
-                              .image-artist{
-                                    height: 60px;
-
-                                    img{
-                                          width: 60px;
-                                          height: 100%;
-                                          border-radius: 5px;
-                                    }
-                              }
-
-                              .info-artist{
-                                    margin-left: 15px;
-
-                                    h2{
-                                          font-size: 17px;
-                                          font-weight: 500;  
-                                    } 
-
-                                    h3{
-                                          font-size: 14px;
-                                          font-weight: 500;  
-                                          color: #bdbdbd;
-                                    } 
+                              img{
+                                    width: 60px;
+                                    height: 100%;
+                                    border-radius: 5px;
                               }
                         }
 
-                        .current-music-time{
-                             h3{
+                        .info-artist{
+                              margin-left: 15px;
+
+                              h2{
                                     font-size: 17px;
-                                    font-weight: 600;  
+                                    font-weight: 500;  
+                              } 
+
+                              h3{
+                                    font-size: 14px;
+                                    font-weight: 500;  
                                     color: #bdbdbd;
-                             } 
+                              } 
                         }
+                  }
 
-                        .buttons-player{
-                              .list-buttons{
-                                    list-style: none;
-                                    display: flex;
-                                    flex-direction: row;
+                  .current-music-time{
+                       h3{
+                              font-size: 17px;
+                              font-weight: 600;  
+                              color: #bdbdbd;
+                       } 
+                  }
 
-                                    .button-item{
-                                          width: 50px;
-                                          height: 50px;
-                                          font-size: 20px;
-                                          margin: 0 20px;
-                                          display: flex;
-                                          flex-direction: row;
-                                          justify-content: center;
-                                          align-items: center;
-                                          border-radius: 50%;
-                                          color: #bdbdbd;
-                                          cursor: pointer;
-
-                                          &.active{
-                                                background: $color-guide-blue;
-                                                color: white;
-                                                font-size: 22px;
-                                          }
-
-                                          i.fa-play{
-                                                margin-left: 3px !important;
-                                          }
-                                    }
-                              }
-                        }
-
-                        .volume-music-content{
+                  .buttons-player{
+                        .list-buttons{
+                              list-style: none;
                               display: flex;
                               flex-direction: row;
-                              align-items: center;
 
-                              i{
+                              .button-item{
+                                    width: 50px;
+                                    height: 50px;
                                     font-size: 20px;
                                     margin: 0 20px;
+                                    display: flex;
+                                    flex-direction: row;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border-radius: 50%;
                                     color: #bdbdbd;
+                                    cursor: pointer;
+
+                                    &.active{
+                                          background: $color-guide-blue;
+                                          color: white;
+                                          font-size: 22px;
+                                    }
+
+                                    i.fa-play{
+                                          margin-left: 3px !important;
+                                    }
                               }
+                        }
+                  }
 
-                              .wrapper-volume-music{
+                  .volume-music-content{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                        i{
+                              font-size: 20px;
+                              margin: 0 20px;
+                              color: #bdbdbd;
+                        }
+
+                        .wrapper-volume-music{
+                              position: relative;
+                              width: 125px;
+                              height: 4px;
+                              
+                              .volume-content{
                                     position: relative;
-                                    width: 125px;
-                                    height: 4px;
-                                    
-                                    .volume-content{
-                                          position: relative;
-                                          width: 100%;
-                                          height: 100%;
-                                          background: rgba(255, 255, 255, 0.4);
-                                          border-radius: 5px;
+                                    width: 100%;
+                                    height: 100%;
+                                    background: rgba(255, 255, 255, 0.4);
+                                    border-radius: 5px;
 
-                                          .current-volume{
-                                                position: relative;
-                                                width: 75%;
-                                                height: 100%;
+                                    .current-volume{
+                                          position: relative;
+                                          width: 75%;
+                                          height: 100%;
+                                          background: $color-guide-blue;
+                                          border-radius: 5px; 
+                                          
+                                          .drop-volume{
+                                                position: absolute;
+                                                width: 15px;
+                                                height: 15px;
                                                 background: $color-guide-blue;
-                                                border-radius: 5px; 
-                                                
-                                                .drop-volume{
-                                                      position: absolute;
-                                                      width: 15px;
-                                                      height: 15px;
-                                                      background: $color-guide-blue;
-                                                      border-radius: 50%;
-                                                      right: -8px;
-                                                      top: -5px;
-                                                }
+                                                border-radius: 50%;
+                                                right: -8px;
+                                                top: -5px;
                                           }
                                     }
                               }
                         }
+                  }
 
-                        .adds{
-                              ul{
-                                    list-style: none;
-                                    display: flex;
-                                    flex-direction: row;
+                  .adds{
+                        ul{
+                              list-style: none;
+                              display: flex;
+                              flex-direction: row;
 
-                                    li{
-                                          margin: 0 25px;
-                                          font-size: 20px;
-                                          color: #bdbdbd;
-                                    }
+                              li{
+                                    margin: 0 25px;
+                                    font-size: 20px;
+                                    color: #bdbdbd;
                               }
                         }
                   }

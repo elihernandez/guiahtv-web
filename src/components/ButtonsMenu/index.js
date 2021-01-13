@@ -27,8 +27,8 @@ function Button({title, contentType, img}){
     
     return (
         <li className="item-button focusable" onClick={handleClick}>
-            <img src={img} alt={altImg}/>
-            <h3 className="title-section">{title}</h3>
+            <img className="image-button" src={img} alt={altImg}/>
+            <p className="title-button">{title}</p>
         </li>
     )
 

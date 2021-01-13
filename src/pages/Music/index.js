@@ -249,6 +249,15 @@ function Sidebar() {
                               <NavLink exact to={`${url}/playlists`} activeClassName="active">
                                     <ItemListSidebar classIcon="fas fa-genderless" title="Playlists" />
                               </NavLink>
+                              <NavLink exact to={`${url}/playlists`} activeClassName="active">
+                                    <ItemListSidebar classIcon="fas fa-genderless" title="Playlists" />
+                              </NavLink>
+                              <NavLink exact to={`${url}/playlists`} activeClassName="active">
+                                    <ItemListSidebar classIcon="fas fa-genderless" title="Playlists" />
+                              </NavLink>
+                              <NavLink exact to={`${url}/playlists`} activeClassName="active">
+                                    <ItemListSidebar classIcon="fas fa-genderless" title="Playlists" />
+                              </NavLink>
                         </ul>
                   </ListSidebar>
             </div>
@@ -928,7 +937,7 @@ export function Music() {
       let { url } = useRouteMatch()
 
       return (
-            <Fragment>
+            <div  className="section-content w-padding-top">
                   <div className="wrapper-music">
                         <div className="music-content">
                               <Sidebar />
@@ -958,10 +967,10 @@ export function Music() {
                                     </Route>
                               </Switch>
                         </div>
-                        <div className="player-content">
-                              <Player />
                         </div>
+                  <div className="player-content">
+                        <Player />
                   </div>
-            </Fragment>
+            </div>
       )
 }

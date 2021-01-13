@@ -1,10 +1,17 @@
-$height-top-menu: 100px;
+@import '../../scss/style-base.css';
+$height-top-menu: 60px;
 
 .top-menu{
-    position: absolute;
+    position: fixed;
+    z-index: 999;
     width: 100%;
     padding: 0 25px;
     box-sizing: border-box;
+    transition: all .15s ease;
+
+    &.bgcolor{
+        background: #1d1e21;
+    }
 
     .section-wrapper{
         position: relative;
@@ -23,11 +30,17 @@ $height-top-menu: 100px;
             align-items: center;
             align-content: center;
 
-            .logo img{
-                width: 150px;
-                height: auto;
-            }
+            .logo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
 
+                img{
+                    width: 125px;
+                    height: auto;
+                }
+            } 
+            
             /* .navbar{} */
         }
 
@@ -52,14 +65,14 @@ $height-top-menu: 100px;
                 }
 
                 i{
-                    font-size: 25px;
+                    font-size: 20px;
 
                     &.fa-search{
-                        font-size: 20px;
+                        font-size: 15px;
                     }
 
                     &.fa-user-circle{
-                        font-size: 35px;
+                        font-size: 20px !important;
                     }
                 }
             }
