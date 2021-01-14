@@ -6,6 +6,7 @@ import { useAuth } from "../../hooks/useAuth"
 import { Info } from "../../pages/Info/index"
 import { Login } from "../../pages/Login/index"
 import { Home } from "../../pages/Home/index"
+import { LiveTV } from "../../pages/LiveTV/index"
 import { Page404 } from "../../pages/404/index"
 import { Music } from "../../pages/Music/index"
 
@@ -48,6 +49,13 @@ export default function BaseRouter() {
                         <CheckAuth>
                             <TopMenu /> 
                             <Home />
+                        </CheckAuth>
+                    </Route>
+
+                    <Route exact path="/tvenvivo">
+                        <CheckAuth>
+                            <TopMenu /> 
+                            <LiveTV />
                         </CheckAuth>
                     </Route>
 

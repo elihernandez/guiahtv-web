@@ -1,0 +1,28 @@
+@import '../../scss/style-base.css';
+
+.loader-tv{
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background: #18191c;
+}
+.wrapper-livetv{
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background: #18191c;
+
+      .channels-guide{
+            border: 1px solid blue;
+            position: absolute;
+            bottom: 0;
+            height: 300px;
+            width: 100%;
+      }
+}
+
+.video-section{
+      position: absolute;
+      width: 100%;
+      height: 100vh; 
+}

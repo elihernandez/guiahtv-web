@@ -22,18 +22,21 @@ function NavbarTopMenu(){
 
 export function TopMenu() {
       const topMenu = useRef(null)
-      let previousScroll = 0
-      let scroll = 0
       
-      window.onscroll = function() {
-            scroll = window.scrollY;
-            if (scroll > previousScroll && scroll > 50){
-                  topMenu.current.classList.add('bgcolor')
-            } else {
-                  topMenu.current.classList.remove('bgcolor')
+      useEffect(() => {
+            let previousScroll = 0
+            let scroll = 0
+            
+            window.onscroll = function() {
+                  scroll = window.scrollY;
+                  if (scroll > previousScroll && scroll > 50){
+                        topMenu.current.classList.add('bgcolor')
+                  } else {
+                        topMenu.current.classList.remove('bgcolor')
+                  }
+                  previousScroll = scroll   
             }
-            previousScroll = scroll   
-      }
+      }, [])
 
       return (
             <div className="top-menu" ref={topMenu}>

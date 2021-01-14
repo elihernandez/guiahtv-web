@@ -82,7 +82,7 @@ export function Login() {
                 setCookie('memclem', username, { path: '/' })
                 setCookie('memclid', SuscriberID, { path: '/' })
                 setUserAuth(cookies)
-                history.push("/inicio")
+                location.reload()
                 break
             case 3: // Password incorrecta
                 setLoading(false)
