@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const LiveTvContext = React.createContext({})
+const Context = React.createContext({})
 
-export const LiveTvProvider = LiveTvContext.Provider
+export function LiveTvContextProvider({children}){
+      const [data, setData] = useState()
 
-export default LiveTvContext
+      return <Context.Provider value={{data, setData}}>
+            {children}
+      </Context.Provider>
+}
+
+// export const LiveTvProvider = LiveTvContext.Provider
+
+export default Context

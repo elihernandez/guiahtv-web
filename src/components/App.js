@@ -7,7 +7,7 @@ import '../scss/app.css'
 
 export default function App() {
     return (
-        <CookiesProvider>           
+        <CookiesProvider>             
             <div className="app-content">
                 <div className="gradient-overlay"/>
                 <UserContextProvider>

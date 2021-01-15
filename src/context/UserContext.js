@@ -3,15 +3,7 @@ import React, {useState} from 'react'
 const Context = React.createContext({})
 
 export function UserContextProvider({children}){
-      const [userAuth, setUserAuth] = useState({
-            "plaftorm": '',
-            "deviceType": '',
-            "deviceVersion": '',
-            "uuid": '',
-            "userAgent": '',
-            "memclem": '',
-            "memclid": '',
-      })
+      const [userAuth, setUserAuth] = useState()
 
       return <Context.Provider value={{userAuth, setUserAuth}}>
             {children}

@@ -6,371 +6,378 @@
       height: 100vh;
       background: #18191c;
 }
-.wrapper-livetv{
-      position: absolute;
+
+.live-tv-section{
+      position: relative;
       width: 100%;
       height: 100vh;
-      background: #18191c;
-
-      .guide{
-            /* border: 1px solid blue; */
-            position: absolute;
-            bottom: 0;
-            height: auto;
+           
+      .live-tv-wrapper{
+            position: relative;
             width: 100%;
-            overflow-x: hidden;
+            height: 100%;
 
-            .guide-wrapper{
-                  position: relative;
-                  height: 100%;
+            .guide{
+                  position: absolute;
+                  bottom: 0;
                   width: 100%;
-
-                  .navbar-guide-tv{
-
-                        .section-wrapper{ 
-                              padding: 0 15px;
-                        
-                              .navbar-list{
-                                    display: flex;
-                                    flex-direction: row;
+                  height: auto;
+                  overflow-x: hidden;
+      
+                  .guide-wrapper{
+                        position: relative;
+                        height: 100%;
+                        width: 100%;
+      
+                        .navbar-guide-tv{
+      
+                              .section-wrapper{ 
+                                    padding: 0 15px;
                               
-                                    .navbar-item{
-                                          margin: 0 0;
-                                          min-width: 80px;
-                                          transition: all .3s ease;
-                                          text-transform: uppercase;
-                                          letter-spacing: 1px;
-                                          border-radius: 3px;
-                                          text-align: center;
-                                          cursor: pointer;
-                                          /* border: 1px solid pink; */
-                              
-                                          .navbar-link{
-                                                text-decoration: none;
-                                                display: flex;
-                                                flex-direction: row;
-                                                align-items: center;
-                                                padding: 20px 20px;
-                                                /* border: 1px solid green; */
-                        
-                                          i, p{
-                                                font-size: 14px;
-                                                font-weight: 600;
+                                    .navbar-list{
+                                          display: flex;
+                                          flex-direction: row;
+                                    
+                                          .navbar-item{
                                                 margin: 0 0;
-                                                color: rgba(255, 255, 255, 0.5);
-                                                transition: all .15s ease;
-                                          }
-                        
-                                          i{
-                                                font-size: 12px; 
-                                          }
-                        
-                                          &:hover i{
-                                                color: rgba(255, 255, 255, 1);
-                                          }
-                        
-                                          &.active i{
-                                                color: rgba(255, 255, 255, 1);
-                                          }
-                        
-                                          &:hover p{
-                                                color: rgba(255, 255, 255, 1);
-                                          }
-                        
-                                          &.active p{
-                                                color: rgba(255, 255, 255, 1);
-                                          }
+                                                min-width: 80px;
+                                                transition: all .3s ease;
+                                                text-transform: uppercase;
+                                                letter-spacing: 1px;
+                                                border-radius: 3px;
+                                                text-align: center;
+                                                cursor: pointer;
+                                                /* border: 1px solid pink; */
+                                    
+                                                .navbar-link{
+                                                      text-decoration: none;
+                                                      display: flex;
+                                                      flex-direction: row;
+                                                      align-items: center;
+                                                      padding: 20px 20px;
+                                                      /* border: 1px solid green; */
+                              
+                                                i, p{
+                                                      font-size: 14px;
+                                                      font-weight: 600;
+                                                      margin: 0 0;
+                                                      color: rgba(255, 255, 255, 0.5);
+                                                      transition: all .15s ease;
+                                                }
+                              
+                                                i{
+                                                      font-size: 12px; 
+                                                }
+                              
+                                                &:hover i{
+                                                      color: rgba(255, 255, 255, 1);
+                                                }
+                              
+                                                &.active i{
+                                                      color: rgba(255, 255, 255, 1);
+                                                }
+                              
+                                                &:hover p{
+                                                      color: rgba(255, 255, 255, 1);
+                                                }
+                              
+                                                &.active p{
+                                                      color: rgba(255, 255, 255, 1);
+                                                }
+                                                }
                                           }
                                     }
                               }
                         }
-                  }
-
-                  .channels-wrapper{
-                        position: relative;
-                        height: 100%;
-                        width: 100%;
-                        /* border: 1px solid red; */
-                        /* padding: 0 25px; */
-                        box-sizing: border-box;
-
-                        .channels-guide-tv{
-                              position: relative;
-                              width: 100%;
-                              height: 100%;
-                              /* height: 250px;
-                              max-height: 250px; */
-                              /* border: 1px solid green; */
       
-                              .content-channels{
+                        .channels-wrapper{
+                              position: relative;
+                              height: 100%;
+                              width: 100%;
+                              /* border: 1px solid red; */
+                              /* padding: 0 25px; */
+                              box-sizing: border-box;
+      
+                              .channels-guide-tv{
                                     position: relative;
                                     width: 100%;
-                                    height: auto;
-                                    display: flex;
-                                    flex-direction: row;
-                                    display: none;
-                                    transition: all .3s ease;
-
-                                    &.active{
+                                    height: 100%;
+                                    /* height: 250px;
+                                    max-height: 250px; */
+                                    /* border: 1px solid green; */
+            
+                                    .content-channels{
+                                          position: relative;
+                                          width: 100%;
+                                          height: auto;
                                           display: flex;
-                                    }
+                                          flex-direction: row;
+                                          display: none;
+                                          transition: all .3s ease;
       
-                                    .channel{
-                                          flex: 0 0 calc(100% / 5);
-                                          flex-wrap: nowrap;
-                                          min-height: 440px;
-                                          /* padding: 5px 5px; */
-                                          transform: scale(0.96);
-                                          transition: all .25s ease;
-                                          border-radius: 10px;
-                                          border: 2px solid transparent;
-                                         
-                                          .channel-content{
-                                                width: 100%;
-                                                height: 100%;
+                                          &.active{
                                                 display: flex;
-                                                flex-direction: column;
-                                                background: linear-gradient(to bottom, #242528, #18191c);
+                                          }
+            
+                                          .channel{
+                                                flex: 0 0 calc(100% / 5);
+                                                flex-wrap: nowrap;
+                                                min-height: 440px;
+                                                /* padding: 5px 5px; */
+                                                transform: scale(0.96);
+                                                transition: all .25s ease;
                                                 border-radius: 10px;
-                                                cursor: pointer;
-            
-                                                .title-content{
-                                                      padding: 20px 0;
-            
-                                                      .title-channel{
-                                                            font-weight: 600;
-                                                            font-size: 18px;
-                                                            text-align: center;
-                                                            letter-spacing: .5px;
-                                                      }
-                                                }
-            
-                                                .poster-content{
-                                                      position: relative;
+                                                border: 2px solid transparent;
+                                               
+                                                .channel-content{
                                                       width: 100%;
-                                                      height: 200px;
+                                                      height: 100%;
                                                       display: flex;
                                                       flex-direction: column;
-                                                      justify-content: center;
-                                                      align-items: center;
-                                                      /* background: #616161; */
-            
-                                                      .poster-channel{
+                                                      background: linear-gradient(to bottom, #242528, #18191c);
+                                                      border-radius: 10px;
+                                                      cursor: pointer;
+                  
+                                                      .title-content{
+                                                            padding: 20px 0;
+                  
+                                                            .title-channel{
+                                                                  font-weight: 600;
+                                                                  font-size: 18px;
+                                                                  text-align: center;
+                                                                  letter-spacing: .5px;
+                                                            }
+                                                      }
+                  
+                                                      .poster-content{
                                                             position: relative;
                                                             width: 100%;
-                                                            height: auto;
-                                                      }
-
-                                                      .content-play{
-                                                            display: none;
-                                                      }
-                                                }
+                                                            height: 200px;
+                                                            display: flex;
+                                                            flex-direction: column;
+                                                            justify-content: center;
+                                                            align-items: center;
+                                                            /* background: #616161; */
+                  
+                                                            .poster-channel{
+                                                                  position: relative;
+                                                                  width: 100%;
+                                                                  height: 200px;
+                                                            }
       
-                                                .progress-time-content{
-                                                      position: relative;
-                                                      width: 100%;
-                                                      height: 7px;
-                                                      background: #616161;
+                                                            .content-play{
+                                                                  display: none;
+                                                            }
+                                                      }
             
-                                                      .progress-time-current{
-                                                            position: absolute;
-                                                            width: 45%;
-                                                            height: 100%;
-                                                            font-weight: 500;
-                                                            font-size: 15px;
-                                                            background: red;
+                                                      .progress-time-content{
+                                                            position: relative;
+                                                            width: 100%;
+                                                            height: 7px;
+                                                            background: #616161;
+                  
+                                                            .progress-time-current{
+                                                                  position: absolute;
+                                                                  width: 45%;
+                                                                  height: 100%;
+                                                                  font-weight: 500;
+                                                                  font-size: 15px;
+                                                                  background: red;
+                                                            }
                                                       }
-                                                }
-      
-      
-                                                .event-time-content{
-                                                      padding: 0 25px;
-                                                      margin-top: 15px;
-                                                      display: flex;
-                                                      flex-direction: row;
-                                                      justify-content: space-between;
-                                                      align-items: center;
             
-                                                      .event-time-channel{
-                                                            font-weight: 400;
-                                                            font-size: 15px;
-                                                            color: rgba(179, 179, 179, 1);
-                                                            text-align: left;
-      
-                                                            i{
-                                                                  margin-right: 10px;
+            
+                                                      .event-time-content{
+                                                            padding: 0 25px;
+                                                            margin-top: 15px;
+                                                            display: flex;
+                                                            flex-direction: row;
+                                                            justify-content: space-between;
+                                                            align-items: center;
+                  
+                                                            .event-time-channel{
+                                                                  font-weight: 400;
+                                                                  font-size: 15px;
+                                                                  color: rgba(179, 179, 179, 1);
+                                                                  text-align: left;
+            
+                                                                  i{
+                                                                        margin-right: 10px;
+                                                                        font-weight: 600;
+                                                                  }
+                                                            }
+            
+                                                            .button-live{
                                                                   font-weight: 600;
-                                                            }
-                                                      }
-      
-                                                      .button-live{
-                                                            font-weight: 600;
-                                                            font-size: 12px;
-                                                            color: white;
-                                                            background: red;
-                                                            padding: 5px;
-                                                            border-radius: 5px;
-                                                      }
-                                                }
-                                                
-                                                .description-content{
-                                                      padding: 0px 25px;
-                                                      justify-self: flex-start;
-                                                      margin-top: 15px;
-                                                      min-height: 50px;
-            
-                                                      .description-channel{
-                                                            font-weight: 400;
-                                                            font-size: 15px;
-                                                            color: rgba(179, 179, 179, 1);
-                                                            text-align: left;
-                                                            letter-spacing: .5px;
-                                                      }
-                                                }
-      
-                                                .buttons-content{
-                                                      width: 100%;
-                                                      padding: 0 25px;
-                                                      margin-top: 15px;
-                                                      display: flex;
-                                                      flex-direction: row;
-                                                      justify-content: flex-end;
-      
-                                                      span{
-                                                            border-radius: 50px;
-                                                            padding: 2px 12.5px;
-                                                            background: #242528;
-      
-                                                            i{
+                                                                  font-size: 12px;
                                                                   color: white;
+                                                                  background: red;
+                                                                  padding: 5px;
+                                                                  border-radius: 5px;
+                                                            }
+                                                      }
+                                                      
+                                                      .description-content{
+                                                            padding: 0px 25px;
+                                                            justify-self: flex-start;
+                                                            margin-top: 15px;
+                                                            min-height: 50px;
+                  
+                                                            .description-channel{
+                                                                  font-weight: 400;
+                                                                  font-size: 15px;
+                                                                  color: rgba(179, 179, 179, 1);
+                                                                  text-align: left;
+                                                                  letter-spacing: .5px;
+                                                            }
+                                                      }
+            
+                                                      .buttons-content{
+                                                            width: 100%;
+                                                            padding: 0 25px;
+                                                            margin-top: 15px;
+                                                            display: flex;
+                                                            flex-direction: row;
+                                                            justify-content: flex-end;
+            
+                                                            span{
+                                                                  border-radius: 50px;
+                                                                  padding: 2px 12.5px;
+                                                                  background: #242528;
+            
+                                                                  i{
+                                                                        color: white;
+                                                                  }
                                                             }
                                                       }
                                                 }
-                                          }
-
-                                          &.active{
-
-                                                .content-play{
-                                                      display: flex;
-                                                      position: absolute;
-                                                      width: 100%;
-                                                      height: 210px;
-                                                      flex-direction: row;
-                                                      justify-content: center;
-                                                      align-items: center;
-                                                      background: rgba(0, 0, 0, 0.5);
-                                                      
-                                                      span{
-                                                            width: 60px;
-                                                            height: 60px;
-                                                            border: 2px solid rgba(179, 179, 179, 1);
-                                                            border-radius: 50%;
+      
+                                                &.active{
+      
+                                                      .content-play{
+                                                            display: flex;
+                                                            position: absolute;
+                                                            width: 100%;
+                                                            height: 210px;
+                                                            flex-direction: row;
+                                                            justify-content: center;
+                                                            align-items: center;
+                                                            background: rgba(0, 0, 0, 0.5);
+                                                            
+                                                            span{
+                                                                  width: 60px;
+                                                                  height: 60px;
+                                                                  border: 2px solid rgba(179, 179, 179, 1);
+                                                                  border-radius: 50%;
+                                                                  display: flex;
+                                                                  flex-direction: row;
+                                                                  justify-content: center;
+                                                                  align-items: center;
+      
+                                                                  i{
+                                                                        color: rgba(179, 179, 179, 1);
+                                                                        font-size: 25px;
+                                                                  }
+                                                            } 
+                                                      }
+                                                }
+      
+                                                &:hover{
+                                                      /* padding: 0; */
+                                                      transform: scale(1);
+                                                      border: 2px solid white;
+      
+                                                      .content-play{
+                                                            position: absolute;
+                                                            width: 100%;
+                                                            height: 210px;
                                                             display: flex;
                                                             flex-direction: row;
                                                             justify-content: center;
                                                             align-items: center;
-
-                                                            i{
-                                                                  color: rgba(179, 179, 179, 1);
-                                                                  font-size: 25px;
+                                                            background: rgba(0, 0, 0, 0.5);
+      
+                                                            span{
+                                                                  border: 2px solid white;
+                                                                  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+      
+                                                                  i{
+                                                                        color: white;
+                                                                        text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+                                                                  }
                                                             }
-                                                      } 
+                                                      }  
                                                 }
-                                          }
-
-                                          &:hover{
-                                                /* padding: 0; */
-                                                transform: scale(1);
-                                                border: 2px solid white;
-
-                                                .content-play{
-                                                      position: absolute;
-                                                      width: 100%;
-                                                      height: 210px;
-                                                      display: flex;
-                                                      flex-direction: row;
-                                                      justify-content: center;
-                                                      align-items: center;
-                                                      background: rgba(0, 0, 0, 0.5);
-
-                                                      span{
-                                                            border: 2px solid white;
-                                                            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-
-                                                            i{
-                                                                  color: white;
-                                                                  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-                                                            }
-                                                      }
-                                                }  
                                           }
                                     }
                               }
+      
                         }
-
-                  }
-
-                  .direction-prev{
-                        position: absolute;
-                        height: 100%;
-                        top: 0;
-                        /* border: 1px solid blue; */
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        width: 75px;
-                        left: 0;
-                        cursor: pointer;
-                        opacity: 0;
-                        transition: all .3s ease;
-
-                        i{
-                              color: white;
-                              font-size: 30px;
-                              padding: 20px;
-                              background: rgba(24,25,28, 0.25);
-                        }
-                  }
-
-                  .direction-next{
-                        position: absolute;
-                        height: 100%;
-                        top: 0;
-                        /* border: 1px solid blue; */
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        width: 75px;
-                        right: 0;
-                        cursor: pointer;
-                        opacity: 0;
-                        transition: all .3s ease;
-
-                        i{
-                              color: white;
-                              font-size: 30px;
-                              padding: 20px;
-                              background: rgba(24,25,28, 0.25);
-                        }
-                  }
-
-                  &:hover{
+      
                         .direction-prev{
-                              opacity: 1;
+                              position: absolute;
+                              height: 100%;
+                              top: 0;
+                              /* border: 1px solid blue; */
+                              display: flex;
+                              flex-direction: column;
+                              justify-content: center;
+                              align-items: center;
+                              width: 75px;
+                              left: 0;
+                              cursor: pointer;
+                              opacity: 0;
+                              transition: all .3s ease;
+      
+                              i{
+                                    color: white;
+                                    font-size: 30px;
+                                    padding: 20px;
+                                    background: rgba(24,25,28, 0.25);
+                              }
                         }
       
                         .direction-next{
-                              opacity: 1;                      
+                              position: absolute;
+                              height: 100%;
+                              top: 0;
+                              /* border: 1px solid blue; */
+                              display: flex;
+                              flex-direction: column;
+                              justify-content: center;
+                              align-items: center;
+                              width: 75px;
+                              right: 0;
+                              cursor: pointer;
+                              opacity: 0;
+                              transition: all .3s ease;
+      
+                              i{
+                                    color: white;
+                                    font-size: 30px;
+                                    padding: 20px;
+                                    background: rgba(24,25,28, 0.25);
+                              }
+                        }
+      
+                        &:hover{
+                              .direction-prev{
+                                    opacity: 1;
+                              }
+            
+                              .direction-next{
+                                    opacity: 1;                      
+                              }
                         }
                   }
             }
       }
-}
-
-.video-section{
-      position: absolute;
-      width: 100%;
-      height: 100vh; 
+      
+      .video-wrapper{
+            position: absolute;
+            width: 100%;
+            height: 100vh; 
+            /* border: 1px solid red; */
+            background: #18191c;
+      }
 }
