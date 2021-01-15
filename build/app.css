@@ -939,7 +939,7 @@ button:hover{
             }
 
 .wrapper-login .content-form form .group-form input{
-                    width: calc(100% - 23px);
+                    width: 100%;
                     height: 55px;
                     background-color: transparent;
                     border: 2px solid rgba(255, 255, 255, 0.6);
@@ -1325,6 +1325,7 @@ button:hover{
     margin-top: 25px;
 }
 
+
 /* Top Menu */
 
 /* Music */
@@ -1349,13 +1350,465 @@ button:hover{
       background: #18191c;
 }
 
-.wrapper-livetv .channels-guide{
-            border: 1px solid blue;
+.wrapper-livetv .guide{
+            /* border: 1px solid blue; */
             position: absolute;
             bottom: 0;
-            height: 300px;
+            height: auto;
             width: 100%;
+            overflow-x: hidden;
       }
+
+.wrapper-livetv .guide .guide-wrapper{
+                  position: relative;
+                  height: 100%;
+                  width: 100%;
+            }
+
+.wrapper-livetv .guide .guide-wrapper .navbar-guide-tv .section-wrapper{ 
+                              padding: 0 15px;
+                        }
+
+.wrapper-livetv .guide .guide-wrapper .navbar-guide-tv .section-wrapper .navbar-list{
+                                    display: -webkit-box;
+                                    display: -ms-flexbox;
+                                    display: flex;
+                                    -webkit-box-orient: horizontal;
+                                    -webkit-box-direction: normal;
+                                        -ms-flex-direction: row;
+                                            flex-direction: row;
+                              }
+
+.wrapper-livetv .guide .guide-wrapper .navbar-guide-tv .section-wrapper .navbar-list .navbar-item{
+                                          margin: 0 0;
+                                          min-width: 80px;
+                                          -webkit-transition: all .3s ease;
+                                          transition: all .3s ease;
+                                          text-transform: uppercase;
+                                          letter-spacing: 1px;
+                                          border-radius: 3px;
+                                          text-align: center;
+                                          cursor: pointer;
+                                    }
+
+/* border: 1px solid pink; */
+
+.wrapper-livetv .guide .guide-wrapper .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link{
+                                                text-decoration: none;
+                                                display: -webkit-box;
+                                                display: -ms-flexbox;
+                                                display: flex;
+                                                -webkit-box-orient: horizontal;
+                                                -webkit-box-direction: normal;
+                                                    -ms-flex-direction: row;
+                                                        flex-direction: row;
+                                                -webkit-box-align: center;
+                                                    -ms-flex-align: center;
+                                                        align-items: center;
+                                                padding: 20px 20px;
+                                          }
+
+/* border: 1px solid green; */
+
+.wrapper-livetv .guide .guide-wrapper .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link i, .wrapper-livetv .guide .guide-wrapper .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link p{
+                                                font-size: 14px;
+                                                font-weight: 600;
+                                                margin: 0 0;
+                                                color: rgba(255, 255, 255, 0.5);
+                                                -webkit-transition: all .15s ease;
+                                                transition: all .15s ease;
+                                          }
+
+.wrapper-livetv .guide .guide-wrapper .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link i{
+                                                font-size: 12px; 
+                                          }
+
+.wrapper-livetv .guide .guide-wrapper .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover i{
+                                                color: rgba(255, 255, 255, 1);
+                                          }
+
+.wrapper-livetv .guide .guide-wrapper .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link.active i{
+                                                color: rgba(255, 255, 255, 1);
+                                          }
+
+.wrapper-livetv .guide .guide-wrapper .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover p{
+                                                color: rgba(255, 255, 255, 1);
+                                          }
+
+.wrapper-livetv .guide .guide-wrapper .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link.active p{
+                                                color: rgba(255, 255, 255, 1);
+                                          }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper{
+                        position: relative;
+                        height: 100%;
+                        width: 100%;
+                        /* border: 1px solid red; */
+                        /* padding: 0 25px; */
+                        -webkit-box-sizing: border-box;
+                                box-sizing: border-box;
+
+                  }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv{
+                              position: relative;
+                              width: 100%;
+                              height: 100%;
+                        }
+
+/* border: 1px solid green; */
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels{
+                                    position: relative;
+                                    width: 100%;
+                                    height: auto;
+                                    display: -webkit-box;
+                                    display: -ms-flexbox;
+                                    display: flex;
+                                    -webkit-box-orient: horizontal;
+                                    -webkit-box-direction: normal;
+                                        -ms-flex-direction: row;
+                                            flex-direction: row;
+                                    display: none;
+                                    -webkit-transition: all .3s ease;
+                                    transition: all .3s ease
+                              }
+
+/* height: 250px;
+                              max-height: 250px; */
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels.active{
+                                          display: -webkit-box;
+                                          display: -ms-flexbox;
+                                          display: flex;
+                                    }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel{
+                                          -webkit-box-flex: 0;
+                                              -ms-flex: 0 0 20%;
+                                                  flex: 0 0 20%;
+                                          -ms-flex-wrap: nowrap;
+                                              flex-wrap: nowrap;
+                                          min-height: 440px;
+                                          /* padding: 5px 5px; */
+                                          -webkit-transform: scale(0.96);
+                                                  transform: scale(0.96);
+                                          -webkit-transition: all .25s ease;
+                                          transition: all .25s ease;
+                                          border-radius: 10px;
+                                          border: 2px solid transparent;
+                                    }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content{
+                                                width: 100%;
+                                                height: 100%;
+                                                display: -webkit-box;
+                                                display: -ms-flexbox;
+                                                display: flex;
+                                                -webkit-box-orient: vertical;
+                                                -webkit-box-direction: normal;
+                                                    -ms-flex-direction: column;
+                                                        flex-direction: column;
+                                                background: -webkit-gradient(linear, left top, left bottom, from(#242528), to(#18191c));
+                                                background: linear-gradient(to bottom, #242528, #18191c);
+                                                border-radius: 10px;
+                                                cursor: pointer;
+                                          }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .title-content{
+                                                      padding: 20px 0;
+                                                }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .title-content .title-channel{
+                                                            font-weight: 600;
+                                                            font-size: 18px;
+                                                            text-align: center;
+                                                            letter-spacing: .5px;
+                                                      }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .poster-content{
+                                                      position: relative;
+                                                      width: 100%;
+                                                      height: 200px;
+                                                      display: -webkit-box;
+                                                      display: -ms-flexbox;
+                                                      display: flex;
+                                                      -webkit-box-orient: vertical;
+                                                      -webkit-box-direction: normal;
+                                                          -ms-flex-direction: column;
+                                                              flex-direction: column;
+                                                      -webkit-box-pack: center;
+                                                          -ms-flex-pack: center;
+                                                              justify-content: center;
+                                                      -webkit-box-align: center;
+                                                          -ms-flex-align: center;
+                                                              align-items: center;
+                                                }
+
+/* background: #616161; */
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .poster-content .poster-channel{
+                                                            position: relative;
+                                                            width: 100%;
+                                                            height: auto;
+                                                      }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .poster-content .content-play{
+                                                            display: none;
+                                                      }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .progress-time-content{
+                                                      position: relative;
+                                                      width: 100%;
+                                                      height: 7px;
+                                                      background: #616161;
+                                                }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .progress-time-content .progress-time-current{
+                                                            position: absolute;
+                                                            width: 45%;
+                                                            height: 100%;
+                                                            font-weight: 500;
+                                                            font-size: 15px;
+                                                            background: red;
+                                                      }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .event-time-content{
+                                                      padding: 0 25px;
+                                                      margin-top: 15px;
+                                                      display: -webkit-box;
+                                                      display: -ms-flexbox;
+                                                      display: flex;
+                                                      -webkit-box-orient: horizontal;
+                                                      -webkit-box-direction: normal;
+                                                          -ms-flex-direction: row;
+                                                              flex-direction: row;
+                                                      -webkit-box-pack: justify;
+                                                          -ms-flex-pack: justify;
+                                                              justify-content: space-between;
+                                                      -webkit-box-align: center;
+                                                          -ms-flex-align: center;
+                                                              align-items: center;
+                                                }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .event-time-content .event-time-channel{
+                                                            font-weight: 400;
+                                                            font-size: 15px;
+                                                            color: rgba(179, 179, 179, 1);
+                                                            text-align: left;
+                                                      }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .event-time-content .event-time-channel i{
+                                                                  margin-right: 10px;
+                                                                  font-weight: 600;
+                                                            }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .event-time-content .button-live{
+                                                            font-weight: 600;
+                                                            font-size: 12px;
+                                                            color: white;
+                                                            background: red;
+                                                            padding: 5px;
+                                                            border-radius: 5px;
+                                                      }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .description-content{
+                                                      padding: 0px 25px;
+                                                      justify-self: flex-start;
+                                                      margin-top: 15px;
+                                                      min-height: 50px;
+                                                }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .description-content .description-channel{
+                                                            font-weight: 400;
+                                                            font-size: 15px;
+                                                            color: rgba(179, 179, 179, 1);
+                                                            text-align: left;
+                                                            letter-spacing: .5px;
+                                                      }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .buttons-content{
+                                                      width: 100%;
+                                                      padding: 0 25px;
+                                                      margin-top: 15px;
+                                                      display: -webkit-box;
+                                                      display: -ms-flexbox;
+                                                      display: flex;
+                                                      -webkit-box-orient: horizontal;
+                                                      -webkit-box-direction: normal;
+                                                          -ms-flex-direction: row;
+                                                              flex-direction: row;
+                                                      -webkit-box-pack: end;
+                                                          -ms-flex-pack: end;
+                                                              justify-content: flex-end;
+                                                }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .buttons-content span{
+                                                            border-radius: 50px;
+                                                            padding: 2px 12.5px;
+                                                            background: #242528;
+                                                      }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel .channel-content .buttons-content span i{
+                                                                  color: white;
+                                                            }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel.active .content-play{
+                                                      display: -webkit-box;
+                                                      display: -ms-flexbox;
+                                                      display: flex;
+                                                      position: absolute;
+                                                      width: 100%;
+                                                      height: 210px;
+                                                      -webkit-box-orient: horizontal;
+                                                      -webkit-box-direction: normal;
+                                                          -ms-flex-direction: row;
+                                                              flex-direction: row;
+                                                      -webkit-box-pack: center;
+                                                          -ms-flex-pack: center;
+                                                              justify-content: center;
+                                                      -webkit-box-align: center;
+                                                          -ms-flex-align: center;
+                                                              align-items: center;
+                                                      background: rgba(0, 0, 0, 0.5); 
+                                                }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel.active .content-play span{
+                                                            width: 60px;
+                                                            height: 60px;
+                                                            border: 2px solid rgba(179, 179, 179, 1);
+                                                            border-radius: 50%;
+                                                            display: -webkit-box;
+                                                            display: -ms-flexbox;
+                                                            display: flex;
+                                                            -webkit-box-orient: horizontal;
+                                                            -webkit-box-direction: normal;
+                                                                -ms-flex-direction: row;
+                                                                    flex-direction: row;
+                                                            -webkit-box-pack: center;
+                                                                -ms-flex-pack: center;
+                                                                    justify-content: center;
+                                                            -webkit-box-align: center;
+                                                                -ms-flex-align: center;
+                                                                    align-items: center;
+                                                      }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel.active .content-play span i{
+                                                                  color: rgba(179, 179, 179, 1);
+                                                                  font-size: 25px;
+                                                            }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel:hover{
+                                                /* padding: 0; */
+                                                -webkit-transform: scale(1);
+                                                        transform: scale(1);
+                                                border: 2px solid white;  
+                                          }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel:hover .content-play{
+                                                      position: absolute;
+                                                      width: 100%;
+                                                      height: 210px;
+                                                      display: -webkit-box;
+                                                      display: -ms-flexbox;
+                                                      display: flex;
+                                                      -webkit-box-orient: horizontal;
+                                                      -webkit-box-direction: normal;
+                                                          -ms-flex-direction: row;
+                                                              flex-direction: row;
+                                                      -webkit-box-pack: center;
+                                                          -ms-flex-pack: center;
+                                                              justify-content: center;
+                                                      -webkit-box-align: center;
+                                                          -ms-flex-align: center;
+                                                              align-items: center;
+                                                      background: rgba(0, 0, 0, 0.5);
+                                                }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel:hover .content-play span{
+                                                            border: 2px solid white;
+                                                            -webkit-box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+                                                                    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+                                                      }
+
+.wrapper-livetv .guide .guide-wrapper .channels-wrapper .channels-guide-tv .content-channels .channel:hover .content-play span i{
+                                                                  color: white;
+                                                                  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+                                                            }
+
+.wrapper-livetv .guide .guide-wrapper .direction-prev{
+                        position: absolute;
+                        height: 100%;
+                        top: 0;
+                        /* border: 1px solid blue; */
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-orient: vertical;
+                        -webkit-box-direction: normal;
+                            -ms-flex-direction: column;
+                                flex-direction: column;
+                        -webkit-box-pack: center;
+                            -ms-flex-pack: center;
+                                justify-content: center;
+                        -webkit-box-align: center;
+                            -ms-flex-align: center;
+                                align-items: center;
+                        width: 75px;
+                        left: 0;
+                        cursor: pointer;
+                        opacity: 0;
+                        -webkit-transition: all .3s ease;
+                        transition: all .3s ease;
+                  }
+
+.wrapper-livetv .guide .guide-wrapper .direction-prev i{
+                              color: white;
+                              font-size: 30px;
+                              padding: 20px;
+                              background: rgba(24,25,28, 0.25);
+                        }
+
+.wrapper-livetv .guide .guide-wrapper .direction-next{
+                        position: absolute;
+                        height: 100%;
+                        top: 0;
+                        /* border: 1px solid blue; */
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-orient: vertical;
+                        -webkit-box-direction: normal;
+                            -ms-flex-direction: column;
+                                flex-direction: column;
+                        -webkit-box-pack: center;
+                            -ms-flex-pack: center;
+                                justify-content: center;
+                        -webkit-box-align: center;
+                            -ms-flex-align: center;
+                                align-items: center;
+                        width: 75px;
+                        right: 0;
+                        cursor: pointer;
+                        opacity: 0;
+                        -webkit-transition: all .3s ease;
+                        transition: all .3s ease;
+                  }
+
+.wrapper-livetv .guide .guide-wrapper .direction-next i{
+                              color: white;
+                              font-size: 30px;
+                              padding: 20px;
+                              background: rgba(24,25,28, 0.25);
+                        }
+
+.wrapper-livetv .guide .guide-wrapper:hover .direction-prev{
+                              opacity: 1;
+                        }
+
+.wrapper-livetv .guide .guide-wrapper:hover .direction-next{
+                              opacity: 1;                      
+                        }
 
 .video-section{
       position: absolute;

@@ -52,7 +52,7 @@ export default function BaseRouter() {
                         </CheckAuth>
                     </Route>
 
-                    <Route exact path="/tvenvivo">
+                    <Route path="/tvenvivo">
                         <CheckAuth>
                             <TopMenu /> 
                             <LiveTV />
