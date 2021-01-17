@@ -1,4 +1,5 @@
-import React, { useRef } from 'react'
+import React, { useRef, useContext } from 'react'
+import VideoContext from '../../../../context/VideoContext'
 var moment = require('moment')
 import './styles.css'
 
@@ -65,6 +66,7 @@ function GetEventTime(start, end){
 }
 
 export function LiveTvChannel({dataChannel}){
+      const { setVideoData } = useContext(VideoContext)
       let {ContentType, Description, Id, Name, Poster, PreviewPoster, Url} = dataChannel
       let description = shortString(Description)
       let imgChannel = useRef(null)
@@ -80,8 +82,12 @@ export function LiveTvChannel({dataChannel}){
             e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/error-tv-landscape.png'
       }
 
+      const handleClick = () => {
+            setVideoData(dataChannel)
+      }
+
       return (
-            <div className={className}>
+            <div className={className} onClick={handleClick}>
                   <div className="channel-content">
                         <div className="title-content">
                               <h2 className="title-channel">

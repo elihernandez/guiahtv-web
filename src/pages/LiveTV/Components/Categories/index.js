@@ -7,7 +7,6 @@ import GuideLoader from '../ContentLoader/Guide'
 
 function Channels({ data, classActive}) {
       const classes = `content-channels ${classActive}`
-
       return (
             <div className={classes}>
                   {
@@ -32,6 +31,7 @@ function Channels({ data, classActive}) {
 function Category({category, data}) {
       let classActive = ""
       const { categoria } = useParams()
+      console.log(categoria)
       if (createUrlString(category) == categoria) {
             classActive = "active"
       }

@@ -1,4 +1,4 @@
-import React , { useRef, useContext, useEffect } from 'react'
+import React , { useState, useRef, useContext, useEffect } from 'react'
 import LiveTvContext from '../../../../context/LiveTvContext'
 var cssTransition = require('css-transition')
 import { useRequest } from '../../../../hooks/useRequest'
@@ -11,7 +11,9 @@ import GuideLoader from '../ContentLoader/Guide'
 export function Guide() {
       const { data } = useRequest('livetv')
       const { setData } = useContext(LiveTvContext)
-      let refChannels = useRef(null)
+      const [guideActive, setGuideActive] = useState(true)
+      const refChannels = useRef()
+      const guideRef = useRef()
 
       const handleClickLeft = () => {
             cssTransition(refChannels.current, {
@@ -26,13 +28,42 @@ export function Guide() {
             }, 300, function () {
             })
       }
-
+      
+      let interval
       useEffect(() => {
-            setData(data)
+            // interval = setTimeout(function(){
+            //       if(guideActive){
+            //             guideRef.current.style.opacity = "0"
+            //             setGuideActive(false)
+            //       }
+            // }, 5000)
+
+            // if(data){
+            //       setData(data)
+            // }
+
+            // window.addEventListener('mousemove', () => {
+            //       if(!guideActive){
+            //             guideRef.current.style.opacity = "1"
+            //             clearTimeout(interval)
+            //             setGuideActive(true)  
+            //       }
+            // })
+
+            // return () => clearTimeout(interval);
+
+            window.addEventListener('keydown', () => {
+                  console.log("Hola")
+                  if(guideActive){
+                       setGuideActive(false) 
+                  }else{
+                        setGuideActive(true) 
+                  }
+            })
       }, [data])
 
       return (
-            <div className="guide">
+            <div className="guide" ref={guideRef}>
                   {     data
                   ?     <div className="guide-wrapper">
                               <Navbar data={data} />
