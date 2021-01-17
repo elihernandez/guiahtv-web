@@ -6,10 +6,11 @@ import './styles.css'
 
 function NavbarTopMenu(){
       const navLinks = [
+            {title: 'En vivo', href: '/tvenvivo', icon: 'fas fa-tv'},
+            {title: 'A la carta', href: '/alacarta', icon: 'fas fa-film'},
+            {title: 'Radio', href: '/radio', icon: 'fas fa-broadcast-tower'},
             {title: 'Música', href: '/musica', icon: 'fas fa-music'},
-            {title: 'Iglesias', href: '/a', icon: 'fas fa-place-of-worship'},
-            {title: 'Peliculas', href: '/b', icon: 'fas fa-film'},
-            {title: 'Series', href: '/c', icon: 'fas fa-tv'}
+            {title: 'Zona kids', href: '/zonakids', icon: 'fas fa-child'}
       ]
 
       const classItems = 'navbar-link-top-menu'
