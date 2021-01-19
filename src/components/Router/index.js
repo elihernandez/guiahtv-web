@@ -20,8 +20,8 @@ function CheckAuth({children}){
 }
 
 export default function BaseRouter() {
-    const cookies = useAuth();
-    const { setUserAuth } = useContext(UserContext);
+    const cookies = useAuth()
+    const { setUserAuth } = useContext(UserContext)
 
     useEffect(() => {
         setUserAuth(cookies)

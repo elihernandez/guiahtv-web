@@ -23,68 +23,68 @@
                   transition: all .3s ease;
             }
 
-            .direction-prev{
-                  position: absolute;
-                  height: 100%;
-                  top: 0;
-                  /* border: 1px solid blue; */
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                  align-items: center;
-                  width: 75px;
-                  left: 0;
-                  cursor: pointer;
-                  opacity: 0;
-                  transition: all .3s ease;
+      }
+      .direction-prev{
+            position: absolute;
+            height: 100%;
+            top: 0;
+            /* border: 1px solid blue; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 75px;
+            left: 0;
+            cursor: pointer;
+            opacity: 0;
+            transition: all .3s ease;
 
-                  i{
-                        color: white;
-                        font-size: 30px;
-                        padding: 20px;
-                        background: rgba(24,25,28, 0.25);
+            i{
+                  color: white;
+                  font-size: 30px;
+                  padding: 20px;
+                  background: rgba(24,25,28, 0.25);
 
-                        &:hover{
-                              background: rgba(24,25,28, 0.75);
-                        }
+                  &:hover{
+                        background: rgba(24,25,28, 0.75);
                   }
+            }
+      }
+
+      .direction-next{
+            position: absolute;
+            height: 100%;
+            top: 0;
+            /* border: 1px solid blue; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 75px;
+            right: 0;
+            cursor: pointer;
+            opacity: 0;
+            transition: all .3s ease;
+
+            i{
+                  color: white;
+                  font-size: 30px;
+                  padding: 20px;
+                  background: rgba(24,25,28, 0.25);
+
+                  &:hover{
+                        background: rgba(24,25,28, 0.75);
+                  }
+            }
+      }
+
+      &:hover{
+            .direction-prev{
+                  opacity: 1;
             }
 
             .direction-next{
-                  position: absolute;
-                  height: 100%;
-                  top: 0;
-                  /* border: 1px solid blue; */
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                  align-items: center;
-                  width: 75px;
-                  right: 0;
-                  cursor: pointer;
-                  opacity: 0;
-                  transition: all .3s ease;
-
-                  i{
-                        color: white;
-                        font-size: 30px;
-                        padding: 20px;
-                        background: rgba(24,25,28, 0.25);
-
-                        &:hover{
-                              background: rgba(24,25,28, 0.75);
-                        }
-                  }
-            }
-
-            &:hover{
-                  .direction-prev{
-                        opacity: 1;
-                  }
-
-                  .direction-next{
-                        opacity: 1;                      
-                  }
+                  opacity: 1;                      
             }
       }
 

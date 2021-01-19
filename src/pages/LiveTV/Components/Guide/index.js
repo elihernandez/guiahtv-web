@@ -51,7 +51,7 @@ export function GuideChannels() {
             <div className="guide">
                   {     loading
                   ?     <GuideLoader />
-                  :     <CSSTransition in={show} timeout={300} classNames="active">
+                  :    
                               <div className="guide-wrapper">
                                     <Categories data={data.data} />
                                     <Switch>
@@ -63,7 +63,7 @@ export function GuideChannels() {
                                           </Route>
                                     </Switch>
                               </div>
-                        </CSSTransition>
+                       
                   }
             </div>
       )

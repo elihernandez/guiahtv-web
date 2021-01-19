@@ -7,6 +7,9 @@ import { Video } from './Components/Video'
 // import { CSSTransition } from 'react-transition-group';
 // const cssTransition = require('css-transition')
 import { fadeOutElement, fadeInElement } from '../../js/Transition/index'
+import { CSSTransition } from 'react-transition-group'
+import Fade from '@material-ui/core/Fade';
+import Slide from '@material-ui/core/Slide';
 import './styles.css'
 
 // function fadeOut({current}){
@@ -30,10 +33,13 @@ function InfoChannel(){ return null }
 
 export function LiveTV() {
       const livetvRef = useRef()
+      const contentRef = useRef()
+      const [isVisible, setIsVisible] = useState(false)
       let { url } = useRouteMatch()
-
+      
       useEffect(() => {
             document.querySelector('.navbar-top-menu').style.opacity = 1
+            setIsVisible(true)
       }, [])
 
       return (
@@ -47,8 +53,12 @@ export function LiveTV() {
                                                       <Video />
                                                 </Route>
                                           </Switch>
-                                          <InfoChannel />
-                                          <GuideChannels />
+                                          <Fade in={isVisible}>
+                                                <div className="content-tv" ref={contentRef}>
+                                                      <InfoChannel />
+                                                      <GuideChannels />
+                                                </div>
+                                          </Fade>
                                     </div>
                               </div>
                         </VideoContextProvider>
