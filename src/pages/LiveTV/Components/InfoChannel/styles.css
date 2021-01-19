@@ -1,0 +1,15 @@
+.info-channel-wrapper{
+      padding: 50px 50px;
+
+      .text-info{
+            color: rgba(179, 179, 179);
+            font-weight: 400;
+            font-size: 18px;
+      }
+
+      .channel-name{
+            color: white;
+            font-weight: 600;
+            font-size: 30px;
+      }
+}

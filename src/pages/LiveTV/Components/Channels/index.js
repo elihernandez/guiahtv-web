@@ -1,27 +1,9 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useParams } from "react-router-dom"
-import { LiveTvChannel, LiveTvEvent } from '../Channel'
-import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom"
 import { createUrlString } from '../../../../js/String'
 import { Channel } from '../Channel'
-import { CSSTransition } from 'react-transition-group'
 var cssTransition = require('css-transition')
 import './styles.css'
-
-function ContentChannels({ data}) {
-
-      return (
-            <div className="content-channels">
-
-                  {
-                        data.cmData.map((channel) => {
-                              return <Channel key={channel.Id} data={channel} category={data} />
-                        })
-                  }
-                 
-            </div>
-      )
-}
 
 export function Channels({ data }) {
       let { categoria } = useParams()
@@ -61,17 +43,17 @@ export function Channels({ data }) {
             let pages = length / 5
             if(pages > 1){
                   pages = Math.trunc(pages)
-                  setTotalPages(totalPages + 1)
+                  setTotalPages(pages)
             }
       }
 
       useEffect(() => {
+           
             setTotalPages(0)
             setPage(0)
             resetTransition()
 
             if(!categoria){
-                  console.log("Hola")
                   setChannels(data[0])
                   countPages(data[0])
             }else{
@@ -89,7 +71,13 @@ export function Channels({ data }) {
            <div className="channels">
                   <div className="channels-wrapper" ref={refChannels}>
                         {     channels &&
-                              <ContentChannels data={channels}  />
+                              <div className="content-channels">
+                                    {
+                                          channels.cmData.map((channel) => {
+                                                return <Channel key={channel.Id} data={channel} category={channels} />
+                                          })
+                                    }
+                              </div>
                         }
                   </div>
                   {
@@ -99,7 +87,7 @@ export function Channels({ data }) {
                         </div>
                   }
                   {
-                        totalPages > 0 && page < totalPages &&
+                        (totalPages > 0) && (page < totalPages) &&
                         <div className="direction-next" onClick={handleClickRight}>
                               <i className="fas fa-chevron-right"></i>
                         </div>
