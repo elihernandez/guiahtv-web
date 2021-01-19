@@ -1,0 +1,204 @@
+.channel-link{
+      position: relative;
+      width: 100%;
+      flex: 0 0 calc(100% / 5);
+      flex-wrap: nowrap;
+      min-height: 440px;
+
+      .channel{
+            position: relative;
+            height: 100%;
+            transform: scale(0.97);
+            transition: all .3s ease;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            
+            .channel-content{
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  background: linear-gradient(to bottom, #242528, #18191c);
+                  border-radius: 10px;
+                  cursor: pointer;
+      
+                  .title-content{
+                        padding: 20px 0;
+      
+                        .title-channel{
+                              font-weight: 600;
+                              font-size: 18px;
+                              text-align: center;
+                              letter-spacing: .5px;
+                        }
+                  }
+      
+                  .poster-content{
+                        position: relative;
+                        width: 100%;
+                        height: 200px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        /* background: #616161; */
+                        overflow: hidden;
+      
+                        .poster-channel{
+                              position: relative;
+                              width: 100%;
+                              height: auto;
+                              
+                        }
+      
+                      
+                  }
+      
+                  .progress-time-content{
+                        position: relative;
+                        width: 100%;
+                        height: 7px;
+                        background: #616161;
+      
+                        .progress-time-current{
+                              position: absolute;
+                              width: 45%;
+                              height: 100%;
+                              font-weight: 500;
+                              font-size: 15px;
+                              background: red;
+                        }
+                  }
+      
+      
+                  .event-time-content{
+                        padding: 0 25px;
+                        margin-top: 15px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+      
+                        .event-time-channel{
+                              font-weight: 400;
+                              font-size: 15px;
+                              color: rgba(179, 179, 179, 1);
+                              text-align: left;
+      
+                              i{
+                                    margin-right: 10px;
+                                    font-weight: 600;
+                              }
+                        }
+      
+                        .button-live{
+                              font-weight: 600;
+                              font-size: 12px;
+                              color: white;
+                              background: red;
+                              padding: 5px;
+                              border-radius: 5px;
+                        }
+                  }
+                  
+                  .description-content{
+                        padding: 0px 25px;
+                        justify-self: flex-start;
+                        margin-top: 15px;
+                        min-height: 50px;
+      
+                        .description-channel{
+                              font-weight: 400;
+                              font-size: 15px;
+                              color: rgba(179, 179, 179, 1);
+                              text-align: left;
+                              letter-spacing: .5px;
+                        }
+                  }
+      
+                  .buttons-content{
+                        width: 100%;
+                        padding: 0 25px;
+                        margin-top: 15px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-end;
+      
+                        span{
+                              border-radius: 50px;
+                              padding: 2px 12.5px;
+                              background: #242528;
+      
+                              i{
+                                    color: white;
+                              }
+                        }
+                  }
+            }
+      
+            &.active{          
+            }
+      
+            &:hover{
+                  /* padding: 0; */
+                  transform: scale(1);
+                  border: 3px solid white;
+      
+                  .content-play{
+                        position: absolute;
+                        width: 100%;
+                        height: 210px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        background: rgba(0, 0, 0, 0.5);
+                        opacity: 1;
+      
+                        span{
+                              border: 2px solid white;
+      
+                              i{
+                                    color: white;
+                              }
+                        }
+                  }  
+            }
+      }
+
+      .content-play{
+            display: flex;
+            position: absolute;
+            width: 100%;
+            height: 210px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            transition: all .3s ease;
+            opacity: 0;
+            
+            span{
+                  width: 60px;
+                  height: 60px;
+                  border: 2px solid white;
+                  border-radius: 50%;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                  align-items: center;
+
+                  i{
+                        color: white;
+                        font-size: 25px;
+                  }
+            } 
+      }
+
+      &.active{
+            .content-play{
+                  opacity: 1;
+            }
+      }
+}

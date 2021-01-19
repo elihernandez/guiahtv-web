@@ -65,20 +65,20 @@
       padding-left: 75px;
 
       .logo img{
-            width: 300px;
+            width: 325px;
             height: auto;
             margin-bottom: 25px;
       }
 
       .title-text{
             font-weight: 600;
-            font-size: 45px;
-            line-height: 62px;
+            font-size: 40px;
+            line-height: 55px;
       }
 
       .subtitle-text{
             font-weight: 300;
-            font-size: 25px;
+            font-size: 20px;
             margin-top: 10px !important;
             
       }

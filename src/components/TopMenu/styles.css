@@ -6,7 +6,7 @@
     width: 100%;
     padding: 0 25px;
     box-sizing: border-box;
-    transition: all .15s ease;
+    transition: all .3s ease;
 
     &.bgcolor{
         background: #1d1e21;
@@ -40,7 +40,10 @@
                 }
             } 
             
-            /* .navbar{} */
+            .navbar-top-menu{
+                transition: all .3s ease;
+                opacity: 0;
+            }
         }
 
         .right-section{

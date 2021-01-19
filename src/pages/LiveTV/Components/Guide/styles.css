@@ -1,0 +1,23 @@
+
+
+.guide-wrapper{
+      position: relative;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to top, black, transparent);
+
+      &.active-enter {
+            opacity: 0;
+      }
+      &.active-enter-active {
+            opacity: 1;
+            transition: opacity 300ms;
+      }
+      &.active-exit {
+            opacity: 1;
+      }
+      &.active-exit-active {
+            opacity: 1;
+            transition: opacity 300ms;
+      }
+}

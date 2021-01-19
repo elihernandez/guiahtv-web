@@ -23,6 +23,7 @@ function NavbarTopMenu(){
 
 export function TopMenu() {
       const topMenu = useRef(null)
+      const navbar = useRef(null)
       
       useEffect(() => {
             let previousScroll = 0
@@ -44,7 +45,9 @@ export function TopMenu() {
                   <div className="section-wrapper">
                         <div className="left-section">
                               <Logo color="blue" />
-                              <NavbarTopMenu />
+                              <div ref={navbar}>
+                                    <NavbarTopMenu />
+                              </div>
                         </div>
                         <div className="right-section">
                               <span><i className="fas fa-search"/></span>

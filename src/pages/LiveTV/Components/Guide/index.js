@@ -1,81 +1,69 @@
-import React , { useState, useRef, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { Switch, Route, useRouteMatch } from "react-router-dom"
 import LiveTvContext from '../../../../context/LiveTvContext'
-var cssTransition = require('css-transition')
-import { useRequest } from '../../../../hooks/useRequest'
-import { Categories } from '../Categories/index'
-import { Navbar } from '../Navbar/index'
+import UserContext from '../../../../context/UserContext'
+// import { useRequest } from '../../../../hooks/useRequest'
+import { Categories } from '../Categories'
+import { Channels } from '../Channels'
+import GuideLoader from '../Loader'
+import { getLiveTV } from '../../../../services/getLiveTV'
+import { CSSTransition } from 'react-transition-group'
 import './styles.css'
-import GuideLoader from '../ContentLoader/Guide'
 
+export function GuideChannels() {
+      // const history = useHistory()
+      // let { pathname } = useLocation()
+      // const { data } = useRequest('livetv')
+      let { url } = useRouteMatch()
+      let { data, setData } = useContext(LiveTvContext)
+      const { userAuth } = useContext(UserContext)
+      const [loading, setLoading] = useState(true)
+      const [show, setShow] = useState(false)
 
-export function Guide() {
-      const { data } = useRequest('livetv')
-      const { setData } = useContext(LiveTvContext)
-      const [guideActive, setGuideActive] = useState(true)
-      const refChannels = useRef()
-      const guideRef = useRef()
-
-      const handleClickLeft = () => {
-            cssTransition(refChannels.current, {
-                  transform: 'translate3d(0%, 0, 0)'
-            }, 300, function () {
-            })
-      }
-
-      const handleClickRight = () => {
-            cssTransition(refChannels.current, {
-                  transform: 'translate3d(-100%, 0, 0)'
-            }, 300, function () {
-            })
-      }
-      
-      let interval
       useEffect(() => {
-            // interval = setTimeout(function(){
-            //       if(guideActive){
-            //             guideRef.current.style.opacity = "0"
-            //             setGuideActive(false)
-            //       }
-            // }, 5000)
-
-            // if(data){
-            //       setData(data)
-            // }
-
-            // window.addEventListener('mousemove', () => {
-            //       if(!guideActive){
-            //             guideRef.current.style.opacity = "1"
-            //             clearTimeout(interval)
-            //             setGuideActive(true)  
-            //       }
-            // })
-
-            // return () => clearTimeout(interval);
-
-            window.addEventListener('keydown', () => {
-                  console.log("Hola")
-                  if(guideActive){
-                       setGuideActive(false) 
-                  }else{
-                        setGuideActive(true) 
+           
+            const requestData = async () => {
+                  try {
+                        const response = await getLiveTV(userAuth)
+                        if (!response.length) throw new Error('No se pudo obtener la información.')
+                        data.data = response
+                        setData(data)
+                        setLoading(false)
+                        setShow(true)
+                  } catch (e) {
+                        console.log(e)
                   }
-            })
-      }, [data])
+            }
+
+            if (userAuth) {
+                  setLoading(true)
+                  requestData()
+            }
+
+            // if (pathname == '/tvenvivo') {
+            //       history.push(`/tvenvivo/canalestv`)
+            //       // setVideoData(data[0].cmData[0])
+            // }
+            
+      }, [userAuth])
 
       return (
-            <div className="guide" ref={guideRef}>
-                  {     data
-                  ?     <div className="guide-wrapper">
-                              <Navbar data={data} />
-                              <Categories refer={refChannels} />
-                              <div className="direction-prev" onClick={handleClickLeft}>
-                                    <i className="fas fa-chevron-left"></i>
+            <div className="guide">
+                  {     loading
+                  ?     <GuideLoader />
+                  :     <CSSTransition in={show} timeout={300} classNames="active">
+                              <div className="guide-wrapper">
+                                    <Categories data={data.data} />
+                                    <Switch>
+                                          <Route exact path={`${url}`} >
+                                                <Channels data={data.data} />
+                                          </Route>
+                                          <Route exact path={`${url}/:categoria/:canal?`} >
+                                                <Channels data={data.data} />
+                                          </Route>
+                                    </Switch>
                               </div>
-                              <div className="direction-next" onClick={handleClickRight}>
-                                    <i className="fas fa-chevron-right"></i>
-                              </div>
-                        </div>
-                  :     <GuideLoader />
+                        </CSSTransition>
                   }
             </div>
       )

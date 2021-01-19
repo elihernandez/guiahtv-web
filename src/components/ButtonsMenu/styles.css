@@ -18,7 +18,7 @@
         .item-button{
             position: relative;
             flex: 0 0 calc(100%/5);
-            transition: all .15s ease;
+            transition: all .3s ease;
             display: flex;
             flex-direction: row;
             justify-content: center;
