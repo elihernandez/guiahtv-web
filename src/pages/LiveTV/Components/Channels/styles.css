@@ -24,11 +24,11 @@
             }
 
       }
+      
       .direction-prev{
             position: absolute;
             height: 100%;
             top: 0;
-            /* border: 1px solid blue; */
             display: flex;
             flex-direction: column;
             justify-content: center;

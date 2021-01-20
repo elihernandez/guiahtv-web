@@ -69,12 +69,12 @@ function GetEventTime(start, end) {
 }
 
 function LiveTvChannel({ dataChannel }) {
-      const { setVideoData } = useContext(VideoContext)
+      const { dispatch } = useContext(VideoContext)
       let { ContentType, Description, Id, Name, Poster, PreviewPoster, Url } = dataChannel
       let description = shortString(Description)
       let imgChannel = useRef(null)
-      let history = useHistory()
-      let { pathname } = useLocation()
+      // let history = useHistory()
+      // let { pathname } = useLocation()
       let className
 
       if (Name == "Alma Vision TV") {
@@ -92,7 +92,12 @@ function LiveTvChannel({ dataChannel }) {
             // console.log(pathname)
             // console.log(name)
             // history.push(`${pathname}/${name}`)
-            setVideoData(dataChannel)
+            // videoData.data = dataChannel
+            // setVideoData(videoData)
+            dispatch({
+                  type: 'updateData',
+                  payload: dataChannel,
+            })
       }
 
       return (
@@ -123,7 +128,7 @@ function LiveTvChannel({ dataChannel }) {
 }
 
 function LiveTvEvent({ dataChannel }) {
-      const { setVideoData } = useContext(VideoContext)
+      const { videoData, setVideoData } = useContext(VideoContext)
       const { ContentType, Description, Id, Name, Poster, PreviewPoster, Url, Inicio, Fin } = dataChannel
       let durationEvent = GetEventTime(Inicio, Fin)
       let description = shortString(Description)
@@ -134,7 +139,8 @@ function LiveTvEvent({ dataChannel }) {
       }
 
       const handleClick = () => {
-            setVideoData(dataChannel)
+            videoData.data = dataChannel
+            setVideoData(videoData)
       }
 
       return (

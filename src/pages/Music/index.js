@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { useRequest } from '../../hooks/useRequest'
 import { Switch, Route, NavLink, useRouteMatch, useParams } from "react-router-dom"
 import { useAuth } from "../../hooks/useAuth"
@@ -147,6 +147,11 @@ export function Music() {
       let { url } = useRouteMatch()
       // var topMenu = document.querySelector('.top-menu')
       // topMenu.classList.add('bgcolor')
+      useEffect(() => {
+            document.querySelector('.navbar-top-menu').style.opacity = 1
+            document.querySelector('.top-menu').classList.add('bggradient')
+      }, [])
+
       return (
             <div  className="section-content w-padding-top">
                   <div className="wrapper-music">

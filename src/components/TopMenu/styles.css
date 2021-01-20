@@ -6,10 +6,14 @@
     width: 100%;
     padding: 0 25px;
     box-sizing: border-box;
-    transition: all .3s ease;
+    transition: all .5s ease;
 
     &.bgcolor{
         background: #1d1e21;
+    }
+
+    &.bggradient{
+        background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0));
     }
 
     .section-wrapper{

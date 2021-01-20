@@ -1,11 +1,80 @@
-import React, {useState} from 'react'
+import React, {useState, useReducer} from 'react'
 
 const Context = React.createContext({})
 
-export function VideoContextProvider({children}){
-      const [videoData, setVideoData] = useState()
+// export function VideoContextProvider({children}){
+//       const initialState = {  
+//             data: null,
+//             active: false
+//       }
+//       const [state, dispatch] = useReducer(reducer, initialState)
 
-      return <Context.Provider value={{videoData, setVideoData}}>
+//       const confirmationReducer = (state, action) => {
+//             switch (action.type) {
+//                   case 'updateData': {
+//                         return {
+//                               ...state,
+//                               confirmationCode: action.payload,
+//                         }
+//                   }
+//                   case 'updateActive': {
+//                         return {
+//                               ...state,
+//                               confirmationCode: action.payload,
+//                         }
+//                   }
+//                   default: return state;
+//             }
+//       }
+
+//       const [videoData, setVideoData] = useState({
+//             data: null,
+//             active: false
+//       })
+
+//       console.log(videoData)
+
+//       return <Context.Provider value={{videoData, setVideoData}}>
+//             {children}
+//       </Context.Provider>
+// }
+
+// export default Context
+
+export function VideoContextProvider({children}){
+      const initialState = {  
+            dataChannel: null,
+            activeChannel: false,
+            loadingChannel: false
+      }
+
+      const reducer = (state, action) => {
+            switch (action.type) {
+                  case 'updateData': {
+                        return {
+                              ...state,
+                              dataChannel: action.payload,
+                        }
+                  }
+                  case 'updateActive': {
+                        return {
+                              ...state,
+                              activeChannel: action.payload,
+                        }
+                  }
+                  case 'updateLoading': {
+                        return {
+                              ...state,
+                              loadingChannel: action.payload,
+                        }
+                  }
+                  default: return state;
+            }
+      }
+
+      const [state, dispatch] = useReducer(reducer, initialState)
+
+      return <Context.Provider value={{state, dispatch}}>
             {children}
       </Context.Provider>
 }

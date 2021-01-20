@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Fragment } from 'react'
 import { useParams } from "react-router-dom"
 import { createUrlString } from '../../../../js/String'
 import { Channel } from '../Channel'
 var cssTransition = require('css-transition')
+import { CSSTransition } from 'react-transition-group'
 import './styles.css'
 
 export function Channels({ data }) {
@@ -48,11 +50,10 @@ export function Channels({ data }) {
       }
 
       useEffect(() => {
-           
             setTotalPages(0)
             setPage(0)
             resetTransition()
-
+     
             if(!categoria){
                   setChannels(data[0])
                   countPages(data[0])
@@ -68,7 +69,7 @@ export function Channels({ data }) {
       }, [categoria])
 
       return (
-           <div className="channels">
+            <div className="channels">
                   <div className="channels-wrapper" ref={refChannels}>
                         {     channels &&
                               <div className="content-channels">

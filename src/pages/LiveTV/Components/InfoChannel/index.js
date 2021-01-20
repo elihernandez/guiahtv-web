@@ -1,26 +1,27 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import VideoContext from '../../../../context/VideoContext'
+import { CSSTransition } from 'react-transition-group'
 import './styles.css'
 
-export function InfoChannel(){ 
-      const { videoData } = useContext(VideoContext)
-      const [isVisible, setIsVisible] = useState(false)
+export function InfoChannel() {
+      const { state } = useContext(VideoContext)
+      const { dataChannel, activeChannel } = state
+      const [name, setName] = useState('')
 
       useEffect(() => {
-            setIsVisible(false)
-            if(videoData){
-                  setIsVisible(true)
-            }
-      }, [videoData])
+            if (activeChannel) setName(dataChannel.Name)
+      }, [activeChannel])
 
       return (
-            <div className="info-channel">
-            {     isVisible &&
-                  <div className="info-channel-wrapper">
-                        <h3 className="text-info">Estás viendo:</h3>
-                        <h2 className="channel-name">{videoData.Name}</h2>
+            <CSSTransition in={activeChannel} timeout={100} classNames="active">
+                  <div className="info-channel">
+                        {name &&
+                              <div className="info-channel-wrapper">
+                                    <h3 className="text-info">Estás viendo:</h3>
+                                    <h2 className="channel-name">{name}</h2>
+                              </div>
+                        }
                   </div>
-            }
-            </div>
+            </CSSTransition>
       )
 }
