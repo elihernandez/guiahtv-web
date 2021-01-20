@@ -4,7 +4,6 @@ import { Switch, Route, useLocation, useHistory, NavLink, useRouteMatch } from "
 import { createUrlString } from '../../../../js/String'
 var moment = require('moment')
 import './styles.css'
-import { data } from 'autoprefixer'
 
 function shortString(string) {
       if (string.length > 60) {
@@ -68,40 +67,13 @@ function GetEventTime(start, end) {
       return `${StartTime} - ${EndTime}`
 }
 
-function LiveTvChannel({ dataChannel }) {
-      const { dispatch } = useContext(VideoContext)
-      let { ContentType, Description, Id, Name, Poster, PreviewPoster, Url } = dataChannel
+function LiveTvChannel({ dataChannel, handleClick, handleError }) {
+      let {  Description, Name, Poster } = dataChannel
       let description = shortString(Description)
       let imgChannel = useRef(null)
-      // let history = useHistory()
-      // let { pathname } = useLocation()
-      let className
-
-      if (Name == "Alma Vision TV") {
-            className = "channel active"
-      } else {
-            className = "channel"
-      }
-
-      const handleError = (e) => {
-            e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/error-tv-landscape.png'
-      }
-
-      const handleClick = () => {
-            let name = createUrlString(Name)
-            // console.log(pathname)
-            // console.log(name)
-            // history.push(`${pathname}/${name}`)
-            // videoData.data = dataChannel
-            // setVideoData(videoData)
-            dispatch({
-                  type: 'updateData',
-                  payload: dataChannel,
-            })
-      }
 
       return (
-            <div className={className} onClick={handleClick}>
+            <div className="channel" onClick={handleClick}>
                   <div className="channel-content">
                         <div className="title-content">
                               <h2 className="title-channel">
@@ -127,21 +99,11 @@ function LiveTvChannel({ dataChannel }) {
       )
 }
 
-function LiveTvEvent({ dataChannel }) {
-      const { videoData, setVideoData } = useContext(VideoContext)
-      const { ContentType, Description, Id, Name, Poster, PreviewPoster, Url, Inicio, Fin } = dataChannel
+function LiveTvEvent({ dataChannel, handleClick, handleError }) {
+      let {  Description, Name, Poster } = dataChannel
       let durationEvent = GetEventTime(Inicio, Fin)
       let description = shortString(Description)
       let imgChannel = useRef(null)
-
-      const handleError = (e) => {
-            e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/error-tv-landscape.png'
-      }
-
-      const handleClick = () => {
-            videoData.data = dataChannel
-            setVideoData(videoData)
-      }
 
       return (
             <div className="channel" onClick={handleClick}>
@@ -176,17 +138,26 @@ function LiveTvEvent({ dataChannel }) {
 
 export function Channel({ data, category }) {
       let channel
-      let { url } = useRouteMatch()
       let href = `/tvenvivo/${createUrlString(category.category)}/${createUrlString(data.Name)}`
+      const { dispatch } = useContext(VideoContext)
+
+      const handleError = (e) => {
+            e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/error-tv-landscape.png'
+      }
+
+      const handleClick = () => {
+            dispatch({ type: 'updateData', payload: data })
+      }
+      
       switch (data.ContentType) {
             case 'leon_livetv_Channel':
-                  channel = <LiveTvChannel dataChannel={data} />
+                  channel = <LiveTvChannel dataChannel={data} handleClick={handleClick} handleError={handleError} />
                   break
             case 'leon_livetv_Event':
-                  channel = <LiveTvEvent dataChannel={data} />
+                  channel = <LiveTvEvent dataChannel={data} handleClick={handleClick} handleError={handleError} />
                   break
             case 'leon_livetv_Radio':
-                  channel = <LiveTvEvent dataChannel={data} />
+                  channel = <LiveTvEvent dataChannel={data} handleClick={handleClick} handleError={handleError} />
                   break
       }
 
