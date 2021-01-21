@@ -63,7 +63,7 @@
       
                         .progress-time-current{
                               position: absolute;
-                              width: 45%;
+                              width: 0%;
                               height: 100%;
                               font-weight: 500;
                               font-size: 15px;
@@ -123,7 +123,7 @@
                         margin-top: 15px;
                         display: flex;
                         flex-direction: row;
-                        justify-content: flex-end;
+                        justify-content: flex-start;
       
                         span{
                               border-radius: 50px;
@@ -133,12 +133,123 @@
                               i{
                                     color: white;
                               }
+
+                              &:hover{
+                                    background:  #616161; 
+                              }
+                        }
+                  }
+
+                  .info-channel{
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(24,25,28, 0.9);
+                        border-radius: 10px;
+                        display: flex;
+                        flex-direction: column;
+                        padding: 25px 35px;
+
+                        .content-button-close{
+                              width: 100%;
+                              display: flex;
+                              flex-direction: row;
+                              justify-content: flex-end;
+
+                              .button-close{
+                                    display: flex;
+                                    flex-direction: row;
+                                    justify-content: center;
+                                    align-items: center;
+                                    width: 28px;
+                                    height: 28px;
+                                    border-radius: 50%;
+
+                                    i{
+                                          font-size: 20px;
+                                          color: white;
+                                          text-align: center;
+      
+                                    }
+
+                                    &:hover{
+                                          background: white;
+
+                                          i{
+                                                color: #18191c;
+                                          }
+                                    }
+                              }
+                        }
+
+                        .title{
+                              font-size: 25px;
+                              font-weight: 600;
+                              margin-top: 20px !important;
+                        }
+
+                        .description{
+                              font-size: 17px;
+                              font-weight: 400;
+                              margin-top: 10px !important;
+                        }
+
+                        .content-phone{
+                              width: 100%;
+                              display: flex;
+                              flex-direction: row;
+                              align-items: center;
+                              margin-top: 25px;
+                              font-size: 17px;
+
+                              i{
+                                    color: white;
+                                    margin-right: 15px;
+                              }
+
+                              p{
+                                    font-size: 16px;
+                              }
+                        }
+
+                        .content-web{
+                              width: 100%;
+                              display: flex;
+                              flex-direction: row;
+                              align-items: center;
+                              margin-top: 15px;
+                              font-size: 17px;
+
+                              i{
+                                    color: white;
+                                    margin-right: 15px;
+                              }
+
+                              p{
+                                    font-size: 16px;
+                              }
+                        }
+
+                        .content-social-media{
+                              width: 100%;
+                              display: flex;
+                              flex-direction: row;
+                              align-items: center;
+                              margin-top: 25px;
+
+                              .span-icon{
+                                   margin-right: 15px;
+
+                                   i{
+                                         color: white;
+                                         font-size: 23px;
+
+                                   }
+                              }
                         }
                   }
             }
-      
-            &.active{          
-            }
+
       
             &:hover{
                   /* padding: 0; */

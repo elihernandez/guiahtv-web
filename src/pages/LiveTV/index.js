@@ -1,58 +1,63 @@
-import React, { useRef, useState, useContext, useEffect, Fragment } from 'react'
+import React, { useRef, useState, useContext, useEffect, useCallback, Fragment } from 'react'
 import { Switch, Route, useRouteMatch } from "react-router-dom"
 import { LiveTvContextProvider } from '../../context/LiveTvContext'
 import { VideoContextProvider } from '../../context/VideoContext'
 // import LiveTvContext  from '../../context/LiveTvContext'
-import VideoContext  from '../../context/VideoContext'
+import VideoContext from '../../context/VideoContext'
 import { GuideChannels } from './Components/Guide'
 import { Video } from './Components/Video'
 import { InfoChannel } from './Components/InfoChannel'
+import { TimerChannel } from './Components/Timer'
 import { LoaderVideo } from './Components/LoaderVideo'
+import { CSSTransition } from 'react-transition-group'
+import useEventListener from "@use-it/event-listener";
 import './styles.css'
 
-function Content({children}){
-      let { videoData } = useContext(VideoContext)
+function Content({ children, refer }) {
       const contentRef = useRef()
-      const [isVisible, setIsVisible] = useState(true) 
+      const { state } = useContext(VideoContext)
+      const { activeChannel } = state
+      const [isVisible, setIsVisible] = useState(true)
+      const timerRef = useRef(null)
 
       const fadeIn = () => {
-            contentRef.current.style.opacity = 1
+            setIsVisible(true)
             document.querySelector('.top-menu').style.opacity = 1
       }
 
       const fadeOut = () => {
-            contentRef.current.style.opacity = 0
+            setIsVisible(false)
             document.querySelector('.top-menu').style.opacity = 0
       }
-
-      useEffect(() =>{
-            // if(videoData){
-            //       console.log(videoData)
-            //       let timer = setTimeout(() => {
-            //             fadeOut()
-            //             setIsVisible(false)
-            //       }, 4000)
-
-            //       window.addEventListener("mousemove", (e) => {
-            //             console.log(e)
-            //             console.log(isVisible)
-            //             if(isVisible){
-            //                   clearTimeout(timer)
-            //             }else{
-            //                   fadeIn() 
-            //                   setIsVisible(true)
-            //             }
-            //       })
-            // }
-          
-            // return (()=>{
-            //       window.removeEventListener("mousemove", ()=>{})
-            // })
-      }, [videoData, isVisible])
       
+      const handleUserMouseMove = useCallback(() => {
+            if(activeChannel){
+                  clearTimeout(timerRef.current)
+                  timerRef.current = setTimeout(() => fadeOut(), 3000)
+                  fadeIn()
+            }
+
+            if(!activeChannel){
+                  clearTimeout(timerRef.current)
+            }
+      }, [activeChannel])
+
+      useEffect(() => {
+            handleUserMouseMove()
+            window.addEventListener('mousemove', handleUserMouseMove)
+            return () => {
+                  window.removeEventListener('mousemove', handleUserMouseMove)
+                  clearTimeout(timerRef.current)
+            }
+      }, [handleUserMouseMove])
+
       return (
             <div className="content-tv" ref={contentRef}>
-                  {children}
+                  <CSSTransition in={isVisible} timeout={300} classNames="active" unmountOnExit>
+                        <div className="content-tv-wrapper">
+                              {children}
+                        </div>
+                  </CSSTransition>
             </div>
       )
 }
@@ -77,10 +82,11 @@ export function LiveTV() {
                                                       <Video />
                                                 </Route>
                                           </Switch>
-                                          <Content>
+                                          <Content refer={livetvRef}>
                                                 <div className="background-overlay" />
                                                 <LoaderVideo />
                                                 <InfoChannel />
+                                                <TimerChannel />
                                                 <GuideChannels />
                                           </Content>
                                     </div>
@@ -90,5 +96,3 @@ export function LiveTV() {
             </Fragment>
       )
 }
-
-// <Video />

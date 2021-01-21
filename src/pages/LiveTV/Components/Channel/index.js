@@ -1,8 +1,11 @@
-import React, { useRef, useContext } from 'react'
+import React, { useRef, useContext, useState } from 'react'
 import VideoContext from '../../../../context/VideoContext'
-import { Switch, Route, useLocation, useHistory, NavLink, useRouteMatch } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { createUrlString } from '../../../../js/String'
-var moment = require('moment')
+import { isLive, getEventTime, getProgressTimeEvent } from '../../../../js/Time'
+import { CSSTransition } from 'react-transition-group'
+import Tooltip from '@material-ui/core/Tooltip';
+const moment = require('moment')
 import './styles.css'
 
 function shortString(string) {
@@ -14,63 +17,28 @@ function shortString(string) {
       return string
 }
 
-function GetEventTime(start, end) {
-      // var resolvedOptions = Intl.DateTimeFormat().resolvedOptions();
-      // var timezone = resolvedOptions.timeZone;
-      var d = moment(start);
-
-      var hh = moment(d).hours();
-      var m = moment(d).minutes();
-      var s = moment(d).seconds();
-      var dd = " AM";
-      var h = hh;
-
-      if (h >= 12) {
-            h = hh - 12;
-            dd = " PM";
-      }
-      if (h == 0) {
-            h = 12;
+function isShortString(string){
+      if (string.length > 60) {
+            return true
       }
 
-      // h = h < 10 ? "0" + h : h;
-
-      m = m < 10 ? "0" + m : m;
-
-      s = s < 10 ? "0" + s : s;
-
-      var StartTime = h + ":" + m + dd;
-
-      var d = moment(end);
-      var hh = moment(d).hours();
-      var m = moment(d).minutes();
-      var s = moment(d).seconds();
-      var dd = " AM";
-      var h = hh;
-
-      if (h >= 12) {
-            h = hh - 12;
-            dd = " PM";
-      }
-      if (h == 0) {
-            h = 12;
-      }
-
-      // h = h < 10 ? "0" + h : h;
-
-      m = m < 10 ? "0" + m : m;
-
-      s = s < 10 ? "0" + s : s;
-
-      var EndTime = h + ":" + m + dd;
-
-      return `${StartTime} - ${EndTime}`
+      return false
 }
 
 function LiveTvChannel({ dataChannel, handleClick, handleError }) {
       let {  Description, Name, Poster } = dataChannel
       let description = shortString(Description)
       let imgChannel = useRef(null)
+
+      const [infoActive, setInfoActive] = useState(false)
+
+      const handleClickShowInfo = () => {
+            setInfoActive(true)
+      }
+
+      const handleClickHideInfo = () => {
+            setInfoActive(false)
+      }
 
       return (
             <div className="channel" onClick={handleClick}>
@@ -91,17 +59,47 @@ function LiveTvChannel({ dataChannel, handleClick, handleError }) {
                         <div className="description-content">
                               <p className="description-channel">{description}</p>
                         </div>
-                        <div className="buttons-content">
-                              <span><i className="fas fa-ellipsis-h"></i></span>
-                        </div>
+                       
+                        <CSSTransition in={infoActive} timeout={100} classNames="active" unmountOnExit>
+                              <div className="info-channel">
+                                    <div className="content-button-close">
+                                          <span className="button-close" onClick={handleClickHideInfo}>
+                                                <i className="fas fa-times"></i>
+                                          </span>
+                                    </div>
+                                    <h2 className="title">{Name}</h2>
+                                    <h3 className="description">{Description}</h3>
+                                    <div className="content-phone">
+                                          <i className="fas fa-phone-alt"></i> 
+                                          <p>+1(718)205-1209</p>
+                                    </div>
+                                    <div className="content-web">
+                                          <i className="fas fa-globe"></i>
+                                          <p>www.canalluz.com</p>
+                                    </div>
+                                    <div className="content-social-media">
+                                          <span className="span-icon"><i class="fab fa-facebook-square"></i></span>
+                                          <span className="span-icon"><i class="fab fa-instagram"></i></span>
+                                          <span className="span-icon"><i class="fab fa-twitter-square"></i></span>
+                                    </div>
+                              </div>
+                        </CSSTransition>
+                     
+                        {
+                              isShortString(Description) &&
+                              <div className="buttons-content" onClick={handleClickShowInfo}>
+                                    <Tooltip title="Más info" placement="top-start">
+                                          <span><i className="fas fa-ellipsis-h"></i></span>
+                                    </Tooltip>
+                              </div>
+                        }
                   </div>
             </div>
       )
 }
 
 function LiveTvEvent({ dataChannel, handleClick, handleError }) {
-      let {  Description, Name, Poster } = dataChannel
-      let durationEvent = GetEventTime(Inicio, Fin)
+      let {  Description, Name, Poster, Inicio, Fin } = dataChannel
       let description = shortString(Description)
       let imgChannel = useRef(null)
 
@@ -116,21 +114,28 @@ function LiveTvEvent({ dataChannel, handleClick, handleError }) {
                         <div className="poster-content">
                               <img ref={imgChannel} className="poster-channel" src={Poster} onError={handleError} />
                         </div>
-                        <div className="progress-time-content">
-                              <div className="progress-time-current"></div>
-                        </div>
+                        {     isLive(Inicio, Fin) &&
+                              <div className="progress-time-content">
+                                    <div className="progress-time-current" style={{width: getProgressTimeEvent(Inicio, Fin)}}></div>
+                              </div>
+                        }
                         <div className="event-time-content">
                               <p className="event-time-channel">
-                                    <i className="far fa-clock"></i>{durationEvent}
+                                    <i className="far fa-clock"></i>{getEventTime(Inicio, Fin)}
                               </p>
-                              <div className="button-live">EN VIVO</div>
+                              {     isLive(Inicio, Fin) &&
+                                    <div className="button-live">EN VIVO</div>
+                              }
                         </div>
                         <div className="description-content">
                               <p className="description-channel">{description}</p>
                         </div>
-                        <div className="buttons-content">
-                              <span><i className="fas fa-ellipsis-h"></i></span>
-                        </div>
+                        {
+                              isShortString(Description) &&
+                              <div className="buttons-content">
+                                    <span><i className="fas fa-ellipsis-h"></i></span>
+                              </div>
+                        }
                   </div>
             </div>
       )

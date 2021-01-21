@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 
-export function useHls(video, url) {
+export function useHls(video, url, dispatch) {
       let hls = new Hls()
       const [error, setError] = useState(false)
 
       useEffect(() => {
             if(url){
+                  console.log(url)
                   if (Hls.isSupported()) {
                         setError(false)
                         hls.attachMedia(video.current);
@@ -19,6 +20,8 @@ export function useHls(video, url) {
                         hls.on(Hls.Events.ERROR, function (event, data) {
                               if(data.details == "manifestLoadError"){
                                     hls.destroy()
+                                    dispatch({ type: 'updateLoading', payload: false })
+                                    dispatch({ type: 'updateData', payload: null })
                                     setError("Señal no disponible por el momento")
                               }
                               // if (data.fatal) {
@@ -38,5 +41,5 @@ export function useHls(video, url) {
             })
       }, [url])
 
-      return { error }
+      return { error, setError }
 }

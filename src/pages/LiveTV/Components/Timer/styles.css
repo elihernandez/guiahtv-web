@@ -1,0 +1,15 @@
+.info-timer-wrapper{
+      padding: 100px 50px 0 50px;
+      
+      .text-info{
+            color: rgba(179, 179, 179);
+            font-weight: 400;
+            font-size: 18px;
+      }
+
+      .current-timer{
+            color: white;
+            font-weight: 600;
+            font-size: 35px;
+      }
+}

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import VideoContext from '../../../../context/VideoContext'
 import { CSSTransition } from 'react-transition-group'
 import './styles.css'
@@ -13,7 +13,7 @@ export function InfoChannel() {
       }, [activeChannel])
 
       return (
-            <CSSTransition in={activeChannel} timeout={100} classNames="active">
+            <CSSTransition in={activeChannel} timeout={100} classNames="active" unmountOnExit>
                   <div className="info-channel">
                         {name &&
                               <div className="info-channel-wrapper">

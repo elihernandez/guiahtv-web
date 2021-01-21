@@ -45,7 +45,9 @@ export function VideoContextProvider({children}){
       const initialState = {  
             dataChannel: null,
             activeChannel: false,
-            loadingChannel: false
+            loadingChannel: false,
+            timerChannel: false,
+            activeTimer: false
       }
 
       const reducer = (state, action) => {
@@ -54,6 +56,8 @@ export function VideoContextProvider({children}){
                         return {
                               ...state,
                               dataChannel: action.payload,
+                              timerChannel: false,
+                              activeTimer: false
                         }
                   }
                   case 'updateActive': {
@@ -66,6 +70,14 @@ export function VideoContextProvider({children}){
                         return {
                               ...state,
                               loadingChannel: action.payload,
+                        }
+                  }
+                  case 'updateTimer': {
+                        return {
+                              ...state,
+                              timerChannel: action.timer,
+                              activeTimer: action.active,
+                              dataChannel: null,
                         }
                   }
                   default: return state;
