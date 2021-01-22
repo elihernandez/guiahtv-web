@@ -1,15 +1,78 @@
+@import '../../../../scss/style-base.css';
+
 .info-channel-wrapper{
-      padding: 100px 50px 0 50px;
+      padding: 125px 40px 0 25px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .title-channel{
+            position: relative;
+
+            .text-info{
+                  color: rgba(179, 179, 179);
+                  font-weight: 400;
+                  font-size: 18px;
+            }
       
-      .text-info{
-            color: rgba(179, 179, 179);
-            font-weight: 400;
-            font-size: 18px;
+            .channel-name{
+                  color: white;
+                  font-weight: 600;
+                  font-size: 35px;
+            }
       }
 
-      .channel-name{
-            color: white;
-            font-weight: 600;
-            font-size: 35px;
+      .right-section{
+            position: relative;
+            display: flex;
+            flex-direction: row;
+
+            .container-volume{
+                  position: relative;
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  align-content: center;
+                  width: 200px;
+
+                  .MuiSlider-root{
+                        /* background: rgba(0, 0, 0, 0.5) !important; */
+                        color: $color-guide-blue;
+                        margin-top: -7.5px !important;
+
+                        .MuiSlider-rail{
+                              height: 6px !important;
+                        }
+
+                        .MuiSlider-track{
+                              height: 6px !important;
+                        }
+
+                        .MuiSlider-thumb{
+                              height: 16px !important;
+                              width: 16px !important;
+                              margin-top: -5px !important;
+                        }
+                  }
+            }
+
+            span{
+                  cursor: pointer;
+                  i{
+                        font-size: 22px;
+                        color: white;
+                  }
+            }
+
+            .full-screen-icon{
+                  margin-left: 25px;
+            }
+
+            .volume-icon{
+                  margin-left: 25px;
+                  min-width: 25px;
+            }
       }
+      
 }

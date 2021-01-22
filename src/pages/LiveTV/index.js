@@ -10,7 +10,7 @@ import { InfoChannel } from './Components/InfoChannel'
 import { TimerChannel } from './Components/Timer'
 import { LoaderVideo } from './Components/LoaderVideo'
 import { CSSTransition } from 'react-transition-group'
-import useEventListener from "@use-it/event-listener";
+import useEventListener from "@use-it/event-listener"
 import './styles.css'
 
 function Content({ children, refer }) {
@@ -51,6 +51,12 @@ function Content({ children, refer }) {
             }
       }, [handleUserMouseMove])
 
+      // useEffect(() => {
+      //       document.addEventListener('click', (e) => {
+      //             console.log(e.target)
+      //       })
+      // }, [])
+
       return (
             <div className="content-tv" ref={contentRef}>
                   <CSSTransition in={isVisible} timeout={300} classNames="active" unmountOnExit>
@@ -69,6 +75,20 @@ export function LiveTV() {
       useEffect(() => {
             document.querySelector('.navbar-top-menu').style.opacity = 1
             document.querySelector('.top-menu').classList.add('bggradient')
+
+            return () => {
+                   
+                  if (document.fullscreenElement) {
+                        if (document.exitFullscreen) {
+                              document.exitFullscreen()
+                        } else if (document.webkitExitFullscreen) { /* Safari */
+                              document.webkitExitFullscreen()
+                        } else if (document.msExitFullscreen) { /* IE11 */
+                              document.msExitFullscreen()
+                        }
+                  }
+                  
+            }
       }, [])
 
       return (

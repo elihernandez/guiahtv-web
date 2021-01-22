@@ -47,6 +47,7 @@
             .navbar-top-menu{
                 transition: all .3s ease;
                 opacity: 0;
+                margin-left: 25px;
             }
         }
 

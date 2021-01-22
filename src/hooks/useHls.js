@@ -6,7 +6,6 @@ export function useHls(video, url, dispatch) {
 
       useEffect(() => {
             if(url){
-                  console.log(url)
                   if (Hls.isSupported()) {
                         setError(false)
                         hls.attachMedia(video.current);
@@ -17,7 +16,7 @@ export function useHls(video, url, dispatch) {
                               })
                         })
             
-                        hls.on(Hls.Events.ERROR, function (event, data) {
+                        hls.on(Hls.Events.ERROR, function (data) {
                               if(data.details == "manifestLoadError"){
                                     hls.destroy()
                                     dispatch({ type: 'updateLoading', payload: false })

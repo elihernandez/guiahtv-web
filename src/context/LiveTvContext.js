@@ -1,18 +1,56 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 
 const Context = React.createContext({})
 
 export function LiveTvContextProvider({children}){
-      const [data, setData] = useState({
-            data: [],
-            url: null
-      })
+      // const [data, setData] = useState({
+      //       data: [],
+      //       url: null
+      // })
 
-      return <Context.Provider value={{data, setData}}>
+      const initialState = {  
+            dataTV: null,
+            currentPage: 0,
+            currentCategory : null,
+            url: null
+      }
+
+      const reducer = (state, action) => {
+            switch (action.type) {
+                  case 'updateData': {
+                        return {
+                              ...state,
+                              dataTV: action.payload,
+                        }
+                  }
+                  case 'updatePage': {
+                        return {
+                              ...state,
+                              currentPage: action.payload,
+                        }
+                  }
+                  case 'updateCategory': {
+                        return {
+                              ...state,
+                              currentCategory: action.payload,
+                        }
+                  }
+                  case 'updateUrl': {
+                        return {
+                              ...state,
+                              url: action.payload,
+                        }
+                  }
+                  
+                  default: return state;
+            }
+      }
+
+      const [state, dispatchTV] = useReducer(reducer, initialState)
+
+      return <Context.Provider value={{state, dispatchTV}}>
             {children}
       </Context.Provider>
 }
-
-// export const LiveTvProvider = LiveTvContext.Provider
 
 export default Context

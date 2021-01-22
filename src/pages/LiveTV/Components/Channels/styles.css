@@ -33,7 +33,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 75px;
+            width: 50px;
             left: 0;
             cursor: pointer;
             opacity: 0;
@@ -60,7 +60,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 75px;
+            width: 50px;
             right: 0;
             cursor: pointer;
             opacity: 0;

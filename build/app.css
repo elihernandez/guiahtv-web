@@ -206,6 +206,7 @@
                 -webkit-transition: all .3s ease;
                 transition: all .3s ease;
                 opacity: 0;
+                margin-left: 25px;
             }
 
 .top-menu .section-wrapper .right-section{
@@ -1436,6 +1437,7 @@ button:hover{
             transition: all .3s ease;
             border-radius: 10px;
             border: 2px solid transparent;
+            overflow-y: auto;
       }
 
       .channel-link .channel .channel-content{
@@ -1586,6 +1588,7 @@ button:hover{
                               border-radius: 50px;
                               padding: 2px 12.5px;
                               background: #242528;
+                              margin-right: 10px;
                         }
 
       .channel-link .channel .channel-content .buttons-content span i{
@@ -1609,7 +1612,7 @@ button:hover{
                         -webkit-box-direction: normal;
                             -ms-flex-direction: column;
                                 flex-direction: column;
-                        padding: 25px 35px;
+                        padding: 15px 35px;
                   }
 
       .channel-link .channel .channel-content .info-channel .content-button-close{
@@ -1646,7 +1649,7 @@ button:hover{
                               }
 
       .channel-link .channel .channel-content .info-channel .content-button-close .button-close i{
-                                          font-size: 20px;
+                                          font-size: 18px;
                                           color: white;
                                           text-align: center;
       
@@ -1661,13 +1664,13 @@ button:hover{
                                           }
 
       .channel-link .channel .channel-content .info-channel .title{
-                              font-size: 25px;
+                              font-size: 18px;
                               font-weight: 600;
                               margin-top: 20px !important;
                         }
 
       .channel-link .channel .channel-content .info-channel .description{
-                              font-size: 17px;
+                              font-size: 14px;
                               font-weight: 400;
                               margin-top: 10px !important;
                         }
@@ -1685,7 +1688,7 @@ button:hover{
                                   -ms-flex-align: center;
                                       align-items: center;
                               margin-top: 25px;
-                              font-size: 17px;
+                              font-size: 15px;
                         }
 
       .channel-link .channel .channel-content .info-channel .content-phone i{
@@ -1694,7 +1697,7 @@ button:hover{
                               }
 
       .channel-link .channel .channel-content .info-channel .content-phone p{
-                                    font-size: 16px;
+                                    font-size: 14px;
                               }
 
       .channel-link .channel .channel-content .info-channel .content-web{
@@ -1710,7 +1713,7 @@ button:hover{
                                   -ms-flex-align: center;
                                       align-items: center;
                               margin-top: 15px;
-                              font-size: 17px;
+                              font-size: 15px;
                         }
 
       .channel-link .channel .channel-content .info-channel .content-web i{
@@ -1719,7 +1722,7 @@ button:hover{
                               }
 
       .channel-link .channel .channel-content .info-channel .content-web p{
-                                    font-size: 16px;
+                                    font-size: 14px;
                               }
 
       .channel-link .channel .channel-content .info-channel .content-social-media{
@@ -1743,9 +1746,19 @@ button:hover{
 
       .channel-link .channel .channel-content .info-channel .content-social-media .span-icon i{
                                          color: white;
-                                         font-size: 23px;
+                                         font-size: 20px;
 
                                    }
+
+      .channel-link .channel .channel-content[focus-within]{
+                        outline: none !important;
+                        border: none !important;
+                  }
+
+      .channel-link .channel .channel-content:focus-within{
+                        outline: none !important;
+                        border: none !important;
+                  }
 
       .channel-link .channel:hover{
                   /* padding: 0; */
@@ -1782,6 +1795,27 @@ button:hover{
       .channel-link .channel:hover .content-play span i{
                                     color: white;
                               }
+
+      .channel-link .channel::-webkit-scrollbar {
+                  -webkit-appearance: none;
+            }
+
+      .channel-link .channel::-webkit-scrollbar:vertical{
+                  width: 6px;
+            }
+
+      .channel-link .channel::-webkit-scrollbar-button:increment,.channel-link .channel .contenedor::-webkit-scrollbar-button {
+                  display: none;
+            }
+
+      .channel-link .channel::-webkit-scrollbar-thumb {
+                  background-color: #797979;
+                  border-radius: 20px;
+            }
+
+      .channel-link .channel::-webkit-scrollbar-track {
+                  border-radius: 10px;  
+            }
 
       .channel-link .content-play{
             display: -webkit-box;
@@ -1887,7 +1921,7 @@ button:hover{
             -webkit-box-align: center;
                 -ms-flex-align: center;
                     align-items: center;
-            width: 75px;
+            width: 50px;
             left: 0;
             cursor: pointer;
             opacity: 0;
@@ -1924,7 +1958,7 @@ button:hover{
             -webkit-box-align: center;
                 -ms-flex-align: center;
                     align-items: center;
-            width: 75px;
+            width: 50px;
             right: 0;
             cursor: pointer;
             opacity: 0;
@@ -2049,21 +2083,115 @@ button:hover{
                   width: 100%;
                   height: 100%;
             }
+/* Top Menu */
+
+/* Music */
+
+/* :root{
+      --color-guide-black: #18191c;
+      --color-guide-blue: #00aeef;
+      --color-guide-purple: #662d91;
+} */
+
 .info-channel-wrapper{
-      padding: 100px 50px 0 50px;
+      padding: 125px 40px 0 25px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      
 }
-      
-      .info-channel-wrapper .text-info{
-            color: rgba(179, 179, 179);
-            font-weight: 400;
-            font-size: 18px;
+
+.info-channel-wrapper .title-channel{
+            position: relative;
       }
-      
-      .info-channel-wrapper .channel-name{
-            color: white;
-            font-weight: 600;
-            font-size: 35px;
+
+.info-channel-wrapper .title-channel .text-info{
+                  color: rgba(179, 179, 179);
+                  font-weight: 400;
+                  font-size: 18px;
+            }
+
+.info-channel-wrapper .title-channel .channel-name{
+                  color: white;
+                  font-weight: 600;
+                  font-size: 35px;
+            }
+
+.info-channel-wrapper .right-section{
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
       }
+
+.info-channel-wrapper .right-section .container-volume{
+                  position: relative;
+                  display: -webkit-box;
+                  display: -ms-flexbox;
+                  display: flex;
+                  -webkit-box-orient: horizontal;
+                  -webkit-box-direction: normal;
+                      -ms-flex-direction: row;
+                          flex-direction: row;
+                  -webkit-box-align: center;
+                      -ms-flex-align: center;
+                          align-items: center;
+                  -ms-flex-line-pack: center;
+                      align-content: center;
+                  width: 200px;
+            }
+
+.info-channel-wrapper .right-section .container-volume .MuiSlider-root{
+                        /* background: rgba(0, 0, 0, 0.5) !important; */
+                        color: #00aeef;
+                        margin-top: -7.5px !important;
+                  }
+
+.info-channel-wrapper .right-section .container-volume .MuiSlider-root .MuiSlider-rail{
+                              height: 6px !important;
+                        }
+
+.info-channel-wrapper .right-section .container-volume .MuiSlider-root .MuiSlider-track{
+                              height: 6px !important;
+                        }
+
+.info-channel-wrapper .right-section .container-volume .MuiSlider-root .MuiSlider-thumb{
+                              height: 16px !important;
+                              width: 16px !important;
+                              margin-top: -5px !important;
+                        }
+
+.info-channel-wrapper .right-section span{
+                  cursor: pointer;
+            }
+
+.info-channel-wrapper .right-section span i{
+                        font-size: 22px;
+                        color: white;
+                  }
+
+.info-channel-wrapper .right-section .full-screen-icon{
+                  margin-left: 25px;
+            }
+
+.info-channel-wrapper .right-section .volume-icon{
+                  margin-left: 25px;
+                  min-width: 25px;
+            }
 .info-timer-wrapper{
       padding: 100px 50px 0 50px;
 }

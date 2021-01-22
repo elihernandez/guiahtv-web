@@ -4,3 +4,27 @@ export function createUrlString(string) {
 
       return href
 }
+
+export function shortString(string) {
+      if (string.length > 60) {
+            string = string.substring(0, 60)
+            string = string + "..."
+      }
+
+      return string
+}
+
+export function isShortString(string) {
+      if (string.length > 60) {
+            return true
+      }
+
+      return false
+}
+
+export function replaceString(string, replace, newReplace) {
+      console.log(string)
+      let newString = ""
+      newString = string.replace(",","+")
+      return newString
+}

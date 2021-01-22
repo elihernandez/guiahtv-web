@@ -1,18 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Fragment } from 'react'
-import { useParams } from "react-router-dom"
+import React, { useState, useEffect, useContext, useRef, useCallback } from 'react'
+import { useParams, useHistory } from "react-router-dom"
 import { createUrlString } from '../../../../js/String'
+import LiveTvContext from '../../../../context/LiveTvContext'
+import VideoContext from '../../../../context/VideoContext'
 import { Channel } from '../Channel'
 var cssTransition = require('css-transition')
-import { CSSTransition } from 'react-transition-group'
 import './styles.css'
 
 export function Channels({ data }) {
-      let { categoria } = useParams()
+      let { categoria, canal } = useParams()
+      const { state, dispatchTV } = useContext(LiveTvContext)
+      const { dispatch } = useContext(VideoContext)
+      const { currentPage, currentCategory } = state
       const [channels, setChannels] = useState(null)
       const [page, setPage] = useState(0)
       const [totalPages, setTotalPages] = useState(0)
       const refChannels = useRef()
+      const history = useHistory()
 
       const handleClickLeft = () => {
             let moveP = 100 * (page - 1)
@@ -49,23 +53,99 @@ export function Channels({ data }) {
             }
       }
 
-      useEffect(() => {
-            setTotalPages(0)
-            setPage(0)
-            resetTransition()
-     
-            if(!categoria){
-                  setChannels(data[0])
-                  countPages(data[0])
-            }else{
-                  data.map((category) => {
-                        if (createUrlString(category.category) == categoria) {
-                              setChannels(category)
-                              countPages(category)
-                        }
-                  })
-            }
+      // const saveData = useCallback(() => {
 
+      // }, )
+
+      useEffect(() => {
+            if(currentCategory){
+                  if(categoria == currentCategory){
+                        let moveP = 100 * (currentPage)
+                        cssTransition(refChannels.current, {
+                              transform: `translate3d(-${moveP}%, 0, 0)`
+                        }, 0, function () {
+                              setPage(currentPage)
+                              data.map((category) => {
+                                    if (createUrlString(category.category) == currentCategory) {
+                                          setTotalPages(0)
+                                          setChannels(category)
+                                          countPages(category)
+                                    }
+                              })
+                        })
+                  }else{
+                             
+                        if(channels){
+                              resetTransition()
+                              data.map((category) => {
+                                    if (createUrlString(category.category) == categoria) {
+                                          setPage(0)
+                                          setTotalPages(0)
+                                          setChannels(category)
+                                          countPages(category)
+                                    }
+                              })
+                        }else{
+                              history.push(currentCategory)
+                              let moveP = 100 * (currentPage)
+                              cssTransition(refChannels.current, {
+                                    transform: `translate3d(-${moveP}%, 0, 0)`
+                              }, 0, function () {
+                                    setPage(currentPage)
+                                    data.map((category) => {
+                                          if (createUrlString(category.category) == currentCategory) {
+                                                setTotalPages(0)
+                                                setChannels(category)
+                                                countPages(category)
+                                          }
+                                    })
+                              })
+                        }
+                  }
+            }else{
+                  if(!categoria){
+                        setChannels(data[0])
+                        countPages(data[0])
+                        dispatch({ type: 'updateData', payload: data[0].cmData[0] })
+                        dispatchTV({ type: 'updatePage', payload: page })
+                        dispatchTV({ type: 'updateCategory', payload: createUrlString(data[0].category) })
+                        history.push('/tvenvivo/'+createUrlString(data[0].category)+'/'+createUrlString(data[0].cmData[0].Name))
+                  }else{
+                        console.log(canal)
+                        if(!canal){
+                              data.map((category) => {
+                                    if (createUrlString(category.category) == categoria) {
+                                          setChannels(category)
+                                          setTotalPages(0)
+                                          countPages(category)
+                                          dispatch({ type: 'updateData', payload: category.cmData[0] })
+                                          dispatchTV({ type: 'updatePage', payload: page })
+                                          dispatchTV({ type: 'updateCategory', payload: categoria })
+                                          history.push('/tvenvivo/'+categoria+'/'+createUrlString(category.cmData[0].Name))
+                                    }
+                              })
+                        }else{
+                              data.map((category) => {
+                                    if (createUrlString(category.category) == categoria) {
+                                          category.cmData.map((channel) => {
+                                                if(createUrlString(channel.Name) == canal){
+                                                      dispatch({ type: 'updateData', payload: channel })
+                                                      dispatchTV({ type: 'updatePage', payload: page })
+                                                      dispatchTV({ type: 'updateCategory', payload: categoria })
+                                                      // history.push('/tvenvivo/'+categoria+'/'+canal)
+                                                }
+                                          })
+                                          setChannels(category)
+                                          setTotalPages(0)
+                                          countPages(category)
+                                    }
+                              })
+                        }
+                  }
+
+                  resetTransition()
+                  setPage(0)
+            }
       }, [categoria])
 
       return (
@@ -75,7 +155,7 @@ export function Channels({ data }) {
                               <div className="content-channels">
                                     {
                                           channels.cmData.map((channel) => {
-                                                return <Channel key={channel.Id} data={channel} category={channels} />
+                                                return <Channel key={channel.Id} data={channel} category={channels} page={page} categoria={categoria}/>
                                           })
                                     }
                               </div>
