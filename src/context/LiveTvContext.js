@@ -1,13 +1,8 @@
-import React, { useState, useReducer } from 'react'
+import React, { useReducer } from 'react'
 
 const Context = React.createContext({})
 
 export function LiveTvContextProvider({children}){
-      // const [data, setData] = useState({
-      //       data: [],
-      //       url: null
-      // })
-
       const initialState = {  
             dataTV: null,
             currentPage: 0,

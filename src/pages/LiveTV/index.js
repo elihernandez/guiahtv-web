@@ -1,8 +1,7 @@
-import React, { useRef, useState, useContext, useEffect, useCallback, Fragment } from 'react'
+import React, { useRef, useState, useContext, useEffect, useCallback } from 'react'
 import { Switch, Route, useRouteMatch } from "react-router-dom"
 import { LiveTvContextProvider } from '../../context/LiveTvContext'
 import { VideoContextProvider } from '../../context/VideoContext'
-// import LiveTvContext  from '../../context/LiveTvContext'
 import VideoContext from '../../context/VideoContext'
 import { GuideChannels } from './Components/Guide'
 import { Video } from './Components/Video'
@@ -10,34 +9,32 @@ import { InfoChannel } from './Components/InfoChannel'
 import { TimerChannel } from './Components/Timer'
 import { LoaderVideo } from './Components/LoaderVideo'
 import { CSSTransition } from 'react-transition-group'
-import useEventListener from "@use-it/event-listener"
+import { exitFullScreen } from '../../js/Screen'
 import './styles.css'
 
-function Content({ children, refer }) {
+function Content({ children }) {
       const contentRef = useRef()
-      const { state } = useContext(VideoContext)
-      const { activeChannel } = state
-      const [isVisible, setIsVisible] = useState(true)
       const timerRef = useRef(null)
+      const { stateVideo } = useContext(VideoContext)
+      const { activeChannel } = stateVideo
+      const [isVisible, setIsVisible] = useState(true)
 
-      const fadeIn = () => {
+      const fadeInContent = () => {
             setIsVisible(true)
             document.querySelector('.top-menu').style.opacity = 1
       }
 
-      const fadeOut = () => {
+      const fadeOutContent = () => {
             setIsVisible(false)
             document.querySelector('.top-menu').style.opacity = 0
       }
-      
-      const handleUserMouseMove = useCallback(() => {
-            if(activeChannel){
-                  clearTimeout(timerRef.current)
-                  timerRef.current = setTimeout(() => fadeOut(), 3000)
-                  fadeIn()
-            }
 
-            if(!activeChannel){
+      const handleUserMouseMove = useCallback(() => {
+            if (activeChannel) {
+                  clearTimeout(timerRef.current)
+                  timerRef.current = setTimeout(() => fadeOutContent(), 3000)
+                  fadeInContent()
+            } else {
                   clearTimeout(timerRef.current)
             }
       }, [activeChannel])
@@ -51,12 +48,6 @@ function Content({ children, refer }) {
             }
       }, [handleUserMouseMove])
 
-      // useEffect(() => {
-      //       document.addEventListener('click', (e) => {
-      //             console.log(e.target)
-      //       })
-      // }, [])
-
       return (
             <div className="content-tv" ref={contentRef}>
                   <CSSTransition in={isVisible} timeout={300} classNames="active" unmountOnExit>
@@ -69,7 +60,6 @@ function Content({ children, refer }) {
 }
 
 export function LiveTV() {
-      const livetvRef = useRef()
       let { url } = useRouteMatch()
 
       useEffect(() => {
@@ -77,42 +67,32 @@ export function LiveTV() {
             document.querySelector('.top-menu').classList.add('bggradient')
 
             return () => {
-                   
-                  if (document.fullscreenElement) {
-                        if (document.exitFullscreen) {
-                              document.exitFullscreen()
-                        } else if (document.webkitExitFullscreen) { /* Safari */
-                              document.webkitExitFullscreen()
-                        } else if (document.msExitFullscreen) { /* IE11 */
-                              document.msExitFullscreen()
-                        }
-                  }
-                  
+                  document.querySelector('.navbar-top-menu').style.opacity = 0
+                  document.querySelector('.top-menu').classList.remove('bggradient')
+                  exitFullScreen()
             }
       }, [])
 
       return (
-            <Fragment>
+            <div className="wrapper-livetv">
                   <LiveTvContextProvider>
                         <VideoContextProvider>
-                              <div className="wrapper-livetv" ref={livetvRef}>
-                                    <div className="section-content w-padding-top">
-                                          <Switch>
-                                                <Route path={`${url}/:categoria?/:canal?`} >
-                                                      <Video />
-                                                </Route>
-                                          </Switch>
-                                          <Content refer={livetvRef}>
-                                                <div className="background-overlay" />
-                                                <LoaderVideo />
-                                                <InfoChannel />
-                                                <TimerChannel />
-                                                <GuideChannels />
-                                          </Content>
-                                    </div>
+                              <div className="section-content w-padding-top">
+                                    <Content>
+                                          <div className="background-overlay" />
+                                          <LoaderVideo />
+                                          <InfoChannel />
+                                          <TimerChannel />
+                                          <GuideChannels />
+                                    </Content>
+                                    <Switch>
+                                          <Route path={`${url}/:categoria?/:canal?`} >
+                                                <Video />
+                                          </Route>
+                                    </Switch>
                               </div>
                         </VideoContextProvider>
                   </LiveTvContextProvider>
-            </Fragment>
+            </div>
       )
 }

@@ -1,8 +1,9 @@
-import React, { useContext, useState, useEffect, useRef, useCallback } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import VideoContext from '../../../../context/VideoContext'
 import { CSSTransition } from 'react-transition-group'
 import Tooltip from '@material-ui/core/Tooltip'
 import Slider from '@material-ui/core/Slider'
+import { exitFullScreen, enterFullScreen } from '../../../../js/Screen'
 import './styles.css'
 
 function ButtonFullScreen() {
@@ -10,24 +11,10 @@ function ButtonFullScreen() {
 
       const toggleFullScreen = () => {
             if (!document.fullscreenElement) {
-                  if (!document.fullscreenElement) {
-                        document.documentElement.requestFullscreen()
-                  } else if (!document.webkitRequestFullscreen) { /* Safari */
-                        document.documentElement.webkitRequestFullscreen()
-                  } else if (!document.msRequestFullscreen) { /* IE11 */
-                        document.documentElement.msRequestFullscreen()
-                  }
+                  enterFullScreen()
                   setFullScreen(true)
             } else {
-                  if (document.fullscreenElement) {
-                        if (document.exitFullscreen) {
-                              document.exitFullscreen()
-                        } else if (document.webkitExitFullscreen) { /* Safari */
-                              document.webkitExitFullscreen()
-                        } else if (document.msExitFullscreen) { /* IE11 */
-                              document.msExitFullscreen()
-                        }
-                  }
+                  exitFullScreen()
                   setFullScreen(false)
             }
       }
@@ -46,7 +33,7 @@ function ButtonFullScreen() {
 
       return (
             <Tooltip title={fullScreen == true ? "Salir de pantalla completa" : "Pantalla completa"} placement="top-start">
-                  <span className="full-screen-icon" onClick={handleClick}>
+                  <span className="full-screen-icon icon" onClick={handleClick}>
                         {fullScreen
                               ? <i className="fas fa-compress" />
                               : <i className="fas fa-expand" />
@@ -57,8 +44,8 @@ function ButtonFullScreen() {
 }
 
 function ButtonVolume() {
-      const { state, dispatch } = useContext(VideoContext)
-      const { volume } = state
+      const { stateVideo, dispatch } = useContext(VideoContext)
+      const { volume } = stateVideo
 
       const handleChange = (event, newValue) => {
             dispatch({ type: 'updateVolume', payload: newValue })
@@ -72,11 +59,11 @@ function ButtonVolume() {
             <div className="container-volume">
                   <Slider value={volume} onChange={handleChange} aria-labelledby="continuous-slider" />
                   <Tooltip title="Volumen" placement="top-start">
-                        <span className="volume-icon">
+                        <span className="volume-icon icon">
                               {volume == 0 &&
                                     <i className="fas fa-volume-off"></i>
                               }
-                              {volume > 0 && volume < 60 &&
+                              {volume > 0 && volume <= 60 &&
                                     <i className="fas fa-volume-down"></i>
                               }
                               {volume > 60 &&
@@ -89,15 +76,13 @@ function ButtonVolume() {
 }
 
 export function InfoChannel() {
-      const { state } = useContext(VideoContext)
-      const { dataChannel, activeChannel } = state
+      const { stateVideo } = useContext(VideoContext)
+      const { dataChannel, activeChannel } = stateVideo
       const [name, setName] = useState('')
 
       useEffect(() => {
             if (activeChannel) setName(dataChannel.Name)
       }, [activeChannel])
-
-
 
       return (
             <CSSTransition in={activeChannel} timeout={100} classNames="active" unmountOnExit>
@@ -108,7 +93,7 @@ export function InfoChannel() {
                                           <h3 className="text-info">Estás viendo:</h3>
                                           <h2 className="channel-name">{name}</h2>
                                     </div>
-                                    <div className="right-section">
+                                    <div className="right-buttons">
                                           <ButtonVolume />
                                           <ButtonFullScreen />
                                     </div>

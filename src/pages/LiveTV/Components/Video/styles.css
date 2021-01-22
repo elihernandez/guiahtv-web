@@ -24,10 +24,10 @@
             justify-content: center;
             align-items: center;
 
-            h1{
-                  font-size: 35px;
+            .text-error{
+                  font-size: 40px;
                   color: white;
-                  font-weight: 500;
+                  font-weight: 400;
             }
       }
 

@@ -1,66 +1,64 @@
-import React, { Fragment,  useEffect, useContext } from "react"
-import { HashRouter, Switch, Route, Redirect, useRouteMatch, useParams } from "react-router-dom"
+import React, { Fragment, useContext, useEffect } from "react"
+import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
 import UserContext from "../../context/UserContext"
 import { TopMenu } from "../TopMenu/index"
-import { useAuth } from "../../hooks/useAuth"
 import { Info } from "../../pages/Info/index"
 import { Login } from "../../pages/Login/index"
 import { Home } from "../../pages/Home/index"
 import { LiveTV } from "../../pages/LiveTV/index"
 import { Page404 } from "../../pages/404/index"
 import { Music } from "../../pages/Music/index"
+import { useCookies } from 'react-cookie'
 
-function CheckAuth({children}){
-    const cookies = useAuth();
+function CheckAuth({ children, userAuth }) {
     return (
         <Fragment>
-            {cookies.memclid ? children : <Redirect to='/login'/>}      
+            {userAuth.memclid ? children : <Redirect to='/login' />}
         </Fragment>
     )
 }
 
 export default function BaseRouter() {
-    const cookies = useAuth()
-    const { setUserAuth } = useContext(UserContext)
+    const [cookies, setCookie] = useCookies()
+    const { userAuth } = useContext(UserContext)
 
     useEffect(() => {
-        setUserAuth(cookies)
-    })
+        
+    }, [userAuth])
 
     return (
         <>
             <HashRouter>
                 <Switch>
                     <Route exact path="/">
-                        {cookies.memclid ? <Redirect to="/inicio" /> : <Info />}
+                        {userAuth.memclid
+                            ? <CheckAuth userAuth={cookies}>
+                                <TopMenu />
+                                <Home />
+                            </CheckAuth>
+                            : <Info />
+                        }
                     </Route>
 
                     <Route path="/registro">
-                        <CheckAuth>
+                        <CheckAuth userAuth={cookies}>
                             <Home />
                         </CheckAuth>
                     </Route>
 
                     <Route path="/login">
-                        {cookies.memclid ? <Redirect to="/inicio" /> : <Login />}
+                        {cookies.memclid ? <Redirect to="/" /> : <Login />}
                     </Route>
 
-                    <Route exact path="/inicio">
-                        <CheckAuth>
-                            <TopMenu /> 
-                            <Home />
-                        </CheckAuth>
-                    </Route>
-
-                    <Route path="/tvenvivo">
-                        <CheckAuth>
-                            <TopMenu /> 
+                    <Route path="/tv">
+                        <CheckAuth userAuth={cookies}>
+                            <TopMenu />
                             <LiveTV />
                         </CheckAuth>
                     </Route>
 
                     <Route path="/musica">
-                        <CheckAuth>
+                        <CheckAuth userAuth={cookies}>
                             <TopMenu />
                             <Music />
                         </CheckAuth>

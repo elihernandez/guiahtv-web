@@ -5,19 +5,17 @@ import { timerEvent, isLive } from '../../../../js/Time'
 import './styles.css'
 
 export function TimerChannel() {
-      const { state, dispatch } = useContext(VideoContext)
-      const { timerChannel, activeTimer } = state
+      let interval
+      const { stateVideo, dispatch } = useContext(VideoContext)
+      const { timerChannel, activeTimer } = stateVideo
       const [time, setTime] = useState('')
 
       useEffect(() => {
-            let interval
             if (activeTimer){
                   interval = setInterval(() => {
                         if(isLive(timerChannel.Inicio, timerChannel.Fin)){
-                              // dispatch({ type: 'updateTimer', active: false, timer: timerChannel })
                               dispatch({ type: 'updateData', payload: timerChannel })
                         }else{
-                              // setTime(5)
                               setTime(timerEvent(timerChannel.Inicio, timerChannel.Fin))
                         }
                   }, 1000);

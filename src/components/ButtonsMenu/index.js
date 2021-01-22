@@ -10,7 +10,7 @@ function Button({title, contentType, img}){
     const handleClick = () => {
         switch(contentType){
             case 'leon_livetv':
-                history.push('/tvenvivo')
+                history.push('/tv')
                 break
             case 'leon_movies':
                 break

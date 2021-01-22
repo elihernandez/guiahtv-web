@@ -1602,7 +1602,8 @@ button:hover{
       .channel-link .channel .channel-content .info-channel{
                         position: absolute;
                         width: 100%;
-                        height: 100%;
+                        min-height: 100%;
+                        height: auto;
                         background: rgba(24,25,28, 0.9);
                         border-radius: 10px;
                         display: -webkit-box;
@@ -1872,8 +1873,6 @@ button:hover{
       position: relative;
       height: 100%;
       width: 100%;
-      /* border: 1px solid red; */
-      /* padding: 0 25px; */
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
 }
@@ -1882,12 +1881,7 @@ button:hover{
             position: relative;
             width: 100%;
             height: 100%;
-            /* height: 250px;
-            max-height: 250px; */
-
       }
-
-      /* border: 1px solid green; */
 
       .channels .channels-wrapper .content-channels{
                   position: relative;
@@ -1904,7 +1898,7 @@ button:hover{
                   transition: all .3s ease;
             }
 
-      .channels .direction-prev{
+      .channels .direction{
             position: absolute;
             height: 100%;
             top: 0;
@@ -1922,60 +1916,30 @@ button:hover{
                 -ms-flex-align: center;
                     align-items: center;
             width: 50px;
-            left: 0;
             cursor: pointer;
             opacity: 0;
             -webkit-transition: all .3s ease;
             transition: all .3s ease;
       }
 
-      .channels .direction-prev i{
+      .channels .direction i{
                   color: white;
                   font-size: 30px;
                   padding: 20px;
                   background: rgba(24,25,28, 0.25)
             }
 
-      .channels .direction-prev i:hover{
+      .channels .direction i:hover{
                         background: rgba(24,25,28, 0.75);
                   }
 
-      .channels .direction-next{
-            position: absolute;
-            height: 100%;
-            top: 0;
-            /* border: 1px solid blue; */
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                    flex-direction: column;
-            -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                    justify-content: center;
-            -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-            width: 50px;
-            right: 0;
-            cursor: pointer;
-            opacity: 0;
-            -webkit-transition: all .3s ease;
-            transition: all .3s ease;
-      }
-
-      .channels .direction-next i{
-                  color: white;
-                  font-size: 30px;
-                  padding: 20px;
-                  background: rgba(24,25,28, 0.25)
+      .channels .direction.direction-prev{
+                  left: 0;
             }
 
-      .channels .direction-next i:hover{
-                        background: rgba(24,25,28, 0.75);
-                  }
+      .channels .direction.direction-next{
+                  right: 0;
+            }
 
       .channels:hover .direction-prev{
                   opacity: 1;
@@ -2004,8 +1968,6 @@ button:hover{
             -webkit-transition: opacity 300ms;
             transition: opacity 300ms;
       } 
-
-
 .guide-wrapper{
       position: relative;
       height: 100%;
@@ -2066,10 +2028,10 @@ button:hover{
                     align-items: center;
       } 
 
-      .video-wrapper .error-message h1{
-                  font-size: 35px;
+      .video-wrapper .error-message .text-error{
+                  font-size: 40px;
                   color: white;
-                  font-weight: 500;
+                  font-weight: 400;
             } 
 
       .video-wrapper .preview-poster{
@@ -2127,7 +2089,7 @@ button:hover{
                   font-size: 35px;
             }
 
-.info-channel-wrapper .right-section{
+.info-channel-wrapper .right-buttons{
             position: relative;
             display: -webkit-box;
             display: -ms-flexbox;
@@ -2138,7 +2100,7 @@ button:hover{
                     flex-direction: row;
       }
 
-.info-channel-wrapper .right-section .container-volume{
+.info-channel-wrapper .right-buttons .container-volume{
                   position: relative;
                   display: -webkit-box;
                   display: -ms-flexbox;
@@ -2155,45 +2117,45 @@ button:hover{
                   width: 200px;
             }
 
-.info-channel-wrapper .right-section .container-volume .MuiSlider-root{
+.info-channel-wrapper .right-buttons .container-volume .MuiSlider-root{
                         /* background: rgba(0, 0, 0, 0.5) !important; */
                         color: #00aeef;
                         margin-top: -7.5px !important;
                   }
 
-.info-channel-wrapper .right-section .container-volume .MuiSlider-root .MuiSlider-rail{
+.info-channel-wrapper .right-buttons .container-volume .MuiSlider-root .MuiSlider-rail{
                               height: 6px !important;
                         }
 
-.info-channel-wrapper .right-section .container-volume .MuiSlider-root .MuiSlider-track{
+.info-channel-wrapper .right-buttons .container-volume .MuiSlider-root .MuiSlider-track{
                               height: 6px !important;
                         }
 
-.info-channel-wrapper .right-section .container-volume .MuiSlider-root .MuiSlider-thumb{
+.info-channel-wrapper .right-buttons .container-volume .MuiSlider-root .MuiSlider-thumb{
                               height: 16px !important;
                               width: 16px !important;
                               margin-top: -5px !important;
                         }
 
-.info-channel-wrapper .right-section span{
+.info-channel-wrapper .right-buttons .icon{
                   cursor: pointer;
             }
 
-.info-channel-wrapper .right-section span i{
+.info-channel-wrapper .right-buttons .icon i{
                         font-size: 22px;
                         color: white;
                   }
 
-.info-channel-wrapper .right-section .full-screen-icon{
+.info-channel-wrapper .right-buttons .full-screen-icon{
                   margin-left: 25px;
             }
 
-.info-channel-wrapper .right-section .volume-icon{
+.info-channel-wrapper .right-buttons .volume-icon{
                   margin-left: 25px;
                   min-width: 25px;
             }
 .info-timer-wrapper{
-      padding: 100px 50px 0 50px;
+      padding: 125px 40px 0 25px;
 }
       
       .info-timer-wrapper .text-info{
@@ -2236,7 +2198,6 @@ button:hover{
             height: 100%;
             top: 0;
             z-index: 1;
-            /* border: 1px solid blue; */
       }
 
 .wrapper-livetv .content-tv{

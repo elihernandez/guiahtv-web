@@ -1,21 +1,17 @@
 import React, { useState, useContext, useEffect, useRef } from 'react'
 import VideoContext from '../../../../context/VideoContext'
 import UserContext from '../../../../context/UserContext'
-// import LiveTvContext from '../../../../context/LiveTvContext'
 import { getVideo } from '../../../../services/getVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { isLive } from '../../../../js/Time'
-// import { getLiveTV } from '../../../../services/getLiveTV'
-// import { createUrlString } from '../../../../js/String'
 import './styles.css'
 
 export function Video() {
-      // let { data } = useContext(LiveTvContext)
       const video = useRef()
       const [url, setUrl] = useState()
       const { userAuth } = useContext(UserContext)
-      const { state, dispatch } = useContext(VideoContext)
-      const { dataChannel, timerChannel } = state
+      const { stateVideo, dispatch } = useContext(VideoContext)
+      const { dataChannel, timerChannel } = stateVideo
       const {error, setError} = useHls(video, url, dispatch)
 
       const onPlayingVideo = () => {
@@ -31,6 +27,10 @@ export function Video() {
             dispatch({ type: 'updateLoading', payload: false })
             dispatch({ type: 'updateData', payload: null })
             setError("Señal no disponible por el momento")
+      }
+
+      const handleErrorImage = (e) => {
+            e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/backTVnuevologo.jpg'
       }
 
       useEffect(() => {
@@ -82,24 +82,18 @@ export function Video() {
       return (
             <div className="video">
                   <div className="video-wrapper">
-                        <video loop={true} ref={video} onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
+                        <video loop={true} ref={video} preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
                         {     error &&
                               <div className="error-message">
-                                    <h1>{error}</h1>
+                                    <h2 className="text-error">{error}</h2>
                               </div>
                         }
-                        {     state.activeTimer &&
+                        {     stateVideo.activeTimer &&
                               <div className="preview-poster">
-                                    <img  src={timerChannel.PreviewPoster}/>
+                                    <img onError={handleErrorImage} src={timerChannel.PreviewPoster}/>
                               </div>
                         }
                   </div>
             </div>
       )
 }
-
-// {     state.activeTimer &&
-//       <div className="preview-poster">
-//             <img />
-//       </div>
-// }

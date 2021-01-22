@@ -1,6 +1,6 @@
 import React from 'react'
+import { useRouteMatch } from "react-router-dom"
 import { Navbar } from '../../../../components/Navbar/index'
-import { useRouteMatch, useParams } from "react-router-dom"
 import { createUrlString } from '../../../../js/String/index'
 import './styles.css'
 

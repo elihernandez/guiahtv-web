@@ -7,6 +7,7 @@ import { List } from './components/List/index'
 import { Artist } from './components/Artist/index'
 import { Album } from './components/Album/index'
 import { Player } from './components/Player/index'
+import { exitFullScreen } from '../../js/Screen'
 import './styles.css'
 import './artist.css'
 
@@ -145,11 +146,17 @@ function SidebarMusic(){
 export function Music() {
       const { loading, data } = useRequest()
       let { url } = useRouteMatch()
-      // var topMenu = document.querySelector('.top-menu')
-      // topMenu.classList.add('bgcolor')
+
       useEffect(() => {
+
             document.querySelector('.navbar-top-menu').style.opacity = 1
             document.querySelector('.top-menu').classList.add('bggradient')
+
+            return () => {
+                  document.querySelector('.navbar-top-menu').style.opacity = 0
+                  document.querySelector('.top-menu').classList.remove('bggradient')
+                  exitFullScreen()
+            }
       }, [])
 
       return (

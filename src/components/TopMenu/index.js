@@ -6,7 +6,7 @@ import './styles.css'
 
 function NavbarTopMenu(){
       const navLinks = [
-            {title: 'En vivo', href: '/tvenvivo', icon: 'fas fa-tv'},
+            {title: 'En vivo', href: '/tv', icon: 'fas fa-tv'},
             {title: 'A la carta', href: '/alacarta', icon: 'fas fa-film'},
             {title: 'Radio', href: '/radio', icon: 'fas fa-broadcast-tower'},
             {title: 'Música', href: '/musica', icon: 'fas fa-music'},

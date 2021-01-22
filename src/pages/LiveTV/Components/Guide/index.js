@@ -1,13 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Switch, Route, useRouteMatch } from "react-router-dom"
+import { getLiveTV } from '../../../../services/getLiveTV'
 import LiveTvContext from '../../../../context/LiveTvContext'
 import UserContext from '../../../../context/UserContext'
-// import { useRequest } from '../../../../hooks/useRequest'
 import { Categories } from '../Categories'
 import { Channels } from '../Channels'
 import GuideLoader from '../Loader'
-import { getLiveTV } from '../../../../services/getLiveTV'
-import { CSSTransition } from 'react-transition-group'
 import './styles.css'
 
 export function GuideChannels() {

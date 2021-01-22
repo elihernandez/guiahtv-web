@@ -23,7 +23,7 @@
             }
       }
 
-      .right-section{
+      .right-buttons{
             position: relative;
             display: flex;
             flex-direction: row;
@@ -57,8 +57,9 @@
                   }
             }
 
-            span{
+            .icon{
                   cursor: pointer;
+                  
                   i{
                         font-size: 22px;
                         color: white;

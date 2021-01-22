@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react'
 import { useCookies } from 'react-cookie'
 import Logo from '../../components/Logo/index'
 import { getLogin } from '../../services/getLogin'
-import { useHistory } from "react-router-dom"
 import encryptString from '../../js/Encrypt/encrypt'
 import { LoaderSpinner } from '../../components/Loader/index'
 import { Link } from '../../components/Link/index'
@@ -65,7 +64,6 @@ export function Login() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState({ default: false, email: false, password: false, limit: false })
     const { userAuth, setUserAuth } = useContext(UserContext)
-    const history = useHistory()
 
     const validateResponse = ({ResponseCode, SuscriberID = "error"}) => {
         switch (ResponseCode) {

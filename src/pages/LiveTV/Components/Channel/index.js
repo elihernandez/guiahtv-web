@@ -9,6 +9,14 @@ import { getContactInfo } from '../../../../services/getContactInfo'
 import Tooltip from '@material-ui/core/Tooltip'
 import './styles.css'
 
+function isEvent(ContentType){
+      if(ContentType == "leon_livetv_Event"){
+            return true
+      }
+
+      return false
+}
+
 function ReadMore({readMoreActive, Name, Description, handleClickHideReadMore}){
 
       return (
@@ -267,7 +275,12 @@ function LiveTvEvent({ dataChannel, handleClick, handleError }) {
 
 export function Channel({ data, category, page, categoria }) {
       let channel
-      let href = `/tvenvivo/${createUrlString(category.category)}/${createUrlString(data.Name)}`
+      let href
+      if(isEvent(data.ContentType)){
+            href = `/tv/${createUrlString(category.category)}/${data.Id}`
+      }else{
+           href = `/tv/${createUrlString(category.category)}/${createUrlString(data.Name)}`
+      }
       const { dispatch } = useContext(VideoContext)
       const { dispatchTV } = useContext(LiveTvContext)
 
@@ -276,13 +289,11 @@ export function Channel({ data, category, page, categoria }) {
       }
 
       const handleClick = (e) => {
-            console.log(page)
             if (e.nativeEvent.target.tabIndex != 0) {
                   dispatch({ type: 'updateData', payload: data })
                   dispatchTV({ type: 'updatePage', payload: page })
                   dispatchTV({ type: 'updateCategory', payload: categoria })
             }
-            // console.log(e.currentTarget)
       }
 
       switch (data.ContentType) {
