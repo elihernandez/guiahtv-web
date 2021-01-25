@@ -41,7 +41,7 @@ export function TopMenu() {
       }, [])
 
       return (
-            <div className="top-menu" ref={topMenu}>
+            <div id="top-menu" className="top-menu" ref={topMenu}>
                   <div className="section-wrapper">
                         <div className="left-section">
                               <Logo color="blue" />

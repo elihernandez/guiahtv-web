@@ -9,7 +9,7 @@ import { InfoChannel } from './Components/InfoChannel'
 import { TimerChannel } from './Components/Timer'
 import { LoaderVideo } from './Components/LoaderVideo'
 import { CSSTransition } from 'react-transition-group'
-import { exitFullScreen } from '../../js/Screen'
+import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
 import './styles.css'
 
 function Content({ children }) {
@@ -69,7 +69,7 @@ export function LiveTV() {
             return () => {
                   document.querySelector('.navbar-top-menu').style.opacity = 0
                   document.querySelector('.top-menu').classList.remove('bggradient')
-                  exitFullScreen()
+                  if(isFullScreenElement()) exitFullScreen()
             }
       }, [])
 

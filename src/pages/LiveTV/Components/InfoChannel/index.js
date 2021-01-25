@@ -3,7 +3,7 @@ import VideoContext from '../../../../context/VideoContext'
 import { CSSTransition } from 'react-transition-group'
 import Tooltip from '@material-ui/core/Tooltip'
 import Slider from '@material-ui/core/Slider'
-import { exitFullScreen, enterFullScreen } from '../../../../js/Screen'
+import { exitFullScreen, enterFullScreen, exitHandler } from '../../../../js/Screen'
 import './styles.css'
 
 function ButtonFullScreen() {
@@ -22,12 +22,19 @@ function ButtonFullScreen() {
       const handleClick = () => {
             toggleFullScreen()
       }
-      
+
       useEffect(() => {
-            document.addEventListener('dblclick', toggleFullScreen)
+            document.addEventListener('fullscreenchange', exitHandler)
+            document.addEventListener('webkitfullscreenchange', exitHandler)
+            document.addEventListener('mozfullscreenchange', exitHandler)
+            document.addEventListener('MSFullscreenChange', exitHandler)
 
             return () => {
                   document.removeEventListener('dblclick', toggleFullScreen)
+                  document.removeEventListener('fullscreenchange', exitHandler)
+                  document.removeEventListener('webkitfullscreenchange', exitHandler)
+                  document.removeEventListener('mozfullscreenchange', exitHandler)
+                  document.removeEventListener('MSFullscreenChange', exitHandler)
             }
       }, [])
 
@@ -45,10 +52,21 @@ function ButtonFullScreen() {
 
 function ButtonVolume() {
       const { stateVideo, dispatch } = useContext(VideoContext)
-      const { volume } = stateVideo
+      const { volume, muteVolume } = stateVideo
 
       const handleChange = (event, newValue) => {
             dispatch({ type: 'updateVolume', payload: newValue })
+            dispatch({ type: 'muteVolume', payload: false })
+      }
+
+      const handleClick = () => {
+            if (!muteVolume) {
+                  dispatch({ type: 'muteVolume', payload: true })
+                  document.querySelector('video').volume = 0
+            } else {
+                  dispatch({ type: 'muteVolume', payload: false })
+                  document.querySelector('video').volume = (volume / 100)
+            }
       }
 
       useEffect(() => {
@@ -59,14 +77,17 @@ function ButtonVolume() {
             <div className="container-volume">
                   <Slider value={volume} onChange={handleChange} aria-labelledby="continuous-slider" />
                   <Tooltip title="Volumen" placement="top-start">
-                        <span className="volume-icon icon">
-                              {volume == 0 &&
+                        <span className="volume-icon icon" onClick={handleClick}>
+                              {muteVolume &&
+                                    <i className="fas fa-volume-mute"></i>
+                              }
+                              {volume == 0 && !muteVolume &&
                                     <i className="fas fa-volume-off"></i>
                               }
-                              {volume > 0 && volume <= 60 &&
+                              {volume > 0 && volume <= 60 && !muteVolume &&
                                     <i className="fas fa-volume-down"></i>
                               }
-                              {volume > 60 &&
+                              {volume > 60 && !muteVolume &&
                                     <i className="fas fa-volume-up"></i>
                               }
                         </span>
@@ -75,7 +96,7 @@ function ButtonVolume() {
       )
 }
 
-export function InfoChannel() {
+export function InfoChannel({ setShowTopMenu }) {
       const { stateVideo } = useContext(VideoContext)
       const { dataChannel, activeChannel } = stateVideo
       const [name, setName] = useState('')

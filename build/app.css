@@ -4129,6 +4129,10 @@ ol {
 *{
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 ul, ol{

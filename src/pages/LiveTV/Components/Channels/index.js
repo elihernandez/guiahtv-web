@@ -67,6 +67,7 @@ export function Channels({ data }) {
                   if(categoria == currentCategory){
                         // console.log(2)
                         let moveP = 100 * (currentPage)
+                        console.log(moveP)
                         cssTransition(refChannels.current, {
                               transform: `translate3d(-${moveP}%, 0, 0)`
                         }, 0, function () {
@@ -86,7 +87,7 @@ export function Channels({ data }) {
                                                                   pages = Math.trunc(pages)
                                                                   setPage(pages)
                                                                   let moveP = 100 * (pages)
-                                                               
+                                                                  console.log(pages)
                                                                   cssTransition(refChannels.current, {
                                                                         transform: `translate3d(-${moveP}%, 0, 0)`
                                                                   }, 0, function () {
@@ -103,15 +104,15 @@ export function Channels({ data }) {
                                                             if(pages > 1){
                                                                   pages = Math.trunc(pages)
                                                                   setPage(pages)
+                                                                  let moveP = 100 * (pages)
+                                                                  console.log(moveP)
+                                                                  cssTransition(refChannels.current, {
+                                                                        transform: `translate3d(-${moveP}%, 0, 0)`
+                                                                  }, 0, function () {
+                                                                       
+                                                                  })
                                                             }
                                                          
-                                                            let moveP = 100 * (pages)
-                                                         
-                                                            cssTransition(refChannels.current, {
-                                                                  transform: `translate3d(-${moveP}%, 0, 0)`
-                                                            }, 0, function () {
-                                                                 
-                                                            })
                                                       }
                                                 }
                                           })

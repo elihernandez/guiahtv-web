@@ -48,7 +48,8 @@ export function VideoContextProvider({children}){
             loadingChannel: false,
             timerChannel: false,
             activeTimer: false,
-            volume: 30
+            volume: 30,
+            muteVolume: false
       }
 
       const reducer = (state, action) => {
@@ -85,6 +86,12 @@ export function VideoContextProvider({children}){
                         return {
                               ...state,
                               volume: action.payload
+                        }
+                  }
+                  case 'muteVolume': {
+                        return {
+                              ...state,
+                              muteVolume: action.payload
                         }
                   }
                   default: return state;
