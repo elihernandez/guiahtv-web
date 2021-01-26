@@ -70,7 +70,11 @@ function ButtonVolume() {
       }
 
       useEffect(() => {
-            document.querySelector('video').volume = (volume / 100)
+            if(muteVolume){
+                  document.querySelector('video').volume = 0
+            }else{
+                  document.querySelector('video').volume = (volume / 100)
+            }
       }, [volume])
 
       return (

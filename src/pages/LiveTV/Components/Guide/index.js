@@ -10,7 +10,8 @@ import './styles.css'
 
 export function GuideChannels() {
       let { url } = useRouteMatch()
-      const { userAuth } = useContext(UserContext)
+      const { stateUser } = useContext(UserContext)
+      const { credentials } = stateUser
       const { state, dispatchTV } = useContext(LiveTvContext)
       const { dataTV } = state
       const [loading, setLoading] = useState(true)
@@ -18,7 +19,7 @@ export function GuideChannels() {
       useEffect(() => {
             const requestData = async () => {
                   try {
-                        const response = await getLiveTV(userAuth)
+                        const response = await getLiveTV(credentials)
                         if (!response.length) throw new Error('No se pudo obtener la información.')
                         dispatchTV({ type: 'updateData', payload: response })
                         setLoading(false)
@@ -27,18 +28,18 @@ export function GuideChannels() {
                   }
             }
 
-            if (userAuth) {
+            if (credentials) {
                   setLoading(true)
                   requestData()
             }
-            
-      }, [userAuth])
+
+      }, [credentials])
 
       return (
             <div className="guide">
                   {     loading
-                  ?     <GuideLoader />
-                  :     <div className="guide-wrapper">
+                        ? <GuideLoader />
+                        : <div className="guide-wrapper">
                               <Categories data={dataTV} />
                               <Switch>
                                     <Route exact path={`${url}`} >

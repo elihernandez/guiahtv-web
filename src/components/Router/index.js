@@ -30,11 +30,12 @@ export default function BaseRouter() {
         return <ErrorAuth message={errorAuth} />
     }
 
-    if(!credentials){
+    if(credentials.length == 0){
         return null
     }
 
     return (
+      
         <>
             <HashRouter>
                 <Switch>

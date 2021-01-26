@@ -9,7 +9,8 @@ import './styles.css'
 export function Video() {
       const video = useRef()
       const [url, setUrl] = useState()
-      const { userAuth } = useContext(UserContext)
+      const { stateUser } = useContext(UserContext)
+      const { credentials } = stateUser
       const { stateVideo, dispatch } = useContext(VideoContext)
       const { dataChannel, timerChannel } = stateVideo
       const {error, setError} = useHls(video, url, dispatch)
@@ -40,7 +41,7 @@ export function Video() {
                         dispatch({ type: 'updateLoading', payload: true })
                         setUrl(null)
                         try {
-                              const response = await getVideo(dataChannel, userAuth)
+                              const response = await getVideo(dataChannel, credentials)
                               if(response == "error") throw new Error('No se pudo obtener la información.')
                               const url = response.Url
                               setUrl(url)
@@ -77,7 +78,7 @@ export function Video() {
             return () => {
 
             }
-      }, [userAuth, dataChannel])
+      }, [credentials, dataChannel])
 
       return (
             <div className="video">
