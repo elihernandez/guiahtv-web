@@ -1,9 +1,10 @@
-export function validateSuscription(response, data, setData){
+export function validateSuscription(response, dispatch){ 
       switch(response.data[0].SuscriptionStatus) {
             case 0:
                   // Suscripción expirada
-                  setCookie('memclid', "", { path: '/' })
-                  location.reload()
+                  // setCookie('memclid', "", { path: '/' })
+                  // location.reload()
+                  return "error"
                   break
             case 1:
                   // Suscripción válida
@@ -19,8 +20,9 @@ export function validateSuscription(response, data, setData){
                   break
             case 4:
                   // Sesión no válida
-                  setCookie('memclid', "", { path: '/' })
-                  location.reload()
+                  // setCookie('memclid', "", { path: '/' })
+                  // location.reload()
+                  dispatch({ type: 'setErrorAuth', payload: 'Ocurrió un problema, vuelve a iniciar sesión'})
                   break
             default:
                   return response.data

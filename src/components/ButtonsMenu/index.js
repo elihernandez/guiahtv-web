@@ -13,6 +13,7 @@ function Button({title, contentType, img}){
                 history.push('/tv')
                 break
             case 'leon_movies':
+                history.push('/alacarta')
                 break
             case 'leon_radio':
                 break

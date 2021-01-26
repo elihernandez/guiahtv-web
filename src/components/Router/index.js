@@ -8,31 +8,39 @@ import { Home } from "../../pages/Home/index"
 import { LiveTV } from "../../pages/LiveTV/index"
 import { Page404 } from "../../pages/404/index"
 import { Music } from "../../pages/Music/index"
+import { VideoOnDemand } from "../../pages/Vod/index"
+import { ErrorAuth } from "../../pages/ErrorAuth/index"
 import { useCookies } from 'react-cookie'
 
-function CheckAuth({ children, userAuth }) {
+function CheckAuth({ children, credentials }) {
     return (
         <Fragment>
-            {userAuth.memclid ? children : <Redirect to='/login' />}
+            {credentials.memclid ? children : <Redirect to='/login' />}
         </Fragment>
     )
 }
 
 export default function BaseRouter() {
-    const [cookies, setCookie] = useCookies()
-    const { userAuth } = useContext(UserContext)
+    const [cookies, setCookie, removeCookie] = useCookies()
+    const { stateUser } = useContext(UserContext)
+    const { credentials, errorAuth } = stateUser
 
-    useEffect(() => {
-        
-    }, [userAuth])
+    if(errorAuth){
+        console.log(errorAuth)
+        return <ErrorAuth message={errorAuth} />
+    }
+
+    if(!credentials){
+        return null
+    }
 
     return (
         <>
             <HashRouter>
                 <Switch>
                     <Route exact path="/">
-                        {userAuth.memclid
-                            ? <CheckAuth userAuth={cookies}>
+                        {credentials.memclid
+                            ? <CheckAuth credentials={credentials}>
                                 <TopMenu />
                                 <Home />
                             </CheckAuth>
@@ -41,24 +49,31 @@ export default function BaseRouter() {
                     </Route>
 
                     <Route path="/registro">
-                        <CheckAuth userAuth={cookies}>
+                        <CheckAuth credentials={credentials}>
                             <Home />
                         </CheckAuth>
                     </Route>
 
                     <Route path="/login">
-                        {cookies.memclid ? <Redirect to="/" /> : <Login />}
+                        {credentials.memclid ? <Redirect to="/" /> : <Login />}
                     </Route>
 
                     <Route path="/tv">
-                        <CheckAuth userAuth={cookies}>
+                        <CheckAuth credentials={credentials}>
                             <TopMenu />
                             <LiveTV />
                         </CheckAuth>
                     </Route>
 
+                    <Route path="/alacarta">
+                        <CheckAuth credentials={credentials}>
+                            <TopMenu />
+                            <VideoOnDemand />
+                        </CheckAuth>
+                    </Route>
+
                     <Route path="/musica">
-                        <CheckAuth userAuth={cookies}>
+                        <CheckAuth credentials={credentials}>
                             <TopMenu />
                             <Music />
                         </CheckAuth>

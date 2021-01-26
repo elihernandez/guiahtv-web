@@ -1,14 +1,14 @@
 import {API_URL} from './settings'
 const axios = require('axios')
 
-export function getLogin(username, password, user){
+export function getLogin(username, password, credentials){
 
       const apiURL = `${API_URL}/cmd/logusr/${username}/${password}`
       const data = {
-            DevicePlatform: user.platform,
-            DeviceType: user.deviceType,
-            DeviceUUID: user.uuid,
-            DeviceVersion: user.deviceVersion
+            DevicePlatform: credentials.platform,
+            DeviceType: credentials.deviceType,
+            DeviceUUID: credentials.uuid,
+            DeviceVersion: credentials.deviceVersion
       }
 
       return axios.get(apiURL, {

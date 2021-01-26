@@ -63,7 +63,8 @@ export function Login() {
     const [cookies, setCookie] = useCookies()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState({ default: false, email: false, password: false, limit: false })
-    const { userAuth, setUserAuth } = useContext(UserContext)
+    const { stateUser, dispatchUser } = useContext(UserContext)
+    const { credentials } = stateUser
 
     const validateResponse = ({ResponseCode, SuscriberID = "error"}) => {
         switch (ResponseCode) {
@@ -79,7 +80,6 @@ export function Login() {
             case 2: // Usuario suscrito
                 setCookie('memclem', username, { path: '/' })
                 setCookie('memclid', SuscriberID, { path: '/' })
-                setUserAuth(cookies)
                 location.reload()
                 break
             case 3: // Password incorrecta
@@ -115,7 +115,7 @@ export function Login() {
     const requestLogin = async () => {
         try {
             const hashPassword = await encryptString(password, 10)
-            const response = await getLogin(username, btoa(hashPassword), userAuth)
+            const response = await getLogin(username, btoa(hashPassword), credentials)
             validateResponse(response)
         } catch (e) {
             console.log(e)
