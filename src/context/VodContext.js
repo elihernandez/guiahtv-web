@@ -6,7 +6,10 @@ export function VodContextProvider({ children }) {
       const initialState = {
             dataVod: null,
             errorVod: false,
-            loadingVod: false
+            loadingVod: false,
+            serieVod: null,
+            seasonVod: null,
+            movieVod: null
       }
 
       const reducer = (state, action) => {
@@ -29,6 +32,25 @@ export function VodContextProvider({ children }) {
                               errorVod: action.payload
                         }
                   }
+                  case 'setSeason': {
+                        return {
+                              ...state,
+                              seasonVod: action.payload
+                        }
+                  }
+                  case 'setSerie': {
+                        return {
+                              ...state,
+                              serieVod: action.payload
+                        }
+                  }
+                  case 'setMovie': {
+                        return {
+                              ...state,
+                              movieVod: action.payload
+                        }
+                  }
+
                   default: return state;
             }
       }

@@ -30,13 +30,11 @@ export function TopMenu() {
             
             window.onscroll = function() {
                   scroll = window.scrollY;
-                  console.log(scroll)
                   if (scroll > 25){
                         topMenu.current.classList.add('bgcolor')
                   } else {
                         topMenu.current.classList.remove('bgcolor')
-                  }
-                  previousScroll = scroll   
+                  } 
             }
       }, [])
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import './styles.css'
 
 export function LoaderSpinner({color}){
@@ -37,6 +38,14 @@ export function LoaderLogoSpinner({color}){
             <div className={className}>
                 <div className="spinner"/>
             </div>
+        </div>
+    )
+}
+
+export function LoaderSpinnerMUI(){
+    return (
+        <div className="section-content spinner-mui">
+            <CircularProgress disableShrink />
         </div>
     )
 }
