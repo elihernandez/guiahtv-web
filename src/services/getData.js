@@ -1,11 +1,11 @@
 const axios = require('axios')
 
-export function getData({apiURL}) {
-      return axios.get(apiURL)
+export function getData(requestUrl, dispatch) {
+      return axios.get(requestUrl)
       .then(function (response) {
             return response.data
       })
       .catch(function (error) {
-            return (error)
+            return "error"
       })
 }

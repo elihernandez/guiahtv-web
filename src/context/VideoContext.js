@@ -48,7 +48,7 @@ export function VideoContextProvider({children}){
             loadingChannel: false,
             timerChannel: false,
             activeTimer: false,
-            volume: 30,
+            volume: 50,
             muteVolume: false
       }
 

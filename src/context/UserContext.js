@@ -20,6 +20,7 @@ const Context = createContext({})
 export function UserContextProvider({ children }) {
       const initialState = {
             credentials: [],
+            suscriptionStatus: null,
             errorAuth: false
       }
 
@@ -35,6 +36,12 @@ export function UserContextProvider({ children }) {
                         return {
                               ...state,
                               errorAuth: action.payload
+                        }
+                  }
+                  case 'setSuscriptionStatus': {
+                        return {
+                              ...state,
+                              suscriptionStatus: action.payload
                         }
                   }
                   default: return state;

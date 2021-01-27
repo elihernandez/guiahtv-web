@@ -1,20 +1,13 @@
 import { useState, useContext, useEffect } from 'react'
 import UserContext from '../context/UserContext'
-import { useCookies } from 'react-cookie'
 import { API_URL } from '../services/settings'
 import { validateSuscription } from '../js/Auth/validateSuscription'
-const axios = require('axios')
-const moment = require('moment')
+import { getData } from '../services/getData'
+import { getUtcOffsetLocal } from '../js/Time'
 
-function getUtcOffsetLocal(){
-      let utcOffsetLocal = "UTC"+(moment().utcOffset()/60);
-  
-      return utcOffsetLocal;
-}
-
-function getURL(section, credentials){
+function getURL(section, credentials) {
       let apiURL
-      switch(section){
+      switch (section) {
             case 'livetv':
                   let utcOffsetLocal = getUtcOffsetLocal()
                   apiURL = `${API_URL}/cmdata/leon/livetvplus/${credentials.memclid}/${utcOffsetLocal}`
@@ -29,35 +22,30 @@ function getURL(section, credentials){
       return apiURL
 }
 
-export function useRequest(section, dispatch){
+export function useRequest(section, dispatch, data) {
       const { stateUser, dispatchUser } = useContext(UserContext)
       const { credentials } = stateUser
       const [loading, setLoading] = useState(false)
-      const [data, setData] = useState()
-      const [setCookie] = useCookies()
-      
+
       useEffect(() => {
             setLoading(true)
-            if(credentials.memclid){
-                  const apiURL = getURL(section, credentials)
-                  axios.get(apiURL)
-                  .then(function (response) {
-                        const res = validateSuscription(response, dispatchUser)
-                        // if(){
+            const requestData = async () => {
+                  try {
+                        const requestUrl = getURL(section, credentials)
+                        const response = await getData(requestUrl, dispatchUser)
+                        if (response === "error") throw new Error("Ocurrión un problema, intenta otra vez")
+                        data = validateSuscription(response, dispatchUser)
+                        dispatch({ type: 'setData', payload: response })
+                        setLoading(false)
+                  } catch (e) {
+                        console.log(e.message)
+                  }
+            }
 
-                        // }
-                        // console.log(res)
-                        // throw new Error(res)
-                        // setData()
-                        // setLoading(false)
-                  })
-                  .catch(function (error) {
-                        console.log(error)
-                        // setData(error)
-                        // setLoading(false)
-                  })
+            if (credentials.memclid && !data) {
+                  requestData()
             }
       }, [credentials])
 
-      return {loading, data}
+      return { loading, data }
 }

@@ -99,3 +99,9 @@ export function getProgressTimeEvent(Inicio, Fin){
       var time = ((position * 100) / duration)+"%";
       return time
 }
+
+function getUtcOffsetLocal(){
+      let utcOffsetLocal = "UTC"+(moment().utcOffset()/60);
+  
+      return utcOffsetLocal;
+}

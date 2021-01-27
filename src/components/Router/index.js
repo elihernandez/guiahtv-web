@@ -11,11 +11,17 @@ import { Music } from "../../pages/Music/index"
 import { VideoOnDemand } from "../../pages/Vod/index"
 import { ErrorAuth } from "../../pages/ErrorAuth/index"
 import { useCookies } from 'react-cookie'
+import { SnackbarAuth } from '../SnackbarAuth'
 
 function CheckAuth({ children, credentials }) {
     return (
         <Fragment>
-            {credentials.memclid ? children : <Redirect to='/login' />}
+            {credentials.memclid
+                ? <Fragment>
+                    { children }
+                    <SnackbarAuth />
+                    </Fragment>
+                : <Redirect to='/login' />}
         </Fragment>
     )
 }
@@ -25,17 +31,15 @@ export default function BaseRouter() {
     const { stateUser } = useContext(UserContext)
     const { credentials, errorAuth } = stateUser
 
-    if(errorAuth){
-        console.log(errorAuth)
+    if (errorAuth) {
         return <ErrorAuth message={errorAuth} />
     }
 
-    if(credentials.length == 0){
+    if (credentials.length == 0) {
         return null
     }
 
     return (
-      
         <>
             <HashRouter>
                 <Switch>

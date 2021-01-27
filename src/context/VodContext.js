@@ -4,9 +4,9 @@ const Context = React.createContext({})
 
 export function VodContextProvider({ children }) {
       const initialState = {
-            data: null,
-            error: false,
-            loading: false
+            dataVod: null,
+            errorVod: false,
+            loadingVod: false
       }
 
       const reducer = (state, action) => {
@@ -14,19 +14,19 @@ export function VodContextProvider({ children }) {
                   case 'setLoading': {
                         return {
                               ...state,
-                              loading: action.payload
+                              loadingVod: action.payload
                         }
                   }
                   case 'setData': {
                         return {
                               ...state,
-                              data: action.payload
+                              dataVod: action.payload
                         }
                   }
                   case 'setError': {
                         return {
                               ...state,
-                              error: action.payload
+                              errorVod: action.payload
                         }
                   }
                   default: return state;
