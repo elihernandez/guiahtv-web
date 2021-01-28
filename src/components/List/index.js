@@ -1,64 +1,67 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
+import { useHistory, NavLink, useRouteMatch } from 'react-router-dom'
 import VodContext from '../../context/VodContext'
 const cssTransition = require('css-transition')
 import './styles.css'
 
-function isMovie(contentType){
-      if(contentType.includes('movie')){
+function isSerie(contentType) {
+      if (contentType.includes('series')) {
             return true
       }
 
       return false
 }
 
-function isSerie(contentType){
+function typeContent(contentType){
       if(contentType.includes('series')){
-            return true
+            return 'serie'
+      }else{
+            return 'pelicula'
       }
-
-      return false
 }
 
 function ListItem({ data, posterType }) {
+      const { url } = useRouteMatch()
       const { dispatchVod } = useContext(VodContext)
       const { Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ContentType } = data
+      const type = typeContent(ContentType)
 
       const handleClick = () => {
-            if(isMovie(ContentType)){
-                  dispatchVod({ type: 'setMovie', payload: data})
-            }
-
-            if(isSerie(ContentType)){
-                  dispatchVod({ type: 'setSerie', payload: data})
+            console.log(isSerie(ContentType))
+            if (isSerie(ContentType)) {
+                  dispatchVod({ type: 'setSerie', payload: data })
+            }else{
+                  dispatchVod({ type: 'setMovie', payload: data })
             }
       }
 
       const handleError = (e) => {
             let srcImg = ''
-            switch(posterType){
+            switch (posterType) {
                   case '0':
                         srcImg = 'build/assets/images/logos/guiahtv/vod-error-portrait.png'
-                  break
+                        break
                   case '1':
                         srcImg = 'build/assets/images/logos/guiahtv/GuiahAzulPerf.png'
-                  break
+                        break
                   default:
                         srcImg = 'build/assets/images/logos/guiahtv/GuiahAzulPerf.png'
-                  break
+                        break
             }
             e.nativeEvent.target.src = srcImg
       }
 
       return (
-
-            <div className="item" onClick={handleClick}>
-                  {posterType == 0 &&
-                        <img onError={handleError} src={HDPosterUrlPortrait} />
-                  }
-                  {posterType == 1 &&
-                        <img onError={handleError} src={HDPosterUrlLandscape} />
-                  }
-            </div>
+            <NavLink to={`${url}/${type}/${Registro}`} className="item-link">
+                  <div className="item" onClick={handleClick}>
+                        {posterType == 0 &&
+                              <img onError={handleError} src={HDPosterUrlPortrait} />
+                        }
+                        {posterType == 1 &&
+                              <img onError={handleError} src={HDPosterUrlLandscape} />
+                        }
+                  </div>
+            </NavLink>
       )
 }
 

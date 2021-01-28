@@ -1,7 +1,7 @@
 $color-guide-black: #18191c;
 $color-guide-blue: #00aeef;
 $color-guide-purple: #662d91;
-$color-background-app: #18191C;
+$color-background-app: #232526;
 
 @custom-media --laptop-large-viewport (max-width: 1440px);
 @custom-media --laptop-medium-viewport (max-width: 1024px);

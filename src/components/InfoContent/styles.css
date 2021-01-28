@@ -1,0 +1,256 @@
+@import '../../scss/style-base.css';
+
+.movie-info-wrapper{
+      position: absolute;
+      width: 100%;
+
+      .background{
+            position: relative;
+            width: 100%;
+            height: 750px;
+            overflow: hidden;
+
+            img{
+                  position: relative;
+                  width: 100%;
+                  height: auto;
+            }
+
+            .overlay{
+                  position: absolute;
+                 
+                  &.bottom{
+                        bottom: 0;
+                        background: linear-gradient(to top, $color-background-app, transparent);
+                        opacity: 0.80;
+
+                        &.s-50{
+                              width: 100%;
+                              height: 50%;
+                        }
+      
+                        &.s-40{
+                              width: 100%;
+                              height: 40%;
+                        }
+      
+                        &.s-30{
+                              width: 100%;
+                              height: 30%;
+                        }
+      
+                        &.s-20{
+                              width: 100%;
+                              height: 20%;
+                        }
+                  }
+                  
+                  &.left{
+                        left: 0;
+                        top: 0;
+                        background: linear-gradient(90deg, $color-background-app, transparent);
+                        opacity: 0.50;
+
+                        &.s-80{
+                              width: 80%;
+                              height: 100%;
+                        }
+
+                        &.s-70{
+                              width: 70%;
+                              height: 100%;
+                        }
+
+                        &.s-60{
+                              width: 60%;
+                              height: 100%;
+                        }
+
+                        &.s-50{
+                              width: 50%;
+                              height: 100%;
+                        }
+      
+                        &.s-40{
+                              width: 40%;
+                              height: 100%;
+                        }
+      
+                        &.s-30{
+                              width: 30%;
+                              height: 100%;
+                        }
+      
+                        &.s-20{
+                              width: 20%;
+                              height: 100%;
+                        }
+                  }
+            }
+      }
+
+      .info-movie{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 200px 0 0 50px;
+
+            .group-title{
+                  width: 60%;
+
+                  .title{
+                        font-size: 50px;
+                        font-weight: 700;
+                        letter-spacing: 1px;
+                  }
+            }
+
+            .group-description{
+                  margin: 25px 0;
+                  width: 50%;
+
+                  .description{
+                        font-size: 20px;
+                        font-weight: 400;
+                        width: 100%;
+                  }
+            }
+
+            .group{
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  align-content: center;
+                  font-size: 18px;
+                  font-weight: 400;
+                  margin: 2.5px 0;
+
+                  &.info{
+                        font-size: 15px;
+                        
+                        p{
+                              margin-right: 25px !important;
+                              font-weight: 500;
+                        }
+
+                        .img-rating{
+                              position: relative;
+                              width: 40px;
+                              height: auto;
+                        }
+
+                        .rating{
+                              font-size: 18px;
+                              font-weight: 600;
+                              margin: 10px !important;
+                        }
+
+                        .img-clasification{
+                              position: relative;
+                              width: 50px;
+                              height: auto;
+                              margin-left: 15px;
+                              margin-right: 15px;
+                        }
+                  }
+
+                  .text-group{
+                        margin-right: 10px !important;
+                  }
+            }
+
+            .group-actions{
+                  margin-top: 50px;
+
+                  .button-watch{
+                        background: white;
+                        color: $color-guide-black;
+                        text-transform: uppercase;
+                        font-size: 16px;
+                        padding: 20px 30px;
+                        font-weight: 600;
+                        letter-spacing: 1px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        
+                        i{
+                              font-size: 18px;
+                              margin-right: 10px;
+                        }
+                  }
+            }
+      }
+
+      .tabs-info-wrapper{
+            position: relative;
+            width: 100%;
+            padding: 0 50px;
+      }
+
+      .MuiPaper-elevation4{
+            box-shadow: none !important;
+      }
+
+      .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4{
+            background-color: transparent !important;
+
+            button{
+                  box-shadow: none !important;
+            }
+            
+            .MuiTab-textColorPrimary{
+                  color: rgba(255, 255, 255, 0.5) !important;
+                  font-size: 16px !important;
+                  letter-spacing: 1px !important;
+                  font-family: 'Poppins';
+            }
+
+            .MuiTab-textColorPrimary.Mui-selected{
+                  color: white !important;
+            }
+
+            .PrivateTabIndicator-colorPrimary-2{
+                  background-color: white !important;
+            }
+            
+            .MuiTabs-indicator{
+                  background-color: white !important;
+            }
+
+            .MuiTab-fullWidth{
+                  flex-grow: 0 !important;
+            }
+      }
+
+      .MuiBox-root{
+            padding: 25px 0px !important;
+
+            button{
+                  box-shadow: none !important;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                  align-items: center;
+                  padding: 15px 25px;
+
+                  i{
+                        font-size: 18px;
+                        margin-left: 10px;
+                  }
+
+                  &:hover{
+                        background: rgba(0, 0, 0, 0.25);
+                  }
+
+                  .MuiButton-label{
+                        color: white !important;
+                        font-size: 14px !important;
+                  }
+            }
+
+            .MuiPaper-root{
+                  background-color: black !important;
+            }
+      }
+}

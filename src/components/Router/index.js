@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from "react"
+import React, { Fragment, useContext } from "react"
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
 import UserContext from "../../context/UserContext"
 import { TopMenu } from "../TopMenu/index"
@@ -9,6 +9,7 @@ import { LiveTV } from "../../pages/LiveTV/index"
 import { Page404 } from "../../pages/404/index"
 import { Music } from "../../pages/Music/index"
 import { VideoOnDemand } from "../../pages/Vod/index"
+import { Zonakids } from "../../pages/Zonakids/index"
 import { ErrorAuth } from "../../pages/ErrorAuth/index"
 import { useCookies } from 'react-cookie'
 import { SnackbarAuth } from '../SnackbarAuth'
@@ -18,9 +19,9 @@ function CheckAuth({ children, credentials }) {
         <Fragment>
             {credentials.memclid
                 ? <Fragment>
-                    { children }
+                    {children}
                     <SnackbarAuth />
-                    </Fragment>
+                </Fragment>
                 : <Redirect to='/login' />}
         </Fragment>
     )
@@ -74,6 +75,13 @@ export default function BaseRouter() {
                         <CheckAuth credentials={credentials}>
                             <TopMenu />
                             <VideoOnDemand />
+                        </CheckAuth>
+                    </Route>
+
+                    <Route path="/zonakids">
+                        <CheckAuth credentials={credentials}>
+                            <TopMenu />
+                            <Zonakids />
                         </CheckAuth>
                     </Route>
 

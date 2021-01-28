@@ -21,6 +21,7 @@ function Button({title, contentType, img}){
                 history.push('/musica')
                 break
             case 'leon_kids':
+                history.push('/zonakids')
                 break
             default:
                 break

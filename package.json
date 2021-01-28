@@ -98,6 +98,7 @@
     "react-lazyload": "^3.1.0",
     "react-router-dom": "^5.2.0",
     "react-slick": "^0.27.13",
+    "react-swipeable-views": "^0.13.9",
     "react-tv": "^0.4.3",
     "react-tv-navigation": "^0.4.3",
     "semantic-ui-css": "^2.4.1",

@@ -12,7 +12,7 @@
                   height: 322px;
             }
 
-            .item{
+            .item-link{
                   flex: 0 0 calc(100% / 7);
             }
       }
@@ -22,7 +22,7 @@
                   height: 217px;
             }
 
-            .item{
+            .item-link{
                   flex: 0 0 calc(100% / 5);
             }
       }
@@ -31,7 +31,7 @@
             font-size: 18px;
             font-weight: 600;
             letter-spacing: .5px;
-            margin: 0 0 5px 10px !important;
+            margin: 0 0 5px 14px !important;
       }
 
       .list-content{
@@ -44,33 +44,39 @@
                   flex-direction: row;
                   /* border: 1px solid green; */
       
-                 .item{
+                  .item-link{
                         height: 100%;
-                        overflow: hidden;
-                        border-radius: 6px;
-                        border: 4px solid transparent;
-                        transform: scale(0.98);
-                        transition: all .2s linear;
-                        overflow: hidden;
                         display: flex;
                         flex-direction: row;
                         justify-content: center;
                         align-items: center;
                         align-content: center;
 
-                        img{
+                        .item{
                               position: relative;
-                              width: 100%;
                               height: 100%;
-                              background-size: cover;
-                              border-radius: 4px;
+                              width: 100%;
+                              border-radius: 6px;
+                              border: 4px solid transparent;
+                              transform: scale(0.98);
+                              transition: all .2s linear;
+                              overflow: hidden;
+
+                              img{
+                                    position: relative;
+                                    width: 100%;
+                                    height: 100%;
+                                    background-size: cover;
+                                    border-radius: 4px;
+                              }
+            
+                              &:hover{
+                                    border: 4px solid white;
+                                    cursor: pointer;
+                                    transform: scale(1);
+                              }
                         }
-      
-                        &:hover{
-                              border: 4px solid white;
-                              cursor: pointer;
-                              transform: scale(1);
-                        }
+
                   }
             }
       

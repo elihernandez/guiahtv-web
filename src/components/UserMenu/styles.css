@@ -21,7 +21,16 @@
             } 
       }
 
-      .MuiPaper-root{
-            background-color: black !important;
+
+
+      .MuiList-root.MuiList-padding{
+            a{
+                  color: white !important;
+                  text-decoration: none !important;
+            }
       }
+}
+
+.MuiPaper-root{
+      background-color: black !important;
 }

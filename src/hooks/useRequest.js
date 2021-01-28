@@ -12,8 +12,11 @@ function getURL(section, credentials) {
                   let utcOffsetLocal = getUtcOffsetLocal()
                   apiURL = `${API_URL}/cmdata/leon/livetvplus/${credentials.memclid}/${utcOffsetLocal}`
                   break
-            case 'vod':
+            case 'alacarta':
                   apiURL = `${API_URL}/cmdata/leon/entplus/${credentials.memclid}`
+                  break
+            case 'zonakids':
+                  apiURL = `${API_URL}/cdata/leon/kids/${credentials.memclid}`
                   break
             default:
                   break
