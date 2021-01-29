@@ -61,6 +61,61 @@ function Content({ children }) {
 
 export function LiveTV() {
       let { url } = useRouteMatch()
+      const initialState = {  
+            dataChannel: null,
+            activeChannel: false,
+            loadingChannel: false,
+            timerChannel: false,
+            activeTimer: false,
+            volume: 50,
+            muteVolume: false
+      }
+
+      const reducer = (state, action) => {
+            switch (action.type) {
+                  case 'updateData': {
+                        return {
+                              ...state,
+                              dataChannel: action.payload,
+                              timerChannel: false,
+                              activeTimer: false
+                        }
+                  }
+                  case 'updateActive': {
+                        return {
+                              ...state,
+                              activeChannel: action.payload,
+                        }
+                  }
+                  case 'updateLoading': {
+                        return {
+                              ...state,
+                              loadingChannel: action.payload,
+                        }
+                  }
+                  case 'updateTimer': {
+                        return {
+                              ...state,
+                              timerChannel: action.timer,
+                              activeTimer: action.active,
+                              dataChannel: null,
+                        }
+                  }
+                  case 'updateVolume': {
+                        return {
+                              ...state,
+                              volume: action.payload
+                        }
+                  }
+                  case 'muteVolume': {
+                        return {
+                              ...state,
+                              muteVolume: action.payload
+                        }
+                  }
+                  default: return state;
+            }
+      }
 
       useEffect(() => {
             document.querySelector('.navbar-top-menu').style.opacity = 1
@@ -76,7 +131,7 @@ export function LiveTV() {
       return (
             <div className="wrapper-livetv">
                   <LiveTvContextProvider>
-                        <VideoContextProvider>
+                        <VideoContextProvider state={initialState} reducer={reducer}>
                               <div className="section-content w-padding-top">
                                     <Content>
                                           <div className="background-overlay" />

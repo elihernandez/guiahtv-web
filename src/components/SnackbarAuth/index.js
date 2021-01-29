@@ -38,11 +38,11 @@ export function SnackbarAuth() {
                                     Suscripción gratuita, te invitamos a suscribirte. <br />
                                     <a style={{color: "white"}} href="https://guiah.tv/axs/Suscription">Suscribirme</a>
                               </Fragment>)
-                              setCookie('susmes', suscriptionStatus, { path: '/', maxAge: 60 * 60 * 6 }) 
+                              setCookie('susmes', suscriptionStatus, { path: '/', maxAge: 5 }) 
                         break
                   }
             }
-      }, [suscriptionStatus])
+      }, [suscriptionStatus, cookies])
 
       return (
             <Fragment>

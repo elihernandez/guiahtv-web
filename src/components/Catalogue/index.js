@@ -7,6 +7,7 @@ import { List } from '../List'
 import { ContentMovie } from '../../pages/Movie'
 import { ContentSerie } from '../../pages/Serie'
 import { CSSTransition } from 'react-transition-group'
+import { VideoVod } from '../../pages/Video'
 import './styles.css'
 
 function searchSerie(data, contentId){
@@ -120,7 +121,7 @@ export function CatalogueVod({requestApi}) {
                                     <InfoContent />
                               </Route>
                               <Route exact path={`${url}/:contentType/:contentId/video`} >
-                                    <VideoVod />
+                                    <VideoVod state={stateVod} />
                               </Route>
                         </Switch>
                   </CSSTransition>

@@ -135,7 +135,7 @@
     position: fixed;
     z-index: 999;
     width: 100%;
-    padding: 0 25px;
+    padding: 0 50px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     -webkit-transition: all .5s ease;
@@ -151,8 +151,8 @@
     }
 
 .top-menu.bggradient{
-        background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.75)), to(rgba(0,0,0,0)));
-        background: linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0));
+        background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.30)), to(transparent));
+        background: linear-gradient(to bottom, rgba(0,0,0,0.30), transparent);
     }
 
 .top-menu .section-wrapper{
@@ -876,7 +876,7 @@ button:hover{
 .spinner-mui{
     position: absolute;
     width: 100%;
-    height: 85vh;
+    height: 100vh;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -4414,25 +4414,36 @@ button:hover{
 .content-catalogue{
       padding-top: 80px;
 }
+.wrapper-vod{
+      position: relative;
+      width: 100%;
+      height: auto;
+}
+
 .active-enter {
       opacity: 0;
 }
+
 .active-enter-active {
       opacity: 1;
       -webkit-transition: opacity 300ms;
       transition: opacity 300ms;
 }
+
 .active-enter-done {
       opacity: 1;
 }
+
 .active-exit {
       opacity: 1;
 }
+
 .active-exit-active {
       opacity: 0;
       -webkit-transition: opacity 300ms;
       transition: opacity 300ms;
 }
+
 .active-exit-done {
       opacity: 0;
 }  

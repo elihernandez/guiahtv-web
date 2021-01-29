@@ -9,7 +9,6 @@ export function InfoMovie({data}){
       const textButton = ResumePos == "" ? "Ver ahora" : "Reanudar" 
 
       const handleClick = () => {
-            console.log(url)
             history.push(`${url}/video`)
       }
 
