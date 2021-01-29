@@ -24,7 +24,7 @@ export function Catalogue({requestApi}) {
                                     <Fragment>
                                           {data && !loading &&
                                                 data.map((category) => {
-                                                      return <List key={category.category} data={category} />
+                                                      return <List key={category.category} data={category} listType="catalogue"/>
                                                 })
                                           }
                                     </Fragment>

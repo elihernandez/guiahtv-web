@@ -15,7 +15,7 @@ button{
             background: $color-guide-blue;
       }
 
-      &.white{
+      &.outline-white{
             background: white;
             color: $color-guide-black;
       }

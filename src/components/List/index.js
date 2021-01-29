@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react'
+import React, { Fragment, useState, useEffect, useContext, useRef } from 'react'
 import { useHistory, NavLink, useRouteMatch } from 'react-router-dom'
 import VodContext from '../../context/VodContext'
 const cssTransition = require('css-transition')
@@ -20,14 +20,13 @@ function typeContent(contentType){
       }
 }
 
-function ListItem({ data, posterType }) {
+function ListItem({ data, posterType, listType }) {
       const { url } = useRouteMatch()
       const { dispatchVod } = useContext(VodContext)
-      const { Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ContentType } = data
+      const { Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ContentType, Title, Description } = data
       const type = typeContent(ContentType)
 
       const handleClick = () => {
-            console.log(isSerie(ContentType))
             if (isSerie(ContentType)) {
                   dispatchVod({ type: 'setSerie', payload: data })
             }else{
@@ -52,20 +51,48 @@ function ListItem({ data, posterType }) {
       }
 
       return (
-            <NavLink to={`${url}/${type}/${Registro}`} className="item-link">
-                  <div className="item" onClick={handleClick}>
-                        {posterType == 0 &&
-                              <img onError={handleError} src={HDPosterUrlPortrait} />
-                        }
-                        {posterType == 1 &&
-                              <img onError={handleError} src={HDPosterUrlLandscape} />
-                        }
-                  </div>
-            </NavLink>
+            <Fragment>
+                  { listType == "catalogue" &&
+                        <NavLink to={`${url}/${type}/${Registro}`} className="item-link">
+                              <div className="item" onClick={handleClick}>
+                                    <div className="background-item">
+                                          {posterType == 0 &&
+                                                <img onError={handleError} src={HDPosterUrlPortrait} />
+                                          }
+                                          {posterType == 1 &&
+                                                <img onError={handleError} src={HDPosterUrlLandscape} />
+                                          }
+                                    </div>
+                              </div>
+                        </NavLink>
+                  }
+                  { listType == "season" &&
+                  <NavLink to={`${url}/video`} className="item-link">
+                              <div className="item" onClick={handleClick}>
+                                    <div className="background-item">
+                                          {posterType == 0 &&
+                                                <img onError={handleError} src={HDPosterUrlPortrait} />
+                                          }
+                                          {posterType == 1 &&
+                                                <img onError={handleError} src={HDPosterUrlLandscape} />
+                                          }
+                                    </div>
+                                    <div className="info-episode">
+                                          <div className="group-name-episode">
+                                                <h3 className="name-episode">{Title}</h3>
+                                          </div>
+                                          <div className="group-description-episode">
+                                                <p className="description-episode">{Description}</p>
+                                          </div>
+                                    </div>
+                              </div>
+                        </NavLink>
+                  }
+            </Fragment>
       )
 }
 
-export function List({ data }) {
+export function List({ data, listType }) {
       let pages = 0
       const [page, setPage] = useState(1)
       const [totalPages, setTotalPages] = useState(0)
@@ -114,7 +141,7 @@ export function List({ data }) {
                         <div className="list-items" ref={refList}>
                               {
                                     cmData.map((data) => {
-                                          return <ListItem key={data.Registro} data={data} posterType={poster_type} />
+                                          return <ListItem key={data.Registro} data={data} posterType={poster_type} listType={listType}/>
                                     })
                               }
                         </div>

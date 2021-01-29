@@ -1,0 +1,21 @@
+.seasons-content-wrapper{
+      position: relative;
+      width: 100%;
+      min-height: 300px !important;
+
+      .spinner-mui{
+            height: 300px !important;
+      }
+
+      .seasons-menu{
+            padding: 0 65px !important;
+      }
+
+      .list.landscape .list-items{
+          height: auto !important;
+
+            .background-item{
+                height: 215px !important;
+            }
+      }
+}

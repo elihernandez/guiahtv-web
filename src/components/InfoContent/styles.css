@@ -1,6 +1,6 @@
 @import '../../scss/style-base.css';
 
-.movie-info-wrapper{
+.info-wrapper{
       position: absolute;
       width: 100%;
 
@@ -185,7 +185,10 @@
       .tabs-info-wrapper{
             position: relative;
             width: 100%;
-            padding: 0 50px;
+
+            .MuiTabs-root{
+                  padding: 0 50px !important;
+            }
       }
 
       .MuiPaper-elevation4{
@@ -226,7 +229,7 @@
       .MuiBox-root{
             padding: 25px 0px !important;
 
-            button{
+            /* button{
                   box-shadow: none !important;
                   display: flex;
                   flex-direction: row;
@@ -251,6 +254,6 @@
 
             .MuiPaper-root{
                   background-color: black !important;
-            }
+            } */
       }
 }

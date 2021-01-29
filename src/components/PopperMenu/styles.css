@@ -1,0 +1,33 @@
+.popper-menu-wrapper{
+
+      button{
+            font-family: 'Poppins' !important;
+            text-transform: inherit !important;
+            font-size: 15px !important;
+            box-shadow: none !important;
+            color: white !important;
+      
+            span{
+                  display: flex !important;
+                  flex-direction: row !important;
+                  justify-content: center !important;
+                  align-content: center !important;
+                  align-items: center !important;
+      
+                  i{
+                        font-size: 22px !important;
+                  }
+            } 
+      }
+
+      .MuiList-root.MuiList-padding{
+            a{
+                  color: white !important;
+                  text-decoration: none !important;
+            }
+      }
+      
+      .MuiPaper-root{
+            background-color: black !important;
+      }
+}

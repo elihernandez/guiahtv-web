@@ -81,7 +81,7 @@
                         color: rgba(255, 255, 255, 1);
                     }
 
-.user-profile-navbar button{
+.popper-menu-wrapper button{
             font-family: 'Poppins' !important;
             text-transform: inherit !important;
             font-size: 15px !important;
@@ -90,7 +90,7 @@
             color: white !important; 
       }
       
-            .user-profile-navbar button span{
+            .popper-menu-wrapper button span{
                   display: -webkit-box !important;
                   display: -ms-flexbox !important;
                   display: flex !important;
@@ -108,18 +108,19 @@
                           align-items: center !important;
             }
       
-            .user-profile-navbar button span i{
-                        font-size: 25px !important;
+            .popper-menu-wrapper button span i{
+                        font-size: 22px !important;
                   }
       
-            .user-profile-navbar .MuiList-root.MuiList-padding a{
+            .popper-menu-wrapper .MuiList-root.MuiList-padding a{
                   color: white !important;
                   text-decoration: none !important;
             }
       
-            .MuiPaper-root{
-      background-color: black !important;
-}
+            .popper-menu-wrapper .MuiPaper-root{
+            background-color: black !important;
+      }
+
 /* Top Menu */
 
 /* Music */
@@ -428,7 +429,7 @@ button.primary{
             background: #00aeef;
       }
 
-button.white{
+button.outline-white{
             background: white;
             color: #18191c;
       }
@@ -939,9 +940,9 @@ button:hover{
         position: absolute;
         /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1951%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='url(%23SvgjsLinearGradient1952)'%3e%3c/rect%3e%3cpath d='M0 0L244.06 0L0 226.26z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M0 226.26L244.06 0L1071.31 0L0 540.39z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M0 540.39L1071.31 0L1132.59 0L0 771.98z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M0 771.98L1132.59 0L1510.8799999999999 0L0 871.58z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M1920 1080L1519.7 1080L1920 1002.41z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M1920 1002.41L1519.7 1080L1498.74 1080L1920 806z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M1920 806L1498.74 1080L640.95 1080L1920 537.77z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M1920 537.77L640.95 1080L311.64000000000004 1080L1920 258.88z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1951'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='10.94%25' y1='-19.44%25' x2='89.06%25' y2='119.44%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1952'%3e%3cstop stop-color='rgba(24%2c 25%2c 28%2c 1)' offset='1'%3e%3c/stop%3e%3cstop stop-color='rgba(14%2c 42%2c 71%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
         background-size: cover; */
-        background: #232526;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */
-        background: -webkit-gradient(linear, left top, right top, from(#414345), to(#232526));
-        background: linear-gradient(90deg, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: #232526; 
+        background: -webkit-gradient(linear, left top, right top, from(#414345), to(#232526)); 
+        background: linear-gradient(90deg, #414345, #232526); 
         opacity: 0.5;
     }
 
@@ -3945,6 +3946,9 @@ button:hover{
 .list.portrait .list-items{
                   height: 322px;
             }
+.list.portrait .list-items .background-item{
+                        height: 322px;
+                  }
 .list.portrait .item-link{
                   -webkit-box-flex: 0;
                       -ms-flex: 0 0 14.28571%;
@@ -3953,6 +3957,9 @@ button:hover{
 .list.landscape .list-items{
                   height: 217px;
             }
+.list.landscape .list-items .background-item{
+                        height: 217px;
+                  }
 .list.landscape .item-link{
                   -webkit-box-flex: 0;
                       -ms-flex: 0 0 20%;
@@ -3994,6 +4001,7 @@ button:hover{
                                 align-items: center;
                         -ms-flex-line-pack: center;
                             align-content: center;
+                        text-decoration: none;
 
                   }
 .list .list-content .list-items .item-link .item{
@@ -4001,26 +4009,57 @@ button:hover{
                               height: 100%;
                               width: 100%;
                               border-radius: 6px;
-                              border: 4px solid transparent;
-                              -webkit-transform: scale(0.98);
-                                      transform: scale(0.98);
-                              -webkit-transition: all .2s linear;
-                              transition: all .2s linear;
-                              overflow: hidden;
+                              display: -webkit-box;
+                              display: -ms-flexbox;
+                              display: flex;
+                              -webkit-box-orient: vertical;
+                              -webkit-box-direction: normal;
+                                  -ms-flex-direction: column;
+                                      flex-direction: column;
                         }
-.list .list-content .list-items .item-link .item img{
+.list .list-content .list-items .item-link .item .background-item{
                                     position: relative;
                                     width: 100%;
-                                    height: 100%;
-                                    background-size: cover;
-                                    border-radius: 4px;
+                                    border: 4px solid transparent;
+                                    -webkit-transform: scale(0.98);
+                                            transform: scale(0.98);
+                                    -webkit-transition: all .2s linear;
+                                    transition: all .2s linear;
+                                    overflow: hidden;
+                                    border-radius: 6px;
                               }
-.list .list-content .list-items .item-link .item:hover{
-                                    border: 4px solid white;
-                                    cursor: pointer;
-                                    -webkit-transform: scale(1);
-                                            transform: scale(1);
+.list .list-content .list-items .item-link .item .background-item img{
+                                          position: relative;
+                                          width: 100%;
+                                          height: 100%;
+                                          background-size: cover;
+                                          border-radius: 4px;
+                                    }
+.list .list-content .list-items .item-link .item:hover .background-item{
+                                          border: 4px solid white;
+                                          cursor: pointer;
+                                          -webkit-transform: scale(1);
+                                                  transform: scale(1);
+                                    }
+.list .list-content .list-items .item-link .item .info-episode{
+                                    position: relative;
+                                    width: 100%;
+                                    padding: 0 10px;
                               }
+.list .list-content .list-items .item-link .item .info-episode .group-name-episode{
+                                          margin: 10px 0;
+                                    }
+.list .list-content .list-items .item-link .item .info-episode .group-name-episode .name-episode{
+                                                font-size: 16px;
+                                                font-weight: 500;
+                                          }
+.list .list-content .list-items .item-link .item .info-episode .group-description-episode{
+                                          margin: 10px 0;
+                                    }
+.list .list-content .list-items .item-link .item .info-episode .group-description-episode .description-episode{
+                                                font-size: 15px;
+                                                font-weight: 400;
+                                          }
 .list .list-content .direction{
                   position: absolute;
                   height: 100%;
@@ -4073,56 +4112,56 @@ button:hover{
       --color-guide-purple: #662d91;
 } */
 
-.movie-info-wrapper{
+.info-wrapper{
       position: absolute;
       width: 100%;
 }
 
-.movie-info-wrapper .background{
+.info-wrapper .background{
             position: relative;
             width: 100%;
             height: 750px;
             overflow: hidden;
       }
 
-.movie-info-wrapper .background img{
+.info-wrapper .background img{
                   position: relative;
                   width: 100%;
                   height: auto;
             }
 
-.movie-info-wrapper .background .overlay{
+.info-wrapper .background .overlay{
                   position: absolute
             }
 
-.movie-info-wrapper .background .overlay.bottom{
+.info-wrapper .background .overlay.bottom{
                         bottom: 0;
                         background: -webkit-gradient(linear, left bottom, left top, from(#232526), to(transparent));
                         background: linear-gradient(to top, #232526, transparent);
                         opacity: 0.80
                   }
 
-.movie-info-wrapper .background .overlay.bottom.s-50{
+.info-wrapper .background .overlay.bottom.s-50{
                               width: 100%;
                               height: 50%;
                         }
 
-.movie-info-wrapper .background .overlay.bottom.s-40{
+.info-wrapper .background .overlay.bottom.s-40{
                               width: 100%;
                               height: 40%;
                         }
 
-.movie-info-wrapper .background .overlay.bottom.s-30{
+.info-wrapper .background .overlay.bottom.s-30{
                               width: 100%;
                               height: 30%;
                         }
 
-.movie-info-wrapper .background .overlay.bottom.s-20{
+.info-wrapper .background .overlay.bottom.s-20{
                               width: 100%;
                               height: 20%;
                         }
 
-.movie-info-wrapper .background .overlay.left{
+.info-wrapper .background .overlay.left{
                         left: 0;
                         top: 0;
                         background: -webkit-gradient(linear, left top, right top, from(#232526), to(transparent));
@@ -4130,70 +4169,70 @@ button:hover{
                         opacity: 0.50
                   }
 
-.movie-info-wrapper .background .overlay.left.s-80{
+.info-wrapper .background .overlay.left.s-80{
                               width: 80%;
                               height: 100%;
                         }
 
-.movie-info-wrapper .background .overlay.left.s-70{
+.info-wrapper .background .overlay.left.s-70{
                               width: 70%;
                               height: 100%;
                         }
 
-.movie-info-wrapper .background .overlay.left.s-60{
+.info-wrapper .background .overlay.left.s-60{
                               width: 60%;
                               height: 100%;
                         }
 
-.movie-info-wrapper .background .overlay.left.s-50{
+.info-wrapper .background .overlay.left.s-50{
                               width: 50%;
                               height: 100%;
                         }
 
-.movie-info-wrapper .background .overlay.left.s-40{
+.info-wrapper .background .overlay.left.s-40{
                               width: 40%;
                               height: 100%;
                         }
 
-.movie-info-wrapper .background .overlay.left.s-30{
+.info-wrapper .background .overlay.left.s-30{
                               width: 30%;
                               height: 100%;
                         }
 
-.movie-info-wrapper .background .overlay.left.s-20{
+.info-wrapper .background .overlay.left.s-20{
                               width: 20%;
                               height: 100%;
                         }
 
-.movie-info-wrapper .info-movie{
+.info-wrapper .info-movie{
             position: absolute;
             top: 0;
             width: 100%;
             padding: 200px 0 0 50px;
       }
 
-.movie-info-wrapper .info-movie .group-title{
+.info-wrapper .info-movie .group-title{
                   width: 60%;
             }
 
-.movie-info-wrapper .info-movie .group-title .title{
+.info-wrapper .info-movie .group-title .title{
                         font-size: 50px;
                         font-weight: 700;
                         letter-spacing: 1px;
                   }
 
-.movie-info-wrapper .info-movie .group-description{
+.info-wrapper .info-movie .group-description{
                   margin: 25px 0;
                   width: 50%;
             }
 
-.movie-info-wrapper .info-movie .group-description .description{
+.info-wrapper .info-movie .group-description .description{
                         font-size: 20px;
                         font-weight: 400;
                         width: 100%;
                   }
 
-.movie-info-wrapper .info-movie .group{
+.info-wrapper .info-movie .group{
                   display: -webkit-box;
                   display: -ms-flexbox;
                   display: flex;
@@ -4211,28 +4250,28 @@ button:hover{
                   margin: 2.5px 0
             }
 
-.movie-info-wrapper .info-movie .group.info{
+.info-wrapper .info-movie .group.info{
                         font-size: 15px;
                   }
 
-.movie-info-wrapper .info-movie .group.info p{
+.info-wrapper .info-movie .group.info p{
                               margin-right: 25px !important;
                               font-weight: 500;
                         }
 
-.movie-info-wrapper .info-movie .group.info .img-rating{
+.info-wrapper .info-movie .group.info .img-rating{
                               position: relative;
                               width: 40px;
                               height: auto;
                         }
 
-.movie-info-wrapper .info-movie .group.info .rating{
+.info-wrapper .info-movie .group.info .rating{
                               font-size: 18px;
                               font-weight: 600;
                               margin: 10px !important;
                         }
 
-.movie-info-wrapper .info-movie .group.info .img-clasification{
+.info-wrapper .info-movie .group.info .img-clasification{
                               position: relative;
                               width: 50px;
                               height: auto;
@@ -4240,15 +4279,15 @@ button:hover{
                               margin-right: 15px;
                         }
 
-.movie-info-wrapper .info-movie .group .text-group{
+.info-wrapper .info-movie .group .text-group{
                         margin-right: 10px !important;
                   }
 
-.movie-info-wrapper .info-movie .group-actions{
+.info-wrapper .info-movie .group-actions{
                   margin-top: 50px;
             }
 
-.movie-info-wrapper .info-movie .group-actions .button-watch{
+.info-wrapper .info-movie .group-actions .button-watch{
                         background: white;
                         color: #18191c;
                         text-transform: uppercase;
@@ -4268,95 +4307,109 @@ button:hover{
                                 align-items: center;
                   }
 
-.movie-info-wrapper .info-movie .group-actions .button-watch i{
+.info-wrapper .info-movie .group-actions .button-watch i{
                               font-size: 18px;
                               margin-right: 10px;
                         }
 
-.movie-info-wrapper .tabs-info-wrapper{
+.info-wrapper .tabs-info-wrapper{
             position: relative;
             width: 100%;
-            padding: 0 50px;
       }
 
-.movie-info-wrapper .MuiPaper-elevation4{
+.info-wrapper .tabs-info-wrapper .MuiTabs-root{
+                  padding: 0 50px !important;
+            }
+
+.info-wrapper .MuiPaper-elevation4{
             -webkit-box-shadow: none !important;
                     box-shadow: none !important;
       }
 
-.movie-info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4{
+.info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4{
             background-color: transparent !important;
       }
 
-.movie-info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 button{
+.info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 button{
                   -webkit-box-shadow: none !important;
                           box-shadow: none !important;
             }
 
-.movie-info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 .MuiTab-textColorPrimary{
+.info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 .MuiTab-textColorPrimary{
                   color: rgba(255, 255, 255, 0.5) !important;
                   font-size: 16px !important;
                   letter-spacing: 1px !important;
                   font-family: 'Poppins';
             }
 
-.movie-info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 .MuiTab-textColorPrimary.Mui-selected{
+.info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 .MuiTab-textColorPrimary.Mui-selected{
                   color: white !important;
             }
 
-.movie-info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 .PrivateTabIndicator-colorPrimary-2{
+.info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 .PrivateTabIndicator-colorPrimary-2{
                   background-color: white !important;
             }
 
-.movie-info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 .MuiTabs-indicator{
+.info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 .MuiTabs-indicator{
                   background-color: white !important;
             }
 
-.movie-info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 .MuiTab-fullWidth{
+.info-wrapper .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorDefault.MuiPaper-elevation4 .MuiTab-fullWidth{
                   -webkit-box-flex: 0 !important;
                       -ms-flex-positive: 0 !important;
                           flex-grow: 0 !important;
             }
 
-.movie-info-wrapper .MuiBox-root{
+.info-wrapper .MuiBox-root{
             padding: 25px 0px !important;
-      }
 
-.movie-info-wrapper .MuiBox-root button{
-                  -webkit-box-shadow: none !important;
-                          box-shadow: none !important;
-                  display: -webkit-box;
-                  display: -ms-flexbox;
+            /* button{
+                  box-shadow: none !important;
                   display: flex;
-                  -webkit-box-orient: horizontal;
-                  -webkit-box-direction: normal;
-                      -ms-flex-direction: row;
-                          flex-direction: row;
-                  -webkit-box-pack: center;
-                      -ms-flex-pack: center;
-                          justify-content: center;
-                  -webkit-box-align: center;
-                      -ms-flex-align: center;
-                          align-items: center;
+                  flex-direction: row;
+                  justify-content: center;
+                  align-items: center;
                   padding: 15px 25px;
-            }
 
-.movie-info-wrapper .MuiBox-root button i{
+                  i{
                         font-size: 18px;
                         margin-left: 10px;
                   }
 
-.movie-info-wrapper .MuiBox-root button:hover{
+                  &:hover{
                         background: rgba(0, 0, 0, 0.25);
                   }
 
-.movie-info-wrapper .MuiBox-root button .MuiButton-label{
+                  .MuiButton-label{
                         color: white !important;
                         font-size: 14px !important;
                   }
+            }
 
-.movie-info-wrapper .MuiBox-root .MuiPaper-root{
+            .MuiPaper-root{
                   background-color: black !important;
+            } */
+      }
+.seasons-content-wrapper{
+      position: relative;
+      width: 100%;
+      min-height: 300px !important;
+}
+
+      .seasons-content-wrapper .spinner-mui{
+            height: 300px !important;
+      }
+
+      .seasons-content-wrapper .seasons-menu{
+            padding: 0 65px !important;
+      }
+
+      .seasons-content-wrapper .list.landscape .list-items{
+          height: auto !important;
+      }
+
+      .seasons-content-wrapper .list.landscape .list-items .background-item{
+                height: 215px !important;
             }
 .content-catalogue{
       padding-top: 80px;
@@ -4632,15 +4685,15 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #232526;
-  font-family: "Poppins", sans-serif !important
+  /* background: #232526; */
+  font-family: "Poppins", sans-serif !important;
   /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1951%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='url(%23SvgjsLinearGradient1952)'%3e%3c/rect%3e%3cpath d='M0 0L244.06 0L0 226.26z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M0 226.26L244.06 0L1071.31 0L0 540.39z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M0 540.39L1071.31 0L1132.59 0L0 771.98z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M0 771.98L1132.59 0L1510.8799999999999 0L0 871.58z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M1920 1080L1519.7 1080L1920 1002.41z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M1920 1002.41L1519.7 1080L1498.74 1080L1920 806z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M1920 806L1498.74 1080L640.95 1080L1920 537.77z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M1920 537.77L640.95 1080L311.64000000000004 1080L1920 258.88z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1951'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='10.94%25' y1='-19.44%25' x2='89.06%25' y2='119.44%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1952'%3e%3cstop stop-color='rgba(24%2c 25%2c 28%2c 1)' offset='1'%3e%3c/stop%3e%3cstop stop-color='rgba(14%2c 42%2c 71%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e"); */
   /* background-image: url('../assets/images/backgrounds/fondomaquetamusica.jpg');
   background-size: 100%; */
-  /* background: #232526;  
-  background: -webkit-linear-gradient(90deg, #414345, #232526);  
-  background: linear-gradient(90deg, #414345, #232526);
-  opacity: 0.5;    */
+  background: #232526 
+  /* background: -webkit-linear-gradient(90deg, #414345, #232526); 
+  background: linear-gradient(90deg, #414345, #232526);  */
+  /* opacity: 0.5;    */
 }
 
 html::-webkit-scrollbar, body::-webkit-scrollbar {
