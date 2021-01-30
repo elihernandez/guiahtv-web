@@ -99,7 +99,7 @@ function ButtonsPlaying({ videoRef, playing, dispatch }) {
       // const history = useHistory()
 
       const handleClick = () => {
-            history.goBack()
+            // history.goBack()
             if (playing) {
                   videoRef.current.pause()
                   dispatch({ type: 'setPlaying', payload: false })

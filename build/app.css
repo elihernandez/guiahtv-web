@@ -82,6 +82,14 @@
             .navbar .section-wrapper .navbar-list .navbar-item .navbar-link.active p{
                         color: rgba(255, 255, 255, 1);
                     }
+    
+            .navbar .section-wrapper .navbar-list .navbar-item .navbar-link:hover svg{
+                        color: rgba(255, 255, 255, 1);
+                    }
+    
+            .navbar .section-wrapper .navbar-list .navbar-item .navbar-link.active svg{
+                        color: rgba(255, 255, 255, 1);
+                    }
 
 .popper-menu-wrapper button{
             font-family: 'Poppins' !important;
