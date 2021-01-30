@@ -17,11 +17,19 @@ export function useHls(video, url, dispatch) {
                         })
             
                         hls.on(Hls.Events.ERROR, function (event, data) {
+                              console.log(event, data)
                               if(event == "hlsError" && data.details == "manifestLoadError"){
                                     hls.destroy()
                                     dispatch({ type: 'updateLoading', payload: false })
                                     dispatch({ type: 'updateData', payload: null })
                                     setError("Señal no disponible por el momento")
+                              }
+
+                              if(data.details == "audioTrackLoadError"){
+                                    hls.destroy()
+                                    dispatch({ type: 'updateLoading', payload: false })
+                                    dispatch({ type: 'updateData', payload: null })
+                                    setError("Contenido no disponible por el momento")
                               }
                               // if (data.fatal) {
                               //       switch (data.type) {

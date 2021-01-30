@@ -9,10 +9,10 @@
 
       &.portrait{
             .list-items{
-                  height: 322px;
+                  height: 330px;
 
                   .background-item{
-                        height: 322px;
+                        height: 330px;
                   }
             }
 

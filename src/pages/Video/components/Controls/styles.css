@@ -1,0 +1,161 @@
+@import '../../../../scss/style-base.css';
+
+.controls-player{
+      position: absolute;
+      width: 100%;
+      height: 400px;
+      padding: 15px 50px;
+      bottom: 0;
+      z-index: 100;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.60), transparent);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      .controls-wrapper{
+            position: relative;
+            width: 100%;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .top-section{
+                  position: relative;
+                  width: 100%;
+                  margin: 2.5px 0;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+
+                  .group-buttons{
+                        position: relative;
+                        height: auto;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                        .content-button-icon{
+                              width: 45px;
+                              height: 45px;
+                              border-radius: 50%;
+                              cursor: pointer;
+                              margin-right: 30px;
+                              background: transparent;
+                              display: flex;
+                              flex-direction: row;
+                              justify-content: center;
+                              align-items: center;
+                              box-shadow: none;
+
+                              i{
+                                    color: white;
+                                    font-size: 22px;
+                              }
+
+                              &:hover{
+                                    background: rgba(0, 0, 0, 0.25);
+                              }
+                        }
+
+                        .group-time{
+                              position: relative;
+                              min-width: 120px;
+                              text-align: center;
+                        }
+                        .container-volume{
+                              position: absolute;
+                              /*height: 100px; 
+                              width: 5px;
+                              bottom: 50px;
+                              left: 18px; */
+                              height: 150px; 
+                              width: 50px;
+                              bottom: 5px;
+                              left: 0px;
+
+                              .MuiSlider-root.MuiSlider-vertical{
+                                    width: 7px !important;
+                                    color: white !important;
+                                    padding: 0 !important;
+                                    left: 18px;
+                                    height: 70% !important;
+
+                                    .MuiSlider-rail{
+                                          width: 7px !important;
+                                    }
+
+                                    .MuiSlider-track{
+                                          width: 7px !important;
+                                    }
+
+                                    .MuiSlider-thumb{
+                                          width: 16px !important;
+                                          height: 16px !important;
+
+                                          &:hover{
+                                                box-shadow: none !important;
+                                          }
+                                          
+                                          &.MuiSlider-active{
+                                                box-shadow: rgba(255, 255, 255, 0.5) !important;
+                                          }
+                                    }
+                              }
+                        }
+                  }
+            }
+           
+            .content-progress-time{
+                  position: relative;
+                  width: 100%;
+                  margin: 2.5px 0;
+
+                  .MuiSlider-root{
+                        width: 100%;
+                        color: white !important;
+      
+                        .MuiSlider-rail{
+                              height: 4px !important;
+                        }
+      
+                        .MuiSlider-track{
+                              height: 4px !important;
+                        }
+      
+                        .MuiSlider-thumb{
+                              width: 15px !important;
+                              height: 15px !important;
+                              margin-top: -6px !important; 
+      
+                              &:hover{
+                                    box-shadow: none !important;
+                                    
+                              }
+                        }
+      
+                        &:hover{
+                              .MuiSlider-rail{
+                                    height: 6px !important;
+                              }
+      
+                              .MuiSlider-track{
+                                    height: 6px !important;
+                              }
+      
+                              .MuiSlider-thumb{
+                                    width: 18px !important;
+                                    height: 18px !important;
+                                    margin-top: -6px !important; 
+            
+                                    &:hover{
+                                          box-shadow: none !important;
+                                          
+                                    }
+                              }
+                        }
+                  }
+      
+            }
+      }
+}

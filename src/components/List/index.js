@@ -146,13 +146,13 @@ export function List({ data, listType }) {
                               }
                         </div>
                         {
-                              totalPages > 1 && page > 1 &&
+                              totalPages > 1 && page > 1 && listType != "season" &&
                               <div className="direction direction-prev" onClick={handleClickPrev}>
                                     <i className="fas fa-chevron-left" />
                               </div>
                         }
                         {
-                              (totalPages > 1) && (page < totalPages) &&
+                              (totalPages > 1) && (page < totalPages) && listType != "season" &&
                               <div className="direction direction-next" onClick={handleClickRight}>
                                     <i className="fas fa-chevron-right" />
                               </div>

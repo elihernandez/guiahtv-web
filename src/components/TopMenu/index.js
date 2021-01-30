@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { Navbar } from '../Navbar/index'
 import { UserMenu } from '../UserMenu/index'
 import Logo from '../Logo/index'
+import RadioIcon from '@material-ui/icons/Radio';
 import './styles.css'
 
 export function hideTopMenuNavbar(){
@@ -20,11 +21,11 @@ export function showTopMenuNavbar(){
 
 function NavbarTopMenu(){
       const navLinks = [
-            {title: 'En vivo', href: '/tv', icon: 'fas fa-tv'},
-            {title: 'A la carta', href: '/alacarta', icon: 'fas fa-film'},
-            {title: 'Radio', href: '/radio', icon: 'fas fa-broadcast-tower'},
-            {title: 'Música', href: '/musica', icon: 'fas fa-music'},
-            {title: 'Zona kids', href: '/zonakids', icon: 'fas fa-child'}
+            {title: 'En vivo', href: '/tv', icon: <i className="fas fa-tv"></i>},
+            {title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-film"></i>},
+            {title: 'Radio', href: '/radio', icon: <RadioIcon />},
+            {title: 'Música', href: '/musica', icon: <i className="fas fa-music"></i>},
+            {title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i>}
       ]
 
       const classItems = 'navbar-link-top-menu'

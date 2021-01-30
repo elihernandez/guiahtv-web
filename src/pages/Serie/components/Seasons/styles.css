@@ -12,7 +12,12 @@
       }
 
       .list.landscape .list-items{
-          height: auto !important;
+            height: auto !important;
+            flex-wrap: wrap;
+
+            .item{
+                  margin-bottom: 50px;
+            }
 
             .background-item{
                 height: 215px !important;

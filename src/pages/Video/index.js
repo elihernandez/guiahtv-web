@@ -1,24 +1,30 @@
-import React, { useEffect, useState, useContext, useRef} from 'react'
+import React, { useEffect } from 'react'
 import { useRouteMatch, useHistory } from 'react-router-dom'
-import { LoaderSpinnerMUI } from '../../components/Loader'
-import UserContext from '../../context/UserContext'
-import VideoContext from '../../context/VideoContext'
+import { Player } from './components/Player'
 import { VideoContextProvider } from '../../context/VideoContext'
-import { getLinkVideoVod } from '../../services/getLinkVideoVod'
-import { useHls } from '../../hooks/useHls'
+import './styles.css'
 
 const initialState = {
+      videoRef: null,
       data: null,
       active: false,
       loading: false,
       timer: false,
       activeTimer: false,
+      currentTime: 0,
       volume: 50,
+      playing: false,
       muteVolume: false
 }
 
 const reducer = (state, action) => {
       switch (action.type) {
+            case 'updateVideoRef': {
+                  return {
+                        ...state,
+                        videoRef: action.payload,
+                  }
+            }
             case 'updateData': {
                   return {
                         ...state,
@@ -59,46 +65,20 @@ const reducer = (state, action) => {
                         muteVolume: action.payload
                   }
             }
-            default: return state;
-      }
-}
-
-function Player({state}){
-      console.log(state)
-      const video = useRef()
-      const { movieVod } = state
-      const [url, setUrl] = useState()
-      const { stateUser } = useContext(UserContext)
-      const { credentials } = stateUser
-      const { stateVideo, dispatch } = useContext(VideoContext)
-      const {error, setError} = useHls(video, url, dispatch)
-
-      useEffect(() => {
-
-            const requestLink = async () => {
-                  try{
-                        const response = await getLinkVideoVod(movieVod, credentials)
-                        if(response == "error") throw new Error('No se pudo obtener la información.')
-                        const url = response.Url
-                        setUrl(url)
-                  }catch(e){
-
+            case 'setCurrentTime': {
+                  return {
+                        ...state,
+                        currentTime: action.payload
                   }
             }
-
-            requestLink()
-            return () => {
-
+            case 'setPlaying': {
+                  return {
+                        ...state,
+                        playing: action.payload
+                  }
             }
-      }, [])
-
-      return (
-            <div className="video">
-                  <div className="video-wrapper">
-                        <video loop={true} ref={video} preload="auto" />
-                  </div>
-            </div>
-      )
+            default: return state;
+      }
 }
 
 export function VideoVod({ state }) {
@@ -110,9 +90,20 @@ export function VideoVod({ state }) {
             history.push(url.replace('/video', ''))
       }
 
+      useEffect(() => {
+            document.querySelector('.top-menu').style.opacity = 0
+            return () => {
+                  document.querySelector('.top-menu').style.opacity = 1
+            }
+      }, [])
+
       return (
             <VideoContextProvider state={initialState} reducer={reducer}>
-                  <Player state={state}/>
+                  <div className="video">
+                        <div className="video-wrapper">
+                              <Player state={state}/>
+                        </div>
+                  </div>
             </VideoContextProvider>
       )
 }

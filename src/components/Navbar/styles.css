@@ -40,17 +40,20 @@
                     flex-direction: row;
                     align-items: center;
 
-                    i, p{
+                    i, p, svg{
                         font-size: 14px;
                         font-weight: 600;
                         margin: 0 10px;
                         color: rgba(255, 255, 255, 0.5);
                         transition: all .15s ease;
+                        margin-bottom: 1px;
                     }
 
-                    i{
-                        font-size: 12px; 
+                    svg{
+                        font-size: 18px;
+                        margin-bottom: 2px;
                     }
+
 
                     &:hover i{
                         color: rgba(255, 255, 255, 1);
