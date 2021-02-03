@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react'
 import { useRouteMatch, useHistory } from 'react-router-dom'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import { getProgressMovie } from '../../js/Time'
 import './styles.css'
 
 export function InfoMovie({data}){
@@ -86,6 +88,9 @@ export function InfoMovie({data}){
                         <div className="group-actions">
                               <button type="button" className="button-watch" onClick={handleClick}>
                                     <i className="fas fa-play" />{textButton}
+                                    <div className="progress-bar-content">
+                                          <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
+                                    </div>
                               </button>
                         </div>
                   </div>

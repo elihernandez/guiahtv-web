@@ -105,3 +105,12 @@ export function getUtcOffsetLocal(){
   
       return utcOffsetLocal;
 }
+
+export function getProgressMovie(ResumePos, Length){
+      let position = ResumePos / 1000
+      let duration = (Length).replace(' min', '')
+      duration = parseInt(duration, 10) * 60
+      let time = (position * 100) / duration
+
+      return time;
+  }

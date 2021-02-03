@@ -9,11 +9,11 @@ export function setResumePosVideo(Registro, positionVideo, {memclid}){
       console.log(memclid)
       const apiURL = `${API_URL}/cmd/sCmResPos/${Registro}/${positionVideo}/${memclid}`
 
-      // return axios.get(apiURL)
-      // .then(function (response) {
-      //       return response.data
-      // })
-      // .catch(function (error) {
-      //       return ("error")
-      // })
+      return axios.get(apiURL)
+      .then(function (response) {
+            return response.data
+      })
+      .catch(function (error) {
+            return ("error")
+      })
 }

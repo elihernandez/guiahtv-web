@@ -3945,6 +3945,16 @@ button:hover{
                                           color: #797979;
                                     }
 
+/* Top Menu */
+
+/* Music */
+
+/* :root{
+      --color-guide-black: #18191c;
+      --color-guide-blue: #00aeef;
+      --color-guide-purple: #662d91;
+} */
+
 .list{
       position: relative;
       width: 100%;
@@ -3954,35 +3964,44 @@ button:hover{
       margin: 25px 0;
       overflow-x: hidden
 }
+
 .list.portrait .list-items{
                   height: 330px;
             }
+
 .list.portrait .list-items .background-item{
                         height: 330px;
                   }
+
 .list.portrait .item-link{
                   -webkit-box-flex: 0;
                       -ms-flex: 0 0 14.28571%;
                           flex: 0 0 14.28571%;
             }
+
 .list.landscape .list-items{
                   height: 217px;
             }
+
 .list.landscape .list-items .background-item{
                         height: 217px;
                   }
+
 .list.landscape .item-link{
                   -webkit-box-flex: 0;
                       -ms-flex: 0 0 20%;
                           flex: 0 0 20%;
             }
+
 .list .title-list{
             font-size: 18px;
             font-weight: 600;
             letter-spacing: .5px;
             margin: 0 0 5px 14px !important;
       }
+
 /* border: 1px solid blue; */
+
 .list .list-content .list-items{
                   position: relative;
                   width: 100%;
@@ -3994,7 +4013,9 @@ button:hover{
                       -ms-flex-direction: row;
                           flex-direction: row;
             }
+
 /* border: 1px solid green; */
+
 .list .list-content .list-items .item-link{
                         height: 100%;
                         display: -webkit-box;
@@ -4015,6 +4036,7 @@ button:hover{
                         text-decoration: none;
 
                   }
+
 .list .list-content .list-items .item-link .item{
                               position: relative;
                               height: 100%;
@@ -4028,6 +4050,7 @@ button:hover{
                                   -ms-flex-direction: column;
                                       flex-direction: column;
                         }
+
 .list .list-content .list-items .item-link .item .background-item{
                                     position: relative;
                                     width: 100%;
@@ -4039,6 +4062,7 @@ button:hover{
                                     overflow: hidden;
                                     border-radius: 6px;
                               }
+
 .list .list-content .list-items .item-link .item .background-item img{
                                           position: relative;
                                           width: 100%;
@@ -4046,31 +4070,73 @@ button:hover{
                                           background-size: cover;
                                           border-radius: 4px;
                                     }
+
+.list .list-content .list-items .item-link .item .background-item .progress-bar-content{
+                                          position: absolute;
+                                          height: 30%;
+                                          width: 100%;
+                                          bottom: 0;
+                                          display: -webkit-box;
+                                          display: -ms-flexbox;
+                                          display: flex;
+                                          -webkit-box-orient: vertical;
+                                          -webkit-box-direction: normal;
+                                              -ms-flex-direction: column;
+                                                  flex-direction: column;
+                                          -webkit-box-pack: end;
+                                              -ms-flex-pack: end;
+                                                  justify-content: flex-end;
+                                          -webkit-box-align: center;
+                                              -ms-flex-align: center;
+                                                  align-items: center;
+                                          background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.50)), to(transparent));
+                                          background: linear-gradient(to top, rgba(0, 0, 0, 0.50), transparent);
+                                    }
+
+.list .list-content .list-items .item-link .item .background-item .progress-bar-content .MuiLinearProgress-root{
+                                                width: 90%;
+                                                background-color: rgba(255, 255, 255, 0.75);
+                                                height: 6px;
+                                                margin-bottom: 15px;
+                                                border-radius: 2px;
+                                          }
+
+.list .list-content .list-items .item-link .item .background-item .progress-bar-content .MuiLinearProgress-root .MuiLinearProgress-bar{
+                                                      background-color: #00aeef;
+                                                      border-radius: 2px;
+                                                }
+
 .list .list-content .list-items .item-link .item:hover .background-item{
                                           border: 4px solid white;
                                           cursor: pointer;
                                           -webkit-transform: scale(1);
                                                   transform: scale(1);
                                     }
+
 .list .list-content .list-items .item-link .item .info-episode{
                                     position: relative;
                                     width: 100%;
                                     padding: 0 10px;
                               }
+
 .list .list-content .list-items .item-link .item .info-episode .group-name-episode{
                                           margin: 10px 0;
                                     }
+
 .list .list-content .list-items .item-link .item .info-episode .group-name-episode .name-episode{
                                                 font-size: 16px;
                                                 font-weight: 500;
                                           }
+
 .list .list-content .list-items .item-link .item .info-episode .group-description-episode{
                                           margin: 10px 0;
                                     }
+
 .list .list-content .list-items .item-link .item .info-episode .group-description-episode .description-episode{
                                                 font-size: 15px;
                                                 font-weight: 400;
                                           }
+
 .list .list-content .direction{
                   position: absolute;
                   height: 100%;
@@ -4094,6 +4160,7 @@ button:hover{
                   -webkit-transition: all .3s ease;
                   transition: all .3s ease;
             }
+
 .list .list-content .direction i{
                         color: white;
                         font-size: 30px;
@@ -4102,12 +4169,15 @@ button:hover{
                         -webkit-transition: all .3s ease;
                         transition: all .3s ease
                   }
+
 .list .list-content .direction i:hover{
                               background: rgba(24,25,28, 0.75);
                         }
+
 .list .list-content .direction.direction-prev{
                         left: -3.3%;
                   }
+
 .list .list-content .direction.direction-next{
                         right: -3.3%;
                   }
@@ -4296,6 +4366,7 @@ button:hover{
 
 .info-wrapper .info-movie .group-actions{
                   margin-top: 50px;
+                  width: 100%;
             }
 
 .info-wrapper .info-movie .group-actions .button-watch{
@@ -4305,6 +4376,7 @@ button:hover{
                         font-size: 16px;
                         padding: 20px 30px;
                         font-weight: 600;
+                        width: auto;
                         letter-spacing: 1px;
                         display: -webkit-box;
                         display: -ms-flexbox;
@@ -4322,6 +4394,29 @@ button:hover{
                               font-size: 18px;
                               margin-right: 10px;
                         }
+
+.info-wrapper .info-movie .group-actions .button-watch .progress-bar-content{
+                              position: absolute;
+                              height: auto;
+                              width: 186px;
+                              bottom: 0;
+                              left: 2.7%;
+                        }
+
+.info-wrapper .info-movie .group-actions .button-watch .progress-bar-content .MuiLinearProgress-root{
+                                    width: 100%;
+                                    background-color: white;
+                                    height: 6px;
+                                    border-radius: 2px;
+                                    border-bottom-left-radius: 4px;
+                                    border-bottom-right-radius: 4px;
+                              }
+
+.info-wrapper .info-movie .group-actions .button-watch .progress-bar-content .MuiLinearProgress-root .MuiLinearProgress-bar{
+                                          background-color: #00aeef;
+                                          border-radius: 2px;
+                                          
+                                    }
 
 .info-wrapper .tabs-info-wrapper{
             position: relative;

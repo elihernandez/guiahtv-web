@@ -1,3 +1,5 @@
+@import '../../scss/style-base.css';
+
 .list{
       position: relative;
       width: 100%;
@@ -84,6 +86,31 @@
                                           height: 100%;
                                           background-size: cover;
                                           border-radius: 4px;
+                                    }
+
+                                    .progress-bar-content{
+                                          position: absolute;
+                                          height: 30%;
+                                          width: 100%;
+                                          bottom: 0;
+                                          display: flex;
+                                          flex-direction: column;
+                                          justify-content: flex-end;
+                                          align-items: center;
+                                          background: linear-gradient(to top, rgba(0, 0, 0, 0.50), transparent);
+
+                                          .MuiLinearProgress-root{
+                                                width: 90%;
+                                                background-color: rgba(255, 255, 255, 0.75);
+                                                height: 6px;
+                                                margin-bottom: 15px;
+                                                border-radius: 2px;
+
+                                                .MuiLinearProgress-bar{
+                                                      background-color: $color-guide-blue;
+                                                      border-radius: 2px;
+                                                }
+                                          }
                                     }
                               }
 

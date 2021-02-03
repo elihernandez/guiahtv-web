@@ -1,6 +1,8 @@
 import React, { Fragment, useState, useEffect, useContext, useRef } from 'react'
-import { useHistory, NavLink, useRouteMatch } from 'react-router-dom'
+import { NavLink, useRouteMatch } from 'react-router-dom'
 import VodContext from '../../context/VodContext'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import { getProgressMovie } from '../../js/Time'
 const cssTransition = require('css-transition')
 import './styles.css'
 
@@ -23,7 +25,7 @@ function typeContent(contentType){
 function ListItem({ data, posterType, listType }) {
       const { url } = useRouteMatch()
       const { dispatchVod } = useContext(VodContext)
-      const { Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ContentType, Title, Description } = data
+      const { Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ContentType, Title, Description, ResumePos, Length } = data
       const type = typeContent(ContentType)
 
       const handleClick = () => {
@@ -62,6 +64,11 @@ function ListItem({ data, posterType, listType }) {
                                           {posterType == 1 &&
                                                 <img onError={handleError} src={HDPosterUrlLandscape} />
                                           }
+                                          {ResumePos &&
+                                                <div className="progress-bar-content">
+                                                      <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
+                                                </div>
+                                          }
                                     </div>
                               </div>
                         </NavLink>
@@ -75,6 +82,11 @@ function ListItem({ data, posterType, listType }) {
                                           }
                                           {posterType == 1 &&
                                                 <img onError={handleError} src={HDPosterUrlLandscape} />
+                                          }
+                                          {ResumePos &&
+                                                <div className="progress-bar-content">
+                                                      <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
+                                                </div>
                                           }
                                     </div>
                                     <div className="info-episode">
