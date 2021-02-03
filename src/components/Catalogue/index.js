@@ -121,7 +121,7 @@ export function CatalogueVod({requestApi}) {
                                     <InfoContent />
                               </Route>
                               <Route exact path={`${url}/:contentType/:contentId/video`} >
-                                    <VideoVod state={stateVod} />
+                                    <VideoVod state={stateVod} dispatch={dispatchVod} />
                               </Route>
                         </Switch>
                   </CSSTransition>

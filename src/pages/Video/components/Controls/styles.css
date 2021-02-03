@@ -3,11 +3,11 @@
 .controls-player{
       position: absolute;
       width: 100%;
-      height: 400px;
+      height: 200px;
       padding: 15px 50px;
       bottom: 0;
       z-index: 100;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.60), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -50,11 +50,19 @@
 
                               i{
                                     color: white;
-                                    font-size: 22px;
+                                    font-size: 24px;
+                              }
+
+                              img{
+                                    width: 30px;
                               }
 
                               &:hover{
-                                    background: rgba(0, 0, 0, 0.25);
+                                    background: rgba(0, 0, 0, 0.5);
+                              }
+
+                              &:focus{
+                                    outline: none !important;
                               }
                         }
 
@@ -156,6 +164,65 @@
                         }
                   }
       
+            }
+      }
+}
+
+.MuiPaper-root{
+      background-color: #424242 !important;
+}
+
+.tracks-content{
+      position: relative;
+      display: flex;
+      padding: 25px 20px;
+
+      .audios-content{
+            min-width: 225px;
+            padding: 0 10px;
+      }
+
+      .subtitles-content{
+            min-width: 225px;
+            padding: 0 10px;
+      }
+
+      .name-list{
+            padding-left: 15px !important;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px !important;
+      }
+
+      .list-tracks{
+            position: relative;
+
+            .track-item{
+                  font-size: 15px;
+                  font-weight: 500;
+                  padding: 10px 15px;
+                  cursor: pointer;
+                  border-radius: 4px;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  align-items: center;
+
+                  &:hover{
+                        background: #616161;
+                  }
+
+                  i{
+                        opacity: 0;
+                        font-size: 16px;
+                        width: 15px;
+                  }
+
+                  &.active{
+                        i{
+                              opacity: 1;
+                        }
+                  }
             }
       }
 }

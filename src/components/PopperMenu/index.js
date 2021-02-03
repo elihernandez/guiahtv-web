@@ -21,7 +21,7 @@ export function PopperMenu({textButton, itemsMenu}){
           return
         }
     
-        setOpen(false);
+        setOpen(false)
       }
     
       function handleListKeyDown(event) {

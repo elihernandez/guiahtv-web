@@ -9,7 +9,8 @@ export function VodContextProvider({ children }) {
             loadingVod: false,
             serieVod: null,
             seasonVod: null,
-            movieVod: null
+            movieVod: null,
+            videoRef: null
       }
 
       const reducer = (state, action) => {
@@ -50,7 +51,12 @@ export function VodContextProvider({ children }) {
                               movieVod: action.payload
                         }
                   }
-
+                  case 'setVideoRef': {
+                        return {
+                              ...state,
+                              videoRef: action.payload
+                        }
+                  }
                   default: return state;
             }
       }

@@ -1,22 +1,24 @@
-import React, { useEffect, useState, useContext, useRef} from 'react'
-import { LoaderSpinnerMUI } from '../../../../components/Loader' 
+import React, { useEffect, useLayoutEffect, useState, useContext, useRef, useCallback } from 'react'
+import { useHistory } from 'react-router-dom'
+import { LoaderSpinnerMUI } from '../../../../components/Loader'
 import UserContext from '../../../../context/UserContext'
 import VideoContext from '../../../../context/VideoContext'
 import { getLinkVideoVod } from '../../../../services/getLinkVideoVod'
+import { setResumePosVideo } from '../../../../services/setResumePosVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { Content } from '../Content'
 import './styles.css'
 
-export function Player({state}){
-      // console.log(state)
+export function Player({ state }) {
+      const history = useHistory()
       const video = useRef()
       const { movieVod } = state
       const [url, setUrl] = useState()
       const { stateUser } = useContext(UserContext)
       const { credentials } = stateUser
       const { stateVideo, dispatch } = useContext(VideoContext)
-      const { loading } = stateVideo
-      const {error, setError} = useHls(video, url, dispatch)
+      const { loading, currentTime, duration } = stateVideo
+      const { error, setError } = useHls(video, url, dispatch)
 
       const onPlayingVideo = () => {
             dispatch({ type: 'updateData', payload: movieVod })
@@ -39,10 +41,10 @@ export function Player({state}){
             const requestLink = async () => {
                   dispatch({ type: 'updateVideoRef', payload: video })
                   dispatch({ type: 'updateActive', payload: false })
-                  dispatch({ type: 'updateLoading', payload: true})
-                  try{
+                  dispatch({ type: 'updateLoading', payload: true })
+                  try {
                         const response = await getLinkVideoVod(movieVod, credentials)
-                        if(response == "error") throw new Error('No se pudo obtener la información.')
+                        if (response == "error") throw new Error('No se pudo obtener la información.')
                         const url = response.Url
                         setUrl(url)
                   } catch (e) {
@@ -53,10 +55,36 @@ export function Player({state}){
             }
 
             requestLink()
-            return () => {
 
-            }
+            
       }, [])
+
+      useEffect(() => {
+            const requestPositionVideo = async () => {
+                  let positionVideoMil = 0
+      
+                  if (currentTime) {
+                        if (currentTime >= duration) {
+                              positionVideoMil = 0
+                        } else {
+                              positionVideoMil = Math.round(currentTime * 1000)
+                        }
+                  }
+      
+                  try {
+                        const response = await setResumePosVideo(movieVod.Registro, positionVideoMil, credentials)
+                  } catch (e) {
+      
+                  }
+            }
+
+            return () => {
+                  if(history.action == "POP"){
+                        requestPositionVideo()
+                  }
+            }
+      }, [currentTime])
+
 
       return (
             <div className="player">
@@ -65,7 +93,7 @@ export function Player({state}){
                         {loading &&
                               <LoaderSpinnerMUI />
                         }
-                        {     error &&
+                        {error &&
                               <div className="error-message">
                                     <h2 className="text-error">{error}</h2>
                               </div>

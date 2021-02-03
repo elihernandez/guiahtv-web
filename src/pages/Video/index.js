@@ -5,6 +5,7 @@ import { VideoContextProvider } from '../../context/VideoContext'
 import './styles.css'
 
 const initialState = {
+      hls: null,
       videoRef: null,
       data: null,
       active: false,
@@ -12,9 +13,12 @@ const initialState = {
       timer: false,
       activeTimer: false,
       currentTime: 0,
+      duration: 0,
       volume: 50,
       playing: false,
-      muteVolume: false
+      muteVolume: false,
+      audioTracks: null,
+      subtitleTracks: null
 }
 
 const reducer = (state, action) => {
@@ -71,10 +75,34 @@ const reducer = (state, action) => {
                         currentTime: action.payload
                   }
             }
+            case 'setDuration': {
+                  return {
+                        ...state,
+                        duration: action.payload
+                  }
+            }
+            case 'setHls': {
+                  return {
+                        ...state,
+                        hls: action.payload
+                  }
+            }
             case 'setPlaying': {
                   return {
                         ...state,
                         playing: action.payload
+                  }
+            }
+            case 'setAudioTracks': {
+                  return {
+                        ...state,
+                        audioTracks: action.payload
+                  }
+            }
+            case 'setSubtitleTracks': {
+                  return {
+                        ...state,
+                        subtitleTracks: action.payload
                   }
             }
             default: return state;

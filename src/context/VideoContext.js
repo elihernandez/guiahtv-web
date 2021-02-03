@@ -1,4 +1,4 @@
-import React, {useState, useReducer} from 'react'
+import React, { useReducer } from 'react'
 
 const Context = React.createContext({})
 
@@ -41,12 +41,12 @@ const Context = React.createContext({})
 
 // export default Context
 
-export function VideoContextProvider({state, reducer, children}){
+export function VideoContextProvider({ state, reducer, children }) {
       const initialState = state
 
       const [stateVideo, dispatch] = useReducer(reducer, initialState)
 
-      return <Context.Provider value={{stateVideo, dispatch}}>
+      return <Context.Provider value={{ stateVideo, dispatch }}>
             {children}
       </Context.Provider>
 }

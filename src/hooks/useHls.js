@@ -13,6 +13,7 @@ export function useHls(video, url, dispatch) {
                               hls.loadSource(url)
                               hls.on(Hls.Events.MANIFEST_PARSED, function () {
                                     video.current.play()
+                                    dispatch({ type: 'setHls', payload: hls })
                               })
                         })
             
@@ -22,6 +23,7 @@ export function useHls(video, url, dispatch) {
                                     hls.destroy()
                                     dispatch({ type: 'updateLoading', payload: false })
                                     dispatch({ type: 'updateData', payload: null })
+                                    dispatch({ type: 'setHls', payload: null })
                                     setError("Señal no disponible por el momento")
                               }
 
@@ -29,6 +31,7 @@ export function useHls(video, url, dispatch) {
                                     hls.destroy()
                                     dispatch({ type: 'updateLoading', payload: false })
                                     dispatch({ type: 'updateData', payload: null })
+                                    dispatch({ type: 'setHls', payload: null })
                                     setError("Contenido no disponible por el momento")
                               }
                               // if (data.fatal) {
@@ -39,6 +42,16 @@ export function useHls(video, url, dispatch) {
                               //             break
                               //       }
                               // }
+                        })
+
+                        hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, function(event, data){
+                             
+                              dispatch({ type: 'setAudioTracks', payload: data })
+                        })
+                        
+                        hls.on(Hls.Events.SUBTITLE_TRACKS_UPDATED, function(event, data){
+                              dispatch({ type: 'setSubtitleTracks', payload: data })
+                            
                         })
                   }
             }

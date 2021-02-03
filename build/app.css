@@ -4431,9 +4431,9 @@ button:hover{
 .info-content{
       position: absolute;
       width: 100%;
-      height: 450px;
-      background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.60)), to(transparent));
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.60), transparent);
+      height: auto;
+      background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.75)), to(transparent));
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent);
       padding: 50px 50px;  
 }
 
@@ -4492,12 +4492,12 @@ button:hover{
 .controls-player{
       position: absolute;
       width: 100%;
-      height: 400px;
+      height: 200px;
       padding: 15px 50px;
       bottom: 0;
       z-index: 100;
-      background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.60)), to(transparent));
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.60), transparent);
+      background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 1)), to(transparent));
+      background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -4583,11 +4583,19 @@ button:hover{
 
 .controls-player .controls-wrapper .top-section .group-buttons .content-button-icon i{
                                     color: white;
-                                    font-size: 22px;
+                                    font-size: 24px;
+                              }
+
+.controls-player .controls-wrapper .top-section .group-buttons .content-button-icon img{
+                                    width: 30px;
                               }
 
 .controls-player .controls-wrapper .top-section .group-buttons .content-button-icon:hover{
-                                    background: rgba(0, 0, 0, 0.25);
+                                    background: rgba(0, 0, 0, 0.5);
+                              }
+
+.controls-player .controls-wrapper .top-section .group-buttons .content-button-icon:focus{
+                                    outline: none !important;
                               }
 
 .controls-player .controls-wrapper .top-section .group-buttons .group-time{
@@ -4690,11 +4698,101 @@ button:hover{
                                                   box-shadow: none !important;
                                           
                                     }
+
+.MuiPaper-root{
+      background-color: #424242 !important;
+}
+
+.tracks-content{
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      padding: 25px 20px;
+}
+
+.tracks-content .audios-content{
+            min-width: 225px;
+            padding: 0 10px;
+      }
+
+.tracks-content .subtitles-content{
+            min-width: 225px;
+            padding: 0 10px;
+      }
+
+.tracks-content .name-list{
+            padding-left: 15px !important;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px !important;
+      }
+
+.tracks-content .list-tracks{
+            position: relative;
+      }
+
+.tracks-content .list-tracks .track-item{
+                  font-size: 15px;
+                  font-weight: 500;
+                  padding: 10px 15px;
+                  cursor: pointer;
+                  border-radius: 4px;
+                  display: -webkit-box;
+                  display: -ms-flexbox;
+                  display: flex;
+                  -webkit-box-orient: horizontal;
+                  -webkit-box-direction: normal;
+                      -ms-flex-direction: row;
+                          flex-direction: row;
+                  -webkit-box-pack: justify;
+                      -ms-flex-pack: justify;
+                          justify-content: space-between;
+                  -webkit-box-align: center;
+                      -ms-flex-align: center;
+                          align-items: center
+            }
+
+.tracks-content .list-tracks .track-item:hover{
+                        background: #616161;
+                  }
+
+.tracks-content .list-tracks .track-item i{
+                        opacity: 0;
+                        font-size: 16px;
+                        width: 15px;
+                  }
+
+.tracks-content .list-tracks .track-item.active i{
+                              opacity: 1;
+                        }
 .content-video{
       position: absolute;
       width: 100%;
-      height: 100%;
+      height: 100%  
 }
+.content-video.fade-enter {
+            opacity: 0;
+      }
+.content-video.fade-enter-active {
+            opacity: 1;
+            -webkit-transition: opacity 300ms;
+            transition: opacity 300ms;
+      }
+.content-video.fade-enter-done {
+            opacity: 1;
+      }
+.content-video.fade-exit {
+            opacity: 1;
+      }
+.content-video.fade-exit-active {
+            opacity: 0;
+            -webkit-transition: opacity 300ms;
+            transition: opacity 300ms;
+      }
+.content-video.fade-exit-done {
+            opacity: 0;
+      }
 .player{
       position: absolute;
       width: 100%;
