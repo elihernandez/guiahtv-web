@@ -4529,8 +4529,49 @@ button:hover{
       height: auto;
       background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.75)), to(transparent));
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent);
-      padding: 50px 50px;  
+      padding: 50px 50px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;  
 }
+
+      .info-content .back-content{
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            cursor: pointer;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            border-radius: 50%;
+      }
+
+      .info-content .back-content i{
+                  color: white;
+                  font-size: 28px;
+            }
+
+      .info-content .back-content:hover{
+                  -webkit-transform: scale(1.2);
+                          transform: scale(1.2);
+            }
 
       .info-content .title-content{
             position: relative;

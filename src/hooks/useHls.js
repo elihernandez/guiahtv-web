@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export function useHls(video, url, dispatch) {
+export function useHls(video, url, dispatch, movie) {
       let hls = new Hls()
       const [error, setError] = useState(false)
 
@@ -12,6 +12,13 @@ export function useHls(video, url, dispatch) {
                         hls.on(Hls.Events.MEDIA_ATTACHED, function () {
                               hls.loadSource(url)
                               hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                                    if(movie){
+                                          if(movie.ResumePos){
+                                                video.current.currentTime = movie.ResumePos / 1000
+                                                dispatch({ type: 'setCurrentTime', payload: movie.ResumePos / 1000 })
+                                                dispatch({ type: 'updateVideoRef', payload: video })
+                                          }
+                                    }
                                     video.current.play()
                                     dispatch({ type: 'setHls', payload: hls })
                               })

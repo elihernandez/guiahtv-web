@@ -4,6 +4,30 @@
       height: auto;
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent);
       padding: 50px 50px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .back-content{
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+
+            i{
+                  color: white;
+                  font-size: 28px;
+            }
+
+            &:hover{
+                  transform: scale(1.2);
+            }
+      }
 
       .title-content{
             position: relative;

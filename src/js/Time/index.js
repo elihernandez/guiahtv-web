@@ -113,4 +113,23 @@ export function getProgressMovie(ResumePos, Length){
       let time = (position * 100) / duration
 
       return time;
+}
+
+function updateData(movieId, data, positionVideoMil){
+      data.map(({cmData}, indexC) => {
+            cmData.map(({Registro}, indexM) => {
+                  if(movieId == Registro){
+                        data[indexC].cmData[indexM].ResumePos = positionVideoMil
+                  }
+            })
+      })
+
+      return data
+}
+
+
+export function setProgressMovie(currentTime, movie, data, dispatch){
+      const movieId = movie.Registro
+      let positionVideoMil = Math.round(currentTime * 1000)
+      dispatch({type: 'setData', payload: updateData(movieId, data, positionVideoMil)})
   }

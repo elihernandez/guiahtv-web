@@ -72,8 +72,8 @@ function TimeMovie({ videoRef, duration, dispatch }) {
 
             return () => {
                   if (videoRef) {
-                        if (videoRef.current) {
-                              videoRef.current.removeListener("timeupdate", timeUpdate)
+                        if (videoRef.current != null) {
+                              videoRef.current.removeEventListener("timeupdate", timeUpdate)
                         }
                   }
             }

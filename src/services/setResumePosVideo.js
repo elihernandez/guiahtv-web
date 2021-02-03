@@ -4,9 +4,6 @@ import { API_URL } from './settings'
 const axios = require('axios')
 
 export function setResumePosVideo(Registro, positionVideo, {memclid}){
-      console.log(Registro)
-      console.log(positionVideo)
-      console.log(memclid)
       const apiURL = `${API_URL}/cmd/sCmResPos/${Registro}/${positionVideo}/${memclid}`
 
       return axios.get(apiURL)

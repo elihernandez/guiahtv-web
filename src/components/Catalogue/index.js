@@ -17,7 +17,9 @@ function searchSerie(data, contentId){
                 
                   cmData.map((serie) =>{
                         if(serie.Registro == contentId){
-                              content = serie
+                              if(!content){
+                                    content = serie
+                              }
                         }
                   })
             }
@@ -32,12 +34,13 @@ function searchMovie(data, contentId){
             if(poster_type == 0){
                   cmData.map((movie) =>{
                         if(movie.Registro == contentId){
-                              content = movie
+                              if(!content){
+                                    content = movie
+                              }
                         }
                   })
             }
       })
-
       return content
 }
 
@@ -121,7 +124,7 @@ export function CatalogueVod({requestApi}) {
                                     <InfoContent />
                               </Route>
                               <Route exact path={`${url}/:contentType/:contentId/video`} >
-                                    <VideoVod state={stateVod} dispatch={dispatchVod} />
+                                    <VideoVod state={stateVod} dispatchVod={dispatchVod} />
                               </Route>
                         </Switch>
                   </CSSTransition>

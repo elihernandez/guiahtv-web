@@ -7,18 +7,19 @@ import { getLinkVideoVod } from '../../../../services/getLinkVideoVod'
 import { setResumePosVideo } from '../../../../services/setResumePosVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { Content } from '../Content'
+import { setProgressMovie } from '../../../../js/Time'
 import './styles.css'
 
-export function Player({ state }) {
+export function Player({ state, dispatchVod }) {
       const history = useHistory()
       const video = useRef()
-      const { movieVod } = state
+      const { dataVod, movieVod } = state
       const [url, setUrl] = useState()
       const { stateUser } = useContext(UserContext)
       const { credentials } = stateUser
       const { stateVideo, dispatch } = useContext(VideoContext)
       const { loading, currentTime, duration } = stateVideo
-      const { error, setError } = useHls(video, url, dispatch)
+      const { error, setError } = useHls(video, url, dispatch, movieVod)
 
       const onPlayingVideo = () => {
             dispatch({ type: 'updateData', payload: movieVod })
@@ -73,8 +74,10 @@ export function Player({ state }) {
       
                   try {
                         const response = await setResumePosVideo(movieVod.Registro, positionVideoMil, credentials)
+                        if(response == "error") throw new Error("No se pudo guardar posición de video")
+                        setProgressMovie(currentTime, movieVod, dataVod, dispatchVod)
                   } catch (e) {
-      
+                        // console.log(e.message)
                   }
             }
 

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useRouteMatch, useHistory } from 'react-router-dom'
-import { Player } from './components/Player'
 import { VideoContextProvider } from '../../context/VideoContext'
+import { Player } from './components/Player'
+import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
 import './styles.css'
 
 const initialState = {
@@ -109,7 +110,7 @@ const reducer = (state, action) => {
       }
 }
 
-export function VideoVod({ state }) {
+export function VideoVod({ state, dispatchVod }) {
       const history = useHistory()
       const { url } = useRouteMatch()
       const { movieVod } = state
@@ -122,6 +123,8 @@ export function VideoVod({ state }) {
             document.querySelector('.top-menu').style.opacity = 0
             return () => {
                   document.querySelector('.top-menu').style.opacity = 1
+                  document.querySelector('.top-menu').classList.remove('bggradient')
+                  if(isFullScreenElement()) exitFullScreen()
             }
       }, [])
 
@@ -129,7 +132,7 @@ export function VideoVod({ state }) {
             <VideoContextProvider state={initialState} reducer={reducer}>
                   <div className="video">
                         <div className="video-wrapper">
-                              <Player state={state}/>
+                              <Player state={state} dispatchVod={dispatchVod}/>
                         </div>
                   </div>
             </VideoContextProvider>
