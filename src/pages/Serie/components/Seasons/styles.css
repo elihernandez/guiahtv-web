@@ -23,4 +23,26 @@
                 height: 215px !important;
             }
       }
+
+      .popper-menu-wrapper{
+
+            div[x-placement]{
+                  z-index: 1;
+                  min-width: 170px;
+            }
+
+            .MuiPaper-root{
+                  background-color: #424242 !important;
+            }
+
+            .MuiMenuItem-root{
+                  padding: 10px 15px;
+                  font-size: 15px;
+                  border-radius: 4px;
+
+                  &:hover{
+                        background-color: #616161;
+                  }
+            }
+      }
 }

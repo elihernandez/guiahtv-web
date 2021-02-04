@@ -4212,13 +4212,16 @@ button:hover{
 .info-wrapper .background{
             position: relative;
             width: 100%;
-            height: 750px;
+            height: 900px;
             overflow: hidden;
       }
+
+/* border: 1px solid red; */
 
 .info-wrapper .background img{
                   position: relative;
                   width: 100%;
+                  min-height: 900px;
                   height: auto;
             }
 
@@ -4300,7 +4303,7 @@ button:hover{
             position: absolute;
             top: 0;
             width: 100%;
-            padding: 200px 0 0 50px;
+            padding: 150px 0 0 50px;
       }
 
 .info-wrapper .info-movie .group-title{
@@ -4430,8 +4433,9 @@ button:hover{
                                     }
 
 .info-wrapper .tabs-info-wrapper{
-            position: relative;
+            position: absolute;
             width: 100%;
+            top: 650px;
       }
 
 .info-wrapper .tabs-info-wrapper .MuiTabs-root{
@@ -4534,12 +4538,85 @@ button:hover{
       .seasons-content-wrapper .list.landscape .list-items .background-item{
                 height: 215px !important;
             }
+
+      .seasons-content-wrapper .popper-menu-wrapper div[x-placement]{
+                  z-index: 1;
+                  min-width: 170px;
+            }
+
+      .seasons-content-wrapper .popper-menu-wrapper .MuiPaper-root{
+                  background-color: #424242 !important;
+            }
+
+      .seasons-content-wrapper .popper-menu-wrapper .MuiMenuItem-root{
+                  padding: 10px 15px;
+                  font-size: 15px;
+                  border-radius: 4px
+            }
+
+      .seasons-content-wrapper .popper-menu-wrapper .MuiMenuItem-root:hover{
+                        background-color: #616161;
+                  }
 .info-contact-wrapper{
       position: relative;
       width: 100%;
       min-height: 300px !important;
-      border: 1px solid red;
+      padding: 25px 25px;
+      color: white;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
 }
+
+      .info-contact-wrapper .group-section{
+            position: relative;
+            width: 40%;
+            padding: 25px 50px 25px 25px;
+      }
+
+      .info-contact-wrapper .group-section i{
+                  margin-right: 25px;
+                  font-size: 18px;
+            }
+
+      .info-contact-wrapper .title-group{
+            font-weight: 600;
+            font-size: 26px;
+      }
+
+      .info-contact-wrapper .description-group{
+            font-weight: 500;
+            font-size: 16px;
+            margin-top: 25px;
+      }
+
+      .info-contact-wrapper .phone-group{
+            padding-top: 60px;
+            margin-bottom: 15px;
+      }
+
+      .info-contact-wrapper .web-group{
+            margin-bottom: 25px;
+      }
+
+      .info-contact-wrapper .web-group a{
+                  color: white;
+                  text-decoration: none;
+            }
+
+      .info-contact-wrapper .social-media-group a{
+                  color: white;
+                  text-decoration: none;
+            }
+
+      .info-contact-wrapper .social-media-group i{
+                  font-size: 20px;
+                  cursor: pointer;
+            }
 .info-content{
       position: absolute;
       width: 100%;

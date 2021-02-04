@@ -70,7 +70,6 @@ export function PopperMenu({textButton, itemsMenu}){
                           }
                         })
                       }
-                     
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
