@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import {ButtonsPlaying, ButtonUndo, ButtonRedo, ButtonBackward, ButtonsFullScreen, ButtonVolume, ButtonTracks} from '../Buttons'
+import { ButtonsPlaying, ButtonUndo, ButtonRedo, ButtonBackward, ButtonsFullScreen, ButtonVolume, ButtonTracks } from '../Buttons'
 import Slider from '@material-ui/core/Slider'
 import VideoContext from '../../../../context/VideoContext'
 import './styles.css'
@@ -33,6 +33,7 @@ function ProgressBarTime({ videoRef, currentTime, duration, dispatch }) {
       }
 
       useEffect(() => {
+            console.log(currentTime)
             setValue(currentTime)
       }, [currentTime])
 
@@ -60,7 +61,7 @@ function TimeMovie({ videoRef, duration, dispatch }) {
                   }
 
                   dispatch({ type: 'setCurrentTime', payload: videoRef.current.currentTime })
-                  dispatch({ type: 'setDuration', payload:  videoRef.current.duration })
+                  dispatch({ type: 'setDuration', payload: videoRef.current.duration })
             }
       }
 

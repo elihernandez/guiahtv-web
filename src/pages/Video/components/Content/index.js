@@ -10,7 +10,7 @@ export function Content() {
       const timerRef = useRef(null)
       const { stateVideo } = useContext(VideoContext)
       const { active } = stateVideo
-      const [isVisible, setIsVisible] = useState(true)
+      const [isVisible, setIsVisible] = useState(false)
 
       const fadeInContent = () => {
             setIsVisible(true)

@@ -14,9 +14,11 @@ export function ButtonsPlaying({ videoRef, playing, dispatch }) {
             if (playing) {
                   videoRef.current.pause()
                   dispatch({ type: 'setPlaying', payload: false })
+                  dispatch({ type: 'updateActive', payload: false })
             } else {
                   videoRef.current.play()
                   dispatch({ type: 'setPlaying', payload: true })
+                  dispatch({ type: 'updateActive', payload: true })
             }
       }
 
@@ -312,10 +314,14 @@ export function ButtonTracks({ hls, audios, subtitles }) {
       const [anchorEl] = useState(null)
       const open = Boolean(anchorEl)
       const id = open ? 'transitions-popper' : undefined
+      
+      useEffect(() => {
 
+      }, [])
+      
       return (
             <Fragment>
-                  <PopupState variant="popover" popupId="demo-popup-popover">
+                  <PopupState variant="popover" popupId="tracks-popup-popover">
                         {(popupState) => (
                               <div>
                                     <Tooltip title="Audios / Subtítulos" placement="top-start">
