@@ -3963,6 +3963,7 @@ button:hover{
       padding: 0 60px 0 60px;
       margin: 25px 0;
       overflow-x: hidden
+
 }
 
 .list.portrait .list-items{
@@ -4117,6 +4118,8 @@ button:hover{
                                     position: relative;
                                     width: 100%;
                                     padding: 0 10px;
+                                    min-height: 125px;
+                                    max-height: 200px;
                               }
 
 .list .list-content .list-items .item-link .item .info-episode .group-name-episode{
@@ -4181,6 +4184,14 @@ button:hover{
 .list .list-content .direction.direction-next{
                         right: -3.3%;
                   }
+
+.seasons-content-wrapper .item-link{
+            padding: 5px 5px;
+      }
+
+.seasons-content-wrapper .item-link .item{
+                  /* background: #18191c; */
+            }
 
 
 /* Top Menu */
@@ -4523,6 +4534,12 @@ button:hover{
       .seasons-content-wrapper .list.landscape .list-items .background-item{
                 height: 215px !important;
             }
+.info-contact-wrapper{
+      position: relative;
+      width: 100%;
+      min-height: 300px !important;
+      border: 1px solid red;
+}
 .info-content{
       position: absolute;
       width: 100%;

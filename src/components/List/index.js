@@ -3,6 +3,7 @@ import { NavLink, useRouteMatch } from 'react-router-dom'
 import VodContext from '../../context/VodContext'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { getProgressMovie } from '../../js/Time'
+import { limitString } from '../../js/String'
 const cssTransition = require('css-transition')
 import './styles.css'
 
@@ -94,7 +95,7 @@ function ListItem({ data, posterType, listType }) {
                                                 <h3 className="name-episode">{Title}</h3>
                                           </div>
                                           <div className="group-description-episode">
-                                                <p className="description-episode">{Description}</p>
+                                                <p className="description-episode">{limitString(Description, 100)}</p>
                                           </div>
                                     </div>
                               </div>

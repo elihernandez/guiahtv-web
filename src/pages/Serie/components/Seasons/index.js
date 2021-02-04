@@ -26,11 +26,13 @@ export function Seasons({ seasons, serieId }) {
                               poster_type: 1,
                               cmData: response
                         })
-                        dispatchVod({ type: 'setSeason', payload: {
-                              category: Title,
-                              poster_type: 1,
-                              cmData: response
-                        }})
+                        dispatchVod({
+                              type: 'setSeason', payload: {
+                                    category: Title,
+                                    poster_type: 1,
+                                    cmData: response
+                              }
+                        })
                         setLoading(false)
                   } catch (e) {
 
@@ -47,7 +49,7 @@ export function Seasons({ seasons, serieId }) {
       })
 
       useEffect(() => {
-           
+
       }, [chapters])
 
       return (
@@ -58,7 +60,7 @@ export function Seasons({ seasons, serieId }) {
                   {loading &&
                         <LoaderSpinnerMUI />
                   }
-                  {chapters && 
+                  {chapters &&
                         <List data={chapters} listType="season" />
                   }
             </div>

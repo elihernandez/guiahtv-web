@@ -14,6 +14,15 @@ export function shortString(string) {
       return string
 }
 
+export function limitString(string, limit){
+      if (string.length > limit) {
+            string = string.substring(0, limit)
+            string = string + "..."
+      }
+
+      return string
+}
+
 export function isShortString(string) {
       if (string.length > 60) {
             return true

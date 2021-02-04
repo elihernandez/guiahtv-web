@@ -131,11 +131,6 @@ export function InfoSerie({data}){
                                     <p className="description">{Description}</p>
                               </div>
                         }
-                        <div className="group-actions">
-                              <button type="button" className="button-watch">
-                                    <i className="fas fa-play" />{textButton}
-                              </button>
-                        </div>
                   </div>
             </Fragment>
       )

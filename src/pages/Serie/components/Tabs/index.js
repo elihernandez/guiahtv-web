@@ -1,6 +1,8 @@
-import React, { Fragment, useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getSeasons } from '../../../../services/getSeasons' 
+import { getContactInfo } from '../../../../services/getContactInfo'
 import { Seasons } from '../Seasons'
+import { Info } from '../Info'
 import PropTypes from 'prop-types'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
@@ -40,16 +42,17 @@ function a11yProps(index) {
       }
 }
 
-export function TabsContent({serieId}) {
+export function TabsContent({serieId, contactId}) {
       const [value, setValue] = useState(0)
       const [seasons, setSeasons] = useState(null)
+      const [info, setInfo] = useState(null)
     
       const handleChange = (event, newValue) => {
-        setValue(newValue)
+            setValue(newValue)
       }
     
       const handleChangeIndex = (index) => {
-        setValue(index)
+            setValue(index)
       }
 
       const [anchorEl, setAnchorEl] = useState(null)
@@ -64,7 +67,7 @@ export function TabsContent({serieId}) {
       }
 
       useEffect(() => {
-            const requestData = async () => {
+            const requestSeasons = async () => {
                   try{
                         const response = await getSeasons(serieId)
                         setSeasons(response)
@@ -73,38 +76,45 @@ export function TabsContent({serieId}) {
                   }
             }
 
-            requestData()
+            const requestContactInfo = async () => {
+                  try{
+                        const response = await getContactInfo(contactId)
+                        setInfo(response)
+                        console.log(response)
+                  }catch(e){
+
+                  }
+            }
+
+            requestSeasons()
+            requestContactInfo()
       }, [])
     
       return (
-            <Fragment>
-                  {seasons &&
-                        <div className="tabs-info-wrapper">
-                              <AppBar position="static" color="default">
-                                    <Tabs
-                                    value={value}
-                                    onChange={handleChange}
-                                    indicatorColor="primary"
-                                    textColor="primary"
-                                    variant="fullWidth"
-                                    aria-label="full width tabs info"
-                                    >
-                                          <Tab label="Episodios" {...a11yProps(0)} />
-                                          <Tab label="Sugerencias" {...a11yProps(1)} />
-                                          <Tab label="Detalles" {...a11yProps(2)} />
-                                    </Tabs>
-                              </AppBar>
-                              <TabPanel value={value} index={0}>
-                                    <Seasons seasons={seasons} serieId={serieId}/>
-                              </TabPanel>
-                              <TabPanel value={value} index={1}>
-                                    Item Two
-                              </TabPanel>
-                              <TabPanel value={value} index={2}>
-                                    Item Three
-                              </TabPanel>
-                        </div>
-                  }
-            </Fragment>
+            <div className="tabs-info-wrapper">
+                  <AppBar position="static" color="default">
+                        <Tabs
+                              value={value}
+                              onChange={handleChange}
+                              indicatorColor="primary"
+                              textColor="primary"
+                              variant="fullWidth"
+                              aria-label="full width tabs info"
+                        >
+                              <Tab label="Episodios" {...a11yProps(0)} />
+                              <Tab label="Detalles" {...a11yProps(1)} />
+                        </Tabs>
+                  </AppBar>
+                  <TabPanel value={value} index={0}>
+                        {seasons &&
+                              <Seasons seasons={seasons} serieId={serieId}/>
+                        }
+                  </TabPanel>
+                  <TabPanel value={value} index={1}>
+                        {info &&
+                              <Info data={info} />   
+                        }
+                  </TabPanel>
+            </div>
       )
 }

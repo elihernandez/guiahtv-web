@@ -127,6 +127,8 @@
                                     position: relative;
                                     width: 100%;
                                     padding: 0 10px;
+                                    min-height: 125px;
+                                    max-height: 200px;
 
                                     .group-name-episode{
                                           margin: 10px 0;
@@ -183,6 +185,17 @@
                   &.direction-next{
                         right: -3.3%;
                   }
+            }
+      }
+
+}
+.seasons-content-wrapper{
+
+      .item-link{
+            padding: 5px 5px;
+
+            .item{
+                  /* background: #18191c; */
             }
       }
 }

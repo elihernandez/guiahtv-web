@@ -1,0 +1,6 @@
+.info-contact-wrapper{
+      position: relative;
+      width: 100%;
+      min-height: 300px !important;
+      border: 1px solid red;
+}

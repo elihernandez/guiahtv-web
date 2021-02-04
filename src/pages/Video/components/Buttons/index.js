@@ -247,19 +247,24 @@ function AudioTracks({ hls, audios }) {
             toogleClassActive(e.currentTarget, listAudiosRef.current)
       }
 
+      useEffect(() => {
+            
+      }, [audios])
+
       return (
-            <Fragment>
-                  {audios
-                        ? <ul className="list-tracks" ref={listAudiosRef}>
+            <ul className="list-tracks" ref={listAudiosRef}>
+                  {audioTracks.length > 0
+                        ?     <Fragment>
                               {
                                     audioTracks.map((data, index) => {
                                           return <ItemTrack key={data.id} data={data} index={index} handleClick={changeAudioTrack}/>
                                     })
                               }
-                        </ul>
-                        : <p>No hay audios disponibles</p>
+                              </Fragment>
+                        :  <li className="track-item active">Español <i className="fas fa-check" /></li>
+                        
                   }
-            </Fragment>
+            </ul>
       )
 }
 
@@ -281,20 +286,25 @@ function SubtitleTracks({ hls, subtitles }) {
             toogleClassActive(e.currentTarget, listSubtitlesRef.current)
       }
 
+      useEffect(() => {
+            
+      }, [subtitles])
+
+
       return (
-            <Fragment>
-                  {subtitles
-                        ? <ul className="list-tracks" ref={listSubtitlesRef}>
-                              <li className="track-item active" onClick={(e) => changeSubtitleTrack(e, -1)}>Desactivados <i className="fas fa-check" /></li>
-                              {
-                                    subtitleTracks.map((data, index) => {
-                                          return <ItemTrack key={data.id} data={data} index={index} handleClick={changeSubtitleTrack}/>
-                                    })
-                              }
-                        </ul>
-                        : <p>No hay subtítulos disponible</p>
+            <ul className="list-tracks" ref={listSubtitlesRef}>
+                  {subtitleTracks.length > 0
+                        ?     <Fragment>
+                                    <li className="track-item active" onClick={(e) => changeSubtitleTrack(e, -1)}>Desactivados <i className="fas fa-check" /></li>
+                                    {
+                                          subtitleTracks.map((data, index) => {
+                                                return <ItemTrack key={data.id} data={data} index={index} handleClick={changeSubtitleTrack}/>
+                                          })
+                                    }
+                              </Fragment>
+                        : <li className="track-item active">No hay subtítulos disponibles</li>
                   }
-            </Fragment>
+            </ul>
       )
 }
 
