@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { RadioContextProvider } from '../../context/RadioContext'
 import { AudioContextProvider } from '../../context/AudioContext'
 import { Switch, Route, useRouteMatch } from "react-router-dom"
-import { CatalogueRadio } from '../../components/Catalogue'
-import { Player } from './components/Player'
+import { Guide } from './Guide'
 import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
 import { hideTopMenuNavbar, showTopMenuNavbar } from '../../components/TopMenu'
 import './styles.css'
@@ -88,9 +87,9 @@ export function Radio(){
                               <div className="section-content">
                                     <Switch>
                                           <Route exact path={`${url}/:contentId?`} >
-                                                <CatalogueRadio requestApi="radio"/>
+                                                <Guide />
                                                 <AudioContextProvider state={initialState} reducer={reducer}>
-                                                      <Player />
+                                                     
                                                 </AudioContextProvider>
                                           </Route>
                                     </Switch>

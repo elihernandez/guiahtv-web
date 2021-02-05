@@ -42,10 +42,18 @@ export function LoaderLogoSpinner({color}){
     )
 }
 
-export function LoaderSpinnerMUI(){
+export function LoaderSpinnerMUI({text, placementText}){
+    console.log(text)
+    console.log(placementText)
+    const classText = text != undefined ? placementText : ""
+    const classContent = placementText == "top" || "bottom" ? "column" : "row"
+
     return (
-        <div className="section-content spinner-mui">
+        <div className={`section-content spinner-mui ${classContent}`}>
             <CircularProgress disableShrink />
+            {text &&
+                <p className="text-loading">{text}</p>
+            }
         </div>
     )
 }

@@ -124,12 +124,27 @@
 .spinner-mui{
     position: absolute;
     width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
     z-index: 99;
+
+    &.row{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.column{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .text-loading{
+        margin-top: 15px !important;
+        font-size: 16px;
+    }
 
     .MuiCircularProgress-colorPrimary{
         color: white !important;
