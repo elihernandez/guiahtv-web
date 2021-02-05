@@ -2,7 +2,7 @@
       position: relative;
       height: 100%;
       width: 100%;
-      background: linear-gradient(to top, black, transparent);
+      /* background: linear-gradient(to top, black, transparent); */
 
       &.active-enter {
             opacity: 0;

@@ -274,12 +274,12 @@ function LiveTvEvent({ dataChannel, handleClick, handleError }) {
 }
 
 export function Channel({ data, category, page, categoria }) {
-      let channel
       let href
+      let channel
       if(isEvent(data.ContentType)){
             href = `/tv/${createUrlString(category.category)}/${data.Id}`
       }else{
-           href = `/tv/${createUrlString(category.category)}/${createUrlString(data.Name)}`
+            href = `/tv/${createUrlString(category.category)}/${createUrlString(data.Name)}`
       }
       const { dispatch } = useContext(VideoContext)
       const { dispatchTV } = useContext(LiveTvContext)
@@ -305,6 +305,9 @@ export function Channel({ data, category, page, categoria }) {
                   break
             case 'leon_livetv_Radio':
                   channel = <LiveTvEvent dataChannel={data} handleClick={handleClick} handleError={handleError} />
+                  break
+            default:
+                  channel = <LiveTvChannel dataChannel={data} handleClick={handleClick} handleError={handleError} />
                   break
       }
 

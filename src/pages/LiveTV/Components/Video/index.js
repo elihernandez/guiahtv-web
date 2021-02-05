@@ -72,6 +72,9 @@ export function Video() {
                         case 'leon_livetv_Radio':
                               requestVideo()
                               break
+                        default: 
+                              requestVideo()
+                        break
                   }
             }
 
