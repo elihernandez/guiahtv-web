@@ -62,6 +62,7 @@
                         align-items: center;
                         align-content: center;
                         text-decoration: none;
+                      
 
                         .item{
                               position: relative;
@@ -70,6 +71,7 @@
                               border-radius: 6px;
                               display: flex;
                               flex-direction: column;
+                            
 
                               .background-item{
                                     position: relative;
@@ -79,6 +81,7 @@
                                     transition: all .2s linear;
                                     overflow: hidden;
                                     border-radius: 6px;
+                                   
 
                                     img{
                                           position: relative;
@@ -120,6 +123,7 @@
                                           border: 4px solid white;
                                           cursor: pointer;
                                           transform: scale(1);
+                                          background: white;
                                     }
                               }
 

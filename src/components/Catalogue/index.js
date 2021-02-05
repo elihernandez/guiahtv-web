@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import { Switch, Route, useRouteMatch, useParams } from "react-router-dom"
 import VodContext from '../../context/VodContext'
+import RadioContext from '../../context/RadioContext'
 import { useRequest } from '../../hooks/useRequest'
 import { LoaderSpinnerMUI } from '../Loader'
 import { List } from '../List'
@@ -127,6 +128,32 @@ export function CatalogueVod({requestApi}) {
                                     <VideoVod state={stateVod} dispatchVod={dispatchVod} />
                               </Route>
                         </Switch>
+                  </CSSTransition>
+            </Fragment>
+      )
+}
+
+export function CatalogueRadio({requestApi}){
+    
+      const { stateRadio, dispatchRadio } = useContext(RadioContext)
+      const { dataRadio } = stateRadio 
+      const { loading, data } = useRequest(requestApi, dispatchRadio, dataRadio)
+
+      return (
+            <Fragment>
+                  <CSSTransition in={loading} timeout={300} classNames="active" unmountOnExit>
+                        <LoaderSpinnerMUI />
+                  </CSSTransition>
+                  <CSSTransition in={!loading} timeout={300} classNames="active" unmountOnExit>
+                       
+                        <div className={`content-catalogue ${requestApi}`}>
+                              {data && !loading &&
+                                    data.map((category, index) => {
+                                          return <List key={`${category.category}-${index}`} data={category} listType="radio"/>
+                                    })
+                              }
+                        </div>
+                            
                   </CSSTransition>
             </Fragment>
       )

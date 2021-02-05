@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect, useContext, useRef } from 'react'
-import { NavLink, useRouteMatch } from 'react-router-dom'
+import { NavLink, Link, useRouteMatch, useHistory } from 'react-router-dom'
 import VodContext from '../../context/VodContext'
+import RadioContext from '../../context/RadioContext'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { getProgressMovie } from '../../js/Time'
 import { limitString } from '../../js/String'
@@ -24,16 +25,28 @@ function typeContent(contentType){
 }
 
 function ListItem({ data, posterType, listType }) {
+      let handleClick
+      const history = useHistory()
       const { url } = useRouteMatch()
-      const { dispatchVod } = useContext(VodContext)
       const { Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ContentType, Title, Description, ResumePos, Length } = data
       const type = typeContent(ContentType)
+      
+      if(listType != "radio"){
+            const { dispatchVod } = useContext(VodContext)
 
-      const handleClick = () => {
-            if (isSerie(ContentType)) {
-                  dispatchVod({ type: 'setSerie', payload: data })
-            }else{
-                  dispatchVod({ type: 'setMovie', payload: data })
+            handleClick = () => {
+                  if (isSerie(ContentType)) {
+                        dispatchVod({ type: 'setSerie', payload: data })
+                  }else{
+                        dispatchVod({ type: 'setMovie', payload: data })
+                  }
+            }
+      }else{
+            const { dispatchRadio } = useContext(RadioContext)
+            
+            handleClick = () => {
+                  history.push(`/radio/${Registro}`)
+                  dispatchRadio({ type: 'setCurrentStation', payload: data })
             }
       }
 
@@ -75,7 +88,7 @@ function ListItem({ data, posterType, listType }) {
                         </NavLink>
                   }
                   { listType == "season" &&
-                  <NavLink to={`${url}/video`} className="item-link">
+                        <NavLink to={`${url}/video`} className="item-link">
                               <div className="item" onClick={handleClick}>
                                     <div className="background-item">
                                           {posterType == 0 &&
@@ -100,6 +113,25 @@ function ListItem({ data, posterType, listType }) {
                                     </div>
                               </div>
                         </NavLink>
+                  }
+                  { listType == "radio" &&
+                        <div className="item-link">
+                              <div className="item" onClick={handleClick}>
+                                    <div className="background-item">
+                                          {posterType == 0 &&
+                                                <img onError={handleError} src={HDPosterUrlPortrait} />
+                                          }
+                                          {posterType == 1 &&
+                                                <img onError={handleError} src={HDPosterUrlLandscape} />
+                                          }
+                                          {ResumePos &&
+                                                <div className="progress-bar-content">
+                                                      <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
+                                                </div>
+                                          }
+                                    </div>
+                              </div>
+                        </div>
                   }
             </Fragment>
       )

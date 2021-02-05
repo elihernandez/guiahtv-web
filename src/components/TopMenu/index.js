@@ -44,7 +44,7 @@ export function TopMenu() {
             let scroll = 0
             
             window.onscroll = function() {
-                  scroll = window.scrollY;
+                  scroll = window.scrollY
                   if (scroll > 25){
                         topMenu.current.classList.add('bgcolor')
                   } else {

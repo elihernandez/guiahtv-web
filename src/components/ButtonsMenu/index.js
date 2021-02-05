@@ -16,6 +16,7 @@ function Button({title, contentType, img}){
                 history.push('/alacarta')
                 break
             case 'leon_radio':
+                history.push('/radio')
                 break
             case 'leon_music':
                 history.push('/musica')

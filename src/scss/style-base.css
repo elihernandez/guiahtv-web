@@ -17,6 +17,9 @@ $height-top-menu: 65px;
 /* Music */
 $height-player-music: 100px;
 
+/* Radio */
+$height-player-audio: 100px;
+
 
 /* :root{
       --color-guide-black: #18191c;

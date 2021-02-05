@@ -1,0 +1,7 @@
+.player-content{
+      position: absolute;
+      height: 80px;
+      width: 100%;
+      bottom: 0;
+      background: #18191c;
+}

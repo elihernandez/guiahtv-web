@@ -15,6 +15,9 @@ function getURL(section, credentials) {
             case 'alacarta':
                   apiURL = `${API_URL}/cmdata/leon/entplus/${credentials.memclid}`
                   break
+            case 'radio':
+                  apiURL = `${API_URL}/cdata/leon/radio/${credentials.memclid}`
+                  break
             case 'zonakids':
                   apiURL = `${API_URL}/cdata/leon/kids/${credentials.memclid}`
                   break
@@ -28,7 +31,7 @@ function getURL(section, credentials) {
 export function useRequest(section, dispatch, data) {
       const { stateUser, dispatchUser } = useContext(UserContext)
       const { credentials } = stateUser
-      const [loading, setLoading] = useState(false)
+      const [loading, setLoading] = useState(null)
 
       useEffect(() => {
             setLoading(true)

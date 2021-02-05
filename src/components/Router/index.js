@@ -6,10 +6,11 @@ import { Info } from "../../pages/Info/index"
 import { Login } from "../../pages/Login/index"
 import { Home } from "../../pages/Home/index"
 import { LiveTV } from "../../pages/LiveTV/index"
-import { Page404 } from "../../pages/404/index"
-import { Music } from "../../pages/Music/index"
 import { VideoOnDemand } from "../../pages/Vod/index"
+import { Radio } from "../../pages/Radio/index"
+import { Music } from "../../pages/Music/index"
 import { Zonakids } from "../../pages/Zonakids/index"
+import { Page404 } from "../../pages/404/index"
 import { ErrorAuth } from "../../pages/ErrorAuth/index"
 import { useCookies } from 'react-cookie'
 import { SnackbarAuth } from '../SnackbarAuth'
@@ -89,6 +90,13 @@ export default function BaseRouter() {
                         <CheckAuth credentials={credentials}>
                             <TopMenu />
                             <Music />
+                        </CheckAuth>
+                    </Route>
+
+                    <Route path="/radio">
+                        <CheckAuth credentials={credentials}>
+                            <TopMenu />
+                            <Radio />
                         </CheckAuth>
                     </Route>
 

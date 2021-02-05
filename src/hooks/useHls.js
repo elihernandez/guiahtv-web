@@ -6,12 +6,16 @@ export function useHls(video, url, dispatch, movie) {
 
       useEffect(() => {
             if(url){
+                  console.log(video)
+                  console.log(url)
+                  console.log(dispatch)
                   if (Hls.isSupported()) {
                         setError(false)
                         hls.attachMedia(video.current);
                         hls.on(Hls.Events.MEDIA_ATTACHED, function () {
                               hls.loadSource(url)
                               hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                                    console.log("Hola 2")
                                     if(movie){
                                           if(movie.ResumePos){
                                                 video.current.currentTime = movie.ResumePos / 1000
