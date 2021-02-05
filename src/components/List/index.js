@@ -1,10 +1,11 @@
 import React, { Fragment, useState, useEffect, useContext, useRef } from 'react'
-import { NavLink, Link, useRouteMatch, useHistory } from 'react-router-dom'
+import { NavLink, useRouteMatch, useHistory } from 'react-router-dom'
 import VodContext from '../../context/VodContext'
 import RadioContext from '../../context/RadioContext'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { getProgressMovie } from '../../js/Time'
-import { limitString } from '../../js/String'
+import { isShortString, limitString } from '../../js/String'
+import Tooltip from '@material-ui/core/Tooltip'
 const cssTransition = require('css-transition')
 import './styles.css'
 
@@ -117,6 +118,9 @@ function ListItem({ data, posterType, listType }) {
                   { listType == "radio" &&
                         <div className="item-link">
                               <div className="item" onClick={handleClick}>
+                                    <div className="title-content">
+                                          <h2 className="title-item">{Title}</h2>
+                                    </div>
                                     <div className="background-item">
                                           {posterType == 0 &&
                                                 <img onError={handleError} src={HDPosterUrlPortrait} />
@@ -124,10 +128,23 @@ function ListItem({ data, posterType, listType }) {
                                           {posterType == 1 &&
                                                 <img onError={handleError} src={HDPosterUrlLandscape} />
                                           }
-                                          {ResumePos &&
-                                                <div className="progress-bar-content">
-                                                      <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
-                                                </div>
+                                    </div>
+                                    <div className="description-content">
+                                          <h3 className="description-item">{limitString(Description, 80)}</h3>
+                                    </div>
+                                    <div className="buttons-content">
+                                          <Tooltip title="Más info" placement="top-start">
+                                                <span tabIndex="0">
+                                                      <i className="fas fa-info" tabIndex="0" />
+                                                </span>
+                                          </Tooltip>
+
+                                          {     isShortString(Description) &&
+                                                <Tooltip title="Leer más" placement="top-start">
+                                                      <span tabIndex="0">
+                                                            <i className="fas fa-ellipsis-h" tabIndex="0" />
+                                                      </span>
+                                                </Tooltip>
                                           }
                                     </div>
                               </div>
@@ -205,5 +222,73 @@ export function List({ data, listType }) {
                   </div>
             </div>
       )
+}
 
+export function ListCards({ data, listType }) {
+      let pages = 0
+      const [page, setPage] = useState(1)
+      const [totalPages, setTotalPages] = useState(0)
+      const { category, poster_type, cmData } = data
+      const classes = poster_type == 0 ? "list-cards portrait" : "list-cards landscape"
+      const refList = useRef()
+
+      const handleClickPrev = () => {
+            let moveP = 100 * (page - 2)
+            cssTransition(refList.current, {
+                  transform: `translate3d(-${moveP}%, 0, 0)`
+            }, 500, function () {
+                  setPage(page - 1)
+            })
+      }
+
+      const handleClickRight = () => {
+            let moveP = 100 * (page)
+            cssTransition(refList.current, {
+                  transform: `translate3d(-${moveP}%, 0, 0)`
+            }, 500, function () {
+                  setPage(page + 1)
+            })
+      }
+
+      useEffect(() => {
+            if (poster_type == 0) {
+                  pages = cmData.length / 7
+            } else {
+                  pages = cmData.length / 5
+            }
+
+            if (pages % 1 != 0) {
+                  pages = Math.ceil(pages)
+            }
+
+            if (pages > 1) {
+                  setTotalPages(pages)
+            }
+      }, [])
+
+      return (
+            <div className={classes}>
+                  <div className="list-content">
+                        <div className="list-items" ref={refList}>
+                              {
+                                    cmData.map((data) => {
+                                          return <ListItem key={data.Registro} data={data} posterType={poster_type} listType={listType}/>
+                                    })
+                              }
+                        </div>
+                        {
+                              totalPages > 1 && page > 1 && listType != "season" &&
+                              <div className="direction direction-prev" onClick={handleClickPrev}>
+                                    <i className="fas fa-chevron-left" />
+                              </div>
+                        }
+                        {
+                              (totalPages > 1) && (page < totalPages) && listType != "season" &&
+                              <div className="direction direction-next" onClick={handleClickRight}>
+                                    <i className="fas fa-chevron-right" />
+                              </div>
+                        }
+                  </div>
+            </div>
+      )
 }

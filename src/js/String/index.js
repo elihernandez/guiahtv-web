@@ -1,13 +1,13 @@
 export function createUrlString(string) {
       let href = string.toLowerCase()
-      href = href.replace(/ /g, '-')
+      href = href.replace(/ /g, '')
 
       return href
 }
 
 export function shortString(string) {
-      if (string.length > 60) {
-            string = string.substring(0, 60)
+      if (string.length > 80) {
+            string = string.substring(0, 80)
             string = string + "..."
       }
 
@@ -24,7 +24,7 @@ export function limitString(string, limit){
 }
 
 export function isShortString(string) {
-      if (string.length > 60) {
+      if (string.length > 80) {
             return true
       }
 

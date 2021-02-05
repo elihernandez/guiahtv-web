@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Box from '@material-ui/core/Box'
+import './styles.css'
 
 function TabPanel(props) {
       const { children, value, index, ...other } = props
@@ -38,7 +39,8 @@ function a11yProps(index) {
       }
 }
 
-export function CustomTabs(){
+export function CustomTabs({data}){
+      console.log(data)
       const [value, setValue] = useState(0)
     
       const handleChange = (event, newValue) => {
@@ -59,7 +61,7 @@ export function CustomTabs(){
       const handleClose = () => {
             setAnchorEl(null)
       }
-      
+
       return (
             <div className="tabs-wrapper">
                   <AppBar position="static" color="default">
@@ -71,16 +73,21 @@ export function CustomTabs(){
                               variant="fullWidth"
                               aria-label="full width tabs info"
                         >
-                              <Tab label="Episodios" {...a11yProps(0)} />
-                              <Tab label="Detalles" {...a11yProps(1)} />
+                              {
+                                    data.map(({title}, index) => {
+                                          return <Tab key={`${title}-${index}`} label={title} {...a11yProps(index)} />
+                                    })
+
+                              }
                         </Tabs>
                   </AppBar>
-                  <TabPanel value={value} index={0}>
-                        
-                  </TabPanel>
-                  <TabPanel value={value} index={1}>
-                        
-                  </TabPanel>
+                  {
+                        data.map(({content}, index) => {
+                              return <TabPanel value={value} index={index}>
+                                    {content}
+                              </TabPanel>
+                        })
+                  }
             </div>
       )
 }

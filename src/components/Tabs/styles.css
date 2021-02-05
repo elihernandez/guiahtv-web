@@ -1,0 +1,21 @@
+.MuiPaper-root{
+      background-color: transparent !important;
+      box-shadow: none !important;
+
+      button{
+            box-shadow: none !important;
+      }
+
+      .MuiTabs-indicator{
+            background-color: white !important;
+      }
+
+      .MuiTab-fullWidth{
+            flex-grow: 0 !important;
+            color: white !important;
+      }
+}
+
+.MuiBox-root{
+      padding: 0 !important;
+}

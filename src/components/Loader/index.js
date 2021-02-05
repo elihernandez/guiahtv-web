@@ -43,8 +43,6 @@ export function LoaderLogoSpinner({color}){
 }
 
 export function LoaderSpinnerMUI({text, placementText}){
-    console.log(text)
-    console.log(placementText)
     const classText = text != undefined ? placementText : ""
     const classContent = placementText == "top" || "bottom" ? "column" : "row"
 
