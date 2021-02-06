@@ -1,16 +1,19 @@
-.spotlight{
+.spotlight-wrapper{
     position: relative;
     width: 100%;
     min-height: 500px;
+    overflow-x: hidden;
+    margin: 25px 0;
 
     .carousel-spotlight{
         position: relative;
         height: auto;
+        width: 100%;
         
         .carousel-content{
             position: absolute;
             width: 100%;
-            height: auto;
+            height: 100%;
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
@@ -33,7 +36,7 @@
                 .carousel-item{
                     position: relative;
                     flex: 0 0 calc(100% / 1);
-                    height: auto;
+                    height: 100%;
                     opacity: 0;
                     transition: all 1300ms ease;
                     display: flex;
@@ -46,7 +49,7 @@
                         position: relative;
                         top: 0;
                         width: calc(95%);
-                        height: auto;
+                        height: 100%;
                         border-radius: 20px;
                     }
                 }
@@ -58,7 +61,7 @@
             display: flex;
             flex-direction: row;
             justify-content: center;
-            width: 100vw;
+            width: 100%;
             min-height: 500px;
 
             .carousel-list{
@@ -86,8 +89,8 @@
         .carousel-control-prev{
             position: absolute;
             color: rgba(255, 255, 255, 0.5);
-            top: 0;
             left: 0;
+            bottom: 0;
             height: 100%;
             width: 8%;
             font-size: 40px;

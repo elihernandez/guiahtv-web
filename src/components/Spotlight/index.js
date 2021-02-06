@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { getSpotlight } from '../../services/getSpotlight'
 import CarouselClass from '../../classes/carouselCenterClass'
+import { CSSTransition } from 'react-transition-group'
 import './styles.css'
 
 function IndicatorsItem({index}){
@@ -14,9 +15,11 @@ function IndicatorsItem({index}){
 function CarouselIndicators({data}){
     return (
         <div className="carousel-indicators">
-            <ul className="carousel-list">
-                { data.map(({Registro}, index) => <IndicatorsItem key={Registro} index={index} /> ) }
-            </ul>
+            {data &&
+                <ul className="carousel-list">
+                    { data.map(({Registro}, index) => <IndicatorsItem key={Registro} index={index} /> ) }
+                </ul>
+            }
         </div>
     )
 }
@@ -34,25 +37,29 @@ function ContentItem({img, index}){
 function CarouselContent({data}){
     return(
         <div className="carousel-content">
-            <ul className="carousel-list">
-                { data.map(({Registro, ImgLandscape}, index) => <ContentItem key={Registro} img={ImgLandscape} index={index} /> ) }
-            </ul>
+            {data &&
+                <ul className="carousel-list">
+                    { data.map(({Registro, ImgLandscape}, index) => <ContentItem key={Registro} img={ImgLandscape} index={index} /> ) }
+                </ul>
+            }
         </div>
     )
 }
 
 export function Spotlight(){
-    let carouselSpotlight
+    const carouselSpotlight = useRef(null)
+    const [loading, setLoading] = useState(true)
     const [spotlight, setSpotlight] = useState(null)
 
     useEffect(() => {
         const requestSpotlight = async () => {
             try{
+                setLoading(true)
                 const response = await getSpotlight()
                 if(!response.length) throw new Error('No se pudo obtener la información.')
                 setSpotlight(response)
-                carouselSpotlight = new CarouselClass('carousel-spotlight', 6500)
-                carouselSpotlight.init()
+                carouselSpotlight.current = new CarouselClass(carouselSpotlight, 6500)
+                setLoading(false)
             }catch(e){
                 console.log(e)
             }
@@ -62,31 +69,27 @@ export function Spotlight(){
     }, [])
 
     function handleClickControlPrev(){
-        carouselSpotlight.prev()
+        carouselSpotlight.current.prev()
     }
     
     function handleClickControlNext(){
-        carouselSpotlight.next()
+        carouselSpotlight.current.next()
     }
 
     return (
-        <>
-        {
-            spotlight 
-            ?   <div className="spotlight">
-                    <div className="carousel-spotlight">
-                        <CarouselContent data={spotlight}/>
-                        <CarouselIndicators data={spotlight}/>
-                        <div className="carousel-control-prev" onClick={handleClickControlPrev}>
-                            <i className="fas fa-angle-left"></i>
-                        </div>
-                        <div className="carousel-control-next" onClick={handleClickControlNext}>
-                            <i className="fas fa-angle-right"></i>
-                        </div>
-                    </div> 
-                </div>
-            :  null
-        }
-        </>
+       <div className="spotlight-wrapper">
+            <CSSTransition in={!loading} timeout={100} classNames="fade">
+                <div className="carousel-spotlight" ref={carouselSpotlight}>
+                    <CarouselContent data={spotlight}/>
+                    <CarouselIndicators data={spotlight}/>
+                    <div className="carousel-control-prev" onClick={handleClickControlPrev}>
+                        <i className="fas fa-angle-left"></i>
+                    </div>
+                    <div className="carousel-control-next" onClick={handleClickControlNext}>
+                        <i className="fas fa-angle-right"></i>
+                    </div>
+                </div> 
+            </CSSTransition>
+        </div>
     )
 }

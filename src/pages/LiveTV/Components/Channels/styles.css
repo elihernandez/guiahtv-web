@@ -3,12 +3,12 @@
       height: 100%;
       width: 100%;
       box-sizing: border-box;
+      padding: 0 50px;
 
       .channels-wrapper{
             position: relative;
             width: 100%;
             height: 100%;
-
             .content-channels{
                   position: relative;
                   width: 100%;
