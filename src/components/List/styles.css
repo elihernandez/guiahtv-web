@@ -1,5 +1,58 @@
 @import '../../scss/style-base.css';
 
+.title-content{
+      position: relative;
+      width: 100%;
+      padding: 20px 0;
+
+      .title-item{
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: .5px;
+      }
+}
+
+.description-content{
+      padding: 0px 25px;
+      justify-self: flex-start;
+      margin-top: 15px;
+      min-height: 50px;
+      
+      .description-item{
+            font-weight: 400;
+            font-size: 15px;
+            color: rgba(179, 179, 179, 1);
+            text-align: left;
+            letter-spacing: .5px;
+      }
+}
+
+.buttons-content{
+      width: 100%;
+      padding: 0 25px;
+      margin-top: 15px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+
+      span{
+            border-radius: 50px;
+            padding: 2px 12.5px;
+            background: #242528;
+            margin-right: 10px;
+
+            i{
+                  color: white;
+            }
+
+            &:hover{
+                  background:  #616161; 
+            }
+      }
+}
+
+
 .list{
       position: relative;
       width: 100%;
@@ -197,7 +250,7 @@
       position: relative;
       width: 100%;
       height: auto;
-      padding-top: 25px;
+      padding: 25px 50px 0 50px;
       overflow-x: hidden;
 
       &.portrait{
@@ -225,7 +278,7 @@
 
             .item-link{
                   flex: 0 0 calc(100% / 5);
-                  min-height: 440px;
+                  min-height: 400px;
             }
       }
 
@@ -363,67 +416,196 @@
                   }
       
                   &.direction-prev{
-                        left: 0;
+                        left: -3.3%;
                   }
       
                   &.direction-next{
-                        right: 0;
+                        right: -3.3%;
                   }
             }
       }
 }
 
-.title-content{
+.list-covers{
       position: relative;
       width: 100%;
-      padding: 20px 0;
+      height: auto;
+      padding: 25px 40px 0 40px;
+      overflow-x: hidden;
 
-      .title-item{
-            font-weight: 600;
-            font-size: 18px;
-            text-align: center;
-            letter-spacing: .5px;
+      &.portrait{
+            .list-items{
+                  height: 330px;
+
+                  .background-item{
+                        height: 330px;
+                  }
+            }
+
+            .item-link{
+                  flex: 0 0 calc(100% / 7);
+            }
       }
-}
 
-.description-content{
-      padding: 0px 25px;
-      justify-self: flex-start;
-      margin-top: 15px;
-      min-height: 50px;
+      &.landscape{
+            .list-items{
+                  height: auto;
+
+                  .background-item{
+                        height: auto;
+                  }
+            }
+
+            .item-link{
+                  flex: 0 0 calc(100% / 5);
+                  min-height: 400px;
+            }
+      }
+
+      .list-content{
+            /* border: 1px solid blue; */
+
+            .list-items{
+                  position: relative;
+                  width: 100%;
+                  display: flex;
+                  flex-direction: row;
+                  /* border: 1px solid green; */
       
-      .description-item{
-            font-weight: 400;
-            font-size: 15px;
-            color: rgba(179, 179, 179, 1);
-            text-align: left;
-            letter-spacing: .5px;
+                  .item-link{
+                        height: 100%;
+                        display: flex;
+                        text-decoration: none;
+                        border-radius: 10px;
+                        transform: scale(0.97);
+                        transition: all .3s ease;
+                        background-color: #18191c;
+                        background: linear-gradient(to bottom, #242528, #18191c);
+                        border: 3px solid transparent; 
+                        
+                        .item{
+                              position: relative;
+                              height: 100%;
+                              width: 100%;
+                              border-radius: 10px;
+                              display: flex;
+                              flex-direction: column;
+
+                              .background-item{
+                                    position: relative;
+                                    width: 100%;
+                                    height: 200px;
+                                    transition: all .2s linear;
+                                    overflow: hidden;
+                                    border-radius: 6px;
+                                   
+
+                                    img{
+                                          position: relative;
+                                          width: 100%;
+                                          height: 100%;
+                                          background-size: cover;
+                                          border-radius: 4px;
+                                    }
+
+                                    .progress-bar-content{
+                                          position: absolute;
+                                          height: 30%;
+                                          width: 100%;
+                                          bottom: 0;
+                                          display: flex;
+                                          flex-direction: column;
+                                          justify-content: flex-end;
+                                          align-items: center;
+                                          background: linear-gradient(to top, rgba(0, 0, 0, 0.50), transparent);
+
+                                          .MuiLinearProgress-root{
+                                                width: 90%;
+                                                background-color: rgba(255, 255, 255, 0.75);
+                                                height: 6px;
+                                                margin-bottom: 15px;
+                                                border-radius: 2px;
+
+                                                .MuiLinearProgress-bar{
+                                                      background-color: $color-guide-blue;
+                                                      border-radius: 2px;
+                                                }
+                                          }
+                                    }
+                              }
+
+
+                              .info-episode{
+                                    position: relative;
+                                    width: 100%;
+                                    padding: 0 10px;
+                                    min-height: 125px;
+                                    max-height: 200px;
+
+                                    .group-name-episode{
+                                          margin: 10px 0;
+      
+                                          .name-episode{
+                                                font-size: 16px;
+                                                font-weight: 500;
+                                          }
+                                    }
+
+                                    .group-description-episode{
+                                          margin: 10px 0;
+      
+                                          .description-episode{
+                                                font-size: 15px;
+                                                font-weight: 400;
+                                          }
+                                    }
+                              }
+                        }
+
+                        &:hover{
+                              cursor: pointer;
+                              transform: scale(1);
+                              border: 3px solid white;
+                        }
+                  }
+            }
+      
+            .direction{
+                  position: absolute;
+                  height: 100%;
+                  top: 0;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  width: 30px;
+                  cursor: pointer;
+                  opacity: 1;
+                  transition: all .3s ease;
+      
+                  i{
+                        color: white;
+                        font-size: 30px;
+                        padding: 20px;
+                        background: rgba(24,25,28, 0.25);
+                        transition: all .3s ease;
+      
+                        &:hover{
+                              background: rgba(24,25,28, 0.75);
+                        }
+                  }
+      
+                  &.direction-prev{
+                        left: -2.2%;
+                  }
+      
+                  &.direction-next{
+                        right: -2.2%;
+                  }
+            }
       }
 }
 
-.buttons-content{
-      width: 100%;
-      padding: 0 25px;
-      margin-top: 15px;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-
-      span{
-            border-radius: 50px;
-            padding: 2px 12.5px;
-            background: #242528;
-            margin-right: 10px;
-
-            i{
-                  color: white;
-            }
-
-            &:hover{
-                  background:  #616161; 
-            }
-      }
-}
 .seasons-content-wrapper{
 
       .item-link{

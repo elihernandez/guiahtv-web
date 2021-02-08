@@ -40,7 +40,6 @@ function a11yProps(index) {
 }
 
 export function CustomTabs({data}){
-      console.log(data)
       const [value, setValue] = useState(0)
     
       const handleChange = (event, newValue) => {
@@ -83,7 +82,7 @@ export function CustomTabs({data}){
                   </AppBar>
                   {
                         data.map(({content}, index) => {
-                              return <TabPanel value={value} index={index}>
+                              return <TabPanel key={`${data[index].title}-Content-${index}`} value={value} index={index}>
                                     {content}
                               </TabPanel>
                         })

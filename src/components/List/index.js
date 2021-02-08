@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect, useContext, useRef } from 'react'
 import { NavLink, useRouteMatch, useHistory } from 'react-router-dom'
 import VodContext from '../../context/VodContext'
 import RadioContext from '../../context/RadioContext'
+import AudioContext from '../../context/AudioContext'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { getProgressMovie } from '../../js/Time'
 import { isShortString, limitString } from '../../js/String'
@@ -17,10 +18,10 @@ function isSerie(contentType) {
       return false
 }
 
-function typeContent(contentType){
-      if(contentType.includes('series')){
+function typeContent(contentType) {
+      if (contentType.includes('series')) {
             return 'serie'
-      }else{
+      } else {
             return 'pelicula'
       }
 }
@@ -31,23 +32,25 @@ function ListItem({ data, posterType, listType }) {
       const { url } = useRouteMatch()
       const { Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ContentType, Title, Description, ResumePos, Length } = data
       const type = typeContent(ContentType)
-      
-      if(listType != "radio"){
+
+      if (listType != "radio") {
             const { dispatchVod } = useContext(VodContext)
 
             handleClick = () => {
                   if (isSerie(ContentType)) {
                         dispatchVod({ type: 'setSerie', payload: data })
-                  }else{
+                  } else {
                         dispatchVod({ type: 'setMovie', payload: data })
                   }
             }
-      }else{
+      } else {
             const { dispatchRadio } = useContext(RadioContext)
-            
+            const { dispatchAudio } = useContext(AudioContext)
+
             handleClick = () => {
                   history.push(`/radio/${Registro}`)
                   dispatchRadio({ type: 'setCurrentStation', payload: data })
+                  dispatchAudio({ type: 'setData', payload: data })
             }
       }
 
@@ -130,7 +133,7 @@ function ListItem({ data, posterType, listType }) {
                                           }
                                     </div>
                                     <div className="description-content">
-                                          <h3 className="description-item">{limitString(Description, 80)}</h3>
+                                          <h3 className="description-item">{limitString(Description, 60)}</h3>
                                     </div>
                                     <div className="buttons-content">
                                           <Tooltip title="Más info" placement="top-start">
@@ -139,7 +142,7 @@ function ListItem({ data, posterType, listType }) {
                                                 </span>
                                           </Tooltip>
 
-                                          {     isShortString(Description) &&
+                                          {isShortString(Description) &&
                                                 <Tooltip title="Leer más" placement="top-start">
                                                       <span tabIndex="0">
                                                             <i className="fas fa-ellipsis-h" tabIndex="0" />
@@ -203,7 +206,7 @@ export function List({ data, listType }) {
                         <div className="list-items" ref={refList}>
                               {
                                     cmData.map((data) => {
-                                          return <ListItem key={data.Registro} data={data} posterType={poster_type} listType={listType}/>
+                                          return <ListItem key={data.Registro} data={data} posterType={poster_type} listType={listType} />
                                     })
                               }
                         </div>
@@ -224,7 +227,7 @@ export function List({ data, listType }) {
       )
 }
 
-export function ListCards({ data, listType }) {
+export function ListCards({ data, listType, listStyle }) {
       let pages = 0
       const [page, setPage] = useState(1)
       const [totalPages, setTotalPages] = useState(0)
@@ -272,7 +275,76 @@ export function ListCards({ data, listType }) {
                         <div className="list-items" ref={refList}>
                               {
                                     cmData.map((data) => {
-                                          return <ListItem key={data.Registro} data={data} posterType={poster_type} listType={listType}/>
+                                          return <ListItem key={data.Registro} data={data} posterType={poster_type} listType={listType} />
+                                    })
+                              }
+                        </div>
+                        {
+                              totalPages > 1 && page > 1 && listType != "season" &&
+                              <div className="direction direction-prev" onClick={handleClickPrev}>
+                                    <i className="fas fa-chevron-left" />
+                              </div>
+                        }
+                        {
+                              (totalPages > 1) && (page < totalPages) && listType != "season" &&
+                              <div className="direction direction-next" onClick={handleClickRight}>
+                                    <i className="fas fa-chevron-right" />
+                              </div>
+                        }
+                  </div>
+            </div>
+      )
+}
+
+export function ListCovers({ data, listType, listStyle }) {
+      let pages = 0
+      const [page, setPage] = useState(1)
+      const [totalPages, setTotalPages] = useState(0)
+      const { category, poster_type, cmData } = data
+      const classes = poster_type == 0 ? "list-covers portrait" : "list-covers landscape"
+      const refList = useRef()
+
+      const handleClickPrev = () => {
+            let moveP = 100 * (page - 2)
+            cssTransition(refList.current, {
+                  transform: `translate3d(-${moveP}%, 0, 0)`
+            }, 500, function () {
+                  setPage(page - 1)
+            })
+      }
+
+      const handleClickRight = () => {
+            let moveP = 100 * (page)
+            cssTransition(refList.current, {
+                  transform: `translate3d(-${moveP}%, 0, 0)`
+            }, 500, function () {
+                  setPage(page + 1)
+            })
+      }
+
+      useEffect(() => {
+            if (poster_type == 0) {
+                  pages = cmData.length / 7
+            } else {
+                  pages = cmData.length / 5
+            }
+
+            if (pages % 1 != 0) {
+                  pages = Math.ceil(pages)
+            }
+
+            if (pages > 1) {
+                  setTotalPages(pages)
+            }
+      }, [])
+
+      return (
+            <div className={classes}>
+                  <div className="list-content">
+                        <div className="list-items" ref={refList}>
+                              {
+                                    cmData.map((data) => {
+                                          return <ListItem key={data.Registro} data={data} posterType={poster_type} listType={listType} />
                                     })
                               }
                         </div>

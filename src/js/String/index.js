@@ -6,8 +6,8 @@ export function createUrlString(string) {
 }
 
 export function shortString(string) {
-      if (string.length > 80) {
-            string = string.substring(0, 80)
+      if (string.length > 60) {
+            string = string.substring(0, 60)
             string = string + "..."
       }
 
@@ -24,7 +24,7 @@ export function limitString(string, limit){
 }
 
 export function isShortString(string) {
-      if (string.length > 80) {
+      if (string.length > 60) {
             return true
       }
 

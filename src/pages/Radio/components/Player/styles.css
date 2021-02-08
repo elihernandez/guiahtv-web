@@ -1,7 +1,16 @@
 .player-content{
       position: absolute;
-      height: 80px;
+      height: auto;
       width: 100%;
       bottom: 0;
       background: #18191c;
+      padding: 15px 25px;
+
+      .controls{
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+      }
 }

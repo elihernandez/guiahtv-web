@@ -1,7 +1,7 @@
 .MuiPaper-root{
       background-color: transparent !important;
       box-shadow: none !important;
-
+    
       button{
             box-shadow: none !important;
       }
@@ -12,6 +12,10 @@
 
       .MuiTab-fullWidth{
             flex-grow: 0 !important;
+            color: #9e9e9e !important;
+      }
+
+      .Mui-selected{
             color: white !important;
       }
 }

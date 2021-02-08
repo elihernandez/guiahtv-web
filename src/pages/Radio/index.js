@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { RadioContextProvider } from '../../context/RadioContext'
 import { AudioContextProvider } from '../../context/AudioContext'
 import { Switch, Route, useRouteMatch } from "react-router-dom"
-import { Guide } from './Guide'
+import { Guide } from './components/Guide'
+import { Player } from './components/Player'
 import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
 import { hideTopMenuNavbar, showTopMenuNavbar } from '../../components/TopMenu'
 import './styles.css'
@@ -14,7 +15,9 @@ const initialState = {
       active: false,
       loading: false,
       playing: false,
-      muteVolume: false
+      muteVolume: false,
+      volume: 30,
+      error: false
 }
 
 const reducer = (state, action) => {
@@ -31,19 +34,19 @@ const reducer = (state, action) => {
                         audioRef: action.payload,
                   }
             }
-            case 'updateData': {
+            case 'setData': {
                   return {
                         ...state,
                         data: action.payload,
                   }
             }
-            case 'updateActive': {
+            case 'setActive': {
                   return {
                         ...state,
                         active: action.payload,
                   }
             }
-            case 'updateLoading': {
+            case 'setLoading': {
                   return {
                         ...state,
                         loading: action.payload,
@@ -59,6 +62,12 @@ const reducer = (state, action) => {
                   return {
                         ...state,
                         muteVolume: action.payload,
+                  }
+            }
+            case 'setError': {
+                  return {
+                        ...state,
+                        error: action.payload,
                   }
             }
             default: return state;
@@ -87,9 +96,9 @@ export function Radio(){
                               <div className="section-content">
                                     <Switch>
                                           <Route exact path={`${url}/:contentId?`} >
-                                                <Guide />
                                                 <AudioContextProvider state={initialState} reducer={reducer}>
-                                                     
+                                                      <Guide />
+                                                      <Player />
                                                 </AudioContextProvider>
                                           </Route>
                                     </Switch>

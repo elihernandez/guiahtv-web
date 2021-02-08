@@ -1,0 +1,24 @@
+.button-fav-wrapper{
+      width: 100px;
+      display: flex;
+      justify-content: center;
+
+      .button-fav{
+            position: relative;
+            display: flex;
+            justify-content: center;
+           
+            i{
+                  font-size: 20px;
+                  color: #9e9e9e;
+            }
+
+            &:hover{
+                  cursor: pointer;
+                        
+                  i{
+                        color: white;
+                  }
+            }
+      }
+}

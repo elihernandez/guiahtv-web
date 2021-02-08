@@ -1,0 +1,13 @@
+.info-audio-wrapper{
+      flex: 1 1 auto;
+
+      p{
+            font-size: 14px;
+            color: #9e9e9e;
+      }
+      
+      .title-audio{
+            font-size: 20px;
+            font-weight: 600;
+      }
+}
