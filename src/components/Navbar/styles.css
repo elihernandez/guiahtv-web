@@ -1,3 +1,5 @@
+@import '../../scss/style-base.css';
+
 .navbar{
 
     .section-wrapper{ 
@@ -17,23 +19,6 @@
                 text-align: center;
                 cursor: pointer;
     
-                /* &.active{
-                    
-                    &::after{
-                        content: '';
-                        position: absolute;
-                        height: 3px;
-                        width: 44px;
-                        bottom: 13px;
-                        background: linear-gradient(-45deg,#052767 0%, #00aeef 100%);
-                    }
-    
-                    p {
-                        font-weight: 600;
-                        color: white;
-                    }
-                } */
-    
                 .navbar-link{
                     text-decoration: none;
                     display: flex;
@@ -44,7 +29,7 @@
                         font-size: 14px;
                         font-weight: 600;
                         margin: 0 10px;
-                        color: rgba(255, 255, 255, 0.5);
+                        color: $color-grey-3;
                         transition: all .15s ease;
                         margin-bottom: 1px;
                     }
@@ -56,27 +41,27 @@
 
 
                     &:hover i{
-                        color: rgba(255, 255, 255, 1);
+                        color: $color-white;
                     }
 
                     &.active i{
-                        color: rgba(255, 255, 255, 1);
+                        color: $color-white;
                     }
 
                     &:hover p{
-                        color: rgba(255, 255, 255, 1);
+                        color: $color-white;
                     }
 
                     &.active p{
-                        color: rgba(255, 255, 255, 1);
+                        color: $color-white;
                     }
 
                     &:hover svg{
-                        color: rgba(255, 255, 255, 1);
+                        color: $color-white;
                     }
 
                     &.active svg{
-                        color: rgba(255, 255, 255, 1);
+                        color: $color-white;
                     }
                 }
             }

@@ -72,14 +72,12 @@
 
       .title-text{
             font-weight: 600;
-            font-size: 40px;
             line-height: 55px;
       }
 
       .subtitle-text{
             font-weight: 300;
-            font-size: 20px;
-            margin-top: 10px !important;
+            margin-top: 10px;
             
       }
 
@@ -92,7 +90,7 @@
             
             p{
                   font-size: 17px;
-                  margin-right: 25px !important;
+                  margin-right: 25px;
                   font-weight: 300;
                   
             }
@@ -101,8 +99,8 @@
                   font-size: 20px;
                   padding: 15px 40px;
                   letter-spacing: .5px;
-                  font-weight: 300 !important;
-                  margin-right: 20px !important;
+                  font-weight: 300;
+                  margin-right: 20px;
             }
                   
       }

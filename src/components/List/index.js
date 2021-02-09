@@ -121,9 +121,7 @@ function ListItem({ data, posterType, listType }) {
                   { listType == "radio" &&
                         <div className="item-link">
                               <div className="item" onClick={handleClick}>
-                                    <div className="title-content">
-                                          <h2 className="title-item">{Title}</h2>
-                                    </div>
+                                    
                                     <div className="background-item">
                                           {posterType == 0 &&
                                                 <img onError={handleError} src={HDPosterUrlPortrait} />
@@ -132,23 +130,11 @@ function ListItem({ data, posterType, listType }) {
                                                 <img onError={handleError} src={HDPosterUrlLandscape} />
                                           }
                                     </div>
+                                    <div className="title-content">
+                                          <h2 className="title-item">{Title}</h2>
+                                    </div>
                                     <div className="description-content">
                                           <h3 className="description-item">{limitString(Description, 60)}</h3>
-                                    </div>
-                                    <div className="buttons-content">
-                                          <Tooltip title="Más info" placement="top-start">
-                                                <span tabIndex="0">
-                                                      <i className="fas fa-info" tabIndex="0" />
-                                                </span>
-                                          </Tooltip>
-
-                                          {isShortString(Description) &&
-                                                <Tooltip title="Leer más" placement="top-start">
-                                                      <span tabIndex="0">
-                                                            <i className="fas fa-ellipsis-h" tabIndex="0" />
-                                                      </span>
-                                                </Tooltip>
-                                          }
                                     </div>
                               </div>
                         </div>
@@ -201,7 +187,7 @@ export function List({ data, listType }) {
 
       return (
             <div className={classes}>
-                  <h3 className="title-list">{category}</h3>
+                  <h6 className="title-list">{category}</h6>
                   <div className="list-content">
                         <div className="list-items" ref={refList}>
                               {
@@ -364,3 +350,22 @@ export function ListCovers({ data, listType, listStyle }) {
             </div>
       )
 }
+
+// <div className="description-content">
+//       <h3 className="description-item">{limitString(Description, 60)}</h3>
+// </div>
+// <div className="buttons-content">
+//       <Tooltip title="Más info" placement="top-start">
+//             <span tabIndex="0">
+//                   <i className="fas fa-info" tabIndex="0" />
+//             </span>
+//       </Tooltip>
+
+//       {isShortString(Description) &&
+//             <Tooltip title="Leer más" placement="top-start">
+//                   <span tabIndex="0">
+//                         <i className="fas fa-ellipsis-h" tabIndex="0" />
+//                   </span>
+//             </Tooltip>
+//       }
+// </div>

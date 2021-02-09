@@ -11,14 +11,14 @@ import { CSSTransition } from 'react-transition-group'
 import { VideoVod } from '../../pages/Video'
 import './styles.css'
 
-function searchSerie(data, contentId){
+function searchSerie(data, contentId) {
       let content
-      data.map(({poster_type, cmData}) => {
-            if(poster_type == 1){
-                
-                  cmData.map((serie) =>{
-                        if(serie.Registro == contentId){
-                              if(!content){
+      data.map(({ poster_type, cmData }) => {
+            if (poster_type == 1) {
+
+                  cmData.map((serie) => {
+                        if (serie.Registro == contentId) {
+                              if (!content) {
                                     content = serie
                               }
                         }
@@ -29,13 +29,13 @@ function searchSerie(data, contentId){
       return content
 }
 
-function searchMovie(data, contentId){
+function searchMovie(data, contentId) {
       let content
-      data.map(({poster_type, cmData}) => {
-            if(poster_type == 0){
-                  cmData.map((movie) =>{
-                        if(movie.Registro == contentId){
-                              if(!content){
+      data.map(({ poster_type, cmData }) => {
+            if (poster_type == 0) {
+                  cmData.map((movie) => {
+                        if (movie.Registro == contentId) {
+                              if (!content) {
                                     content = movie
                               }
                         }
@@ -45,7 +45,7 @@ function searchMovie(data, contentId){
       return content
 }
 
-function InfoContent(){
+function InfoContent() {
       const { contentId, contentType } = useParams()
       const { stateVod, dispatchVod } = useContext(VodContext)
       const { dataVod, movieVod, seasonVod, serieVod } = stateVod
@@ -53,33 +53,33 @@ function InfoContent(){
       const [content, setContent] = useState('')
 
       useEffect(() => {
-            if(dataVod){      
-                  switch(contentType){
+            if (dataVod) {
+                  switch (contentType) {
                         case 'pelicula':
-                              if(movieVod){
+                              if (movieVod) {
                                     setLoading(false)
                                     setContent('movie')
-                              }else{
+                              } else {
                                     dispatchVod({ type: 'setMovie', payload: searchMovie(dataVod, contentId) })
                                     setLoading(false)
                                     setContent('movie')
                               }
-                        break
+                              break
                         case 'serie':
-                              if(serieVod){
+                              if (serieVod) {
                                     setLoading(false)
                                     setContent('serie')
-                              }else{
-                                    dispatchVod({ type: 'setSerie', payload:  searchSerie(dataVod, contentId) })
+                              } else {
+                                    dispatchVod({ type: 'setSerie', payload: searchSerie(dataVod, contentId) })
                                     setLoading(false)
                                     setContent('serie')
                               }
-                        break
+                              break
                   }
             }
       }, [dataVod])
 
-      if(loading){
+      if (loading) {
             return <LoaderSpinnerMUI />
       }
 
@@ -99,10 +99,10 @@ function InfoContent(){
       )
 }
 
-export function CatalogueVod({requestApi}) {
+export function CatalogueVod({ requestApi }) {
       const { url } = useRouteMatch()
       const { stateVod, dispatchVod } = useContext(VodContext)
-      const { dataVod } = stateVod 
+      const { dataVod } = stateVod
       const { loading, data } = useRequest(requestApi, dispatchVod, dataVod)
 
       return (
@@ -116,7 +116,7 @@ export function CatalogueVod({requestApi}) {
                                     <div className="content-catalogue">
                                           {data && !loading &&
                                                 data.map((category) => {
-                                                      return <List key={category.category} data={category} listType="catalogue"/>
+                                                      return <List key={category.category} data={category} listType="catalogue" />
                                                 })
                                           }
                                     </div>
@@ -133,10 +133,10 @@ export function CatalogueVod({requestApi}) {
       )
 }
 
-export function CatalogueRadio({requestApi}){
-    
+export function CatalogueRadio({ requestApi }) {
+
       const { stateRadio, dispatchRadio } = useContext(RadioContext)
-      const { dataRadio } = stateRadio 
+      const { dataRadio } = stateRadio
       const { loading, data } = useRequest(requestApi, dispatchRadio, dataRadio)
 
       return (
@@ -145,15 +145,15 @@ export function CatalogueRadio({requestApi}){
                         <LoaderSpinnerMUI />
                   </CSSTransition>
                   <CSSTransition in={!loading} timeout={300} classNames="active" unmountOnExit>
-                       
+
                         <div className={`content-catalogue ${requestApi}`}>
                               {data && !loading &&
                                     data.map((category, index) => {
-                                          return <List key={`${category.category}-${index}`} data={category} listType="radio"/>
+                                          return <List key={`${category.category}-${index}`} data={category} listType="radio" />
                                     })
                               }
                         </div>
-                            
+
                   </CSSTransition>
             </Fragment>
       )

@@ -5,7 +5,6 @@ import { Volume } from '../Buttons/Volume'
 import { Fav } from '../Buttons/Fav'
 
 export function Controls({stateAudio, dispatchAudio}){
-      console.log(stateAudio)
       const { active, loading, playing, audioRef, data, error, volume } = stateAudio
 
       return(

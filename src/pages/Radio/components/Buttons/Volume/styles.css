@@ -5,11 +5,14 @@
       align-items: center;
 
       .volume-icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
             i{
                   color: white;
                   font-size: 18px;
-                  margin-right: 15px;
-                  
+                  margin-right: 15px;     
             }
       }
 

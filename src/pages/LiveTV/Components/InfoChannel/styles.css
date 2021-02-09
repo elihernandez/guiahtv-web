@@ -11,13 +11,13 @@
             position: relative;
 
             .text-info{
-                  color: rgba(179, 179, 179);
+                  color: $color-grey-2;
                   font-weight: 400;
                   font-size: 18px;
             }
       
             .channel-name{
-                  color: white;
+                  color: $color-white;
                   font-weight: 600;
                   font-size: 35px;
             }
@@ -37,22 +37,34 @@
                   width: 200px;
 
                   .MuiSlider-root{
-                        /* background: rgba(0, 0, 0, 0.5) !important; */
-                        color: $color-guide-blue;
-                        margin-top: -7.5px !important;
+                        color: $color-white;
+                        margin-top: -7.5px;
 
                         .MuiSlider-rail{
-                              height: 6px !important;
+                              height: 6px;
+                              background-color: $color-grey-2;
                         }
 
                         .MuiSlider-track{
-                              height: 6px !important;
+                              height: 6px;
                         }
 
                         .MuiSlider-thumb{
-                              height: 16px !important;
-                              width: 16px !important;
-                              margin-top: -5px !important;
+                              height: 16px;
+                              width: 16px;
+                              margin-top: -5px;
+
+                              &.MuiSlider-active{
+                                    box-shadow: none;
+                              }
+
+                              &.Mui-focusVisible{
+                                    box-shadow: none;
+                              }
+
+                              &:hover{
+                                    box-shadow: none;
+                              }
                         }
                   }
             }
@@ -62,7 +74,7 @@
                   
                   i{
                         font-size: 22px;
-                        color: white;
+                        color: $color-white;
                   }
             }
 
@@ -75,5 +87,4 @@
                   min-width: 25px;
             }
       }
-      
 }

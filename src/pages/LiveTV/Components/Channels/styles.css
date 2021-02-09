@@ -1,3 +1,5 @@
+@import '../../../../scss/style-base.css';
+
 .channels{
       position: relative;
       height: 100%;
@@ -36,10 +38,10 @@
                   color: white;
                   font-size: 30px;
                   padding: 20px;
-                  background: rgba(24,25,28, 0.25);
+                  background: rgba($rgba-color-guide-black, 0.25);
 
                   &:hover{
-                        background: rgba(24,25,28, 0.75);
+                        background: rgba($rgba-color-guide-black, 0.75);
                   }
             }
 

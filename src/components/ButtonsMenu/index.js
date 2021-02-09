@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getButtonsMenu } from '../../services/getButtonsMenu'
+import { H6 } from '../Text'
 import { useHistory } from "react-router-dom"
 import './styles.css'
 
@@ -32,7 +33,7 @@ function Button({title, contentType, img}){
     return (
         <li className="item-button focusable" onClick={handleClick}>
             <img className="image-button" src={img} alt={altImg}/>
-            <p className="title-button">{title}</p>
+            <H6 className="title-button">{title}</H6>
         </li>
     )
 
@@ -64,24 +65,20 @@ export function ButtonsMenu(){
     }, [])
 
     return (
-        <>
-            {
-                buttons 
-                ?   <div className="buttons-sections">
-                        <ul className="buttons-list">
-                            {
-                                buttons.map(({titulo, ContentType, PosterCardUrlLandscape}, index) => 
-                                    <Button 
-                                        key={ContentType}
-                                        title={titulo}
-                                        contentType={ContentType}
-                                        img={PosterCardUrlLandscape}
-                                    /> )
-                            }
-                        </ul>
-                    </div>
-                : null
+        <div className="buttons-sections">
+            {buttons &&  
+                <ul className="buttons-list">
+                    {
+                        buttons.map(({titulo, ContentType, PosterCardUrlLandscape}) => 
+                            <Button 
+                                key={ContentType}
+                                title={titulo}
+                                contentType={ContentType}
+                                img={PosterCardUrlLandscape}
+                            /> )
+                    }
+                </ul>
             }
-        </>
+        </div>
     )
 }

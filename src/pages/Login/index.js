@@ -1,18 +1,18 @@
-import React, { useState, useContext } from 'react'
+import React, { Fragment, useState, useContext } from 'react'
 import { useCookies } from 'react-cookie'
 import Logo from '../../components/Logo/index'
 import { getLogin } from '../../services/getLogin'
 import encryptString from '../../js/Encrypt/encrypt'
-import { LoaderSpinner } from '../../components/Loader/index'
+import { LoaderSpinnerMUI } from '../../components/Loader/index'
 import { Link } from '../../components/Link/index'
 import { ButtonUI } from '../../components/Button/index'
 import { H1 } from '../../components/Text/index'
 import UserContext from '../../context/UserContext'
 import './styles.css'
 
-function GroupFormError({error}){
+function GroupFormError({ error }) {
 
-    if(error.default){
+    if (error.default) {
         return (
             <div className="group-form-error">
                 <p className="text-error">
@@ -22,8 +22,8 @@ function GroupFormError({error}){
         )
     }
 
-    if(error.email){
-        return(
+    if (error.email) {
+        return (
             <div className="group-form-error">
                 <p className="text-error">
                     No podemos encontrar una cuenta con esta dirección de email.
@@ -33,8 +33,8 @@ function GroupFormError({error}){
         )
     }
 
-    if(error.password){
-        return(
+    if (error.password) {
+        return (
             <div className="group-form-error">
                 <p className="text-error">
                     <strong>Contraseña incorrecta.</strong>
@@ -44,7 +44,7 @@ function GroupFormError({error}){
         )
     }
 
-    if(error.limit){
+    if (error.limit) {
         return (
             <div className="group-form-error">
                 <p className="text-error">
@@ -60,13 +60,14 @@ function GroupFormError({error}){
 export function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [check, setCheck] = useState(false)
     const [cookies, setCookie] = useCookies()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState({ default: false, email: false, password: false, limit: false })
     const { stateUser, dispatchUser } = useContext(UserContext)
     const { credentials } = stateUser
 
-    const validateResponse = ({ResponseCode, SuscriberID = "error"}) => {
+    const validateResponse = ({ ResponseCode, SuscriberID = "error" }) => {
         switch (ResponseCode) {
             case 0: // Usuario no encontrado
                 setLoading(false)
@@ -135,67 +136,71 @@ export function Login() {
         requestLogin()
     }
 
+    const handleChange = (e) => {
+        setCheck(e.nativeEvent.target.checked)
+    }
+
     return (
-        <>
+        <div className="wrapper-login">
             {
                 loading
-                    ?   <LoaderSpinner color="blue" />
-                    :   <div className="wrapper-login">
-                            <div className="background-svg" />
-                            <div className="background-image" />
-                            <div className="content-form">
-                                <Logo color="blue" />
-                                <form className="login-form" onSubmit={handleSubmit}>
-                                    <H1 className="title-form">Inicia sesión</H1>
-                                    <GroupFormError error={error}/>
-                                    <div className="group-form">
-                                        <label htmlFor="username"/>
-                                        <input
-                                            type="text"
-                                            className="username"
-                                            name="username"
-                                            id="username"
-                                            placeholder="Correo electrónico"
-                                            value={username}
-                                            autoComplete="on"
-                                            required
-                                            autoFocus
-                                            data-uia="login-field"
-                                            onChange={(e) => setUsername(e.target.value)}
-                                        />
-                                    </div>
-                                    <div className="group-form">
-                                        <label htmlFor="password"/>
-                                        <input
-                                            type="password"
-                                            name="password"
-                                            id="password"
-                                            className="password"
-                                            placeholder="Contraseña"
-                                            autoComplete="on"
-                                            required
-                                            data-uia="login-field"
-                                            onChange={(e) => setPassword(e.target.value)}
-                                        />
-                                    </div>
-                                    <ButtonUI type="submit" className="gradient-background uppercase btn-submit-login" text="Iniciar sesión" />
-                                </form>
-                                <div className="group-info">
-                                    <div className="group-rememberme row">
-                                        <label htmlFor="checkbox-rememberme"/>
-                                        <input type="checkbox" id="checkbox-rememberme" className="input-checkbox"/>
-                                        <p>Recuérdame</p>
-                                    </div>
-                                    <Link className="link-help" href="https://guiah.tv/axs/ForgotPassword">¿Necesitas ayuda?</Link>
+                    ? <LoaderSpinnerMUI />
+                    : <Fragment>
+                        <div className="background-svg" />
+                        <div className="background-image" />
+                        <div className="content-form">
+                            <Logo color="blue" />
+                            <form className="login-form" onSubmit={handleSubmit}>
+                                <H1 className="title-form">Inicia sesión</H1>
+                                <GroupFormError error={error} />
+                                <div className="group-form">
+                                    <label htmlFor="username" />
+                                    <input
+                                        type="text"
+                                        className="username"
+                                        name="username"
+                                        id="username"
+                                        placeholder="Correo electrónico"
+                                        value={username}
+                                        autoComplete="on"
+                                        required
+                                        autoFocus
+                                        data-uia="login-field"
+                                        onChange={(e) => setUsername(e.target.value)}
+                                    />
                                 </div>
-                                <div className="bottom-info">
-                                    <p>¿Primera vez en Guíah TV?
+                                <div className="group-form">
+                                    <label htmlFor="password" />
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        className="password"
+                                        placeholder="Contraseña"
+                                        autoComplete="on"
+                                        required
+                                        data-uia="login-field"
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                </div>
+                                <ButtonUI type="submit" className="gradient-background uppercase btn-submit-login" text="Iniciar sesión" />
+                            </form>
+                            <div className="group-info">
+                                <div className="group-rememberme row">
+                                    <label htmlFor="checkbox-rememberme" />
+                                    <input type="checkbox" id="checkbox-rememberme" className="input-checkbox" onChange={handleChange} />
+                                    <p>Recuérdame</p>
+                                </div>
+                                <Link className="link-help" href="https://guiah.tv/axs/ForgotPassword">¿Necesitas ayuda?</Link>
+                            </div>
+                            <div className="bottom-info">
+                                <p>¿Primera vez en Guíah TV?
                                     <Link className="link-register" href="https://guiah.tv/axs/registro">Registrarme</Link>
-                                    </p>
-                                </div>
+                                </p>
                             </div>
                         </div>
+                    </Fragment>
             }
-        </>
+        </div>
     )
 }

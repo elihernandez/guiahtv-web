@@ -1,3 +1,5 @@
+@import '../../../../scss/style-base.css';
+
 .navbar-guide-tv{
 
       .section-wrapper{ 
@@ -31,7 +33,7 @@
                                     font-size: 14px;
                                     font-weight: 600;
                                     margin: 0 0;
-                                    color: rgba(255, 255, 255, 0.5);
+                                    color: $color-grey-3;
                                     transition: all .15s ease;
                               }
             
@@ -40,23 +42,23 @@
                               }
             
                               &:hover i{
-                                    color: rgba(255, 255, 255, 1);
+                                    color: $color-white;
                               }
             
                               &.active i{
-                                    color: rgba(255, 255, 255, 1);
+                                    color: $color-white;
                               }
 
                               &.active{
-                                    background: rgba(0, 0, 0, 0.25);
+                                    background: rgba($rgba-color-smokey-black, 0.5);
                               }
             
                               &:hover p{
-                                    color: rgba(255, 255, 255, 1);
+                                    color: $color-white;
                               }
             
                               &.active p{
-                                    color: rgba(255, 255, 255, 1);
+                                    color: $color-white;
                               }
                         }
                   }
