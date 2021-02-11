@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Tooltip from '@material-ui/core/Tooltip'
 import './styles.css'
 
 export function Fav() {
@@ -10,14 +11,16 @@ export function Fav() {
 
       return (
             <div className="button-fav-wrapper">
-                  <span className="button-fav" onClick={handleClick}>
-                        {!fav &&
-                              <i className="far fa-heart" />
-                        }
-                        {fav &&
-                              <i className="fas fa-heart" />
-                        }
-                  </span>
+                  <Tooltip title="Guradar en favoritos" placement="top-start">
+                        <span className="button-fav" onClick={handleClick}>
+                              {!fav &&
+                                    <i className="far fa-heart" />
+                              }
+                              {fav &&
+                                    <i className="fas fa-heart" />
+                              }
+                        </span>
+                  </Tooltip>
             </div>
       )
 }

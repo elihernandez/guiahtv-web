@@ -11,19 +11,6 @@
             padding: 0 65px !important;
       }
 
-      .list.landscape .list-items{
-            height: auto !important;
-            flex-wrap: wrap;
-
-            .item{
-                  margin-bottom: 50px;
-            }
-
-            .background-item{
-                height: 215px !important;
-            }
-      }
-
       .popper-menu-wrapper{
 
             div[x-placement]{

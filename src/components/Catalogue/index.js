@@ -11,7 +11,7 @@ import { CSSTransition } from 'react-transition-group'
 import { VideoVod } from '../../pages/Video'
 import './styles.css'
 
-function searchSerie(data, contentId) {
+export function searchSerie(data, contentId) {
       let content
       data.map(({ poster_type, cmData }) => {
             if (poster_type == 1) {
@@ -29,7 +29,7 @@ function searchSerie(data, contentId) {
       return content
 }
 
-function searchMovie(data, contentId) {
+export function searchMovie(data, contentId) {
       let content
       data.map(({ poster_type, cmData }) => {
             if (poster_type == 0) {
@@ -45,7 +45,7 @@ function searchMovie(data, contentId) {
       return content
 }
 
-function InfoContent() {
+export function InfoContent() {
       const { contentId, contentType } = useParams()
       const { stateVod, dispatchVod } = useContext(VodContext)
       const { dataVod, movieVod, seasonVod, serieVod } = stateVod
@@ -107,13 +107,13 @@ export function CatalogueVod({ requestApi }) {
 
       return (
             <Fragment>
-                  <CSSTransition in={loading} timeout={300} classNames="active" unmountOnExit>
+                  <CSSTransition in={loading} timeout={300} classNames="fade" unmountOnExit>
                         <LoaderSpinnerMUI />
                   </CSSTransition>
-                  <CSSTransition in={!loading} timeout={300} classNames="active" unmountOnExit>
+                  <CSSTransition in={!loading} timeout={300} classNames="fade" unmountOnExit>
                         <Switch>
                               <Route exact path={`${url}`} >
-                                    <div className="content-catalogue">
+                                    <div className={`content-catalogue ${requestApi}`}>
                                           {data && !loading &&
                                                 data.map((category) => {
                                                       return <List key={category.category} data={category} listType="catalogue" />

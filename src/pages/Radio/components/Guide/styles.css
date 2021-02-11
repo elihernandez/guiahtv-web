@@ -9,6 +9,10 @@
             .tabs-wrapper{
                   header{
                         padding: 0 50px;
+
+                        &.MuiPaper-root{
+                              background: transparent !important;
+                        }
                   }
             }
       }

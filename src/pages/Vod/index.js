@@ -1,33 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import { VodContextProvider } from '../../context/VodContext'
-import { CatalogueVod } from '../../components/Catalogue'
-import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
+import React, { useEffect } from 'react'
 import { hideTopMenuNavbar, showTopMenuNavbar } from '../../components/TopMenu'
+import { Content } from './components/Content'
+import { VodContextProvider } from '../../context/VodContext'
+import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
 import './styles.css'
 
 export function VideoOnDemand() {
-     const [isCancelled, setIsCancelled] = useState(false)
 
       useEffect(() => {
-            setIsCancelled(false)
             showTopMenuNavbar()
 
             return () => {
-                  setIsCancelled(true)
                   hideTopMenuNavbar()
-                  if(isFullScreenElement()) exitFullScreen()
+                  if (isFullScreenElement()) exitFullScreen()
             }
       })
 
       return (
-            <div className="wrapper-vod">
-                  {!isCancelled &&
-                        <VodContextProvider>
-                              <div className="section-content">
-                                    <CatalogueVod requestApi="alacarta"/>
-                              </div>
-                        </VodContextProvider>
-                  }
+            <div className="wrapper-alacarta">
+                  <VodContextProvider>
+                        <Content />
+                  </VodContextProvider>
             </div>
       )
 }

@@ -6,8 +6,8 @@ export function createUrlString(string) {
 }
 
 export function shortString(string) {
-      if (string.length > 60) {
-            string = string.substring(0, 60)
+      if (string.length > 80) {
+            string = string.substring(0, 80)
             string = string + "..."
       }
 
@@ -40,4 +40,20 @@ export function replaceString(string, replace, newReplace) {
 
 export function capitalizeFirstLetter(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function isSerie(str) {
+      if (str.includes('series')) {
+            return true
+      }
+
+      return false
+}
+
+export function typeContent(str) {
+      if (str.includes('series')) {
+            return 'serie'
+      } else {
+            return 'pelicula'
+      }
 }

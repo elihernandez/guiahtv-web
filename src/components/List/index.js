@@ -1,213 +1,75 @@
-import React, { Fragment, useState, useEffect, useContext, useRef } from 'react'
-import { NavLink, useRouteMatch, useHistory } from 'react-router-dom'
-import VodContext from '../../context/VodContext'
-import RadioContext from '../../context/RadioContext'
-import AudioContext from '../../context/AudioContext'
-import LinearProgress from '@material-ui/core/LinearProgress'
-import { getProgressMovie } from '../../js/Time'
-import { isShortString, limitString } from '../../js/String'
-import Tooltip from '@material-ui/core/Tooltip'
+import React, { Fragment, useState, useEffect, useRef } from 'react'
+import { Item } from '../ListItem'
 const cssTransition = require('css-transition')
 import './styles.css'
 
-function isSerie(contentType) {
-      if (contentType.includes('series')) {
-            return true
+function getPages(cmData, maxItems) {
+      let pages = cmData.length / maxItems
+
+      if (pages % 1 != 0) {
+            pages = Math.ceil(pages)
       }
 
-      return false
-}
-
-function typeContent(contentType) {
-      if (contentType.includes('series')) {
-            return 'serie'
-      } else {
-            return 'pelicula'
-      }
-}
-
-function ListItem({ data, posterType, listType }) {
-      let handleClick
-      const history = useHistory()
-      const { url } = useRouteMatch()
-      const { Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ContentType, Title, Description, ResumePos, Length } = data
-      const type = typeContent(ContentType)
-
-      if (listType != "radio") {
-            const { dispatchVod } = useContext(VodContext)
-
-            handleClick = () => {
-                  if (isSerie(ContentType)) {
-                        dispatchVod({ type: 'setSerie', payload: data })
-                  } else {
-                        dispatchVod({ type: 'setMovie', payload: data })
-                  }
-            }
-      } else {
-            const { dispatchRadio } = useContext(RadioContext)
-            const { dispatchAudio } = useContext(AudioContext)
-
-            handleClick = () => {
-                  history.push(`/radio/${Registro}`)
-                  dispatchRadio({ type: 'setCurrentStation', payload: data })
-                  dispatchAudio({ type: 'setData', payload: data })
-            }
-      }
-
-      const handleError = (e) => {
-            let srcImg = ''
-            switch (posterType) {
-                  case '0':
-                        srcImg = 'build/assets/images/logos/guiahtv/vod-error-portrait.png'
-                        break
-                  case '1':
-                        srcImg = 'build/assets/images/logos/guiahtv/GuiahAzulPerf.png'
-                        break
-                  default:
-                        srcImg = 'build/assets/images/logos/guiahtv/GuiahAzulPerf.png'
-                        break
-            }
-            e.nativeEvent.target.src = srcImg
-      }
-
-      return (
-            <Fragment>
-                  { listType == "catalogue" &&
-                        <NavLink to={`${url}/${type}/${Registro}`} className="item-link">
-                              <div className="item" onClick={handleClick}>
-                                    <div className="background-item">
-                                          {posterType == 0 &&
-                                                <img onError={handleError} src={HDPosterUrlPortrait} />
-                                          }
-                                          {posterType == 1 &&
-                                                <img onError={handleError} src={HDPosterUrlLandscape} />
-                                          }
-                                          {ResumePos &&
-                                                <div className="progress-bar-content">
-                                                      <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
-                                                </div>
-                                          }
-                                    </div>
-                              </div>
-                        </NavLink>
-                  }
-                  { listType == "season" &&
-                        <NavLink to={`${url}/video`} className="item-link">
-                              <div className="item" onClick={handleClick}>
-                                    <div className="background-item">
-                                          {posterType == 0 &&
-                                                <img onError={handleError} src={HDPosterUrlPortrait} />
-                                          }
-                                          {posterType == 1 &&
-                                                <img onError={handleError} src={HDPosterUrlLandscape} />
-                                          }
-                                          {ResumePos &&
-                                                <div className="progress-bar-content">
-                                                      <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
-                                                </div>
-                                          }
-                                    </div>
-                                    <div className="info-episode">
-                                          <div className="group-name-episode">
-                                                <h3 className="name-episode">{Title}</h3>
-                                          </div>
-                                          <div className="group-description-episode">
-                                                <p className="description-episode">{limitString(Description, 100)}</p>
-                                          </div>
-                                    </div>
-                              </div>
-                        </NavLink>
-                  }
-                  { listType == "radio" &&
-                        <div className="item-link">
-                              <div className="item" onClick={handleClick}>
-                                    
-                                    <div className="background-item">
-                                          {posterType == 0 &&
-                                                <img onError={handleError} src={HDPosterUrlPortrait} />
-                                          }
-                                          {posterType == 1 &&
-                                                <img onError={handleError} src={HDPosterUrlLandscape} />
-                                          }
-                                    </div>
-                                    <div className="title-content">
-                                          <h2 className="title-item">{Title}</h2>
-                                    </div>
-                                    <div className="description-content">
-                                          <h3 className="description-item">{limitString(Description, 60)}</h3>
-                                    </div>
-                              </div>
-                        </div>
-                  }
-            </Fragment>
-      )
+      return pages
 }
 
 export function List({ data, listType }) {
-      let pages = 0
-      const [page, setPage] = useState(1)
-      const [totalPages, setTotalPages] = useState(0)
+      let List = () => null
+
+      switch (listType) {
+            case 'catalogue':
+                  List = <ListCatalogue data={data} listType={listType} />
+                  break
+            case 'season':
+                  List = <ListSeason data={data} listType={listType} />
+                  break
+            case 'radio':
+                  List = <ListRadio data={data} listType={listType} />
+                  break
+      }
+
+      return List
+}
+
+export function ListCatalogue({ data, listType }) {
       const { category, poster_type, cmData } = data
-      const classes = poster_type == 0 ? "list portrait" : "list landscape"
+      const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
+      const classes = poster_type == 0 ? `list list-catalogue portrait` : `list  list-catalogue landscape`
       const refList = useRef()
-
-      const handleClickPrev = () => {
-            let moveP = 100 * (page - 2)
-            cssTransition(refList.current, {
-                  transform: `translate3d(-${moveP}%, 0, 0)`
-            }, 500, function () {
-                  setPage(page - 1)
-            })
-      }
-
-      const handleClickRight = () => {
-            let moveP = 100 * (page)
-            cssTransition(refList.current, {
-                  transform: `translate3d(-${moveP}%, 0, 0)`
-            }, 500, function () {
-                  setPage(page + 1)
-            })
-      }
-
-      useEffect(() => {
-            if (poster_type == 0) {
-                  pages = cmData.length / 7
-            } else {
-                  pages = cmData.length / 5
-            }
-
-            if (pages % 1 != 0) {
-                  pages = Math.ceil(pages)
-            }
-
-            if (pages > 1) {
-                  setTotalPages(pages)
-            }
-      }, [])
 
       return (
             <div className={classes}>
-                  <h6 className="title-list">{category}</h6>
+                  <TitleList title={category} />
                   <div className="list-content">
                         <div className="list-items" ref={refList}>
                               {
                                     cmData.map((data) => {
-                                          return <ListItem key={data.Registro} data={data} posterType={poster_type} listType={listType} />
+                                          return <Item key={data.Registro} data={data} posterType={poster_type} listType={listType} />
                                     })
                               }
                         </div>
-                        {
-                              totalPages > 1 && page > 1 && listType != "season" &&
-                              <div className="direction direction-prev" onClick={handleClickPrev}>
-                                    <i className="fas fa-chevron-left" />
-                              </div>
-                        }
-                        {
-                              (totalPages > 1) && (page < totalPages) && listType != "season" &&
-                              <div className="direction direction-next" onClick={handleClickRight}>
-                                    <i className="fas fa-chevron-right" />
-                              </div>
-                        }
+                        <DirectionsPage totalPages={totalPages} refList={refList} />
+                  </div>
+            </div>
+      )
+}
+
+export function ListSeason({ data, listType }) {
+      const { category, poster_type, cmData } = data
+      const classes = poster_type == 0 ? `list list-catalogue wrap portrait` : `list list-catalogue wrap landscape`
+      const refList = useRef()
+
+      return (
+            <div className={classes}>
+                  <TitleList title={category} />
+                  <div className="list-content">
+                        <div className="list-items" ref={refList}>
+                              {
+                                    cmData.map((data) => {
+                                          return <Item key={data.Registro} data={data} posterType={poster_type} listType={listType} />
+                                    })
+                              }
+                        </div>
                   </div>
             </div>
       )
@@ -261,7 +123,7 @@ export function ListCards({ data, listType, listStyle }) {
                         <div className="list-items" ref={refList}>
                               {
                                     cmData.map((data) => {
-                                          return <ListItem key={data.Registro} data={data} posterType={poster_type} listType={listType} />
+                                          return <Item key={data.Registro} data={data} posterType={poster_type} listType={listType} />
                                     })
                               }
                         </div>
@@ -282,13 +144,34 @@ export function ListCards({ data, listType, listStyle }) {
       )
 }
 
-export function ListCovers({ data, listType, listStyle }) {
-      let pages = 0
-      const [page, setPage] = useState(1)
-      const [totalPages, setTotalPages] = useState(0)
-      const { category, poster_type, cmData } = data
-      const classes = poster_type == 0 ? "list-covers portrait" : "list-covers landscape"
+export function ListRadio({ data, listType }) {
+      const { poster_type, cmData } = data
+      const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
+      const classes = poster_type == 0 ? `list list-card portrait` : `list list-card landscape`
       const refList = useRef()
+
+      return (
+            <div className={classes}>
+                  <div className="list-content">
+                        <div className="list-items" ref={refList}>
+                              {
+                                    cmData.map((data) => {
+                                          return <Item key={data.Registro} data={data} posterType={poster_type} listType={listType} />
+                                    })
+                              }
+                        </div>
+                        <DirectionsPage totalPages={totalPages} refList={refList} />
+                  </div>
+            </div>
+      )
+}
+
+function TitleList({ title }) {
+      return <h6 className="title-list">{title}</h6>
+}
+
+function DirectionsPage({ totalPages, refList }) {
+      const [page, setPage] = useState(1)
 
       const handleClickPrev = () => {
             let moveP = 100 * (page - 2)
@@ -308,64 +191,20 @@ export function ListCovers({ data, listType, listStyle }) {
             })
       }
 
-      useEffect(() => {
-            if (poster_type == 0) {
-                  pages = cmData.length / 7
-            } else {
-                  pages = cmData.length / 5
-            }
-
-            if (pages % 1 != 0) {
-                  pages = Math.ceil(pages)
-            }
-
-            if (pages > 1) {
-                  setTotalPages(pages)
-            }
-      }, [])
-
       return (
-            <div className={classes}>
-                  <div className="list-content">
-                        <div className="list-items" ref={refList}>
-                              {
-                                    cmData.map((data) => {
-                                          return <ListItem key={data.Registro} data={data} posterType={poster_type} listType={listType} />
-                                    })
-                              }
+            <Fragment>
+                  {
+                        totalPages > 1 && page > 1 &&
+                        <div className="direction direction-prev" onClick={handleClickPrev}>
+                              <i className="fas fa-chevron-left" />
                         </div>
-                        {
-                              totalPages > 1 && page > 1 && listType != "season" &&
-                              <div className="direction direction-prev" onClick={handleClickPrev}>
-                                    <i className="fas fa-chevron-left" />
-                              </div>
-                        }
-                        {
-                              (totalPages > 1) && (page < totalPages) && listType != "season" &&
-                              <div className="direction direction-next" onClick={handleClickRight}>
-                                    <i className="fas fa-chevron-right" />
-                              </div>
-                        }
-                  </div>
-            </div>
+                  }
+                  {
+                        (totalPages > 1) && (page < totalPages) &&
+                        <div className="direction direction-next" onClick={handleClickRight}>
+                              <i className="fas fa-chevron-right" />
+                        </div>
+                  }
+            </Fragment>
       )
 }
-
-// <div className="description-content">
-//       <h3 className="description-item">{limitString(Description, 60)}</h3>
-// </div>
-// <div className="buttons-content">
-//       <Tooltip title="Más info" placement="top-start">
-//             <span tabIndex="0">
-//                   <i className="fas fa-info" tabIndex="0" />
-//             </span>
-//       </Tooltip>
-
-//       {isShortString(Description) &&
-//             <Tooltip title="Leer más" placement="top-start">
-//                   <span tabIndex="0">
-//                         <i className="fas fa-ellipsis-h" tabIndex="0" />
-//                   </span>
-//             </Tooltip>
-//       }
-// </div>

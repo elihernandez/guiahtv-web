@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { LoaderSpinnerMUI } from '../../../../../components/Loader'
 import './styles.css'
 
-export function Play({ loading, audioRef, active, playing, error, dispatchAudio }) {
+export function Play({ data, loading, audioRef, active, playing, error, dispatchAudio }) {
 
       const handleClick = () => {
             if (playing) {
@@ -27,6 +27,9 @@ export function Play({ loading, audioRef, active, playing, error, dispatchAudio 
                               <i className="fas fa-play play" />
                         }
                         {error &&
+                              <i className="fas fa-play play" />
+                        }
+                        {!data &&
                               <i className="fas fa-play play" />
                         }
                   </span>

@@ -15,6 +15,7 @@
                   position: relative;
                   width: 100%;
                   min-height: 900px;
+                  object-fit: cover;
                   height: auto;
             }
 
@@ -199,9 +200,8 @@
                                     border-bottom-right-radius: 4px;
 
                                     .MuiLinearProgress-bar{
-                                          background-color: $color-guide-blue;
+                                          background: linear-gradient(to right, $color-guide-blue 70%, $color-violet 115%);
                                           border-radius: 2px;
-                                          
                                     }
                               }
                         }

@@ -3,7 +3,7 @@
       width: 100%;
       height: auto;
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent);
-      padding: 50px 50px;
+      padding: 25px 50px;
       display: flex;
       flex-direction: row;
       align-items: center;

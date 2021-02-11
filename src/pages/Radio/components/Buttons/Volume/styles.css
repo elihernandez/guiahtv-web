@@ -1,8 +1,11 @@
+@import '../../../../../scss/style-base.css';
+
 .control-volume-wrapper{
       position: relative;
       width: 200px;
       display: flex;
       align-items: center;
+      margin-left: 50px;
 
       .volume-icon{
             display: flex;
@@ -21,6 +24,7 @@
 
             .MuiSlider-rail{
                   height: 4px;
+                  background: $color-grey-2;
             }
 
             .MuiSlider-track{

@@ -1,0 +1,189 @@
+@import '../../scss/style-base.css';
+
+.list{
+      .item-link{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            text-decoration: none;
+
+            .item{
+                  position: relative;
+                  height: 100%;
+                  width: 100%;
+                  border-radius: 6px;
+                  display: flex;
+                  flex-direction: column;
+
+                  .background-item{
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        border: 3px solid transparent;
+                        transform: scale(0.96);
+                        transition: all 300ms ease;
+                        overflow: hidden;
+                        border-radius: 6px;
+
+                        img{
+                              position: relative;
+                              width: 100%;
+                              height: 100%;
+                              object-fit: cover;
+                              border-radius: 4px;
+                              background: $color-grey-5;
+                        }
+
+                        .progress-bar-content{
+                              position: absolute;
+                              height: 30%;
+                              width: 100%;
+                              bottom: 0;
+                              display: flex;
+                              flex-direction: column;
+                              justify-content: flex-end;
+                              align-items: center;
+                              /* background: linear-gradient(to top, rgba(0, 0, 0, 0.50), transparent); */
+
+                              .MuiLinearProgress-root{
+                                    width: 100%;
+                                    background-color: $color-grey-2;
+                                    height: 6px;
+                                    /* margin-bottom: 15px; */
+                                    /* border-radius: 2px; */
+
+                                    .MuiLinearProgress-bar{
+                                          background: linear-gradient(to right, $color-guide-blue 70%, $color-violet 115%);
+                                          /* background: $color-guide-blue; */
+                                          /* border-radius: 2px; */
+                                    }
+                              }
+                        }
+                  }
+
+                  &:hover{
+                        .background-item{
+                              border: 3px solid $color-white;
+                              cursor: pointer;
+                              transform: scale(1);
+
+                              .image-recover{
+                                    background: $color-background-app;
+                              }
+                        }
+                  }
+            }
+      }
+}
+
+.list-card{
+      .item-link{
+            transform: scale(0.96);
+            transition: all 300ms ease;
+            background: $color-black-1;
+            background: linear-gradient(to bottom, $color-black-1, $color-black-2);
+            border-radius: 10px;
+            height: 440px;
+            cursor: pointer;
+            border: 3px solid $color-black-1;
+
+            &:hover{
+                  transform: scale(1);
+                  border: 3px solid $color-white;
+            }
+
+            .background-item{
+                  border: none !important;
+                  transform: scale(1) !important;
+                  border-radius: 0 !important;
+      
+                  img{
+                        border-radius: 0 !important;
+                        object-fit: contain !important;
+                        /* border-top-left-radius: 6px !important;
+                        border-top-right-radius: 6px !important; */
+                  }
+            }
+      }
+}
+
+.title-content{
+      position: relative;
+      width: 100%;
+      padding: 15px 0;
+
+      .title-item{
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: .5px;
+      }
+}
+
+.description-content{
+      padding: 0px 25px;
+      justify-self: flex-start;
+      margin-top: 15px;
+      min-height: 50px;
+      
+      .description-item{
+            font-weight: 400;
+            font-size: 15px;
+            color: rgba(179, 179, 179, 1);
+            text-align: left;
+            letter-spacing: .5px;
+      }
+}
+
+.buttons-content{
+      width: 100%;
+      padding: 0 25px;
+      margin: 15px 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+
+      span{
+            border-radius: 50px;
+            padding: 2px 12.5px;
+            background: $color-black-1;
+            margin-right: 10px;
+
+            i{
+                  color: $color-white;
+            }
+
+            &:hover{
+                  background: $color-grey-5; 
+            }
+      }
+}
+
+.info-item{
+      position: relative;
+      width: 100%;
+      padding: 0 10px;
+      min-height: 125px;
+      max-height: 200px;
+
+      .group-name-item{
+            margin: 10px 0;
+
+            .name-item{
+                  font-size: 16px;
+                  font-weight: 500;
+            }
+      }
+
+      .group-description-item{
+            margin: 10px 0;
+
+            .description-item{
+                  font-size: 15px;
+                  font-weight: 400;
+                  color: $color-grey-2;
+            }
+      }
+}

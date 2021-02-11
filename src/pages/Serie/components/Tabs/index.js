@@ -102,7 +102,7 @@ export function TabsContent({serieId, contactId}) {
                               aria-label="full width tabs info"
                         >
                               <Tab label="Episodios" {...a11yProps(0)} />
-                              <Tab label="Detalles" {...a11yProps(1)} />
+                              <Tab label="Contacto" {...a11yProps(1)} />
                         </Tabs>
                   </AppBar>
                   <TabPanel value={value} index={0}>

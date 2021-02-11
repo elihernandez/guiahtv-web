@@ -2,7 +2,7 @@ import React, { Fragment, useRef, useContext, useState } from 'react'
 import VideoContext from '../../../../context/VideoContext'
 import LiveTvContext from '../../../../context/LiveTvContext'
 import { NavLink } from "react-router-dom"
-import { createUrlString, shortString, isShortString, replaceString } from '../../../../js/String'
+import { createUrlString, shortString, isShortString, replaceString, limitString } from '../../../../js/String'
 import { isLive, getEventTime, getProgressTimeEvent } from '../../../../js/Time'
 import { CSSTransition } from 'react-transition-group'
 import { getContactInfo } from '../../../../services/getContactInfo'
@@ -113,7 +113,6 @@ function ContactInfo({moreInfoActive, contactInfo, handleClickHideMoreInfo}){
 
 function LiveTvChannel({ dataChannel, handleClick, handleError }) {
       let { Description, Name, Poster, ContactID } = dataChannel
-      let description = shortString(Description)
       let imgChannel = useRef(null)
       const [contactInfo, setContactInfo] = useState([])
       const [moreInfoActive, setMoreInfoActive] = useState(false)
@@ -162,7 +161,7 @@ function LiveTvChannel({ dataChannel, handleClick, handleError }) {
                               </div>
                         </div>
                         <div className="description-content">
-                              <p className="description-channel">{description}</p>
+                              <p className="description-channel">{limitString(Description, 80)}</p>
                         </div>
                         
                         <ContactInfo moreInfoActive={moreInfoActive} contactInfo={contactInfo} handleClickHideMoreInfo={handleClickHideMoreInfo}/>

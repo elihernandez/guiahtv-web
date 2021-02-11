@@ -4,7 +4,7 @@ import { LoaderSpinnerMUI } from '../../../../components/Loader'
 import RadioContext from '../../../../context/RadioContext'
 import { useRequest } from '../../../../hooks/useRequest'
 import { CustomTabs } from '../../../../components/Tabs'
-import { ListCovers } from '../../../../components/List'
+import { List } from '../../../../components/List'
 import './styles.css'
 
 export function Guide(){
@@ -21,7 +21,7 @@ export function Guide(){
                         dataTabs.push(
                               {
                                     title: category.category,
-                                    content:  <ListCovers key={category.category} data={category} listType="radio" listStyle=""/>
+                                    content:  <List key={category.category} data={category} listType="radio" listStyle=""/>
                               }
                         )
                   })

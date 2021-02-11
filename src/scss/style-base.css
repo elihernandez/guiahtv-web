@@ -36,3 +36,7 @@ $height-player-music: 100px;
 
 /* Radio */
 $height-player-audio: 100px;
+
+.w-padding-top{
+      padding-top: $height-top-menu;
+}

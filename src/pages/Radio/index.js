@@ -76,14 +76,11 @@ const reducer = (state, action) => {
 
 export function Radio(){
       const { url } = useRouteMatch()
-      const [isCancelled, setIsCancelled] = useState(false)
 
       useEffect(() => {
-            setIsCancelled(false)
             showTopMenuNavbar()
 
             return () => {
-                  setIsCancelled(true)
                   hideTopMenuNavbar()
                   if(isFullScreenElement()) exitFullScreen()
             }
@@ -91,20 +88,18 @@ export function Radio(){
 
       return (
             <div className="wrapper-radio">
-                  {!isCancelled && 
-                        <RadioContextProvider>
-                              <div className="section-content">
-                                    <Switch>
-                                          <Route exact path={`${url}/:contentId?`} >
-                                                <AudioContextProvider state={initialState} reducer={reducer}>
-                                                      <Guide />
-                                                      <Player />
-                                                </AudioContextProvider>
-                                          </Route>
-                                    </Switch>
-                              </div>
-                        </RadioContextProvider>
-                  }
+                  <RadioContextProvider>
+                        <div className="section-content">
+                              <Switch>
+                                    <Route exact path={`${url}/:contentId?`} >
+                                          <AudioContextProvider state={initialState} reducer={reducer}>
+                                                <Guide />
+                                                <Player />
+                                          </AudioContextProvider>
+                                    </Route>
+                              </Switch>
+                        </div>
+                  </RadioContextProvider>
             </div>
       )
 }

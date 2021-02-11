@@ -31,10 +31,9 @@ function getURL(section, credentials) {
 export function useRequest(section, dispatch, data) {
       const { stateUser, dispatchUser } = useContext(UserContext)
       const { credentials } = stateUser
-      const [loading, setLoading] = useState(null)
+      const [loading, setLoading] = useState(false)
 
       useEffect(() => {
-            setLoading(true)
             const requestData = async () => {
                   try {
                         const requestUrl = getURL(section, credentials)
@@ -49,6 +48,7 @@ export function useRequest(section, dispatch, data) {
             }
 
             if (credentials.memclid && !data) {
+                  setLoading(true)
                   requestData()
             }
       }, [credentials])
