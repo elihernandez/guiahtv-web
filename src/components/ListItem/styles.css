@@ -102,7 +102,7 @@
       
                   img{
                         border-radius: 0 !important;
-                        object-fit: contain !important;
+                        object-fit: cover !important;
                         /* border-top-left-radius: 6px !important;
                         border-top-right-radius: 6px !important; */
                   }

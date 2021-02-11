@@ -24,7 +24,7 @@ function NavbarTopMenu(){
             {title: 'En vivo', href: '/tv', icon: <i className="fas fa-tv"></i>},
             {title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-film"></i>},
             {title: 'Radio', href: '/radio', icon: <RadioIcon />},
-            {title: 'Música', href: '/musica', icon: <i className="fas fa-music"></i>},
+         
             {title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i>}
       ]
 

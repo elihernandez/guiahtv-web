@@ -3045,8 +3045,8 @@ button:hover{
 
 .list-card .item-link .background-item img{
                         border-radius: 0 !important;
-                        -o-object-fit: contain !important;
-                           object-fit: contain !important;
+                        -o-object-fit: cover !important;
+                           object-fit: cover !important;
                         /* border-top-left-radius: 6px !important;
                         border-top-right-radius: 6px !important; */
                   }

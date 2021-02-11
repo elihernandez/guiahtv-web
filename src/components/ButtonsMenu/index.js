@@ -69,13 +69,17 @@ export function ButtonsMenu(){
             {buttons &&  
                 <ul className="buttons-list">
                     {
-                        buttons.map(({titulo, ContentType, PosterCardUrlLandscape}) => 
-                            <Button 
-                                key={ContentType}
-                                title={titulo}
-                                contentType={ContentType}
-                                img={PosterCardUrlLandscape}
-                            /> )
+                        buttons.map(({titulo, ContentType, PosterCardUrlLandscape}) => {
+                            if(ContentType != 'leon_music'){
+                                return <Button 
+                                    key={ContentType}
+                                    title={titulo}
+                                    contentType={ContentType}
+                                    img={PosterCardUrlLandscape}
+                                /> 
+                            }
+                        }
+                        )
                     }
                 </ul>
             }
