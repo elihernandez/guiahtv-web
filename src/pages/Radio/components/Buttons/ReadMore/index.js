@@ -2,14 +2,14 @@ import React from 'react'
 import Tooltip from '@material-ui/core/Tooltip'
 import Popover from '@material-ui/core/Popover'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
+import { isLimitString } from '../../../../../js/String'
 import './styles.css'
 
 export function ReadMore({data}) {
 
-      if(!data) return null
+      if(!data || !isLimitString(data.Description.length, 80)) return null
 
       const { Title, Description } = data
-      console.log(data)
 
       return (
             <PopupState variant="popover" popupId="demo-popup-popover">
@@ -33,7 +33,7 @@ export function ReadMore({data}) {
                                           horizontal: 'center',
                                         }}
                               >   
-                                    <div className="info-item">
+                                    <div className="contact-info-item">
                                           <h2 className="title">{Title}</h2>
                                           <h3 className="description">{Description}</h3>
                                     </div>

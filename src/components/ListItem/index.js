@@ -5,7 +5,7 @@ import RadioContext from '../../context/RadioContext'
 import AudioContext from '../../context/AudioContext'
 import { getContactInfo } from '../../services/getContactInfo'
 import { getProgressMovie } from '../../js/Time'
-import { isShortString, limitString, isSerie, typeContent, replaceString } from '../../js/String'
+import { limitString, isLimitString, isSerie, typeContent, replaceString } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { CSSTransition } from 'react-transition-group'
@@ -135,7 +135,7 @@ function TitleItem({ title }) {
 function DescriptionItem({ description }) {
       return (
             <div className="description-content">
-                  <h3 className="description-item">{limitString(description, 60)}</h3>
+                  <h3 className="description-item">{limitString(description, 80)}</h3>
             </div>
       )
 }
@@ -191,7 +191,7 @@ function Info({ title, description }) {
                         <h6 className="name-item">{title}</h6>
                   </div>
                   <div className="group-description-item">
-                        <p className="description-item">{limitString(description, 60)}</p>
+                        <p className="description-item">{limitString(description, 80)}</p>
                   </div>
             </div>
       )
@@ -224,7 +224,7 @@ function Buttons({ contactId, description, setContactInfo, setMoreInfoActive, se
                         </span>
                   </Tooltip>
 
-                  {isShortString(description) &&
+                  {isLimitString(description, 80) &&
                         <Tooltip title="Leer más" placement="top-start">
                               <span tabIndex="0" onClick={handleClickShowReadMore}>
                                     <i className="fas fa-ellipsis-h" tabIndex="0" />
@@ -244,7 +244,7 @@ function ReadMore({ readMoreActive, Name, Description, setReadMoreActive }) {
             <Fragment>
                   {     readMoreActive
                         ? <CSSTransition in={readMoreActive} timeout={100} classNames="fade" unmountOnExit>
-                              <div className="info-item" tabIndex="0">
+                              <div className="contact-info-item" tabIndex="0">
                                     <div className="content-button-close" tabIndex="0">
                                           <span className="button-close" onClick={handleClickHideReadMore} tabIndex="0">
                                                 <i className="fas fa-times" tabIndex="0" />
@@ -286,7 +286,7 @@ function ContactInfo({ moreInfoActive, contactInfo, setMoreInfoActive }) {
             <Fragment>
                   {     moreInfoActive
                         ? <CSSTransition in={moreInfoActive} timeout={100} classNames="fade" unmountOnExit>
-                              <div className="info-item" tabIndex="0">
+                              <div className="contact-info-item" tabIndex="0">
                                     <div className="content-button-close" tabIndex="0">
                                           <span className="button-close" onClick={handleClickHideMoreInfo} tabIndex="0">
                                                 <i className="fas fa-times" tabIndex="0" />

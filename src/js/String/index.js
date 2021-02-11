@@ -24,7 +24,15 @@ export function limitString(string, limit){
 }
 
 export function isShortString(string) {
-      if (string.length > 60) {
+      if (string.length > 80) {
+            return true
+      }
+
+      return false
+}
+
+export function isLimitString(string, limit) {
+      if (string.length > limit) {
             return true
       }
 

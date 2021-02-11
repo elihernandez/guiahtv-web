@@ -5,8 +5,6 @@ import './styles.css'
 
 export function Info({ data }) {
       const {
-            ContactTitle,
-            ContactDescription,
             ContactFon,
             ContactWeb,
             ContactFb,

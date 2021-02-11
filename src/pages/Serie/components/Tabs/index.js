@@ -80,7 +80,6 @@ export function TabsContent({serieId, contactId}) {
                   try{
                         const response = await getContactInfo(contactId)
                         setInfo(response)
-                        console.log(response)
                   }catch(e){
 
                   }

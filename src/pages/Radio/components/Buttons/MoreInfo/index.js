@@ -62,7 +62,7 @@ export function MoreInfo({ data }) {
                                     }}
                               >
                                     {contactInfo &&
-                                          <div className="info-item">
+                                          <div className="contact-info-item">
                                                 <h2 className="title">Información de {contactInfo.ContactTitle}</h2>
                                                 <h3 className="description">{contactInfo.ContactDescription}</h3>
                                                 {contactInfo.ContactFon &&
