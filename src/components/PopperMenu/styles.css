@@ -1,3 +1,5 @@
+@import '../../scss/style-base.css';
+
 .popper-menu-wrapper{
 
       button{
@@ -28,6 +30,12 @@
       }
       
       .MuiPaper-root{
-            background-color: black !important;
+            background-color: $color-grey-5 !important;
+
+            .MuiListItem-button{
+                  &:hover{
+                       background-color: $color-grey-4; 
+                  }
+            }
       }
 }
