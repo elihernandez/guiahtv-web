@@ -57,6 +57,14 @@ function GroupFormError({ error }) {
     return null
 }
 
+function expirationSession(check){
+    if(check){
+        return 60 * 60 * 24 * 365
+    }
+
+    return 60 * 60 * 24
+}
+
 export function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -64,7 +72,7 @@ export function Login() {
     const [cookies, setCookie] = useCookies()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState({ default: false, email: false, password: false, limit: false })
-    const { stateUser, dispatchUser } = useContext(UserContext)
+    const { stateUser } = useContext(UserContext)
     const { credentials } = stateUser
 
     const validateResponse = ({ ResponseCode, SuscriberID = "error" }) => {
@@ -79,8 +87,8 @@ export function Login() {
                 })
                 break;
             case 2: // Usuario suscrito
-                setCookie('memclem', username, { path: '/' })
-                setCookie('memclid', SuscriberID, { path: '/' })
+                setCookie('memclem', username, { path: '/', maxAge: expirationSession(check) })
+                setCookie('memclid', SuscriberID, { path: '/', maxAge: expirationSession(check) })
                 location.reload()
                 break
             case 3: // Password incorrecta

@@ -72,7 +72,10 @@ const fontsRules = {
   ],
 }
 
-const developmentPlugins = []
+const developmentPlugins = [
+  new CompressionPlugin(),
+  new CssMinimizerPlugin(),
+]
 
 const productionPlugins = [
   new CleanWebpackPlugin(),
@@ -83,7 +86,7 @@ const productionPlugins = [
 module.exports = (env, {mode}) => ({
   output: {
     path: path.resolve(process.cwd(), __dirname + '/build'),
-    filename: 'app.js'
+    filename: 'app.min.js'
   },
   watch: true,
   module: {
@@ -105,7 +108,7 @@ module.exports = (env, {mode}) => ({
       filename: '../index.html',
     }),
     new MiniCSSExtract({
-      filename: 'app.css',
+      filename: 'app.min.css',
       chunkFilename: 'main.css',
     }),
     new ESBuildPlugin()

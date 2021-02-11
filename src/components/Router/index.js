@@ -20,6 +20,7 @@ function CheckAuth({ children, credentials }) {
         <Fragment>
             {credentials.memclid
                 ? <Fragment>
+                    <TopMenu />
                     {children}
                     <SnackbarAuth />
                 </Fragment>
@@ -48,18 +49,12 @@ export default function BaseRouter() {
                     <Route exact path="/">
                         {credentials.memclid
                             ? <CheckAuth credentials={credentials}>
-                                <TopMenu />
+                                
                                 <Home />
                             </CheckAuth>
                             : <Info />
                         }
-                    </Route>
-
-                    <Route path="/registro">
-                        <CheckAuth credentials={credentials}>
-                            <Home />
-                        </CheckAuth>
-                    </Route>
+                    </Route>     
 
                     <Route path="/login">
                         {credentials.memclid ? <Redirect to="/" /> : <Login />}
@@ -67,35 +62,30 @@ export default function BaseRouter() {
 
                     <Route path="/tv">
                         <CheckAuth credentials={credentials}>
-                            <TopMenu />
                             <LiveTV />
                         </CheckAuth>
                     </Route>
 
                     <Route path="/alacarta">
                         <CheckAuth credentials={credentials}>
-                            <TopMenu />
                             <VideoOnDemand />
                         </CheckAuth>
                     </Route>
 
                     <Route path="/zonakids">
                         <CheckAuth credentials={credentials}>
-                            <TopMenu />
                             <Zonakids />
                         </CheckAuth>
                     </Route>
 
                     <Route path="/musica">
                         <CheckAuth credentials={credentials}>
-                            <TopMenu />
                             <Music />
                         </CheckAuth>
                     </Route>
 
                     <Route path="/radio">
                         <CheckAuth credentials={credentials}>
-                            <TopMenu />
                             <Radio />
                         </CheckAuth>
                     </Route>
@@ -108,3 +98,9 @@ export default function BaseRouter() {
         </>
     )
 }
+
+// <Route path="/registro">
+//     <CheckAuth credentials={credentials}>
+//         <Home />
+//     </CheckAuth>
+// </Route>
