@@ -2,15 +2,13 @@
       position: relative;
       width: 100%;
       min-height: 300px !important;
-      padding: 25px 25px;
+      padding: 25px 50px;
       color: white;
       display: flex;
       flex-direction: row;
-
       .group-section{
             position: relative;
             width: 40%;
-            padding: 25px 50px 25px 25px;
 
             i{
                   margin-right: 25px;
@@ -30,7 +28,6 @@
       }
 
       .phone-group{
-            padding-top: 60px;
             margin-bottom: 15px;
       }
       
@@ -44,10 +41,15 @@
       }
 
       .social-media-group{
+            display: flex;
+            flex-direction: column;
 
             a{
                   color: white;
                   text-decoration: none;
+                  margin-bottom: 20px;
+                  display: flex;
+                  align-items: center;
             }
 
             i{

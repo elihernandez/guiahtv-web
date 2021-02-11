@@ -4265,7 +4265,7 @@ button:hover{
       position: relative;
       width: 100%;
       min-height: 300px !important;
-      padding: 25px 25px;
+      padding: 25px 50px;
       color: white;
       display: -webkit-box;
       display: -ms-flexbox;
@@ -4275,48 +4275,53 @@ button:hover{
           -ms-flex-direction: row;
               flex-direction: row;
 }
-
       .info-contact-wrapper .group-section{
             position: relative;
             width: 40%;
-            padding: 25px 50px 25px 25px;
       }
-
       .info-contact-wrapper .group-section i{
                   margin-right: 25px;
                   font-size: 18px;
             }
-
       .info-contact-wrapper .title-group{
             font-weight: 600;
             font-size: 26px;
       }
-
       .info-contact-wrapper .description-group{
             font-weight: 500;
             font-size: 16px;
             margin-top: 25px;
       }
-
       .info-contact-wrapper .phone-group{
-            padding-top: 60px;
             margin-bottom: 15px;
       }
-
       .info-contact-wrapper .web-group{
             margin-bottom: 25px;
       }
-
       .info-contact-wrapper .web-group a{
                   color: white;
                   text-decoration: none;
             }
-
+      .info-contact-wrapper .social-media-group{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+      }
       .info-contact-wrapper .social-media-group a{
                   color: white;
                   text-decoration: none;
+                  margin-bottom: 20px;
+                  display: -webkit-box;
+                  display: -ms-flexbox;
+                  display: flex;
+                  -webkit-box-align: center;
+                      -ms-flex-align: center;
+                          align-items: center;
             }
-
       .info-contact-wrapper .social-media-group i{
                   font-size: 20px;
                   cursor: pointer;
