@@ -28,3 +28,17 @@
             }
       }
 }
+
+.MuiPopover-paper{
+      .info-item{
+            position: relative;
+            width: 300px;
+            height: auto;
+            background: none;
+            padding: 25px 35px;
+
+            .title{
+                  margin-top: 0;
+            }
+      }
+}

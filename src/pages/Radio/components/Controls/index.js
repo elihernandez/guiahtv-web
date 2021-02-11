@@ -16,12 +16,11 @@ export function Controls({stateAudio, dispatchAudio}){
                   <InfoAudio active={active} data={data} error={error} />
                   {active &&
                         <Fragment>
-                              <ReadMore />
-                              <MoreInfo />
-                              <Fav />
+                              <ReadMore data={data}/>
+                              <MoreInfo data={data}/>
                         </Fragment>
                   }
-                  <Volume audioRef={audioRef} volume={volume} />
+                  <Volume playing={playing} data={data} audioRef={audioRef} volume={volume} />
             </div>
       )
 }

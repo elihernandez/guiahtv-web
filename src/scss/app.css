@@ -104,3 +104,8 @@ ul, ol{
 .fade-exit-done {
   opacity: 0;
 }  
+
+.disabled{
+  pointer-events: none;
+  opacity: 0.25;
+}

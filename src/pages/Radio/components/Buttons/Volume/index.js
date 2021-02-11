@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Slider from '@material-ui/core/Slider'
 import './styles.css'
 
-export function Volume({audioRef, volume}) {
+export function Volume({ playing, data, audioRef, volume }) {
       const [value, setValue] = useState(volume)
 
       const handleChange = (event, newValue) => {
@@ -11,13 +11,13 @@ export function Volume({audioRef, volume}) {
       }
 
       useEffect(() => {
-            if(audioRef){
+            if (audioRef) {
                   audioRef.current.volume = volume / 100
             }
       }, [audioRef])
 
       return (
-            <div className="control-volume-wrapper">
+            <div className={`control-volume-wrapper ${data == null && playing == false  ? "disabled" : ""}`}>
                   <span className="volume-icon"><i className="fas fa-volume-up" /></span>
                   <Slider value={value} onChange={handleChange} aria-labelledby="continuous-slider" />
             </div>

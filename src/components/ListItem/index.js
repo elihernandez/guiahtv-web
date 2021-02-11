@@ -3,31 +3,19 @@ import { NavLink, useRouteMatch, useHistory } from 'react-router-dom'
 import VodContext from '../../context/VodContext'
 import RadioContext from '../../context/RadioContext'
 import AudioContext from '../../context/AudioContext'
+import { getContactInfo } from '../../services/getContactInfo'
 import { getProgressMovie } from '../../js/Time'
-import { isShortString, limitString, isSerie, typeContent } from '../../js/String'
+import { isShortString, limitString, isSerie, typeContent, replaceString } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
+import { CSSTransition } from 'react-transition-group'
 import './styles.css'
 
 export function Item({ data, posterType, listType }) {
       let Item = () => null
-      const history = useHistory()
       const { url } = useRouteMatch()
-      const { Registro, ContentType } = data
+      const { ContentType } = data
       const type = typeContent(ContentType)
-
-      // if (listType != "radio") {
-
-      // } else {
-      //       const { dispatchRadio } = useContext(RadioContext)
-      //       const { dispatchAudio } = useContext(AudioContext)
-
-      //       handleClick = () => {
-      //             history.push(`/radio/${Registro}`)
-      //             dispatchRadio({ type: 'setCurrentStation', payload: data })
-      //             dispatchAudio({ type: 'setData', payload: data })
-      //       }
-      // }
 
       switch (listType) {
             case 'catalogue':
@@ -37,97 +25,11 @@ export function Item({ data, posterType, listType }) {
                   Item = <ItemSeason url={url} posterType={posterType} data={data} />
                   break
             case 'radio':
-                  Item = <ItemCard url={url} posterType={posterType} data={data} />
+                  Item = <ItemCard posterType={posterType} data={data} />
                   break
       }
 
       return Item
-
-      // return (
-      //       <Fragment>
-      //             { listType == "catalogue" &&
-      //                   <NavLink to={`${url}/${type}/${Registro}`} className="item-link">
-      //                         <div className="item" onClick={handleClick}>
-      //                               <div className="background-item">
-      //                                     {posterType == 0 &&
-      //                                           <img onError={handleError} src={HDPosterUrlPortrait} />
-      //                                     }
-      //                                     {posterType == 1 &&
-      //                                           <img onError={handleError} src={HDPosterUrlLandscape} />
-      //                                     }
-      //                                     {ResumePos &&
-      //                                           <div className="progress-bar-content">
-      //                                                 <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
-      //                                           </div>
-      //                                     }
-      //                               </div>
-      //                         </div>
-      //                   </NavLink>
-      //             }
-      //             { listType == "season" &&
-      //                   <NavLink to={`${url}/video`} className="item-link">
-      //                         <div className="item" onClick={handleClick}>
-      //                               <div className="background-item">
-      //                                     {posterType == 0 &&
-      //                                           <img onError={handleError} src={HDPosterUrlPortrait} />
-      //                                     }
-      //                                     {posterType == 1 &&
-      //                                           <img onError={handleError} src={HDPosterUrlLandscape} />
-      //                                     }
-      //                                     {ResumePos &&
-      //                                           <div className="progress-bar-content">
-      //                                                 <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
-      //                                           </div>
-      //                                     }
-      //                               </div>
-      //                               <div className="info-episode">
-      //                                     <div className="group-name-episode">
-      //                                           <h3 className="name-episode">{Title}</h3>
-      //                                     </div>
-      //                                     <div className="group-description-episode">
-      //                                           <p className="description-episode">{limitString(Description, 100)}</p>
-      //                                     </div>
-      //                               </div>
-      //                         </div>
-      //                   </NavLink>
-      //             }
-      //             { listType == "radio" &&
-      //                   <div className="item-link">
-      //                         <div className="item" onClick={handleClick}>
-      //                               <div className="title-content">
-      //                                     <h2 className="title-item">{Title}</h2>
-      //                               </div>
-      //                               <div className="background-item">
-      //                                     {posterType == 0 &&
-      //                                           <img onError={handleError} src={HDPosterUrlPortrait} />
-      //                                     }
-      //                                     {posterType == 1 &&
-      //                                           <img onError={handleError} src={HDPosterUrlLandscape} />
-      //                                     }
-      //                               </div>
-      //                               <div className="description-content">
-      //                                     <h3 className="description-item">{limitString(Description, 60)}</h3>
-      //                               </div>
-      //                               <div className="buttons-content">
-      //                                     <Tooltip title="Más info" placement="top-start">
-      //                                           <span tabIndex="0">
-      //                                                 <i className="fas fa-info" tabIndex="0" />
-      //                                           </span>
-      //                                     </Tooltip>
-
-      //                                     {isShortString(Description) &&
-      //                                           <Tooltip title="Leer más" placement="top-start">
-      //                                                 <span tabIndex="0">
-      //                                                       <i className="fas fa-ellipsis-h" tabIndex="0" />
-      //                                                 </span>
-      //                                           </Tooltip>
-      //                                     }
-      //                               </div>
-      //                         </div>
-      //                   </div>
-      //             }
-      //       </Fragment>
-      // )
 }
 
 function ItemCatalogue({ url, type, posterType, data }) {
@@ -183,23 +85,28 @@ function ItemSeason({ url, posterType, data }) {
       )
 }
 
-function ItemCard({ url, posterType, data }) {
+function ItemCard({ posterType, data }) {
       const history = useHistory()
-      const { Title, Description, Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
+      const { Title, ContactID, Description, Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
       const { dispatchRadio } = useContext(RadioContext)
       const { dispatchAudio } = useContext(AudioContext)
+      const [contactInfo, setContactInfo] = useState([])
+      const [moreInfoActive, setMoreInfoActive] = useState(false)
+      const [readMoreActive, setReadMoreActive] = useState(false)
 
-      const handleClick = () => {
-            history.push(`/radio/${Registro}`)
-            dispatchRadio({ type: 'setCurrentStation', payload: data })
-            dispatchAudio({ type: 'setData', payload: data })
+      const handleClick = (e) => {
+            if (e.nativeEvent.target.tabIndex != 0) {
+                  history.push(`/radio/${Registro}`)
+                  dispatchRadio({ type: 'setCurrentStation', payload: data })
+                  dispatchAudio({ type: 'setData', payload: data })
+            }
       }
 
       return (
             <div className="item-link">
                   <div className="item" onClick={handleClick}>
-                        
-                  <TitleItem title={Title} />
+
+                        <TitleItem title={Title} />
                         <div className="background-item">
                               <Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
                               {ResumePos &&
@@ -209,13 +116,15 @@ function ItemCard({ url, posterType, data }) {
                               }
                         </div>
                         <DescriptionItem description={Description} />
-                        <Buttons description={Description} />
+                        <ContactInfo moreInfoActive={moreInfoActive} contactInfo={contactInfo} setMoreInfoActive={setMoreInfoActive} />
+                        <ReadMore readMoreActive={readMoreActive} Name={Title} Description={Description} setReadMoreActive={setReadMoreActive} />
+                        <Buttons contactId={ContactID} description={Description} setContactInfo={setContactInfo} setMoreInfoActive={setMoreInfoActive} setReadMoreActive={setReadMoreActive} />
                   </div>
             </div>
       )
 }
 
-function TitleItem({title}){
+function TitleItem({ title }) {
       return (
             <div className="title-content">
                   <h6 className="title-item">{title}</h6>
@@ -223,7 +132,7 @@ function TitleItem({title}){
       )
 }
 
-function DescriptionItem({description}){
+function DescriptionItem({ description }) {
       return (
             <div className="description-content">
                   <h3 className="description-item">{limitString(description, 60)}</h3>
@@ -288,22 +197,141 @@ function Info({ title, description }) {
       )
 }
 
-function Buttons({description}){
+function Buttons({ contactId, description, setContactInfo, setMoreInfoActive, setReadMoreActive }) {
+      const handleClickShowMoreInfo = () => {
+            const getInfoContact = async () => {
+                  try {
+                        const data = await getContactInfo(contactId)
+                        setContactInfo(data)
+                        setMoreInfoActive(true)
+                  } catch (e) {
+
+                  }
+            }
+
+            getInfoContact()
+      }
+
+      const handleClickShowReadMore = () => {
+            setReadMoreActive(true)
+      }
+
       return (
             <div className="buttons-content">
                   <Tooltip title="Más info" placement="top-start">
-                        <span tabIndex="0">
+                        <span tabIndex="0" onClick={handleClickShowMoreInfo}>
                               <i className="fas fa-info" tabIndex="0" />
                         </span>
                   </Tooltip>
 
                   {isShortString(description) &&
                         <Tooltip title="Leer más" placement="top-start">
-                              <span tabIndex="0">
+                              <span tabIndex="0" onClick={handleClickShowReadMore}>
                                     <i className="fas fa-ellipsis-h" tabIndex="0" />
                               </span>
                         </Tooltip>
                   }
             </div>
+      )
+}
+
+function ReadMore({ readMoreActive, Name, Description, setReadMoreActive }) {
+      const handleClickHideReadMore = () => {
+            setReadMoreActive(false)
+      }
+
+      return (
+            <Fragment>
+                  {     readMoreActive
+                        ? <CSSTransition in={readMoreActive} timeout={100} classNames="fade" unmountOnExit>
+                              <div className="info-item" tabIndex="0">
+                                    <div className="content-button-close" tabIndex="0">
+                                          <span className="button-close" onClick={handleClickHideReadMore} tabIndex="0">
+                                                <i className="fas fa-times" tabIndex="0" />
+                                          </span>
+                                    </div>
+                                    <h2 className="title" tabIndex="0">{Name}</h2>
+                                    <h3 className="description" tabIndex="0">{Description}</h3>
+                              </div>
+                        </CSSTransition>
+                        : null
+                  }
+            </Fragment>
+      )
+}
+
+function ContactInfo({ moreInfoActive, contactInfo, setMoreInfoActive }) {
+
+      const handleClickHideMoreInfo = () => {
+            setMoreInfoActive(false)
+      }
+
+      const handleClickFb = () => {
+            window.location = `https://www.facebook.com/${contactInfo.ContactFb}`
+      }
+
+      const handleClickIg = () => {
+            window.location = `https://www.instagram.com/${contactInfo.ContactIG}`
+      }
+
+      const handleClickTw = () => {
+            window.location = `https://www.twitter.com/${contactInfo.ContactTw}`
+      }
+
+      const handleClickGm = () => {
+            window.location = `https://www.google.com/maps/place/${replaceString(contactInfo.ContactLoc, ",", "+")}`
+      }
+
+      return (
+            <Fragment>
+                  {     moreInfoActive
+                        ? <CSSTransition in={moreInfoActive} timeout={100} classNames="fade" unmountOnExit>
+                              <div className="info-item" tabIndex="0">
+                                    <div className="content-button-close" tabIndex="0">
+                                          <span className="button-close" onClick={handleClickHideMoreInfo} tabIndex="0">
+                                                <i className="fas fa-times" tabIndex="0" />
+                                          </span>
+                                    </div>
+                                    <h2 className="title" tabIndex="0">Información de {contactInfo.ContactTitle}</h2>
+                                    <h3 className="description" tabIndex="0">{contactInfo.ContactDescription}</h3>
+                                    {contactInfo.ContactFon &&
+                                          <div className="content-phone" tabIndex="0">
+                                                <i className="fas fa-phone-alt" tabIndex="0"></i>
+                                                <p tabIndex="0">{contactInfo.ContactFon}</p>
+                                          </div>
+                                    }
+                                    {contactInfo.ContactWeb &&
+                                          <div className="content-web" tabIndex="0">
+                                                <i className="fas fa-globe" tabIndex="0"></i>
+                                                <p tabIndex="0">{contactInfo.ContactWeb}</p>
+                                          </div>
+                                    }
+                                    <div className="content-social-media" tabIndex="0">
+                                          {contactInfo.ContactFb &&
+                                                <span className="span-icon" tabIndex="0" onClick={handleClickFb}>
+                                                      <i className="fab fa-facebook-square" tabIndex="0" />
+                                                </span>
+                                          }
+                                          {contactInfo.ContactIG &&
+                                                <span className="span-icon" tabIndex="0" onClick={handleClickIg}>
+                                                      <i className="fab fa-instagram" tabIndex="0" />
+                                                </span>
+                                          }
+                                          {contactInfo.ContactTw &&
+                                                <span className="span-icon" tabIndex="0" onClick={handleClickTw}>
+                                                      <i className="fab fa-twitter-square" tabIndex="0" />
+                                                </span>
+                                          }
+                                          {contactInfo.ContactLoc &&
+                                                <span className="span-icon" tabIndex="0" onClick={handleClickGm}>
+                                                      <i className="fas fa-map-marker-alt" tabIndex="0" />
+                                                </span>
+                                          }
+                                    </div>
+                              </div>
+                        </CSSTransition>
+                        : null
+                  }
+            </Fragment>
       )
 }

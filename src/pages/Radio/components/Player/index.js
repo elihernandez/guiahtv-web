@@ -26,6 +26,7 @@ export function Player() {
 
       const onWaitingVideo = () => {
             dispatchAudio({ type: 'setLoading', payload: true })
+            dispatchAudio({ type: 'setPlaying', payload: false })
       }
 
       const onErrorVideo = () => {
@@ -33,10 +34,12 @@ export function Player() {
             dispatchAudio({ type: 'setData', payload: null })
             dispatchAudio({ type: 'setError', payload: true })
             dispatchAudio({ type: 'setActive', payload: false })
+            dispatchAudio({ type: 'setPlaying', payload: false })
       }
 
       useEffect(() => {
             const requestLink = async () => {
+                  dispatchAudio({ type: 'setPlaying', payload: false })
                   dispatchAudio({ type: 'setError', payload: false })
                   dispatchAudio({ type: 'setAudioRef', payload: audio })
                   dispatchAudio({ type: 'setActive', payload: false })
@@ -49,6 +52,7 @@ export function Player() {
                         dispatchAudio({ type: 'setLoading', payload: false })
                         dispatchAudio({ type: 'setData', payload: null })
                         dispatchAudio({ type: 'setError', payload: true })
+                        dispatchAudio({ type: 'setPlaying', payload: false })
                         // setError(e.message)
                   }
             }

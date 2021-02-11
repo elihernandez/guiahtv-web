@@ -26,11 +26,8 @@ export function Play({ data, loading, audioRef, active, playing, error, dispatch
                         {!playing && active &&
                               <i className="fas fa-play play" />
                         }
-                        {error &&
-                              <i className="fas fa-play play" />
-                        }
-                        {!data &&
-                              <i className="fas fa-play play" />
+                        {(error || !data) &&
+                              <i className="fas fa-play play disabled" />
                         }
                   </span>
             </div>
