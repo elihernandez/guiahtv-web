@@ -11,7 +11,7 @@
             z-index: 1;
             width: 100%;
             min-height: 100%;
-            background-image: url(../../assets/images/backgrounds/background-login.webp);
+            background-image: url(../../assets/images/backgrounds/background-login.jpg);
             background-size: 100%;
             background-repeat: no-repeat;
       }
@@ -27,6 +27,7 @@
       }
 
       .footer-content{
+            background: black;
             margin-top: 200px;
       }
 }
@@ -47,10 +48,10 @@
                   width: 100vw;
                   min-height: 100%;
                   margin-top: -200px;
-                  background-image: url(../../assets/images/backgrounds/background-login-movil.webp);
+                  background-image: url(../../assets/images/backgrounds/background-login-movil.jpg);
                   background-size: cover;
                   background-repeat: no-repeat;
-                  opacity: .5;
+                  opacity: 0.5;
             }
 
             .gradient-overlay{
@@ -69,10 +70,9 @@
       padding-top: 175px;
       padding-left: 75px;
 
-      .logo img{
-            width: 325px;
-            height: auto;
-            margin-bottom: 25px;
+      .logo{
+            justify-content: flex-start;
+            margin: 25px 0;
       }
 
       .title-text{
@@ -102,7 +102,7 @@
 
             button{
                   font-size: 20px;
-                  padding: 15px 40px;
+                  padding: 16px 40px;
                   letter-spacing: .5px;
                   font-weight: 300;
                   margin-right: 20px;
@@ -152,22 +152,15 @@
 @media (--tablet-medium-viewport) {
       .center-content{
             width: calc(100% - 50px);
-            padding-left: 25px;
             padding-top: 350px;
             
             .logo{
-                  text-align: center;
-      
-                  img{
-                        width: 250px;
-                        height: auto;
-                        margin-bottom: 25px;
-                  }
+                  justify-content: center;
             }
 
             .title-text{
                   font-weight: 600;
-                  font-size: 30px;
+                  font-size: 28px;
                   text-align: center;
                   line-height: 40px;
             }
@@ -209,18 +202,35 @@
       } 
 }
 
-@media (--movil-small-viewport) {
+@media (--movil-medium-viewport) {
       .center-content{
             .title-text{
                   font-weight: 600;
-                  font-size: 25px;
+                  font-size: 24px;
                   text-align: center;
                   line-height: 40px;
             }
       
             .subtitle-text{
                   font-weight: 300;
-                  font-size: 15px;
+                  font-size: 18px;
+                  text-align: center;
+            }
+      }    
+}
+
+@media (--movil-small-viewport) {
+      .center-content{
+            .title-text{
+                  font-weight: 600;
+                  font-size: 20px;
+                  text-align: center;
+                  line-height: 30px;
+            }
+      
+            .subtitle-text{
+                  font-weight: 300;
+                  font-size: 16px;
                   text-align: center;
             }
       }    

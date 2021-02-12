@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { useRouteMatch, useHistory } from 'react-router-dom'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { getProgressMovie } from '../../js/Time'
+import { imgSourceSetJpg } from '../../js/Image'
 import './styles.css'
 
 export function InfoMovie({data}){
@@ -17,7 +18,8 @@ export function InfoMovie({data}){
       return (
             <Fragment>
                   <div className="background">
-                        <img  src={HdBackgroundImageUrl}/>
+                        <ImgBackground img={HdBackgroundImageUrl} />
+                        
                         <div className="overlay bottom s-50" />
                         <div className="overlay bottom s-40" />
                         <div className="overlay bottom s-30" />
@@ -99,12 +101,11 @@ export function InfoMovie({data}){
 }
 
 export function InfoSerie({data}){
-      const { HdBackgroundImageUrl, Title, Description, Categories, Artist, Director, ReleaseDate, Length, Rating, StarRating, ResumePos } = data
-      const textButton = ResumePos == "" ? "Ver ahora" : "Reanudar" 
+      const { HdBackgroundImageUrl, Title, Description, Categories } = data
       return (
             <Fragment>
                   <div className="background">
-                        <img  src={HdBackgroundImageUrl}/>
+                        <ImgBackground img={HdBackgroundImageUrl} />
                         <div className="overlay bottom s-50" />
                         <div className="overlay bottom s-40" />
                         <div className="overlay bottom s-30" />
@@ -134,5 +135,13 @@ export function InfoSerie({data}){
                   </div>
             </Fragment>
       )
+}
+
+function ImgBackground({img}){
+      return <picture>
+            <source srcSet={img} type="image/webp" />
+            <source srcSet={imgSourceSetJpg(img, 'webp')} type="image/jpg" />
+            <img src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt="Image-tv-fallback" className="image-button" />
+      </picture>
 }
 

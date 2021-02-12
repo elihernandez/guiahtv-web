@@ -1,0 +1,22 @@
+.logo{
+      display: flex;
+      justify-content: center;
+
+      .img-guiahtv-logo{
+            position: relative;
+            height: 75px;
+            width: auto;
+      }
+
+      @media (--movil-large-viewport){
+            .img-guiahtv-logo{
+                  height: 65px;
+            }  
+      }
+
+      @media (--movil-small-viewport){
+            .img-guiahtv-logo{
+                  height: 60px;
+            }  
+      }
+}

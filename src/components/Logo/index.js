@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
+import './styles.css'
 
 export default function Logo({color}){
     // const imgSrc = `build/assets/images/logos/guiahtv/guiahtv-logo-${color}.png`
@@ -8,7 +9,7 @@ export default function Logo({color}){
     return (
         <NavLink to="/">
             <div className="logo">
-                <img src={imgSrc} alt="guiahtv-logo"/>
+                <img className="img-guiahtv-logo" src={imgSrc} alt="guiahtv-logo"/>
             </div>
         </NavLink>
     )

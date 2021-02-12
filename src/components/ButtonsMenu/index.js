@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getButtonsMenu } from '../../services/getButtonsMenu'
 import { H6 } from '../Text'
+import { imgSourceSetPng } from '../../js/Image'
 import { useHistory } from "react-router-dom"
 import './styles.css'
 
@@ -32,7 +33,11 @@ function Button({title, contentType, img}){
     
     return (
         <li className="item-button focusable" onClick={handleClick}>
-            <img className="image-button" src={img} alt={altImg}/>
+            <picture>
+                <source srcSet={img} type="image/webp" />
+                <source srcSet={imgSourceSetPng(img, 'png')} type="image/png" />
+                <img src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt="Image-tv-fallback" className="image-button" />
+            </picture>
             <H6 className="title-button">{title}</H6>
         </li>
     )

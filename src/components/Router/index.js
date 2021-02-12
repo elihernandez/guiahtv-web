@@ -91,7 +91,7 @@ export default function BaseRouter() {
                         </CheckAuth>
                     </Route>
 
-                    <Route exact path="/alacarta">
+                    <Route path="/alacarta">
                         <CheckAuth credentials={credentials}>
                             <VideoOnDemand />
                         </CheckAuth>

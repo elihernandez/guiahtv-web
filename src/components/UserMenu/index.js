@@ -14,7 +14,7 @@ export function UserMenu() {
 
     const textButton = <span>Mi perfil&nbsp;&nbsp;&nbsp;<i className='fas fa-user-circle' /></span>
     const itemsMenu = [
-        { title: 'Mi cuenta', href: 'https://guiah.tv/axs/Login', func: '' },
+        { title: 'Mi cuenta', href: 'https://guiah.tv/axs', func: '' },
         { title: 'Cerrar sesión', href: '#', func: handleLogout },
     ]
 

@@ -3,9 +3,8 @@
 .wrapper-login{
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: $color-guide-black;
-    padding: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +13,7 @@
 
     .background-svg{
         width: 100%;
-        height: 100vh;
+        height: 100%;
         position: absolute;
         /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1951%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='url(%23SvgjsLinearGradient1952)'%3e%3c/rect%3e%3cpath d='M0 0L244.06 0L0 226.26z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M0 226.26L244.06 0L1071.31 0L0 540.39z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M0 540.39L1071.31 0L1132.59 0L0 771.98z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M0 771.98L1132.59 0L1510.8799999999999 0L0 871.58z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M1920 1080L1519.7 1080L1920 1002.41z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M1920 1002.41L1519.7 1080L1498.74 1080L1920 806z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M1920 806L1498.74 1080L640.95 1080L1920 537.77z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M1920 537.77L640.95 1080L311.64000000000004 1080L1920 258.88z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1951'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='10.94%25' y1='-19.44%25' x2='89.06%25' y2='119.44%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1952'%3e%3cstop stop-color='rgba(24%2c 25%2c 28%2c 1)' offset='1'%3e%3c/stop%3e%3cstop stop-color='rgba(14%2c 42%2c 71%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
         background-size: cover; */
@@ -26,24 +25,11 @@
 
     .content-form{
         position: relative;
-        width: 400px;
+        width: 425px;
         min-height: 600px;
         border-radius: 10px;
-        padding: 75px 0;
+        padding: 50px 0;
 
-        .logo{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-
-            img{
-                position: relative;
-                width: 250px;
-                height: auto;   
-            }
-        }
-
-        
         form{
             position: relative;
             display: flex;
@@ -65,20 +51,24 @@
                     width: 100%;
                     height: 55px;
                     background-color: transparent;
-                    border: 2px solid rgba(255, 255, 255, 0.6);
+                    border: 2px solid $color-grey-2;
                     border-radius: 5px;
                     margin: 10px 0;
                     font-size: 16px;
                     font-weight: 500;
                     padding: 0 15px;
-                    color: rgba(255, 255, 255, 1);
+                    color: $color-white;
+                    user-select: none !important;
+
+                    &::placeholder{
+                        color: $color-grey-3;
+                    }
                     
                     &::-ms-reveal,
                     &::-ms-clear {
-                        color: white !important;
+                        color: $color-white !important;
                     }
                 }
-                
             }
             
             .group-form-error{
@@ -102,7 +92,7 @@
                 width: 100%;
                 height: 55px;
                 letter-spacing: .5px;
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 600;
                 border-radius: 5px;
             }
@@ -111,14 +101,13 @@
         .group-info{
             margin-top: 12px;
             display: flex;
-            flex-direction: row;
             justify-content: space-between;
 
             .link-help{
                 font-weight: 300;
                 font-size: 14px;
                 text-decoration: none;
-                color: rgba(255, 255, 255, 0.75);
+                color: $color-grey-2;
             }
 
             .group-rememberme{
@@ -132,7 +121,7 @@
                         margin-left: 5px !important;
                         font-size: 14px;
                         font-weight: 300;
-                        color: rgba(255, 255, 255, 0.75);
+                        color: $color-grey-2;
                     }
     
                     .input-checkbox{
@@ -149,29 +138,28 @@
 
         .bottom-info{
             margin-top: 75px !important;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 14px;
+            
+            p{
+                font-weight: 400;
+                color: $color-grey-2;
+                font-size: 14px;
+            }
 
             .link-register{
-                color: white;
                 font-weight: 400;
                 text-decoration: none;
-                font-size: 17px;
+                font-size: 16px;
                 margin-left: 5px;
+                color: $color-white;
             }
         }
+
     }
 
-    @media (--movil-large-viewport) {
+    @media (--movil-large-viewport){
         .content-form{
-            padding: 75px 0px;
+            width: 100%;
+            padding: 50px 10px;
         }
-    } 
-}
-
-@media (--movil-large-viewport) {
-    .wrapper-login{
-        padding: 0 20px;
     }
 }

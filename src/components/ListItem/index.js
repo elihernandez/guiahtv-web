@@ -8,6 +8,7 @@ import { getProgressMovie } from '../../js/Time'
 import { limitString, isLimitString, isSerie, typeContent, replaceString } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
+import { imgSourceSetJpg } from '../../js/Image'
 import { CSSTransition } from 'react-transition-group'
 import './styles.css'
 
@@ -158,14 +159,23 @@ function Img({ title, posterType, imgPortrait, imgLandscape }) {
             e.nativeEvent.target.src = srcImg
             e.nativeEvent.target.classList.add("image-recover")
       }
-
+      // <img alt={`img-${title}`} onError={handleError} src={imgPortrait} />
+      // <img alt={`img-${title}`} onError={handleError} src={imgLandscape} />
       return (
             <Fragment>
                   {posterType == 0 &&
-                        <img alt={`img-${title}`} onError={handleError} src={imgPortrait} />
+                        <picture>
+                              <source srcSet={imgPortrait} type="image/webp" />
+                              <source srcSet={imgSourceSetJpg(imgPortrait, 'webp')} type="image/jpg" />
+                              <img src="build/assets/images/logos/guiahtv/vod-error-portrait.png" alt={`img-${title}`} />
+                        </picture>
                   }
                   {posterType == 1 &&
-                        <img alt={`img-${title}`} onError={handleError} src={imgLandscape} />
+                        <picture>
+                              <source srcSet={imgLandscape} type="image/webp" />
+                              <source srcSet={imgSourceSetJpg(imgLandscape, 'webp')} type="image/jpg" />
+                              <img src="build/assets/images/logos/guiahtv/GuiahAzulPerf.png" alt={`img-${title}`} />
+                        </picture>
                   }
             </Fragment>
       )

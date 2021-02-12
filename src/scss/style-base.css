@@ -27,7 +27,6 @@ $color-blue: #102754;
 @custom-media --movil-large-viewport (max-width: 425px);
 @custom-media --movil-medium-viewport (max-width: 375px);
 @custom-media --movil-small-viewport (max-width: 320px);
-
 @custom-media --min-laptop-medium-viewport (width: 1024px);
 
 /* Top Menu */

@@ -6,6 +6,7 @@ import { createUrlString, shortString, isShortString, replaceString, limitString
 import { isLive, getEventTime, getProgressTimeEvent } from '../../../../js/Time'
 import { CSSTransition } from 'react-transition-group'
 import { getContactInfo } from '../../../../services/getContactInfo'
+import { imgSourceSetJpg } from '../../../../js/Image'
 import Tooltip from '@material-ui/core/Tooltip'
 import './styles.css'
 
@@ -153,7 +154,11 @@ function LiveTvChannel({ dataChannel, handleClick, handleError }) {
                               </h2>
                         </div>
                         <div className="poster-content">
-                              <img ref={imgChannel} className="poster-channel" src={Poster} onError={handleError} />
+                              <picture>
+                                    <source srcSet={Poster} type="image/webp" />
+                                    <source srcSet={imgSourceSetJpg(Poster, 'webp')} type="image/jpeg" />
+                                    <img src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt="Image-tv-fallback" className="poster-channel" />
+                              </picture>
                               <div className="content-play">
                                     <span>
                                           <i className="fas fa-pause"></i>
@@ -284,6 +289,8 @@ export function Channel({ data, category, page, categoria }) {
       const { dispatchTV } = useContext(LiveTvContext)
 
       const handleError = (e) => {
+            console.log("Hola error")
+            console.log(e.nativeEvent)
             e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/error-tv-landscape.png'
       }
 

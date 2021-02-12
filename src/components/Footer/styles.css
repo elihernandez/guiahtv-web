@@ -60,22 +60,22 @@
                         }
                   }
             }
-      }
-      
-      
-      @media (--tablet-medium-viewport) {
-         
-            .services-text{
-                  text-align: center;
-            }
-
-            .footer-links{
-                  flex-direction: column;
-      
-                  .footer-link-item{
-                        margin: 5px 0;
+            
+            @media (--tablet-medium-viewport) {
+               
+                  .services-text{
                         text-align: center;
                   }
-            }   
+      
+                  .footer-links{
+                        flex-direction: column;
+            
+                        .footer-link-item{
+                              margin: 5px 0;
+                              text-align: center;
+                        }
+                  }   
+            }
       }
+      
 }
