@@ -73,8 +73,6 @@ const fontsRules = {
 }
 
 const developmentPlugins = [
-  new CompressionPlugin(),
-  new CssMinimizerPlugin(),
 ]
 
 const productionPlugins = [

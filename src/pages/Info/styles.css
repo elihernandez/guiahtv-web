@@ -3,6 +3,7 @@
 .wrapper-main-home{
       position: relative;
       width: 100%;
+      min-height: 100vh;
       background: black;
 
       .wrapper-background{
@@ -23,6 +24,10 @@
             bottom: 0;
             background: linear-gradient(0deg, black, transparent);
             opacity: 1;
+      }
+
+      .footer-content{
+            margin-top: 200px;
       }
 }
 

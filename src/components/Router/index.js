@@ -14,17 +14,45 @@ import { Page404 } from "../../pages/404/index"
 import { ErrorAuth } from "../../pages/ErrorAuth/index"
 import { useCookies } from 'react-cookie'
 import { SnackbarAuth } from '../SnackbarAuth'
+import { GetApp } from '../../pages/GetApp'
+import {
+    BrowserView,
+    MobileView,
+    isIOS,
+    isAndroid,
+    isBrowser,
+    isMobile
+} from "react-device-detect"
 
 function CheckAuth({ children, credentials }) {
     return (
+        <CheckDevice>
+            <Fragment>
+                {credentials.memclid
+                    ? <Fragment>
+                        <TopMenu />
+                        {children}
+                        <SnackbarAuth />
+                    </Fragment>
+                    : <Redirect to='/login' />}
+            </Fragment>
+        </CheckDevice>
+    )
+}
+
+function CheckDevice({ children }) {
+    return (
         <Fragment>
-            {credentials.memclid
-                ? <Fragment>
-                    <TopMenu />
+            {isBrowser &&
+                <BrowserView>
                     {children}
-                    <SnackbarAuth />
-                </Fragment>
-                : <Redirect to='/login' />}
+                </BrowserView>
+            }
+            {isMobile &&
+                <MobileView>
+                    <Redirect to="/obtener-app" />
+                </MobileView>
+            }
         </Fragment>
     )
 }
@@ -34,13 +62,9 @@ export default function BaseRouter() {
     const { stateUser } = useContext(UserContext)
     const { credentials, errorAuth } = stateUser
 
-    if (errorAuth) {
-        return <ErrorAuth message={errorAuth} />
-    }
+    if (errorAuth) return <ErrorAuth message={errorAuth} />
 
-    if (credentials.length == 0) {
-        return null
-    }
+    if (credentials.length == 0) return null
 
     return (
         <>
@@ -49,12 +73,13 @@ export default function BaseRouter() {
                     <Route exact path="/">
                         {credentials.memclid
                             ? <CheckAuth credentials={credentials}>
-                                
                                 <Home />
                             </CheckAuth>
-                            : <Info />
+                            : <CheckDevice>
+                                <Info />
+                            </CheckDevice>
                         }
-                    </Route>     
+                    </Route>
 
                     <Route path="/login">
                         {credentials.memclid ? <Redirect to="/" /> : <Login />}
@@ -66,7 +91,7 @@ export default function BaseRouter() {
                         </CheckAuth>
                     </Route>
 
-                    <Route path="/alacarta">
+                    <Route exact path="/alacarta">
                         <CheckAuth credentials={credentials}>
                             <VideoOnDemand />
                         </CheckAuth>
@@ -90,7 +115,11 @@ export default function BaseRouter() {
                         </CheckAuth>
                     </Route>
 
-                    <Route exact path="/*">
+                    <Route path="/obtener-app">
+                        <GetApp />
+                    </Route>
+
+                    <Route path="*">
                         <Page404 />
                     </Route>
                 </Switch>

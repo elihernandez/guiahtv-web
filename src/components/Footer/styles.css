@@ -1,5 +1,11 @@
+@import '../../scss/style-base.css';
+
 .footer-content{
-      padding: 0 10px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      padding: 0 25px;
+      background: $color-black-2;
       
       .footer-wrapper{
             position: relative;
@@ -9,18 +15,19 @@
             justify-content: center;
             align-items: center;
             align-content: center;
-            margin-top: 250px;
-            padding-bottom: 25px;
+            padding: 10px 0;
       
             .logo{
                   display: flex;
-                  flex-direction: row;
+                  flex-direction: column;
                   justify-content: center;
-                  margin-bottom: 15px;
+                  align-items: center;
+                  align-content: center;
+                  margin: 10px 0;
       
                   img{
-                        width: 50px;
-                        height: auto;
+                        width: auto;
+                        height: 60px;
                         opacity: .8;
                   }
             }
@@ -29,72 +36,46 @@
                   font-size: 14px;
                   font-weight: 500;
                   text-align: center;
+                  margin: 10px 0;
             }
       
             .footer-links{
-                  color: white;
+                  color: $color-white;
                   padding: 0;
                   list-style: none;
                   display: flex;
                   flex-direction: row;
-      
+                  margin: 10px 0;
                   
                   .footer-link-item{
                         margin: 0 15px;
                  
                         .footer-link{
                               text-decoration: none;
-                              color: white;
+                              color: $color-white;
 
                               .title-link{
-                                    font-size: 14px;
+                                    font-size: 12px;
                               }
                         }
                   }
             }
       }
       
-      @media (--laptop-large-viewport) {
-            .footer-wrapper{
-                  margin-top: 150px !important;
-            }
-      
-      }
-      
-      @media (--laptop-medium-viewport) {
-            .footer-wrapper{
-                  margin-top: 150px;
-            }
-      }
       
       @media (--tablet-medium-viewport) {
-            .footer-wrapper{
-                  .services-text{
-                        font-size: 14px;
-                        font-weight: 500;
+         
+            .services-text{
+                  text-align: center;
+            }
+
+            .footer-links{
+                  flex-direction: column;
+      
+                  .footer-link-item{
+                        margin: 5px 0;
                         text-align: center;
                   }
-      
-                  .footer-links{
-                        color: white;
-                        padding: 0;
-                        list-style: none;
-                        display: flex;
-                        flex-direction: column;
-      
-                        
-                        .footer-link-item{
-                              font-size: 14px;
-                              margin: 5px 0;
-                              text-align: center;
-                              
-                              .footer-link{
-                                    text-decoration: none;
-                                    color: white;
-                              }
-                        }
-                  }
-            }
-            
+            }   
       }
 }

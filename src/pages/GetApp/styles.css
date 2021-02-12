@@ -1,0 +1,90 @@
+@import '../../scss/style-base.css';
+
+.get-app-wrapper{
+      position: relative;
+      width: 100%;
+    
+      .container-wrapper{
+            position: relative;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            padding: 50px 0;
+
+            .logo{
+                  position: relative;
+                  width: auto;
+                  height: auto;
+                  display: flex;
+                  justify-content: center;
+      
+                  img{
+                        position: relative;
+                        width: auto;
+                        height: 65px;
+                        object-fit: fill;
+                  }
+            }
+      
+            .title{
+                  font-size: 32px;
+                  font-weight: 600;
+                  text-align: center;
+                  margin: 15px 0;
+                  letter-spacing: .5px;
+                  padding: 0 30px;
+            }
+      
+            .info-wrapper{
+                  position: relative;
+                  padding: 0 30px;
+      
+                  .message{
+                        font-size: 20px;
+                        font-weight: 600;
+                        text-align: center;
+                        margin: 15px 0;
+                        letter-spacing: .5px;
+                  }
+                  
+                  .content-badge{
+                        position: relative;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        margin: 15px 0;
+                  
+                        .badge-store-ios{
+                              position: relative;
+                              width: 175px;
+                              height: auto;
+                              object-fit: cover;
+                        }
+                        
+                        .badge-store-google{
+                              position: relative;
+                              width: 200px;
+                              height: auto;
+                              object-fit: cover;
+                        }
+                  }
+            }
+            
+            @media (--movil-large-viewport) {
+                  .title{
+                        font-size: 24px;
+                  }
+      
+                  .message{
+                        font-size: 15px !important;
+                  }
+            }
+      }
+}
+
+
