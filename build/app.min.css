@@ -2981,6 +2981,34 @@ input::-ms-input-placeholder{
                   background: black
             }
 
+      .player .player-wrapper ::cue {
+                  position: absolute !important;
+                  color: #fff;
+                  background-color: rgba(0, 0, 0, 0.6);
+                  bottom: 100px !important;
+                  -webkit-transform: translateY(-100px) !important;
+                          transform: translateY(-100px) !important; 
+            }
+
+      .player .player-wrapper video::-webkit-media-text-track-display {
+                  overflow: visible !important;
+            }
+
+      .player .player-wrapper video::-webkit-media-text-track-container {
+                  overflow: visible !important;
+                  -webkit-transform: translateY(-100px) !important;
+                          transform: translateY(-100px) !important;
+            }
+
+      .player .player-wrapper video::-moz-media-text-track-display {
+                  overflow: visible !important;
+            }
+
+      .player .player-wrapper video::-moz-media-text-track-container {
+                  overflow: visible !important;
+                  transform: translateY(-100px) !important;
+            }
+
       .player .player-wrapper .error-message{
                   position: absolute;
                   width: 100%;
@@ -4193,8 +4221,9 @@ input::-ms-input-placeholder{
                   }
 
 .info-wrapper .info-movie .group-actions{
+                  position: relative;
                   margin-top: 50px;
-                  width: 100%;
+                  width: auto;
             }
 
 .info-wrapper .info-movie .group-actions .button-watch{
@@ -4202,7 +4231,7 @@ input::-ms-input-placeholder{
                         color: #18191c;
                         text-transform: uppercase;
                         font-size: 16px;
-                        padding: 20px 30px;
+                        padding: 20px 40px;
                         font-weight: 600;
                         width: auto;
                         letter-spacing: 1px;
@@ -4213,9 +4242,13 @@ input::-ms-input-placeholder{
                         -webkit-box-direction: normal;
                             -ms-flex-direction: row;
                                 flex-direction: row;
+                        -webkit-box-pack: center;
+                            -ms-flex-pack: center;
+                                justify-content: center;
                         -webkit-box-align: center;
                             -ms-flex-align: center;
                                 align-items: center;
+                        position: relative;
                   }
 
 .info-wrapper .info-movie .group-actions .button-watch i{
@@ -4226,9 +4259,8 @@ input::-ms-input-placeholder{
 .info-wrapper .info-movie .group-actions .button-watch .progress-bar-content{
                               position: absolute;
                               height: auto;
-                              width: 186px;
+                              width: 100%;
                               bottom: 0;
-                              left: 2.7%;
                         }
 
 .info-wrapper .info-movie .group-actions .button-watch .progress-bar-content .MuiLinearProgress-root{

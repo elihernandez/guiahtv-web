@@ -105,6 +105,7 @@
     "react-tv": "^0.4.3",
     "react-tv-navigation": "^0.4.3",
     "rsuite": "^4.8.9",
+    "screenfull": "^5.1.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
     "slick-carousel": "^1.8.1",
