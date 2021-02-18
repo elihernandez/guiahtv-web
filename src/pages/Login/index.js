@@ -6,7 +6,7 @@ import encryptString from '../../js/Encrypt/encrypt'
 import { LoaderSpinnerMUI } from '../../components/Loader/index'
 import { Link } from '../../components/Link/index'
 import { ButtonUI } from '../../components/Button/index'
-import { H1 } from '../../components/Text/index'
+import { H1 } from '../../components/Typography/index'
 import UserContext from '../../context/UserContext'
 import './styles.css'
 
@@ -159,13 +159,13 @@ export function Login() {
                         <div className="content-form">
                             <Logo color="blue" />
                             <form className="login-form" onSubmit={handleSubmit}>
-                                <H1 className="title-form">Inicia sesión</H1>
+                                <H1 className="title-form title-1">Inicia sesión</H1>
                                 <GroupFormError error={error} />
                                 <div className="group-form">
                                     <label htmlFor="username" />
                                     <input
                                         type="text"
-                                        className="username"
+                                        className="username body-2"
                                         name="username"
                                         id="username"
                                         placeholder="Correo electrónico"
@@ -183,7 +183,7 @@ export function Login() {
                                         type="password"
                                         name="password"
                                         id="password"
-                                        className="password"
+                                        className="password body-2"
                                         placeholder="Contraseña"
                                         autoComplete="on"
                                         required
@@ -191,19 +191,19 @@ export function Login() {
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </div>
-                                <ButtonUI type="submit" className="gradient-background uppercase btn-submit-login" text="Iniciar sesión" />
+                                <ButtonUI type="submit" className="gradient-background uppercase btn-submit-login body-2" text="Iniciar sesión" />
                             </form>
                             <div className="group-info">
                                 <div className="group-rememberme row">
                                     <label htmlFor="checkbox-rememberme" />
                                     <input type="checkbox" id="checkbox-rememberme" className="input-checkbox" onChange={handleChange} />
-                                    <p>Recuérdame</p>
+                                    <p className="body-3">Recuérdame</p>
                                 </div>
-                                <Link className="link-help" href="https://guiah.tv/axs/ForgotPassword">¿Necesitas ayuda?</Link>
+                                <Link className="link-help body-3" href="https://guiah.tv/axs/ForgotPassword">¿Necesitas ayuda?</Link>
                             </div>
                             <div className="bottom-info">
-                                <p>¿Primera vez en Guíah TV?
-                                    <Link className="link-register" href="https://guiah.tv/axs/registro">Registrarme</Link>
+                                <p className="body-3">¿Primera vez en Guíah TV?
+                                    <Link className="link-register body-2" href="https://guiah.tv/axs/registro">Registrarme</Link>
                                 </p>
                             </div>
                         </div>

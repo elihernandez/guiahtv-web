@@ -9,7 +9,7 @@ function FooterLink({ className, href, text }) {
       return (
             <li className={classNameItem}>
                   <a className={className} data-uia={dataUia} href={href}>
-                        <span className="title-link">{text}</span>
+                        <span className="title-link caption">{text}</span>
                   </a>
             </li>
       )
@@ -30,7 +30,7 @@ export function Footer() {
             <div className="footer-content">
                   <div className="footer-wrapper">
                         <IconLogo />
-                        <h5 className="services-text">
+                        <h5 className="services-text body-3">
                               MÚSICA | TV EN VIVO | PELÍCULAS | CONCIERTOS | CLÍNICAS | SERIES |
                               ZONA KIDS | PPV Y MUCHO MÁS
                         </h5>

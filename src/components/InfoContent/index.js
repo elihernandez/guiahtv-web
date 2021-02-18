@@ -5,11 +5,11 @@ import { getProgressMovie } from '../../js/Time'
 import { imgSourceSetJpg } from '../../js/Image'
 import './styles.css'
 
-export function InfoMovie({data}){
+export function InfoMovie({ data }) {
       const { url } = useRouteMatch()
       const history = useHistory()
       const { HdBackgroundImageUrl, Title, Description, Categories, Artist, Director, ReleaseDate, Length, Rating, StarRating, ResumePos } = data
-      const textButton = ResumePos == "" ? "Ver ahora" : "Reanudar" 
+      const textButton = ResumePos == "" ? "Ver ahora" : "Reanudar"
 
       const handleClick = () => {
             history.push(`${url}/video`)
@@ -18,8 +18,7 @@ export function InfoMovie({data}){
       return (
             <Fragment>
                   <div className="background">
-                        <ImgBackground img={HdBackgroundImageUrl} />
-                        
+                        <ImgBackground title={Title} img={HdBackgroundImageUrl} type="movie" />
                         <div className="overlay bottom s-50" />
                         <div className="overlay bottom s-40" />
                         <div className="overlay bottom s-30" />
@@ -100,12 +99,12 @@ export function InfoMovie({data}){
       )
 }
 
-export function InfoSerie({data}){
+export function InfoSerie({ data }) {
       const { HdBackgroundImageUrl, Title, Description, Categories } = data
       return (
             <Fragment>
                   <div className="background">
-                        <ImgBackground img={HdBackgroundImageUrl} />
+                        <ImgBackground title={Title} img={HdBackgroundImageUrl} type="serie" />
                         <div className="overlay bottom s-50" />
                         <div className="overlay bottom s-40" />
                         <div className="overlay bottom s-30" />
@@ -137,11 +136,26 @@ export function InfoSerie({data}){
       )
 }
 
-function ImgBackground({img}){
-      return <picture>
-            <source srcSet={img} type="image/webp" />
-            <source srcSet={imgSourceSetJpg(img, 'webp')} type="image/jpg" />
-            <img src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt="Image-tv-fallback" className="image-button" />
-      </picture>
+function ImgBackground({ title, img, type }) {
+
+      return (
+            <Fragment>
+                  {type == "movie" &&
+                        <picture>
+                              <source srcSet={img} type="image/webp" />
+                              <source srcSet={imgSourceSetJpg(img, 'webp')} type="image/jpeg" />
+                              <img src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt={`background-${title}`} />
+                        </picture>
+                  }
+                  {type == "serie" &&
+                        <picture>
+                              <source srcSet={img} type="image/png" />
+                              <source srcSet={imgSourceSetJpg(img, 'png')} type="image/jpeg" />
+                              <img src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt={`background-${title}`} />
+                        </picture>
+                  }
+            </Fragment>
+
+      )
 }
 

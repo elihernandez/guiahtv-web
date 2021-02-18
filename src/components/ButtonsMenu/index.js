@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getButtonsMenu } from '../../services/getButtonsMenu'
-import { H6 } from '../Text'
+import { H6 } from '../Typography'
 import { imgSourceSetPng } from '../../js/Image'
 import { useHistory } from "react-router-dom"
 import './styles.css'

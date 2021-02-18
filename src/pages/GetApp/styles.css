@@ -38,6 +38,12 @@
                   letter-spacing: .5px;
                   padding: 0 30px;
             }
+
+            .img-device{
+                  position: relative;
+                  width: auto;
+                  height: 350px;
+            }
       
             .info-wrapper{
                   position: relative;
@@ -83,6 +89,13 @@
                   .message{
                         font-size: 15px !important;
                   }
+
+                  .img-device{
+                        position: relative;
+                        width: auto;
+                        height: 225px;
+                  }
+            
             }
       }
 }

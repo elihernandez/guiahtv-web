@@ -360,7 +360,7 @@
                   }
 
 .footer-content .footer-wrapper .services-text{
-                  font-size: 14px;
+                 
                   font-weight: 500;
                   text-align: center;
                   margin: 10px 0;
@@ -388,10 +388,6 @@
                               text-decoration: none;
                               color: #f7f7f7;
                         }
-
-.footer-content .footer-wrapper .footer-links .footer-link-item .footer-link .title-link{
-                                    font-size: 12px;
-                              }
 
 @media (max-width: 768px) {
                
@@ -435,6 +431,47 @@ h5{
 h6{
       font-size: 1.42rem;
 }
+    
+.large-title-1{
+      font-size: 40px;
+}
+    
+.large-title-2{
+      font-size: 35px;
+}
+    
+.large-title-3{
+      font-size: 30px;
+}
+    
+.title-1{
+      font-size: 26px;
+}
+    
+.title-2{
+      font-size: 23px;
+}
+    
+.title-3{
+      font-size: 20px;
+}
+    
+.body-1{
+      font-size: 18px;
+}
+    
+.body-2{
+      font-size: 16px;
+}
+    
+.body-3{
+      font-size: 14px;
+}
+    
+.caption{
+      font-size: 12px;
+}
+
 /* Top Menu */
 
 /* Music */
@@ -452,7 +489,8 @@ button{
       transition: all .15s ease;
       border-radius: 4px;
       -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
-              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25)
+              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+      font-family: "Poppins", sans-serif !important
 }
 
 button.uppercase{
@@ -616,17 +654,16 @@ button:hover{
       }
 
 .center-content .group-info p{
-                  font-size: 17px;
                   margin-right: 25px;
                   font-weight: 300;
                   
             }
 
 .center-content .group-info button{
-                  font-size: 20px;
-                  padding: 16px 40px;
+                  /* font-size: 20px; */
+                  padding: 15px 45px;
                   letter-spacing: .5px;
-                  font-weight: 300;
+                  font-weight: 400;
                   margin-right: 20px;
             }
 
@@ -1027,6 +1064,7 @@ button:hover{
         min-height: 600px;
         border-radius: 10px;
         padding: 50px 0;
+        margin-bottom: 100px;
 
     }
 
@@ -1049,7 +1087,6 @@ button:hover{
 .wrapper-login .content-form form .title-form{
                 margin-top: 25px !important;
                 margin-bottom: 25px !important;
-                font-size: 32px;
                 font-weight: 500;
             }
 
@@ -1060,7 +1097,6 @@ button:hover{
                     border: 2px solid #9e9e9e;
                     border-radius: 5px;
                     margin: 10px 0;
-                    font-size: 16px;
                     font-weight: 500;
                     padding: 0 15px;
                     color: #f7f7f7;
@@ -1124,8 +1160,7 @@ input::-ms-input-placeholder{
                 width: 100%;
                 height: 55px;
                 letter-spacing: .5px;
-                font-size: 16px;
-                font-weight: 600;
+                font-weight: 400;
                 border-radius: 5px;
             }
 
@@ -1141,7 +1176,6 @@ input::-ms-input-placeholder{
 
 .wrapper-login .content-form .group-info .link-help{
                 font-weight: 300;
-                font-size: 14px;
                 text-decoration: none;
                 color: #9e9e9e;
             }
@@ -1163,7 +1197,6 @@ input::-ms-input-placeholder{
 
 .wrapper-login .content-form .group-info .group-rememberme.row p{
                         margin-left: 5px !important;
-                        font-size: 14px;
                         font-weight: 300;
                         color: #9e9e9e;
                     }
@@ -1190,7 +1223,6 @@ input::-ms-input-placeholder{
 .wrapper-login .content-form .bottom-info .link-register{
                 font-weight: 400;
                 text-decoration: none;
-                font-size: 16px;
                 margin-left: 5px;
                 color: #f7f7f7;
             }
@@ -6595,6 +6627,12 @@ input::-ms-input-placeholder{
                   padding: 0 30px;
             }
 
+.get-app-wrapper .container-wrapper .img-device{
+                  position: relative;
+                  width: auto;
+                  height: 350px;
+            }
+
 .get-app-wrapper .container-wrapper .info-wrapper{
                   position: relative;
                   padding: 0 30px;
@@ -6648,6 +6686,13 @@ input::-ms-input-placeholder{
                   .get-app-wrapper .container-wrapper .message{
                         font-size: 15px !important;
                   }
+
+                  .get-app-wrapper .container-wrapper .img-device{
+                        position: relative;
+                        width: auto;
+                        height: 225px;
+                  }
+            
             }
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { isIOS, isAndroid } from "react-device-detect"
+import { isIOS, isAndroid, isMobileOnly, isTablet } from "react-device-detect"
 import Logo from '../../components/Logo'
 import { Footer } from '../../components/Footer'
 import './styles.css'
@@ -10,6 +10,12 @@ export function GetApp() {
                   <div className="container-wrapper">
                         <Logo color="blue" />
                         <h2 className="title">Disfruta en donde quieras, cancela cuando quieras.</h2>
+                        {isMobileOnly &&
+                              <img className="img-device" alt="Descarga la app en celular" src="build/assets/images/backgrounds/cantanteiphone.png" />
+                        }
+                        {isTablet &&
+                              <img className="img-device" alt="Descarga la app en tabled" src="build/assets/images/backgrounds/cantanteipad.png" />
+                        }
                         {isIOS &&
                               <div className="info-wrapper">
                                     <h3 className="message">Descarga la app para iOS y disfruta de todo nuestro contenido.</h3>

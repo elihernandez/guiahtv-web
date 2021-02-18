@@ -166,14 +166,14 @@ function Img({ title, posterType, imgPortrait, imgLandscape }) {
                   {posterType == 0 &&
                         <picture>
                               <source srcSet={imgPortrait} type="image/webp" />
-                              <source srcSet={imgSourceSetJpg(imgPortrait, 'webp')} type="image/jpg" />
+                              <source srcSet={imgSourceSetJpg(imgPortrait, 'webp')} type="image/jpeg" />
                               <img src="build/assets/images/logos/guiahtv/vod-error-portrait.png" alt={`img-${title}`} />
                         </picture>
                   }
                   {posterType == 1 &&
                         <picture>
                               <source srcSet={imgLandscape} type="image/webp" />
-                              <source srcSet={imgSourceSetJpg(imgLandscape, 'webp')} type="image/jpg" />
+                              <source srcSet={imgSourceSetJpg(imgLandscape, 'webp')} type="image/jpeg" />
                               <img src="build/assets/images/logos/guiahtv/GuiahAzulPerf.png" alt={`img-${title}`} />
                         </picture>
                   }
