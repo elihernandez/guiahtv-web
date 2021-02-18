@@ -29,6 +29,8 @@ export function useHls(video, url, dispatch, movie) {
             
                         hls.on(Hls.Events.ERROR, function (event, data) {
                               console.log(event, data)
+                              dispatch({ type: 'updateLoading', payload: false })
+                              
                               if(event == "hlsError" && data.details == "manifestLoadError"){
                                     hls.destroy()
                                     dispatch({ type: 'updateLoading', payload: false })

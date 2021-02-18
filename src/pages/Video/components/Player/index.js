@@ -26,16 +26,19 @@ export function Player({ state, dispatchVod }) {
             dispatch({ type: 'updateActive', payload: true })
             dispatch({ type: 'updateLoading', payload: false })
             dispatch({ type: 'setPlaying', payload: true })
+            console.log("Playing")
       }
 
       const onWaitingVideo = () => {
             dispatch({ type: 'updateLoading', payload: true })
+            console.log("Waiting")
       }
 
       const onErrorVideo = () => {
             dispatch({ type: 'updateLoading', payload: false })
             dispatch({ type: 'updateData', payload: null })
             setError("Contenido no disponible por el momento")
+            console.log("Error")
       }
 
       useEffect(() => {

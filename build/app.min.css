@@ -2985,9 +2985,9 @@ input::-ms-input-placeholder{
                   position: absolute !important;
                   color: #fff;
                   background-color: rgba(0, 0, 0, 0.6);
-                  bottom: 100px !important;
-                  -webkit-transform: translateY(-100px) !important;
-                          transform: translateY(-100px) !important; 
+                  bottom: 10% !important;
+                  -webkit-transform: translateY(-10%) !important;
+                          transform: translateY(-10%) !important; 
             }
 
       .player .player-wrapper video::-webkit-media-text-track-display {
@@ -2996,8 +2996,8 @@ input::-ms-input-placeholder{
 
       .player .player-wrapper video::-webkit-media-text-track-container {
                   overflow: visible !important;
-                  -webkit-transform: translateY(-100px) !important;
-                          transform: translateY(-100px) !important;
+                  -webkit-transform: translateY(-10%) !important;
+                          transform: translateY(-10%) !important;
             }
 
       .player .player-wrapper video::-moz-media-text-track-display {
@@ -3006,7 +3006,7 @@ input::-ms-input-placeholder{
 
       .player .player-wrapper video::-moz-media-text-track-container {
                   overflow: visible !important;
-                  transform: translateY(-100px) !important;
+                  transform: translateY(-10%) !important;
             }
 
       .player .player-wrapper .error-message{
