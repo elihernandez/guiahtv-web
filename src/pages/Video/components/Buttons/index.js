@@ -326,7 +326,7 @@ export function ButtonTracks({ hls, audios, subtitles }) {
                               <div>
                                     <Tooltip title="Audios / Subtítulos" placement="top-start">
                                           <button aria-describedby={id} type="button" className="content-button-icon" {...bindTrigger(popupState)}>
-                                                <img src="src/assets/icons/audios-subs.png" />
+                                                <img alt="Icono de audios y subtítulos" src="build/assets/images/icons/audios-subs.png" />
                                           </button>
                                     </Tooltip>
                                     <Popover

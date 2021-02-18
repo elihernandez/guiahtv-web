@@ -33,7 +33,6 @@ function ProgressBarTime({ videoRef, currentTime, duration, dispatch }) {
       }
 
       useEffect(() => {
-            console.log(currentTime)
             setValue(currentTime)
       }, [currentTime])
 
