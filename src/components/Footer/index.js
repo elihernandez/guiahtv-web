@@ -1,26 +1,26 @@
 import React from 'react'
-import { IconLogo } from '../Logo/index'
+import { IconLogo } from '../Logo'
+import { Link } from '../Link'
 import './styles.css'
 
-function FooterLink({ className, href, text }) {
-      const classNameItem = `${className}-item`
-      const dataUia = `${className}-label`
-
-      return (
-            <li className={classNameItem}>
-                  <a className={className} data-uia={dataUia} href={href}>
-                        <span className="title-link caption">{text}</span>
-                  </a>
-            </li>
-      )
-}
-
-function FooterLinks() {
+function Links() {
       return (
             <ul className="footer-links">
-                  <FooterLink className="footer-link" href="https://guiah.tv/privacidad/" text="Política de privacidad" />
-                  <FooterLink className="footer-link" href="https://guiah.tv/terminos/" text="Términos de uso" />
-                  <FooterLink className="footer-link" href="https://guiah.tv/" text="Contáctanos" />
+                  <li className="footer-link-item">
+                        <Link className="footer-link" href="https://guiah.tv/privacidad/">
+                              <span className="title-link caption">Política de privacidad</span>
+                        </Link>
+                  </li>
+                  <li className="footer-link-item">
+                        <Link className="footer-link" href="https://guiah.tv/terminos/">
+                              <span className="title-link caption">Términos de uso</span>
+                        </Link>
+                  </li>
+                  <li className="footer-link-item">
+                        <Link className="footer-link" href="https://guiah.tv/">
+                              <span className="title-link caption">Contáctanos</span>
+                        </Link>
+                  </li> 
             </ul>
       )
 }
@@ -34,7 +34,7 @@ export function Footer() {
                               MÚSICA | TV EN VIVO | PELÍCULAS | CONCIERTOS | CLÍNICAS | SERIES |
                               ZONA KIDS | PPV Y MUCHO MÁS
                         </h5>
-                        <FooterLinks />
+                        <Links />
                   </div>
             </div>
       )

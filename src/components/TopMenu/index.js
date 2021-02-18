@@ -63,7 +63,7 @@ export function TopMenu() {
                               </div>
                         </div>
                         <div className="right-section">
-                              <span><i className="fas fa-search"/></span>
+                              
                               <UserMenu/>
                         </div>
                   </div>

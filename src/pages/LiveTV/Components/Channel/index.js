@@ -43,19 +43,19 @@ function ReadMore({readMoreActive, Name, Description, handleClickHideReadMore}){
 function ContactInfo({moreInfoActive, contactInfo, handleClickHideMoreInfo}){
 
       const handleClickFb = () => {
-            window.location=`https://www.facebook.com/${contactInfo.ContactFb}`
+            window.open(`https://www.facebook.com/${contactInfo.ContactFb}`, '_blank')
       }
-
+      
       const handleClickIg = () => {
-            window.location=`https://www.instagram.com/${contactInfo.ContactIG}`
+            window.open(`https://www.instagram.com/${contactInfo.ContactIG}`, '_blank')
       }
-
+      
       const handleClickTw = () => {
-            window.location=`https://www.twitter.com/${contactInfo.ContactTw}`
+            window.open(`https://www.twitter.com/${contactInfo.ContactTw}`, '_blank')
       }
-
+      
       const handleClickGm = () => {
-            window.location=`https://www.google.com/maps/place/${replaceString(contactInfo.ContactLoc, ",","+")}`
+            window.open(`https://www.google.com/maps/place/${replaceString(contactInfo.ContactLoc, ",","+")}`, '_blank')
       }
 
       return (
@@ -114,7 +114,6 @@ function ContactInfo({moreInfoActive, contactInfo, handleClickHideMoreInfo}){
 
 function LiveTvChannel({ dataChannel, handleClick, handleError }) {
       let { Description, Name, Poster, ContactID } = dataChannel
-      let imgChannel = useRef(null)
       const [contactInfo, setContactInfo] = useState([])
       const [moreInfoActive, setMoreInfoActive] = useState(false)
       const [readMoreActive, setReadMoreActive] = useState(false)

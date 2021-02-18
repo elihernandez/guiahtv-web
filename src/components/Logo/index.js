@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom"
 import './styles.css'
 
 export default function Logo({color}){
-    // const imgSrc = `build/assets/images/logos/guiahtv/guiahtv-logo-${color}.png`
     const imgSrc = `build/assets/images/logos/guiahtv/guiahtv-logo-${color}.png`
 
     return (

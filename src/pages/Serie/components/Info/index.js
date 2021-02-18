@@ -22,28 +22,28 @@ export function Info({ data }) {
                         <div className="social-media-group">
                               {ContactFb &&
                                     <Tooltip title="Facebook" placement="top-start">
-                                          <a href={`https://www.facebook.com/${ContactFb}`}>
+                                          <a href={`https://www.facebook.com/${ContactFb}`} target="_blank">
                                                 <i className="fab fa-facebook-square" /> Facebook
                                           </a>
                                     </Tooltip>
                               }
                               {ContactIG &&
                                     <Tooltip title="Instagram" placement="top-start">
-                                          <a href={`https://www.instagram.com/${ContactIG}`}>
+                                          <a href={`https://www.instagram.com/${ContactIG}`} target="_blank">
                                                 <i className="fab fa-instagram" /> Instagram
                                           </a>
                                     </Tooltip>
                               }
                               {ContactTw &&
                                     <Tooltip title="Twitter" placement="top-start">
-                                          <a href={`https://www.twitter.com/${ContactTw}`}>
+                                          <a href={`https://www.twitter.com/${ContactTw}`} target="_blank">
                                                 <i className="fab fa-twitter-square" /> Twitter
                                           </a>
                                     </Tooltip>
                               }
                               {ContactLoc &&
                                     <Tooltip title="Ubicación" placement="top-start">
-                                          <a href={`https://www.google.com/maps/place/${replaceString(ContactLoc, ",", "+")}`}>
+                                          <a href={`https://www.google.com/maps/place/${replaceString(ContactLoc, ",", "+")}`} target="_blank">
                                                 <i className="fas fa-map-marker-alt" /> Ubicación
                                           </a>
                                     </Tooltip>
