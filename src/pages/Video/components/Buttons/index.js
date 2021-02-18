@@ -1,8 +1,8 @@
-import React, { Fragment, useRef, useState, useEffect } from 'react'
+import React, { Fragment, useRef, useState, useEffect, useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
 import Tooltip from '@material-ui/core/Tooltip'
 import Slider from '@material-ui/core/Slider'
-import { exitFullScreen, enterFullScreen, exitHandler } from '../../../../js/Screen'
+import screenfull, { changeFullScreen, toggleFullScreen } from '../../../../js/Screen'
 import { CSSTransition } from 'react-transition-group'
 import Popover from '@material-ui/core/Popover'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
@@ -116,38 +116,32 @@ export function ButtonBackward({ videoRef }) {
 export function ButtonsFullScreen() {
       const [fullScreen, setFullScreen] = useState(false)
 
-      const toggleFullScreen = () => {
-            if (!document.fullscreenElement) {
-                  enterFullScreen()
-                  setFullScreen(true)
-            } else {
-                  exitFullScreen()
-                  setFullScreen(false)
-            }
-      }
-
       const handleClick = () => {
             toggleFullScreen()
       }
 
+      const handleChange = () => {
+            if (screenfull.isFullscreen) {
+                  setFullScreen(true)
+            }else{
+                  setFullScreen(false)
+            }
+      }
+
       useEffect(() => {
-            document.addEventListener('fullscreenchange', exitHandler)
-            document.addEventListener('webkitfullscreenchange', exitHandler)
-            document.addEventListener('mozfullscreenchange', exitHandler)
-            document.addEventListener('MSFullscreenChange', exitHandler)
-            document.querySelector('.video').addEventListener('dblclick', toggleFullScreen)
+            changeFullScreen()
+            document.querySelector('.video').addEventListener('dblclick', handleClick)
+            screenfull.on('change', handleChange)
 
             return () => {
-                  document.removeEventListener('fullscreenchange', exitHandler)
-                  document.removeEventListener('webkitfullscreenchange', exitHandler)
-                  document.removeEventListener('mozfullscreenchange', exitHandler)
-                  document.removeEventListener('MSFullscreenChange', exitHandler)
-                  document.querySelector('.video').addEventListener('dblclick', toggleFullScreen)
+                  changeFullScreen()
+                  document.querySelector('.video').removeEventListener('dblclick', handleClick)
+                  screenfull.off('change', handleChange)
             }
-      }, [])
+      }, [fullScreen])
 
       return (
-            <Tooltip title={fullScreen == true ? "Salir de pantalla completa" : "Pantalla completa"} placement="top-start">
+            <Tooltip title={fullScreen ? "Salir de pantalla completa" : "Pantalla completa"} placement="top-start">
                   <button type="button" className="content-button-icon" onClick={handleClick}>
                         {fullScreen
                               ? <i className="fas fa-compress" />
@@ -224,14 +218,30 @@ export function ButtonVolume({ volume, muteVolume, dispatch }) {
       )
 }
 
-function ItemTrack({ data, index, handleClick }) {
+function ItemAudio({ data, index, handleClick, audioTrackActive }) {
+      const trackRef = useRef(null)
       const { id, name } = data 
-      const className = data.default == true ? "track-item active" : "track-item" 
+      const className = data.default == true ? "track-item" : "track-item" 
+      
+      useEffect(() => {
+      }, [])
 
-      return <li key={id} className={className} onClick={(e) => handleClick(e, index)}>{capitalizeFirstLetter(name)} <i className="fas fa-check" /></li>
+      return <li ref={trackRef} key={id} className={`${className} ${audioTrackActive == id ? 'active' : ''}`} onClick={(e) => handleClick(e, index)}>{capitalizeFirstLetter(name)} <i className="fas fa-check" /></li>
 }
 
-function AudioTracks({ hls, audios }) {
+function ItemSubtitle({ data, index, handleClick, subtitleTrackActive }) {
+      const trackRef = useRef(null)
+      const { id, name } = data 
+      const className = data.default == true ? "track-item" : "track-item" 
+      
+      useEffect(() => {
+      }, [])
+
+      return <li ref={trackRef} key={id} className={`${className} ${subtitleTrackActive == id ? 'active' : ''}`} onClick={(e) => handleClick(e, index)}>{capitalizeFirstLetter(name)} <i className="fas fa-check" /></li>
+}
+
+
+function AudioTracks({ hls, audios, dispatch, audioTrackActive }) {
       const listAudiosRef = useRef(null)
       const { audioTracks } = audios
 
@@ -247,6 +257,7 @@ function AudioTracks({ hls, audios }) {
       const changeAudioTrack = (e, id) => {
             hls.audioTrack = id
             toogleClassActive(e.currentTarget, listAudiosRef.current)
+            dispatch({ type: 'setAudioTrackActive', payload: id })
       }
 
       useEffect(() => {
@@ -259,7 +270,7 @@ function AudioTracks({ hls, audios }) {
                         ?     <Fragment>
                               {
                                     audioTracks.map((data, index) => {
-                                          return <ItemTrack key={data.id} data={data} index={index} handleClick={changeAudioTrack}/>
+                                          return <ItemAudio key={data.id} data={data} index={index} handleClick={changeAudioTrack} audioTrackActive={audioTrackActive}/>
                                     })
                               }
                               </Fragment>
@@ -270,7 +281,7 @@ function AudioTracks({ hls, audios }) {
       )
 }
 
-function SubtitleTracks({ hls, subtitles }) {
+function SubtitleTracks({ hls, subtitles, dispatch, subtitleTrackActive }) {
       const listSubtitlesRef = useRef(null)
       const { subtitleTracks } = subtitles
 
@@ -286,6 +297,7 @@ function SubtitleTracks({ hls, subtitles }) {
       const changeSubtitleTrack = (e, id) => {
             hls.subtitleTrack = id
             toogleClassActive(e.currentTarget, listSubtitlesRef.current)
+            dispatch({ type: 'setSubtitleTrackActive', payload: id })
       }
 
       useEffect(() => {
@@ -297,10 +309,10 @@ function SubtitleTracks({ hls, subtitles }) {
             <ul className="list-tracks" ref={listSubtitlesRef}>
                   {subtitleTracks.length > 0
                         ?     <Fragment>
-                                    <li className="track-item active" onClick={(e) => changeSubtitleTrack(e, -1)}>Desactivados <i className="fas fa-check" /></li>
+                                    <li className={`track-item ${subtitleTrackActive == -1 ? 'active' : ''}`} onClick={(e) => changeSubtitleTrack(e, -1)}>Desactivados <i className="fas fa-check" /></li>
                                     {
                                           subtitleTracks.map((data, index) => {
-                                                return <ItemTrack key={data.id} data={data} index={index} handleClick={changeSubtitleTrack}/>
+                                                return <ItemSubtitle key={data.id} data={data} index={index} handleClick={changeSubtitleTrack} subtitleTrackActive={subtitleTrackActive}/>
                                           })
                                     }
                               </Fragment>
@@ -310,13 +322,12 @@ function SubtitleTracks({ hls, subtitles }) {
       )
 }
 
-export function ButtonTracks({ hls, audios, subtitles }) {
+export function ButtonTracks({ hls, audios, subtitles, dispatch, audioTrackActive, subtitleTrackActive }) {
       const [anchorEl] = useState(null)
       const open = Boolean(anchorEl)
       const id = open ? 'transitions-popper' : undefined
       
       useEffect(() => {
-
       }, [])
       
       return (
@@ -343,11 +354,11 @@ export function ButtonTracks({ hls, audios, subtitles }) {
                                           <div className="tracks-content">
                                                 <div className="audios-content">
                                                       <h4 className="name-list">Audios</h4>
-                                                      <AudioTracks hls={hls} audios={audios} />
+                                                      <AudioTracks hls={hls} audios={audios} dispatch={dispatch} audioTrackActive={audioTrackActive} />
                                                 </div>
                                                 <div className="subtitles-content">
                                                       <h4 className="name-list">Subtítulos</h4>
-                                                      <SubtitleTracks hls={hls} subtitles={subtitles} />
+                                                      <SubtitleTracks hls={hls} subtitles={subtitles} dispatch={dispatch} subtitleTrackActive={subtitleTrackActive}/>
                                                 </div>
                                           </div>
                                     </Popover>

@@ -2981,7 +2981,25 @@ input::-ms-input-placeholder{
                   background: black
             }
 
-      .player .player-wrapper ::cue {
+      .player .player-wrapper video::cue {
+                  position: absolute !important;
+                  color: #fff;
+                  background-color: rgba(0, 0, 0, 0.6);
+                  bottom: 10% !important;
+                  -webkit-transform: translateY(-10%) !important;
+                          transform: translateY(-10%) !important; 
+            }
+
+      .player .player-wrapper video::cue(b) {
+                  position: absolute !important;
+                  color: #fff;
+                  background-color: rgba(0, 0, 0, 0.6);
+                  bottom: 10% !important;
+                  -webkit-transform: translateY(-10%) !important;
+                          transform: translateY(-10%) !important; 
+            }
+
+      .player .player-wrapper video::cue-region {
                   position: absolute !important;
                   color: #fff;
                   background-color: rgba(0, 0, 0, 0.6);

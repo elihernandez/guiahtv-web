@@ -95,7 +95,7 @@ function TimeMovie({ videoRef, duration, dispatch }) {
 
 export function Controls() {
       const { stateVideo, dispatch } = useContext(VideoContext)
-      const { hls, active, playing, videoRef, currentTime, volume, muteVolume, audioTracks, subtitleTracks } = stateVideo
+      const { hls, active, playing, videoRef, currentTime, volume, muteVolume, audioTracks, audioTrackActive, subtitleTracks, subtitleTrackActive } = stateVideo
       const [duration, setDuration] = useState(null)
 
       useEffect(() => {
@@ -116,7 +116,7 @@ export function Controls() {
                               </div>
                               <div className="group-buttons">
                                     <ButtonVolume volume={volume} muteVolume={muteVolume} dispatch={dispatch} />
-                                    <ButtonTracks hls={hls} audios={audioTracks} subtitles={subtitleTracks} />
+                                    <ButtonTracks hls={hls} audios={audioTracks} subtitles={subtitleTracks} dispatch={dispatch} audioTrackActive={audioTrackActive} subtitleTrackActive={subtitleTrackActive}/>
                                     <ButtonsFullScreen />
                                     <div className="group-time">
                                           <TimeMovie videoRef={videoRef} duration={duration} dispatch={dispatch} />

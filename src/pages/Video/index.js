@@ -19,7 +19,9 @@ const initialState = {
       playing: false,
       muteVolume: false,
       audioTracks: null,
-      subtitleTracks: null
+      audioTrackActive: 0,
+      subtitleTracks: null,
+      subtitleTrackActive: -1
 }
 
 const reducer = (state, action) => {
@@ -100,10 +102,22 @@ const reducer = (state, action) => {
                         audioTracks: action.payload
                   }
             }
+            case 'setAudioTrackActive': {
+                  return {
+                        ...state,
+                        audioTrackActive: action.payload
+                  }
+            }
             case 'setSubtitleTracks': {
                   return {
                         ...state,
                         subtitleTracks: action.payload
+                  }
+            }
+            case 'setSubtitleTrackActive': {
+                  return {
+                        ...state,
+                        subtitleTrackActive: action.payload
                   }
             }
             default: return state;
@@ -121,9 +135,10 @@ export function VideoVod({ state, dispatchVod }) {
 
       useEffect(() => {
             document.querySelector('.top-menu').style.opacity = 0
+            document.querySelector('.top-menu').classList.remove('bggradient')
             return () => {
                   document.querySelector('.top-menu').style.opacity = 1
-                  document.querySelector('.top-menu').classList.remove('bggradient')
+                  document.querySelector('.top-menu').classList.add('bggradient')
                   if(isFullScreenElement()) exitFullScreen()
             }
       }, [])

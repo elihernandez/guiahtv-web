@@ -3,43 +3,39 @@ import VideoContext from '../../../../context/VideoContext'
 import { CSSTransition } from 'react-transition-group'
 import Tooltip from '@material-ui/core/Tooltip'
 import Slider from '@material-ui/core/Slider'
-import { exitFullScreen, enterFullScreen, exitHandler } from '../../../../js/Screen'
+import screenfull, { changeFullScreen, toggleFullScreen } from '../../../../js/Screen'
 import './styles.css'
 
 function ButtonFullScreen() {
       const [fullScreen, setFullScreen] = useState(false)
 
-      const toggleFullScreen = () => {
-            if (!document.fullscreenElement) {
-                  enterFullScreen()
+      const handleClick = () => {
+            toggleFullScreen()
+            setFullScreen(!fullScreen)
+      }
+
+      const handleChange = () => {
+            if (screenfull.isFullscreen) {
                   setFullScreen(true)
-            } else {
-                  exitFullScreen()
+            }else{
                   setFullScreen(false)
             }
       }
 
-      const handleClick = () => {
-            toggleFullScreen()
-      }
-
       useEffect(() => {
-            document.addEventListener('fullscreenchange', exitHandler)
-            document.addEventListener('webkitfullscreenchange', exitHandler)
-            document.addEventListener('mozfullscreenchange', exitHandler)
-            document.addEventListener('MSFullscreenChange', exitHandler)
+            changeFullScreen()
+            document.addEventListener('dblclick', handleClick)
+            screenfull.on('change', handleChange)
 
             return () => {
-                  document.removeEventListener('dblclick', toggleFullScreen)
-                  document.removeEventListener('fullscreenchange', exitHandler)
-                  document.removeEventListener('webkitfullscreenchange', exitHandler)
-                  document.removeEventListener('mozfullscreenchange', exitHandler)
-                  document.removeEventListener('MSFullscreenChange', exitHandler)
+                  document.removeEventListener('dblclick', handleClick)
+                  changeFullScreen()
+                  screenfull.on('change', handleChange)
             }
       }, [])
 
       return (
-            <Tooltip title={fullScreen == true ? "Salir de pantalla completa" : "Pantalla completa"} placement="top-start">
+            <Tooltip title={fullScreen ? "Salir de pantalla completa" : "Pantalla completa"} placement="top-start">
                   <span className="full-screen-icon icon" onClick={handleClick}>
                         {fullScreen
                               ? <i className="fas fa-compress" />

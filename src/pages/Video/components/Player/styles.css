@@ -16,7 +16,23 @@
                   background: black
             }
 
-            ::cue {
+            video::cue {
+                  position: absolute !important;
+                  color: #fff;
+                  background-color: rgba(0, 0, 0, 0.6);
+                  bottom: 10% !important;
+                  transform: translateY(-10%) !important; 
+            }
+
+            video::cue(b) {
+                  position: absolute !important;
+                  color: #fff;
+                  background-color: rgba(0, 0, 0, 0.6);
+                  bottom: 10% !important;
+                  transform: translateY(-10%) !important; 
+            }
+
+            video::cue-region {
                   position: absolute !important;
                   color: #fff;
                   background-color: rgba(0, 0, 0, 0.6);
