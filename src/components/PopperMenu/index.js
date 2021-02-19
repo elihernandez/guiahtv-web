@@ -65,7 +65,7 @@ export function PopperMenu({textButton, itemsMenu}){
                             </a>
                           }else{
                             return <a key={title} href={href} target="_blank">
-                              <MenuItem>{title}</MenuItem>
+                              <MenuItem className="body-3">{title}</MenuItem>
                             </a>
                           }
                         })

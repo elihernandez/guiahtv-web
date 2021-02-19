@@ -29,21 +29,31 @@ function Content({ children }) {
             document.querySelector('.top-menu').style.opacity = 0
       }
 
-      const handleUserMouseMove = useCallback(() => {
+      const handleUserMouseMove = useCallback((e) => {            
             if (activeChannel) {
-                  clearTimeout(timerRef.current)
-                  timerRef.current = setTimeout(() => fadeOutContent(), 3000)
-                  fadeInContent()
+                  if(e && e.type == "click" && !activeChannel){
+                        if(isVisible){
+                              clearTimeout(timerRef.current)
+                              fadeOutContent()
+                        }
+                  }else{
+                        clearTimeout(timerRef.current)
+                        timerRef.current = setTimeout(() => fadeOutContent(), 3000)
+                        fadeInContent()
+                  }
             } else {
                   clearTimeout(timerRef.current)
             }
       }, [activeChannel])
 
+
       useEffect(() => {
             handleUserMouseMove()
-            window.addEventListener('mousemove', handleUserMouseMove)
+            document.addEventListener('mousemove', handleUserMouseMove)
+            document.addEventListener('click', handleUserMouseMove)
             return () => {
-                  window.removeEventListener('mousemove', handleUserMouseMove)
+                  document.removeEventListener('mousemove', handleUserMouseMove)
+                  document.removeEventListener('click', handleUserMouseMove)
                   clearTimeout(timerRef.current)
             }
       }, [handleUserMouseMove])

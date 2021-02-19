@@ -97,7 +97,6 @@
 .popper-menu-wrapper button{
             font-family: 'Poppins' !important;
             text-transform: inherit !important;
-            font-size: 15px !important;
             -webkit-box-shadow: none !important;
                     box-shadow: none !important;
             color: white !important; 
@@ -137,7 +136,28 @@
 .popper-menu-wrapper .MuiPaper-root .MuiListItem-button:hover{
                        background-color: #616161; 
                   }
+/* Top Menu */
 
+/* Music */
+
+/* Radio */
+
+.w-padding-top{
+      padding-top: 65px;
+}
+
+.user-profile-navbar{
+      /* border: 2px solid $color-grey-5; */
+      border-radius: 4px
+}
+
+.user-profile-navbar:hover{
+            background-color: #424242;
+      }
+
+.user-profile-navbar button{
+            padding: 8px 16px;
+      }
 .logo{
       display: -webkit-box;
       display: -ms-flexbox;
@@ -1237,9 +1257,9 @@ input::-ms-input-placeholder{
 .spotlight-wrapper{
     position: relative;
     width: 100%;
-    min-height: 500px;
-    overflow-x: hidden;
+    height: auto;
     margin: 25px 0;
+    overflow: hidden;
 }
 
     .spotlight-wrapper .carousel-spotlight{
@@ -1249,9 +1269,9 @@ input::-ms-input-placeholder{
     }
 
     .spotlight-wrapper .carousel-spotlight .carousel-content{
-            position: absolute;
+            position: relative;
             width: 100%;
-            height: 100%;
+            height: auto;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -1264,7 +1284,7 @@ input::-ms-input-placeholder{
                     justify-content: flex-start;
         }
 
-    .spotlight-wrapper .carousel-spotlight .carousel-content .carousel-list{
+    .spotlight-wrapper .carousel-spotlight .carousel-content .carousel-content-list{
                 position: relative;
                 width: 80%;
                 left: 10%;
@@ -1290,12 +1310,12 @@ input::-ms-input-placeholder{
                 overflow: visible;
             }
 
-    .spotlight-wrapper .carousel-spotlight .carousel-content .carousel-list .carousel-item{
+    .spotlight-wrapper .carousel-spotlight .carousel-content .carousel-content-list .carousel-item{
                     position: relative;
                     -webkit-box-flex: 0;
                         -ms-flex: 0 0 100%;
                             flex: 0 0 100%;
-                    height: 100%;
+                    height: auto;
                     opacity: 0;
                     -webkit-transition: all 1300ms ease;
                     transition: all 1300ms ease;
@@ -1312,12 +1332,12 @@ input::-ms-input-placeholder{
                     opacity: 1;
                 }
 
-    .spotlight-wrapper .carousel-spotlight .carousel-content .carousel-list .carousel-item .carousel-image{
+    .spotlight-wrapper .carousel-spotlight .carousel-content .carousel-content-list .carousel-item .carousel-image{
                         padding: 5px;
                         position: relative;
                         top: 0;
                         width: 95%;
-                        height: 100%;
+                        height: auto;
                         border-radius: 20px;
                     }
 
@@ -1334,10 +1354,10 @@ input::-ms-input-placeholder{
                 -ms-flex-pack: center;
                     justify-content: center;
             width: 100%;
-            min-height: 500px;
+            height: auto;
         }
 
-    .spotlight-wrapper .carousel-spotlight .carousel-indicators .carousel-list{
+    .spotlight-wrapper .carousel-spotlight .carousel-indicators .carousel-indicators-list{
                 position: absolute;
                 list-style: none;
                 display: -webkit-inline-box;
@@ -1348,7 +1368,7 @@ input::-ms-input-placeholder{
                 bottom: 5%;
             }
 
-    .spotlight-wrapper .carousel-spotlight .carousel-indicators .carousel-list .carousel-item{
+    .spotlight-wrapper .carousel-spotlight .carousel-indicators .carousel-indicators-list .carousel-item{
                     width: 10px;
                     height: 10px;
                     border-radius: 50%;
@@ -1356,7 +1376,7 @@ input::-ms-input-placeholder{
                     margin: 5px
                 }
 
-    .spotlight-wrapper .carousel-spotlight .carousel-indicators .carousel-list .carousel-item.active{
+    .spotlight-wrapper .carousel-spotlight .carousel-indicators .carousel-indicators-list .carousel-item.active{
                         background-color: rgba(255, 255, 255, 1);
                     }
 
@@ -1440,7 +1460,6 @@ input::-ms-input-placeholder{
 .buttons-sections{
     position: relative;
     width: 100%;
-    margin: 50px 0;
     padding: 0 50px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1452,11 +1471,15 @@ input::-ms-input-placeholder{
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
 }
-
-/* border: 1px solid red; */
 
 .buttons-sections .buttons-list{
         width: 100%;
@@ -1497,6 +1520,7 @@ input::-ms-input-placeholder{
 .buttons-sections .buttons-list .item-button .title-button{
                 position: absolute;
                 font-weight: 600;
+                font-size: 1.2vw;
                 color: white;
                 top: 30%;
                 left: 20%;
@@ -1528,9 +1552,27 @@ input::-ms-input-placeholder{
                         transform: scale(1);
                 cursor: pointer;
             }
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
+.w-padding-top{
+      padding-top: 65px;
+}
+
 .wrapper-home{
     /* overflow-x: hidden;
     border: 1px solid red; */
+    min-height: calc(100vh - 65px);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 /* Top Menu */
@@ -2348,7 +2390,7 @@ input::-ms-input-placeholder{
                           align-items: center;
                   -ms-flex-line-pack: center;
                       align-content: center;
-                  width: 200px;
+                  width: 75px;
             }
 
 .info-channel-wrapper .right-buttons .container-volume .MuiSlider-root{
@@ -2403,6 +2445,47 @@ input::-ms-input-placeholder{
                   margin-left: 25px;
                   min-width: 25px;
             }
+
+#tyh-ugk .MuiTooltip-tooltip{
+            width: 200px;
+            padding: 2.5px 20px !important;
+      }
+
+#tyh-ugk .MuiTooltip-tooltip .MuiSlider-root{
+                  color: #f7f7f7 !important;
+            }
+
+/* margin-top: -7.5px !important; */
+
+#tyh-ugk .MuiTooltip-tooltip .MuiSlider-root .MuiSlider-rail{
+                        height: 6px !important;
+                        background-color: #9e9e9e !important;
+                  }
+
+#tyh-ugk .MuiTooltip-tooltip .MuiSlider-root .MuiSlider-track{
+                        height: 6px !important;
+                  }
+
+#tyh-ugk .MuiTooltip-tooltip .MuiSlider-root .MuiSlider-thumb{
+                        height: 16px !important;
+                        width: 16px !important;
+                        margin-top: -5px !important
+                  }
+
+#tyh-ugk .MuiTooltip-tooltip .MuiSlider-root .MuiSlider-thumb.MuiSlider-active{
+                              -webkit-box-shadow: none !important;
+                                      box-shadow: none !important;
+                        }
+
+#tyh-ugk .MuiTooltip-tooltip .MuiSlider-root .MuiSlider-thumb.Mui-focusVisible{
+                              -webkit-box-shadow: none !important;
+                                      box-shadow: none !important;
+                        }
+
+#tyh-ugk .MuiTooltip-tooltip .MuiSlider-root .MuiSlider-thumb:hover{
+                              -webkit-box-shadow: none !important;
+                                      box-shadow: none !important;
+                        }
 .info-timer-wrapper{
       padding: 125px 40px 0 25px;
 }
@@ -7046,3 +7129,11 @@ ul, ol{
   pointer-events: none;
   opacity: 0.25;
 }
+
+/* width: 200px !important; */
+
+.MuiTooltip-popper .MuiTooltip-tooltip{
+    font-size: 14px !important;
+    /* width: 200px !important;
+    height: 50px !important; */
+  }

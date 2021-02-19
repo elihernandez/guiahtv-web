@@ -67,7 +67,7 @@ export function Channels({ data }) {
                   if(categoria == currentCategory){
                         // console.log(2)
                         let moveP = 100 * (currentPage)
-                        console.log(moveP)
+                        // console.log(moveP)
                         cssTransition(refChannels.current, {
                               transform: `translate3d(-${moveP}%, 0, 0)`
                         }, 0, function () {

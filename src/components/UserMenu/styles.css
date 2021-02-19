@@ -1,0 +1,14 @@
+@import '../../scss/style-base.css';
+
+.user-profile-navbar{
+      /* border: 2px solid $color-grey-5; */
+      border-radius: 4px;
+
+      &:hover{
+            background-color: $color-grey-5;
+      }
+
+      button{
+            padding: 8px 16px;
+      }
+}

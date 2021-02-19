@@ -16,7 +16,7 @@ function CarouselIndicators({data}){
     return (
         <div className="carousel-indicators">
             {data &&
-                <ul className="carousel-list">
+                <ul className="carousel-indicators-list">
                     { data.map(({Registro}, index) => <IndicatorsItem key={Registro} index={index} /> ) }
                 </ul>
             }
@@ -38,7 +38,7 @@ function CarouselContent({data}){
     return(
         <div className="carousel-content">
             {data &&
-                <ul className="carousel-list">
+                <ul className="carousel-content-list">
                     { data.map(({Registro, ImgLandscape}, index) => <ContentItem key={Registro} img={ImgLandscape} index={index} /> ) }
                 </ul>
             }
@@ -58,7 +58,7 @@ export function Spotlight(){
                 const response = await getSpotlight()
                 if(!response.length) throw new Error('No se pudo obtener la información.')
                 setSpotlight(response)
-                carouselSpotlight.current = new CarouselClass(carouselSpotlight, 6500)
+                carouselSpotlight.current = new CarouselClass(carouselSpotlight, 4000)
                 setLoading(false)
             }catch(e){
                 console.log(e)

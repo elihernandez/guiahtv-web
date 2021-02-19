@@ -26,10 +26,10 @@ function ButtonFullScreen() {
             changeFullScreen()
             document.addEventListener('dblclick', handleClick)
             screenfull.on('change', handleChange)
-
+            
             return () => {
-                  document.removeEventListener('dblclick', handleClick)
                   changeFullScreen()
+                  document.removeEventListener('dblclick', handleClick)
                   screenfull.on('change', handleChange)
             }
       }, [])
@@ -44,6 +44,10 @@ function ButtonFullScreen() {
                   </span>
             </Tooltip>
       )
+}
+
+function SliderVolume({volume, handleChange}){
+      return <Slider value={volume} onChange={handleChange} aria-labelledby="continuous-slider" />
 }
 
 function ButtonVolume() {
@@ -75,8 +79,7 @@ function ButtonVolume() {
 
       return (
             <div className="container-volume">
-                  <Slider value={volume} onChange={handleChange} aria-labelledby="continuous-slider" />
-                  <Tooltip title="Volumen" placement="top-start">
+                  <Tooltip title={<SliderVolume volume={volume} handleChange={handleChange} />} placement="left" id="tyh-ugk" interactive>
                         <span className="volume-icon icon" onClick={handleClick}>
                               {muteVolume &&
                                     <i className="fas fa-volume-mute"></i>
@@ -96,7 +99,7 @@ function ButtonVolume() {
       )
 }
 
-export function InfoChannel({ setShowTopMenu }) {
+export function InfoChannel() {
       const { stateVideo } = useContext(VideoContext)
       const { dataChannel, activeChannel } = stateVideo
       const [name, setName] = useState('')

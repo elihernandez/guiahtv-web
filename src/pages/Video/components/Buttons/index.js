@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState, useEffect, useCallback } from 'react'
+import React, { Fragment, useRef, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Tooltip from '@material-ui/core/Tooltip'
 import Slider from '@material-ui/core/Slider'
@@ -59,7 +59,7 @@ export function ButtonsPlaying({ videoRef, playing, dispatch }) {
       )
 }
 
-export function ButtonUndo({ videoRef }) {
+export function ButtonUndo({ videoRef, dispatch }) {
 
       const handleClick = () => {
             videoRef.current.pause()
@@ -77,7 +77,7 @@ export function ButtonUndo({ videoRef }) {
       )
 }
 
-export function ButtonRedo({ videoRef }) {
+export function ButtonRedo({ videoRef, dispatch}) {
 
       const handleClick = () => {
             videoRef.current.pause()
@@ -239,7 +239,6 @@ function ItemSubtitle({ data, index, handleClick, subtitleTrackActive }) {
 
       return <li ref={trackRef} key={id} className={`${className} ${subtitleTrackActive == id ? 'active' : ''}`} onClick={(e) => handleClick(e, index)}>{capitalizeFirstLetter(name)} <i className="fas fa-check" /></li>
 }
-
 
 function AudioTracks({ hls, audios, dispatch, audioTrackActive }) {
       const listAudiosRef = useRef(null)

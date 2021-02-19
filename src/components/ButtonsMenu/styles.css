@@ -3,13 +3,13 @@
 .buttons-sections{
     position: relative;
     width: 100%;
-    margin: 50px 0;
     padding: 0 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     box-sizing: border-box;
-    /* border: 1px solid red; */
+    flex: 1 1 auto;
 
     .buttons-list{
         width: 100%;
@@ -30,6 +30,7 @@
             .title-button{
                 position: absolute;
                 font-weight: 600;
+                font-size: 1.2vw;
                 color: white;
                 top: 30%;
                 left: 20%;

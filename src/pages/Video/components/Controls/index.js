@@ -111,8 +111,8 @@ export function Controls() {
                               <div className="group-buttons">
                                     <ButtonBackward videoRef={videoRef} />
                                     <ButtonsPlaying videoRef={videoRef} playing={playing} dispatch={dispatch} />
-                                    <ButtonUndo videoRef={videoRef} />
-                                    <ButtonRedo videoRef={videoRef} />
+                                    <ButtonUndo videoRef={videoRef} dispatch={dispatch} />
+                                    <ButtonRedo videoRef={videoRef} dispatch={dispatch} />
                               </div>
                               <div className="group-buttons">
                                     <ButtonVolume volume={volume} muteVolume={muteVolume} dispatch={dispatch} />

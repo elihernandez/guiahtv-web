@@ -109,3 +109,13 @@ ul, ol{
   pointer-events: none;
   opacity: 0.25;
 }
+
+.MuiTooltip-popper{
+  /* width: 200px !important; */
+
+  .MuiTooltip-tooltip{
+    font-size: 14px !important;
+    /* width: 200px !important;
+    height: 50px !important; */
+  }
+}

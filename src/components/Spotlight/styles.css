@@ -1,9 +1,9 @@
 .spotlight-wrapper{
     position: relative;
     width: 100%;
-    min-height: 500px;
-    overflow-x: hidden;
+    height: auto;
     margin: 25px 0;
+    overflow: hidden;
 
     .carousel-spotlight{
         position: relative;
@@ -11,14 +11,14 @@
         width: 100%;
         
         .carousel-content{
-            position: absolute;
+            position: relative;
             width: 100%;
-            height: 100%;
+            height: auto;
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
 
-            .carousel-list{
+            .carousel-content-list{
                 position: relative;
                 width: 80%;
                 left: 10%;
@@ -36,7 +36,7 @@
                 .carousel-item{
                     position: relative;
                     flex: 0 0 calc(100% / 1);
-                    height: 100%;
+                    height: auto;
                     opacity: 0;
                     transition: all 1300ms ease;
                     display: flex;
@@ -48,8 +48,8 @@
                         padding: 5px;
                         position: relative;
                         top: 0;
-                        width: calc(95%);
-                        height: 100%;
+                        width: 95%;
+                        height: auto;
                         border-radius: 20px;
                     }
                 }
@@ -62,9 +62,9 @@
             flex-direction: row;
             justify-content: center;
             width: 100%;
-            min-height: 500px;
+            height: auto;
 
-            .carousel-list{
+            .carousel-indicators-list{
                 position: absolute;
                 list-style: none;
                 display: inline-flex;
