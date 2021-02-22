@@ -1,4 +1,5 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { imgSourceSetJpg } from '../../../../js/Image'
 import './styles.css'
 
 function Title({ data }) {
@@ -9,8 +10,14 @@ function Title({ data }) {
 function Img({ data }) {
       const { Title, HDPosterUrlLandscape } = data
 
+     
       return (
-            <img className="thumbnail-radio" alt={`thumbnail-${Title}`} src={HDPosterUrlLandscape} />
+            // <img className="thumbnail-radio" alt={`thumbnail-${Title}`} src={HDPosterUrlLandscape} />
+            <picture>
+                  <source srcSet={HDPosterUrlLandscape} type="image/webp" />
+                  <source srcSet={imgSourceSetJpg(HDPosterUrlLandscape, 'webp')} type="image/jpeg" />
+                  <img className="thumbnail-radio" src="build/assets/images/logos/guiahtv/vod-error-portrait.png" alt={`img-${Title}`} />
+            </picture>
       )
 }
 

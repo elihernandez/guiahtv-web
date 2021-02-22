@@ -586,7 +586,7 @@ button:hover{
             position: absolute;
             z-index: 2;
             width: 100%;
-            height: 500px;
+            height: 300px;
             bottom: 0;
             background: -webkit-gradient(linear, left bottom, left top, from(black), to(transparent));
             background: linear-gradient(0deg, black, transparent);
@@ -595,7 +595,7 @@ button:hover{
 
 .wrapper-main-home .footer-content{
             background: black;
-            margin-top: 200px;
+            /* margin-top: 200px; */
       }
 
 @media (max-width: 1440px) {
@@ -629,6 +629,8 @@ button:hover{
 
 .center-content{
       position: relative;
+      height: 100vh;
+      width: 45%;
       z-index: 3;
       display: -webkit-box;
       display: -ms-flexbox;
@@ -640,7 +642,7 @@ button:hover{
       -webkit-box-pack: center;
           -ms-flex-pack: center;
               justify-content: center;
-      padding-top: 175px;
+      /* padding-top: 175px; */
       padding-left: 75px;
 }
 
@@ -697,6 +699,7 @@ button:hover{
       .center-content{
             padding-left: 40px;
             padding-top: 125px;
+            width: 65%;
       }
 
             .center-content .title-text{
@@ -709,6 +712,7 @@ button:hover{
       .center-content{
             padding-left: 40px;
             padding-top: 100px;
+            width: 55%;
       }
 
             .center-content .title-text{
@@ -1126,10 +1130,10 @@ button:hover{
                     font-weight: 500;
                     padding: 0 15px;
                     color: #f7f7f7;
-                    -webkit-user-select: none !important;
-                       -moz-user-select: none !important;
-                        -ms-user-select: none !important;
-                            user-select: none !important
+                    -webkit-user-select: initial !important;
+                       -moz-user-select: initial !important;
+                        -ms-user-select: initial !important;
+                            user-select: initial !important
                 }
 
 .wrapper-login .content-form form .group-form input::-moz-placeholder{

@@ -57,7 +57,7 @@
                     font-weight: 500;
                     padding: 0 15px;
                     color: $color-white;
-                    user-select: none !important;
+                    user-select: initial !important;
 
                     &::placeholder{
                         color: $color-grey-3;
