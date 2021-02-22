@@ -6,13 +6,15 @@
       color: white;
       display: flex;
       flex-direction: row;
+
       .group-section{
             position: relative;
             width: 40%;
+            font-size: .9vw;
 
             i{
                   margin-right: 25px;
-                  font-size: 18px;
+                  font-size: 1vw;
             }
       }
 

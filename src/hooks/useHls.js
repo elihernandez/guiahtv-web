@@ -6,9 +6,6 @@ export function useHls(video, url, dispatch, movie) {
 
       useEffect(() => {
             if(url){
-                  // console.log(video)
-                  // console.log(url)
-                  // console.log(dispatch)
                   if (Hls.isSupported()) {
                         setError(false)
                         hls.attachMedia(video.current);
@@ -34,7 +31,7 @@ export function useHls(video, url, dispatch, movie) {
                               if(event == "hlsError" && data.details == "manifestLoadError"){
                                     hls.destroy()
                                     dispatch({ type: 'updateLoading', payload: false })
-                                    dispatch({ type: 'updateData', payload: null })
+                                    // dispatch({ type: 'updateData', payload: null })
                                     dispatch({ type: 'setHls', payload: null })
                                     setError("Señal no disponible por el momento")
                               }
@@ -42,7 +39,15 @@ export function useHls(video, url, dispatch, movie) {
                               if(data.details == "audioTrackLoadError"){
                                     hls.destroy()
                                     dispatch({ type: 'updateLoading', payload: false })
-                                    dispatch({ type: 'updateData', payload: null })
+                                    // dispatch({ type: 'updateData', payload: null })
+                                    dispatch({ type: 'setHls', payload: null })
+                                    setError("Contenido no disponible por el momento")
+                              }
+
+                              if(data.details == "bufferStalledError"){
+                                    hls.destroy()
+                                    dispatch({ type: 'updateLoading', payload: false })
+                                    // dispatch({ type: 'updateData', payload: null })
                                     dispatch({ type: 'setHls', payload: null })
                                     setError("Contenido no disponible por el momento")
                               }
@@ -57,13 +62,11 @@ export function useHls(video, url, dispatch, movie) {
                         })
 
                         hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, function(event, data){
-                             
                               dispatch({ type: 'setAudioTracks', payload: data })
                         })
                         
                         hls.on(Hls.Events.SUBTITLE_TRACKS_UPDATED, function(event, data){
                               dispatch({ type: 'setSubtitleTracks', payload: data })
-                            
                         })
                   }
             }

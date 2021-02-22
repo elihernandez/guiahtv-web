@@ -36,8 +36,8 @@
 
             i{
                   color: white;
-                  font-size: 30px;
-                  padding: 20px;
+                  font-size: 1.3vw;
+                  padding: 1vw;
                   background: rgba($rgba-color-guide-black, 0.25);
 
                   &:hover{

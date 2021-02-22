@@ -1,7 +1,7 @@
 @import '../../../../scss/style-base.css';
 
 .info-channel-wrapper{
-      padding: 125px 50px 0 50px;
+      padding: 7vw 50px 0 50px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -13,13 +13,13 @@
             .text-info{
                   color: $color-grey-2;
                   font-weight: 400;
-                  font-size: 18px;
+                  font-size: 1vw;
             }
       
             .channel-name{
                   color: $color-white;
                   font-weight: 600;
-                  font-size: 35px;
+                  font-size: 1.9vw;
             }
       }
 

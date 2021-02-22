@@ -14,6 +14,7 @@
                   justify-content: center !important;
                   align-content: center !important;
                   align-items: center !important;
+                  font-size: .8vw;
       
                   i{
                         font-size: 22px !important;
@@ -25,6 +26,10 @@
             a{
                   color: white !important;
                   text-decoration: none !important;
+                  
+                  li{
+                        font-size: .8vw;
+                  }
             }
       }
       

@@ -2,7 +2,8 @@
 
 .list{
       .item-link{
-            height: 100%;
+            position: relative;
+            /* height: auto; */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,7 +21,6 @@
                   .background-item{
                         position: relative;
                         width: 100%;
-                        height: 100%;
                         border: 3px solid transparent;
                         transform: scale(0.96);
                         transition: all 300ms ease;
@@ -31,7 +31,7 @@
                               position: relative;
                               width: 100%;
                               height: 100%;
-                              object-fit: fill;
+                              object-fit: cover;
                               border-radius: 4px;
                               background: $color-grey-5;
                         }
@@ -85,7 +85,7 @@
             background: $color-black-1;
             background: linear-gradient(to bottom, $color-black-1, $color-black-2);
             border-radius: 10px;
-            height: 440px;
+            height: 24vw;
             cursor: pointer;
             border: 3px solid $color-black-1;
             overflow-y: auto;
@@ -138,7 +138,7 @@
 
       .title-item{
             font-weight: 600;
-            font-size: 18px;
+            font-size: .9vw;
             text-align: center;
             letter-spacing: .5px;
       }
@@ -152,7 +152,7 @@
       
       .description-item{
             font-weight: 400;
-            font-size: 15px;
+            font-size: .8vw;
             color: rgba(179, 179, 179, 1);
             text-align: left;
             letter-spacing: .5px;
@@ -192,7 +192,7 @@
       border-radius: 10px;
       display: flex;
       flex-direction: column;
-      padding: 15px 35px;
+      padding: .7vw 2vw;
 
       .content-button-close{
             width: 100%;
@@ -210,7 +210,7 @@
                   border-radius: 50%;
 
                   i{
-                        font-size: 18px;
+                        font-size: 1vw;
                         color: $color-white;
                         text-align: center;
 
@@ -227,15 +227,15 @@
       }
 
       .title{
-            font-size: 18px;
+            font-size: .9vw;
             font-weight: 600;
-            margin-top: 20px;
+            margin-top: 1.2vw;
       }
 
       .description{
-            font-size: 14px;
+            font-size: .8vw;
             font-weight: 400;
-            margin-top: 10px;
+            margin-top: .5vw;
       }
 
       .content-phone{
@@ -243,16 +243,16 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            margin-top: 25px;
-            font-size: 15px;
+            margin-top: 1.2vw;
+            font-size: .7vw;
 
             i{
                   color: $color-white;
-                  margin-right: 15px;
+                  margin-right: .7vw;
             }
 
             p{
-                  font-size: 14px;
+                  font-size: .7vw;
             }
       }
 
@@ -261,8 +261,8 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            margin-top: 15px;
-            font-size: 15px;
+            margin-top: 1.2vw;
+            font-size: .7vw;
 
             i{
                   color: $color-white;
@@ -270,7 +270,7 @@
             }
 
             p{
-                  font-size: 14px;
+                  font-size: .7vw;
             }
       }
 
@@ -279,7 +279,8 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            margin-top: 25px;
+            margin-top: 1.2vw;
+            font-size: .7vw;
 
             .span-icon{
                  margin-right: 15px;
@@ -287,8 +288,7 @@
 
                  i{
                        color: $color-white;
-                       font-size: 20px;
-
+                       font-size: .7vw;
                  }
             }
       }
@@ -305,7 +305,7 @@
             margin: 10px 0;
 
             .name-item{
-                  font-size: 16px;
+                  font-size: .9vw;
                   font-weight: 500;
             }
       }
@@ -314,7 +314,7 @@
             margin: 10px 0;
 
             .description-item{
-                  font-size: 15px;
+                  font-size: .8vw;
                   font-weight: 400;
                   color: $color-grey-2;
             }

@@ -86,7 +86,7 @@ export function Video() {
       return (
             <div className="video">
                   <div className="video-wrapper">
-                        <video loop={true} ref={video} preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
+                        <video loop={true} ref={video} autoPlay preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
                         {     error &&
                               <div className="error-message">
                                     <h2 className="text-error">{error}</h2>

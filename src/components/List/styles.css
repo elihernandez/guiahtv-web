@@ -1,7 +1,7 @@
 @import '../../scss/style-base.css';
 
 .title-list{
-      font-size: 20px;
+      font-size: 1.1vw;
       font-weight: 600;
       letter-spacing: .5px;
       margin: 10px 0 10px 14px;
@@ -28,12 +28,13 @@
 
 .list-catalogue{
       padding: 0 45px;
-      margin: 25px 0;
+     
 
       &.portrait{
             .list-items{
+
                   .background-item{
-                        height: 325px;
+                        height: 90%;
                   }
             }
 
@@ -43,9 +44,11 @@
       }
 
       &.landscape{
+            margin-bottom: 40px;
+
             .list-items{
                   .background-item{
-                        height: 215px;
+                        height: 100%;
                   }
             }
 
@@ -87,12 +90,23 @@
             .list-items{
       
                   .background-item{
-                        height: 215px;
+                        height: initial;
                   }
             }
 
             .item-link{
                   flex: 0 0 calc(100% / 5);
+            }
+      }
+
+      &.wrap.landscape {
+
+            .list-items{
+                  flex-wrap: wrap;
+      
+                  /* .item{
+                        margin-bottom: 50px;
+                  } */
             }
       }
 }
@@ -118,7 +132,7 @@
             .list-items{
 
                   .background-item{
-                        height: 195px;
+                        height: auto;
                   }
             }
 
@@ -137,15 +151,15 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 30px;
+      width: 2vw;
       cursor: pointer;
       opacity: 1;
       transition: all 300ms ease;
 
       i{
             color: $color-white;
-            font-size: 25px;
-            padding: 15px;
+            font-size: 1.4vw;
+            padding: 1vw;
             background: rgba($rgba-color-guide-black, 0.5);
             transition: all 300ms ease;
 
@@ -195,7 +209,7 @@
 
             .item-link{
                   flex: 0 0 calc(100% / 5);
-                  min-height: 400px;
+                  min-height: 24vw;
             }
       }
 

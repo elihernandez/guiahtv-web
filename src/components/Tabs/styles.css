@@ -3,6 +3,10 @@
 .MuiPaper-root{
       /* background-color: transparent !important; */
       box-shadow: none !important;
+
+      span{
+            font-size: .7vw;
+      }
     
       button{
             box-shadow: none !important;

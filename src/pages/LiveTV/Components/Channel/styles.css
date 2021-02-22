@@ -5,7 +5,7 @@
       width: 100%;
       flex: 0 0 calc(100% / 5);
       flex-wrap: nowrap;
-      min-height: 440px;
+      min-height: 24vw;
 
       .channel{
             position: relative;
@@ -31,7 +31,7 @@
       
                         .title-channel{
                               font-weight: 600;
-                              font-size: 18px;
+                              font-size: .9vw;
                               text-align: center;
                               letter-spacing: .5px;
                         }
@@ -40,7 +40,7 @@
                   .poster-content{
                         position: relative;
                         width: 100%;
-                        height: 190px;
+                        height: auto;
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
@@ -104,12 +104,10 @@
                   .description-content{
                         padding: 0px 25px;
                         justify-self: flex-start;
-                        margin-top: 15px;
-                        min-height: 50px;
       
                         .description-channel{
                               font-weight: 400;
-                              font-size: 15px;
+                              font-size: .8vw;
                               color: $color-grey-2;
                               text-align: left;
                               letter-spacing: .5px;
@@ -184,13 +182,13 @@
                         }
 
                         .title{
-                              font-size: 18px;
+                              font-size: .9vw;
                               font-weight: 600;
                               margin-top: 20px;
                         }
 
                         .description{
-                              font-size: 14px;
+                              font-size: .8vw;
                               font-weight: 400;
                               margin-top: 10px;
                         }
@@ -200,8 +198,8 @@
                               display: flex;
                               flex-direction: row;
                               align-items: center;
-                              margin-top: 25px;
-                              font-size: 15px;
+                              margin-top: 1.2vw;
+                              font-size: .7vw;
 
                               i{
                                     color: $color-white;
@@ -209,7 +207,7 @@
                               }
 
                               p{
-                                    font-size: 14px;
+                                    font-size: .7vw;
                               }
                         }
 
@@ -218,8 +216,8 @@
                               display: flex;
                               flex-direction: row;
                               align-items: center;
-                              margin-top: 15px;
-                              font-size: 15px;
+                              margin-top: 1.2vw;
+                              font-size: .7vw;
 
                               i{
                                     color: $color-white;
@@ -227,7 +225,7 @@
                               }
 
                               p{
-                                    font-size: 14px;
+                                    font-size: .7vw;
                               }
                         }
 
@@ -236,15 +234,15 @@
                               display: flex;
                               flex-direction: row;
                               align-items: center;
-                              margin-top: 25px;
+                              margin-top: 1.2vw;
+                              font-size: .7vw;
 
                               .span-icon{
                                    margin-right: 15px;
 
                                    i{
                                          color: $color-white;
-                                         font-size: 20px;
-
+                                         font-size: .7vw;
                                    }
                               }
                         }
@@ -263,7 +261,7 @@
                   .content-play{
                         position: absolute;
                         width: 100%;
-                        height: 210px;
+                        height: 100%;
                         display: flex;
                         flex-direction: row;
                         justify-content: center;
@@ -307,7 +305,7 @@
             display: flex;
             position: absolute;
             width: 100%;
-            height: 200px;
+            height: 100%;
             flex-direction: row;
             justify-content: center;
             align-items: center;
@@ -316,8 +314,8 @@
             opacity: 0;
             
             span{
-                  width: 60px;
-                  height: 60px;
+                  width: 3vw;
+                  height: 3vw;
                   border: 2px solid $color-white;
                   border-radius: 50%;
                   display: flex;
@@ -327,7 +325,7 @@
 
                   i{
                         color: $color-white;
-                        font-size: 25px;
+                        font-size: 1.2vw;
                   }
             } 
       }

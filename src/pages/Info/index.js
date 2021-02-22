@@ -14,7 +14,7 @@ export function Info() {
                   <div className="gradient-overlay" />
                   <div className="center-content">
                         <Logo color="blue" />
-                        <H1 className="title-text large-title-1">Disfruta de la mejor plataforma de <br /> contenido exclusivo y espiritual para <br /> toda la familia.</H1>
+                        <H1 className="title-text large-title-1">El mejor contenido espiritual <br /> y de valores reunidos en una sola <br /> plataforma para toda la familia.</H1>
                         <H6 className="subtitle-text title-2">Disfruta en donde quieras, cancela cuando quieras.</H6>
                         <div className="group-info">
                               <p className="body-2">¿Quieres ver Guíah TV ya?</p>
@@ -30,3 +30,5 @@ export function Info() {
             </div>
       );
 }
+
+// <H1 className="title-text large-title-1">Disfruta de la mejor plataforma de <br /> contenido exclusivo y espiritual para <br /> toda la familia.</H1>

@@ -56,7 +56,7 @@ export function ListCatalogue({ data, listType }) {
 
 export function ListSeason({ data, listType }) {
       const { category, poster_type, cmData } = data
-      const classes = poster_type == 0 ? `list list-catalogue wrap portrait` : `list list-catalogue wrap landscape`
+      const classes = poster_type == 0 ? `list list-season wrap portrait` : `list list-season wrap landscape`
       const refList = useRef()
 
       return (
