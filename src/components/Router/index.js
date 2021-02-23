@@ -116,7 +116,12 @@ export default function BaseRouter() {
                     </Route>
 
                     <Route path="/obtener-app">
-                        <GetApp />
+                        {isBrowser &&
+                            <Redirect to="/" />
+                        }
+                        {isMobile && 
+                            <GetApp />
+                        }
                     </Route>
 
                     <Route path="*">

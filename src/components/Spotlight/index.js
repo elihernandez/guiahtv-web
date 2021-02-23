@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { getSpotlight } from '../../services/getSpotlight'
 import CarouselClass from '../../classes/carouselCenterClass'
 import { CSSTransition } from 'react-transition-group'
+import { imgSourceSetPng } from '../../js/Image'
 import './styles.css'
 
 function IndicatorsItem({index}){
@@ -29,7 +30,12 @@ function ContentItem({img, index}){
     const altImg = `spotlight-image-${index}`
     return (
         <li className={className}>
-            <img className="carousel-image" src={img} alt={altImg}/>
+            
+             <picture>
+                <source srcSet={img} type="image/webp" />
+                <source srcSet={imgSourceSetPng(img, 'webp')} type="image/png" />
+                <img className="carousel-image" src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt={altImg} />
+            </picture>
         </li> 
     )
 }

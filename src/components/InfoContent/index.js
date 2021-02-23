@@ -3,6 +3,9 @@ import { useRouteMatch, useHistory } from 'react-router-dom'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { getProgressMovie } from '../../js/Time'
 import { imgSourceSetJpg } from '../../js/Image'
+// import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { LazyImage } from '../Image'
+import 'react-lazy-load-image-component/src/effects/opacity.css'
 import './styles.css'
 
 export function InfoMovie({ data }) {
@@ -137,25 +140,29 @@ export function InfoSerie({ data }) {
 }
 
 function ImgBackground({ title, img, type }) {
+      const alt = `background-${title}`
 
       return (
             <Fragment>
                   {type == "movie" &&
-                        <picture>
-                              <source srcSet={img} type="image/webp" />
-                              <source srcSet={imgSourceSetJpg(img, 'webp')} type="image/jpeg" />
-                              <img src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt={`background-${title}`} />
-                        </picture>
+                        <LazyImage img={img} alt={alt} type="webp" recoverType="jpg" />
                   }
                   {type == "serie" &&
-                        <picture>
-                              <source srcSet={img} type="image/png" />
-                              <source srcSet={imgSourceSetJpg(img, 'png')} type="image/jpeg" />
-                              <img src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt={`background-${title}`} />
-                        </picture>
+                        
+                        <LazyImage img={img} alt={alt} type="webp" recoverType="jpg" />
                   }
             </Fragment>
 
       )
 }
-
+// <picture>
+//       <source srcSet={img} type="image/png" />
+//       <source srcSet={imgSourceSetJpg(img, 'png')} type="image/jpeg" />
+//       <LazyImage img={img} alt={alt} />
+// </picture>
+// <picture>
+//       <source srcSet={img} type="image/webp" />
+//       <source srcSet={imgSourceSetJpg(img, 'webp')} type="image/jpeg" />
+//       <MyImage />
+// </picture>
+// <img style={{opacity: show ? "1" : "0"}} onLoad={onLoad} ref={imgRef} src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt={`background-${title}`} />

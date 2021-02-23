@@ -90,7 +90,7 @@ ul, ol{
 }
 .fade-enter-active {
   opacity: 1;
-  transition: opacity 300ms;
+  transition: opacity 300ms ease-in-out;
 }
 .fade-enter-done {
   opacity: 1;
@@ -100,7 +100,7 @@ ul, ol{
 }
 .fade-exit-active {
   opacity: 0;
-  transition: opacity 300ms;
+  transition: opacity 300ms ease-in-out;
 }    
 .fade-exit-done {
   opacity: 0;
@@ -120,3 +120,24 @@ ul, ol{
     height: 50px !important; */
   }
 }
+
+.fade-150-enter {
+  opacity: 0;
+}
+.fade-150-enter-active {
+  opacity: 1;
+  transition: opacity 150ms ease-in-out;
+}
+.fade-150-enter-done {
+  opacity: 1;
+}
+.fade-150-exit {
+  opacity: 1;
+}
+.fade-150-exit-active {
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}    
+.fade-150-exit-done {
+  opacity: 0;
+}  

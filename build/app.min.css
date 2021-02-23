@@ -132,6 +132,7 @@
 
 .popper-menu-wrapper .MuiList-root.MuiList-padding a li{
                         font-size: .8vw;
+                        font-family: "Poppins", sans-serif !important;
                   }
 
 .popper-menu-wrapper .MuiPaper-root{
@@ -3157,6 +3158,7 @@ input::-ms-input-placeholder{
             -ms-flex-line-pack: center;
                 align-content: center;
             text-decoration: none;
+            background-color: transparent;
       }
 
 .list .item-link .item{
@@ -3176,14 +3178,18 @@ input::-ms-input-placeholder{
 .list .item-link .item .background-item{
                         position: relative;
                         width: 100%;
-                        border: 3px solid transparent;
+                        -webkit-backface-visibility: hidden;
+                                backface-visibility: hidden;
+                        border: 4px solid transparent;
                         -webkit-transform: scale(0.96);
                                 transform: scale(0.96);
-                        -webkit-transition: all 300ms ease;
-                        transition: all 300ms ease;
+                        -webkit-transition: all 300ms ease-out;
+                        transition: all 300ms ease-out;
                         overflow: hidden;
-                        border-radius: 6px;
+                        border-radius: 4px;
                   }
+
+/* box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px -10px; */
 
 .list .item-link .item .background-item img{
                               position: relative;
@@ -3193,6 +3199,20 @@ input::-ms-input-placeholder{
                                  object-fit: cover;
                               border-radius: 4px;
                               background: #424242;
+                              /* box-shadow: 0 4px 8px 0 rgba(0,0,0,1); */
+                        }
+
+.list .item-link .item .background-item::after{
+                              border-radius: 4px;
+                              border: 4px solid rgba(255, 255, 255, 0);
+                              top: 0px;
+                              right: 0px;
+                              bottom: 0px;
+                              left: 0px;
+                              content: "";
+                              position: absolute;
+                              -webkit-transition: border 300ms ease-out 0s;
+                              transition: border 300ms ease-out 0s;
                         }
 
 .list .item-link .item .background-item .progress-bar-content{
@@ -3234,7 +3254,7 @@ input::-ms-input-placeholder{
                                     }
 
 .list .item-link .item:hover .background-item{
-                              border: 3px solid #f7f7f7;
+                              border: 4px solid #f7f7f7;
                               cursor: pointer;
                               -webkit-transform: scale(1);
                                       transform: scale(1);
@@ -4155,6 +4175,17 @@ input::-ms-input-placeholder{
       position: absolute;
       margin-top: 25px;
 }
+.lazy-load-image-background.opacity {
+  opacity: 0;
+  display: block !important;
+}
+
+.lazy-load-image-background.opacity.lazy-load-image-loaded {
+  opacity: 1;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+}
+
 /* Top Menu */
 
 /* Music */
@@ -4186,6 +4217,8 @@ input::-ms-input-placeholder{
                   -o-object-fit: cover;
                      object-fit: cover;
                   height: auto;
+                  /* transition: opacity 300ms ease-in-out; */
+                  
             }
 
 .info-wrapper .background .overlay{
@@ -7140,8 +7173,8 @@ ul, ol{
 
 .fade-enter-active {
   opacity: 1;
-  -webkit-transition: opacity 300ms;
-  transition: opacity 300ms;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
 }
 
 .fade-enter-done {
@@ -7154,8 +7187,8 @@ ul, ol{
 
 .fade-exit-active {
   opacity: 0;
-  -webkit-transition: opacity 300ms;
-  transition: opacity 300ms;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
 }
 
 .fade-exit-done {
@@ -7174,3 +7207,31 @@ ul, ol{
     /* width: 200px !important;
     height: 50px !important; */
   }
+
+.fade-150-enter {
+  opacity: 0;
+}
+
+.fade-150-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
+}
+
+.fade-150-enter-done {
+  opacity: 1;
+}
+
+.fade-150-exit {
+  opacity: 1;
+}
+
+.fade-150-exit-active {
+  opacity: 0;
+  -webkit-transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
+}
+
+.fade-150-exit-done {
+  opacity: 0;
+}  

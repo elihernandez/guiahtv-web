@@ -86,14 +86,11 @@ export function InfoContent() {
       return (
             <Fragment>
                   {content == "movie" && movieVod &&
-                        <CSSTransition in={!loading} timeout={300} classNames="active" unmountOnExit>
-                              <ContentMovie data={movieVod} />
-                        </CSSTransition>
+                        <ContentMovie data={movieVod} />
+                       
                   }
                   {content == "serie" && serieVod &&
-                        <CSSTransition in={!loading} timeout={300} classNames="active" unmountOnExit>
-                              <ContentSerie data={serieVod} />
-                        </CSSTransition>
+                        <ContentSerie data={serieVod} />
                   }
             </Fragment>
       )
