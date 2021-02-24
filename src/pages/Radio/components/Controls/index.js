@@ -8,7 +8,7 @@ import { Volume } from '../Buttons/Volume'
 import { Fragment } from 'react'
 
 export function Controls({stateAudio, dispatchAudio}){
-      const { active, loading, playing, audioRef, data, error, volume } = stateAudio
+      const { active, loading, playing, audioRef, data, error, volume, muteVolume } = stateAudio
 
       return(
             <div className="controls">
@@ -20,7 +20,7 @@ export function Controls({stateAudio, dispatchAudio}){
                               <MoreInfo data={data}/>
                         </Fragment>
                   }
-                  <Volume playing={playing} data={data} audioRef={audioRef} volume={volume} />
+                  <Volume playing={playing} data={data} audioRef={audioRef} volume={volume} muteVolume={muteVolume} dispatchAudio={dispatchAudio}/>
             </div>
       )
 }

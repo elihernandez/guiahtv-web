@@ -168,8 +168,10 @@
 }
 
 .portrait{
-      i{
-            padding: 10vw 1vw;
+      .direction{
+            i{
+                  padding: 10vw 1vw;
+            }
       }
 
       .direction-prev{
@@ -188,8 +190,10 @@
 }
 
 .landscape{
-      i{
-            padding: 5vw 1vw;
+      .direction{
+            i{
+                  padding: 5vw 1vw;
+            }
       }
 
       .direction-prev{

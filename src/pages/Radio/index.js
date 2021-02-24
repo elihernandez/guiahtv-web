@@ -64,6 +64,12 @@ const reducer = (state, action) => {
                         muteVolume: action.payload,
                   }
             }
+            case 'setVolume':{
+                  return {
+                        ...state,
+                        volume: action.payload,
+                  }
+            }
             case 'setError': {
                   return {
                         ...state,

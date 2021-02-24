@@ -3741,9 +3741,9 @@ input::-ms-input-placeholder{
                   font-size: 1.8vw;
             }
 
-.portrait i{
-            padding: 10vw 1vw;
-      }
+.portrait .direction i{
+                  padding: 10vw 1vw;
+            }
 
 .portrait .direction-prev{
             background: -webkit-gradient(linear, left top, right top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
@@ -3761,9 +3761,9 @@ input::-ms-input-placeholder{
             top: .53vw;
       }
 
-.landscape i{
-            padding: 5vw 1vw;
-      }
+.landscape .direction i{
+                  padding: 5vw 1vw;
+            }
 
 .landscape .direction-prev{
             background: -webkit-gradient(linear, left top, right top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
@@ -5063,12 +5063,17 @@ input::-ms-input-placeholder{
             -webkit-box-align: center;
                 -ms-flex-align: center;
                     align-items: center;
+            width: 3vw;
       }
 
 .control-volume-wrapper .volume-icon i{
                   color: white;
                   font-size: 18px;
                   margin-right: 15px;     
+            }
+
+.control-volume-wrapper .volume-icon:hover{
+                  cursor: pointer;
             }
 
 .control-volume-wrapper .MuiSlider-root{
