@@ -108,6 +108,12 @@
             }
 
             .group-rememberme{
+                position: relative;
+
+                label:hover{
+                    cursor: pointer;
+                }
+                
                 &.row{
                     display: flex;
                     flex-direction: row;
@@ -128,6 +134,10 @@
                         background-color: rgba(255, 255, 255, 0.2) !important;
                         cursor: pointer;
                     }
+                }
+
+                &:hover{
+                    cursor: pointer;
                 }
             }
         }

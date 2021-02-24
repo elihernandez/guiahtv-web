@@ -195,9 +195,10 @@ export function Login() {
                             </form>
                             <div className="group-info">
                                 <div className="group-rememberme row">
-                                    <label htmlFor="checkbox-rememberme" />
                                     <input type="checkbox" id="checkbox-rememberme" className="input-checkbox" onChange={handleChange} />
-                                    <p className="body-3">Recuérdame</p>
+                                    <label htmlFor="checkbox-rememberme">
+                                        <p className="body-3">Recuérdame</p>
+                                    </label>
                                 </div>
                                 <Link className="link-help body-3" href="https://guiah.tv/axs/ForgotPassword">¿Necesitas ayuda?</Link>
                             </div>
