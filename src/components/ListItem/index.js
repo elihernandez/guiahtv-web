@@ -5,14 +5,14 @@ import RadioContext from '../../context/RadioContext'
 import AudioContext from '../../context/AudioContext'
 import { getContactInfo } from '../../services/getContactInfo'
 import { getProgressMovie } from '../../js/Time'
-import { limitString, isLimitString, isSerie, typeContent, replaceString } from '../../js/String'
+import { limitString, isLimitString, isSerie, isEpisode, typeContent, replaceString } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { imgSourceSetJpg } from '../../js/Image'
 import { CSSTransition } from 'react-transition-group'
 import './styles.css'
 
-export function Item({ data, posterType, listType }) {
+export function Item({ data, posterType, listType, titleCategory }) {
       let Item = () => null
       const { url } = useRouteMatch()
       const { ContentType } = data
@@ -20,7 +20,7 @@ export function Item({ data, posterType, listType }) {
 
       switch (listType) {
             case 'catalogue':
-                  Item = <ItemCatalogue url={url} type={type} posterType={posterType} data={data} />
+                  Item = <ItemCatalogue url={url} type={type} posterType={posterType} data={data} titleCategory={titleCategory} />
                   break
             case 'season':
                   Item = <ItemSeason url={url} posterType={posterType} data={data} />
@@ -33,20 +33,31 @@ export function Item({ data, posterType, listType }) {
       return Item
 }
 
-function ItemCatalogue({ url, type, posterType, data }) {
-      const { Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
+function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
+      const { Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length, ShortDescriptionLine1 } = data
       const { dispatchVod } = useContext(VodContext)
-
+      
       const handleClick = () => {
             if (isSerie(ContentType)) {
                   dispatchVod({ type: 'setSerie', payload: data })
             } else {
                   dispatchVod({ type: 'setMovie', payload: data })
             }
+
+            if(isEpisode(ShortDescriptionLine1)){
+                  dispatchVod({ type: 'setMovie', payload: data })
+            }
+      }
+
+      let urlNavLink
+      if(titleCategory == "Continuar Viendo"){
+            urlNavLink = `${url}/${type}/${Registro}/video`
+      }else{
+            urlNavLink = `${url}/${type}/${Registro}`
       }
 
       return (
-            <NavLink to={`${url}/${type}/${Registro}`} className="item-link">
+            <NavLink to={urlNavLink} className="item-link">
                   <div className="item" onClick={handleClick}>
                         <div className="background-item">
                               <Img posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />

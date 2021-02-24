@@ -44,13 +44,13 @@ export function useHls(video, url, dispatch, movie) {
                                     setError("Contenido no disponible por el momento")
                               }
 
-                              // if(data.details == "bufferStalledError"){
-                              //       hls.destroy()
-                              //       dispatch({ type: 'updateLoading', payload: false })
-                              //       // dispatch({ type: 'updateData', payload: null })
-                              //       dispatch({ type: 'setHls', payload: null })
-                              //       setError("Contenido no disponible por el momento")
-                              // }
+                              if(data.details == "bufferStalledError"){
+                                    hls.destroy()
+                                    dispatch({ type: 'updateLoading', payload: false })
+                                    // dispatch({ type: 'updateData', payload: null })
+                                    dispatch({ type: 'setHls', payload: null })
+                                    setError("Contenido no disponible por el momento")
+                              }
                               // if (data.fatal) {
                               //       switch (data.type) {
                               //             case Hls.ErrorTypes.MEDIA_ERROR:
