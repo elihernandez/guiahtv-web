@@ -1663,25 +1663,29 @@ input::-ms-input-placeholder{
                                     transition: all .15s ease;
                               }
 
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover i{
-                                    color: #f7f7f7;
+.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link.active{
+                                    background: rgba(16,15,16, 0.75);
                               }
 
 .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link.active i{
-                                    color: #f7f7f7;
-                              }
-
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link.active{
-                                    background: rgba(16,15,16, 0.5);
-                              }
-
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover p{
-                                    color: #f7f7f7;
-                              }
+                                          color: #f7f7f7;
+                                    }
 
 .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link.active p{
-                                    color: #f7f7f7;
+                                          color: #f7f7f7;
+                                    }
+
+.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover{
+                                    background: rgba(16,15,16, 0.85);
                               }
+
+.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover i{
+                                          color: #f7f7f7;
+                                    }
+
+.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover p{
+                                          color: #f7f7f7;
+                                    }
 /* Top Menu */
 
 /* Music */
@@ -2263,6 +2267,15 @@ input::-ms-input-placeholder{
             -webkit-transition: opacity 300ms;
             transition: opacity 300ms;
       } 
+.content-guide-loader{
+      position: absolute;
+      bottom: 0;
+}
+
+      .content-guide-loader svg{
+            position: absolute;
+            bottom: 0;
+      }
 .guide-wrapper{
       position: relative;
       height: 100%;
@@ -2601,9 +2614,11 @@ input::-ms-input-placeholder{
             position: absolute;
             width: 100%;
             height: 100%;
-            top: 0;
+            /* top: $height-top-menu; */
             z-index: 2;
-            opacity: 0;
+            opacity: 1;
+            margin-bottom: 50vh;
+            /* border: 1px solid red; */
       }
 
 .wrapper-livetv .info-channel{
@@ -4218,13 +4233,12 @@ input::-ms-input-placeholder{
 }
 .lazy-load-image-background.opacity {
   opacity: 0;
-  display: block !important;
 }
 
 .lazy-load-image-background.opacity.lazy-load-image-loaded {
   opacity: 1;
-  -webkit-transition: opacity 300ms ease-in-out;
-  transition: opacity 300ms ease-in-out;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
 }
 
 /* Top Menu */

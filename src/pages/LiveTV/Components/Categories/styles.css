@@ -35,26 +35,30 @@
                                     margin: 0 0;
                                     color: $color-grey-3;
                                     transition: all .15s ease;
-                              }
-            
-                              &:hover i{
-                                    color: $color-white;
-                              }
-            
-                              &.active i{
-                                    color: $color-white;
-                              }
+                              } 
 
                               &.active{
-                                    background: rgba($rgba-color-smokey-black, 0.5);
+                                    background: rgba($rgba-color-smokey-black, 0.75);
+
+                                    i{
+                                          color: $color-white;
+                                    }
+
+                                    p{
+                                          color: $color-white;
+                                    }
                               }
             
-                              &:hover p{
-                                    color: $color-white;
-                              }
-            
-                              &.active p{
-                                    color: $color-white;
+                              &:hover{
+                                    background: rgba($rgba-color-smokey-black, 0.85);
+
+                                    i{
+                                          color: $color-white;
+                                    }
+
+                                    p{
+                                          color: $color-white;
+                                    }
                               }
                         }
                   }

@@ -1,0 +1,9 @@
+.content-guide-loader{
+      position: absolute;
+      bottom: 0;
+
+      svg{
+            position: absolute;
+            bottom: 0;
+      }
+}

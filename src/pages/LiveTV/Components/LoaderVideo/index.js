@@ -8,10 +8,16 @@ export function LoaderVideo() {
       const { loadingChannel } = stateVideo
 
       return (
-            <CSSTransition in={loadingChannel} timeout={100} classNames="active">
+            <CSSTransition in={loadingChannel} timeout={100} classNames="active" unmountOnExit>
                   <div className="loader-video">
                         <LoaderSpinnerMUI/>
                   </div>
             </CSSTransition>
       )
+      // return (
+            
+      //             <div className="loader-video">
+      //                   <LoaderSpinnerMUI/>
+      //             </div>   
+      // )
 }
