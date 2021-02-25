@@ -33,7 +33,6 @@ export function List({ data, listType }) {
 
 export function ListCatalogue({ data, listType }) {
       const { category, poster_type, cmData } = data
-      console.log(category)
       const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
       const classes = poster_type == 0 ? `list list-catalogue portrait` : `list  list-catalogue landscape`
       const refList = useRef()

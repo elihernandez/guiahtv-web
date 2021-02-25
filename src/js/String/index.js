@@ -73,3 +73,11 @@ export function typeContent(str) {
             return 'pelicula'
       }
 }
+
+export function containsString(str, strContains){
+      if(str.includes(strContains)){
+            return true
+      }
+
+      return false
+}

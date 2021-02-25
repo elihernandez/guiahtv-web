@@ -1658,7 +1658,7 @@ input::-ms-input-placeholder{
                                     font-size: .8vw;
                                     font-weight: 600;
                                     margin: 0 0;
-                                    color: #757575;
+                                    color: rgba(247,247,247, 0.7);
                                     -webkit-transition: all .15s ease;
                                     transition: all .15s ease;
                               }
@@ -2279,7 +2279,8 @@ input::-ms-input-placeholder{
 .guide-wrapper{
       position: relative;
       height: 100%;
-      width: 100%
+      width: 100%;
+      border: 1px solid red
       /* background: linear-gradient(to top, black, transparent); */
 }
 .guide-wrapper.active-enter {
@@ -3160,6 +3161,16 @@ input::-ms-input-placeholder{
             width: 100%;
             height: 100%;
       }
+.lazy-load-image-background.opacity {
+  opacity: 0;
+}
+
+.lazy-load-image-background.opacity.lazy-load-image-loaded {
+  opacity: 1;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+
 /* Top Menu */
 
 /* Music */
@@ -3207,13 +3218,14 @@ input::-ms-input-placeholder{
                         width: 100%;
                         -webkit-backface-visibility: hidden;
                                 backface-visibility: hidden;
-                        border: 4px solid transparent;
+                        /* border: 4px solid transparent; */
                         -webkit-transform: scale(0.96);
                                 transform: scale(0.96);
                         -webkit-transition: all 300ms ease-out;
                         transition: all 300ms ease-out;
                         overflow: hidden;
                         border-radius: 4px;
+                        background: #424242;
                   }
 
 /* box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px -10px; */
@@ -3222,10 +3234,12 @@ input::-ms-input-placeholder{
                               position: relative;
                               width: 100%;
                               height: 100%;
-                              -o-object-fit: cover;
-                                 object-fit: cover;
+                              -o-object-fit: fill;
+                                 object-fit: fill;
                               border-radius: 4px;
                               background: #424242;
+                              color: #f7f7f7;
+                              text-align: center;
                               /* box-shadow: 0 4px 8px 0 rgba(0,0,0,1); */
                         }
 
@@ -3260,6 +3274,8 @@ input::-ms-input-placeholder{
                               -webkit-box-align: center;
                                   -ms-flex-align: center;
                                       align-items: center;
+                              -webkit-transition: all 150ms linear;
+                              transition: all 150ms linear;
                         }
 
 /* background: linear-gradient(to top, rgba(0, 0, 0, 0.50), transparent); */
@@ -3280,8 +3296,11 @@ input::-ms-input-placeholder{
                                           /* border-radius: 2px; */
                                     }
 
+.list .item-link .item:hover .background-item::after{
+                                    border: 4px solid #f7f7f7;
+                              }
+
 .list .item-link .item:hover .background-item{
-                              border: 4px solid #f7f7f7;
                               cursor: pointer;
                               -webkit-transform: scale(1);
                                       transform: scale(1);
@@ -3289,6 +3308,10 @@ input::-ms-input-placeholder{
 
 .list .item-link .item:hover .background-item .image-recover{
                                     background: #232526;
+                              }
+
+.list .item-link .item:hover .background-item .progress-bar-content{
+                                    bottom: 1.2%;
                               }
 
 .list-card .item-link{
@@ -3325,6 +3348,10 @@ input::-ms-input-placeholder{
                            object-fit: cover !important;
                         /* border-top-left-radius: 6px !important;
                         border-top-right-radius: 6px !important; */
+                  }
+
+.list-card .item-link .background-item::after{
+                        position: inherit !important;
                   }
 
 .list-card .item-link::-webkit-scrollbar {
@@ -3630,7 +3657,7 @@ input::-ms-input-placeholder{
 }
 
 .list-catalogue.portrait .list-items .background-item{
-                        height: 90%;
+                        height: 18vw;
                   }
 
 .list-catalogue.portrait .item-link{
@@ -3644,7 +3671,7 @@ input::-ms-input-placeholder{
       }
 
 .list-catalogue.landscape .list-items .background-item{
-                        height: 100%;
+                        height: 12vw;
                   }
 
 .list-catalogue.landscape .item-link{
@@ -3721,6 +3748,22 @@ input::-ms-input-placeholder{
                       -ms-flex: 0 0 20%;
                           flex: 0 0 20%;
                   /* border: 1px solid red; */
+            }
+
+.list-card.landscape .direction-prev{
+                  background: -webkit-gradient(linear, left top, right top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
+                  background: linear-gradient(to right, rgba(24,25,28, 1), rgba(24,25,28, 0));
+                  left: -45px;
+                  height: 23vw;
+                  top: .36vw;
+            }
+
+.list-card.landscape .direction-next{
+                  background: -webkit-gradient(linear, right top, left top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
+                  background: linear-gradient(to left, rgba(24,25,28, 1), rgba(24,25,28, 0));
+                  right: -45px;
+                  height: 23vw;
+                  top: .36vw;
             }
 
 .direction{
@@ -4231,16 +4274,6 @@ input::-ms-input-placeholder{
       position: absolute;
       margin-top: 25px;
 }
-.lazy-load-image-background.opacity {
-  opacity: 0;
-}
-
-.lazy-load-image-background.opacity.lazy-load-image-loaded {
-  opacity: 1;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
-}
-
 /* Top Menu */
 
 /* Music */
@@ -4259,16 +4292,20 @@ input::-ms-input-placeholder{
 .info-wrapper .background{
             position: relative;
             width: 100%;
-            height: 900px;
+            height: 100vh;
             overflow: hidden;
       }
 
 /* border: 1px solid red; */
 
+.info-wrapper .background span{
+                  display: block !important;
+            }
+
 .info-wrapper .background img{
                   position: relative;
                   width: 100%;
-                  min-height: 900px;
+                  min-height: 100vh;
                   -o-object-fit: cover;
                      object-fit: cover;
                   height: auto;
@@ -6694,7 +6731,7 @@ input::-ms-input-placeholder{
                   height: auto;
             }
       
-            @media (max-width: 768px) {
+            @media (--tablet-medium-viewport) {
                   .page-404 .page-404-wrapper .logo {
                         display: -webkit-box;
                         display: -ms-flexbox;
@@ -6740,7 +6777,7 @@ input::-ms-input-placeholder{
                         text-align: center;
                   }
       
-            @media (max-width: 425px) {
+            @media (--movil-large-viewport) {
                         .page-404 .page-404-wrapper .message-container .title-text{
                               font-size: 45px;
                         }
@@ -6754,7 +6791,7 @@ input::-ms-input-placeholder{
                         margin-top: 25px !important;
                   }
       
-            @media (max-width: 425px) {
+            @media (--movil-large-viewport) {
                         .page-404 .page-404-wrapper .message-container p{
                               font-size: 20px;
                         }
@@ -6779,7 +6816,7 @@ input::-ms-input-placeholder{
                               background: white;
                         }
       
-            @media (max-width: 425px) {
+            @media (--movil-large-viewport) {
                         .page-404 .page-404-wrapper .message-container .btn-link-to-home{
                               font-size: 20px;
                         }

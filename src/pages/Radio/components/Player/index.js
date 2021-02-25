@@ -3,7 +3,8 @@ import AudioContext from '../../../../context/AudioContext'
 import RadioContext from '../../../../context/RadioContext'
 import UserContext from '../../../../context/UserContext'
 import { getLinkRadioStation } from '../../../../services/getLinkRadioStation'
-import { useHls } from '../../../../hooks/useHls'
+// import { useHls } from '../../../../hooks/useHls'
+import { containsString } from '../../../../js/String'
 import { useParams } from 'react-router-dom'
 import { Controls } from '../Controls'
 import './styles.css'
@@ -39,6 +40,7 @@ export function Player() {
 
       useEffect(() => {
             const requestLink = async () => {
+                  audio.current.pause()
                   dispatchAudio({ type: 'setPlaying', payload: false })
                   dispatchAudio({ type: 'setError', payload: false })
                   dispatchAudio({ type: 'setAudioRef', payload: audio })
@@ -47,7 +49,12 @@ export function Player() {
                   try {
                         const response = await getLinkRadioStation(contentId, credentials)
                         if (response == "error") throw new Error('No se pudo obtener la información.')
-                        audio.current.src = response.Url
+                        // console.log(response.Url)
+                        if(containsString(response.Url, 'https')){
+                              audio.current.src = response.Url
+                        }else{
+                              window.open(response.Url, "_blank")
+                        }
                   } catch (e) {
                         dispatchAudio({ type: 'setLoading', payload: false })
                         dispatchAudio({ type: 'setData', payload: null })

@@ -19,6 +19,7 @@ $rgba-color-smokey-black: 16,15,16;
 $color-violet: #6a26cd;
 $color-capri: #37b9f1;
 $color-white: #f7f7f7;
+$rgba-color-white: 247,247,247;
 $color-blue: #102754;
 
 @custom-media --laptop-large-viewport (max-width: 1440px);

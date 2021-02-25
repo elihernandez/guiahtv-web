@@ -7,14 +7,18 @@
       .background{
             position: relative;
             width: 100%;
-            height: 900px;
+            height: 100vh;
             overflow: hidden;
             /* border: 1px solid red; */
+
+            span{
+                  display: block !important;
+            }
 
             img{
                   position: relative;
                   width: 100%;
-                  min-height: 900px;
+                  min-height: 100vh;
                   object-fit: cover;
                   height: auto;
                   /* transition: opacity 300ms ease-in-out; */

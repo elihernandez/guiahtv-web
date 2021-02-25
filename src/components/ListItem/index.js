@@ -10,6 +10,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { imgSourceSetJpg } from '../../js/Image'
 import { CSSTransition } from 'react-transition-group'
+import { LazyImage } from '../Image'
 import './styles.css'
 
 export function Item({ data, posterType, listType, titleCategory }) {
@@ -34,9 +35,9 @@ export function Item({ data, posterType, listType, titleCategory }) {
 }
 
 function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
-      const { Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length, ShortDescriptionLine1 } = data
+      const { Title, Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length, ShortDescriptionLine1 } = data
       const { dispatchVod } = useContext(VodContext)
-      
+
       const handleClick = () => {
             if (isSerie(ContentType)) {
                   dispatchVod({ type: 'setSerie', payload: data })
@@ -44,15 +45,15 @@ function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
                   dispatchVod({ type: 'setMovie', payload: data })
             }
 
-            if(isEpisode(ShortDescriptionLine1)){
+            if (isEpisode(ShortDescriptionLine1)) {
                   dispatchVod({ type: 'setMovie', payload: data })
             }
       }
 
       let urlNavLink
-      if(titleCategory == "Continuar Viendo"){
+      if (titleCategory == "Continuar Viendo") {
             urlNavLink = `${url}/${type}/${Registro}/video`
-      }else{
+      } else {
             urlNavLink = `${url}/${type}/${Registro}`
       }
 
@@ -60,7 +61,7 @@ function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
             <NavLink to={urlNavLink} className="item-link">
                   <div className="item" onClick={handleClick}>
                         <div className="background-item">
-                              <Img posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
+                              <Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
                               {ResumePos &&
                                     <div className="progress-bar-content">
                                           <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
@@ -153,7 +154,7 @@ function DescriptionItem({ description }) {
 }
 
 function Img({ title, posterType, imgPortrait, imgLandscape }) {
-
+      const altImg = `img-${title}`
       const handleError = (e) => {
             let srcImg = ''
             switch (posterType) {
@@ -175,11 +176,7 @@ function Img({ title, posterType, imgPortrait, imgLandscape }) {
       return (
             <Fragment>
                   {posterType == 0 &&
-                        <picture>
-                              <source srcSet={imgPortrait} type="image/webp" />
-                              <source srcSet={imgSourceSetJpg(imgPortrait, 'webp')} type="image/jpeg" />
-                              <img src="build/assets/images/logos/guiahtv/vod-error-portrait.png" alt={`img-${title}`} />
-                        </picture>
+                        <LazyImage img={imgPortrait} alt={altImg} type="webp" recoverType="jpg" />
                   }
                   {posterType == 1 &&
                         <picture>
@@ -191,6 +188,12 @@ function Img({ title, posterType, imgPortrait, imgLandscape }) {
             </Fragment>
       )
 }
+
+// <picture>
+//       <source srcSet={imgPortrait} type="image/webp" />
+//       <source srcSet={imgSourceSetJpg(imgPortrait, 'webp')} type="image/jpeg" />
+//       <img src="build/assets/images/logos/guiahtv/vod-error-portrait.png" alt={`img-${title}`} />
+// </picture>
 
 function ProgressBar({ resumePos, length }) {
 
@@ -290,15 +293,15 @@ function ContactInfo({ moreInfoActive, contactInfo, setMoreInfoActive }) {
       const handleClickFb = () => {
             window.open(`https://www.facebook.com/${contactInfo.ContactFb}`, "_blank")
       }
-      
+
       const handleClickIg = () => {
             window.open(`https://www.instagram.com/${contactInfo.ContactIG}`, "_blank")
       }
-      
+
       const handleClickTw = () => {
             window.open(`https://www.twitter.com/${contactInfo.ContactTw}`, "_blank")
       }
-      
+
       const handleClickGm = () => {
             window.open(`https://www.google.com/maps/place/${replaceString(contactInfo.ContactLoc, ",", "+")}`, "_blank")
             // window.location = `https://www.google.com/maps/place/${replaceString(contactInfo.ContactLoc, ",", "+")}`
