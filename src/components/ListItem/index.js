@@ -89,7 +89,7 @@ function ItemSeason({ url, posterType, data }) {
             <NavLink to={`${url}/video`} className="item-link">
                   <div className="item" onClick={handleClick}>
                         <div className="background-item">
-                              <Img posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
+                              <Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
                               <ProgressBar resumePos={ResumePos} length={Length} />
                         </div>
                         <Info title={Title} description={Description} />
@@ -179,11 +179,12 @@ function Img({ title, posterType, imgPortrait, imgLandscape }) {
                         <LazyImage img={imgPortrait} alt={altImg} type="webp" recoverType="jpg" />
                   }
                   {posterType == 1 &&
-                        <picture>
-                              <source srcSet={imgLandscape} type="image/webp" />
-                              <source srcSet={imgSourceSetJpg(imgLandscape, 'webp')} type="image/jpeg" />
-                              <img src="build/assets/images/logos/guiahtv/GuiahAzulPerf.png" alt={`img-${title}`} />
-                        </picture>
+                        <LazyImage img={imgLandscape} alt={altImg} type="webp" recoverType="jpg" />
+                        // <picture>
+                        //       <source srcSet={imgLandscape} type="image/webp" />
+                        //       <source srcSet={imgSourceSetJpg(imgLandscape, 'webp')} type="image/jpeg" />
+                        //       <img src="build/assets/images/logos/guiahtv/GuiahAzulPerf.png" alt={`img-${title}`} />
+                        // </picture>
                   }
             </Fragment>
       )

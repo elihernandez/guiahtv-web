@@ -43,6 +43,12 @@
                     flex-direction: row;
                     justify-content: center;
                     opacity: 1;     
+
+                    picture{
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                    }
         
                     .carousel-image{
                         padding: 5px;
