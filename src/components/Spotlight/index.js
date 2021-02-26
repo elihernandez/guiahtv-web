@@ -41,14 +41,22 @@ function ContentItem({img, index}){
 }
 
 function CarouselContent({data}){
+    const [show, setShow] = useState(false)
+
+    useEffect(() => {
+        setShow(true)
+    }, [])
+
     return(
-        <div className="carousel-content">
-            {data &&
-                <ul className="carousel-content-list">
-                    { data.map(({Registro, ImgLandscape}, index) => <ContentItem key={Registro} img={ImgLandscape} index={index} /> ) }
-                </ul>
-            }
-        </div>
+        <CSSTransition in={show} timeout={300} classNames="fade">
+            <div className="carousel-content">
+                {data &&
+                    <ul className="carousel-content-list">
+                        { data.map(({Registro, ImgLandscape}, index) => <ContentItem key={Registro} img={ImgLandscape} index={index} /> ) }
+                    </ul>
+                }
+            </div>
+        </CSSTransition>
     )
 }
 

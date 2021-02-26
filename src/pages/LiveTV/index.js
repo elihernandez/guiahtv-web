@@ -25,7 +25,7 @@ function Content({ children }) {
       // const [clientY, setClientY] = useState(0)
 
       const fadeInContent = () => {
-            // setIsVisible(true)
+            setIsVisible(true)
             document.querySelector('.top-menu').style.opacity = 1
             document.body.style.cursor = ''
       }
@@ -33,7 +33,7 @@ function Content({ children }) {
       const fadeOutContent = () => {
             // positionX.current = clientX
             // positionY.current = clientY
-            // setIsVisible(false)
+            setIsVisible(false)
             document.querySelector('.top-menu').style.opacity = 0
             document.body.style.cursor = 'none'
       }

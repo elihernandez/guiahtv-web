@@ -281,8 +281,13 @@ function AudioTracks({ hls, audios, dispatch, audioTrackActive }) {
 }
 
 function SubtitleTracks({ hls, subtitles, dispatch, subtitleTrackActive }) {
+      let subtitleTracks
       const listSubtitlesRef = useRef(null)
-      const { subtitleTracks } = subtitles
+      if(subtitles){
+            subtitleTracks = subtitles.subtitleTracks
+      }else{
+            subtitleTracks = []
+      }
 
       const toogleClassActive = (elem, list) => {
             for (var i = 0; i < list.children.length; i++) {
