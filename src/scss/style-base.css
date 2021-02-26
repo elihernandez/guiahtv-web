@@ -30,6 +30,9 @@ $color-blue: #102754;
 @custom-media --movil-small-viewport (max-width: 320px);
 @custom-media --min-laptop-medium-viewport (width: 1024px);
 
+/* App */
+$padding-content: 45px;
+
 /* Top Menu */
 $height-top-menu: 65px;
 

@@ -291,8 +291,9 @@ function ContactInfo({ moreInfoActive, contactInfo, setMoreInfoActive }) {
             setMoreInfoActive(false)
       }
 
+     
       const handleClickWeb = () => {
-            window.open(`${contactInfo.ContactWeb}`, '_blank')
+            window.open(`https://${replaceString(contactInfo.ContactWeb, 'https://', '')}`, '_blank')
       }
 
       const handleClickFb = () => {

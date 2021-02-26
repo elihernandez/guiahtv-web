@@ -1,3 +1,5 @@
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -84,6 +86,8 @@
                         color: #f7f7f7;
                     }
 
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -142,6 +146,8 @@
 .popper-menu-wrapper .MuiPaper-root .MuiListItem-button:hover{
                        background-color: #616161; 
                   }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -190,6 +196,8 @@
                   height: 60px;
             }  
       }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -204,7 +212,7 @@
     position: fixed;
     z-index: 999;
     width: 100%;
-    padding: 0 50px;
+    padding: 0 45px;
     -webkit-transition: all .2s linear;
     transition: all .2s linear
 }
@@ -320,6 +328,8 @@
 .top-menu .section-wrapper .right-section>span i.fa-user-circle{
                         font-size: 20px !important;
                     }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -498,6 +508,8 @@ h6{
       font-size: 12px;
 }
 
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -556,6 +568,8 @@ button.gradient-background{
 button:hover{
             cursor: pointer;
       }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -822,6 +836,8 @@ button:hover{
                   text-align: center;
             }    
 }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -1044,6 +1060,8 @@ button:hover{
         -webkit-animation: MuiCircularProgress-keyframes-circular-rotate 0.8s linear infinite !important;
                 animation: MuiCircularProgress-keyframes-circular-rotate 0.8s linear infinite !important;
     }
+
+/* App */
 
 /* Top Menu */
 
@@ -1480,6 +1498,8 @@ input::-ms-input-placeholder{
     .spotlight-wrapper svg{
         padding: 50px;
     }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -1585,6 +1605,8 @@ input::-ms-input-placeholder{
                         transform: scale(1);
                 cursor: pointer;
             }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -1607,6 +1629,8 @@ input::-ms-input-placeholder{
         -ms-flex-direction: column;
             flex-direction: column;
 }
+
+/* App */
 
 /* Top Menu */
 
@@ -1696,6 +1720,8 @@ input::-ms-input-placeholder{
 .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover p{
                                           color: #f7f7f7;
                                     }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -2167,6 +2193,8 @@ input::-ms-input-placeholder{
 .channel-link.active .content-play{
                   opacity: 1;
             }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -2363,6 +2391,8 @@ input::-ms-input-placeholder{
                   width: 100%;
                   height: 100%;
             }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -2542,6 +2572,8 @@ input::-ms-input-placeholder{
             font-weight: 600;
             font-size: 35px;
       }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -2772,6 +2804,8 @@ input::-ms-input-placeholder{
       .info-content.fade-exit-done {
             opacity: 0;
       }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -3180,6 +3214,8 @@ input::-ms-input-placeholder{
   -webkit-transition: opacity .3s;
   transition: opacity .3s;
 }
+
+/* App */
 
 /* Top Menu */
 
@@ -3633,6 +3669,8 @@ input::-ms-input-placeholder{
                   font-weight: 400;
                   color: #9e9e9e;
             }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -3656,6 +3694,8 @@ input::-ms-input-placeholder{
       height: auto;
       overflow-x: hidden;
       overflow-y: hidden;
+      /* padding: 0 45px; */
+      margin: 1.5vw 0;
 }
 
 .list .list-content{
@@ -4289,8 +4329,12 @@ input::-ms-input-placeholder{
 
 .content-catalogue.alacarta{
       position: absolute;
-      margin-top: 25px;
+      /* padding: 0 45px; */
+      /* padding-left: 45px;
+      padding-right: 45px; */
 }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -4729,6 +4773,8 @@ input::-ms-input-placeholder{
                   font-size: 20px;
                   cursor: pointer;
             }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -4786,6 +4832,8 @@ input::-ms-input-placeholder{
 .active-exit-done {
       opacity: 0;
 }  
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -4891,6 +4939,8 @@ input::-ms-input-placeholder{
                   cursor: pointer;
             }
 
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -4943,6 +4993,8 @@ input::-ms-input-placeholder{
             margin-left: 35px;
             /* margin-left: 15px; */
       }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -5003,6 +5055,8 @@ input::-ms-input-placeholder{
 .MuiPopover-paper .contact-info-item .title{
                   margin-top: 0;
             }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -5051,6 +5105,8 @@ input::-ms-input-placeholder{
 .button-more-info-wrapper .button-more-info:hover i{
                         color: #f7f7f7;
                   }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -5099,6 +5155,8 @@ input::-ms-input-placeholder{
 .button-fav-wrapper .button-fav:hover i{
                         color: #f7f7f7;
                   }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -5171,6 +5229,8 @@ input::-ms-input-placeholder{
                         -webkit-box-shadow: none !important;
                                 box-shadow: none !important;
                   }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -5205,6 +5265,8 @@ input::-ms-input-placeholder{
             -ms-flex-line-pack: center;
                 align-content: center;
       }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -5220,6 +5282,8 @@ input::-ms-input-placeholder{
       width: 100%;
       height: 100vh;
 }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -5451,6 +5515,8 @@ input::-ms-input-placeholder{
       .list-content .list .item:nth-child(6n){
                         margin-right: 0 !important;
                   }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -6113,6 +6179,8 @@ input::-ms-input-placeholder{
                                                 font-weight: 500;
                                                 color: #797979;
                                           }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -6289,6 +6357,8 @@ input::-ms-input-placeholder{
 .album-artist:first-child{
             margin-top: 0 !important;
       }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -6515,6 +6585,8 @@ input::-ms-input-placeholder{
                                     font-size: 20px;
                                     color: #bdbdbd;
                               }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -6614,6 +6686,8 @@ input::-ms-input-placeholder{
                         border-radius: 10px;  
                   }
 
+
+/* App */
 
 /* Top Menu */
 
@@ -6877,6 +6951,8 @@ input::-ms-input-placeholder{
                   padding: 15px 25px;
                   border: 1px solid white;
             }
+/* App */
+
 /* Top Menu */
 
 /* Music */
@@ -7188,6 +7264,8 @@ input::-ms-input-placeholder{
     font-display: swap;
     src: url("assets/fonts/HurmeGeometricSans3 Black.558a7cc06c8d3ce3a76ca4f73d0f6a1b.otf");
 }
+
+/* App */
 
 /* Top Menu */
 

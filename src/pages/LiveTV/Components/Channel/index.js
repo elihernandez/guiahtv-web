@@ -43,7 +43,7 @@ function ReadMore({readMoreActive, Name, Description, handleClickHideReadMore}){
 function ContactInfo({moreInfoActive, contactInfo, handleClickHideMoreInfo}){
 
       const handleClickWeb = () => {
-            window.open(`${contactInfo.ContactWeb}`, '_blank')
+            window.open(`https://${replaceString(contactInfo.ContactWeb, 'https://', '')}`, '_blank')
       }
 
       const handleClickFb = () => {

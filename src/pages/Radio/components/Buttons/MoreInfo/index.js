@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Tooltip from '@material-ui/core/Tooltip'
 import Popover from '@material-ui/core/Popover'
+import { replaceString } from '../../../../../js/String'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
 import { getContactInfo } from '../../../../../services/getContactInfo'
 import './styles.css'
@@ -11,7 +12,7 @@ export function MoreInfo({ data }) {
       const { ContactID } = data
 
       const handleClickWeb = () => {
-            window.open(`${contactInfo.ContactWeb}`, '_blank')
+            window.open(`https://${replaceString(contactInfo.ContactWeb, 'https://', '')}`, '_blank')
       }
 
       const handleClickFb = () => {

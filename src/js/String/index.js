@@ -40,9 +40,8 @@ export function isLimitString(string, limit) {
 }
 
 export function replaceString(string, replace, newReplace) {
-      console.log(string)
       let newString = ""
-      newString = string.replace(",","+")
+      newString = string.replace(replace, newReplace)
       return newString
 }
 
