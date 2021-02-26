@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react'
 
 export function useHls(video, url, dispatch, movie) {
+      // const config = {
+      //       initialLiveManifestSize: 10,
+      //       maxBufferLength: 60,
+      //       progressive: true,
+      //       nudgeMaxRetry: 10
+      // }
       let hls = new Hls()
       const [error, setError] = useState(false)
 
@@ -36,20 +42,30 @@ export function useHls(video, url, dispatch, movie) {
                                     setError("Señal no disponible por el momento")
                               }
 
-                              if(data.details == "audioTrackLoadError"){
-                                    hls.destroy()
-                                    dispatch({ type: 'updateLoading', payload: false })
-                                    // dispatch({ type: 'updateData', payload: null })
-                                    dispatch({ type: 'setHls', payload: null })
-                                    setError("Contenido no disponible por el momento")
-                              }
+                              // if(data.details == "audioTrackLoadError"){
+                              //       hls.destroy()
+                              //       dispatch({ type: 'updateLoading', payload: false })
+                              //       // dispatch({ type: 'updateData', payload: null })
+                              //       dispatch({ type: 'setHls', payload: null })
+                              //       setError("Contenido no disponible por el momento")
+                              // }
 
                               if(data.details == "bufferStalledError"){
-                                    hls.destroy()
-                                    dispatch({ type: 'updateLoading', payload: false })
-                                    // dispatch({ type: 'updateData', payload: null })
-                                    dispatch({ type: 'setHls', payload: null })
-                                    setError("Contenido no disponible por el momento")
+                                    // hls.destroy()
+                                    hls.startLoad()
+                                    dispatch({ type: 'updateLoading', payload: true })
+                                    // // dispatch({ type: 'updateData', payload: null })
+                                    // dispatch({ type: 'setHls', payload: null })
+                                    // setError("Contenido no disponible por el momento")
+                              }
+
+                              if(data.details == "audioTrackLoadError"){
+                                    // hls.destroy()
+                                    // hls.recoverMediaError()
+                                    dispatch({ type: 'updateLoading', payload: true })
+                                    // // dispatch({ type: 'updateData', payload: null })
+                                    // dispatch({ type: 'setHls', payload: null })
+                                    // setError("Contenido no disponible por el momento")
                               }
                               // if (data.fatal) {
                               //       switch (data.type) {

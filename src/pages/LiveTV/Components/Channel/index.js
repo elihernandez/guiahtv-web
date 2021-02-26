@@ -42,6 +42,10 @@ function ReadMore({readMoreActive, Name, Description, handleClickHideReadMore}){
 
 function ContactInfo({moreInfoActive, contactInfo, handleClickHideMoreInfo}){
 
+      const handleClickWeb = () => {
+            window.open(`${contactInfo.ContactWeb}`, '_blank')
+      }
+
       const handleClickFb = () => {
             window.open(`https://www.facebook.com/${contactInfo.ContactFb}`, '_blank')
       }
@@ -77,7 +81,7 @@ function ContactInfo({moreInfoActive, contactInfo, handleClickHideMoreInfo}){
                                           </div>
                                     }
                                     {     contactInfo.ContactWeb &&
-                                          <div className="content-web" tabIndex="0">
+                                          <div className="content-web" tabIndex="0" onClick={handleClickWeb}>
                                                 <i className="fas fa-globe" tabIndex="0"></i>
                                                 <p tabIndex="0">{contactInfo.ContactWeb}</p>
                                           </div>

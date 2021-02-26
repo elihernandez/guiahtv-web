@@ -34,10 +34,11 @@ function ProgressBarTime({ videoRef, currentTime, duration, dispatch }) {
       }
 
       useEffect(() => {
+            console.log(currentTime)
             setValue(currentTime)
       }, [currentTime])
 
-      return <Slider value={value} onChange={handleChange} min={0} max={duration} aria-labelledby="continuous-slider" />
+      return <Slider value={currentTime} onChange={handleChange} min={0} max={duration} aria-labelledby="continuous-slider" />
 }
 
 function TimeMovie({ videoRef, duration, dispatch }) {
@@ -66,7 +67,6 @@ function TimeMovie({ videoRef, duration, dispatch }) {
       }
 
       useEffect(() => {
-
             if (videoRef) {
                   videoRef.current.addEventListener("timeupdate", timeUpdate)
             }
@@ -102,12 +102,14 @@ export function Controls() {
 
       useEffect(() => {
             if (videoRef) {
+                  
                   setDuration(videoRef.current.duration)
             }
       }, [active])
 
       useEffect(() => {
             if (hls) {
+                  hls.startLoad(currentTime)
                   setShow(true)
             }
       }, [hls])
@@ -115,27 +117,29 @@ export function Controls() {
       return (
             <CSSTransition in={show} timeout={300} classNames="fade">
                   <div className="controls-player">
-                        <div className="controls-wrapper">
-                              <div className="top-section">
-                                    <div className="group-buttons">
-                                          <ButtonBackward videoRef={videoRef} />
-                                          <ButtonsPlaying videoRef={videoRef} playing={playing} dispatch={dispatch} />
-                                          <ButtonUndo videoRef={videoRef} dispatch={dispatch} />
-                                          <ButtonRedo videoRef={videoRef} dispatch={dispatch} />
-                                    </div>
-                                    <div className="group-buttons">
-                                          <ButtonVolume volume={volume} muteVolume={muteVolume} dispatch={dispatch} />
-                                          <ButtonTracks hls={hls} audios={audioTracks} subtitles={subtitleTracks} dispatch={dispatch} audioTrackActive={audioTrackActive} subtitleTrackActive={subtitleTrackActive}/>
-                                          <ButtonsFullScreen />
-                                          <div className="group-time">
-                                                <TimeMovie videoRef={videoRef} duration={duration} dispatch={dispatch} />
+                        {hls &&
+                              <div className="controls-wrapper">
+                                    <div className="top-section">
+                                          <div className="group-buttons">
+                                                <ButtonBackward videoRef={videoRef} />
+                                                <ButtonsPlaying videoRef={videoRef} playing={playing} dispatch={dispatch} />
+                                                <ButtonUndo videoRef={videoRef} dispatch={dispatch} />
+                                                <ButtonRedo videoRef={videoRef} dispatch={dispatch} />
+                                          </div>
+                                          <div className="group-buttons">
+                                                <ButtonVolume volume={volume} muteVolume={muteVolume} dispatch={dispatch} />
+                                                <ButtonTracks hls={hls} audios={audioTracks} subtitles={subtitleTracks} dispatch={dispatch} audioTrackActive={audioTrackActive} subtitleTrackActive={subtitleTrackActive}/>
+                                                <ButtonsFullScreen />
+                                                <div className="group-time">
+                                                      <TimeMovie videoRef={videoRef} duration={duration} dispatch={dispatch} />
+                                                </div>
                                           </div>
                                     </div>
+                                    <div className="content-progress-time">
+                                          <ProgressBarTime videoRef={videoRef} currentTime={currentTime} duration={duration} dispatch={dispatch} />
+                                    </div>
                               </div>
-                              <div className="content-progress-time">
-                                    <ProgressBarTime videoRef={videoRef} currentTime={currentTime} duration={duration} dispatch={dispatch} />
-                              </div>
-                        </div>
+                        }
                   </div>
             </CSSTransition>
       )

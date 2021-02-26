@@ -290,6 +290,10 @@ function ContactInfo({ moreInfoActive, contactInfo, setMoreInfoActive }) {
             setMoreInfoActive(false)
       }
 
+      const handleClickWeb = () => {
+            window.open(`${contactInfo.ContactWeb}`, '_blank')
+      }
+
       const handleClickFb = () => {
             window.open(`https://www.facebook.com/${contactInfo.ContactFb}`, "_blank")
       }
@@ -326,7 +330,7 @@ function ContactInfo({ moreInfoActive, contactInfo, setMoreInfoActive }) {
                                           </div>
                                     }
                                     {contactInfo.ContactWeb &&
-                                          <div className="content-web" tabIndex="0">
+                                          <div className="content-web" tabIndex="0" onClick={handleClickWeb}>
                                                 <i className="fas fa-globe" tabIndex="0"></i>
                                                 <p tabIndex="0">{contactInfo.ContactWeb}</p>
                                           </div>

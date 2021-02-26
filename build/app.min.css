@@ -2279,8 +2279,8 @@ input::-ms-input-placeholder{
 .guide-wrapper{
       position: relative;
       height: 100%;
-      width: 100%;
-      border: 1px solid red
+      width: 100%
+      /* border: 1px solid red; */
       /* background: linear-gradient(to top, black, transparent); */
 }
 .guide-wrapper.active-enter {
@@ -2518,7 +2518,7 @@ input::-ms-input-placeholder{
                                       box-shadow: none !important;
                         }
 .info-timer-wrapper{
-      padding: 125px 40px 0 25px;
+      padding: 125px 50px 0 50px;
 }
       
       .info-timer-wrapper .text-info{
@@ -3666,9 +3666,7 @@ input::-ms-input-placeholder{
                           flex: 0 0 14.28571%;
             }
 
-.list-catalogue.landscape{
-            margin-bottom: 40px;
-      }
+/* margin-bottom: 40px; */
 
 .list-catalogue.landscape .list-items .background-item{
                         height: 12vw;
@@ -3807,16 +3805,16 @@ input::-ms-input-placeholder{
             background: -webkit-gradient(linear, left top, right top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
             background: linear-gradient(to right, rgba(24,25,28, 1), rgba(24,25,28, 0));
             left: -45px;
-            height: 17.28vw;
-            top: .53vw;
+            height: 17.4vw;
+            top: .34vw;
       }
 
 .portrait .direction-next{
             background: -webkit-gradient(linear, right top, left top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
             background: linear-gradient(to left, rgba(24,25,28, 1), rgba(24,25,28, 0));
             right: -45px;
-            height: 17.28vw;
-            top: .53vw;
+            height: 17.4vw;
+            top: .34vw;
       }
 
 .landscape .direction i{
@@ -3827,16 +3825,16 @@ input::-ms-input-placeholder{
             background: -webkit-gradient(linear, left top, right top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
             background: linear-gradient(to right, rgba(24,25,28, 1), rgba(24,25,28, 0));
             left: -45px;
-            height: 10.78vw;
-            top: .36vw;
+            height: 11.6vw;
+            top: .23vw;
       }
 
 .landscape .direction-next{
             background: -webkit-gradient(linear, right top, left top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
             background: linear-gradient(to left, rgba(24,25,28, 1), rgba(24,25,28, 0));
             right: -45px;
-            height: 10.78vw;
-            top: .36vw;
+            height: 11.6vw;
+            top: .23vw;
       }
 
 .list-cards{

@@ -45,7 +45,7 @@
       }
 
       &.landscape{
-            margin-bottom: 40px;
+            /* margin-bottom: 40px; */
 
             .list-items{
                   .background-item{
@@ -191,15 +191,15 @@
       .direction-prev{
             background: linear-gradient(to right, rgba($rgba-color-guide-black, 1), rgba($rgba-color-guide-black, 0));
             left: -45px;
-            height: 17.28vw;
-            top: .53vw;
+            height: 17.4vw;
+            top: .34vw;
       }
 
       .direction-next{
             background: linear-gradient(to left, rgba($rgba-color-guide-black, 1), rgba($rgba-color-guide-black, 0));
             right: -45px;
-            height: 17.28vw;
-            top: .53vw;
+            height: 17.4vw;
+            top: .34vw;
       }
 }
 
@@ -213,15 +213,15 @@
       .direction-prev{
             background: linear-gradient(to right, rgba($rgba-color-guide-black, 1), rgba($rgba-color-guide-black, 0));
             left: -45px;
-            height: 10.78vw;
-            top: .36vw;
+            height: 11.6vw;
+            top: .23vw;
       }
 
       .direction-next{
             background: linear-gradient(to left, rgba($rgba-color-guide-black, 1), rgba($rgba-color-guide-black, 0));
             right: -45px;
-            height: 10.78vw;
-            top: .36vw;
+            height: 11.6vw;
+            top: .23vw;
       }
 }
 

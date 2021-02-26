@@ -10,6 +10,10 @@ export function MoreInfo({ data }) {
       const [contactInfo, setContactInfo] = useState(null)
       const { ContactID } = data
 
+      const handleClickWeb = () => {
+            window.open(`${contactInfo.ContactWeb}`, '_blank')
+      }
+
       const handleClickFb = () => {
             window.open(`https://www.facebook.com/${contactInfo.ContactFb}`, "_blank")
       }
@@ -72,7 +76,7 @@ export function MoreInfo({ data }) {
                                                       </div>
                                                 }
                                                 {contactInfo.ContactWeb &&
-                                                      <div className="content-web">
+                                                      <div className="content-web" onClick={handleClickWeb}>
                                                             <i className="fas fa-globe"></i>
                                                             <p>{contactInfo.ContactWeb}</p>
                                                       </div>
