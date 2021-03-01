@@ -14,61 +14,53 @@ export function GuideChannels() {
       const { stateUser } = useContext(UserContext)
       const { credentials } = stateUser
       const { state, dispatchTV } = useContext(LiveTvContext)
-      const { dataTV } = state
-      const [loading, setLoading] = useState(true)
+      const { dataTV, guideOnce } = state
+      const [loading, setLoading] = useState(false)
       const [show, setShow] = useState(false)
+      const [hide, setHide] = useState(false)
+
+      const requestData = async () => {
+            setLoading(true)
+            setHide(true)
+            try {
+                  const response = await getLiveTV(credentials)
+                  if (!response.length) throw new Error('No se pudo obtener la información.')
+                  dispatchTV({ type: 'updateData', payload: response })
+                  dispatchTV({ type: 'setGuideOnce', payload: true })
+                  setTimeout(() => {
+                        setLoading(false)
+                        setShow(true)
+                  }, 500)
+            } catch (e) {
+                  console.log(e)
+            }
+      }
 
       useEffect(() => {
-            const requestData = async () => {
-                  try {
-                        const response = await getLiveTV(credentials)
-                        if (!response.length) throw new Error('No se pudo obtener la información.')
-                        dispatchTV({ type: 'updateData', payload: response })
-                        setTimeout(() => {
-                              setLoading(false)
-                              setShow(true)
-                        }, 500)
-                  } catch (e) {
-                        console.log(e)
-                  }
-            }
-
-            if (credentials) {
+            if (!guideOnce) {
+                  setHide(true)
                   setLoading(true)
                   requestData()
             }
-
       }, [])
 
-      // return (
-      //       <div className="guide">
-      //             {     loading
-      //                   ? <GuideLoader />
-      //                   : <div className="guide-wrapper">
-      //                         <Categories data={dataTV} />
-      //                         <Switch>
-      //                               <Route exact path={`${url}`} >
-      //                                     <Channels data={dataTV} />
-      //                               </Route>
-      //                               <Route exact path={`${url}/:categoria/:canal?`} >
-      //                                     <Channels data={dataTV} />
-      //                               </Route>
-      //                         </Switch>
-      //                   </div>
-      //             }
-      //       </div>
-      // )
       return (
             <div className="guide">
                   {loading &&
                         <GuideLoader />
                   }
+                  {!hide &&
+                        <div className="content-button-guide">
+                              <button type="button" className="button-guide" onClick={()=> requestData()}>
+                                    <i class="fas fa-chevron-up" />
+                                    Mostrar guía
+                              </button>
+                        </div>
+                  }
                   <CSSTransition in={show} timeout={300} classNames="fade" unmountOnExit>
-                  {dataTV &&
-                  <div className="guide-wrapper">
-                  
+                        {dataTV &&
+                              <div className="guide-wrapper">
                                     <Categories data={dataTV} />
-                             
                                     <Switch>
                                           <Route exact path={`${url}`} >
                                                 <Channels data={dataTV} />
@@ -77,9 +69,9 @@ export function GuideChannels() {
                                                 <Channels data={dataTV} />
                                           </Route>
                                     </Switch>
-                                    </div>
-                              }
-                                    </CSSTransition>
+                              </div>
+                        }
+                  </CSSTransition>
             </div>
       )
 }

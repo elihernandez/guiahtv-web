@@ -10,6 +10,7 @@
     align-items: center;
     box-sizing: border-box;
     flex: 1 1 auto;
+    /* margin-top: -4vw; */
 
     .buttons-list{
         width: 100%;
@@ -49,6 +50,8 @@
                 width: 100%;
                 height: auto;
                 border: 3px solid transparent;
+                box-shadow: rgb(0 0 0 / 10%) 0px 26px 30px -10px, rgb(0 0 0 / 15%) 0px 16px 25px -10px;
+                transition: all 300ms ease-in-out;
             }
 
             &:focus.image-button{
@@ -60,6 +63,10 @@
             &:hover{
                 transform: scale(1);
                 cursor: pointer;
+
+                .image-button{
+                    box-shadow: rgb(0 0 0 / 20%) 0px 40px 58px -16px, rgb(0 0 0 / 20%) 0px 30px 22px -10px
+                }
             }
 
         }

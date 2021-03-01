@@ -2,6 +2,7 @@ import React, { Fragment, useRef, useContext, useState } from 'react'
 import VideoContext from '../../../../context/VideoContext'
 import LiveTvContext from '../../../../context/LiveTvContext'
 import { NavLink } from "react-router-dom"
+import { LazyImage } from '../../../../components/Image'
 import { createUrlString, shortString, isShortString, replaceString, limitString } from '../../../../js/String'
 import { isLive, getEventTime, getProgressTimeEvent } from '../../../../js/Time'
 import { CSSTransition } from 'react-transition-group'
@@ -118,6 +119,7 @@ function ContactInfo({moreInfoActive, contactInfo, handleClickHideMoreInfo}){
 
 function LiveTvChannel({ dataChannel, handleClick, handleError }) {
       let { Description, Name, Poster, ContactID } = dataChannel
+      const altImg = `img-${Name}`
       const [contactInfo, setContactInfo] = useState([])
       const [moreInfoActive, setMoreInfoActive] = useState(false)
       const [readMoreActive, setReadMoreActive] = useState(false)
@@ -157,11 +159,7 @@ function LiveTvChannel({ dataChannel, handleClick, handleError }) {
                               </h2>
                         </div>
                         <div className="poster-content">
-                              <picture>
-                                    <source srcSet={Poster} type="image/webp" />
-                                    <source srcSet={imgSourceSetJpg(Poster, 'webp')} type="image/jpeg" />
-                                    <img src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt="Image-tv-fallback" className="poster-channel" />
-                              </picture>
+                              <LazyImage img={Poster} alt={altImg} type="webp" recoverType="jpg" />
                               <div className="content-play">
                                     <span>
                                           <i className="fas fa-pause"></i>
@@ -198,6 +196,7 @@ function LiveTvChannel({ dataChannel, handleClick, handleError }) {
 
 function LiveTvEvent({ dataChannel, handleClick, handleError }) {
       let { Description, Name, Poster, Inicio, Fin, ContactID } = dataChannel
+      const altImg = `img-${Name}`
       let description = shortString(Description)
       let imgChannel = useRef(null)
       const [contactInfo, setContactInfo] = useState([])
@@ -239,7 +238,7 @@ function LiveTvEvent({ dataChannel, handleClick, handleError }) {
                               </h2>
                         </div>
                         <div className="poster-content">
-                              <img ref={imgChannel} className="poster-channel" src={Poster} onError={handleError} />
+                              <LazyImage img={Poster} alt={altImg} type="webp" recoverType="jpg" />
                         </div>
                         {isLive(Inicio, Fin) &&
                               <div className="progress-time-content">

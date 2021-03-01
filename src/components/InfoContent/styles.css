@@ -224,7 +224,7 @@
       .tabs-info-wrapper{
             position: absolute;
             width: 100%;
-            top: 650px;
+            top: 32vw;
 
             .MuiTabs-root{
                   padding: 0 50px !important;

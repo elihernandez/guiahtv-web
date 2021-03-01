@@ -49,8 +49,32 @@ export function Seasons({ seasons, serieId }) {
       })
 
       useEffect(() => {
+            const firstSeason = seasons[0]
+            const { Title, TitleSeason } = firstSeason
 
-      }, [chapters])
+            const requestData = async () => {
+                  try {
+                        const response = await getChapters(serieId, TitleSeason, credentials)
+                        setChapters({
+                              category: Title,
+                              poster_type: 1,
+                              cmData: response
+                        })
+                        dispatchVod({
+                              type: 'setSeason', payload: {
+                                    category: Title,
+                                    poster_type: 1,
+                                    cmData: response
+                              }
+                        })
+                        setLoading(false)
+                  } catch (e) {
+
+                  }
+            }
+
+            requestData()
+      }, [])
 
       return (
             <div className="seasons-content-wrapper">

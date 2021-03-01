@@ -7,6 +7,7 @@ export function LiveTvContextProvider({children}){
             dataTV: null,
             currentPage: 0,
             currentCategory : null,
+            guideOnce: false,
             url: null
       }
 
@@ -36,7 +37,12 @@ export function LiveTvContextProvider({children}){
                               url: action.payload,
                         }
                   }
-                  
+                  case 'setGuideOnce': {
+                        return {
+                              ...state,
+                              guideOnce: action.payload,
+                        }
+                  }
                   default: return state;
             }
       }

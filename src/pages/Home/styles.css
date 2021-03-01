@@ -6,4 +6,5 @@
     min-height: calc(100vh - $height-top-menu);
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
