@@ -4,12 +4,13 @@
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background-color: $color-guide-black;
+    /* background-color: $color-guide-black; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     align-content: center;
+    /* background: linear-gradient(90deg, rgba(65,67,69, 0.2), rgba(35,37,38, 0.2)); */
 
     .background-svg{
         width: 100%;
@@ -23,13 +24,19 @@
         opacity: 0.5;
     }
 
-    .content-form{
+    .content-login{
         position: relative;
         width: 425px;
         min-height: 600px;
         border-radius: 10px;
         padding: 50px 0;
         margin-bottom: 100px;
+
+        .title-form{
+            margin-top: 50px !important;
+            margin-bottom: 25px !important;
+            font-weight: 500;
+        }
 
         form{
             position: relative;
@@ -38,12 +45,6 @@
             flex-direction: column;
             justify-content: center;
             margin-top: 20px;
-
-            .title-form{
-                margin-top: 25px !important;
-                margin-bottom: 25px !important;
-                font-weight: 500;
-            }
 
             .group-form{
 
@@ -69,30 +70,9 @@
                     }
                 }
             }
-            
-            .group-form-error{
-                border-radius: 5px;
-                background: #e87c03;
-                padding: 12px 15px;
-                margin-bottom: 10px;
-
-                .text-error{
-                    font-size: 16px;
-
-                    .link-error{
-                        color: white;
-                    }
-                }
-            }
 
             .btn-submit-login{
                 margin-top: 30px;
-                position: relative;
-                width: 100%;
-                height: 55px;
-                letter-spacing: .5px;
-                font-weight: 400;
-                border-radius: 5px;
             }
         }
 

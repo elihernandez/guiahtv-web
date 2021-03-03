@@ -1,12 +1,23 @@
 @import '../../scss/style-base.css';
 
-button{
+.button-ui{
       border: none;
-      color: white;
-      transition: all .15s ease;
+      color: $color-white;
+      transition: all 150ms ease;
       border-radius: 4px;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
       font-family: "Poppins", sans-serif !important;
+      letter-spacing: .5px;
+      font-weight: 400;
+      padding: 15px 45px;
+
+      &.width-auto{
+            width: auto;
+      }
+
+      &.full-width{
+            width: 100%;
+      }
 
       &.uppercase{
             text-transform: uppercase;
@@ -17,22 +28,23 @@ button{
       }
 
       &.outline-white{
-            background: white;
+            background: $color-white;
             color: $color-guide-black;
       }
 
       &.transparent{
             background: transparent;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+
+            &:hover{
+                  background: $color-white;
+                  color: black;
+                  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.75);
+            }
       }
 
-      &.transparent.white:hover{
-            background: white;
-            color: black;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.75);
-      }
 
-      &.gradient-background{
+      &.gradient{
             /* background: linear-gradient(270deg, $color-guide-blue 0%, $color-guide-purple 100%); */
             background: linear-gradient(270deg, $color-violet 0%, $color-guide-blue 100%);
             /* background: linear-gradient(270deg,  #6a26cd 0%, #00aeef 100%); */

@@ -4,6 +4,7 @@ import Logo from "../../components/Logo/index"
 import { Footer } from "../../components/Footer/index"
 import { H1, H2 } from "../../components/Typography/index"
 import { ButtonUI } from "../../components/Button/index"
+import { Button } from "../../components/Button/index"
 import { Link } from "../../components/Link/index"
 import { CSSTransition } from 'react-transition-group'
 import "./styles.css"
@@ -27,10 +28,10 @@ export function Info() {
                               <div className="group-info">
                                     <p className="body-2">¿Quieres ver Guíah TV ya?</p>
                                     <Link className="link-register" href="https://guiah.tv/axs/registro">
-                                          <ButtonUI type="button" className="primary uppercase btn-register title-3" text="Registrarme" />
-                                    </Link>
-                                    <NavLink to="/login" className="link-to-page-login" data-uia="link-to-page-login-label">
-                                          <ButtonUI type="button" className="transparent white uppercase btn-login title-3" text="Iniciar sesión" />
+                                          <Button type="button" uppercase={true} color="primary" classes="btn-register title-3">Registrarme</Button>
+                                          </Link>
+                                          <NavLink to="/login" className="link-to-page-login" data-uia="link-to-page-login-label">
+                                          <Button type="button" uppercase={true} color="transparent" classes="btn-login title-3">Iniciar sesión</Button>
                                     </NavLink>
                               </div>
                         </div>
@@ -40,4 +41,5 @@ export function Info() {
       );
 }
 
+// <ButtonUI type="button" className="primary uppercase btn-register title-3" text="Registrarme" />
 // <H1 className="title-text large-title-1">Disfruta de la mejor plataforma de <br /> contenido exclusivo y espiritual para <br /> toda la familia.</H1>
