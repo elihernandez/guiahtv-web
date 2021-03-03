@@ -368,16 +368,15 @@
       padding-top: 65px;
 }
 
-.footer-content{
+.footer-app{
       position: relative;
       bottom: 0;
       width: 100%;
       padding: 0 25px;
-      background: #18191c;
       
 }
 
-.footer-content .footer-wrapper{
+.footer-app .footer-wrapper{
             position: relative;
             z-index: 3;
             display: -webkit-box;
@@ -398,7 +397,7 @@
             padding: 10px 0;
       }
 
-.footer-content .footer-wrapper .logo{
+.footer-app .footer-wrapper .logo{
                   display: -webkit-box;
                   display: -ms-flexbox;
                   display: flex;
@@ -417,20 +416,20 @@
                   margin: 10px 0;
             }
 
-.footer-content .footer-wrapper .logo img{
+.footer-app .footer-wrapper .logo img{
                         width: auto;
                         height: 60px;
                         opacity: .8;
                   }
 
-.footer-content .footer-wrapper .services-text{
+.footer-app .footer-wrapper .services-text{
                  
                   font-weight: 500;
                   text-align: center;
                   margin: 10px 0;
             }
 
-.footer-content .footer-wrapper .footer-links{
+.footer-app .footer-wrapper .footer-links{
                   color: #f7f7f7;
                   padding: 0;
                   list-style: none;
@@ -444,29 +443,29 @@
                   margin: 10px 0;
             }
 
-.footer-content .footer-wrapper .footer-links .footer-link-item{
+.footer-app .footer-wrapper .footer-links .footer-link-item{
                         margin: 0 15px;
                   }
 
-.footer-content .footer-wrapper .footer-links .footer-link-item .footer-link{
+.footer-app .footer-wrapper .footer-links .footer-link-item .footer-link{
                               text-decoration: none;
                               color: #f7f7f7;
                         }
 
 @media (max-width: 768px) {
                
-                  .footer-content .footer-wrapper .services-text{
+                  .footer-app .footer-wrapper .services-text{
                         text-align: center;
                   }
       
-                  .footer-content .footer-wrapper .footer-links{
+                  .footer-app .footer-wrapper .footer-links{
                         -webkit-box-orient: vertical;
                         -webkit-box-direction: normal;
                             -ms-flex-direction: column;
                                 flex-direction: column;
                   }
             
-                        .footer-content .footer-wrapper .footer-links .footer-link-item{
+                        .footer-app .footer-wrapper .footer-links .footer-link-item{
                               margin: 5px 0;
                               text-align: center;
                         }   
@@ -640,7 +639,7 @@ h6{
             position: absolute;
             z-index: 2;
             width: 100%;
-            height: 300px;
+            height: 80%;
             bottom: 0;
             background: -webkit-gradient(linear, left bottom, left top, from(black), to(transparent));
             background: linear-gradient(0deg, black, transparent);
@@ -681,7 +680,7 @@ h6{
             }
 }
 
-.center-content{
+.main-info{
       position: relative;
       height: 100vh;
       width: 45%;
@@ -700,25 +699,25 @@ h6{
       padding-left: 75px;
 }
 
-.center-content .logo-guiahtv{
+.main-info .logo-guiahtv{
             -webkit-box-pack: start;
                 -ms-flex-pack: start;
                     justify-content: flex-start;
             margin: 25px 0;
       }
 
-.center-content .title-text{
+.main-info .title-text{
             font-weight: 600;
             /* line-height: 55px; */
       }
 
-.center-content .subtitle-text{
+.main-info .subtitle-text{
             font-weight: 300;
             margin: 10px 0;
             
       }
 
-.center-content .group-info{
+.main-info .group-buttons-actions{
             margin: 50px 0;
             display: -webkit-box;
             display: -ms-flexbox;
@@ -735,85 +734,85 @@ h6{
                   
       }
 
-.center-content .group-info p{
+.main-info .group-buttons-actions p{
                   margin-right: 25px;
                   font-weight: 300;
             }
 
-.center-content .group-info button{
+.main-info .group-buttons-actions button{
                   /* font-size: 20px; */
                   margin-right: 20px;
             }
 
 @media (max-width: 1800px) {
-      .center-content{
+      .main-info{
             width: 50%;
       }
 }
 
 @media (max-width: 1440px) {
-      .center-content{
+      .main-info{
             padding-left: 40px;
             padding-top: 125px;
             width: 65%;
       }
 
-            .center-content .title-text{
+            .main-info .title-text{
                   font-size: 40px;
                   line-height: 55px;
             }
 }
 
 @media (max-width: 1024px) {
-      .center-content{
+      .main-info{
             padding-left: 40px;
             padding-top: 100px;
             width: 55%;
       }
 
-            .center-content .title-text{
+            .main-info .title-text{
                   font-size: 35px;
                   line-height: 50px;
             }
 
-            .center-content .subtitle-text{
+            .main-info .subtitle-text{
                   font-size: 22px;  
             }
-                  .center-content .group-info p{
+                  .main-info .group-buttons-actions p{
                         font-size: 15px;
                   }
       
-                  .center-content .group-info button{
+                  .main-info .group-buttons-actions button{
                         font-size: 17px;
                   }
 }
 
 @media (max-width: 768px) {
-      .center-content{
+      .main-info{
             width: calc(100% - 50px);
             padding-top: 350px;
       }
             
-            .center-content .logo-guiahtv{
+            .main-info .logo-guiahtv{
                   -webkit-box-pack: center;
                       -ms-flex-pack: center;
                           justify-content: center;
             }
 
-            .center-content .title-text{
+            .main-info .title-text{
                   font-weight: 600;
                   font-size: 28px;
                   text-align: center;
                   line-height: 40px;
             }
       
-            .center-content .subtitle-text{
+            .main-info .subtitle-text{
                   font-weight: 300;
                   font-size: 20px;
                   text-align: center;
             }
 
-            .center-content .group-info{
+            .main-info .group-buttons-actions{
                   display: -webkit-box;
                   display: -ms-flexbox;
                   display: flex;
@@ -830,33 +829,33 @@ h6{
                   text-align: center;
             }
       
-                  .center-content .group-info p{
+                  .main-info .group-buttons-actions p{
                         font-size: 15px;
                         font-weight: 300;
                         text-align: center; 
                         margin-right: 0 !important;      
                   }
                         
-                        .center-content .group-info button.btn-register{
+                        .main-info .group-buttons-actions button.btn-register{
                               margin-right: 0 !important;
                               margin-top: 20px;
                         }
       
-                        .center-content .group-info button.btn-login{
+                        .main-info .group-buttons-actions button.btn-login{
                               margin-right: 0 !important;
                               margin-top: 20px;
                         } 
 }
 
 @media (max-width: 375px) {
-            .center-content .title-text{
+            .main-info .title-text{
                   font-weight: 600;
                   font-size: 24px;
                   text-align: center;
                   line-height: 40px;
             }
       
-            .center-content .subtitle-text{
+            .main-info .subtitle-text{
                   font-weight: 300;
                   font-size: 18px;
                   text-align: center;
@@ -864,14 +863,14 @@ h6{
 }
 
 @media (max-width: 320px) {
-            .center-content .title-text{
+            .main-info .title-text{
                   font-weight: 600;
                   font-size: 20px;
                   text-align: center;
                   line-height: 30px;
             }
       
-            .center-content .subtitle-text{
+            .main-info .subtitle-text{
                   font-weight: 300;
                   font-size: 16px;
                   text-align: center;

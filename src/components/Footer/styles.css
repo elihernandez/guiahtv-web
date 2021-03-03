@@ -1,11 +1,10 @@
 @import '../../scss/style-base.css';
 
-.footer-content{
+.footer-app{
       position: relative;
       bottom: 0;
       width: 100%;
       padding: 0 25px;
-      background: $color-black-2;
       
       .footer-wrapper{
             position: relative;

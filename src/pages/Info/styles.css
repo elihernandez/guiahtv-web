@@ -20,7 +20,7 @@
             position: absolute;
             z-index: 2;
             width: 100%;
-            height: 300px;
+            height: 80%;
             bottom: 0;
             background: linear-gradient(0deg, black, transparent);
             opacity: 1;
@@ -61,7 +61,7 @@
       }
 }
 
-.center-content{
+.main-info{
       position: relative;
       height: 100vh;
       width: 45%;
@@ -88,7 +88,7 @@
             
       }
 
-      .group-info{
+      .group-buttons-actions{
             margin: 50px 0;
             display: flex;
             flex-direction: row;
@@ -109,14 +109,14 @@
 }
 
 @media (max-width: 1800px) {
-      .center-content{
+      .main-info{
             width: 50%;
       }
 }
 
 
 @media (--laptop-large-viewport) {
-      .center-content{
+      .main-info{
             padding-left: 40px;
             padding-top: 125px;
             width: 65%;
@@ -129,7 +129,7 @@
 }
 
 @media (--laptop-medium-viewport) {
-      .center-content{
+      .main-info{
             padding-left: 40px;
             padding-top: 100px;
             width: 55%;
@@ -143,7 +143,7 @@
                   font-size: 22px;  
             }
 
-            .group-info{
+            .group-buttons-actions{
                   p{
                         font-size: 15px;
                   }
@@ -156,7 +156,7 @@
 }
 
 @media (--tablet-medium-viewport) {
-      .center-content{
+      .main-info{
             width: calc(100% - 50px);
             padding-top: 350px;
             
@@ -177,7 +177,7 @@
                   text-align: center;
             }
 
-            .group-info{
+            .group-buttons-actions{
                   display: flex;
                   flex-direction: column;
                   align-items: center;
@@ -209,7 +209,7 @@
 }
 
 @media (--movil-medium-viewport) {
-      .center-content{
+      .main-info{
             .title-text{
                   font-weight: 600;
                   font-size: 24px;
@@ -226,7 +226,7 @@
 }
 
 @media (--movil-small-viewport) {
-      .center-content{
+      .main-info{
             .title-text{
                   font-weight: 600;
                   font-size: 20px;

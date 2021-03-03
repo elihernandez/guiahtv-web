@@ -27,7 +27,7 @@ function Links() {
 
 export function Footer() {
       return (
-            <div className="footer-content">
+            <div className="footer-app">
                   <div className="footer-wrapper">
                         <IconLogo />
                         <h5 className="services-text body-3">
