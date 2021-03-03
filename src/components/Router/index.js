@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from "react"
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
 import UserContext from "../../context/UserContext"
-import { TopMenu } from "../TopMenu/index"
+import { Header } from "../Header/index"
 import { Info } from "../../pages/Info/index"
 import { Login } from "../../pages/Login/index"
 import { Home } from "../../pages/Home/index"
@@ -18,8 +18,6 @@ import { GetApp } from '../../pages/GetApp'
 import {
     BrowserView,
     MobileView,
-    isIOS,
-    isAndroid,
     isBrowser,
     isMobile
 } from "react-device-detect"
@@ -30,7 +28,7 @@ function CheckAuth({ children, credentials }) {
             <Fragment>
                 {credentials.memclid
                     ? <Fragment>
-                        <TopMenu />
+                        <Header />
                         {children}
                         <SnackbarAuth />
                     </Fragment>

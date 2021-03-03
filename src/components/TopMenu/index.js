@@ -1,71 +1,59 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { Navbar } from '../Navbar/index'
 import { UserMenu } from '../UserMenu/index'
 import Logo from '../Logo/index'
 import RadioIcon from '@material-ui/icons/Radio';
 import './styles.css'
 
-export function hideTopMenuNavbar(){
-      if(document.querySelector('.navbar-top-menu')){
-            document.querySelector('.navbar-top-menu').style.opacity = 0
-            document.querySelector('.top-menu').classList.remove('bggradient')
-      }
-}
-
-export function showTopMenuNavbar(){
-      if(document.querySelector('.navbar-top-menu')){
-            document.querySelector('.navbar-top-menu').style.opacity = 1
-            document.querySelector('.top-menu').classList.add('bggradient')
-      }
-}
-
-function NavbarTopMenu(){
+function LeftContent() {
       const navLinks = [
-            {title: 'En vivo', href: '/tv', icon: <i className="fas fa-tv"></i>},
-            {title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-film"></i>},
-            {title: 'Radio', href: '/radio', icon: <RadioIcon />},
-         
-            {title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i>}
+            { title: 'En vivo', href: '/tv', icon: <i className="fas fa-tv"></i> },
+            { title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-film"></i> },
+            { title: 'Radio', href: '/radio', icon: <RadioIcon /> },
+            { title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i> }
       ]
 
       const classItems = 'navbar-link-top-menu'
       const classNavbar = 'navbar-top-menu'
 
       return (
-            <Navbar navLinks={navLinks} classNavbar={classNavbar} classItems={classItems} />
+            <div className="left-content">
+                  <Logo color="blue" size="sm" />
+                  <Navbar navLinks={navLinks} classNavbar={classNavbar} classItems={classItems} />
+            </div>
       )
 }
 
-export function TopMenu() {
-      const topMenu = useRef(null)
-      const navbar = useRef(null)
-      
+function RightContent() {
+      return (
+            <div className="right-content">
+                  <UserMenu />
+            </div>
+      )
+}
+
+export const TopMenu = () => {
+      const topMenuRef = useRef(null)
+      const [scroll, setScroll] = useState(0)
+
       useEffect(() => {
-            let scroll = 0
-            
-            window.onscroll = function() {
-                  scroll = window.scrollY
-                  if (scroll > 25){
-                        topMenu.current.classList.add('bgcolor')
+            window.onscroll = function () {
+                  if (window.scrollY > 25 && scroll == false) {
+                        setScroll(true)
                   } else {
-                        topMenu.current.classList.remove('bgcolor')
-                  } 
+                        setScroll(false)
+                  }
             }
       }, [])
 
       return (
-            <div id="top-menu" className="top-menu" ref={topMenu}>
-                  <div className="section-wrapper">
-                        <div className="left-section">
-                              <Logo color="blue" size="sm" />
-                              <div ref={navbar}>
-                                    <NavbarTopMenu />
-                              </div>
+            <div id="top-menu" className={`top-menu ${scroll ? 'bgcolor' : ''}`} ref={topMenuRef}>
+                  { useMemo(() => (
+                        <div className="section-wrapper">
+                              <LeftContent />
+                              <RightContent />
                         </div>
-                        <div className="right-section">
-                              <UserMenu/>
-                        </div>
-                  </div>
+                  ), [])}
             </div>
       )
 }

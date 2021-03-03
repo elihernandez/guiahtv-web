@@ -36,6 +36,8 @@ $padding-content: 45px;
 /* Top Menu */
 $height-top-menu: 65px;
 
+$height-header: $height-top-menu;
+
 /* Music */
 $height-player-music: 100px;
 

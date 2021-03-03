@@ -5,7 +5,7 @@ import { Switch, Route, useRouteMatch } from "react-router-dom"
 import { Guide } from './components/Guide'
 import { Player } from './components/Player'
 import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
-import { hideTopMenuNavbar, showTopMenuNavbar } from '../../components/TopMenu'
+import { hideTopMenuNavbar, showTopMenuNavbar } from '../../js/TopMenu'
 import './styles.css'
 
 const initialState = {
