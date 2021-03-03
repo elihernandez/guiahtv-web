@@ -10,6 +10,7 @@
       letter-spacing: .5px;
       font-weight: 400;
       padding: 15px 45px;
+      cursor: pointer;
 
       &.width-auto{
             width: auto;
@@ -49,9 +50,5 @@
             background: linear-gradient(270deg, $color-violet 0%, $color-guide-blue 100%);
             /* background: linear-gradient(270deg,  #6a26cd 0%, #00aeef 100%); */
             /* background: linear-gradient(270deg, $color-guide-purple 0%, $color-guide-blue 100%); */
-      }
-
-      &:hover{
-            cursor: pointer;
       }
 }
