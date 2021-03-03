@@ -105,7 +105,7 @@ function ContactInfo({moreInfoActive, contactInfo, handleClickHideMoreInfo}){
                                           }
                                           {     contactInfo.ContactLoc &&
                                                 <span className="span-icon" tabIndex="0" onClick={handleClickGm}>
-                                                      <i class="fas fa-map-marker-alt"  tabIndex="0"/>
+                                                      <i className="fas fa-map-marker-alt"  tabIndex="0"/>
                                                 </span>
                                           }
                                     </div>

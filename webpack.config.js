@@ -42,6 +42,7 @@ const stylesRules = {
   use: [
       MiniCSSExtract.loader,
       'css-loader',
+      // 'sass-loader',
       'postcss-loader'
   ],
 }

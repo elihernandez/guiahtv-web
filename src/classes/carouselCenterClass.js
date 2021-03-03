@@ -1,6 +1,6 @@
 var cssTransition = require('css-transition')
 
-export default class Carousel {
+export class Carousel {
     constructor (element, timeInterval) {
         this.element = element.current
         this.parent = this.element.children[0].children[0]

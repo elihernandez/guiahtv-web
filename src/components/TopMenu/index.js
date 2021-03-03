@@ -57,13 +57,12 @@ export function TopMenu() {
             <div id="top-menu" className="top-menu" ref={topMenu}>
                   <div className="section-wrapper">
                         <div className="left-section">
-                              <Logo color="blue" />
+                              <Logo color="blue" size="sm" />
                               <div ref={navbar}>
                                     <NavbarTopMenu />
                               </div>
                         </div>
                         <div className="right-section">
-                              
                               <UserMenu/>
                         </div>
                   </div>

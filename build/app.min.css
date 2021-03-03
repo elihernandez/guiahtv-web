@@ -170,7 +170,7 @@
 .user-profile-navbar button{
             padding: 8px 16px;
       }
-.logo{
+.logo-guiahtv{
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -179,22 +179,50 @@
               justify-content: center;
 }
 
-      .logo .img-guiahtv-logo{
+      .logo-guiahtv .img-logo{
             position: relative;
-            height: 65px;
-            width: auto;
+            width: auto
       }
 
+      .logo-guiahtv .img-logo.sm{
+                  height: 40px;  
+            }
+
+      .logo-guiahtv .img-logo.md{
+                  height: 60px;  
+            }
+
+      .logo-guiahtv .img-logo.lg{
+                  height: 80px;  
+            }
+
       @media (max-width: 425px){
-            .logo .img-guiahtv-logo{
-                  height: 65px;
-            }  
+
+                  .logo-guiahtv .img-logo.sm{
+                        height: 35px;  
+                  }
+      
+                  .logo-guiahtv .img-logo.md{
+                        height: 55px;  
+                  }
+      
+                  .logo-guiahtv .img-logo.lg{
+                        height: 75px;  
+                  }
       }
 
       @media (max-width: 320px){
-            .logo .img-guiahtv-logo{
-                  height: 60px;
-            }  
+                  .logo-guiahtv .img-logo.sm{
+                        height: 30px;  
+                  }
+      
+                  .logo-guiahtv .img-logo.md{
+                        height: 50px;  
+                  }
+      
+                  .logo-guiahtv .img-logo.lg{
+                        height: 70px;  
+                  }
       }
 /* App */
 
@@ -592,7 +620,7 @@ button:hover{
             z-index: 1;
             width: 100%;
             min-height: 100%;
-            background-image: url(assets/images/background-login.3cc2b13e443e92fd9876005430ccff1e.jpg);
+            background-image: url(assets/images/background-login.69eabd5e28df4ceec56d2fd46a810203.webp);
             background-size: 100%;
             background-repeat: no-repeat;
       }
@@ -661,7 +689,7 @@ button:hover{
       padding-left: 75px;
 }
 
-.center-content .logo{
+.center-content .logo-guiahtv{
             -webkit-box-pack: start;
                 -ms-flex-pack: start;
                     justify-content: flex-start;
@@ -670,17 +698,17 @@ button:hover{
 
 .center-content .title-text{
             font-weight: 600;
-            line-height: 55px;
+            /* line-height: 55px; */
       }
 
 .center-content .subtitle-text{
             font-weight: 300;
-            margin-top: 10px;
+            margin: 10px 0;
             
       }
 
 .center-content .group-info{
-            margin-top: 50px;
+            margin: 50px 0;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -709,6 +737,12 @@ button:hover{
                   font-weight: 400;
                   margin-right: 20px;
             }
+
+@media (max-width: 1800px) {
+      .center-content{
+            width: 50%;
+      }
+}
 
 @media (max-width: 1440px) {
       .center-content{
@@ -753,7 +787,7 @@ button:hover{
             padding-top: 350px;
       }
             
-            .center-content .logo{
+            .center-content .logo-guiahtv{
                   -webkit-box-pack: center;
                       -ms-flex-pack: center;
                           justify-content: center;
@@ -1295,16 +1329,6 @@ input::-ms-input-placeholder{
         }
     }
 
-.lazy-load-image-background.opacity {
-  opacity: 0;
-}
-
-.lazy-load-image-background.opacity.lazy-load-image-loaded {
-  opacity: 1;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
-}
-
 /* App */
 
 /* Top Menu */
@@ -1326,13 +1350,13 @@ input::-ms-input-placeholder{
 
 /* overflow: hidden; */
 
-.spotlight-wrapper .carousel-spotlight{
+.spotlight-wrapper .slider-spotlight{
         position: relative;
         height: auto;
         width: 100%;
     }
 
-.spotlight-wrapper .carousel-spotlight .carousel-content{
+.spotlight-wrapper .slider-spotlight .carousel-content{
             position: relative;
             width: 100%;
             height: auto;
@@ -1349,7 +1373,7 @@ input::-ms-input-placeholder{
             padding: 0 10vw;
         }
 
-.spotlight-wrapper .carousel-spotlight .carousel-content .carousel-content-list{
+.spotlight-wrapper .slider-spotlight .carousel-content .carousel-content-list{
                 position: relative;
                 /* width: 80%;
                 left: 10%; */
@@ -1378,11 +1402,11 @@ input::-ms-input-placeholder{
 
 /* height: 30vw; */
 
-.spotlight-wrapper .carousel-spotlight .carousel-content .carousel-content-list .carousel-item{
+.spotlight-wrapper .slider-spotlight .carousel-content .carousel-content-list .carousel-item{
                     position: relative;
                     -webkit-box-flex: 0;
-                        -ms-flex: 0 0 100%;
-                            flex: 0 0 100%;
+                        -ms-flex: 0 0 calc(100% / 1);
+                            flex: 0 0 calc(100% / 1);
                     height: auto;
                     opacity: 0;
                     -webkit-transition: all 1300ms ease;
@@ -1407,7 +1431,7 @@ input::-ms-input-placeholder{
                         justify-content: center;
                     } */
 
-.spotlight-wrapper .carousel-spotlight .carousel-content .carousel-content-list .carousel-item img{
+.spotlight-wrapper .slider-spotlight .carousel-content .carousel-content-list .carousel-item img{
                         position: relative;
                         top: 0;
                         width: 100%;
@@ -1420,7 +1444,7 @@ input::-ms-input-placeholder{
                                 box-shadow: rgba(0, 0, 0, 0.05) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 25px -10px;
                     }
 
-.spotlight-wrapper .carousel-spotlight .carousel-indicators{
+.spotlight-wrapper .slider-spotlight .carousel-indicators{
             position: absolute;
             display: -webkit-box;
             display: -ms-flexbox;
@@ -1437,7 +1461,7 @@ input::-ms-input-placeholder{
             top: 0;
         }
 
-.spotlight-wrapper .carousel-spotlight .carousel-indicators .carousel-indicators-list{
+.spotlight-wrapper .slider-spotlight .carousel-indicators .carousel-indicators-list{
                 position: absolute;
                 list-style: none;
                 display: -webkit-inline-box;
@@ -1448,7 +1472,7 @@ input::-ms-input-placeholder{
                 bottom: 5%;
             }
 
-.spotlight-wrapper .carousel-spotlight .carousel-indicators .carousel-indicators-list .carousel-item{
+.spotlight-wrapper .slider-spotlight .carousel-indicators .carousel-indicators-list .carousel-item{
                     width: .5vw;
                     height: .5vw;
                     border-radius: 50%;
@@ -1456,11 +1480,11 @@ input::-ms-input-placeholder{
                     margin: 5px
                 }
 
-.spotlight-wrapper .carousel-spotlight .carousel-indicators .carousel-indicators-list .carousel-item.active{
+.spotlight-wrapper .slider-spotlight .carousel-indicators .carousel-indicators-list .carousel-item.active{
                         background-color: rgba(255, 255, 255, 1);
                     }
 
-.spotlight-wrapper .carousel-spotlight .carousel-control-prev{
+.spotlight-wrapper .slider-spotlight .carousel-control-prev{
             position: absolute;
             color: rgba(255, 255, 255, 0.5);
             left: 0;
@@ -1485,14 +1509,14 @@ input::-ms-input-placeholder{
                 align-content: center
         }
 
-.spotlight-wrapper .carousel-spotlight .carousel-control-prev:hover{
+.spotlight-wrapper .slider-spotlight .carousel-control-prev:hover{
                 background: -webkit-gradient(linear,  left top, right top,  from(rgba(24,25,28, 0.75)), to(transparent));
                 background: linear-gradient(90deg,  rgba(24,25,28, 0.75), transparent);
                 cursor: pointer;
                 color: white;
             }
 
-.spotlight-wrapper .carousel-spotlight .carousel-control-next{
+.spotlight-wrapper .slider-spotlight .carousel-control-next{
             position: absolute;
             color: rgba(255, 255, 255, 0.3);
             right: 0;
@@ -1517,7 +1541,7 @@ input::-ms-input-placeholder{
                 align-content: center
         }
 
-.spotlight-wrapper .carousel-spotlight .carousel-control-next:hover{
+.spotlight-wrapper .slider-spotlight .carousel-control-next:hover{
                 background: -webkit-gradient(linear,  right top, left top,  from(rgba(24,25,28, 0.75)), to(transparent));
                 background: linear-gradient(-90deg,  rgba(24,25,28, 0.75), transparent);
                 cursor: pointer;
@@ -1580,8 +1604,8 @@ input::-ms-input-placeholder{
 .buttons-sections .buttons-list .item-button{
             position: relative;
             -webkit-box-flex: 0;
-                -ms-flex: 0 0 20%;
-                    flex: 0 0 20%;
+                -ms-flex: 0 0 calc(100%/5);
+                    flex: 0 0 calc(100%/5);
             -webkit-transition: all .3s ease;
             transition: all .3s ease;
             display: -webkit-box;
@@ -1761,6 +1785,16 @@ input::-ms-input-placeholder{
 .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover p{
                                           color: #f7f7f7;
                                     }
+.lazy-load-image-background.opacity {
+  opacity: 0;
+}
+
+.lazy-load-image-background.opacity.lazy-load-image-loaded {
+  opacity: 1;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+
 /* App */
 
 /* Top Menu */
@@ -1777,8 +1811,8 @@ input::-ms-input-placeholder{
       position: relative;
       width: 100%;
       -webkit-box-flex: 0;
-          -ms-flex: 0 0 20%;
-              flex: 0 0 20%;
+          -ms-flex: 0 0 calc(100% / 5);
+              flex: 0 0 calc(100% / 5);
       -ms-flex-wrap: nowrap;
           flex-wrap: nowrap;
       min-height: 24vw;
@@ -2409,6 +2443,7 @@ input::-ms-input-placeholder{
             background: -webkit-gradient(linear, left bottom, left top, from(rgba(24,25,28, 1)), to(transparent));
             background: linear-gradient(to top, rgba(24,25,28, 1), transparent);
             bottom: 0;
+            height: 5vw;
       }
 
 .guide .content-button-guide .button-guide{
@@ -2427,8 +2462,9 @@ input::-ms-input-placeholder{
                           box-shadow: none;
                   -webkit-transform: scale(0.9);
                           transform: scale(0.9);
-                  padding: 3vw 0 1vw 0;
                   font-size: 1vw;
+                  -webkit-transition: none;
+                  transition: none;
             }
 
 .guide .content-button-guide .button-guide i{
@@ -2650,8 +2686,12 @@ input::-ms-input-placeholder{
 
 #tyh-ugk .MuiTooltip-tooltip{
             width: 200px;
-            padding: 2.5px 20px !important;
+            padding: 2.5px 20px !important
       }
+
+#tyh-ugk .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft{
+                  margin: 0;
+            }
 
 #tyh-ugk .MuiTooltip-tooltip .MuiSlider-root{
                   color: #f7f7f7 !important;
@@ -3878,8 +3918,8 @@ input::-ms-input-placeholder{
 
 .list-catalogue.portrait .item-link{
                   -webkit-box-flex: 0;
-                      -ms-flex: 0 0 14.28571%;
-                          flex: 0 0 14.28571%;
+                      -ms-flex: 0 0 calc(100% / 7);
+                          flex: 0 0 calc(100% / 7);
                   /* height: 20vw; */
             }
 
@@ -3893,8 +3933,8 @@ input::-ms-input-placeholder{
 
 .list-catalogue.landscape .item-link{
                   -webkit-box-flex: 0;
-                      -ms-flex: 0 0 20%;
-                          flex: 0 0 20%;
+                      -ms-flex: 0 0 calc(100% / 5);
+                          flex: 0 0 calc(100% / 5);
             }
 
 .list-catalogue.wrap.landscape .list-items{
@@ -3917,8 +3957,8 @@ input::-ms-input-placeholder{
 
 .list-season.portrait .item-link{
                   -webkit-box-flex: 0;
-                      -ms-flex: 0 0 14.28571%;
-                          flex: 0 0 14.28571%;
+                      -ms-flex: 0 0 calc(100% / 7);
+                          flex: 0 0 calc(100% / 7);
             }
 
 .list-season.landscape .list-items .background-item{
@@ -3953,8 +3993,8 @@ input::-ms-input-placeholder{
 
 .list-season.landscape .item-link{
                   -webkit-box-flex: 0;
-                      -ms-flex: 0 0 20%;
-                          flex: 0 0 20%;
+                      -ms-flex: 0 0 calc(100% / 5);
+                          flex: 0 0 calc(100% / 5);
                   margin-bottom: 3vw;
 
             }
@@ -4027,8 +4067,8 @@ input::-ms-input-placeholder{
 
 .list-card.portrait .item-link{
                   -webkit-box-flex: 0;
-                      -ms-flex: 0 0 14.28571%;
-                          flex: 0 0 14.28571%;
+                      -ms-flex: 0 0 calc(100% / 7);
+                          flex: 0 0 calc(100% / 7);
             }
 
 .list-card.landscape .list-items .background-item{
@@ -4037,8 +4077,8 @@ input::-ms-input-placeholder{
 
 .list-card.landscape .item-link{
                   -webkit-box-flex: 0;
-                      -ms-flex: 0 0 20%;
-                          flex: 0 0 20%;
+                      -ms-flex: 0 0 calc(100% / 5);
+                          flex: 0 0 calc(100% / 5);
                   /* border: 1px solid red; */
             }
 
@@ -4149,8 +4189,8 @@ input::-ms-input-placeholder{
 
 .list-cards.portrait .item-link{
                   -webkit-box-flex: 0;
-                      -ms-flex: 0 0 14.28571%;
-                          flex: 0 0 14.28571%;
+                      -ms-flex: 0 0 calc(100% / 7);
+                          flex: 0 0 calc(100% / 7);
             }
 
 .list-cards.landscape .list-items{
@@ -4163,8 +4203,8 @@ input::-ms-input-placeholder{
 
 .list-cards.landscape .item-link{
                   -webkit-box-flex: 0;
-                      -ms-flex: 0 0 20%;
-                          flex: 0 0 20%;
+                      -ms-flex: 0 0 calc(100% / 5);
+                          flex: 0 0 calc(100% / 5);
                   min-height: 24vw;
             }
 
@@ -4364,8 +4404,8 @@ input::-ms-input-placeholder{
 
 .list-covers.portrait .item-link{
                   -webkit-box-flex: 0;
-                      -ms-flex: 0 0 14.28571%;
-                          flex: 0 0 14.28571%;
+                      -ms-flex: 0 0 calc(100% / 7);
+                          flex: 0 0 calc(100% / 7);
             }
 
 .list-covers.landscape .list-items{
@@ -4378,8 +4418,8 @@ input::-ms-input-placeholder{
 
 .list-covers.landscape .item-link{
                   -webkit-box-flex: 0;
-                      -ms-flex: 0 0 20%;
-                          flex: 0 0 20%;
+                      -ms-flex: 0 0 calc(100% / 5);
+                          flex: 0 0 calc(100% / 5);
                   min-height: 400px;
             }
 
@@ -5638,8 +5678,8 @@ input::-ms-input-placeholder{
       .list-content .list .item{
                   position: relative;
                   -webkit-box-flex: 0;
-                      -ms-flex: 0 0 14.28571%;
-                          flex: 0 0 14.28571%;
+                      -ms-flex: 0 0 calc(100% / 7);
+                          flex: 0 0 calc(100% / 7);
                   margin-bottom: 40px;
                   -webkit-box-sizing: border-box;
                           box-sizing: border-box;
@@ -5989,7 +6029,7 @@ input::-ms-input-placeholder{
 
 .content-artist .popular-songs .list-songs .item-song{
                         position: relative;
-                        width: 100%;
+                        width: calc(100%);
                         height: 75px;
                         padding: 10px 20px;
                         display: -webkit-box;
@@ -6100,7 +6140,7 @@ input::-ms-input-placeholder{
             }
 
 .content-artist .albums-artist .list-albums .item-album{
-                        width: 25%;
+                        width: calc(100% / 4);
                         padding: 0 15px 15px 15px;
                         -webkit-box-sizing: border-box;
                                 box-sizing: border-box;
@@ -6384,8 +6424,8 @@ input::-ms-input-placeholder{
 
 .album-artist-wrapper .more-of-artist .albums-artist .list-albums .item-album{
                               -webkit-box-flex: 0;
-                                  -ms-flex: 0 0 14.70588%;
-                                      flex: 0 0 14.70588%;
+                                  -ms-flex: 0 0 calc(100% / 6.8);
+                                      flex: 0 0 calc(100% / 6.8);
 
                         }
 
@@ -6837,7 +6877,7 @@ input::-ms-input-placeholder{
 .wrapper-music{
       position: absolute;
       width: 100%;
-      height: calc(100vh - 165px);
+      height: calc(100vh - (65px + 100px));
       /* border: 1px solid red; */
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
@@ -6977,7 +7017,7 @@ input::-ms-input-placeholder{
             }
 
 .more-of-artist .albums-artist .list-albums .item-album{
-                        width: 16.66667%;
+                        width: calc(100% / 6);
                         padding: 0 40px 40px 0;
                         -webkit-box-sizing: border-box;
                                 box-sizing: border-box;
@@ -7502,6 +7542,118 @@ input::-ms-input-placeholder{
     src: url("assets/fonts/HurmeGeometricSans3 Black.558a7cc06c8d3ce3a76ca4f73d0f6a1b.otf");
 }
 
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+}
+
+.fade-enter-done {
+  opacity: 1;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+}
+
+.fade-exit-done {
+  opacity: 0;
+}
+
+.fade-50-enter {
+  opacity: 0;
+}
+
+.fade-50-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
+}
+
+.fade-50-enter-done {
+  opacity: 1;
+}
+
+.fade-50-exit {
+  opacity: 1;
+}
+
+.fade-50-exit-active {
+  opacity: 0;
+  -webkit-transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
+}
+
+.fade-50-exit-done {
+  opacity: 0;
+}
+
+.fade-100-enter {
+  opacity: 0;
+}
+
+.fade-100-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
+}
+
+.fade-100-enter-done {
+  opacity: 1;
+}
+
+.fade-100-exit {
+  opacity: 1;
+}
+
+.fade-100-exit-active {
+  opacity: 0;
+  -webkit-transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
+}
+
+.fade-100-exit-done {
+  opacity: 0;
+}
+
+.fade-150-enter {
+  opacity: 0;
+}
+
+.fade-150-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
+}
+
+.fade-150-enter-done {
+  opacity: 1;
+}
+
+.fade-150-exit {
+  opacity: 1;
+}
+
+.fade-150-exit-active {
+  opacity: 0;
+  -webkit-transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
+}
+
+.fade-150-exit-done {
+  opacity: 0;
+}
+
 /* App */
 
 /* Top Menu */
@@ -7596,34 +7748,6 @@ ul, ol{
   outline: none !important;
 }
 
-.fade-enter {
-  opacity: 0;
-}
-
-.fade-enter-active {
-  opacity: 1;
-  -webkit-transition: opacity 300ms ease-in-out;
-  transition: opacity 300ms ease-in-out;
-}
-
-.fade-enter-done {
-  opacity: 1;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit-active {
-  opacity: 0;
-  -webkit-transition: opacity 300ms ease-in-out;
-  transition: opacity 300ms ease-in-out;
-}
-
-.fade-exit-done {
-  opacity: 0;
-}
-
 .disabled{
   pointer-events: none;
   opacity: 0.25;
@@ -7637,30 +7761,3 @@ ul, ol{
     height: 50px !important; */
   }
 
-.fade-150-enter {
-  opacity: 0;
-}
-
-.fade-150-enter-active {
-  opacity: 1;
-  -webkit-transition: opacity 150ms ease-in-out;
-  transition: opacity 150ms ease-in-out;
-}
-
-.fade-150-enter-done {
-  opacity: 1;
-}
-
-.fade-150-exit {
-  opacity: 1;
-}
-
-.fade-150-exit-active {
-  opacity: 0;
-  -webkit-transition: opacity 150ms ease-in-out;
-  transition: opacity 150ms ease-in-out;
-}
-
-.fade-150-exit-done {
-  opacity: 0;
-}  

@@ -93,6 +93,10 @@
       .MuiTooltip-tooltip{
             width: 200px;
             padding: 2.5px 20px !important;
+
+            &.MuiTooltip-tooltipPlacementLeft{
+                  margin: 0;
+            }
       
             .MuiSlider-root{
                   color: $color-white !important;

@@ -1,7 +1,6 @@
 import React from 'react'
 
-
-export function Link({className, href, children}){
+export function Link({ className, href, children }) {
       const dataUia = `${className}-label`
 
       return (

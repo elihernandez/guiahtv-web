@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { Fragment, useState, useContext, useEffect } from 'react'
 import { Switch, Route, useRouteMatch } from "react-router-dom"
 import { getLiveTV } from '../../../../services/getLiveTV'
 import LiveTvContext from '../../../../context/LiveTvContext'
@@ -52,25 +52,27 @@ export function GuideChannels() {
                   {!hide &&
                         <div className="content-button-guide">
                               <button type="button" className="button-guide" onClick={()=> requestData()}>
-                                    <i class="fas fa-chevron-up" />
+                                    <i className="fas fa-chevron-up" />
                                     Mostrar guía
                               </button>
                         </div>
                   }
                   <CSSTransition in={show} timeout={300} classNames="fade" unmountOnExit>
-                        {dataTV &&
-                              <div className="guide-wrapper">
-                                    <Categories data={dataTV} />
-                                    <Switch>
-                                          <Route exact path={`${url}`} >
-                                                <Channels data={dataTV} />
-                                          </Route>
-                                          <Route exact path={`${url}/:categoria/:canal?`} >
-                                                <Channels data={dataTV} />
-                                          </Route>
-                                    </Switch>
-                              </div>
-                        }
+                        <div className="guide-wrapper">
+                              {dataTV &&
+                                    <Fragment>
+                                          <Categories data={dataTV} />
+                                          <Switch>
+                                                <Route exact path={`${url}`} >
+                                                      <Channels data={dataTV} />
+                                                </Route>
+                                                <Route exact path={`${url}/:categoria/:canal?`} >
+                                                      <Channels data={dataTV} />
+                                                </Route>
+                                          </Switch>
+                                    </Fragment>
+                              }
+                        </div>
                   </CSSTransition>
             </div>
       )

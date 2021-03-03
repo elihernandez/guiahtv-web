@@ -1,6 +1,7 @@
 @import './fonts/Roboto/styles.css';
 @import './fonts/Poppins/styles.css';
 @import './fonts/HurmeGeometricSans/styles.css';
+@import './fade-transition.css';
 @import './style-base.css';
 
 html,
@@ -85,26 +86,6 @@ ul, ol{
   outline: none !important;
 }
 
-.fade-enter {
-  opacity: 0;
-}
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 300ms ease-in-out;
-}
-.fade-enter-done {
-  opacity: 1;
-}
-.fade-exit {
-  opacity: 1;
-}
-.fade-exit-active {
-  opacity: 0;
-  transition: opacity 300ms ease-in-out;
-}    
-.fade-exit-done {
-  opacity: 0;
-}  
 
 .disabled{
   pointer-events: none;
@@ -120,24 +101,3 @@ ul, ol{
     height: 50px !important; */
   }
 }
-
-.fade-150-enter {
-  opacity: 0;
-}
-.fade-150-enter-active {
-  opacity: 1;
-  transition: opacity 150ms ease-in-out;
-}
-.fade-150-enter-done {
-  opacity: 1;
-}
-.fade-150-exit {
-  opacity: 1;
-}
-.fade-150-exit-active {
-  opacity: 0;
-  transition: opacity 150ms ease-in-out;
-}    
-.fade-150-exit-done {
-  opacity: 0;
-}  

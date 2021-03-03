@@ -1,22 +1,54 @@
-.logo{
+.logo-guiahtv{
       display: flex;
       justify-content: center;
 
-      .img-guiahtv-logo{
+      .img-logo{
             position: relative;
-            height: 65px;
             width: auto;
+
+            &.sm{
+                  height: 40px;  
+            }
+
+            &.md{
+                  height: 60px;  
+            }
+
+            &.lg{
+                  height: 80px;  
+            }
       }
 
       @media (--movil-large-viewport){
-            .img-guiahtv-logo{
-                  height: 65px;
-            }  
+            .img-logo{
+
+                  &.sm{
+                        height: 35px;  
+                  }
+      
+                  &.md{
+                        height: 55px;  
+                  }
+      
+                  &.lg{
+                        height: 75px;  
+                  } 
+            }
       }
 
       @media (--movil-small-viewport){
-            .img-guiahtv-logo{
-                  height: 60px;
-            }  
+            .img-logo{
+                  &.sm{
+                        height: 30px;  
+                  }
+      
+                  &.md{
+                        height: 50px;  
+                  }
+      
+                  &.lg{
+                        height: 70px;  
+                  } 
+            }
       }
 }

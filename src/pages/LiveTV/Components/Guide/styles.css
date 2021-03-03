@@ -13,6 +13,7 @@
             justify-content: center;
             background: linear-gradient(to top, rgba($rgba-color-guide-black, 1), transparent);
             bottom: 0;
+            height: 5vw;
 
             .button-guide{
                   background: transparent;
@@ -21,8 +22,8 @@
                   align-items: center;
                   box-shadow: none;
                   transform: scale(0.9);
-                  padding: 3vw 0 1vw 0;
                   font-size: 1vw;
+                  transition: none;
 
                   i{
                         font-size: 2.2vw;

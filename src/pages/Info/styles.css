@@ -11,7 +11,7 @@
             z-index: 1;
             width: 100%;
             min-height: 100%;
-            background-image: url(../../assets/images/backgrounds/background-login.jpg);
+            background-image: url(../../assets/images/backgrounds/background-login.webp);
             background-size: 100%;
             background-repeat: no-repeat;
       }
@@ -72,24 +72,24 @@
       /* padding-top: 175px; */
       padding-left: 75px;
 
-      .logo{
+      .logo-guiahtv{
             justify-content: flex-start;
             margin: 25px 0;
       }
 
       .title-text{
             font-weight: 600;
-            line-height: 55px;
+            /* line-height: 55px; */
       }
 
       .subtitle-text{
             font-weight: 300;
-            margin-top: 10px;
+            margin: 10px 0;
             
       }
 
       .group-info{
-            margin-top: 50px;
+            margin: 50px 0;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -111,6 +111,13 @@
                   
       }
 }
+
+@media (max-width: 1800px) {
+      .center-content{
+            width: 50%;
+      }
+}
+
 
 @media (--laptop-large-viewport) {
       .center-content{
@@ -157,7 +164,7 @@
             width: calc(100% - 50px);
             padding-top: 350px;
             
-            .logo{
+            .logo-guiahtv{
                   justify-content: center;
             }
 

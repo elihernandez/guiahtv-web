@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group'
 import Tooltip from '@material-ui/core/Tooltip'
 import Slider from '@material-ui/core/Slider'
 import screenfull, { changeFullScreen, toggleFullScreen } from '../../../../js/Screen'
+import Fade from '@material-ui/core/Fade'
 import './styles.css'
 
 function ButtonFullScreen() {
