@@ -87,7 +87,7 @@ export function Channels({ data }) {
                                                                   pages = Math.trunc(pages)
                                                                   setPage(pages)
                                                                   let moveP = 100 * (pages)
-                                                                  console.log(pages)
+                                                                  // console.log(pages)
                                                                   cssTransition(refChannels.current, {
                                                                         transform: `translate3d(-${moveP}%, 0, 0)`
                                                                   }, 0, function () {
@@ -105,7 +105,7 @@ export function Channels({ data }) {
                                                                   pages = Math.trunc(pages)
                                                                   setPage(pages)
                                                                   let moveP = 100 * (pages)
-                                                                  console.log(moveP)
+                                                                  // console.log(moveP)
                                                                   cssTransition(refChannels.current, {
                                                                         transform: `translate3d(-${moveP}%, 0, 0)`
                                                                   }, 0, function () {
@@ -208,7 +208,7 @@ export function Channels({ data }) {
                                           category.cmData.map((channel, index) => {
                                                 if(isEvent(channel.ContentType)){
                                                       if(channel.Id == canal){
-                                                            console.log(index)
+                                                            // console.log(index)
                                                             dispatch({ type: 'updateData', payload: channel })
                                                             dispatchTV({ type: 'updatePage', payload: page })
                                                             dispatchTV({ type: 'updateCategory', payload: categoria })
@@ -223,7 +223,7 @@ export function Channels({ data }) {
                                                                   pages = Math.trunc(pages)
                                                                   setPage(pages)
                                                                   let moveP = 100 * (pages)
-                                                                  console.log(moveP)
+                                                                  // console.log(moveP)
                                                                   cssTransition(refChannels.current, {
                                                                         transform: `translate3d(-${moveP}%, 0, 0)`
                                                                   }, 0, function () {

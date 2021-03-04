@@ -3,7 +3,7 @@
 .top-menu{
     width: 100%;
     padding: 0 $padding-content;
-    transition: background-color 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
 
     &.bgcolor{
         background-color: $color-black-2;

@@ -239,8 +239,8 @@
 .top-menu{
     width: 100%;
     padding: 0 45px;
-    -webkit-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out
+    -webkit-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out
 }
 
 .top-menu.bgcolor{
@@ -2472,6 +2472,9 @@ input::-ms-input-placeholder{
                   font-size: 1vw;
                   -webkit-transition: none;
                   transition: none;
+                  border: none;
+                  color: #f7f7f7;
+                  cursor: pointer;
             }
 
 .guide .content-button-guide .button-guide i{
@@ -2693,12 +2696,13 @@ input::-ms-input-placeholder{
 
 #tyh-ugk .MuiTooltip-tooltip{
             width: 200px;
-            padding: 2.5px 20px !important
+            padding: 2.5px 20px !important;
       }
 
-#tyh-ugk .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft{
+/* 
+            &.MuiTooltip-tooltipPlacementLeft{
                   margin: 0;
-            }
+            } */
 
 #tyh-ugk .MuiTooltip-tooltip .MuiSlider-root{
                   color: #f7f7f7 !important;
