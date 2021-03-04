@@ -36,7 +36,7 @@ function Button({title, contentType, img}){
             <picture>
                 <source srcSet={img} type="image/webp" />
                 <source srcSet={imgSourceSetPng(img, 'png')} type="image/png" />
-                <img src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt="Image-tv-fallback" className="image-button" />
+                <img src="build/assets/images/logos/guiahtv/error-tv-landscape.png" alt={altImg} className="image-button" />
             </picture>
             <H6 className="title-button title-2">{title}</H6>
         </li>

@@ -1,9 +1,8 @@
 @import '../../scss/style-base.css';
 
 .wrapper-home{
-    /* overflow-x: hidden;
-    border: 1px solid red; */
     min-height: calc(100vh - $height-top-menu);
+    padding: 0 90px;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;

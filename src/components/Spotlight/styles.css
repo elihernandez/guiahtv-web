@@ -5,8 +5,7 @@
     width: 100%;
     height: auto;
     margin: 10px 0;
-    padding: 0 90px;
-    /* overflow: hidden; */
+    height: 30vw;
 
     .slick-slider{
         position: relative;

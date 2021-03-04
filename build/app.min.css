@@ -6,10 +6,6 @@
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .navbar .section-wrapper .navbar-list{
             display: -webkit-box;
             display: -ms-flexbox;
@@ -94,10 +90,6 @@
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .popper-menu-wrapper button{
             font-family: 'Poppins' !important;
             text-transform: inherit !important;
@@ -153,10 +145,6 @@
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .user-profile-navbar{
       /* border: 2px solid $color-grey-5; */
@@ -231,10 +219,6 @@
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .top-menu{
     width: 100%;
@@ -362,10 +346,6 @@
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 header{
       position: fixed;
       width: 100%;
@@ -444,10 +424,6 @@ h6{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .button-ui{
       border: none;
       color: #f7f7f7;
@@ -511,10 +487,6 @@ h6{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .footer-app{
       position: relative;
@@ -626,10 +598,6 @@ h6{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .wrapper-main-home{
       position: relative;
@@ -911,10 +879,6 @@ h6{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .loader-spinner{
     position: absolute;
     z-index: 999;
@@ -1135,10 +1099,6 @@ h6{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .wrapper-login{
     position: relative;
@@ -1666,19 +1626,13 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .spotlight-wrapper{
     position: relative;
     width: 100%;
     height: auto;
     margin: 10px 0;
-    padding: 0 90px;
+    height: 30vw;
 }
-
-/* overflow: hidden; */
 
 .spotlight-wrapper .slick-slider{
         position: relative;
@@ -2083,14 +2037,9 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .buttons-sections{
     position: relative;
     width: 100%;
-    padding: 0 50px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2110,8 +2059,6 @@ input::-ms-input-placeholder{
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
 }
-
-/* margin-top: -4vw; */
 
 .buttons-sections .buttons-list{
         width: 100%;
@@ -2199,14 +2146,9 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .wrapper-home{
-    /* overflow-x: hidden;
-    border: 1px solid red; */
     min-height: calc(100vh - 65px);
+    padding: 0 90px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2224,10 +2166,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .navbar-guide-tv .section-wrapper{ 
             padding: 0 50px;
@@ -2314,10 +2252,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .channel-link{
       position: relative;
@@ -2809,10 +2743,6 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .channels{
       position: relative;
       height: 100%;
@@ -2931,10 +2861,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .guide{
       position: relative;
@@ -3080,10 +3006,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .info-channel-wrapper{
       padding: 7vw 50px 0 50px;
@@ -3266,10 +3188,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .loader-tv{
       position: absolute;
@@ -3498,10 +3416,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .controls-player{
       position: absolute;
@@ -3899,10 +3813,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .list .item-link{
             position: relative;
@@ -4388,10 +4298,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .title-list{
       font-size: 1.1vw;
@@ -5133,10 +5039,6 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .info-wrapper{
       position: absolute;
       width: 100%;
@@ -5573,10 +5475,6 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .content-catalogue{
       padding-top: 65px
 }
@@ -5631,10 +5529,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .MuiPaper-root{
       /* background-color: transparent !important; */
@@ -5739,10 +5633,6 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .info-audio-wrapper{
       -webkit-box-flex: 1;
           -ms-flex: 1 1 auto;
@@ -5792,10 +5682,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .button-read-more-wrapper{
       width: 75px;
@@ -5855,10 +5741,6 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .button-more-info-wrapper{
       width: 75px;
       display: -webkit-box;
@@ -5905,10 +5787,6 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .button-fav-wrapper{
       width: 75px;
       display: -webkit-box;
@@ -5954,10 +5832,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .control-volume-wrapper{
       position: relative;
@@ -6029,10 +5903,6 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .player-content{
       position: absolute;
       height: auto;
@@ -6065,10 +5935,6 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .wrapper-radio{
       position: absolute;
       width: 100%;
@@ -6082,10 +5948,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .sidebar{
       position: relative;
@@ -6315,10 +6177,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .header{
       position: relative;
@@ -6980,10 +6838,6 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .album-artist{
       position: relative;
       width: 100%;
@@ -7157,10 +7011,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .player-wrapper{
       position: fixed;
@@ -7386,10 +7236,6 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 .wrapper-music{
       position: absolute;
       width: 100%;
@@ -7487,10 +7333,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .more-of-artist .header-section .title-section{
                   font-size: 18px;
@@ -7751,10 +7593,6 @@ input::-ms-input-placeholder{
 /* Music */
 
 /* Radio */
-
-.w-padding-top{
-      padding-top: 65px;
-}
 
 .get-app-wrapper{
       position: relative;
@@ -8178,22 +8016,12 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.w-padding-top{
-      padding-top: 65px;
-}
-
 html,
 body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif !important;
-  /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1951%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='url(%23SvgjsLinearGradient1952)'%3e%3c/rect%3e%3cpath d='M0 0L244.06 0L0 226.26z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M0 226.26L244.06 0L1071.31 0L0 540.39z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M0 540.39L1071.31 0L1132.59 0L0 771.98z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M0 771.98L1132.59 0L1510.8799999999999 0L0 871.58z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M1920 1080L1519.7 1080L1920 1002.41z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M1920 1002.41L1519.7 1080L1498.74 1080L1920 806z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M1920 806L1498.74 1080L640.95 1080L1920 537.77z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M1920 537.77L640.95 1080L311.64000000000004 1080L1920 258.88z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1951'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='10.94%25' y1='-19.44%25' x2='89.06%25' y2='119.44%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1952'%3e%3cstop stop-color='rgba(24%2c 25%2c 28%2c 1)' offset='1'%3e%3c/stop%3e%3cstop stop-color='rgba(14%2c 42%2c 71%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e"); */
-  /* background-image: url('../assets/images/backgrounds/fondomaquetamusica.jpg');
-  background-size: 100%; */
-  background: #232526 
-  /* background: -webkit-linear-gradient(90deg, #414345, #232526); 
-  background: linear-gradient(90deg, #414345, #232526);  */
-  /* opacity: 0.5;    */
+  background: #232526
 }
 
 html::-webkit-scrollbar, body::-webkit-scrollbar {
@@ -8256,15 +8084,6 @@ input{
   background: #232526;
 }
 
-/* .gradient-overlay{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, #a11f3c 0%, #9352b3 100%);
-  background: linear-gradient(270deg, #052767 0%, #00aeef 100%);
-  opacity: .2;
-} */
-
 .focusable {
   outline: none !important;
 }
@@ -8282,3 +8101,6 @@ input{
     height: 50px !important; */
   }
 
+.w-padding-top{
+  padding-top: 65px;
+}
