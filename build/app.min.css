@@ -1670,7 +1670,9 @@ input::-ms-input-placeholder{
                     display: -ms-flexbox;
                     display: flex;
                     height: auto;
-                    padding: 15px 10px;
+                    padding: 0 10px;
+                    -webkit-transform: scale(0.85);
+                            transform: scale(0.85);
                     -webkit-transition: all 500ms ease-in-out;
                     transition: all 500ms ease-in-out;
                     height: 30vw;
@@ -1711,7 +1713,8 @@ input::-ms-input-placeholder{
                         }
 
 .spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide.slick-active{
-                        padding: 0 10px;
+                        -webkit-transform: scale(1);
+                                transform: scale(1);
                         -webkit-transition: all 500ms ease-in-out;
                         transition: all 500ms ease-in-out;
                     }
@@ -1781,7 +1784,6 @@ input::-ms-input-placeholder{
 .spotlight-wrapper .slick-slider .slick-arrow{
             z-index: 1;
             top: 0;
-            /* background: rgba(0, 0, 0, 0.2); */
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -1792,6 +1794,7 @@ input::-ms-input-placeholder{
             -webkit-box-pack: center;
                 -ms-flex-pack: center;
                     justify-content: center;
+            /* width: 90px; */
             width: 90px;
             height: 100%
         }
@@ -1803,13 +1806,13 @@ input::-ms-input-placeholder{
 .spotlight-wrapper .slick-slider .slick-arrow.slick-prev{
                 -webkit-transform: translate(-100%, 0);
                         transform: translate(-100%, 0);
-                left: -10px;
+                left: 0;
             }
 
 .spotlight-wrapper .slick-slider .slick-arrow.slick-next{
                 -webkit-transform: translate(100%, 0);
                         transform: translate(100%, 0);
-                right: -10px;
+                right: 0;
             }
 
 .spotlight-wrapper .slick-slider .slick-arrow button{
@@ -7458,7 +7461,7 @@ input::-ms-input-placeholder{
                   height: auto;
             }
       
-            @media (max-width: 768px) {
+            @media (--tablet-medium-viewport) {
                   .page-404 .page-404-wrapper .logo {
                         display: -webkit-box;
                         display: -ms-flexbox;
@@ -7504,7 +7507,7 @@ input::-ms-input-placeholder{
                         text-align: center;
                   }
       
-            @media (max-width: 425px) {
+            @media (--movil-large-viewport) {
                         .page-404 .page-404-wrapper .message-container .title-text{
                               font-size: 45px;
                         }
@@ -7518,7 +7521,7 @@ input::-ms-input-placeholder{
                         margin-top: 25px !important;
                   }
       
-            @media (max-width: 425px) {
+            @media (--movil-large-viewport) {
                         .page-404 .page-404-wrapper .message-container p{
                               font-size: 20px;
                         }
@@ -7543,7 +7546,7 @@ input::-ms-input-placeholder{
                               background: white;
                         }
       
-            @media (max-width: 425px) {
+            @media (--movil-large-viewport) {
                         .page-404 .page-404-wrapper .message-container .btn-link-to-home{
                               font-size: 20px;
                         }
