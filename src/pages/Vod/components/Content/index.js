@@ -15,24 +15,22 @@ export function Content() {
       const { loading, data } = useRequest('alacarta', dispatchVod, dataVod)
      
       return (
-            <div className="section-content">
-                  <Switch>
-                        <Route exact path={`${url}`} >
-                              {loading &&
-                                    <LoaderSpinnerMUI />
-                              }
-                             
-                              {!loading && data &&
-                                    <Catalogue data={data} />
-                              }
-                        </Route>
-                        <Route exact path={`${url}/:contentType/:contentId`} >
-                              <InfoContent />
-                        </Route>
-                        <Route exact path={`${url}/:contentType/:contentId/video`} >
-                              <VideoVod state={stateVod} dispatchVod={dispatchVod} />
-                        </Route>
-                  </Switch>
-            </div>
+            <Switch>
+                  <Route exact path={`${url}`} >
+                        {loading &&
+                              <LoaderSpinnerMUI />
+                        }
+                        
+                        {!loading && data &&
+                              <Catalogue data={data} />
+                        }
+                  </Route>
+                  <Route exact path={`${url}/:contentType/:contentId`} >
+                        <InfoContent />
+                  </Route>
+                  <Route exact path={`${url}/:contentType/:contentId/video`} >
+                        <VideoVod state={stateVod} dispatchVod={dispatchVod} />
+                  </Route>
+            </Switch>
       )
 }

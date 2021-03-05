@@ -68,6 +68,12 @@ input{
   font-weight: 400;
 }
 
+button{
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
 .app-content {
   position: relative;
   width: 100%;

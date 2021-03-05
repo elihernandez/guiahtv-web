@@ -31,11 +31,11 @@ const Loader = (props) => (
   </ContentLoader>
 )
 
-export function GuideLoader({ loading }) {
+export function GuideLoader() {
   return (
-      <div>
+      
         <Loader />
-      </div>
+     
   )
 }
 

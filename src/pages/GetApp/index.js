@@ -56,7 +56,7 @@ export function GetApp() {
       return (
             <div className="get-app-wrapper">
                   <div className="container-wrapper">
-                        <Logo color="blue" />
+                        <Logo color="blue" size="md" />
                         <h2 className="title">Disfruta en donde quieras, cancela cuando quieras.</h2>
                         <ImgDevice />
                         <InfoDevice />

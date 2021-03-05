@@ -47,7 +47,7 @@ export function LoaderSpinnerMUI({ text, placementText }) {
     const classContent = placementText == "top" || "bottom" ? "column" : "row"
 
     return (
-        <div className={`section-content spinner-mui ${classContent}`}>
+        <div className={`spinner-mui ${classContent}`}>
             <CircularProgress disableShrink />
             {text &&
                 <p className="text-loading">{text}</p>

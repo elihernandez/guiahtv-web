@@ -56,7 +56,7 @@ function Content({ children }) {
                   e.target == document.querySelector('.channel-name') ||
                   e.target == document.querySelector('.navbar-list')
             ) {
-                  if (isVisible) {
+                  if (isVisible && activeChannel) {
                         clearTimeout(timerRef.current)
                         fadeOutContent()
                   } else {
@@ -143,8 +143,7 @@ export function LiveTV() {
                         return {
                               ...state,
                               timerChannel: action.timer,
-                              activeTimer: action.active,
-                              dataChannel: null,
+                              activeTimer: action.active
                         }
                   }
                   case 'updateVolume': {

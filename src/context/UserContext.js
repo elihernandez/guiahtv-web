@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useReducer } from 'react'
 import { useAuth } from '../hooks/useAuth'
+import { isArrayEmpty } from '../js/Array'
 const Context = createContext({})
 
 export function UserContextProvider({ children }) {
@@ -37,12 +38,13 @@ export function UserContextProvider({ children }) {
       const [stateUser, dispatchUser] = useReducer(reducer, initialState)
 
       useEffect(() => {
-            console.log(cookies)
             dispatchUser({ type: 'setCredentials', payload: cookies })
       }, [cookies])
 
       return <Context.Provider value={{ stateUser, dispatchUser }}>
-            {children}
+            {!isArrayEmpty(stateUser.credentials) &&
+                  children
+            }
       </Context.Provider>
 }
 

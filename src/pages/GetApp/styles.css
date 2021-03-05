@@ -3,6 +3,7 @@
 .get-app-wrapper{
       position: relative;
       width: 100%;
+      min-height: 100vh;
     
       .container-wrapper{
             position: relative;
@@ -97,6 +98,10 @@
                   }
             
             }
+      }
+
+      .footer-app{
+            background: $color-black-2;
       }
 }
 

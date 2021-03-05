@@ -15,6 +15,7 @@ import { ErrorAuth } from "../../pages/ErrorAuth/index"
 import { SnackbarAuth } from '../SnackbarAuth'
 import { GetApp } from '../../pages/GetApp'
 import { isBrowser, isMobile } from "react-device-detect"
+import { isAuth } from '../../js/Auth'
 
 function CheckAuth({ children, credentials }) {
     return (
@@ -52,75 +53,69 @@ export default function BaseRouter() {
     const { stateUser } = useContext(UserContext)
     const { credentials, errorAuth } = stateUser
 
-    console.log(credentials)
-
     if (errorAuth) return <ErrorAuth message={errorAuth} />
 
-    if (credentials.length == 0) return null
-
     return (
-        <Fragment>
-            <HashRouter>
-                <Switch>
-                    <Route exact path="/">
-                        {credentials.memclid
-                            ? <CheckAuth credentials={credentials}>
-                                <Home />
-                            </CheckAuth>
-                            : <CheckDevice>
-                                <Info />
-                            </CheckDevice>
-                        }
-                    </Route>
-
-                    <Route path="/login">
-                        {credentials.memclid ? <Redirect to="/" /> : <Login />}
-                    </Route>
-
-                    <Route path="/tv">
-                        <CheckAuth credentials={credentials}>
-                            <LiveTV />
+        <HashRouter>
+            <Switch>
+                <Route exact path="/">
+                    {isAuth(credentials)
+                        ? <CheckAuth credentials={credentials}>
+                            <Home />
                         </CheckAuth>
-                    </Route>
+                        : <CheckDevice>
+                            <Info />
+                        </CheckDevice>
+                    }
+                </Route>
 
-                    <Route path="/alacarta">
-                        <CheckAuth credentials={credentials}>
-                            <VideoOnDemand />
-                        </CheckAuth>
-                    </Route>
+                <Route path="/login">
+                    {credentials.memclid ? <Redirect to="/" /> : <Login />}
+                </Route>
 
-                    <Route path="/zonakids">
-                        <CheckAuth credentials={credentials}>
-                            <Zonakids />
-                        </CheckAuth>
-                    </Route>
+                <Route path="/tv">
+                    <checkAuth credentials={credentials}>
+                        <LiveTV />
+                    </checkAuth>
+                </Route>
 
-                    <Route path="/musica">
-                        <CheckAuth credentials={credentials}>
-                            <Music />
-                        </CheckAuth>
-                    </Route>
+                <Route path="/alacarta">
+                    <checkAuth credentials={credentials}>
+                        <VideoOnDemand />
+                    </checkAuth>
+                </Route>
 
-                    <Route path="/radio">
-                        <CheckAuth credentials={credentials}>
-                            <Radio />
-                        </CheckAuth>
-                    </Route>
+                <Route path="/zonakids">
+                    <checkAuth credentials={credentials}>
+                        <Zonakids />
+                    </checkAuth>
+                </Route>
 
-                    <Route path="/obtener-app">
-                        {isBrowser &&
-                            <Redirect to="/" />
-                        }
-                        {isMobile &&
-                            <GetApp />
-                        }
-                    </Route>
+                <Route path="/musica">
+                    <checkAuth credentials={credentials}>
+                        <Music />
+                    </checkAuth>
+                </Route>
 
-                    <Route path="*">
-                        <Page404 />
-                    </Route>
-                </Switch>
-            </HashRouter>
-        </Fragment>
+                <Route path="/radio">
+                    <CheckAuth credentials={credentials}>
+                        <Radio />
+                    </CheckAuth>
+                </Route>
+
+                <Route path="/obtener-app">
+                    {isBrowser &&
+                        <Redirect to="/" />
+                    }
+                    {isMobile &&
+                        <GetApp />
+                    }
+                </Route>
+
+                <Route path="*">
+                    <Page404 />
+                </Route>
+            </Switch>
+        </HashRouter>
     )
 }

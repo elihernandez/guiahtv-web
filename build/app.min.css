@@ -1630,7 +1630,6 @@ input::-ms-input-placeholder{
     position: relative;
     width: 100%;
     height: auto;
-    margin: 10px 0;
     height: 30vw;
 }
 
@@ -1638,17 +1637,6 @@ input::-ms-input-placeholder{
         position: relative;
         -webkit-backface-visibility: hidden;
                 backface-visibility: hidden;
-
-        /* &::after{
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 5.4px;
-            width: 99%;
-            height: 100%;
-            border: 4px solid white;
-            border-radius: 6px;
-        } */
     }
 
 .spotlight-wrapper .slick-slider .slick-list{
@@ -1794,8 +1782,11 @@ input::-ms-input-placeholder{
             -webkit-box-pack: center;
                 -ms-flex-pack: center;
                     justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             /* width: 90px; */
-            width: 90px;
+            width: 80px;
             height: 100%
         }
 
@@ -1817,12 +1808,21 @@ input::-ms-input-placeholder{
 
 .spotlight-wrapper .slick-slider .slick-arrow button{
                 background: transparent;
+                position: relative;
                 border: none;
                 cursor: pointer;
+                width: 2.5vw;
+                padding: 0;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
             }
 
 .spotlight-wrapper .slick-slider .slick-arrow button i{
-                    font-size: 2vw;
+                    font-size: 1.8vw;
                     color: rgba(255, 255, 255, 0.5);
                 }
 
@@ -7601,6 +7601,7 @@ input::-ms-input-placeholder{
 .get-app-wrapper{
       position: relative;
       width: 100%;
+      min-height: 100vh;
 }
 
 .get-app-wrapper .container-wrapper{
@@ -7721,6 +7722,10 @@ input::-ms-input-placeholder{
                   }
             
             }
+
+.get-app-wrapper .footer-app{
+            background: #18191c;
+      }
 
 
 
@@ -8082,6 +8087,12 @@ ul, ol{
 input{
   font-family: "Poppins", sans-serif !important;
   font-weight: 400;
+}
+
+button{
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 .app-content {
