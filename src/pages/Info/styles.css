@@ -51,7 +51,7 @@
                   background-image: url(../../assets/images/backgrounds/background-login-movil.jpg);
                   background-size: cover;
                   background-repeat: no-repeat;
-                  opacity: 0.5;
+                  opacity: 1;
             }
 
             .gradient-overlay{

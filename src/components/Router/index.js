@@ -1,8 +1,8 @@
 import React, { Fragment, useContext } from "react"
-import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
+import { BrowserRouter, HashRouter, Switch, Route, Redirect } from "react-router-dom"
 import UserContext from "../../context/UserContext"
 import { Header } from "../Header/index"
-import { Info } from "../../pages/Info/index"
+import { Info } from "../../pages/Info/index2"
 import { Login } from "../../pages/Login/index"
 import { Home } from "../../pages/Home/index"
 import { LiveTV } from "../../pages/LiveTV/index"
@@ -56,7 +56,7 @@ export default function BaseRouter() {
     if (errorAuth) return <ErrorAuth message={errorAuth} />
 
     return (
-        <HashRouter>
+        <BrowserRouter basename="watch/dev">
             <Switch>
                 <Route exact path="/">
                     {isAuth(credentials)
@@ -74,27 +74,27 @@ export default function BaseRouter() {
                 </Route>
 
                 <Route path="/tv">
-                    <checkAuth credentials={credentials}>
+                    <CheckAuth credentials={credentials}>
                         <LiveTV />
-                    </checkAuth>
+                    </CheckAuth>
                 </Route>
 
                 <Route path="/alacarta">
-                    <checkAuth credentials={credentials}>
+                    <CheckAuth credentials={credentials}>
                         <VideoOnDemand />
-                    </checkAuth>
+                    </CheckAuth>
                 </Route>
 
                 <Route path="/zonakids">
-                    <checkAuth credentials={credentials}>
+                    <CheckAuth credentials={credentials}>
                         <Zonakids />
-                    </checkAuth>
+                    </CheckAuth>
                 </Route>
 
                 <Route path="/musica">
-                    <checkAuth credentials={credentials}>
+                    <CheckAuth credentials={credentials}>
                         <Music />
-                    </checkAuth>
+                    </CheckAuth>
                 </Route>
 
                 <Route path="/radio">
@@ -116,6 +116,6 @@ export default function BaseRouter() {
                     <Page404 />
                 </Route>
             </Switch>
-        </HashRouter>
+        </BrowserRouter>
     )
 }

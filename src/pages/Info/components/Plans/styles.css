@@ -1,0 +1,35 @@
+@import '../../../../scss/style-base.css';
+
+.plans-prices-wrapper{
+      position: relative;
+      margin-top: 2.5vw;
+      display: flex;
+      flex-direction: column;
+
+      .plans{
+            position: relative;
+            display: flex;
+
+            .card-plan{
+                  margin-right: 3vw;
+      
+                  .price-plan{
+                        font-size: 1.8vw;
+                        font-weight: 600;
+                        margin-bottom: .5vw;
+      
+                        span{
+                              font-size: 0.9vw;
+                              font-weight: 400;
+                              color: $color-grey-2;
+                        }
+                  }
+            }
+      }
+
+      p{
+            font-size: .75vw;
+            margin-top: 25px;
+            font-weight: 300;
+      }
+}

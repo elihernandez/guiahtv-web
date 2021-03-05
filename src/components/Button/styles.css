@@ -28,6 +28,10 @@
             background: $color-guide-blue;
       }
 
+      &.secondary{
+            background: $color-guide-purple;
+      }
+
       &.outline-white{
             background: $color-white;
             color: $color-guide-black;
