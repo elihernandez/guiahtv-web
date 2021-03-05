@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
-const { detect } = require('detect-browser')
-const browser = detect()
 import { v4 as uuidv4 } from 'uuid'
 import { useCookies } from 'react-cookie';
 
 export function useAuth() {
+      const { detect } = require('detect-browser')
+      const browser = detect()      
       const [cookies, setCookie] = useCookies()
 
       useEffect(() => {
+            console.log(cookies)
             if (!cookies.platform) setCookie('platform', 'Web Browser', { path: '/', maxAge: 3600 }) 
             if (!cookies.deviceType) setCookie('deviceType', browser.name, { path: '/', maxAge: 3600 })
             if (!cookies.deviceVersion) setCookie('deviceVersion', browser.version, { path: '/', maxAge: 3600 })

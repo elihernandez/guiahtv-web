@@ -12,15 +12,9 @@ import { Music } from "../../pages/Music/index"
 import { Zonakids } from "../../pages/Zonakids/index"
 import { Page404 } from "../../pages/404/index"
 import { ErrorAuth } from "../../pages/ErrorAuth/index"
-import { useCookies } from 'react-cookie'
 import { SnackbarAuth } from '../SnackbarAuth'
 import { GetApp } from '../../pages/GetApp'
-import {
-    BrowserView,
-    MobileView,
-    isBrowser,
-    isMobile
-} from "react-device-detect"
+import { isBrowser, isMobile } from "react-device-detect"
 
 function CheckAuth({ children, credentials }) {
     return (
@@ -29,10 +23,13 @@ function CheckAuth({ children, credentials }) {
                 {credentials.memclid
                     ? <Fragment>
                         <Header />
-                        {children}
+                        <main className="section-content">
+                            {children}
+                        </main>
                         <SnackbarAuth />
                     </Fragment>
-                    : <Redirect to='/login' />}
+                    : <Redirect to='/login' />
+                }
             </Fragment>
         </CheckDevice>
     )
@@ -42,30 +39,27 @@ function CheckDevice({ children }) {
     return (
         <Fragment>
             {isBrowser &&
-                <BrowserView>
-                    {children}
-                </BrowserView>
+                children
             }
             {isMobile &&
-                <MobileView>
-                    <Redirect to="/obtener-app" />
-                </MobileView>
+                <Redirect to="/obtener-app" />
             }
         </Fragment>
     )
 }
 
 export default function BaseRouter() {
-    const [cookies, setCookie, removeCookie] = useCookies()
     const { stateUser } = useContext(UserContext)
     const { credentials, errorAuth } = stateUser
+
+    console.log(credentials)
 
     if (errorAuth) return <ErrorAuth message={errorAuth} />
 
     if (credentials.length == 0) return null
 
     return (
-        <>
+        <Fragment>
             <HashRouter>
                 <Switch>
                     <Route exact path="/">
@@ -117,7 +111,7 @@ export default function BaseRouter() {
                         {isBrowser &&
                             <Redirect to="/" />
                         }
-                        {isMobile && 
+                        {isMobile &&
                             <GetApp />
                         }
                     </Route>
@@ -127,12 +121,6 @@ export default function BaseRouter() {
                     </Route>
                 </Switch>
             </HashRouter>
-        </>
+        </Fragment>
     )
 }
-
-// <Route path="/registro">
-//     <CheckAuth credentials={credentials}>
-//         <Home />
-//     </CheckAuth>
-// </Route>

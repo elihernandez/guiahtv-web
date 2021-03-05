@@ -6,11 +6,9 @@ import './styles.css'
 export function Home() {
 
     return (
-        <main className="section-content w-padding-top">
-            <div className="wrapper-home">
-                <Spotlight />
-                <ButtonsMenu />
-            </div>
-        </main>
+        <div className="wrapper-home top-header">
+            <Spotlight />
+            <ButtonsMenu />
+        </div>
     )
 }

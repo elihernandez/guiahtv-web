@@ -18,9 +18,10 @@ export function Content() {
             <div className="section-content">
                   <Switch>
                         <Route exact path={`${url}`} >
-                              <CSSTransition in={loading} timeout={300} classNames="fade" unmountOnExit>
+                              {loading &&
                                     <LoaderSpinnerMUI />
-                              </CSSTransition>
+                              }
+                             
                               {!loading && data &&
                                     <Catalogue data={data} />
                               }
