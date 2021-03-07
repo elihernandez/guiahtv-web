@@ -47,6 +47,7 @@ export function searchMovie(data, contentId) {
 
 export function InfoContent() {
       const { contentId, contentType } = useParams()
+      console.log(contentId)
       const { stateVod, dispatchVod } = useContext(VodContext)
       const { dataVod, movieVod, seasonVod, serieVod } = stateVod
       const [loading, setLoading] = useState(true)

@@ -85,7 +85,8 @@ const productionPlugins = [
 module.exports = (env, {mode}) => ({
   output: {
     path: path.resolve(process.cwd(), __dirname + '/build'),
-    filename: 'app.min.js'
+    filename: 'app.min.js',
+    publicPath: (mode === 'production' ? "/watch/dev/build" : "/GuiahTv-1.1.0/build/"),
   },
   watch: true,
   module: {
@@ -97,7 +98,7 @@ module.exports = (env, {mode}) => ({
     ]
   },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: true
   },
   plugins: [
     ...(mode === 'production' ? productionPlugins : developmentPlugins),

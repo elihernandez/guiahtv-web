@@ -702,7 +702,7 @@ h6{
             z-index: 1;
             width: 100%;
             min-height: 100%;
-            background-image: url(assets/images/background-login.69eabd5e28df4ceec56d2fd46a810203.webp);
+            background-image: url(/GuiahTv-1.1.0/build/assets/images/background-login.69eabd5e28df4ceec56d2fd46a810203.webp);
             background-size: 100%;
             background-repeat: no-repeat;
       }
@@ -744,7 +744,7 @@ h6{
                   width: 100vw;
                   min-height: 100%;
                   margin-top: -200px;
-                  background-image: url(assets/images/background-login-movil.970d96834ed698abe4a610f92831955c.jpg);
+                  background-image: url(/GuiahTv-1.1.0/build/assets/images/background-login-movil.970d96834ed698abe4a610f92831955c.jpg);
                   background-size: cover;
                   background-repeat: no-repeat;
                   opacity: 1;
@@ -1519,7 +1519,7 @@ input::-ms-input-placeholder{
 /* Slider */
 .slick-loading .slick-list
 {
-    background: #fff url(assets/images/ajax-loader.fb6f3c230cb846e25247dfaa1da94d8f.gif) center center no-repeat;
+    background: #fff url(/GuiahTv-1.1.0/build/assets/images/ajax-loader.fb6f3c230cb846e25247dfaa1da94d8f.gif) center center no-repeat;
 }
 /* Icons */
 @font-face
@@ -1528,8 +1528,8 @@ input::-ms-input-placeholder{
     font-weight: normal;
     font-style: normal;
 
-    src: url(assets/fonts/slick.a4e97f5a2a64f0ab132323fbeb33ae29.eot);
-    src: url(assets/fonts/slick.a4e97f5a2a64f0ab132323fbeb33ae29.eot?#iefix) format('embedded-opentype'), url(assets/fonts/slick.295183786cd8a138986521d9f388a286.woff) format('woff'), url(assets/fonts/slick.c94f7671dcc99dce43e22a89f486f7c2.ttf) format('truetype'), url(assets/images/slick.2630a3e3eab21c607e21576571b95b9d.svg#slick) format('svg');
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/slick.a4e97f5a2a64f0ab132323fbeb33ae29.eot);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/slick.a4e97f5a2a64f0ab132323fbeb33ae29.eot?#iefix) format('embedded-opentype'), url(/GuiahTv-1.1.0/build/assets/fonts/slick.295183786cd8a138986521d9f388a286.woff) format('woff'), url(/GuiahTv-1.1.0/build/assets/fonts/slick.c94f7671dcc99dce43e22a89f486f7c2.ttf) format('truetype'), url(/GuiahTv-1.1.0/build/assets/images/slick.2630a3e3eab21c607e21576571b95b9d.svg#slick) format('svg');
 }
 /* Arrows */
 .slick-prev,
@@ -7829,7 +7829,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 100;
     font-display: swap;
-    src: url(assets/fonts/Roboto-Thin.c38fab23fc1c36894f10dd8014479b53.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Roboto-Thin.c38fab23fc1c36894f10dd8014479b53.ttf);
 }
 
 @font-face {
@@ -7837,7 +7837,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(assets/fonts/Roboto-Light.0cea39826bd36bbfe33076c544e3a1af.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Roboto-Light.0cea39826bd36bbfe33076c544e3a1af.ttf);
 }
 
 @font-face {
@@ -7845,7 +7845,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(assets/fonts/Roboto-Regular.03523cf578d69fa923226ff457b92d90.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Roboto-Regular.03523cf578d69fa923226ff457b92d90.ttf);
 }
 
 @font-face {
@@ -7853,7 +7853,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(assets/fonts/Roboto-Medium.13a29228654d5c5ec9c482a267efa4af.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Roboto-Medium.13a29228654d5c5ec9c482a267efa4af.ttf);
 }
 
 @font-face {
@@ -7861,7 +7861,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(assets/fonts/Roboto-Bold.4f39c5796e60c9d8e7327a00e9a4442e.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Roboto-Bold.4f39c5796e60c9d8e7327a00e9a4442e.ttf);
 }
 
 @font-face {
@@ -7869,7 +7869,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 900;
     font-display: swap;
-    src: url(assets/fonts/Roboto-Black.1224b64c95f897e542d9bfdd3861b0ed.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Roboto-Black.1224b64c95f897e542d9bfdd3861b0ed.ttf);
 }
 
 @font-face {
@@ -7877,7 +7877,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 100;
     font-display: swap;
-    src: url(assets/fonts/Poppins-Thin.a61eaf4c2e4d44d6db6a576706e9e6ae.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Poppins-Thin.a61eaf4c2e4d44d6db6a576706e9e6ae.ttf);
 }
 
 @font-face {
@@ -7885,7 +7885,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 200;
     font-display: swap;
-    src: url(assets/fonts/Poppins-ExtraLight.94b768c07879dde09ab4d5f6ad92cbc6.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Poppins-ExtraLight.94b768c07879dde09ab4d5f6ad92cbc6.ttf);
 }
 
 @font-face {
@@ -7893,7 +7893,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(assets/fonts/Poppins-Light.f41b63c0bb0963ace821a2b99458c1cd.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Poppins-Light.f41b63c0bb0963ace821a2b99458c1cd.ttf);
 }
 
 @font-face {
@@ -7901,7 +7901,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(assets/fonts/Poppins-Regular.8081832fc5cfbf634aa664a9eff0350e.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Poppins-Regular.8081832fc5cfbf634aa664a9eff0350e.ttf);
 }
 
 @font-face {
@@ -7909,7 +7909,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(assets/fonts/Poppins-Medium.9e1bb626874ed49aa343d66b8d66ceaf.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Poppins-Medium.9e1bb626874ed49aa343d66b8d66ceaf.ttf);
 }
 
 @font-face {
@@ -7917,7 +7917,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(assets/fonts/Poppins-SemiBold.cce5625b56ec678e42021270b84ef400.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Poppins-SemiBold.cce5625b56ec678e42021270b84ef400.ttf);
 }
 
 @font-face {
@@ -7925,7 +7925,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(assets/fonts/Poppins-Bold.404e299be26d78e6679447ea7cb2d41f.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Poppins-Bold.404e299be26d78e6679447ea7cb2d41f.ttf);
 }
 
 @font-face {
@@ -7933,7 +7933,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 800;
     font-display: swap;
-    src: url(assets/fonts/Poppins-ExtraBold.4ed78cd5d64af4efc3c714622b9372d4.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Poppins-ExtraBold.4ed78cd5d64af4efc3c714622b9372d4.ttf);
 }
 
 @font-face {
@@ -7941,7 +7941,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 900;
     font-display: swap;
-    src: url(assets/fonts/Poppins-Black.eacee5bb9c7fee5939aebf2335e5106a.ttf);
+    src: url(/GuiahTv-1.1.0/build/assets/fonts/Poppins-Black.eacee5bb9c7fee5939aebf2335e5106a.ttf);
 }
 
 @font-face {
@@ -7949,7 +7949,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 100;
     font-display: swap;
-    src: url("assets/fonts/HurmeGeometricSans3 Hairline.808c6a77f1862f99a8a566259909f57b.otf");
+    src: url("/GuiahTv-1.1.0/build/assets/fonts/HurmeGeometricSans3 Hairline.808c6a77f1862f99a8a566259909f57b.otf");
 }
 
 @font-face {
@@ -7957,7 +7957,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 200;
     font-display: swap;
-    src: url("assets/fonts/HurmeGeometricSans3 Thin.07b6d822019a7c1442996fe7085017c2.otf");
+    src: url("/GuiahTv-1.1.0/build/assets/fonts/HurmeGeometricSans3 Thin.07b6d822019a7c1442996fe7085017c2.otf");
 }
 
 @font-face {
@@ -7965,7 +7965,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url("assets/fonts/HurmeGeometricSans3 Light.9969f13cc298bd10df6625559ff5910f.otf");
+    src: url("/GuiahTv-1.1.0/build/assets/fonts/HurmeGeometricSans3 Light.9969f13cc298bd10df6625559ff5910f.otf");
 }
 
 @font-face {
@@ -7973,7 +7973,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url("assets/fonts/HurmeGeometricSans3 Regular.878c1554d4887b4e5110c79d3f2f2894.otf");
+    src: url("/GuiahTv-1.1.0/build/assets/fonts/HurmeGeometricSans3 Regular.878c1554d4887b4e5110c79d3f2f2894.otf");
 }
 
 @font-face {
@@ -7981,7 +7981,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url("assets/fonts/HurmeGeometricSans3 SemiBold.fa3d4f4a9fbe4cafaa0289bae396fcff.otf");
+    src: url("/GuiahTv-1.1.0/build/assets/fonts/HurmeGeometricSans3 SemiBold.fa3d4f4a9fbe4cafaa0289bae396fcff.otf");
 }
 
 @font-face {
@@ -7989,7 +7989,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url("assets/fonts/HurmeGeometricSans3 Bold.11fdc3549c8e63377970e6603ab5552a.otf");
+    src: url("/GuiahTv-1.1.0/build/assets/fonts/HurmeGeometricSans3 Bold.11fdc3549c8e63377970e6603ab5552a.otf");
 }
 
 @font-face {
@@ -7997,7 +7997,7 @@ input::-ms-input-placeholder{
     font-style: normal;
     font-weight: 900;
     font-display: swap;
-    src: url("assets/fonts/HurmeGeometricSans3 Black.558a7cc06c8d3ce3a76ca4f73d0f6a1b.otf");
+    src: url("/GuiahTv-1.1.0/build/assets/fonts/HurmeGeometricSans3 Black.558a7cc06c8d3ce3a76ca4f73d0f6a1b.otf");
 }
 
 .fade-enter {

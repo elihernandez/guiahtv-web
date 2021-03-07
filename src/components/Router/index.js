@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from "react"
-import { BrowserRouter, HashRouter, Switch, Route, Redirect } from "react-router-dom"
+import { BrowserRouter , HashRouter, Switch, Route, Redirect } from "react-router-dom"
 import UserContext from "../../context/UserContext"
 import { Header } from "../Header/index"
 import { Info } from "../../pages/Info/index2"
@@ -56,7 +56,7 @@ export default function BaseRouter() {
     if (errorAuth) return <ErrorAuth message={errorAuth} />
 
     return (
-        <BrowserRouter basename="watch/dev">
+        <BrowserRouter basename="/GuiahTv-1.1.0">
             <Switch>
                 <Route exact path="/">
                     {isAuth(credentials)
