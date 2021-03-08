@@ -91,7 +91,7 @@ export function Login() {
                     ? <LoaderSpinnerMUI />
                     : <Fragment>
                         <div className="content-login">
-                            <Logo color="blue" size="md" />
+                            <Logo color="purple" size="md" />
                             <H1 className="title-form title-1">Inicia sesión</H1>
                             <FormError error={error} />
                             <FormLogin onSubmit={handleSubmit} />

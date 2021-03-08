@@ -5,6 +5,7 @@ import './styles.css'
 
 export function Info({ data }) {
       const {
+            ContactDescription,
             ContactFon,
             ContactWeb,
             ContactFb,
@@ -15,7 +16,11 @@ export function Info({ data }) {
 
       return (
             <div className="info-contact-wrapper">
-                  
+                  <div className="group-section">
+                        <div className="description">
+                              <p className="">{ContactDescription}</p>
+                        </div>
+                  </div>
                   <div className="group-section">
                         <div className="phone-group"><i className="fas fa-phone-alt" />Télefono de contacto: &nbsp;&nbsp;&nbsp;{ContactFon}</div>
                         <div className="web-group"><i className="fas fa-globe" />Sitio web: &nbsp;&nbsp;&nbsp;<a href={ContactWeb}>{ContactWeb}</a></div>

@@ -55,8 +55,11 @@ export default function BaseRouter() {
 
     if (errorAuth) return <ErrorAuth message={errorAuth} />
 
+
+    // GuiahTv-1.1.0/
+    // watch/dev/
     return (
-        <BrowserRouter basename="/GuiahTv-1.1.0">
+        <BrowserRouter basename="GuiahTv-1.1.0/">
             <Switch>
                 <Route exact path="/">
                     {isAuth(credentials)

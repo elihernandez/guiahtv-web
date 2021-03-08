@@ -86,9 +86,9 @@ module.exports = (env, {mode}) => ({
   output: {
     path: path.resolve(process.cwd(), __dirname + '/build'),
     filename: 'app.min.js',
-    publicPath: (mode === 'production' ? "/watch/dev/build" : "/GuiahTv-1.1.0/build/"),
+    publicPath: (mode === 'production' ? "/watch/dev/build/" : "/GuiahTv-1.1.0/build/"),
   },
-  watch: true,
+  watch: (mode === 'production' ? false : true),
   module: {
     rules: [
       javascriptRules,

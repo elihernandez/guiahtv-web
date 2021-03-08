@@ -81,7 +81,7 @@ export function Video() {
             return () => {
 
             }
-      }, [credentials, dataChannel])
+      }, [dataChannel])
 
       return (
             <div className="video">

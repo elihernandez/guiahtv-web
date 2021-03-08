@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+// require('hls.js/dist/hls.min.js')
+import Hls from 'hls.js'
 
 export function useHls(video, url, dispatch, movie) {
       // const config = {

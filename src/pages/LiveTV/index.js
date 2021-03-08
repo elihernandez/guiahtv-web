@@ -25,7 +25,7 @@ function Content({ children }) {
       // const [clientY, setClientY] = useState(0)
 
       const fadeInContent = () => {
-            setIsVisible(true)
+            // setIsVisible(true)
             document.querySelector('.top-menu').style.opacity = 1
             document.body.style.cursor = ''
       }
@@ -33,7 +33,7 @@ function Content({ children }) {
       const fadeOutContent = () => {
             // positionX.current = clientX
             // positionY.current = clientY
-            setIsVisible(false)
+            // setIsVisible(false)
             document.querySelector('.top-menu').style.opacity = 0
             document.body.style.cursor = 'none'
       }
@@ -114,7 +114,8 @@ export function LiveTV() {
             timerChannel: false,
             activeTimer: false,
             volume: 50,
-            muteVolume: false
+            muteVolume: false,
+            fullScreen: false
       }
 
       const reducer = (state, action) => {
@@ -156,6 +157,12 @@ export function LiveTV() {
                         return {
                               ...state,
                               muteVolume: action.payload
+                        }
+                  }
+                  case 'setFullScreen': {
+                        return {
+                              ...state,
+                              fullScreen: action.payload
                         }
                   }
                   default: return state;

@@ -153,7 +153,7 @@ export function Channels({ data }) {
             }else{
                   if(!categoria){
                         // console.log(5)
-                        console.log(data[0])
+                        // console.log(data[0])
                         setChannels(data[0])
                         countPages(data[0])
                         dispatch({ type: 'updateData', payload: data[0].cmData[0] })

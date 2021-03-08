@@ -18,7 +18,7 @@ function LeftContent() {
 
       return (
             <div className="left-content">
-                  <Logo color="blue" size="sm" />
+                  <Logo color="purple" size="sm" />
                   <Navbar navLinks={navLinks} classNavbar={classNavbar} classItems={classItems} />
             </div>
       )

@@ -240,11 +240,11 @@ function LiveTvEvent({ dataChannel, handleClick, handleError }) {
                         <div className="poster-content">
                               <LazyImage img={Poster} alt={altImg} type="webp" recoverType="jpg" />
                         </div>
-                        {isLive(Inicio, Fin) &&
-                              <div className="progress-time-content">
+                        
+                              <div className="progress-time-content" style={{ opacity: isLive(Inicio, Fin) ? '1' : '0'}}>
                                     <div className="progress-time-current" style={{ width: getProgressTimeEvent(Inicio, Fin) }}></div>
                               </div>
-                        }
+                        
                         <div className="event-time-content">
                               <p className="event-time-channel">
                                     <i className="far fa-clock"></i>{getEventTime(Inicio, Fin)}
@@ -259,7 +259,6 @@ function LiveTvEvent({ dataChannel, handleClick, handleError }) {
                         <ContactInfo moreInfoActive={moreInfoActive} contactInfo={contactInfo} handleClickHideMoreInfo={handleClickHideMoreInfo}/>
                         <ReadMore readMoreActive={readMoreActive} Name={Name} Description={Description} handleClickHideReadMore={handleClickHideReadMore}/>
                         <div className="buttons-content" >
-                             
                               <Tooltip title="Más info" placement="top-start">
                                     <span tabIndex="0" onClick={handleClickShowMoreInfo}>
                                           <i className="fas fa-info" tabIndex="0" />
@@ -287,20 +286,21 @@ export function Channel({ data, category, page, categoria }) {
       }else{
             href = `/tv/${createUrlString(category.category)}/${createUrlString(data.Name)}`
       }
-      const { dispatch } = useContext(VideoContext)
+      const { dispatch, stateVideo } = useContext(VideoContext)
+      const { dataChannel } = stateVideo
       const { dispatchTV } = useContext(LiveTvContext)
 
       const handleError = (e) => {
-            console.log("Hola error")
-            console.log(e.nativeEvent)
             e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/error-tv-landscape.png'
       }
 
       const handleClick = (e) => {
-            if (e.nativeEvent.target.tabIndex != 0) {
-                  dispatch({ type: 'updateData', payload: data })
-                  dispatchTV({ type: 'updatePage', payload: page })
-                  dispatchTV({ type: 'updateCategory', payload: categoria })
+            if(dataChannel && dataChannel.Id != data.Id){
+                  if (e.nativeEvent.target.tabIndex != 0) {
+                        dispatch({ type: 'updateData', payload: data })
+                        dispatchTV({ type: 'updatePage', payload: page })
+                        dispatchTV({ type: 'updateCategory', payload: categoria })
+                  }
             }
       }
 

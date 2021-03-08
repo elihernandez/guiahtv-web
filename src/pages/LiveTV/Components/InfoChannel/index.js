@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 import VideoContext from '../../../../context/VideoContext'
 import { CSSTransition } from 'react-transition-group'
 import Tooltip from '@material-ui/core/Tooltip'
@@ -7,19 +7,22 @@ import screenfull, { changeFullScreen, toggleFullScreen } from '../../../../js/S
 import Fade from '@material-ui/core/Fade'
 import './styles.css'
 
-function ButtonFullScreen() {
-      const [fullScreen, setFullScreen] = useState(false)
+function ButtonFullScreen({ dispatch, fullScreen }) {
+      // const [fullScreen, setFullScreen] = useState(fullScreen)
 
       const handleClick = () => {
             toggleFullScreen()
-            setFullScreen(!fullScreen)
+            // setFullScreen(!fullScreen)
+            dispatch({ type: 'setFullScreen', payload: !fullScreen })
       }
 
       const handleChange = () => {
             if (screenfull.isFullscreen) {
-                  setFullScreen(true)
-            }else{
-                  setFullScreen(false)
+                  //setFullScreen(true)
+                  dispatch({ type: 'setFullScreen', payload: true })
+            } else {
+                  //setFullScreen(false)
+                  dispatch({ type: 'setFullScreen', payload: false })
             }
       }
 
@@ -27,7 +30,7 @@ function ButtonFullScreen() {
             changeFullScreen()
             document.addEventListener('dblclick', handleClick)
             screenfull.on('change', handleChange)
-            
+
             return () => {
                   changeFullScreen()
                   document.removeEventListener('dblclick', handleClick)
@@ -47,7 +50,7 @@ function ButtonFullScreen() {
       )
 }
 
-function SliderVolume({volume, handleChange}){
+function SliderVolume({ volume, handleChange }) {
       return <Slider value={volume} onChange={handleChange} aria-labelledby="continuous-slider" />
 }
 
@@ -71,9 +74,9 @@ function ButtonVolume() {
       }
 
       useEffect(() => {
-            if(muteVolume){
+            if (muteVolume) {
                   document.querySelector('video').volume = 0
-            }else{
+            } else {
                   document.querySelector('video').volume = (volume / 100)
             }
       }, [volume])
@@ -101,8 +104,8 @@ function ButtonVolume() {
 }
 
 export function InfoChannel() {
-      const { stateVideo } = useContext(VideoContext)
-      const { dataChannel, activeChannel } = stateVideo
+      const {stateVideo, dispatch } = useContext(VideoContext)
+      const { dataChannel, activeChannel, fullScreen } = stateVideo
       const [name, setName] = useState('')
 
       useEffect(() => {
@@ -120,7 +123,7 @@ export function InfoChannel() {
                                     </div>
                                     <div className="right-buttons">
                                           <ButtonVolume />
-                                          <ButtonFullScreen />
+                                          <ButtonFullScreen dispatch={dispatch} fullScreen={fullScreen} />
                                     </div>
                               </div>
                         }

@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from "react-router-dom"
 import imgLogoBlue from '../../assets/images/logos/guiahtv/guiahtv-logo-blue.png'
 import imgLogoPurple from '../../assets/images/logos/guiahtv/guiahtv-logo-purple.png'
+import logoForeground from '../../assets/images/logos/guiahtv/logo_foreground.png'
 import './styles.css'
 
 export default function Logo({ color = 'blue', size = 'md' }) {
@@ -31,7 +32,7 @@ export default function Logo({ color = 'blue', size = 'md' }) {
 export function IconLogo() {
     return (
         <div className="logo">
-            <img src="build/assets/images/logos/guiahtv/logo_foreground.png" alt="guiahtv-icon-logo" />
+            <img src={logoForeground} alt="guiahtv-icon-logo" />
         </div>
     )
 }

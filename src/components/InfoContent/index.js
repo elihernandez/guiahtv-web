@@ -3,6 +3,11 @@ import { useRouteMatch, useHistory } from 'react-router-dom'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { getProgressMovie } from '../../js/Time'
 import { imgSourceSetJpg } from '../../js/Image'
+import Imdb from '../../assets/images/clasifications-movies/imdb.png'
+import PG13 from '../../assets/images/clasifications-movies/PG13.png'
+import PG from '../../assets/images/clasifications-movies/PG.png'
+import G from '../../assets/images/clasifications-movies/G.png'
+import R from '../../assets/images/clasifications-movies/R.png'
 // import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { LazyImage } from '../Image'
 import 'react-lazy-load-image-component/src/effects/opacity.css'
@@ -41,22 +46,22 @@ export function InfoMovie({ data }) {
                         <div className="group info">
                               {StarRating &&
                                     <Fragment>
-                                          <img className="img-rating" src="build/assets/images/clasifications-movies/imdb.png" />
+                                          <img className="img-rating" src={Imdb} />
                                           <p className="rating">{StarRating}</p>
                                           <p className="rating">|</p>
                                     </Fragment>
                               }
                               {Rating.trim() == "PG-13" &&
-                                    <img className="img-clasification" src="build/assets/images/clasifications-movies/PG13.png" />
+                                    <img className="img-clasification" src={PG13} />
                               }
                               {Rating.trim() == "PG" &&
-                                    <img className="img-clasification" src="build/assets/images/clasifications-movies/PG13.png" />
+                                    <img className="img-clasification" src={PG} />
                               }
                               {Rating.trim() == "G" &&
-                                    <img className="img-clasification" src="build/assets/images/clasifications-movies/G.png" />
+                                    <img className="img-clasification" src={G} />
                               }
                               {Rating.trim() == "R" &&
-                                    <img className="img-clasification" src="build/assets/images/clasifications-movies/R.png" />
+                                    <img className="img-clasification" src={R} />
                               }
                               {ReleaseDate &&
                                     <p className="release-date">{ReleaseDate}</p>
