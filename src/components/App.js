@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseRouter from './Router/index'
+import { BaseRouter } from './Router/index'
 import { CookiesProvider } from 'react-cookie'; 
 import { UserContextProvider } from '../context/UserContext'
 // require('spatial-navigation-js')

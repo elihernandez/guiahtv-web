@@ -6,6 +6,7 @@ import screenfull, { changeFullScreen, toggleFullScreen } from '../../../../js/S
 import { CSSTransition } from 'react-transition-group'
 import Popover from '@material-ui/core/Popover'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state'
+import imgTracks from '../../../../assets/icons/audios-subs.png'
 import { capitalizeFirstLetter } from '../../../../js/String'
 
 export function ButtonsPlaying({ videoRef, playing, dispatch }) {
@@ -341,7 +342,7 @@ export function ButtonTracks({ hls, audios, subtitles, dispatch, audioTrackActiv
                               <div>
                                     <Tooltip title="Audios / Subtítulos" placement="top-start">
                                           <button aria-describedby={id} type="button" className="content-button-icon" {...bindTrigger(popupState)}>
-                                                <img alt="Icono de audios y subtítulos" src="build/assets/images/icons/audios-subs.png" />
+                                                <img alt="Icono de audios y subtítulos" src={imgTracks} />
                                           </button>
                                     </Tooltip>
                                     <Popover

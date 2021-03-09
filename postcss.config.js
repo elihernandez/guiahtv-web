@@ -1,10 +1,10 @@
 module.exports = {
       plugins: [
             // require('cssnano')({
-                  //       preset: 'default',
-                  // }),
-                  // require('@csstools/postcss-sass'),
-                  // require('postcss-calc'),
+            //             preset: 'default',
+            // }),
+            // require('@csstools/postcss-sass'),
+            // require('postcss-calc'),
             require('precss'),
             require('postcss-simple-extend'),
             require('postcss-sassy-mixins'),
@@ -13,7 +13,7 @@ module.exports = {
             require('postcss-import'),
             require('postcss-custom-media'),
             require('autoprefixer')({
-                  'browsers': ['> 1%', 'last 2 versions']
+                  'overrideBrowserslist': ['> 1%', 'last 2 versions']
             })
       ]
 }

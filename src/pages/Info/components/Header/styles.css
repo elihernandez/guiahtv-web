@@ -13,7 +13,7 @@
       height: 80px;
 
       &.bgcolor{
-            background-color: $color-smokey-black;
+            background-color: black;
       }
     
       button{

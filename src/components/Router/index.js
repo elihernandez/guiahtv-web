@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from "react"
-import { BrowserRouter , HashRouter, Switch, Route, Redirect } from "react-router-dom"
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
 import UserContext from "../../context/UserContext"
 import { Header } from "../Header/index"
 import { Info } from "../../pages/Info/index2"
@@ -16,6 +16,7 @@ import { SnackbarAuth } from '../SnackbarAuth'
 import { GetApp } from '../../pages/GetApp'
 import { isBrowser, isMobile } from "react-device-detect"
 import { isAuth } from '../../js/Auth'
+import { devBasenameRouter, prodBasenameRouter } from '../../../config'
 
 function CheckAuth({ children, credentials }) {
     return (
@@ -49,17 +50,16 @@ function CheckDevice({ children }) {
     )
 }
 
-export default function BaseRouter() {
+export function BaseRouter() {
     const { stateUser } = useContext(UserContext)
     const { credentials, errorAuth } = stateUser
 
     if (errorAuth) return <ErrorAuth message={errorAuth} />
+    
+    const basename = process.env.NODE_ENV !== "production" ? devBasenameRouter : prodBasenameRouter
 
-
-    // GuiahTv-1.1.0/
-    // watch/dev/
     return (
-        <BrowserRouter basename="GuiahTv-1.1.0/">
+        <BrowserRouter basename={basename}>
             <Switch>
                 <Route exact path="/">
                     {isAuth(credentials)
@@ -106,7 +106,7 @@ export default function BaseRouter() {
                     </CheckAuth>
                 </Route>
 
-                <Route path="/obtener-app">
+                <Route exact path="/obtener-app">
                     {isBrowser &&
                         <Redirect to="/" />
                     }

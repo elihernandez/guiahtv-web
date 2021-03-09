@@ -32,15 +32,16 @@ export function Info() {
                                     <PlansPrices />
                               </div>
                         </div>
-                        <AboutUs />
-                        <Sections />
-                        <Platforms />
-                        <Prices />
+                    
                         <Footer />
                   </div>
             </CSSTransition>
       )
 }
 
+// <AboutUs />
+// <Sections />
+// <Platforms />
+// <Prices />
 // <ButtonUI type="button" className="primary uppercase btn-register title-3" text="Registrarme" />
 // <H1 className="title-text large-title-1">Disfruta de la mejor plataforma de <br /> contenido exclusivo y espiritual para <br /> toda la familia.</H1>

@@ -1,8 +1,9 @@
-@import './fonts/Roboto/styles.css';
+/* @import './fonts/Roboto/styles.css'; */
+/* @import './fonts/HurmeGeometricSans/styles.css'; */
 @import './fonts/Poppins/styles.css';
-@import './fonts/HurmeGeometricSans/styles.css';
 @import './fade-transition.css';
 @import './style-base.css';
+@import './all.css';
 
 html,
 body {
@@ -48,6 +49,7 @@ ol {
   margin: 0;
   padding: 0;
   color: $color-white;
+  list-style: none;
 }
 
 *{
@@ -57,10 +59,6 @@ ol {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-ul, ol{
-  list-style: none;
 }
 
 input{

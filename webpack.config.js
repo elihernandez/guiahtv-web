@@ -5,6 +5,7 @@ const MiniCSSExtract = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const { ESBuildPlugin } = require('esbuild-loader')
 const path = require('path')
+var config = require('./config')
 
 const javascriptRules = {
   test: /\.js$/,
@@ -40,10 +41,10 @@ const javascriptRules = {
 const stylesRules = {
   test: /\.css$/i,
   use: [
-      MiniCSSExtract.loader,
-      'css-loader',
-      // 'sass-loader',
-      'postcss-loader'
+    MiniCSSExtract.loader,
+    'css-loader',
+    // 'sass-loader',
+    'postcss-loader'
   ],
 }
 
@@ -82,11 +83,11 @@ const productionPlugins = [
   new CssMinimizerPlugin(),
 ]
 
-module.exports = (env, {mode}) => ({
+module.exports = (env, { mode }) => ({
   output: {
     path: path.resolve(process.cwd(), __dirname + '/build'),
     filename: 'app.min.js',
-    publicPath: (mode === 'production' ? "/watch/dev/build/" : "/GuiahTv-1.1.0/build/"),
+    publicPath: (mode !== 'production' ? config.devPath : config.prodPath),
   },
   watch: (mode === 'production' ? false : true),
   module: {
@@ -103,6 +104,7 @@ module.exports = (env, {mode}) => ({
   plugins: [
     ...(mode === 'production' ? productionPlugins : developmentPlugins),
     new HtmlWebpackPlugin({
+      favicon: "./src/assets/images/logos/guiahtv/favicon.ico",
       title: 'Guíah TV | Un espacio de fe',
       template: 'src/index.html',
       filename: '../index.html',

@@ -48,7 +48,6 @@
             }
       }
 
-
       &.gradient{
             /* background: linear-gradient(270deg, $color-guide-blue 0%, $color-guide-purple 100%); */
             background: linear-gradient(270deg, $color-violet 0%, $color-guide-blue 100%);

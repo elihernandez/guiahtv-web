@@ -1,6 +1,11 @@
 import React, { Fragment } from 'react'
 import { isIOS, isAndroid, isMobileOnly, isTablet } from "react-device-detect"
+import imgPhonePng from '../../assets/images/backgrounds/cantanteiphone.png'
+import imgPhoneWebp from '../../assets/images/backgrounds/cantanteiphone.webp'
+import imgTabletPng from '../../assets/images/backgrounds/cantanteipad.png'
+import imgTabletWebp from '../../assets/images/backgrounds/cantanteipad.webp'
 import Logo from '../../components/Logo'
+import { isWebpBrowserCompatible } from '../../js/Image'
 import { Footer } from '../../components/Footer'
 import './styles.css'
 
@@ -8,10 +13,10 @@ function ImgDevice(){
       return (
             <Fragment>
                   {isMobileOnly &&
-                        <img className="img-device" alt="Descarga la app en celular" src="build/assets/images/backgrounds/cantanteiphone.png" />
+                        <img className="img-device" alt="Descarga la app en celular" src={isWebpBrowserCompatible() ? imgPhonePng : imgPhoneWebp} />
                   }
                   {isTablet &&
-                        <img className="img-device" alt="Descarga la app en tabled" src="build/assets/images/backgrounds/cantanteipad.png" />
+                        <img className="img-device" alt="Descarga la app en tablet" src={isWebpBrowserCompatible() ? imgTabletPng : imgTabletWebp} />
                   }
             </Fragment>
       )
