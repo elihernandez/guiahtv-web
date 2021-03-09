@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconLogo } from '../Logo'
+import Logo from '../Logo'
 import { Link } from '../Link'
 import './styles.css'
 
@@ -25,16 +25,41 @@ function Links() {
       )
 }
 
+function SocialMedia() {
+      return (
+            <div className="social-media-wrapper">    
+                  <ul className="social-media-list">
+                        <li className="social-media-item">
+                              <Link className="social-media-link" href="https://guiah.tv/privacidad/">
+                                    <i className="fab fa-facebook-square"></i>
+                              </Link>
+                        </li>
+                        <li className="social-media-item">
+                              <Link className="social-media-link" href="https://guiah.tv/privacidad/">
+                                    <i className="fab fa-instagram"></i>
+                              </Link>
+                        </li>
+                        <li className="social-media-item">
+                              <Link className="social-media-link" href="https://guiah.tv/privacidad/">
+                                    <i className="fab fa-twitter-square"></i>
+                              </Link>
+                        </li>
+                  </ul>
+            </div>
+      )
+}
+
 export function Footer() {
       return (
             <div className="footer-app">
                   <div className="footer-wrapper">
-                        <IconLogo />
+                        <Logo color="purple" size="sm" />
                         <h5 className="services-text body-3">
                               MÚSICA | TV EN VIVO | PELÍCULAS | CONCIERTOS | CLÍNICAS | SERIES |
                               ZONA KIDS | PPV Y MUCHO MÁS
                         </h5>
                         <Links />
+                        <SocialMedia />
                   </div>
             </div>
       )

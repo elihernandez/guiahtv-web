@@ -1,27 +1,22 @@
-import React, { useContext, useState, useEffect, useRef } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import VideoContext from '../../../../context/VideoContext'
 import { CSSTransition } from 'react-transition-group'
 import Tooltip from '@material-ui/core/Tooltip'
 import Slider from '@material-ui/core/Slider'
 import screenfull, { changeFullScreen, toggleFullScreen } from '../../../../js/Screen'
-import Fade from '@material-ui/core/Fade'
 import './styles.css'
 
 function ButtonFullScreen({ dispatch, fullScreen }) {
-      // const [fullScreen, setFullScreen] = useState(fullScreen)
 
       const handleClick = () => {
             toggleFullScreen()
-            // setFullScreen(!fullScreen)
             dispatch({ type: 'setFullScreen', payload: !fullScreen })
       }
 
       const handleChange = () => {
             if (screenfull.isFullscreen) {
-                  //setFullScreen(true)
                   dispatch({ type: 'setFullScreen', payload: true })
             } else {
-                  //setFullScreen(false)
                   dispatch({ type: 'setFullScreen', payload: false })
             }
       }

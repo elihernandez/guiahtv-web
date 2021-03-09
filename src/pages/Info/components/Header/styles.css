@@ -13,10 +13,17 @@
       height: 80px;
 
       &.bgcolor{
-            background-color: $color-black-2;
+            background-color: $color-smokey-black;
       }
     
       button{
+
+            &.btn-register{
+                  padding: .5vw 1vw;
+                  margin-left: 15px;
+                  /* border: 2px solid $color-white; */
+            }
+
             &.btn-login{
                   padding: .5vw 1vw;
                   margin-left: 15px;

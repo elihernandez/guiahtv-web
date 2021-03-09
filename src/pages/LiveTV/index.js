@@ -105,69 +105,70 @@ function Content({ children }) {
       )
 }
 
+const initialState = {
+      dataChannel: null,
+      activeChannel: false,
+      loadingChannel: false,
+      timerChannel: false,
+      activeTimer: false,
+      volume: 50,
+      muteVolume: false,
+      fullScreen: false
+}
+
+const reducer = (state, action) => {
+      switch (action.type) {
+            case 'updateData': {
+                  return {
+                        ...state,
+                        dataChannel: action.payload,
+                        timerChannel: false,
+                        activeTimer: false
+                  }
+            }
+            case 'updateActive': {
+                  return {
+                        ...state,
+                        activeChannel: action.payload,
+                  }
+            }
+            case 'updateLoading': {
+                  return {
+                        ...state,
+                        loadingChannel: action.payload,
+                  }
+            }
+            case 'updateTimer': {
+                  return {
+                        ...state,
+                        timerChannel: action.timer,
+                        activeTimer: action.active
+                  }
+            }
+            case 'updateVolume': {
+                  return {
+                        ...state,
+                        volume: action.payload
+                  }
+            }
+            case 'muteVolume': {
+                  return {
+                        ...state,
+                        muteVolume: action.payload
+                  }
+            }
+            case 'setFullScreen': {
+                  return {
+                        ...state,
+                        fullScreen: action.payload
+                  }
+            }
+            default: return state;
+      }
+}
+
 export function LiveTV() {
       let { url } = useRouteMatch()
-      const initialState = {
-            dataChannel: null,
-            activeChannel: false,
-            loadingChannel: false,
-            timerChannel: false,
-            activeTimer: false,
-            volume: 50,
-            muteVolume: false,
-            fullScreen: false
-      }
-
-      const reducer = (state, action) => {
-            switch (action.type) {
-                  case 'updateData': {
-                        return {
-                              ...state,
-                              dataChannel: action.payload,
-                              timerChannel: false,
-                              activeTimer: false
-                        }
-                  }
-                  case 'updateActive': {
-                        return {
-                              ...state,
-                              activeChannel: action.payload,
-                        }
-                  }
-                  case 'updateLoading': {
-                        return {
-                              ...state,
-                              loadingChannel: action.payload,
-                        }
-                  }
-                  case 'updateTimer': {
-                        return {
-                              ...state,
-                              timerChannel: action.timer,
-                              activeTimer: action.active
-                        }
-                  }
-                  case 'updateVolume': {
-                        return {
-                              ...state,
-                              volume: action.payload
-                        }
-                  }
-                  case 'muteVolume': {
-                        return {
-                              ...state,
-                              muteVolume: action.payload
-                        }
-                  }
-                  case 'setFullScreen': {
-                        return {
-                              ...state,
-                              fullScreen: action.payload
-                        }
-                  }
-                  default: return state;
-            }
-      }
 
       useEffect(() => {
             document.querySelector('.navbar-top-menu').style.opacity = 1
