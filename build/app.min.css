@@ -2624,8 +2624,8 @@ input::-ms-input-placeholder{
             -webkit-box-flex: 0;
                 -ms-flex: 0 0 calc(100%/5);
                     flex: 0 0 calc(100%/5);
-            -webkit-transition: all 300ms ease;
-            transition: all 300ms ease;
+            -webkit-transition: all 300ms ease-in-out;
+            transition: all 300ms ease-in-out;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -2637,9 +2637,23 @@ input::-ms-input-placeholder{
                 -ms-flex-pack: center;
                     justify-content: center;
             -webkit-transform: scale(0.95);
-                    transform: scale(0.95);
+                    transform: scale(0.95)
 
         }
+
+.buttons-sections .buttons-list .item-button:after{
+                content: '';
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+                border: 4px solid transparent;
+                border-top-left-radius: 1.4vw;
+                border-bottom-right-radius: 1.4vw;
+                -webkit-transition: all 300ms ease-in-out;
+                transition: all 300ms ease-in-out;
+            }
 
 .buttons-sections .buttons-list .item-button .title-button{
                 position: absolute;
@@ -2661,7 +2675,7 @@ input::-ms-input-placeholder{
 .buttons-sections .buttons-list .item-button .image-button{
                 position: relative;
                 width: 100%;
-                height: auto;
+                height: 100%;
                 border: 3px solid transparent;
                 -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.15) 0px 16px 25px -10px;
                         box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.15) 0px 16px 25px -10px;
@@ -2684,6 +2698,10 @@ input::-ms-input-placeholder{
 .buttons-sections .buttons-list .item-button:hover .image-button{
                     -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 40px 58px -16px, rgba(0, 0, 0, 0.2) 0px 30px 22px -10px;
                             box-shadow: rgba(0, 0, 0, 0.2) 0px 40px 58px -16px, rgba(0, 0, 0, 0.2) 0px 30px 22px -10px
+                }
+
+.buttons-sections .buttons-list .item-button:hover:after{
+                    border: 4px solid #f7f7f7;
                 }
 /* App */
 
