@@ -5,3 +5,11 @@ export function isArrayEmpty(array){
 
       return false
 }
+
+export function isEmptyArray(array){
+      if(array.length == 0){
+            return true
+      }
+
+      return false
+}

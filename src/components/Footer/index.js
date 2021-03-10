@@ -30,18 +30,23 @@ function SocialMedia() {
             <div className="social-media-wrapper">    
                   <ul className="social-media-list">
                         <li className="social-media-item">
-                              <Link className="social-media-link" href="https://guiah.tv/privacidad/">
+                              <Link className="social-media-link" href="https://www.facebook.com/GuiahTv">
                                     <i className="fab fa-facebook-square"></i>
                               </Link>
                         </li>
                         <li className="social-media-item">
-                              <Link className="social-media-link" href="https://guiah.tv/privacidad/">
+                              <Link className="social-media-link" href="https://www.instagram.com/guiah.tv/">
                                     <i className="fab fa-instagram"></i>
                               </Link>
                         </li>
                         <li className="social-media-item">
-                              <Link className="social-media-link" href="https://guiah.tv/privacidad/">
+                              <Link className="social-media-link" href="https://twitter.com/GuiahTv">
                                     <i className="fab fa-twitter-square"></i>
+                              </Link>
+                        </li>
+                        <li className="social-media-item">
+                              <Link className="social-media-link" href="https://www.youtube.com/channel/UCsMh8HRQ4-GsEE1BIGzVtIQ">
+                                    <i className="fab fa-youtube"></i>
                               </Link>
                         </li>
                   </ul>

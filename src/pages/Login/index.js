@@ -65,9 +65,9 @@ export function Login() {
             setLoading(true)
             // Encriptación de password
             const hashPassword = await encryptString(password, 10)
-            // Petición a Endpoint para validar credenciales
+            // Request a endpoint para validar credenciales
             const response = await getLogin(username, btoa(hashPassword), credentials)
-            // Validación de respuesta el server
+            // Validación de respuesta del server
             validateResponse(response, username, check)
         } catch (e) {
             setLoading(false)
@@ -93,7 +93,9 @@ export function Login() {
                         <div className="content-login">
                             <Logo color="purple" size="md" />
                             <H1 className="title-form title-1">Inicia sesión</H1>
-                            <FormError error={error} />
+                            {error &&
+                                <FormError error={error} />
+                            }
                             <FormLogin onSubmit={handleSubmit} />
                             <div className="bottom-info">
                                 <p className="body-3">¿Primera vez en Guíah TV?

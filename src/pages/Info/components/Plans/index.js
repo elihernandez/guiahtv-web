@@ -8,7 +8,6 @@ export function PlansPrices(){
             <div className="plans-prices-wrapper">
                   <div className="plans">
                         <div className="card-plan price-month">
-                              
                               <Link className="link-register" href="https://guiah.tv/axs/registro">
                                     <Button type="button" uppercase={true} color="primary" classes="btn-register body-2">Pruebalo sin costo</Button>
                               </Link>

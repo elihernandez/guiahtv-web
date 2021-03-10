@@ -26,7 +26,7 @@ export function FormLogin({ onSubmit }) {
                               autoComplete="on"
                               required
                               autoFocus
-                              data-uia="login-field"
+                              data-uia="login-username-field"
                               onChange={(e) => setUsername(e.target.value)}
                         />
                   </div>
@@ -40,7 +40,7 @@ export function FormLogin({ onSubmit }) {
                               placeholder="Contraseña"
                               autoComplete="on"
                               required
-                              data-uia="login-field"
+                              data-uia="login-password-field"
                               onChange={(e) => setPassword(e.target.value)}
                         />
                   </div>
@@ -51,6 +51,7 @@ export function FormLogin({ onSubmit }) {
                               type="checkbox" 
                               id="checkbox-rememberme" 
                               className="input-checkbox" 
+                              data-uia="checkbox-rememberme"
                               onChange={(e) => setCheck(e.nativeEvent.target.checked)} />
                         <label htmlFor="checkbox-rememberme">
                               <p className="body-3">Recuérdame</p>

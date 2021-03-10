@@ -23,7 +23,7 @@ export default function Logo({ color = 'blue', size = 'md' }) {
     return (
         <NavLink to="/">
             <div className="logo-guiahtv">
-                <img className={className} src={src} alt="guiahtv-logo" />
+                <img className={className} src={src} alt="logo-guiahtv" />
             </div>
         </NavLink>
     )
@@ -31,8 +31,8 @@ export default function Logo({ color = 'blue', size = 'md' }) {
 
 export function IconLogo() {
     return (
-        <div className="logo">
-            <img src={logoForeground} alt="guiahtv-icon-logo" />
+        <div className="foreground-logo">
+            <img src={logoForeground} alt="foreground-logo-guiahtv" />
         </div>
     )
 }
