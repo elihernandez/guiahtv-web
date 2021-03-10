@@ -21,7 +21,8 @@ const initialState = {
 	audioTracks: null,
 	audioTrackActive: 0,
 	subtitleTracks: null,
-	subtitleTrackActive: -1
+	subtitleTrackActive: -1,
+	endingMovie: false
 }
 
 const reducer = (state, action) => {
@@ -118,6 +119,12 @@ const reducer = (state, action) => {
 		return {
 			...state,
 			subtitleTrackActive: action.payload
+		}
+	}
+	case 'setEndingMovie': {
+		return {
+			...state,
+			endingMovie: action.payload
 		}
 	}
 	default: return state

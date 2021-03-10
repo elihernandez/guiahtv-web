@@ -725,6 +725,7 @@ h6{
             font-size: .75vw;
             margin-top: 25px;
             font-weight: 300;
+            color: #9e9e9e;
       }
 /* #13171a */
 
@@ -1172,7 +1173,7 @@ h6{
       position: relative;
       width: 100%;
       min-height: 100vh;
-      background: #13171a;
+      background: #232526;
 }
 
 /* background: black; */
@@ -1199,8 +1200,9 @@ h6{
             width: 100%;
             height: 25%;
             bottom: 0;
-            background: -webkit-gradient(linear, left bottom, left top, from(#13171a), to(transparent));
-            background: linear-gradient(0deg, #13171a, transparent);
+            /* background: linear-gradient(0deg, #13171a, transparent); */
+            background: -webkit-gradient(linear, left bottom, left top, from(#232526), to(transparent));
+            background: linear-gradient(0deg, #232526, transparent);
             opacity: 1;
       }
 
@@ -1276,7 +1278,7 @@ h6{
 .main-info .subtitle-text{
             font-weight: 300;
             margin: 10px 0;
-            
+            /* color: $color-grey-2; */
       }
 
 .main-info .group-buttons-actions{
@@ -2246,6 +2248,7 @@ input::-ms-input-placeholder{
                     display: flex;
                     height: auto;
                     padding: 0 10px;
+                    /* margin: 0 100px; */
                     -webkit-transform: scale(0.85);
                             transform: scale(0.85);
                     -webkit-transition: all 500ms ease-in-out;
@@ -3884,7 +3887,7 @@ input::-ms-input-placeholder{
             height: 100%;
             top: 0;
             z-index: 2;
-            background: rgba(24,25,28, 0.35);
+            background: rgba(24,25,28, 0.45);
       }
 
 .wrapper-livetv .loader-video{
@@ -4353,6 +4356,56 @@ input::-ms-input-placeholder{
 .content-video.fade-exit-done {
             opacity: 0;
       }
+.ending-movie-info-wrapper{
+    position: absolute;
+    width: 350px;
+    bottom: 150px;
+    right: 50px;
+    padding: 10px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+    .ending-movie-info-wrapper .text-box{
+        font-size: .9vw;
+        text-align: center;
+        margin: .5vw 0;
+    }
+
+    .ending-movie-info-wrapper .progress-wrapper{
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        margin: .5vw 0;
+    }
+
+    .ending-movie-info-wrapper .progress-wrapper .time-text{
+            position: absolute;
+        }
+
+    .ending-movie-info-wrapper .progress-wrapper .MuiCircularProgress-colorPrimary{
+            color: white;
+        }
 .player{
       position: absolute;
       width: 100%;

@@ -7,6 +7,7 @@ import { getLinkVideoVod } from '../../../../services/getLinkVideoVod'
 import { setResumePosVideo } from '../../../../services/setResumePosVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { Content } from '../Content'
+import { EndingMovie } from '../EndingMovie'
 import { setProgressMovie } from '../../../../js/Time'
 import './styles.css'
 
@@ -18,7 +19,7 @@ export function Player({ state, dispatchVod }) {
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
 	const { stateVideo, dispatch } = useContext(VideoContext)
-	const { loading, currentTime, duration } = stateVideo
+	const { loading, currentTime, duration, endingMovie } = stateVideo
 	const { error, setError } = useHls(video, url, dispatch, movieVod)
 
 	const onPlayingVideo = () => {
@@ -70,17 +71,18 @@ export function Player({ state, dispatchVod }) {
 			let positionVideoMil = 0
       
 			if (currentTime) {
-				if (currentTime >= duration) {
+				if ((currentTime >= duration) || (currentTime > (duration - 10))) {
 					positionVideoMil = 0
+					setProgressMovie(0, movieVod, dataVod, dispatchVod)
 				} else {
 					positionVideoMil = Math.round(currentTime * 1000)
+					setProgressMovie(currentTime, movieVod, dataVod, dispatchVod)
 				}
 			}
       
 			try {
 				const response = await setResumePosVideo(movieVod.Registro, positionVideoMil, credentials)
 				if(response == 'error') throw new Error('No se pudo guardar posición de video')
-				setProgressMovie(currentTime, movieVod, dataVod, dispatchVod)
 			} catch (e) {
 				// console.log(e.message)
 			}
@@ -97,16 +99,19 @@ export function Player({ state, dispatchVod }) {
 	return (
 		<div className="player">
 			<div className="player-wrapper">
-				<video loop={true} ref={video} preload="auto" muted="muted" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} onCanPlay={onCanPlay} />
+				<video loop={false} ref={video} preload="auto" muted="muted" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} onCanPlay={onCanPlay} />
 				{loading &&
-                              <LoaderSpinnerMUI />
+                    <LoaderSpinnerMUI />
 				}
 				{error &&
-                              <div className="error-message">
-                              	<h2 className="text-error">{error}</h2>
-                              </div>
+					<div className="error-message">
+						<h2 className="text-error">{error}</h2>
+					</div>
 				}
 				<Content />
+				{endingMovie &&
+					<EndingMovie/>
+				}
 			</div>
 		</div>
 	)

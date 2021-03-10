@@ -31,5 +31,6 @@
             font-size: .75vw;
             margin-top: 25px;
             font-weight: 300;
+            color: $color-grey-2;
       }
 }
