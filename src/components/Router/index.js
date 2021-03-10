@@ -17,6 +17,7 @@ import { GetApp } from '../../pages/GetApp'
 import { isBrowser, isMobile } from "react-device-detect"
 import { isAuth } from '../../js/Auth'
 import { devBasenameRouter, prodBasenameRouter } from '../../../config'
+const basename = process.env.NODE_ENV !== "production" ? devBasenameRouter : prodBasenameRouter
 
 function CheckAuth({ children, credentials }) {
     return (
@@ -55,8 +56,6 @@ export function BaseRouter() {
     const { credentials, errorAuth } = stateUser
 
     if (errorAuth) return <ErrorAuth message={errorAuth} />
-    
-    const basename = process.env.NODE_ENV !== "production" ? devBasenameRouter : prodBasenameRouter
 
     return (
         <BrowserRouter basename={basename}>

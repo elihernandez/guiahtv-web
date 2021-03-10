@@ -760,7 +760,7 @@ h6{
 
 .aboutus-wrapper .img{
             position: relative;
-            width: 50%;
+            width: 60%;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -771,7 +771,7 @@ h6{
 
 .aboutus-wrapper .img img{
                   position: relative;
-                  width: 90%;
+                  width: 100%;
                   height: auto;
             }
 
@@ -789,7 +789,7 @@ h6{
                     align-items: flex-start;
             grid-gap: 1vw;
             gap: 1vw;
-            margin-top: 4vw;
+            margin-top: 2vw;
 
       }
 
@@ -886,7 +886,7 @@ h6{
 
 .sections-app .info-section .img{
                   position: relative;
-                  width: 45%;
+                  width: 65%;
                   height: 100%;
                   display: -webkit-box;
                   display: -ms-flexbox;
@@ -894,15 +894,24 @@ h6{
                   -webkit-box-pack: center;
                       -ms-flex-pack: center;
                           justify-content: center;
+                  display: flex;
+                  -webkit-box-align: center;
+                      -ms-flex-align: center;
+                          align-items: center;
             }
 
 .sections-app .info-section .img img{
                         position: relative;
                         height: auto;
-                        width: 70%;
+                        width: 60%;
                         -o-object-fit: cover;
-                           object-fit: cover;
+                           object-fit: cover
                   }
+
+.sections-app .info-section .img img.img-alacarta{
+                              width: 65%;
+                              height: 85%;
+                        }
 
 .sections-app .info-section .info-wrapper{
                   position: relative;
@@ -2620,7 +2629,7 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.buttons-sections{
+.buttons-menu-wrapper{
     position: relative;
     width: 100%;
     display: -webkit-box;
@@ -2636,109 +2645,90 @@ input::-ms-input-placeholder{
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
 }
 
-.buttons-sections .buttons-list{
-        width: 100%;
+.buttons-menu-wrapper .item-button{
+        position: relative;
+        -webkit-box-flex: 0;
+            -ms-flex: 0 0 calc(100%/5);
+                flex: 0 0 calc(100%/5);
+        height: 100%;
+        -webkit-transition: all 300ms ease-in-out;
+        transition: all 300ms ease-in-out;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
         -webkit-box-pack: center;
             -ms-flex-pack: center;
                 justify-content: center;
+        -webkit-transform: scale(0.95);
+                transform: scale(0.95)
+
     }
 
-/* border: 1px solid green; */
-
-.buttons-sections .buttons-list .item-button{
-            position: relative;
-            -webkit-box-flex: 0;
-                -ms-flex: 0 0 calc(100%/5);
-                    flex: 0 0 calc(100%/5);
+.buttons-menu-wrapper .item-button:after{
+            content: '';
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            border: 4px solid transparent;
+            border-top-left-radius: 1.4vw;
+            border-bottom-right-radius: 1.4vw;
             -webkit-transition: all 300ms ease-in-out;
             transition: all 300ms ease-in-out;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: horizontal;
-            -webkit-box-direction: normal;
-                -ms-flex-direction: row;
-                    flex-direction: row;
-            -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                    justify-content: center;
-            -webkit-transform: scale(0.95);
-                    transform: scale(0.95)
-
         }
 
-.buttons-sections .buttons-list .item-button:after{
-                content: '';
-                position: absolute;
-                top: 0px;
-                right: 0px;
-                bottom: 0px;
-                left: 0px;
-                border: 4px solid transparent;
-                border-top-left-radius: 1.4vw;
-                border-bottom-right-radius: 1.4vw;
-                -webkit-transition: all 300ms ease-in-out;
-                transition: all 300ms ease-in-out;
+.buttons-menu-wrapper .item-button .title-button{
+            position: absolute;
+            font-weight: 600;
+            font-size: 1.2vw;
+            color: white;
+            top: 30%;
+            left: 20%;
+            text-shadow: 4px 4px 8px rgba(16,15,16, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+.buttons-menu-wrapper .item-button picture{
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+.buttons-menu-wrapper .item-button .image-button{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.15) 0px 16px 25px -10px;
+                    box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.15) 0px 16px 25px -10px;
+            -webkit-transition: all 300ms ease-in-out;
+            transition: all 300ms ease-in-out;
+        }
+
+.buttons-menu-wrapper .item-button:hover{
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            cursor: pointer;
+        }
+
+.buttons-menu-wrapper .item-button:hover .image-button{
+                -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 40px 58px -16px, rgba(0, 0, 0, 0.2) 0px 30px 22px -10px;
+                        box-shadow: rgba(0, 0, 0, 0.2) 0px 40px 58px -16px, rgba(0, 0, 0, 0.2) 0px 30px 22px -10px
             }
 
-.buttons-sections .buttons-list .item-button .title-button{
-                position: absolute;
-                font-weight: 600;
-                font-size: 1.2vw;
-                color: white;
-                top: 30%;
-                left: 20%;
-                text-shadow: 4px 4px 8px rgba(16,15,16, 0.5);
-                letter-spacing: 0.5px;
+.buttons-menu-wrapper .item-button:hover:after{
+                border: 4px solid #f7f7f7;
             }
-
-.buttons-sections .buttons-list .item-button picture{
-                position: relative;
-                width: 100%;
-                height: 100%;
-            }
-
-.buttons-sections .buttons-list .item-button .image-button{
-                position: relative;
-                width: 100%;
-                height: 100%;
-                border: 3px solid transparent;
-                -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.15) 0px 16px 25px -10px;
-                        box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.15) 0px 16px 25px -10px;
-                -webkit-transition: all 300ms ease-in-out;
-                transition: all 300ms ease-in-out;
-            }
-
-.buttons-sections .buttons-list .item-button:focus.image-button{
-                border: 3px solid #f7f7f7;
-                border-top-left-radius: 28px;
-                border-bottom-right-radius: 28px;
-            }
-
-.buttons-sections .buttons-list .item-button:hover{
-                -webkit-transform: scale(1);
-                        transform: scale(1);
-                cursor: pointer;
-            }
-
-.buttons-sections .buttons-list .item-button:hover .image-button{
-                    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 40px 58px -16px, rgba(0, 0, 0, 0.2) 0px 30px 22px -10px;
-                            box-shadow: rgba(0, 0, 0, 0.2) 0px 40px 58px -16px, rgba(0, 0, 0, 0.2) 0px 30px 22px -10px
-                }
-
-.buttons-sections .buttons-list .item-button:hover:after{
-                    border: 4px solid #f7f7f7;
-                }
 /* #13171a */
 
 /* App */
@@ -11730,6 +11720,7 @@ ol {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  outline: none;
 }
 input{
   font-family: "Poppins", sans-serif !important;

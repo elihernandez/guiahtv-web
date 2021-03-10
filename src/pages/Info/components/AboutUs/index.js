@@ -1,5 +1,5 @@
 import React from 'react'
-import img from '../../../../assets/images/backgrounds/image-avod-devices-all-feb-2021-1440x872.png'
+import img from '../../../../assets/images/backgrounds/guiahtv_devices.png'
 import './styles.css'
 
 export function AboutUs(){

@@ -26,7 +26,7 @@ export function Sections(){
                   </div>   
                   <div className="info-section right">
                         <div className="img">
-                              <img src={imgAlacarta} />
+                              <img className="img-alacarta" src={imgAlacarta} />
                         </div>   
                         <div className="info-wrapper">
                               <div className="info">

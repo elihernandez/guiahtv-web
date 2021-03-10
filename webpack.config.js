@@ -8,25 +8,25 @@ const path = require('path')
 var config = require('./config')
 
 const javascriptRules = {
-  test: /\.js$/,
-  exclude: /node_modules/,
-  use: {
-    loader: 'babel-loader',
-    options: {
-      presets: [
-        '@babel/preset-react',
-        [
-          '@babel/preset-env',
-          {
-            "targets": {
-              "chrome": "38"
-            }
-          }
-        ]
-      ],
-      plugins: ['@babel/plugin-proposal-optional-chaining', '@babel/transform-runtime']
-    }
-  }
+	test: /\.js$/,
+	exclude: /node_modules/,
+	use: {
+		loader: 'babel-loader',
+		options: {
+			presets: [
+				'@babel/preset-react',
+				[
+					'@babel/preset-env',
+					{
+						'targets': {
+							'chrome': '38'
+						}
+					}
+				]
+			],
+			plugins: ['@babel/plugin-proposal-optional-chaining', '@babel/transform-runtime']
+		}
+	}
 }
 
 // const javascriptRules = {
@@ -39,80 +39,80 @@ const javascriptRules = {
 // }
 
 const stylesRules = {
-  test: /\.css$/i,
-  use: [
-    MiniCSSExtract.loader,
-    'css-loader',
-    // 'sass-loader',
-    'postcss-loader'
-  ],
+	test: /\.css$/i,
+	use: [
+		MiniCSSExtract.loader,
+		'css-loader',
+		// 'sass-loader',
+		'postcss-loader'
+	],
 }
 
 const filesRules = {
-  test: /\.(webp|png|svg|jpg|gif)$/,
-  use: [
-    {
-      loader: 'file-loader',
-      options: {
-        name: '[name].[contenthash].[ext]',
-        outputPath: 'assets/images/'
-      },
-    },
-  ],
+	test: /\.(webp|png|svg|jpg|gif)$/,
+	use: [
+		{
+			loader: 'file-loader',
+			options: {
+				name: '[name].[contenthash].[ext]',
+				outputPath: 'assets/images/'
+			},
+		},
+	],
 }
 
 const fontsRules = {
-  test: /\.(woff|woff2|eot|ttf|otf)$/,
-  use: [
-    {
-      loader: 'file-loader',
-      options: {
-        name: '[name].[contenthash].[ext]',
-        outputPath: 'assets/fonts/'
-      },
-    },
-  ],
+	test: /\.(woff|woff2|eot|ttf|otf)$/,
+	use: [
+		{
+			loader: 'file-loader',
+			options: {
+				name: '[name].[contenthash].[ext]',
+				outputPath: 'assets/fonts/'
+			},
+		},
+	],
 }
 
 const developmentPlugins = [
 ]
 
 const productionPlugins = [
-  new CleanWebpackPlugin(),
-  new CompressionPlugin(),
-  new CssMinimizerPlugin(),
+	new CleanWebpackPlugin(),
+	new CompressionPlugin(),
+	new CssMinimizerPlugin(),
 ]
 
 module.exports = (env, { mode }) => ({
-  output: {
-    path: path.resolve(process.cwd(), __dirname + '/build'),
-    filename: 'app.min.js',
-    publicPath: (mode !== 'production' ? config.devPath : config.prodPath),
-  },
-  watch: (mode === 'production' ? false : true),
-  module: {
-    rules: [
-      javascriptRules,
-      stylesRules,
-      filesRules,
-      fontsRules,
-    ]
-  },
-  devServer: {
-    historyApiFallback: true
-  },
-  plugins: [
-    ...(mode === 'production' ? productionPlugins : developmentPlugins),
-    new HtmlWebpackPlugin({
-      favicon: "./src/assets/images/logos/guiahtv/favicon.ico",
-      title: 'Guíah TV | Un espacio de fe',
-      template: 'src/index.html',
-      filename: '../index.html',
-    }),
-    new MiniCSSExtract({
-      filename: 'app.min.css',
-      chunkFilename: 'main.css',
-    }),
-    new ESBuildPlugin()
-  ].filter(Boolean)
+	output: {
+		path: path.resolve(process.cwd(), __dirname + '/build'),
+		filename: 'app.min.js',
+		publicPath: (mode !== 'production' ? config.devPath : config.prodPath),
+	},
+	watch: (mode === 'production' ? false : true),
+	module: {
+		rules: [
+			javascriptRules,
+			stylesRules,
+			filesRules,
+			fontsRules,
+		]
+	},
+	devServer: {
+		historyApiFallback: true
+	},
+	plugins: [
+		...(mode === 'production' ? productionPlugins : developmentPlugins),
+		new HtmlWebpackPlugin({
+			favicon: './src/assets/images/logos/guiahtv/favicon.ico',
+			title: 'Guíah TV | Un espacio de fe',
+			template: 'src/index.html',
+			filename: '../index.html',
+		}),
+		new MiniCSSExtract({
+			filename: 'app.min.css',
+			chunkFilename: 'main.css',
+		}),
+		new ESBuildPlugin()
+	].filter(Boolean)
 })

@@ -7,97 +7,102 @@ import { isLive } from '../../../../js/Time'
 import './styles.css'
 
 export function Video() {
-      const video = useRef()
-      const [url, setUrl] = useState()
-      const { stateUser } = useContext(UserContext)
-      const { credentials } = stateUser
-      const { stateVideo, dispatch } = useContext(VideoContext)
-      const { dataChannel, timerChannel } = stateVideo
-      const {error, setError} = useHls(video, url, dispatch)
+	const video = useRef()
+	const [url, setUrl] = useState()
+	const { stateUser } = useContext(UserContext)
+	const { credentials } = stateUser
+	const { stateVideo, dispatch } = useContext(VideoContext)
+	const { dataChannel, timerChannel } = stateVideo
+	const {error, setError} = useHls(video, url, dispatch)
 
-      const onPlayingVideo = () => {
-            dispatch({ type: 'updateActive', payload: true })
-            dispatch({ type: 'updateLoading', payload: false })
-      }
+	const onPlayingVideo = () => {
+		dispatch({ type: 'updateActive', payload: true })
+		dispatch({ type: 'updateLoading', payload: false })
+	}
 
-      const onWaitingVideo = () => {
-            dispatch({ type: 'updateLoading', payload: true })
-      }
+	const onWaitingVideo = () => {
+		dispatch({ type: 'updateLoading', payload: true })
+	}
 
-      const onErrorVideo = () => {
-            dispatch({ type: 'updateLoading', payload: false })
-            dispatch({ type: 'updateData', payload: null })
-            setError("Señal no disponible por el momento")
-      }
+	const onErrorVideo = () => {
+		dispatch({ type: 'updateLoading', payload: false })
+		dispatch({ type: 'updateData', payload: null })
+		setError('Señal no disponible por el momento')
+	}
 
-      const handleErrorImage = (e) => {
-            e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/backTVnuevologo.jpg'
-      }
+	const onCanPlay = () => {
+		video.current.muted = false
+		video.current.play()
+	}
 
-      useEffect(() => {
-            if (dataChannel) {
-                  const requestVideo = async () => {
-                        dispatch({ type: 'updateActive', payload: false })
-                        dispatch({ type: 'updateLoading', payload: true })
-                        setUrl(null)
-                        try {
-                              const response = await getVideo(dataChannel, credentials)
-                              if(response == "error") throw new Error('No se pudo obtener la información.')
-                              const url = response.Url
-                              setUrl(url)
-                        } catch (e) {
-                              dispatch({ type: 'updateLoading', payload: false })
-                              dispatch({ type: 'updateData', payload: null })
-                              setError(e.message)
-                        }
-                  }
+	const handleErrorImage = (e) => {
+		e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/backTVnuevologo.jpg'
+	}
 
-                  switch (dataChannel.ContentType) {
-                        case 'leon_livetv_Channel':
-                              requestVideo()
-                              break
-                        case 'leon_livetv_Event':
-                              if(isLive(dataChannel.Inicio, dataChannel.Fin)){
-                                    requestVideo()
-                              }else{
-                                    setUrl(null)
-                                    dispatch({ type: 'updateActive', payload: false })
-                                    dispatch({ type: 'updateLoading', payload: true })
-                                    setTimeout(() => {
-                                          dispatch({ type: 'updateLoading', payload: false })
-                                          dispatch({ type: 'updateTimer', active: true, timer: dataChannel })
-                                    }, 1000)
-                              }
-                              break
-                        case 'leon_livetv_Radio':
-                              requestVideo()
-                              break
-                        default: 
-                              requestVideo()
-                        break
-                  }
-            }
+	useEffect(() => {
+		if (dataChannel) {
+			const requestVideo = async () => {
+				dispatch({ type: 'updateActive', payload: false })
+				dispatch({ type: 'updateLoading', payload: true })
+				setUrl(null)
+				try {
+					const response = await getVideo(dataChannel, credentials)
+					if(response == 'error') throw new Error('No se pudo obtener la información.')
+					const url = response.Url
+					setUrl(url)
+				} catch (e) {
+					dispatch({ type: 'updateLoading', payload: false })
+					dispatch({ type: 'updateData', payload: null })
+					setError(e.message)
+				}
+			}
 
-            return () => {
+			switch (dataChannel.ContentType) {
+			case 'leon_livetv_Channel':
+				requestVideo()
+				break
+			case 'leon_livetv_Event':
+				if(isLive(dataChannel.Inicio, dataChannel.Fin)){
+					requestVideo()
+				}else{
+					setUrl(null)
+					dispatch({ type: 'updateActive', payload: false })
+					dispatch({ type: 'updateLoading', payload: true })
+					setTimeout(() => {
+						dispatch({ type: 'updateLoading', payload: false })
+						dispatch({ type: 'updateTimer', active: true, timer: dataChannel })
+					}, 1000)
+				}
+				break
+			case 'leon_livetv_Radio':
+				requestVideo()
+				break
+			default: 
+				requestVideo()
+				break
+			}
+		}
 
-            }
-      }, [dataChannel])
+		return () => {
 
-      return (
-            <div className="video">
-                  <div className="video-wrapper">
-                        <video loop={true} ref={video} autoPlay preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
-                        {     error &&
+		}
+	}, [dataChannel])
+
+	return (
+		<div className="video">
+			<div className="video-wrapper">
+				<video loop={true} ref={video} autoPlay muted="muted" preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} onCanPlay={onCanPlay} />
+				{     error &&
                               <div className="error-message">
-                                    <h2 className="text-error">{error}</h2>
+                              	<h2 className="text-error">{error}</h2>
                               </div>
-                        }
-                        {     stateVideo.activeTimer &&
+				}
+				{     stateVideo.activeTimer &&
                               <div className="preview-poster">
-                                    <img onError={handleErrorImage} src={timerChannel.PreviewPoster}/>
+                              	<img onError={handleErrorImage} src={timerChannel.PreviewPoster}/>
                               </div>
-                        }
-                  </div>
-            </div>
-      )
+				}
+			</div>
+		</div>
+	)
 }

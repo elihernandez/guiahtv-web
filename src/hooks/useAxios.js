@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components';
 import axios from 'axios'
 import config from '../../config'
 import { isEmptyArray } from '../js/Array'
@@ -40,7 +41,12 @@ export function useAxios(url){
                         const response = await instance.get(url)
                         setData(response)
                   } catch (error) {
-                        setError(error)
+                        setError('No se pudo cargar el contenido.')
+                        // if(count != 3){
+                        //       setError(errorMessage(onClickRequest))
+                        // }else{
+                        //       setError(errorMessageTwo())
+                        // }
                   }
             }
 
@@ -50,4 +56,53 @@ export function useAxios(url){
       }, [count])
 
       return { data, error, onClickRequest }
+}
+
+const Wrapper = styled.div`
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+`;
+
+const Text = styled.p`
+      font-size: 1vw;
+      text-align: center;
+      margin: .5vw 0;
+`;
+
+const Button = styled.button`
+      font-size: .75vw;
+      text-align: center;
+      color: white;
+      border: .125vw solid white;
+      padding: .5vw;
+      border-radius: 4px;
+      margin: .5vw 0;
+      transition: all 150ms ease-in-out;
+
+      &:hover {
+            background: white;
+            color: black;
+      }
+`;
+
+const errorMessage = (onClick) => {
+      return (
+            <Wrapper>
+                  <Text>No se pudo cargar el contenido</Text>
+                  <Button onClick={onClick}>Volver a intentar</Button>
+            </Wrapper>
+      )
+}
+
+const errorMessageTwo = () => {
+      return (
+            <Wrapper>
+                  <Text>No se pudo cargar el contenido</Text>
+            </Wrapper>
+      )
 }

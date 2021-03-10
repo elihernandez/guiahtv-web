@@ -35,16 +35,23 @@
 
             .img{
                   position: relative;
-                  width: 45%;
+                  width: 65%;
                   height: 100%;
                   display: flex;
                   justify-content: center;
+                  display: flex;
+                  align-items: center;
 
                   img{
                         position: relative;
                         height: auto;
-                        width: 70%;
+                        width: 60%;
                         object-fit: cover;
+
+                        &.img-alacarta{
+                              width: 65%;
+                              height: 85%;
+                        }
                   }
             }
 
