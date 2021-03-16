@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useRef } from 'react'
+import React, { useEffect, useContext, useRef } from 'react'
 import AudioContext from '../../../../context/AudioContext'
 import RadioContext from '../../../../context/RadioContext'
 import UserContext from '../../../../context/UserContext'
@@ -33,7 +33,7 @@ export function Player() {
 	const onErrorVideo = () => {
 		dispatchAudio({ type: 'setLoading', payload: false })
 		dispatchAudio({ type: 'setData', payload: null })
-		dispatchAudio({ type: 'setError', payload: true })
+		dispatchAudio({ type: 'setError', payload: 'Estación de radio no disponible por el momento' })
 		dispatchAudio({ type: 'setActive', payload: false })
 		dispatchAudio({ type: 'setPlaying', payload: false })
 	}
@@ -53,17 +53,21 @@ export function Player() {
 			dispatchAudio({ type: 'setLoading', payload: true })
 			try {
 				const response = await getLinkRadioStation(contentId, credentials)
-				if (response == 'error') throw new Error('No se pudo obtener la información.')
+				if (response == 'error') throw new Error('No se pudo obtener la información')
 				// console.log(response.Url)
 				if(containsString(response.Url, 'https')){
 					audio.current.src = response.Url
 				}else{
+					dispatchAudio({ type: 'setLoading', payload: false })
+					dispatchAudio({ type: 'setData', payload: null })
+					dispatchAudio({ type: 'setError', payload: 'Reproduciendo radio en ventana externa' })
+					dispatchAudio({ type: 'setPlaying', payload: false })
 					window.open(response.Url, '_blank')
 				}
 			} catch (e) {
 				dispatchAudio({ type: 'setLoading', payload: false })
 				dispatchAudio({ type: 'setData', payload: null })
-				dispatchAudio({ type: 'setError', payload: true })
+				dispatchAudio({ type: 'setError', payload: 'Estación de radio no disponible por el momento' })
 				dispatchAudio({ type: 'setPlaying', payload: false })
 				// setError(e.message)
 			}

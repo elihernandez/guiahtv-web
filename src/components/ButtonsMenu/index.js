@@ -4,12 +4,15 @@ import { H6 } from '../Typography'
 import { imgSourceSetPng } from '../../js/Image'
 import { useHistory } from 'react-router-dom'
 import { useAxios } from '../../hooks/useAxios'
+import { Focusable } from 'react-js-spatial-navigation'
 import './styles.css'
+
 export function ButtonsMenu() {
 	const history = useHistory()
 	const { data } = useAxios('/cs/leon_home_bm')
 
 	const handleClick = (contentType) => {
+		console.log(contentType)
 		switch (contentType) {
 		case 'leon_livetv':
 			history.push('/tv')
@@ -31,14 +34,19 @@ export function ButtonsMenu() {
 		}
 	}
 
+	// useEffect(() => {
+	// 	SpatialNavigation.focus('.focusable')
+	// }, [data])
+
 	return (
+		
 		<div className="buttons-menu-wrapper">
-			{data.map(({ titulo, ContentType, PosterCardUrlLandscape }) => {
+			{data.map(({ titulo, ContentType, PosterCardUrlLandscape }, index) => {
 				if (ContentType !== 'leon_music') {
 					return (
 						<div
 							key={ContentType}
-							className="item-button"
+							className={`item-button ${index === 0 ? 'active' : ''}`}
 							onClick={() => handleClick(ContentType)}
 						>
 							<picture>

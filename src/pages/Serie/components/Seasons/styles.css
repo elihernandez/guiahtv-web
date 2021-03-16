@@ -19,7 +19,11 @@
             }
 
             .MuiPaper-root{
-                  background-color: #424242 !important;
+                  background-color: #424242 !important;     
+
+                  .MuiTab-wrapper{
+                        font-size: .8vw !important;
+                  }
             }
 
             .MuiMenuItem-root{

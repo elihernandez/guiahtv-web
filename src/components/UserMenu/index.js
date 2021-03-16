@@ -4,25 +4,25 @@ import { PopperMenu } from '../PopperMenu'
 import './styles.css'
 
 export function UserMenu() {
-    const [cookies, setCookie, removeCookie] = useCookies()
+	const [cookies, setCookie, removeCookie] = useCookies()
 
-    const handleLogout = () => {
-        removeCookie('memclid', { path: '/' })
-        removeCookie('memclem', { path: '/' })
-        location.reload()
-    }
+	const handleLogout = () => {
+		removeCookie('memclid', { path: '/' })
+		removeCookie('memclem', { path: '/' })
+		location.reload()
+	}
 
-    const textButton = <span className="body-3">Mi perfil&nbsp;&nbsp;&nbsp;<i className='fas fa-user-circle' /></span>
-    const itemsMenu = [
-        { title: 'Mi cuenta', href: 'https://guiah.tv/axs', func: '' },
-        { title: 'Cerrar sesión', href: '#', func: handleLogout },
-    ]
+	const textButton = <span className="body-3">Mi perfil&nbsp;&nbsp;&nbsp;<i className='fas fa-user-circle' /></span>
+	const itemsMenu = [
+		{ title: 'Mi cuenta', href: 'https://guiah.tv/axs/Login', func: '' },
+		{ title: 'Cerrar sesión', href: '#', func: handleLogout },
+	]
 
-    return (
-        <div className="user-profile-navbar">
-            <PopperMenu textButton={textButton} itemsMenu={itemsMenu} />
-        </div>
-    )
+	return (
+		<div className="user-profile-navbar">
+			<PopperMenu textButton={textButton} itemsMenu={itemsMenu} />
+		</div>
+	)
 }
 // <div>
 //   <Button

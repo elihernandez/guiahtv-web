@@ -2732,6 +2732,10 @@ input::-ms-input-placeholder{
 .buttons-menu-wrapper .item-button:hover:after{
                 border: 4px solid #f7f7f7;
             }
+
+.buttons-menu-wrapper .item-button.focusable:focus:after{
+                    border: 4px solid #f7f7f7;
+                }
 /* #13171a */
 
 /* App */
@@ -2814,7 +2818,7 @@ input::-ms-input-placeholder{
 
 .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link i, .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link p{
                                     font-size: .8vw;
-                                    font-weight: 600;
+                                    font-weight: 500;
                                     margin: 0 0;
                                     color: rgba(247,247,247, 0.7);
                                     -webkit-transition: all .15s ease;
@@ -4913,12 +4917,12 @@ input::-ms-input-placeholder{
                 -ms-flex-align: center;
                     align-items: center;
             margin-top: 1.2vw;
-            font-size: .7vw;
       }
 
 .contact-info-item .content-web i{
                   color: #f7f7f7;
                   margin-right: 15px;
+                  font-size: .9vw;
             }
 
 .contact-info-item .content-web p{
@@ -4948,7 +4952,7 @@ input::-ms-input-placeholder{
 
 .contact-info-item .content-social-media .span-icon i{
                        color: #f7f7f7;
-                       font-size: .7vw;
+                       font-size: .9vw;
                  }
 
 .info-item{
@@ -6072,6 +6076,10 @@ input::-ms-input-placeholder{
                   background-color: #424242 !important;
             }
 
+      .seasons-content-wrapper .popper-menu-wrapper .MuiPaper-root .MuiTab-wrapper{
+                        font-size: .8vw !important;
+                  }
+
       .seasons-content-wrapper .popper-menu-wrapper .MuiMenuItem-root{
                   padding: 10px 15px;
                   font-size: 15px;
@@ -6232,7 +6240,8 @@ input::-ms-input-placeholder{
 }
 
 .MuiPaper-root span{
-            font-size: .7vw;
+            font-size: .8vw;
+            font-weight: 600;
       }
 
 .MuiPaper-root button{
@@ -6274,8 +6283,18 @@ input::-ms-input-placeholder{
                         padding: 0 50px
                   }
 
+            .wrapper-radio .guide-radio .tabs-wrapper header.MuiPaper-root span{
+                              font-size: .8vw !important;
+                              font-family: "Poppins", sans-serif !important;
+                        }
+
             .wrapper-radio .guide-radio .tabs-wrapper header.MuiPaper-root{
                               background: transparent !important;
+                        }
+
+            .wrapper-radio .guide-radio .tabs-wrapper header.MuiTab-wrapper{
+                             font-size: .8vw !important;
+                             font-family: 'Poppins' sans-serif !important;
                         }
 
 .button-play-wrapper{
@@ -8601,11 +8620,6 @@ input::-ms-input-placeholder{
 .fade-150-exit-done {
   opacity: 0;
 }
-/* #13171a */
-/* App */
-/* Top Menu */
-/* Music */
-/* Radio */
 /*!
  * Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -11726,6 +11740,11 @@ readers do not read off random characters that represent icons */
 .fas {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900; }
+/* #13171a */
+/* App */
+/* Top Menu */
+/* Music */
+/* Radio */
 html,
 body {
   width: 100%;

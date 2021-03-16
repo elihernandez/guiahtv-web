@@ -5,7 +5,8 @@
       box-shadow: none !important;
 
       span{
-            font-size: .7vw;
+            font-size: .8vw;
+            font-weight: 600;
       }
     
       button{

@@ -324,11 +324,12 @@
             flex-direction: row;
             align-items: center;
             margin-top: 1.2vw;
-            font-size: .7vw;
+           
 
             i{
                   color: $color-white;
                   margin-right: 15px;
+                  font-size: .9vw;
             }
 
             p{
@@ -350,7 +351,7 @@
 
                  i{
                        color: $color-white;
-                       font-size: .7vw;
+                       font-size: .9vw;
                  }
             }
       }

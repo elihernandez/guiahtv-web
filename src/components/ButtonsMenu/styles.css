@@ -68,5 +68,17 @@
             }
         }
 
+        
+        &.focusable{
+
+            &:focus{
+
+                &:after{
+                    border: 4px solid $color-white;
+                }
+            }
+               
+        }
+
     }
 }

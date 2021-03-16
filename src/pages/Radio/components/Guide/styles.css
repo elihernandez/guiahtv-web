@@ -10,8 +10,18 @@
                   header{
                         padding: 0 50px;
 
+                        &.MuiPaper-root span{
+                              font-size: .8vw !important;
+                              font-family: "Poppins", sans-serif !important;
+                        }
+
                         &.MuiPaper-root{
                               background: transparent !important;
+                        }
+
+                        &.MuiTab-wrapper{
+                             font-size: .8vw !important;
+                             font-family: 'Poppins' sans-serif !important;
                         }
                   }
             }

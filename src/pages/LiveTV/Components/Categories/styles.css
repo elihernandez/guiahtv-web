@@ -31,7 +31,7 @@
       
                               i, p{
                                     font-size: .8vw;
-                                    font-weight: 600;
+                                    font-weight: 500;
                                     margin: 0 0;
                                     color: rgba($rgba-color-white, 0.7);
                                     transition: all .15s ease;
