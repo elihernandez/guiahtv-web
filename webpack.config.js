@@ -86,7 +86,8 @@ const productionPlugins = [
 module.exports = (env, { mode }) => ({
 	output: {
 		path: path.resolve(process.cwd(), __dirname + '/build'),
-		filename: 'app.min.js',
+		// filename: 'app.min.[contenthash].js',
+		filename:  (mode === 'production' ? 'app.min.[contenthash].js' : 'app.min.js'),
 		publicPath: (mode !== 'production' ? config.devPath : config.prodPath),
 	},
 	watch: (mode === 'production' ? false : true),
@@ -110,8 +111,8 @@ module.exports = (env, { mode }) => ({
 			filename: '../index.html',
 		}),
 		new MiniCSSExtract({
-			filename: 'app.min.css',
-			chunkFilename: 'main.css',
+			filename: (mode === 'production' ? 'app.min.[contenthash].css' : 'app.min.css'),
+			chunkFilename: (mode === 'production' ? 'main.min.[contenthash].css' : 'main.min.css'),
 		}),
 		new ESBuildPlugin()
 	].filter(Boolean)

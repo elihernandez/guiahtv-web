@@ -13,6 +13,7 @@ export function Video() {
 	const { credentials } = stateUser
 	const { stateVideo, dispatch } = useContext(VideoContext)
 	const { dataChannel, timerChannel } = stateVideo
+	// let { timeoutErrorRef } = stateVideo
 	const {error, setError} = useHls(video, url, dispatch)
 
 	const onPlayingVideo = () => {
@@ -28,6 +29,7 @@ export function Video() {
 		dispatch({ type: 'updateLoading', payload: false })
 		dispatch({ type: 'updateData', payload: null })
 		setError('Señal no disponible por el momento')
+		// clearTimeoutError(timeoutErrorRef)
 	}
 
 	const onCanPlay = () => {
@@ -38,6 +40,17 @@ export function Video() {
 	const handleErrorImage = (e) => {
 		e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/backTVnuevologo.jpg'
 	}
+
+	// const setTimeoutError = () =>{
+	// 	timeoutErrorRef = setTimeout(() => {
+	// 		console.log('Error timeout')
+	// 	}, 5000)
+	// }
+
+	// const clearTimeoutError = () => {
+	// 	console.log(timeoutErrorRef)
+	// 	clearTimeout(timeoutErrorRef)
+	// }
 
 	useEffect(() => {
 		if (dataChannel) {
@@ -50,6 +63,7 @@ export function Video() {
 					if(response == 'error') throw new Error('No se pudo obtener la información.')
 					const url = response.Url
 					setUrl(url)
+					// setTimeoutError()
 				} catch (e) {
 					dispatch({ type: 'updateLoading', payload: false })
 					dispatch({ type: 'updateData', payload: null })
@@ -84,9 +98,16 @@ export function Video() {
 		}
 
 		return () => {
-
+			// clearTimeoutError()
 		}
 	}, [dataChannel])
+
+	// useEffect(() => {
+	// 	console.log("effect error")
+	// 	if(error !== false){
+	// 		onErrorVideo()
+	// 	}
+	// }, [error])
 
 	return (
 		<div className="video">

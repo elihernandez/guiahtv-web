@@ -113,7 +113,8 @@ const initialState = {
 	activeTimer: false,
 	volume: 50,
 	muteVolume: false,
-	fullScreen: false
+	fullScreen: false,
+	timeoutErrorRef: null
 }
 
 const reducer = (state, action) => {
@@ -161,6 +162,12 @@ const reducer = (state, action) => {
 		return {
 			...state,
 			fullScreen: action.payload
+		}
+	}
+	case 'setTimeoutErrorRef': {
+		return {
+			...state,
+			timeoutErrorRef: action.payload
 		}
 	}
 	default: return state
