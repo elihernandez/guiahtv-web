@@ -153,17 +153,19 @@ export function InfoChannel() {
 		<CSSTransition in={activeChannel} timeout={100} classNames="active" unmountOnExit>
 			<div className="info-channel">
 				{name &&
-                              <div className="info-channel-wrapper">
-                              	<div className="title-channel">
-                              		<h3 className="text-info">Estás viendo:</h3>
-                              		<h2 className="channel-name">{name}</h2>
-                              	</div>
-                              	<div className="right-buttons">
-                              		<ButtonVolume />
-                              		<ButtonPIP />
-                              		<ButtonFullScreen dispatch={dispatch} fullScreen={fullScreen} />
-                              	</div>
-                              </div>
+					<div className="info-channel-wrapper">
+						<div className="title-channel">
+							<h3 className="text-info">Estás viendo:</h3>
+							<h2 className="channel-name">{name}</h2>
+						</div>
+						<div className="right-buttons">
+							<ButtonVolume />
+							{ pip.supported &&
+							<ButtonPIP />
+							}
+							<ButtonFullScreen dispatch={dispatch} fullScreen={fullScreen} />
+						</div>
+					</div>
 				}
 			</div>
 		</CSSTransition>

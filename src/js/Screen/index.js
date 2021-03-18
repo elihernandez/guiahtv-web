@@ -1,12 +1,13 @@
 import screenfull from 'screenfull'
+import { isFirefox } from 'react-device-detect'
 
 export function exitFullScreen() {
-	document.getElementById('top-menu').style.display = ""
+	document.getElementById('top-menu').style.display = ''
 	screenfull.exit()
 }
 
 export function enterFullScreen() {
-	document.getElementById('top-menu').style.display = "none"
+	document.getElementById('top-menu').style.display = 'none'
 	screenfull.request()
 }
 
@@ -16,10 +17,22 @@ export function toggleFullScreen(){
 
 export function changeFullScreen() {
 	screenfull.on('change', () => {
-		if (!window.screenTop && !window.screenY) {
-			document.getElementById('top-menu').style.display = ""
-		} else {
-			document.getElementById('top-menu').style.display = "none"
+		if(isFirefox){
+			if (!window.screenTop && !window.screenY) {
+				console.log('change 1')
+				document.getElementById('top-menu').style.display = 'none'
+			} else {
+				console.log('change 2')
+				document.getElementById('top-menu').style.display = ''
+			}
+		}else{
+			if (!window.screenTop && !window.screenY) {
+				console.log('change 1')
+				document.getElementById('top-menu').style.display = ''
+			} else {
+				console.log('change 2')
+				document.getElementById('top-menu').style.display = 'none'
+			}
 		}
 	})
 }

@@ -149,7 +149,7 @@ export function VideoVod({ state, dispatchVod }) {
 			document.querySelector('.top-menu').style.opacity = 1
 			document.querySelector('.top-menu').classList.add('bggradient')
 			if(isFullScreenElement()) exitFullScreen()
-			if(pip.isActive(document.querySelector('video'))) pip.exit(document.querySelector('video')) 
+			if(pip.supported && pip.isActive(document.querySelector('video'))) pip.exit(document.querySelector('video')) 
 		}
 	}, [])
 

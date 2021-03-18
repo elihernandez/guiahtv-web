@@ -187,7 +187,7 @@ export function LiveTV() {
 			document.querySelector('.navbar-top-menu').style.opacity = 0
 			document.querySelector('.top-menu').classList.remove('bggradient')
 			if (isFullScreenElement()) exitFullScreen()
-			if(pip.isActive(document.querySelector('video'))) pip.exit(document.querySelector('video')) 
+			if( pip.supported && pip.isActive(document.querySelector('video'))) pip.exit(document.querySelector('video')) 
 		}
 	}, [])
 

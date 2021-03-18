@@ -3,6 +3,7 @@ import { ButtonsPlaying, ButtonUndo, ButtonRedo, ButtonBackward, ButtonPIP, Butt
 import Slider from '@material-ui/core/Slider'
 import VideoContext from '../../../../context/VideoContext'
 import { CSSTransition } from 'react-transition-group'
+const pip = require('picture-in-picture')
 import './styles.css'
 
 function getDurationMovie(duration) {
@@ -133,7 +134,9 @@ export function Controls() {
 							<div className="group-buttons">
 								<ButtonVolume volume={volume} muteVolume={muteVolume} dispatch={dispatch} />
 								<ButtonTracks hls={hls} audios={audioTracks} subtitles={subtitleTracks} dispatch={dispatch} audioTrackActive={audioTrackActive} subtitleTrackActive={subtitleTrackActive}/>
-								<ButtonPIP />
+								{pip.supported &&
+									<ButtonPIP />
+								}
 								<ButtonsFullScreen />
 								<div className="group-time">
 									<TimeMovie videoRef={videoRef} duration={duration} dispatch={dispatch} />
