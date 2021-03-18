@@ -44,6 +44,7 @@ export function Spotlight() {
 		slidesToScroll: 1,
 		variableWidth: false,
 		pauseOnHover: true,
+		swipeToSlide: true,
 		prevArrow: <SamplePrevArrow />,
 		nextArrow: <SampleNextArrow />,
 	}

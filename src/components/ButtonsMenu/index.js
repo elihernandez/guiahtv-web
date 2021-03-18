@@ -4,7 +4,8 @@ import { H6 } from '../Typography'
 import { imgSourceSetPng } from '../../js/Image'
 import { useHistory } from 'react-router-dom'
 import { useAxios } from '../../hooks/useAxios'
-import { Focusable } from 'react-js-spatial-navigation'
+import backgroundButton from '../../assets/images/backgrounds/background-button.jpg'
+import RadioIcon from '@material-ui/icons/Radio'
 import './styles.css'
 
 export function ButtonsMenu() {
@@ -12,7 +13,6 @@ export function ButtonsMenu() {
 	const { data } = useAxios('/cs/leon_home_bm')
 
 	const handleClick = (contentType) => {
-		console.log(contentType)
 		switch (contentType) {
 		case 'leon_livetv':
 			history.push('/tv')
@@ -34,10 +34,142 @@ export function ButtonsMenu() {
 		}
 	}
 
-	// useEffect(() => {
-	// 	SpatialNavigation.focus('.focusable')
-	// }, [data])
-
+	// return (
+		
+	// 	<div className="buttons-menu-wrapper">
+	// 		<div className="item-button" onClick={() => handleClick('leon_livetv')}>
+	// 			<picture>
+	// 				<source
+	// 					srcSet={backgroundButton}
+	// 					type="image/webp"
+	// 				/>
+	// 				<source
+	// 					srcSet={imgSourceSetPng(
+	// 						backgroundButton,
+	// 						'png'
+	// 					)}
+	// 					type="image/png"
+	// 				/>
+	// 				<img
+	// 					src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
+	// 					alt=""
+	// 					className="image-button"
+	// 				/>
+	// 			</picture>
+	// 			<div className="content-button">
+	// 				<i className="fas fa-tv"></i>
+	// 				<H6 className="title-button title-2">
+	// 						Tv en vivo
+	// 				</H6>
+	// 			</div>
+	// 		</div>
+	// 		<div className="item-button" onClick={() => handleClick('leon_movies')}>
+	// 			<picture>
+	// 				<source
+	// 					srcSet={backgroundButton}
+	// 					type="image/webp"
+	// 				/>
+	// 				<source
+	// 					srcSet={imgSourceSetPng(
+	// 						backgroundButton,
+	// 						'png'
+	// 					)}
+	// 					type="image/png"
+	// 				/>
+	// 				<img
+	// 					src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
+	// 					alt=""
+	// 					className="image-button"
+	// 				/>
+	// 			</picture>
+	// 			<div className="content-button">
+	// 				<i className="fas fa-film"></i>
+	// 				<H6 className="title-button title-2">
+	// 						A la carta
+	// 				</H6>
+	// 			</div>
+	// 		</div>
+	// 		<div className="item-button" onClick={() => handleClick('leon_radio')}>
+	// 			<picture>
+	// 				<source
+	// 					srcSet={backgroundButton}
+	// 					type="image/webp"
+	// 				/>
+	// 				<source
+	// 					srcSet={imgSourceSetPng(
+	// 						backgroundButton,
+	// 						'png'
+	// 					)}
+	// 					type="image/png"
+	// 				/>
+	// 				<img
+	// 					src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
+	// 					alt=""
+	// 					className="image-button"
+	// 				/>
+	// 			</picture>
+	// 			<div className="content-button">
+	// 				<RadioIcon />
+	// 				<H6 className="title-button title-2">
+	// 						Radio
+	// 				</H6>
+	// 			</div>
+	// 		</div>
+	// 		<div className="item-button" onClick={() => handleClick('leon_music')}>
+	// 			<picture>
+	// 				<source
+	// 					srcSet={backgroundButton}
+	// 					type="image/webp"
+	// 				/>
+	// 				<source
+	// 					srcSet={imgSourceSetPng(
+	// 						backgroundButton,
+	// 						'png'
+	// 					)}
+	// 					type="image/png"
+	// 				/>
+	// 				<img
+	// 					src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
+	// 					alt=""
+	// 					className="image-button"
+	// 				/>
+	// 			</picture>
+	// 			<div className="content-button">
+	// 				<i className="fas fa-music"></i>
+	// 				<H6 className="title-button title-2">
+	// 						Música
+	// 				</H6>
+	// 			</div>
+	// 		</div>
+	// 		<div className="item-button" onClick={() => handleClick('leon_kids')}>
+	// 			<picture>
+	// 				<source
+	// 					srcSet={backgroundButton}
+	// 					type="image/webp"
+	// 				/>
+	// 				<source
+	// 					srcSet={imgSourceSetPng(
+	// 						backgroundButton,
+	// 						'png'
+	// 					)}
+	// 					type="image/png"
+	// 				/>
+	// 				<img
+	// 					src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
+	// 					alt=""
+	// 					className="image-button"
+	// 				/>
+	// 			</picture>
+				
+	// 			<div className="content-button">
+	// 				<i className="fas fa-child"></i>
+	// 				<H6 className="title-button title-2">
+	// 					Zona kids
+	// 				</H6>
+	// 			</div>
+	// 		</div>
+	// 	</div>
+	// )
 	return (
 		
 		<div className="buttons-menu-wrapper">
@@ -75,17 +207,3 @@ export function ButtonsMenu() {
 		</div>
 	)
 }
-
-// useEffect(() => {
-//     const requestButtons = async () => {
-//         try{
-//             const response = await getButtonsMenu()
-//             if(response.length == 1) throw new Error('No se pudo obtener la información.')
-//             setButtons(response)
-//         }catch(e){
-//             console.log(e)
-//         }
-//     }
-
-//     requestButtons()
-// }, [])

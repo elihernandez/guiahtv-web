@@ -45,11 +45,11 @@ export function InfoMovie({ data }) {
 				</div>
 				<div className="group info">
 					{StarRating &&
-                                    <Fragment>
-                                    	<img className="img-rating" src={Imdb} />
-                                    	<p className="rating">{StarRating}</p>
-                                    	<p className="rating">|</p>
-                                    </Fragment>
+						<Fragment>
+							<img className="img-rating" src={Imdb} />
+							<p className="rating">{StarRating}</p>
+							<p className="rating">|</p>
+						</Fragment>
 					}
 					{Rating.trim() == 'PG-13' &&
                                     <img className="img-clasification" src={PG13} />
@@ -135,9 +135,9 @@ export function InfoSerie({ data }) {
 					}
 				</div>
 				{Description &&
-                              <div className="group-description">
-                              	<p className="description">{Description}</p>
-                              </div>
+					<div className="group-description">
+						<p className="description">{Description}</p>
+					</div>
 				}
 			</div>
 		</Fragment>

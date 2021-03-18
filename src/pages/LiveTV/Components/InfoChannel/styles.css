@@ -27,6 +27,7 @@
             position: relative;
             display: flex;
             flex-direction: row;
+            align-items: center;
 
             .container-volume{
                   position: relative;
@@ -34,7 +35,7 @@
                   flex-direction: row;
                   align-items: center;
                   align-content: center;
-                  width: 75px;
+                  width: 70px;
 
                   .MuiSlider-root{
                         color: $color-white;
@@ -71,10 +72,18 @@
 
             .icon{
                   cursor: pointer;
+                  display: flex;
+                  align-items: center;
                   
                   i{
                         font-size: 22px;
                         color: $color-white;
+                  }
+
+                  img{
+                        position: relative;
+                        width: auto;
+                        height: 20px;
                   }
             }
 

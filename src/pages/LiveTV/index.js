@@ -11,6 +11,7 @@ import { TimerChannel } from './Components/Timer'
 import { LoaderVideo } from './Components/LoaderVideo'
 import { CSSTransition } from 'react-transition-group'
 import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
+const pip = require('picture-in-picture')
 import './styles.css'
 
 function Content({ children }) {
@@ -27,6 +28,7 @@ function Content({ children }) {
 	const fadeInContent = () => {
 		setIsVisible(true)
 		document.querySelector('.top-menu').style.opacity = 1
+		// if(document.getElementById('detach-button-host')) document.getElementById('detach-button-host').style.top = '8vw'
 		document.body.style.cursor = ''
 	}
 
@@ -185,6 +187,7 @@ export function LiveTV() {
 			document.querySelector('.navbar-top-menu').style.opacity = 0
 			document.querySelector('.top-menu').classList.remove('bggradient')
 			if (isFullScreenElement()) exitFullScreen()
+			if(pip.isActive(document.querySelector('video'))) pip.exit(document.querySelector('video')) 
 		}
 	}, [])
 

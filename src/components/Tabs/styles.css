@@ -10,6 +10,7 @@
       }
     
       button{
+            flex-basis: none !important;
             box-shadow: none !important;
       }
 
@@ -18,6 +19,7 @@
       }
 
       .MuiTab-fullWidth{
+            flex-basis: none !important;
             flex-grow: 0 !important;
             color: $color-grey-5 !important;
       }
@@ -30,6 +32,10 @@
             .MuiTab-wrapper{
                   color: $color-white !important;
             }
+      }
+
+      .MuiTab-root{
+            min-width: 11vw !important;
       }
 }
 
