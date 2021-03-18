@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
-import { ButtonsPlaying, ButtonUndo, ButtonRedo, ButtonBackward, ButtonsFullScreen, ButtonVolume, ButtonTracks } from '../Buttons'
+import { ButtonsPlaying, ButtonUndo, ButtonRedo, ButtonBackward, ButtonPIP, ButtonsFullScreen, ButtonVolume, ButtonTracks } from '../Buttons'
 import Slider from '@material-ui/core/Slider'
 import VideoContext from '../../../../context/VideoContext'
 import { CSSTransition } from 'react-transition-group'
@@ -122,27 +122,28 @@ export function Controls() {
 		<CSSTransition in={show} timeout={300} classNames="fade">
 			<div className="controls-player">
 				{hls &&
-                              <div className="controls-wrapper">
-                              	<div className="top-section">
-                              		<div className="group-buttons">
-                              			<ButtonBackward videoRef={videoRef} />
-                              			<ButtonsPlaying videoRef={videoRef} playing={playing} dispatch={dispatch} />
-                              			<ButtonUndo videoRef={videoRef} dispatch={dispatch} />
-                              			<ButtonRedo videoRef={videoRef} dispatch={dispatch} />
-                              		</div>
-                              		<div className="group-buttons">
-                              			<ButtonVolume volume={volume} muteVolume={muteVolume} dispatch={dispatch} />
-                              			<ButtonTracks hls={hls} audios={audioTracks} subtitles={subtitleTracks} dispatch={dispatch} audioTrackActive={audioTrackActive} subtitleTrackActive={subtitleTrackActive}/>
-                              			<ButtonsFullScreen />
-                              			<div className="group-time">
-                              				<TimeMovie videoRef={videoRef} duration={duration} dispatch={dispatch} />
-                              			</div>
-                              		</div>
-                              	</div>
-                              	<div className="content-progress-time">
-                              		<ProgressBarTime videoRef={videoRef} currentTime={currentTime} duration={duration} dispatch={dispatch} />
-                              	</div>
-                              </div>
+					<div className="controls-wrapper">
+						<div className="top-section">
+							<div className="group-buttons">
+								<ButtonBackward videoRef={videoRef} />
+								<ButtonsPlaying videoRef={videoRef} playing={playing} dispatch={dispatch} />
+								<ButtonUndo videoRef={videoRef} dispatch={dispatch} />
+								<ButtonRedo videoRef={videoRef} dispatch={dispatch} />
+							</div>
+							<div className="group-buttons">
+								<ButtonVolume volume={volume} muteVolume={muteVolume} dispatch={dispatch} />
+								<ButtonTracks hls={hls} audios={audioTracks} subtitles={subtitleTracks} dispatch={dispatch} audioTrackActive={audioTrackActive} subtitleTrackActive={subtitleTrackActive}/>
+								<ButtonPIP />
+								<ButtonsFullScreen />
+								<div className="group-time">
+									<TimeMovie videoRef={videoRef} duration={duration} dispatch={dispatch} />
+								</div>
+							</div>
+						</div>
+						<div className="content-progress-time">
+							<ProgressBarTime videoRef={videoRef} currentTime={currentTime} duration={duration} dispatch={dispatch} />
+						</div>
+					</div>
 				}
 			</div>
 		</CSSTransition>

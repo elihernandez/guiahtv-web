@@ -3,6 +3,7 @@ import { useRouteMatch, useHistory } from 'react-router-dom'
 import { VideoContextProvider } from '../../context/VideoContext'
 import { Player } from './components/Player'
 import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
+const pip = require('picture-in-picture')
 import './styles.css'
 
 const initialState = {
@@ -143,10 +144,12 @@ export function VideoVod({ state, dispatchVod }) {
 	useEffect(() => {
 		document.querySelector('.top-menu').style.opacity = 0
 		document.querySelector('.top-menu').classList.remove('bggradient')
+
 		return () => {
 			document.querySelector('.top-menu').style.opacity = 1
 			document.querySelector('.top-menu').classList.add('bggradient')
 			if(isFullScreenElement()) exitFullScreen()
+			if(pip.isActive(document.querySelector('video'))) pip.exit(document.querySelector('video')) 
 		}
 	}, [])
 

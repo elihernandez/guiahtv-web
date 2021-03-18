@@ -132,7 +132,7 @@ function ButtonPIP(){
 	}, [])
 
 	return (
-		<Tooltip title={active ? 'Minimizar video' : 'Maximizar video'} placement="top-start">
+		<Tooltip title={active ? 'Maximizar video' : 'Minimizar video'} placement="top-start">
 			<span className="pip-icon icon" onClick={handleClick}>
 				<img src={pipIcon} />
 			</span>
