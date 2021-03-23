@@ -162,7 +162,7 @@
                               align-items: center;
       
                               i{
-                                    font-size: .8vw;
+                                    font-size: 1vw;
                                     color: $color-white;
                               }
 
@@ -200,7 +200,7 @@
                                     border-radius: 50%;
 
                                     i{
-                                          font-size: 18px;
+                                          font-size: 1vw;
                                           color: $color-white;
                                           text-align: center;
       
@@ -237,6 +237,7 @@
                               font-size: .7vw;
 
                               i{
+                                    font-size: 1vw;
                                     color: $color-white;
                                     margin-right: 15px;
                               }
@@ -257,6 +258,7 @@
                               i{
                                     color: $color-white;
                                     margin-right: 15px;
+                                    font-size: 1vw;
                               }
 
                               p{
@@ -277,7 +279,7 @@
 
                                    i{
                                          color: $color-white;
-                                         font-size: .7vw;
+                                         font-size: 1vw;
                                    }
                               }
                         }

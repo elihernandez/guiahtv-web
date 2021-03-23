@@ -14,180 +14,180 @@ import { LazyImage } from '../Image'
 import './styles.css'
 
 export function Item({ data, posterType, listType, titleCategory }) {
-      let Item = () => null
-      const { url } = useRouteMatch()
-      const { ContentType } = data
-      const type = typeContent(ContentType)
+	let Item = () => null
+	const { url } = useRouteMatch()
+	const { ContentType } = data
+	const type = typeContent(ContentType)
 
-      switch (listType) {
-            case 'catalogue':
-                  Item = <ItemCatalogue url={url} type={type} posterType={posterType} data={data} titleCategory={titleCategory} />
-                  break
-            case 'season':
-                  Item = <ItemSeason url={url} posterType={posterType} data={data} />
-                  break
-            case 'radio':
-                  Item = <ItemCard posterType={posterType} data={data} />
-                  break
-      }
+	switch (listType) {
+	case 'catalogue':
+		Item = <ItemCatalogue url={url} type={type} posterType={posterType} data={data} titleCategory={titleCategory} />
+		break
+	case 'season':
+		Item = <ItemSeason url={url} posterType={posterType} data={data} />
+		break
+	case 'radio':
+		Item = <ItemCard posterType={posterType} data={data} />
+		break
+	}
 
-      return Item
+	return Item
 }
 
 function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
-      const { Title, Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length, ShortDescriptionLine1 } = data
-      const { dispatchVod } = useContext(VodContext)
+	const { Title, Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length, ShortDescriptionLine1 } = data
+	const { dispatchVod } = useContext(VodContext)
 
-      const handleClick = () => {
-            if (isSerie(ContentType)) {
-                  dispatchVod({ type: 'setSerie', payload: data })
-            } else {
-                  dispatchVod({ type: 'setMovie', payload: data })
-            }
+	const handleClick = () => {
+		if (isSerie(ContentType)) {
+			dispatchVod({ type: 'setSerie', payload: data })
+		} else {
+			dispatchVod({ type: 'setMovie', payload: data })
+		}
 
-            if (isEpisode(ShortDescriptionLine1)) {
-                  dispatchVod({ type: 'setMovie', payload: data })
-            }
-      }
+		if (isEpisode(ShortDescriptionLine1)) {
+			dispatchVod({ type: 'setMovie', payload: data })
+		}
+	}
 
-      let urlNavLink
-      if (titleCategory == "Continuar Viendo") {
-            urlNavLink = `${url}/${type}/${Registro}/video`
-      } else {
-            urlNavLink = `${url}/${type}/${Registro}`
-      }
+	let urlNavLink
+	if (titleCategory == 'Continuar Viendo') {
+		urlNavLink = `${url}/${type}/${Registro}/video`
+	} else {
+		urlNavLink = `${url}/${type}/${Registro}`
+	}
 
-      return (
-            <NavLink to={urlNavLink} className="item-link">
-                  <div className="item" onClick={handleClick}>
-                        <div className="background-item">
-                              <Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
-                              {ResumePos &&
+	return (
+		<NavLink to={urlNavLink} className="item-link">
+			<div className="item" onClick={handleClick}>
+				<div className="background-item">
+					<Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
+					{ResumePos &&
                                     <div className="progress-bar-content">
-                                          <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
+                                    	<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
                                     </div>
-                              }
-                        </div>
-                  </div>
-            </NavLink>
-      )
+					}
+				</div>
+			</div>
+		</NavLink>
+	)
 }
 
 function ItemSeason({ url, posterType, data }) {
-      const { Title, Description, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
-      const { dispatchVod } = useContext(VodContext)
+	const { Title, Description, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
+	const { dispatchVod } = useContext(VodContext)
 
-      const handleClick = () => {
-            if (isSerie(ContentType)) {
-                  dispatchVod({ type: 'setSerie', payload: data })
-            } else {
-                  dispatchVod({ type: 'setMovie', payload: data })
-            }
-      }
+	const handleClick = () => {
+		if (isSerie(ContentType)) {
+			dispatchVod({ type: 'setSerie', payload: data })
+		} else {
+			dispatchVod({ type: 'setMovie', payload: data })
+		}
+	}
 
-      return (
-            <NavLink to={`${url}/video`} className="item-link">
-                  <div className="item" onClick={handleClick}>
-                        <div className="background-item">
-                              <Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
-                              <ProgressBar resumePos={ResumePos} length={Length} />
-                        </div>
-                        <Info title={Title} description={Description} />
-                  </div>
-            </NavLink>
-      )
+	return (
+		<NavLink to={`${url}/video`} className="item-link">
+			<div className="item" onClick={handleClick}>
+				<div className="background-item">
+					<Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
+					<ProgressBar resumePos={ResumePos} length={Length} />
+				</div>
+				<Info title={Title} description={Description} />
+			</div>
+		</NavLink>
+	)
 }
 
 function ItemCard({ posterType, data }) {
-      const history = useHistory()
-      const { Title, ContactID, Description, Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
-      const { dispatchRadio } = useContext(RadioContext)
-      const { dispatchAudio } = useContext(AudioContext)
-      const [contactInfo, setContactInfo] = useState([])
-      const [moreInfoActive, setMoreInfoActive] = useState(false)
-      const [readMoreActive, setReadMoreActive] = useState(false)
+	const history = useHistory()
+	const { Title, ContactID, Description, Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
+	const { dispatchRadio } = useContext(RadioContext)
+	const { dispatchAudio } = useContext(AudioContext)
+	const [contactInfo, setContactInfo] = useState([])
+	const [moreInfoActive, setMoreInfoActive] = useState(false)
+	const [readMoreActive, setReadMoreActive] = useState(false)
 
-      const handleClick = (e) => {
-            if (e.nativeEvent.target.tabIndex != 0) {
-                  history.push(`/radio/${Registro}`)
-                  dispatchRadio({ type: 'setCurrentStation', payload: data })
-                  dispatchAudio({ type: 'setData', payload: data })
-            }
-      }
+	const handleClick = (e) => {
+		if (e.nativeEvent.target.tabIndex != 0) {
+			history.push(`/radio/${Registro}`)
+			dispatchRadio({ type: 'setCurrentStation', payload: data })
+			dispatchAudio({ type: 'setData', payload: data })
+		}
+	}
 
-      return (
-            <div className="item-link">
-                  <div className="item" onClick={handleClick}>
+	return (
+		<div className="item-link">
+			<div className="item" onClick={handleClick}>
 
-                        <TitleItem title={Title} />
-                        <div className="background-item">
-                              <Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
-                              {ResumePos &&
+				<TitleItem title={Title} />
+				<div className="background-item">
+					<Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
+					{ResumePos &&
                                     <div className="progress-bar-content">
-                                          <LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
+                                    	<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
                                     </div>
-                              }
-                        </div>
-                        <DescriptionItem description={Description} />
-                        <ContactInfo moreInfoActive={moreInfoActive} contactInfo={contactInfo} setMoreInfoActive={setMoreInfoActive} />
-                        <ReadMore readMoreActive={readMoreActive} Name={Title} Description={Description} setReadMoreActive={setReadMoreActive} />
-                        <Buttons contactId={ContactID} description={Description} setContactInfo={setContactInfo} setMoreInfoActive={setMoreInfoActive} setReadMoreActive={setReadMoreActive} />
-                  </div>
-            </div>
-      )
+					}
+				</div>
+				<DescriptionItem description={Description} />
+				<ContactInfo moreInfoActive={moreInfoActive} contactInfo={contactInfo} setMoreInfoActive={setMoreInfoActive} />
+				<ReadMore readMoreActive={readMoreActive} Name={Title} Description={Description} setReadMoreActive={setReadMoreActive} />
+				<Buttons contactId={ContactID} description={Description} setContactInfo={setContactInfo} setMoreInfoActive={setMoreInfoActive} setReadMoreActive={setReadMoreActive} />
+			</div>
+		</div>
+	)
 }
 
 function TitleItem({ title }) {
-      return (
-            <div className="title-content">
-                  <h6 className="title-item">{title}</h6>
-            </div>
-      )
+	return (
+		<div className="title-content">
+			<h6 className="title-item">{title}</h6>
+		</div>
+	)
 }
 
 function DescriptionItem({ description }) {
-      return (
-            <div className="description-content">
-                  <h3 className="description-item">{limitString(description, 80)}</h3>
-            </div>
-      )
+	return (
+		<div className="description-content">
+			<h3 className="description-item">{limitString(description, 80)}</h3>
+		</div>
+	)
 }
 
 function Img({ title, posterType, imgPortrait, imgLandscape }) {
-      const altImg = `img-${title}`
-      const handleError = (e) => {
-            let srcImg = ''
-            switch (posterType) {
-                  case '0':
-                        srcImg = 'build/assets/images/logos/guiahtv/vod-error-portrait.png'
-                        break
-                  case '1':
-                        srcImg = 'build/assets/images/logos/guiahtv/GuiahAzulPerf.png'
-                        break
-                  default:
-                        srcImg = 'build/assets/images/logos/guiahtv/GuiahAzulPerf.png'
-                        break
-            }
-            e.nativeEvent.target.src = srcImg
-            e.nativeEvent.target.classList.add("image-recover")
-      }
-      // <img alt={`img-${title}`} onError={handleError} src={imgPortrait} />
-      // <img alt={`img-${title}`} onError={handleError} src={imgLandscape} />
-      return (
-            <Fragment>
-                  {posterType == 0 &&
+	const altImg = `img-${title}`
+	const handleError = (e) => {
+		let srcImg = ''
+		switch (posterType) {
+		case '0':
+			srcImg = 'build/assets/images/logos/guiahtv/vod-error-portrait.png'
+			break
+		case '1':
+			srcImg = 'build/assets/images/logos/guiahtv/GuiahAzulPerf.png'
+			break
+		default:
+			srcImg = 'build/assets/images/logos/guiahtv/GuiahAzulPerf.png'
+			break
+		}
+		e.nativeEvent.target.src = srcImg
+		e.nativeEvent.target.classList.add('image-recover')
+	}
+	// <img alt={`img-${title}`} onError={handleError} src={imgPortrait} />
+	// <img alt={`img-${title}`} onError={handleError} src={imgLandscape} />
+	return (
+		<Fragment>
+			{posterType == 0 &&
                         <LazyImage img={imgPortrait} alt={altImg} type="webp" recoverType="jpg" />
-                  }
-                  {posterType == 1 &&
+			}
+			{posterType == 1 &&
                         <LazyImage img={imgLandscape} alt={altImg} type="webp" recoverType="jpg" />
                         // <picture>
                         //       <source srcSet={imgLandscape} type="image/webp" />
                         //       <source srcSet={imgSourceSetJpg(imgLandscape, 'webp')} type="image/jpeg" />
                         //       <img src="build/assets/images/logos/guiahtv/GuiahAzulPerf.png" alt={`img-${title}`} />
                         // </picture>
-                  }
-            </Fragment>
-      )
+			}
+		</Fragment>
+	)
 }
 
 // <picture>
@@ -198,171 +198,171 @@ function Img({ title, posterType, imgPortrait, imgLandscape }) {
 
 function ProgressBar({ resumePos, length }) {
 
-      return (
-            <Fragment>
-                  {resumePos &&
+	return (
+		<Fragment>
+			{resumePos &&
                         <div className="progress-bar-content">
-                              <LinearProgress variant="determinate" value={getProgressMovie(resumePos, length)} />
+                        	<LinearProgress variant="determinate" value={getProgressMovie(resumePos, length)} />
                         </div>
-                  }
-            </Fragment>
-      )
+			}
+		</Fragment>
+	)
 }
 
 function Info({ title, description }) {
-      return (
-            <div className="info-item">
-                  <div className="group-name-item">
-                        <h6 className="name-item">{title}</h6>
-                  </div>
-                  <div className="group-description-item">
-                        <p className="description-item">{limitString(description, 80)}</p>
-                  </div>
-            </div>
-      )
+	return (
+		<div className="info-item">
+			<div className="group-name-item">
+				<h6 className="name-item">{title}</h6>
+			</div>
+			<div className="group-description-item">
+				<p className="description-item">{limitString(description, 80)}</p>
+			</div>
+		</div>
+	)
 }
 
 function Buttons({ contactId, description, setContactInfo, setMoreInfoActive, setReadMoreActive }) {
-      const handleClickShowMoreInfo = () => {
-            const getInfoContact = async () => {
-                  try {
-                        const data = await getContactInfo(contactId)
-                        setContactInfo(data)
-                        setMoreInfoActive(true)
-                  } catch (e) {
+	const handleClickShowMoreInfo = () => {
+		const getInfoContact = async () => {
+			try {
+				const data = await getContactInfo(contactId)
+				setContactInfo(data)
+				setMoreInfoActive(true)
+			} catch (e) {
 
-                  }
-            }
+			}
+		}
 
-            getInfoContact()
-      }
+		getInfoContact()
+	}
 
-      const handleClickShowReadMore = () => {
-            setReadMoreActive(true)
-      }
+	const handleClickShowReadMore = () => {
+		setReadMoreActive(true)
+	}
 
-      return (
-            <div className="buttons-content">
-                  <Tooltip title="Más info" placement="top-start">
-                        <span tabIndex="0" onClick={handleClickShowMoreInfo}>
-                              <i className="fas fa-info" tabIndex="0" />
-                        </span>
-                  </Tooltip>
+	return (
+		<div className="buttons-content">
+			<Tooltip title="Más info" placement="top-start">
+				<span tabIndex="0" onClick={handleClickShowMoreInfo}>
+					<i className="fas fa-info" tabIndex="0" />
+				</span>
+			</Tooltip>
 
-                  {isLimitString(description, 80) &&
+			{isLimitString(description, 80) &&
                         <Tooltip title="Leer más" placement="top-start">
-                              <span tabIndex="0" onClick={handleClickShowReadMore}>
-                                    <i className="fas fa-ellipsis-h" tabIndex="0" />
-                              </span>
+                        	<span tabIndex="0" onClick={handleClickShowReadMore}>
+                        		<i className="fas fa-ellipsis-h" tabIndex="0" />
+                        	</span>
                         </Tooltip>
-                  }
-            </div>
-      )
+			}
+		</div>
+	)
 }
 
 function ReadMore({ readMoreActive, Name, Description, setReadMoreActive }) {
-      const handleClickHideReadMore = () => {
-            setReadMoreActive(false)
-      }
+	const handleClickHideReadMore = () => {
+		setReadMoreActive(false)
+	}
 
-      return (
-            <Fragment>
-                  {     readMoreActive
-                        ? <CSSTransition in={readMoreActive} timeout={100} classNames="fade" unmountOnExit>
-                              <div className="contact-info-item" tabIndex="0">
-                                    <div className="content-button-close" tabIndex="0">
-                                          <span className="button-close" onClick={handleClickHideReadMore} tabIndex="0">
-                                                <i className="fas fa-times" tabIndex="0" />
-                                          </span>
-                                    </div>
-                                    <h2 className="title" tabIndex="0">{Name}</h2>
-                                    <h3 className="description" tabIndex="0">{Description}</h3>
-                              </div>
-                        </CSSTransition>
-                        : null
-                  }
-            </Fragment>
-      )
+	return (
+		<Fragment>
+			{     readMoreActive
+				? <CSSTransition in={readMoreActive} timeout={100} classNames="fade" unmountOnExit>
+					<div className="contact-info-item" tabIndex="0">
+						<div className="content-button-close" tabIndex="0">
+							<span className="button-close" onClick={handleClickHideReadMore} tabIndex="0">
+								<i className="fas fa-times" tabIndex="0" />
+							</span>
+						</div>
+						<h2 className="title" tabIndex="0">{Name}</h2>
+						<h3 className="description" tabIndex="0">{Description}</h3>
+					</div>
+				</CSSTransition>
+				: null
+			}
+		</Fragment>
+	)
 }
 
 function ContactInfo({ moreInfoActive, contactInfo, setMoreInfoActive }) {
 
-      const handleClickHideMoreInfo = () => {
-            setMoreInfoActive(false)
-      }
+	const handleClickHideMoreInfo = () => {
+		setMoreInfoActive(false)
+	}
 
      
-      const handleClickWeb = () => {
-            window.open(`https://${replaceString(contactInfo.ContactWeb, 'https://', '')}`, '_blank')
-      }
+	const handleClickWeb = () => {
+		window.open(`https://${replaceString(contactInfo.ContactWeb, 'https://', '')}`, '_blank')
+	}
 
-      const handleClickFb = () => {
-            window.open(`https://www.facebook.com/${contactInfo.ContactFb}`, "_blank")
-      }
+	const handleClickFb = () => {
+		window.open(`https://www.facebook.com/${contactInfo.ContactFb}`, '_blank')
+	}
 
-      const handleClickIg = () => {
-            window.open(`https://www.instagram.com/${contactInfo.ContactIG}`, "_blank")
-      }
+	const handleClickIg = () => {
+		window.open(`https://www.instagram.com/${contactInfo.ContactIG}`, '_blank')
+	}
 
-      const handleClickTw = () => {
-            window.open(`https://www.twitter.com/${contactInfo.ContactTw}`, "_blank")
-      }
+	const handleClickTw = () => {
+		window.open(`https://www.twitter.com/${contactInfo.ContactTw}`, '_blank')
+	}
 
-      const handleClickGm = () => {
-            window.open(`https://www.google.com/maps/place/${replaceString(contactInfo.ContactLoc, ",", "+")}`, "_blank")
-            // window.location = `https://www.google.com/maps/place/${replaceString(contactInfo.ContactLoc, ",", "+")}`
-      }
+	const handleClickGm = () => {
+		window.open(`https://www.google.com/maps/place/${replaceString(contactInfo.ContactLoc, ',', '+')}`, '_blank')
+		// window.location = `https://www.google.com/maps/place/${replaceString(contactInfo.ContactLoc, ",", "+")}`
+	}
 
-      return (
-            <Fragment>
-                  {     moreInfoActive
-                        ? <CSSTransition in={moreInfoActive} timeout={100} classNames="fade" unmountOnExit>
-                              <div className="contact-info-item" tabIndex="0">
-                                    <div className="content-button-close" tabIndex="0">
-                                          <span className="button-close" onClick={handleClickHideMoreInfo} tabIndex="0">
-                                                <i className="fas fa-times" tabIndex="0" />
-                                          </span>
-                                    </div>
-                                    <h2 className="title" tabIndex="0">Información de {contactInfo.ContactTitle}</h2>
-                                    <h3 className="description" tabIndex="0">{contactInfo.ContactDescription}</h3>
-                                    {contactInfo.ContactFon &&
+	return (
+		<Fragment>
+			{     moreInfoActive
+				? <CSSTransition in={moreInfoActive} timeout={100} classNames="fade" unmountOnExit>
+					<div className="contact-info-item" tabIndex="0">
+						<div className="content-button-close" tabIndex="0">
+							<span className="button-close" onClick={handleClickHideMoreInfo} tabIndex="0">
+								<i className="fas fa-times" tabIndex="0" />
+							</span>
+						</div>
+						<h2 className="title" tabIndex="0">Información de {contactInfo.ContactTitle}</h2>
+						<h3 className="description" tabIndex="0">{contactInfo.ContactDescription}</h3>
+						{contactInfo.ContactFon &&
                                           <div className="content-phone" tabIndex="0">
-                                                <i className="fas fa-phone-alt" tabIndex="0"></i>
-                                                <p tabIndex="0">{contactInfo.ContactFon}</p>
+                                          	<i className="fas fa-phone-alt" tabIndex="0"></i>
+                                          	<p tabIndex="0">{contactInfo.ContactFon}</p>
                                           </div>
-                                    }
-                                    {contactInfo.ContactWeb &&
+						}
+						{contactInfo.ContactWeb &&
                                           <div className="content-web" tabIndex="0" onClick={handleClickWeb}>
-                                                <i className="fas fa-globe" tabIndex="0"></i>
-                                                <p tabIndex="0">{contactInfo.ContactWeb}</p>
+                                          	<i className="fas fa-globe" tabIndex="0"></i>
+                                          	<p tabIndex="0">{contactInfo.ContactWeb}</p>
                                           </div>
-                                    }
-                                    <div className="content-social-media" tabIndex="0">
-                                          {contactInfo.ContactFb &&
+						}
+						<div className="content-social-media" tabIndex="0">
+							{contactInfo.ContactFb &&
                                                 <span className="span-icon" tabIndex="0" onClick={handleClickFb}>
-                                                      <i className="fab fa-facebook-square" tabIndex="0" />
+                                                	<i className="fab fa-facebook-square" tabIndex="0" />
                                                 </span>
-                                          }
-                                          {contactInfo.ContactIG &&
+							}
+							{contactInfo.ContactIG &&
                                                 <span className="span-icon" tabIndex="0" onClick={handleClickIg}>
-                                                      <i className="fab fa-instagram" tabIndex="0" />
+                                                	<i className="fab fa-instagram" tabIndex="0" />
                                                 </span>
-                                          }
-                                          {contactInfo.ContactTw &&
+							}
+							{contactInfo.ContactTw &&
                                                 <span className="span-icon" tabIndex="0" onClick={handleClickTw}>
-                                                      <i className="fab fa-twitter-square" tabIndex="0" />
+                                                	<i className="fab fa-twitter-square" tabIndex="0" />
                                                 </span>
-                                          }
-                                          {contactInfo.ContactLoc &&
+							}
+							{contactInfo.ContactLoc &&
                                                 <span className="span-icon" tabIndex="0" onClick={handleClickGm}>
-                                                      <i className="fas fa-map-marker-alt" tabIndex="0" />
+                                                	<i className="fas fa-map-marker-alt" tabIndex="0" />
                                                 </span>
-                                          }
-                                    </div>
-                              </div>
-                        </CSSTransition>
-                        : null
-                  }
-            </Fragment>
-      )
+							}
+						</div>
+					</div>
+				</CSSTransition>
+				: null
+			}
+		</Fragment>
+	)
 }

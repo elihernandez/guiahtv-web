@@ -3138,7 +3138,7 @@ input::-ms-input-placeholder{
                         }
 
 .channel-link .channel .channel-content .buttons-content span i{
-                                    font-size: .8vw;
+                                    font-size: 1vw;
                                     color: #f7f7f7;
                               }
 
@@ -3198,7 +3198,7 @@ input::-ms-input-placeholder{
                               }
 
 .channel-link .channel .channel-content .info-channel .content-button-close .button-close i{
-                                          font-size: 18px;
+                                          font-size: 1vw;
                                           color: #f7f7f7;
                                           text-align: center;
       
@@ -3241,6 +3241,7 @@ input::-ms-input-placeholder{
                         }
 
 .channel-link .channel .channel-content .info-channel .content-phone i{
+                                    font-size: 1vw;
                                     color: #f7f7f7;
                                     margin-right: 15px;
                               }
@@ -3268,6 +3269,7 @@ input::-ms-input-placeholder{
 .channel-link .channel .channel-content .info-channel .content-web i{
                                     color: #f7f7f7;
                                     margin-right: 15px;
+                                    font-size: 1vw;
                               }
 
 .channel-link .channel .channel-content .info-channel .content-web p{
@@ -3296,7 +3298,7 @@ input::-ms-input-placeholder{
 
 .channel-link .channel .channel-content .info-channel .content-social-media .span-icon i{
                                          color: #f7f7f7;
-                                         font-size: .7vw;
+                                         font-size: 1vw;
                                    }
 
 .channel-link .channel .channel-content[focus-within]{
@@ -3709,7 +3711,7 @@ input::-ms-input-placeholder{
 /* Radio */
 
 .info-channel-wrapper{
-      padding: 7vw 50px 0 50px;
+      padding: 7vw 65px 0 50px;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
