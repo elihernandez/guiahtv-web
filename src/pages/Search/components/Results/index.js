@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react'
 import { containsString } from '../../../../js/String'
 import { List, TitleList } from '../../../../components/List'
-import { Channels } from '../../../LiveTV/Components/Channels'
+import { LoaderSpinnerMUI } from '../../../../components/Loader'
 import './styles.css'
 
 function TypeList({ dataCategory }){
-	// console.log(dataCategory.cmData[0].ContentType)
 	const contentType = dataCategory.cmData[0].ContentType 
 
 	if(containsString(contentType, 'alacarta_movie')){
@@ -37,26 +36,33 @@ function TypeList({ dataCategory }){
 			</Fragment>
 		)
 	}
-	// <List key={category.category} data={category} listType="catalogue" /> 
+	
 	return (
 		null
 	)
 }
 
-export function SearchResults({ value, results: data }){
-	// console.log(data)
+export function SearchResults({ loading, value, results: data }){
+
+	if(loading){
+		return <LoaderSpinnerMUI />
+	}
 
 	if(data.length === 0 && value){
 		return <h1 className="not-results-message">No se encontraron resultados para "{value}"</h1>
 	}
     
-	return (
-		<div className="search-results">
-			{
-				data.map((category) => {
-					return <TypeList key={category.category} dataCategory={category}/>
-				})
-			}
-		</div>
-	)
+	if(value){
+		return (
+			<div className="search-results">
+				{
+					data.map((category) => {
+						return <TypeList key={category.category} dataCategory={category}/>
+					})
+				}
+			</div>
+		)
+	}
+
+	return null
 }

@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react'
 // require('hls.js/dist/hls.min.js')
 import Hls from 'hls.js'
+// console.log(Hls.version)
 
 export function useHls(video, url, dispatch, movie) {
-	// const config = {
-	//       initialLiveManifestSize: 10,
-	//       maxBufferLength: 60,
-	//       progressive: true,
-	//       nudgeMaxRetry: 10
-	// }
-	let hls = new Hls()
+	const config = {
+		debug: false,
+		liveBackBufferLength: 900,
+		enableWorker: true,
+	}
+	let hls = new Hls(config)
 	const [error, setError] = useState(false)
+	const [recover, setRecover] = useState(0)
 
 	useEffect(() => {
 		if(url){
@@ -27,7 +28,6 @@ export function useHls(video, url, dispatch, movie) {
 								dispatch({ type: 'updateVideoRef', payload: video })
 							}
 						}
-						// video.current.play()
 						dispatch({ type: 'setHls', payload: hls })
 					})
 				})
@@ -44,14 +44,6 @@ export function useHls(video, url, dispatch, movie) {
 						setError('Señal no disponible por el momento')
 					}
 
-					// if(data.details == "audioTrackLoadError"){
-					//       hls.destroy()
-					//       dispatch({ type: 'updateLoading', payload: false })
-					//       // dispatch({ type: 'updateData', payload: null })
-					//       dispatch({ type: 'setHls', payload: null })
-					//       setError("Contenido no disponible por el momento")
-					// }
-
 					if(data.details == 'bufferStalledError'){
 						// hls.destroy()
 						hls.startLoad()
@@ -62,8 +54,10 @@ export function useHls(video, url, dispatch, movie) {
 					}
 
 					if(data.details == 'audioTrackLoadError'){
-						// hls.destroy()
-						// hls.recoverMediaError()
+						if(recover != 3){
+							// hls.destroy()
+							setRecover(recover + 1)
+						}
 						dispatch({ type: 'updateLoading', payload: true })
 						// // dispatch({ type: 'updateData', payload: null })
 						// dispatch({ type: 'setHls', payload: null })
@@ -90,9 +84,9 @@ export function useHls(video, url, dispatch, movie) {
 		}
 
 		return (() => {
-			hls.destroy()
+			// hls.destroy()
 		})
-	}, [url])
+	}, [url, recover])
 
 	return { error, setError }
 }

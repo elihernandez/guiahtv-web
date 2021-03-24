@@ -1,33 +1,39 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useRef, useEffect, useContext } from 'react'
 import UserContext from '../../../../context/UserContext'
 import { getSearchResults } from '../../../../services/getSearchResults' 
 import './styles.css'
 
-export function SearchForm({ value, setValue, setResults }){
+export function SearchForm({ value, setValue, setResults, setLoading }){
+	const timerRef = useRef(null)
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
 	const { memclid } = credentials
 	
-
 	const onChange = (e) => {
+		setLoading(true)
 		setValue(e.target.value)
 	}
 
 	useEffect(() => {
-        
 		const getData = async() => {
 			try{
 				const data = await getSearchResults(memclid, decodeURIComponent(value))
 				setResults(data)
-				// console.log(data)
+				setLoading(false)
 			}catch(e){
-				console.log(e)
+				setLoading(false)
 			}
 		}
 
-		if(value){
-			getData()
-		}
+		const interval = setTimeout(() => {
+			if(value){
+				getData()
+			}else{
+				setLoading(false)
+			}
+		}, 400)
+
+		return () => clearTimeout(interval) 
 	}, [value])
 
 	return(

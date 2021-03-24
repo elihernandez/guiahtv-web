@@ -33,9 +33,10 @@ export function Player({ state, dispatchVod }) {
 		dispatch({ type: 'updateLoading', payload: true })
 	}
 
-	const onErrorVideo = () => {
+	const onErrorVideo = (e) => {
+		console.log(e.nativeEvent.code)
 		dispatch({ type: 'updateLoading', payload: false })
-		dispatch({ type: 'updateData', payload: null })
+		// dispatch({ type: 'updateData', payload: null })
 		setError('Contenido no disponible por el momento')
 	}
 

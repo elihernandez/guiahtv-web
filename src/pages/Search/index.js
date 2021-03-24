@@ -7,6 +7,7 @@ import './styles.css'
 export function SearchPage(){
 	const [results, setResults] = useState([])
 	const [value, setValue] = useState('')
+	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
 		showTopMenuNavbar()
@@ -18,8 +19,8 @@ export function SearchPage(){
 
 	return (
 		<div className="search-page">
-			<SearchForm value={value} setValue={setValue} setResults={setResults} />
-			<SearchResults value={value} results={results} />
+			<SearchForm value={value} setValue={setValue} setLoading={setLoading} setResults={setResults} />
+			<SearchResults loading={loading} value={value} results={results} />
 		</div>
 	)
 }
