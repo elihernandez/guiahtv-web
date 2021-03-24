@@ -5,15 +5,16 @@ import RadioContext from '../../context/RadioContext'
 import AudioContext from '../../context/AudioContext'
 import { getContactInfo } from '../../services/getContactInfo'
 import { getProgressMovie } from '../../js/Time'
-import { limitString, isLimitString, isSerie, isEpisode, typeContent, replaceString, containsString } from '../../js/String'
+import { limitString, isLimitString, isSerie, isEpisode, typeContent, replaceString, containsString, createUrlString } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { imgSourceSetJpg } from '../../js/Image'
+import { isEvent } from '../../pages/LiveTV/Components/Channel'
 import { CSSTransition } from 'react-transition-group'
 import { LazyImage } from '../Image'
 import './styles.css'
 
-export function Item({ data, posterType, listType, titleCategory }) {
+export function Item({ data, posterType, listType, titleCategory, category }) {
 	let Item = () => null
 	const { path, url } = useRouteMatch()
 	const { ContentType } = data
@@ -30,7 +31,7 @@ export function Item({ data, posterType, listType, titleCategory }) {
 		Item = <ItemCard posterType={posterType} data={data} />
 		break
 	case 'channel':
-		Item = <ItemCardChannel posterType={posterType} data={data} />
+		Item = <ItemCardChannel posterType={posterType} data={data} category={category} />
 		break
 	}
 
@@ -38,7 +39,6 @@ export function Item({ data, posterType, listType, titleCategory }) {
 }
 
 function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
-	console.log(data)
 	const { Title, Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length, ShortDescriptionLine1 } = data
 	const { dispatchVod } = useContext(VodContext)
 
@@ -150,10 +150,9 @@ function ItemCard({ posterType, data }) {
 	)
 }
 
-function ItemCardChannel({ posterType, data }) {
-	console.log(data)
+function ItemCardChannel({ posterType, data, category }) {
 	const history = useHistory()
-	const { Title, ContactID, Description, Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
+	const { ContentType, Name, Title, ContactID, Description, Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
 	const { dispatchRadio } = useContext(RadioContext)
 	const { dispatchAudio } = useContext(AudioContext)
 	const [contactInfo, setContactInfo] = useState([])
@@ -162,7 +161,13 @@ function ItemCardChannel({ posterType, data }) {
 
 	const handleClick = (e) => {
 		if (e.nativeEvent.target.tabIndex != 0) {
-			history.push(`/tv/${Registro}`)
+			if(isEvent(ContentType)){
+				
+				history.push(`/tv/${createUrlString(replaceString(category, 'TV - ', ''))}/${Registro}`)
+			}else{
+				history.push(`/tv/${createUrlString(replaceString(category, 'TV - ', ''))}/${createUrlString(Title)}`)
+			}
+
 			dispatchRadio({ type: 'setCurrentStation', payload: data })
 			dispatchAudio({ type: 'setData', payload: data })
 		}

@@ -11,7 +11,7 @@ import { imgSourceSetJpg } from '../../../../js/Image'
 import Tooltip from '@material-ui/core/Tooltip'
 import './styles.css'
 
-function isEvent(ContentType){
+export function isEvent(ContentType){
 	if(ContentType == 'leon_livetv_Event'){
 		return true
 	}

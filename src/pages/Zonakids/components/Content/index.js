@@ -12,22 +12,22 @@ export function Content() {
 	const { stateVod, dispatchVod } = useContext(VodContext)
 	const { dataVod } = stateVod
 	const { loading, data } = useRequest('zonakids', dispatchVod, dataVod)
-      
+
 	return (
 		<Switch>
 			<Route exact path={`${url}`} >
 				{loading &&
-                              <LoaderSpinnerMUI />
+                    <LoaderSpinnerMUI />
 				}
                         
 				{!loading && data &&
-                              <Catalogue data={data} />
+                    <Catalogue data={data} />
 				}
 			</Route>
-			<Route exact path="/zonakids/:contentType/:contentId" >
+			<Route exact path={`${url}/:contentType/:contentId`} >
 				<InfoContent />
 			</Route>
-			<Route exact path="/zonakids/:contentType/:contentId/video" >
+			<Route exact path={`${url}/:contentType/:contentId/video`} >
 				<VideoVod state={stateVod} dispatchVod={dispatchVod} />
 			</Route>
 		</Switch>

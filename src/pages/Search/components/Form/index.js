@@ -19,7 +19,7 @@ export function SearchForm({ value, setValue, setResults }){
 			try{
 				const data = await getSearchResults(memclid, decodeURIComponent(value))
 				setResults(data)
-				console.log(data)
+				// console.log(data)
 			}catch(e){
 				console.log(e)
 			}

@@ -170,7 +170,7 @@ export function ListRadio({ data, listType }) {
 }
 
 export function ListChannel({ data, listType }) {
-	const { poster_type, cmData } = data
+	const { poster_type, cmData, category } = data
 	const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
 	const classes = poster_type == 0 ? 'list list-card portrait' : 'list list-card landscape'
 	const refList = useRef()
@@ -181,7 +181,7 @@ export function ListChannel({ data, listType }) {
 				<div className="list-items" ref={refList}>
 					{
 						cmData.map((data) => {
-							return <Item key={data.Registro} data={data} posterType={poster_type} listType={listType} />
+							return <Item key={data.Registro} data={data} category={category} posterType={poster_type} listType={listType} />
 						})
 					}
 				</div>
