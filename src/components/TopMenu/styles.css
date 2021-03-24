@@ -56,17 +56,25 @@
             align-items: center;
             align-content: center;
 
-            &>span{
+            .search-button{
+                margin-right: 25px;
+                padding: 9px 16px;
+                border-radius: 4px;
+                text-decoration: none;
+
+                &:hover{
+                    background-color: $color-grey-5;
+                }
+            }
+
+            span{
                 color: white;
                 display: flex;
                 justify-content: center;
                 align-content: center;
                 align-items: center;
-
-                &:not(:last-child){
-                    margin-right: 50px;
-                }
-
+                font-size: 14px;
+               
                 i{
                     font-size: 20px;
 
@@ -79,6 +87,7 @@
                     }
                 }
             }
+
         }   
     }
 }

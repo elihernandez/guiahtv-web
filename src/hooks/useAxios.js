@@ -1,61 +1,61 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 import axios from 'axios'
 import config from '../../config'
 import { isEmptyArray } from '../js/Array'
 
 const instance = axios.create({
-      baseURL: config.API_URL,
-      timeout: 10000
+	baseURL: config.API_URL,
+	timeout: 10000
 })
 
 instance.interceptors.response.use(
-      function (response) {
-            if(response.status === 200){
-                  if(isEmptyArray(response.data)){
-                        throw new Error()
-                  }
+	function (response) {
+		if(response.status === 200){
+			if(isEmptyArray(response.data)){
+				throw new Error()
+			}
 
-                  return response.data
-            }
-      }, 
-      function () {
-            throw new Error()
-      }
+			return response.data
+		}
+	}, 
+	function () {
+		throw new Error()
+	}
 )
 
 export default instance
 
 export function useAxios(url){
-      const [data, setData] = useState([])
-      const [error, setError] = useState(false)
-      const [count, setCount] = useState(0)
+	const [data, setData] = useState([])
+	const [error, setError] = useState(false)
+	const [count, setCount] = useState(0)
 
-      const onClickRequest = () => {
-            setCount(count + 1)
-      }
+	const onClickRequest = () => {
+		setCount(count + 1)
+	}
 
-      useEffect(() => {
-            async function getUrl() {
-                  try {
-                        const response = await instance.get(url)
-                        setData(response)
-                  } catch (error) {
-                        setError('No se pudo cargar el contenido.')
-                        // if(count != 3){
-                        //       setError(errorMessage(onClickRequest))
-                        // }else{
-                        //       setError(errorMessageTwo())
-                        // }
-                  }
-            }
+	useEffect(() => {
+		async function getUrl() {
+			try {
+				const response = await instance.get(url)
+				setData(response)
+			} catch (error) {
+				setError('No se pudo cargar el contenido.')
+				// if(count != 3){
+				//       setError(errorMessage(onClickRequest))
+				// }else{
+				//       setError(errorMessageTwo())
+				// }
+			}
+		}
 
-            if(count <= 3){
-                  getUrl()
-            }
-      }, [count])
+		if(count <= 3){
+			getUrl()
+		}
+	}, [url, count])
 
-      return { data, error, onClickRequest }
+	return { data, error, onClickRequest }
 }
 
 const Wrapper = styled.div`
@@ -66,13 +66,13 @@ const Wrapper = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
-`;
+`
 
 const Text = styled.p`
       font-size: 1vw;
       text-align: center;
       margin: .5vw 0;
-`;
+`
 
 const Button = styled.button`
       font-size: .75vw;
@@ -88,21 +88,21 @@ const Button = styled.button`
             background: white;
             color: black;
       }
-`;
+`
 
 const errorMessage = (onClick) => {
-      return (
-            <Wrapper>
-                  <Text>No se pudo cargar el contenido</Text>
-                  <Button onClick={onClick}>Volver a intentar</Button>
-            </Wrapper>
-      )
+	return (
+		<Wrapper>
+			<Text>No se pudo cargar el contenido</Text>
+			<Button onClick={onClick}>Volver a intentar</Button>
+		</Wrapper>
+	)
 }
 
 const errorMessageTwo = () => {
-      return (
-            <Wrapper>
-                  <Text>No se pudo cargar el contenido</Text>
-            </Wrapper>
-      )
+	return (
+		<Wrapper>
+			<Text>No se pudo cargar el contenido</Text>
+		</Wrapper>
+	)
 }

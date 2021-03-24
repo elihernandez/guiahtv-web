@@ -5,7 +5,7 @@ import RadioContext from '../../context/RadioContext'
 import AudioContext from '../../context/AudioContext'
 import { getContactInfo } from '../../services/getContactInfo'
 import { getProgressMovie } from '../../js/Time'
-import { limitString, isLimitString, isSerie, isEpisode, typeContent, replaceString } from '../../js/String'
+import { limitString, isLimitString, isSerie, isEpisode, typeContent, replaceString, containsString } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { imgSourceSetJpg } from '../../js/Image'
@@ -15,7 +15,7 @@ import './styles.css'
 
 export function Item({ data, posterType, listType, titleCategory }) {
 	let Item = () => null
-	const { url } = useRouteMatch()
+	const { path, url } = useRouteMatch()
 	const { ContentType } = data
 	const type = typeContent(ContentType)
 
@@ -29,12 +29,16 @@ export function Item({ data, posterType, listType, titleCategory }) {
 	case 'radio':
 		Item = <ItemCard posterType={posterType} data={data} />
 		break
+	case 'channel':
+		Item = <ItemCardChannel posterType={posterType} data={data} />
+		break
 	}
 
 	return Item
 }
 
 function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
+	console.log(data)
 	const { Title, Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length, ShortDescriptionLine1 } = data
 	const { dispatchVod } = useContext(VodContext)
 
@@ -52,9 +56,18 @@ function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
 
 	let urlNavLink
 	if (titleCategory == 'Continuar Viendo') {
-		urlNavLink = `${url}/${type}/${Registro}/video`
+		if(containsString(ContentType, 'kids')){
+			urlNavLink = `zonakids/${type}/${Registro}/video`
+		}else{
+			urlNavLink = `alacarta/${type}/${Registro}/video`
+		}
 	} else {
-		urlNavLink = `${url}/${type}/${Registro}`
+		if(containsString(ContentType, 'kids')){
+			urlNavLink = `zonakids/${type}/${Registro}`
+			
+		}else{
+			urlNavLink = `alacarta/${type}/${Registro}`
+		}
 	}
 
 	return (
@@ -63,9 +76,9 @@ function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
 				<div className="background-item">
 					<Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
 					{ResumePos &&
-                                    <div className="progress-bar-content">
-                                    	<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
-                                    </div>
+						<div className="progress-bar-content">
+							<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
+						</div>
 					}
 				</div>
 			</div>
@@ -123,9 +136,49 @@ function ItemCard({ posterType, data }) {
 				<div className="background-item">
 					<Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
 					{ResumePos &&
-                                    <div className="progress-bar-content">
-                                    	<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
-                                    </div>
+						<div className="progress-bar-content">
+							<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
+						</div>
+					}
+				</div>
+				<DescriptionItem description={Description} />
+				<ContactInfo moreInfoActive={moreInfoActive} contactInfo={contactInfo} setMoreInfoActive={setMoreInfoActive} />
+				<ReadMore readMoreActive={readMoreActive} Name={Title} Description={Description} setReadMoreActive={setReadMoreActive} />
+				<Buttons contactId={ContactID} description={Description} setContactInfo={setContactInfo} setMoreInfoActive={setMoreInfoActive} setReadMoreActive={setReadMoreActive} />
+			</div>
+		</div>
+	)
+}
+
+function ItemCardChannel({ posterType, data }) {
+	console.log(data)
+	const history = useHistory()
+	const { Title, ContactID, Description, Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
+	const { dispatchRadio } = useContext(RadioContext)
+	const { dispatchAudio } = useContext(AudioContext)
+	const [contactInfo, setContactInfo] = useState([])
+	const [moreInfoActive, setMoreInfoActive] = useState(false)
+	const [readMoreActive, setReadMoreActive] = useState(false)
+
+	const handleClick = (e) => {
+		if (e.nativeEvent.target.tabIndex != 0) {
+			history.push(`/tv/${Registro}`)
+			dispatchRadio({ type: 'setCurrentStation', payload: data })
+			dispatchAudio({ type: 'setData', payload: data })
+		}
+	}
+
+	return (
+		<div className="item-link">
+			<div className="item" onClick={handleClick}>
+
+				<TitleItem title={Title} />
+				<div className="background-item">
+					<Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
+					{ResumePos &&
+						<div className="progress-bar-content">
+							<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
+						</div>
 					}
 				</div>
 				<DescriptionItem description={Description} />
@@ -185,6 +238,14 @@ function Img({ title, posterType, imgPortrait, imgLandscape }) {
                         //       <source srcSet={imgSourceSetJpg(imgLandscape, 'webp')} type="image/jpeg" />
                         //       <img src="build/assets/images/logos/guiahtv/GuiahAzulPerf.png" alt={`img-${title}`} />
                         // </picture>
+			}
+			{posterType == 2 &&
+				<LazyImage img={imgLandscape} alt={altImg} type="webp" recoverType="jpg" />
+				// <picture>
+				//       <source srcSet={imgLandscape} type="image/webp" />
+				//       <source srcSet={imgSourceSetJpg(imgLandscape, 'webp')} type="image/jpeg" />
+				//       <img src="build/assets/images/logos/guiahtv/GuiahAzulPerf.png" alt={`img-${title}`} />
+				// </picture>
 			}
 		</Fragment>
 	)

@@ -4,19 +4,19 @@ import { TabsContent } from './components/Tabs'
 import { CSSTransition } from 'react-transition-group'
 
 export function ContentSerie({data}){
-      const [show, setShow] = useState(false)
-      const { ContentTypeOrder, ContactID } = data
+	const [show, setShow] = useState(false)
+	const { ContentTypeOrder, ContactID } = data
 
-      useEffect(() => {
-            setShow(true)
-      }, [])
+	useEffect(() => {
+		setShow(true)
+	}, [])
 
-      return (
-            <CSSTransition in={show} timeout={300} classNames="fade" unmountOnExit>
-                  <div className="serie-info info-wrapper">
-                        <InfoSerie data={data}/>
-                        <TabsContent serieId={ContentTypeOrder} contactId={ContactID} />
-                  </div>
-            </CSSTransition>
-      )
+	return (
+		<CSSTransition in={show} timeout={300} classNames="fade" unmountOnExit>
+			<div className="serie-info info-wrapper">
+				<InfoSerie data={data}/>
+				<TabsContent serieId={ContentTypeOrder} contactId={ContactID} />
+			</div>
+		</CSSTransition>
+	)
 }

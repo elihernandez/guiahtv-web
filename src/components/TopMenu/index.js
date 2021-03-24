@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react'
-import { useLocation } from "react-router-dom"
+import React, { useState, useEffect, useRef } from 'react'
+import { useLocation, NavLink} from 'react-router-dom'
 import { Navbar } from '../Navbar/index'
 import { UserMenu } from '../UserMenu/index'
 import Logo from '../Logo/index'
@@ -32,6 +32,12 @@ function LeftContent() {
 function RightContent() {
 	return (
 		<div className="right-content">
+			<NavLink to='/busqueda' className="search-button" activeClassName="active">
+				<span>
+					Búsqueda &nbsp;&nbsp;<i className="fas fa-search"></i> 
+				</span>
+			</NavLink>
+			
 			<UserMenu />
 		</div>
 	)
@@ -54,10 +60,10 @@ export const TopMenu = () => {
 	return (
 		<div id="top-menu" className={`top-menu ${scroll ? 'bgcolor' : ''}`} ref={topMenuRef}>
 			
-				<div className="section-wrapper">
-					<LeftContent />
-					<RightContent />
-				</div>
+			<div className="section-wrapper">
+				<LeftContent />
+				<RightContent />
+			</div>
 			
 		</div>
 	)

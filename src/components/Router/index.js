@@ -10,6 +10,7 @@ import { VideoOnDemand } from '../../pages/Vod/index'
 import { Radio } from '../../pages/Radio/index'
 import { Music } from '../../pages/Music/index'
 import { Zonakids } from '../../pages/Zonakids/index'
+import { SearchPage } from '../../pages/Search'
 import { Page404 } from '../../pages/404/index'
 import { ErrorAuth } from '../../pages/ErrorAuth/index'
 import { SnackbarAuth } from '../SnackbarAuth'
@@ -104,6 +105,13 @@ export function BaseRouter() {
 						<Radio />
 					</CheckAuth>
 				</Route>
+
+				<Route exact path="/busqueda">
+					<CheckAuth credentials={credentials}>
+						<SearchPage />
+					</CheckAuth>
+				</Route>
+
 
 				<Route exact path="/obtener-app">
 					{isBrowser &&

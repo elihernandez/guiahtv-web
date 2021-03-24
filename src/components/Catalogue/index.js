@@ -13,17 +13,14 @@ import './styles.css'
 
 export function searchSerie(data, contentId) {
 	let content
-	data.map(({ poster_type, cmData }) => {
-		if (poster_type == 1) {
-
-			cmData.map((serie) => {
-				if (serie.Registro == contentId) {
-					if (!content) {
-						content = serie
-					}
+	data.map(({ cmData }) => {
+		cmData.map((serie) => {
+			if (serie.Registro == contentId) {
+				if (!content) {
+					content = serie
 				}
-			})
-		}
+			}
+		})
 	})
 
 	return content
@@ -31,16 +28,14 @@ export function searchSerie(data, contentId) {
 
 export function searchMovie(data, contentId) {
 	let content
-	data.map(({ poster_type, cmData }) => {
-		if (poster_type == 0) {
-			cmData.map((movie) => {
-				if (movie.Registro == contentId) {
-					if (!content) {
-						content = movie
-					}
+	data.map(({ cmData }) => {
+		cmData.map((movie) => {
+			if (movie.Registro == contentId) {
+				if (!content) {
+					content = movie
 				}
-			})
-		}
+			}
+		})
 	})
 	return content
 }

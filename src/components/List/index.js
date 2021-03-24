@@ -26,6 +26,9 @@ export function List({ data, listType }) {
 	case 'radio':
 		List = <ListRadio data={data} listType={listType} />
 		break
+	case 'channel':
+		List = <ListChannel data={data} listType={listType} />
+		break
 	}
 
 	return List
@@ -166,7 +169,29 @@ export function ListRadio({ data, listType }) {
 	)
 }
 
-function TitleList({ title }) {
+export function ListChannel({ data, listType }) {
+	const { poster_type, cmData } = data
+	const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
+	const classes = poster_type == 0 ? 'list list-card portrait' : 'list list-card landscape'
+	const refList = useRef()
+
+	return (
+		<div className={classes}>
+			<div className="list-content">
+				<div className="list-items" ref={refList}>
+					{
+						cmData.map((data) => {
+							return <Item key={data.Registro} data={data} posterType={poster_type} listType={listType} />
+						})
+					}
+				</div>
+				<DirectionsPage totalPages={totalPages} refList={refList} />
+			</div>
+		</div>
+	)
+}
+
+export function TitleList({ title }) {
 	return <h6 className="title-list">{title}</h6>
 }
 

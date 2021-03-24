@@ -6,52 +6,52 @@ import { getData } from '../services/getData'
 import { getUtcOffsetLocal } from '../js/Time'
 
 function getURL(section, credentials) {
-      let apiURL
-      switch (section) {
-            case 'livetv':
-                  let utcOffsetLocal = getUtcOffsetLocal()
-                  apiURL = `${API_URL}/cmdata/leon/livetvplus/${credentials.memclid}/${utcOffsetLocal}`
-                  break
-            case 'alacarta':
-                  apiURL = `${API_URL}/cmdata/leon/entplus/${credentials.memclid}`
-                  break
-            case 'radio':
-                  apiURL = `${API_URL}/cdata/leon/radio/${credentials.memclid}`
-                  break
-            case 'zonakids':
-                  apiURL = `${API_URL}/cdata/leon/kids/${credentials.memclid}`
-                  break
-            default:
-                  break
-      }
+	let apiURL
+	switch (section) {
+	case 'livetv':
+		let utcOffsetLocal = getUtcOffsetLocal()
+		apiURL = `${API_URL}/cmdata/leon/livetvplus/${credentials.memclid}/${utcOffsetLocal}`
+		break
+	case 'alacarta':
+		apiURL = `${API_URL}/cmdata/leon/entplus/${credentials.memclid}`
+		break
+	case 'radio':
+		apiURL = `${API_URL}/cdata/leon/radio/${credentials.memclid}`
+		break
+	case 'zonakids':
+		apiURL = `${API_URL}/cdata/leon/kids/${credentials.memclid}`
+		break
+	default:
+		break
+	}
 
-      return apiURL
+	return apiURL
 }
 
 export function useRequest(section, dispatch, data) {
-      const { stateUser, dispatchUser } = useContext(UserContext)
-      const { credentials } = stateUser
-      const [loading, setLoading] = useState(false)
+	const { stateUser, dispatchUser } = useContext(UserContext)
+	const { credentials } = stateUser
+	const [loading, setLoading] = useState(false)
 
-      useEffect(() => {
-            const requestData = async () => {
-                  try {
-                        const requestUrl = getURL(section, credentials)
-                        const response = await getData(requestUrl, dispatchUser)
-                        if (response === "error") throw new Error("Ocurrión un problema, intenta otra vez")
-                        data = validateSuscription(response, dispatchUser)
-                        dispatch({ type: 'setData', payload: response })
-                        setLoading(false)
-                  } catch (e) {
-                        console.log(e.message)
-                  }
-            }
+	useEffect(() => {
+		const requestData = async () => {
+			try {
+				const requestUrl = getURL(section, credentials)
+				const response = await getData(requestUrl, dispatchUser)
+				if (response === 'error') throw new Error('Ocurrión un problema, intenta otra vez')
+				data = validateSuscription(response, dispatchUser)
+				dispatch({ type: 'setData', payload: response })
+				setLoading(false)
+			} catch (e) {
+				console.log(e.message)
+			}
+		}
 
-            if (credentials.memclid && !data) {
-                  setLoading(true)
-                  requestData()
-            }
-      }, [credentials])
+		if (credentials.memclid && !data) {
+			setLoading(true)
+			requestData()
+		}
+	}, [credentials])
 
-      return { loading, data }
+	return { loading, data }
 }

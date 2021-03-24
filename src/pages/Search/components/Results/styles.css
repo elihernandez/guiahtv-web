@@ -1,0 +1,41 @@
+@import '../../../../scss/style-base.css';
+
+.search-results{
+    position: relative;
+    padding: 10px 0;
+    overflow-x: hidden;
+    /* border: 1px solid red; */
+
+    .list-card{
+        .item{
+            height: 11vw;
+        }
+
+        .title-content{
+            display: none;
+        }
+
+        .description-content{
+            display: none;
+        }
+
+        .buttons-content{
+            display: none;
+        }
+
+        .direction{
+            height: 11vw;
+        }
+    }
+
+    >.title-list{
+        padding: 0 $padding-content;
+        margin-bottom: -0.8vw;
+    }
+}
+.not-results-message{
+    text-align: center;
+    font-size: 25px;
+    margin-top: 100px;
+    font-weight: 500;
+}

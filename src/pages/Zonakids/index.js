@@ -7,20 +7,20 @@ import './styles.css'
 
 export function Zonakids() {
 
-      useEffect(() => {
-            showTopMenuNavbar()
+	useEffect(() => {
+		showTopMenuNavbar()
 
-            return () => {
-                  hideTopMenuNavbar()
-                  if(isFullScreenElement()) exitFullScreen()
-            }
-      })
+		return () => {
+			hideTopMenuNavbar()
+			if(isFullScreenElement()) exitFullScreen()
+		}
+	})
 
-      return (
-            <div className="wrapper-zonakids">
-                  <VodContextProvider>
-                        <Content />
-                  </VodContextProvider>
-            </div>
-      )
+	return (
+		<div className="wrapper-zonakids">
+			<VodContextProvider>
+				<Content />
+			</VodContextProvider>
+		</div>
+	)
 }

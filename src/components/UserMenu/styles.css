@@ -4,6 +4,10 @@
       /* border: 2px solid $color-grey-5; */
       border-radius: 4px;
 
+      .MuiButton-label{
+            margin-right: 0 !important;
+      }
+
       &:hover{
             background-color: $color-grey-5;
       }
