@@ -4,6 +4,7 @@ import UserContext from '../../../../context/UserContext'
 import { getVideo } from '../../../../services/getVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { isLive } from '../../../../js/Time'
+import { Player } from '../../../../components/Player' 
 import './styles.css'
 
 export function Video() {
@@ -40,17 +41,6 @@ export function Video() {
 	const handleErrorImage = (e) => {
 		e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/backTVnuevologo.jpg'
 	}
-
-	// const setTimeoutError = () =>{
-	// 	timeoutErrorRef = setTimeout(() => {
-	// 		console.log('Error timeout')
-	// 	}, 5000)
-	// }
-
-	// const clearTimeoutError = () => {
-	// 	console.log(timeoutErrorRef)
-	// 	clearTimeout(timeoutErrorRef)
-	// }
 
 	useEffect(() => {
 		if (dataChannel) {
@@ -101,13 +91,6 @@ export function Video() {
 			// clearTimeoutError()
 		}
 	}, [dataChannel])
-
-	// useEffect(() => {
-	// 	console.log("effect error")
-	// 	if(error !== false){
-	// 		onErrorVideo()
-	// 	}
-	// }, [error])
 
 	return (
 		<div className="video">

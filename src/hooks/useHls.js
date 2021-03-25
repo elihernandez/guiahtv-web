@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react'
-// require('hls.js/dist/hls.min.js')
 import Hls from 'hls.js'
 // console.log(Hls.version)
 
 export function useHls(video, url, dispatch, movie) {
 	const config = {
-		debug: false,
+		debug: process.env.NODE_ENV !== 'production' ? true : false,
+		initialLiveManifestSize: 3,
 		liveBackBufferLength: 900,
 		enableWorker: true,
+		nudgeMaxRetry: 10,
+		manifestLoadingMaxRetry: 10,
+		fragLoadingRetryDelay: 3000,
+		manifestLoadingRetryDelay: 3000,
+		levelLoadingRetryDelay: 3000,
 	}
 	let hls = new Hls(config)
 	const [error, setError] = useState(false)
@@ -33,7 +38,10 @@ export function useHls(video, url, dispatch, movie) {
 				})
             
 				hls.on(Hls.Events.ERROR, function (event, data) {
-					console.log(event, data)
+					if(process.env.NODE_ENV !== 'production'){
+						console.log(event, data)
+					}
+
 					dispatch({ type: 'updateLoading', payload: false })
                               
 					if(event == 'hlsError' && data.details == 'manifestLoadError'){
@@ -58,6 +66,8 @@ export function useHls(video, url, dispatch, movie) {
 							// hls.destroy()
 							setRecover(recover + 1)
 						}
+						hls.startLoad()
+						hls.recoverMediaError()
 						dispatch({ type: 'updateLoading', payload: true })
 						// // dispatch({ type: 'updateData', payload: null })
 						// dispatch({ type: 'setHls', payload: null })
@@ -84,7 +94,7 @@ export function useHls(video, url, dispatch, movie) {
 		}
 
 		return (() => {
-			// hls.destroy()
+			hls.destroy()
 		})
 	}, [url, recover])
 
