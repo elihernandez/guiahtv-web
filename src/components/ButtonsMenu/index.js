@@ -1,11 +1,9 @@
 import React from 'react'
-// import { getButtonsMenu } from '../../services/getButtonsMenu'
 import { H6 } from '../Typography'
 import { imgSourceSetPng } from '../../js/Image'
 import { useHistory } from 'react-router-dom'
 import { useAxios } from '../../hooks/useAxios'
-import backgroundButton from '../../assets/images/backgrounds/background-button.jpg'
-import RadioIcon from '@material-ui/icons/Radio'
+import { SlickSlider } from '../SlickCarousel'
 import './styles.css'
 
 export function ButtonsMenu() {
@@ -34,176 +32,49 @@ export function ButtonsMenu() {
 		}
 	}
 
-	// return (
-		
-	// 	<div className="buttons-menu-wrapper">
-	// 		<div className="item-button" onClick={() => handleClick('leon_livetv')}>
-	// 			<picture>
-	// 				<source
-	// 					srcSet={backgroundButton}
-	// 					type="image/webp"
-	// 				/>
-	// 				<source
-	// 					srcSet={imgSourceSetPng(
-	// 						backgroundButton,
-	// 						'png'
-	// 					)}
-	// 					type="image/png"
-	// 				/>
-	// 				<img
-	// 					src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
-	// 					alt=""
-	// 					className="image-button"
-	// 				/>
-	// 			</picture>
-	// 			<div className="content-button">
-	// 				<i className="fas fa-tv"></i>
-	// 				<H6 className="title-button title-2">
-	// 						Tv en vivo
-	// 				</H6>
-	// 			</div>
-	// 		</div>
-	// 		<div className="item-button" onClick={() => handleClick('leon_movies')}>
-	// 			<picture>
-	// 				<source
-	// 					srcSet={backgroundButton}
-	// 					type="image/webp"
-	// 				/>
-	// 				<source
-	// 					srcSet={imgSourceSetPng(
-	// 						backgroundButton,
-	// 						'png'
-	// 					)}
-	// 					type="image/png"
-	// 				/>
-	// 				<img
-	// 					src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
-	// 					alt=""
-	// 					className="image-button"
-	// 				/>
-	// 			</picture>
-	// 			<div className="content-button">
-	// 				<i className="fas fa-film"></i>
-	// 				<H6 className="title-button title-2">
-	// 						A la carta
-	// 				</H6>
-	// 			</div>
-	// 		</div>
-	// 		<div className="item-button" onClick={() => handleClick('leon_radio')}>
-	// 			<picture>
-	// 				<source
-	// 					srcSet={backgroundButton}
-	// 					type="image/webp"
-	// 				/>
-	// 				<source
-	// 					srcSet={imgSourceSetPng(
-	// 						backgroundButton,
-	// 						'png'
-	// 					)}
-	// 					type="image/png"
-	// 				/>
-	// 				<img
-	// 					src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
-	// 					alt=""
-	// 					className="image-button"
-	// 				/>
-	// 			</picture>
-	// 			<div className="content-button">
-	// 				<RadioIcon />
-	// 				<H6 className="title-button title-2">
-	// 						Radio
-	// 				</H6>
-	// 			</div>
-	// 		</div>
-	// 		<div className="item-button" onClick={() => handleClick('leon_music')}>
-	// 			<picture>
-	// 				<source
-	// 					srcSet={backgroundButton}
-	// 					type="image/webp"
-	// 				/>
-	// 				<source
-	// 					srcSet={imgSourceSetPng(
-	// 						backgroundButton,
-	// 						'png'
-	// 					)}
-	// 					type="image/png"
-	// 				/>
-	// 				<img
-	// 					src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
-	// 					alt=""
-	// 					className="image-button"
-	// 				/>
-	// 			</picture>
-	// 			<div className="content-button">
-	// 				<i className="fas fa-music"></i>
-	// 				<H6 className="title-button title-2">
-	// 						Música
-	// 				</H6>
-	// 			</div>
-	// 		</div>
-	// 		<div className="item-button" onClick={() => handleClick('leon_kids')}>
-	// 			<picture>
-	// 				<source
-	// 					srcSet={backgroundButton}
-	// 					type="image/webp"
-	// 				/>
-	// 				<source
-	// 					srcSet={imgSourceSetPng(
-	// 						backgroundButton,
-	// 						'png'
-	// 					)}
-	// 					type="image/png"
-	// 				/>
-	// 				<img
-	// 					src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
-	// 					alt=""
-	// 					className="image-button"
-	// 				/>
-	// 			</picture>
-				
-	// 			<div className="content-button">
-	// 				<i className="fas fa-child"></i>
-	// 				<H6 className="title-button title-2">
-	// 					Zona kids
-	// 				</H6>
-	// 			</div>
-	// 		</div>
-	// 	</div>
-	// )
+	const settings = {
+		dots: false,
+		infinite: false,
+		slidesToShow: 5,
+		slidesToScroll: 5,
+	}
+
 	return (
 		
 		<div className="buttons-menu-wrapper">
-			{data.map(({ titulo, ContentType, PosterCardUrlLandscape }, index) => {
-				if (ContentType !== 'leon_music') {
-					return (
-						<div
-							key={ContentType}
-							className={`item-button ${index === 0 ? 'active' : ''}`}
-							onClick={() => handleClick(ContentType)}
-						>
-							<picture>
-								<source
-									srcSet={PosterCardUrlLandscape}
-									type="image/webp"
-								/>
-								<source
-									srcSet={imgSourceSetPng(
-										PosterCardUrlLandscape,
-										'png'
-									)}
-									type="image/png"
-								/>
-								<img
-									src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
-									alt={`${ContentType}-image`}
-									className="image-button"
-								/>
-							</picture>
-							<H6 className="title-button title-2">{titulo}</H6>
-						</div>
-					)
-				}
-			})}
+			<SlickSlider settings={settings}>
+				{data.map(({ titulo, ContentType, PosterCardUrlLandscape }, index) => {
+					if (ContentType !== 'leon_music') {
+						return (
+							<div
+								key={ContentType}
+								className={`item-button ${index === 0 ? 'active' : ''}`}
+								onClick={() => handleClick(ContentType)}
+							>
+								<picture>
+									<source
+										srcSet={PosterCardUrlLandscape}
+										type="image/webp"
+									/>
+									<source
+										srcSet={imgSourceSetPng(
+											PosterCardUrlLandscape,
+											'png'
+										)}
+										type="image/png"
+									/>
+									<img
+										src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
+										alt={`${ContentType}-image`}
+										className="image-button"
+									/>
+								</picture>
+								<H6 className="title-button title-2">{titulo}</H6>
+							</div>
+						)
+					}
+				})}
+			</SlickSlider>
 		</div>
 	)
 }

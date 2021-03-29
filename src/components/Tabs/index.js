@@ -7,86 +7,86 @@ import Box from '@material-ui/core/Box'
 import './styles.css'
 
 function TabPanel(props) {
-      const { children, value, index, ...other } = props
+	const { children, value, index, ...other } = props
     
-      return (
-        <div
-          role="tabpanel"
-          hidden={value !== index}
-          id={`full-width-tabpanel-${index}`}
-          aria-labelledby={`full-width-tab-${index}`}
-          {...other}
-        >
-          {value === index && (
-            <Box p={3}>
-                  {children}
-            </Box>
-          )}
-        </div>
-      )
+	return (
+		<div
+			role="tabpanel"
+			hidden={value !== index}
+			id={`full-width-tabpanel-${index}`}
+			aria-labelledby={`full-width-tab-${index}`}
+			{...other}
+		>
+			{value === index && (
+				<Box p={3}>
+					{children}
+				</Box>
+			)}
+		</div>
+	)
 }
 
 TabPanel.propTypes = {
-      children: PropTypes.node,
-      index: PropTypes.any.isRequired,
-      value: PropTypes.any.isRequired,
+	children: PropTypes.node,
+	index: PropTypes.any.isRequired,
+	value: PropTypes.any.isRequired,
 }
     
 function a11yProps(index) {
-      return {
-            id: `full-width-tab-${index}`,
-            'aria-controls': `full-width-tabpanel-${index}`,
-      }
+	return {
+		id: `full-width-tab-${index}`,
+		'aria-controls': `full-width-tabpanel-${index}`,
+	}
 }
 
 export function CustomTabs({data}){
-      const [value, setValue] = useState(0)
+	const [value, setValue] = useState(0)
     
-      const handleChange = (event, newValue) => {
-            setValue(newValue)
-      }
+	const handleChange = (event, newValue) => {
+		setValue(newValue)
+	}
     
-      const handleChangeIndex = (index) => {
-            setValue(index)
-      }
+	const handleChangeIndex = (index) => {
+		setValue(index)
+	}
 
-      const [anchorEl, setAnchorEl] = useState(null)
-      const open = Boolean(anchorEl)
+	const [anchorEl, setAnchorEl] = useState(null)
+	const open = Boolean(anchorEl)
 
-      const handleClick = (event) => {
-            setAnchorEl(event.currentTarget)
-      }
+	const handleClick = (event) => {
+		setAnchorEl(event.currentTarget)
+	}
 
-      const handleClose = () => {
-            setAnchorEl(null)
-      }
+	const handleClose = () => {
+		setAnchorEl(null)
+	}
 
-      return (
-            <div className="tabs-wrapper">
-                  <AppBar position="static" color="default">
-                        <Tabs
-                              value={value}
-                              onChange={handleChange}
-                              indicatorColor="primary"
-                              textColor="primary"
-                              variant="fullWidth"
-                              aria-label="full width tabs info"
-                        >
-                              {
-                                    data.map(({title}, index) => {
-                                          return <Tab key={`${title}-${index}`} label={title} {...a11yProps(index)} />
-                                    })
+	return (
+		<div className="tabs-wrapper">
+			<AppBar position="static" color="default">
+				<Tabs
+					value={value}
+					onChange={handleChange}
+					indicatorColor="primary"
+					textColor="primary"
+					variant="fullWidth"
+					aria-label="full width tabs info"
+				>
+					{
+						data.map(({title}, index) => {
+							return <Tab key={`${title}-${index}`} disableRipple={false} label={title} {...a11yProps(index)} />
+						})
 
-                              }
-                        </Tabs>
-                  </AppBar>
-                  {
-                        data.map(({content}, index) => {
-                              return <TabPanel key={`${data[index].title}-Content-${index}`} value={value} index={index}>
-                                    {content}
-                              </TabPanel>
-                        })
-                  }
-            </div>
-      )
+					}
+				</Tabs>
+			</AppBar>
+			{
+				data.map(({content}, index) => {
+					return <TabPanel key={`${data[index].title}-Content-${index}`} value={value} index={index}>
+						{content}
+					</TabPanel>
+				})
+			}
+		</div>
+	)
 }

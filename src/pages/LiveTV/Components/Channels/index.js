@@ -53,12 +53,12 @@ export function Channels({ data }) {
 	}
 
 	const countPages = (category) => {
-		let length = category.cmData.length
-		let pages = length / 5
-		if(pages > 1){
-			pages = Math.trunc(pages)
-			setTotalPages(pages)
+		let pages = category.cmData.length / 5
+		if ((pages % 1) != 0) {
+			pages = Math.ceil(pages)
 		}
+
+		setTotalPages(pages)
 	}
 
 	const validateUrl = () => {
