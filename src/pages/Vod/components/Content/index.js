@@ -5,7 +5,6 @@ import { useRequest } from '../../../../hooks/useRequest'
 import { VideoVod } from '../../../Video'
 import { Catalogue } from '../Catalogue'
 import { InfoContent } from '../../../../components/Catalogue'
-import { CSSTransition } from 'react-transition-group'
 import { LoaderSpinnerMUI } from '../../../../components/Loader'
 
 export function Content() {

@@ -31,7 +31,7 @@
                   &.bottom{
                         bottom: 0;
                         background: linear-gradient(to top, $color-background-app, transparent);
-                        opacity: 0.80;
+                        opacity: 1;
 
                         &.s-50{
                               width: 100%;

@@ -44,14 +44,14 @@ export function Catalogue({ data }) {
 		setShow(true)
 	}, [])
 
-
+	console.log(data)
 
 	return (
 		<CSSTransition in={show} timeout={100} classNames="fade" unmountOnExit>
 			<div className="content-catalogue alacarta">
 				{
 					data.map((category) => {
-						return <List key={category.category} data={category} listType="catalogue" />
+						return <List key={category.category} data={category} listType="catalogue" wrap={false} />
 					})
 				}
 			</div>

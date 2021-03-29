@@ -1,5 +1,9 @@
 import React, { Fragment, useState, useEffect, useRef } from 'react'
 import { Item } from '../ListItem'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import { LazyImage } from '../Image'
 const cssTransition = require('css-transition')
 import './styles.css'
 
@@ -13,7 +17,7 @@ function getPages(cmData, maxItems) {
 	return pages
 }
 
-export function List({ data, listType }) {
+export function List({ data, listType, wrap }) {
 	let List = () => null
 
 	switch (listType) {
@@ -29,9 +33,42 @@ export function List({ data, listType }) {
 	case 'channel':
 		List = <ListChannel data={data} listType={listType} />
 		break
+	case 'catalogue-slide':
+		List = <ListCatalogueSlide data={data} listType={listType} wrap={wrap} />
+		break
 	}
 
 	return List
+}
+
+export function ListCatalogueSlide({ data, listType, wrap }) {
+
+	const settings = {
+		dots: false,
+		infinite: false,
+		autoplay: false,
+		slidesToShow: 8,
+		slidesToScroll: 8,
+		variableWidth: false,
+		swipeToSlide: true,
+	}
+
+	return (
+		<Slider {...settings}>
+			{data.cmData.map(({ Registro, HDPosterUrlPortrait, Title}) => {
+				return (
+					<div key={Registro} style={{ width: '100%' }}>
+						<LazyImage
+							img={HDPosterUrlPortrait}
+							alt={`${Title}-image`}
+							type="webp"
+							recoverType="png"
+						/>
+					</div>
+				)
+			})}
+		</Slider>
+	)
 }
 
 export function ListCatalogue({ data, listType }) {

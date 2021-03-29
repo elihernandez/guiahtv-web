@@ -1735,7 +1735,7 @@ h6{
 
 .wrapper-login .content-login{
         position: relative;
-        width: 425px;
+        width: 400px;
         min-height: 600px;
         border-radius: 10px;
         padding: 50px 0;
@@ -5867,7 +5867,7 @@ input::-ms-input-placeholder{
                         bottom: 0;
                         background: -webkit-gradient(linear, left bottom, left top, from(#232526), to(transparent));
                         background: linear-gradient(to top, #232526, transparent);
-                        opacity: 0.80
+                        opacity: 1
                   }
 
 .info-wrapper .background .overlay.bottom.s-50{

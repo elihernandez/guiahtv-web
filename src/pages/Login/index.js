@@ -99,7 +99,7 @@ export function Login() {
 							<FormLogin onSubmit={handleSubmit} />
 							<div className="bottom-info">
 								<p className="body-3">¿Primera vez en Guíah TV?
-									<Link className="link-register body-2" href="https://guiah.tv/axs/registro">Registrarme</Link>
+									<Link className="link-register body-3" href="https://guiah.tv/axs/registro">Registrarme</Link>
 								</p>
 							</div>
 						</div>

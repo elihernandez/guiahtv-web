@@ -18,7 +18,7 @@ export function FormLogin({ onSubmit }) {
 				<label htmlFor="username" />
 				<input
 					type="text"
-					className="username body-2"
+					className="username body-3"
 					name="username"
 					id="username"
 					placeholder="Correo electrónico"
@@ -36,7 +36,7 @@ export function FormLogin({ onSubmit }) {
 					type="password"
 					name="password"
 					id="password"
-					className="password body-2"
+					className="password body-3"
 					placeholder="Contraseña"
 					autoComplete="on"
 					required
@@ -44,7 +44,7 @@ export function FormLogin({ onSubmit }) {
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 			</div>
-			<Button type="submit" uppercase={true} color="gradient" size="full-width" classes="btn-submit-login body-2">Iniciar sesión</Button>
+			<Button type="submit" uppercase={true} color="gradient" size="full-width" classes="btn-submit-login body-3">Iniciar sesión</Button>
 			<div className="group-info">
 				<div className="group-rememberme row">
 					<input 

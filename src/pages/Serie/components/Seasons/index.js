@@ -8,7 +8,7 @@ import { LoaderSpinnerMUI } from '../../../../components/Loader'
 import './styles.css'
 
 export function Seasons({ seasons, serieId }) {
-	const [chapters, setChapters] = useState()
+	const [chapters, setChapters] = useState({ cmData: [] })
 	const { stateUser } = useContext(UserContext)
 	const { dispatchVod } = useContext(VodContext)
 	const { credentials } = stateUser
@@ -35,7 +35,7 @@ export function Seasons({ seasons, serieId }) {
 				})
 				setLoading(false)
 			} catch (e) {
-
+				console.log(e)
 			}
 		}
 
@@ -43,6 +43,7 @@ export function Seasons({ seasons, serieId }) {
 			e.preventDefault()
 			requestData()
 			setLoading(true)
+			setChapters({ cmData: [] })
 		}
 
 		itemsMenu.push({ title: Title, href: '#', func: handleClick })
@@ -53,6 +54,7 @@ export function Seasons({ seasons, serieId }) {
 		const { Title, TitleSeason } = firstSeason
 
 		const requestData = async () => {
+			setLoading(true)
 			try {
 				const response = await getChapters(serieId, TitleSeason, credentials)
 				setChapters({
@@ -69,7 +71,7 @@ export function Seasons({ seasons, serieId }) {
 				})
 				setLoading(false)
 			} catch (e) {
-
+				console.log(e)
 			}
 		}
 
@@ -78,14 +80,16 @@ export function Seasons({ seasons, serieId }) {
 
 	return (
 		<div className="seasons-content-wrapper">
-			<div className="seasons-menu">
-				<PopperMenu textButton={textButton} itemsMenu={itemsMenu} />
-			</div>
+			{seasons.length > 1 &&
+				<div className="seasons-menu">
+					<PopperMenu textButton={textButton} itemsMenu={itemsMenu} />
+				</div>
+			}
 			{loading &&
-                        <LoaderSpinnerMUI />
+                <LoaderSpinnerMUI />
 			}
 			{chapters &&
-                        <List data={chapters} listType="season" />
+                <List data={chapters} listType="season" />
 			}
 		</div>
 	)

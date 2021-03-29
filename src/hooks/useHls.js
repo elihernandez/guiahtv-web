@@ -100,3 +100,76 @@ export function useHls(video, url, dispatch, movie) {
 
 	return { error, setError }
 }
+
+// export function useHls(videoRef, url) {
+// 	const video = videoRef.current
+// 	const [success, setSuccess] = useState(false)
+// 	const [error, setError] = useState(false)
+// 	const [audioTracks, setAudioTracks] = useState([])
+// 	const [subtitleTracks, setSubtitleTracks] = useState([])
+
+// 	const config = {
+// 		debug: process.env.NODE_ENV !== 'production' ? false : false,
+// 		initialLiveManifestSize: 3,
+// 		liveBackBufferLength: 900,
+// 		enableWorker: true,
+// 		nudgeMaxRetry: 10,
+// 		manifestLoadingMaxRetry: 10,
+// 		fragLoadingRetryDelay: 3000,
+// 		manifestLoadingRetryDelay: 3000,
+// 		levelLoadingRetryDelay: 3000,
+// 	}
+
+// 	const hls = new Hls(config)
+
+// 	useEffect(() => {
+// 		if(url){
+// 			setSuccess(false)
+// 			setError(false)
+// 			if (Hls.isSupported()) {
+// 				hls.attachMedia(video)
+
+// 				hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+// 					hls.loadSource(url)
+// 					hls.on(Hls.Events.MANIFEST_PARSED, function () {
+// 						setSuccess(true)
+// 					})
+// 				})
+            
+// 				hls.on(Hls.Events.ERROR, function (event, data) {
+// 					if(process.env.NODE_ENV !== 'production'){
+// 						console.log(event, data)
+// 					}
+                              
+// 					if(event == 'hlsError' && data.details == 'manifestLoadError'){
+// 						hls.destroy()
+// 						setError('Señal no disponible por el momento')
+// 					}
+
+// 					if(data.details == 'bufferStalledError'){
+// 						hls.startLoad()
+// 					}
+
+// 					if(data.details == 'audioTrackLoadError'){
+// 						hls.startLoad()
+// 						hls.recoverMediaError()
+// 					}
+// 				})
+
+// 				hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, function(event, data){
+// 					setAudioTracks(data)
+// 				})
+				
+// 				hls.on(Hls.Events.SUBTITLE_TRACKS_UPDATED, function(event, data){
+// 					setSubtitleTracks(data)
+// 				})
+// 			}
+// 		}
+
+// 		return (() => {
+// 			hls.destroy()
+// 		})
+// 	}, [url])
+
+// 	return { success, error, audioTracks, subtitleTracks }
+// }
