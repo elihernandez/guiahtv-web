@@ -2,7 +2,7 @@
 
 .search-form{
     position: relative;
-    padding: 10px $padding-content;
+    padding: 10px;
     /* border: 1px solid blue; */
 
     .input-group{

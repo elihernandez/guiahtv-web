@@ -4,5 +4,5 @@
     position: relative;
     top: $height-top-menu;
     /* border: 1px solid red; */
-    padding: 25px 0;
+    padding: 25px $full-padding-content;
 }

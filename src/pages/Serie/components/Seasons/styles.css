@@ -1,14 +1,18 @@
+@import '../../../../scss/style-base.css';
+
 .seasons-content-wrapper{
       position: relative;
       width: 100%;
       min-height: 300px !important;
+      overflow: hidden;
+      padding: 0 $full-padding-content;
 
       .spinner-mui{
             height: 300px !important;
       }
 
       .seasons-menu{
-            padding: 0 65px !important;
+            padding: 0 0 !important;
       }
 
       .popper-menu-wrapper{

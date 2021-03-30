@@ -22,7 +22,7 @@ export function List({ data, listType, wrap }) {
 		List = <ListCatalogue data={data} listType={listType} wrap={wrap} />
 		break
 	case 'season':
-		List = <ListSeason data={data} listType={listType} />
+		List = <ListSeason data={data} listType={listType} wrap={wrap} />
 		break
 	case 'radio':
 		List = <ListRadio data={data} listType={listType} />
@@ -59,6 +59,8 @@ export function ListCatalogue({ data, listType }) {
 		slidesToShow: slidesToShow,
 		slidesToScroll: slidesToShow,
 		swipeToSlide: true,
+		focusOnSelect: true,
+		speed: 500
 	}
 
 	return (
@@ -74,29 +76,6 @@ export function ListCatalogue({ data, listType }) {
 		</div>
 	)
 }
-
-// export function ListCatalogue({ data, listType }) {
-// 	const { category, poster_type, cmData } = data
-// 	const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
-// 	const classes = poster_type == 0 ? 'list list-catalogue portrait' : 'list  list-catalogue landscape'
-// 	const refList = useRef()
-
-// 	return (
-// 		<div className={classes}>
-// 			<TitleList title={category} />
-// 			<div className="list-content">
-// 				<div className="list-items" ref={refList}>
-// 					{
-// 						cmData.map((data) => {
-// 							return <Item key={data.Registro} data={data} posterType={poster_type} listType={listType} titleCategory={category} />
-// 						})
-// 					}
-// 				</div>
-// 				<DirectionsPage totalPages={totalPages} refList={refList} />
-// 			</div>
-// 		</div>
-// 	)
-// }
 
 export function ListSeason({ data, listType }) {
 	const { category, poster_type, cmData } = data
@@ -117,6 +96,32 @@ export function ListSeason({ data, listType }) {
 			</div>
 		</div>
 	)
+
+	// const { category } = data
+
+	// const settings = {
+	// 	dots: false,
+	// 	infinite: false,
+	// 	slidesToShow: 5,
+	// 	slidesToScroll: 5,
+	// 	swipeToSlide: false,
+	// 	focusOnSelect: true,
+	// 	speed: 500,
+	// 	initialSlide: 0
+	// }
+	
+	// return (
+	// 	<div className="list list-season wrap landscape">
+	// 		<TitleList title={category} />
+	// 		<SlickSlider settings={settings}>
+	// 			{data.cmData.map((dataItem) => {
+	// 				return (
+	// 					<Item key={dataItem.Registro} posterType={data.poster_type} data={dataItem} listType={listType} titleCategory={data.category} />
+	// 				)
+	// 			})}
+	// 		</SlickSlider>
+	// 	</div>
+	// )
 }
 
 export function ListCards({ data, listType, listStyle }) {
@@ -274,3 +279,26 @@ function DirectionsPage({ totalPages, refList }) {
 		</Fragment>
 	)
 }
+
+// export function ListCatalogue({ data, listType }) {
+// 	const { category, poster_type, cmData } = data
+// 	const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
+// 	const classes = poster_type == 0 ? 'list list-catalogue portrait' : 'list  list-catalogue landscape'
+// 	const refList = useRef()
+
+// 	return (
+// 		<div className={classes}>
+// 			<TitleList title={category} />
+// 			<div className="list-content">
+// 				<div className="list-items" ref={refList}>
+// 					{
+// 						cmData.map((data) => {
+// 							return <Item key={data.Registro} data={data} posterType={poster_type} listType={listType} titleCategory={category} />
+// 						})
+// 					}
+// 				</div>
+// 				<DirectionsPage totalPages={totalPages} refList={refList} />
+// 			</div>
+// 		</div>
+// 	)
+// }

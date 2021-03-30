@@ -1,8 +1,10 @@
+@import '../../../../scss/style-base.css';
+
 .info-contact-wrapper{
       position: relative;
       width: 100%;
       min-height: 300px !important;
-      padding: 25px 50px;
+      padding: 25px $full-padding-content;
       color: white;
       display: flex;
       flex-direction: row;
