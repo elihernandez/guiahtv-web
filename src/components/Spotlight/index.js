@@ -5,7 +5,7 @@ import { SlickSlider } from '../SlickCarousel'
 import './styles.css'
 
 export function Spotlight() {
-	const { data } = useAxios('/sl/leon/home_spotlight')
+	const { data } = useAxios('spotlight')
 
 	const settings = {
 		dots: true,

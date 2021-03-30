@@ -8,7 +8,7 @@ import './styles.css'
 
 export function ButtonsMenu() {
 	const history = useHistory()
-	const { data } = useAxios('/cs/leon_home_bm')
+	const { data } = useAxios('buttons-menu')
 
 	const handleClick = (contentType) => {
 		switch (contentType) {

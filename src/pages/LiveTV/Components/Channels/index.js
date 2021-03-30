@@ -4,6 +4,7 @@ import { createUrlString } from '../../../../js/String'
 import LiveTvContext from '../../../../context/LiveTvContext'
 import VideoContext from '../../../../context/VideoContext'
 import { Channel } from '../Channel'
+import { List } from '../../../../components/List'
 const cssTransition = require('css-transition')
 import './styles.css'
 
@@ -253,17 +254,24 @@ export function Channels({ data }) {
 		validateUrl()
 	}, [categoria])
 
+	// return (
+	// 	<div className="channels">
+	// 		{channels &&
+	// 			<List data={channels} listType="channel"/>
+	// 		}
+	// 	</div>
+	// )
 	return (
 		<div className="channels">
 			<div className="channels-wrapper" ref={refChannels}>
-				{     channels &&
-                              <div className="content-channels">
-                              	{
-                              		channels.cmData.map((channel) => {
-                              			return <Channel key={channel.Id} data={channel} category={channels} page={page} categoria={categoria}/>
-                              		})
-                              	}
-                              </div>
+				{channels &&
+					<div className="content-channels">
+						{
+							channels.cmData.map((channel) => {
+								return <Channel key={channel.Id} data={channel} category={channels} page={page} categoria={categoria}/>
+							})
+						}
+					</div>
 				}
 			</div>
 			{

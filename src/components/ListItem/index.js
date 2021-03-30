@@ -165,7 +165,6 @@ function ItemCardChannel({ posterType, data, category }) {
 	const handleClick = (e) => {
 		if (e.nativeEvent.target.tabIndex != 0) {
 			if(isEvent(ContentType)){
-				
 				history.push(`/tv/${createUrlString(replaceString(category, 'TV - ', ''))}/${Registro}`)
 			}else{
 				history.push(`/tv/${createUrlString(replaceString(category, 'TV - ', ''))}/${createUrlString(Title)}`)

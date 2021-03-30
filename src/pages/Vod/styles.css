@@ -1,27 +1,6 @@
 .wrapper-alacarta{
       position: relative;
       width: 100%;
-      min-height: 100vh;
       height: auto;
+      min-height: 100vh;
 }
-
-.active-enter {
-      opacity: 0;
-}
-.active-enter-active {
-      opacity: 1;
-      transition: opacity 300ms;
-}
-.active-enter-done {
-      opacity: 1;
-}
-.active-exit {
-      opacity: 1;
-}
-.active-exit-active {
-      opacity: 0;
-      transition: opacity 300ms;
-}    
-.active-exit-done {
-      opacity: 0;
-}  

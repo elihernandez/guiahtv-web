@@ -1,17 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import VodContext from '../../../../context/VodContext'
-import { useRequest } from '../../../../hooks/useRequest'
 import { VideoVod } from '../../../Video'
 import { Catalogue } from '../Catalogue'
 import { InfoContent } from '../../../../components/Catalogue'
 import { LoaderSpinnerMUI } from '../../../../components/Loader'
+import { useAxios } from '../../../../hooks/useAxios'
 
 export function Content() {
 	const { url } = useRouteMatch()
 	const { stateVod, dispatchVod } = useContext(VodContext)
-	const { dataVod } = stateVod
-	const { loading, data } = useRequest('zonakids', dispatchVod, dataVod)
+	const { loading, data } = useAxios('catalogue-zonakids')
+	
+	useEffect(() => {
+		dispatchVod({ type: 'setData', payload: data })
+	}, [data])
 
 	return (
 		<Switch>

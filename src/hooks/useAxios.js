@@ -1,32 +1,42 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { getUtcOffsetLocal } from '../js/Time'
+import { validateSuscription } from '../js/Auth/validateSuscription'
+import UserContext from '../context/UserContext'
+import axios from '../js/Axios'
 import styled from 'styled-components'
-import axios from 'axios'
-import config from '../../config'
-import { isEmptyArray } from '../js/Array'
 
-const instance = axios.create({
-	baseURL: config.API_URL,
-	timeout: 10000
-})
-
-instance.interceptors.response.use(
-	function (response) {
-		if(response.status === 200){
-			if(isEmptyArray(response.data)){
-				throw new Error()
-			}
-
-			return response.data
-		}
-	}, 
-	function () {
-		throw new Error()
+function getURL(section, { memclid }) {
+	let apiURL
+	switch (section) {
+	case 'spotlight':
+		apiURL = '/sl/leon/home_spotlight'
+		break
+	case 'buttons-menu':
+		apiURL = '/cs/leon_home_bm'
+		break
+	case 'livetv':
+		apiURL = `/cmdata/leon/livetvplus/${memclid}/${getUtcOffsetLocal()}`
+		break
+	case 'catalogue-vod':
+		apiURL = `/cmdata/leon/entplus/${memclid}`
+		break
+	case 'radio':
+		apiURL = `/cdata/leon/radio/${memclid}`
+		break
+	case 'catalogue-zonakids':
+		apiURL = `/cdata/leon/kids/${memclid}`
+		break
+	default:
+		break
 	}
-)
 
-export default instance
+	return apiURL
+}
 
-export function useAxios(url){
+export function useAxios(section){
+	const { stateUser, dispatchUser } = useContext(UserContext)
+	const { credentials } = stateUser
+	const [loading, setLoading] = useState(false)
 	const [data, setData] = useState([])
 	const [error, setError] = useState(false)
 	const [count, setCount] = useState(0)
@@ -36,12 +46,17 @@ export function useAxios(url){
 	}
 
 	useEffect(() => {
-		async function getUrl() {
+		async function getData() {
 			try {
-				const response = await instance.get(url)
+				setLoading(true)
+				const url = getURL(section, credentials)
+				const response = await axios.get(url)
+				validateSuscription(response, dispatchUser)
 				setData(response)
+				setLoading(false)
 			} catch (error) {
 				setError('No se pudo cargar el contenido.')
+				setLoading(false)
 				// if(count != 3){
 				//       setError(errorMessage(onClickRequest))
 				// }else{
@@ -51,11 +66,11 @@ export function useAxios(url){
 		}
 
 		if(count <= 3){
-			getUrl()
+			getData()
 		}
-	}, [url, count])
+	}, [section, count])
 
-	return { data, error, onClickRequest }
+	return { loading, data, error, onClickRequest }
 }
 
 const Wrapper = styled.div`

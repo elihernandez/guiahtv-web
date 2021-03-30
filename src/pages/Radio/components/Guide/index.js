@@ -8,38 +8,38 @@ import { List } from '../../../../components/List'
 import './styles.css'
 
 export function Guide(){
-      const { stateRadio, dispatchRadio } = useContext(RadioContext)
-      const { dataRadio } = stateRadio 
-      const { loading, data } = useRequest('radio', dispatchRadio, dataRadio)
-      const [ info, setInfo ] = useState(null)
-      // console.log(info.length)
+	const { stateRadio, dispatchRadio } = useContext(RadioContext)
+	const { dataRadio } = stateRadio 
+	const { loading, data } = useRequest('radio', dispatchRadio, dataRadio)
+	const [ info, setInfo ] = useState(null)
+	// console.log(info.length)
 
-      useEffect(() => {
-            if(data){
-                  let dataTabs = []
-                  data.map((category, index) => {
-                        dataTabs.push(
-                              {
-                                    title: category.category,
-                                    content:  <List key={category.category} data={category} listType="radio" listStyle=""/>
-                              }
-                        )
-                  })
+	useEffect(() => {
+		if(data){
+			let dataTabs = []
+			data.map((category, index) => {
+				dataTabs.push(
+					{
+						title: category.category,
+						content:  <List key={category.category} data={category} listType="radio" listStyle=""/>
+					}
+				)
+			})
 
-                  setInfo(dataTabs)
-            }
-      }, [loading])
+			setInfo(dataTabs)
+		}
+	}, [loading])
 
-      return (
-            <div className="guide-radio">
-                  {loading &&
+	return (
+		<div className="guide-radio">
+			{loading &&
                         <LoaderSpinnerMUI />
-                  }
-                  {info &&
+			}
+			{info &&
                         <CustomTabs data={info} />
-                  }
-            </div>
-      )
+			}
+		</div>
+	)
 }
 // <CatalogueRadio requestApi="radio"/>
 

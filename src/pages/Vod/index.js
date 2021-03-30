@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { VodContextProvider } from '../../context/VodContext'
 import { Content } from './components/Content'
 import { hideTopMenuNavbar, showTopMenuNavbar } from '../../js/TopMenu'
-// import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
 import './styles.css'
 
 export function VideoOnDemand() {

@@ -45,30 +45,30 @@ export function GuideChannels() {
 	return (
 		<div className="guide">
 			{loading &&
-                        <GuideLoader />
+                <GuideLoader />
 			}
 			{!hide &&
-                        <div className="content-button-guide">
-                        	<button type="button" className="button-guide" onClick={()=> requestData()}>
-                        		<i className="fas fa-chevron-up" />
-                                    Mostrar guía
-                        	</button>
-                        </div>
+				<div className="content-button-guide">
+					<button type="button" className="button-guide" onClick={()=> requestData()}>
+						<i className="fas fa-chevron-up" />
+							Mostrar guía
+					</button>
+				</div>
 			}
 			<CSSTransition in={show} timeout={300} classNames="fade" unmountOnExit>
 				<div className="guide-wrapper">
 					{dataTV &&
-                                    <Fragment>
-                                    	<Categories data={dataTV} />
-                                    	<Switch>
-                                    		<Route exact path={`${path}`} >
-                                    			<Channels data={dataTV} />
-                                    		</Route>
-                                    		<Route exact path={`${path}/:categoria/:canal?`} >
-                                    			<Channels data={dataTV} />
-                                    		</Route>
-                                    	</Switch>
-                                    </Fragment>
+						<Fragment>
+							<Categories data={dataTV} />
+							<Switch>
+								<Route exact path={`${path}`} >
+									<Channels data={dataTV} />
+								</Route>
+								<Route exact path={`${path}/:categoria/:canal?`} >
+									<Channels data={dataTV} />
+								</Route>
+							</Switch>
+						</Fragment>
 					}
 				</div>
 			</CSSTransition>
