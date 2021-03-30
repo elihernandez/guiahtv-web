@@ -3,7 +3,5 @@
 .search-page{
     position: relative;
     top: $height-top-menu;
-    /* border: 1px solid red; */
     padding: 0;
-    overflow-x: hidden;
 }

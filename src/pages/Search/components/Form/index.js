@@ -1,10 +1,9 @@
-import React, { useRef, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import UserContext from '../../../../context/UserContext'
 import { getSearchResults } from '../../../../services/getSearchResults' 
 import './styles.css'
 
 export function SearchForm({ value, setValue, setResults, setLoading }){
-	const timerRef = useRef(null)
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
 	const { memclid } = credentials

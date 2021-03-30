@@ -5287,10 +5287,6 @@ input::-ms-input-placeholder{
                               margin-bottom: 50px;
                         }
 
-.list.list-season{
-            margin: 25px 0;
-      }
-
 .list.list-season .list-content{
                   position: relative;
                   width: 100%;
@@ -5405,10 +5401,6 @@ input::-ms-input-placeholder{
                         -ms-flex-wrap: wrap;
                             flex-wrap: wrap;
                   }
-
-.list.list-card{
-            margin: 25px 0
-      }
 
 .list.list-card.portrait .list-items .background-item{
                               height: 325px;
@@ -8516,10 +8508,8 @@ input::-ms-input-placeholder{
 .search-form{
     position: relative;
     padding: 10px 90px;
-    margin-top: 25px;
+    padding-top: 50px;
 }
-
-/* border: 1px solid blue; */
 
 .search-form .input-group{
         position: relative;
@@ -8609,9 +8599,7 @@ input::-ms-input-placeholder{
 .search-page{
     position: relative;
     top: 65px;
-    /* border: 1px solid red; */
     padding: 0;
-    overflow-x: hidden;
 }
 .page-404 .page-404-wrapper{
             position: relative;

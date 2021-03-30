@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { containsString } from '../../../../js/String'
-import { List, TitleList } from '../../../../components/List'
+import { List } from '../../../../components/List'
 import { LoaderSpinnerMUI } from '../../../../components/Loader'
 import './styles.css'
 

@@ -45,7 +45,6 @@
       }
 
       &.list-season{
-            margin: 25px 0;
 
             .list-content{
                   position: relative;
@@ -145,7 +144,6 @@
       }
 
       &.list-card{
-            margin: 25px 0;
       
             &.portrait{
                   .list-items{

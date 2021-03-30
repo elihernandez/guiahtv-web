@@ -3,8 +3,7 @@
 .search-form{
     position: relative;
     padding: 10px $full-padding-content;
-    margin-top: 25px;
-    /* border: 1px solid blue; */
+    padding-top: 50px;
 
     .input-group{
         position: relative;
@@ -14,7 +13,6 @@
         border: 2px solid $color-grey-5;
         border-radius: 4px;
        
-
         span{
             i{
                 color: $color-white;
