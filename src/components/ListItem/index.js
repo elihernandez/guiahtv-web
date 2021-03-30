@@ -179,7 +179,6 @@ function ItemCardChannel({ posterType, data, category }) {
 	return (
 		<div className="item-link">
 			<div className="item" onClick={handleClick}>
-
 				<TitleItem title={Title} />
 				<div className="background-item">
 					<Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />

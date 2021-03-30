@@ -21,19 +21,13 @@ function TypeList({ dataCategory }){
 
 	if(containsString(contentType, 'radio')){
 		return (
-			<Fragment>
-				<TitleList title={dataCategory.category} />
-				<List key={dataCategory.category} data={dataCategory} listType="radio" /> 
-			</Fragment>
+			<List key={dataCategory.category} data={dataCategory} listType="radio" /> 
 		)
 	}
 
 	if(containsString(contentType, 'livetv')){
 		return (
-			<Fragment>
-				<TitleList title={dataCategory.category} />
-				<List key={dataCategory.category} data={dataCategory} listType="channel" /> 
-			</Fragment>
+			<List key={dataCategory.category} data={dataCategory} listType="channel" /> 
 		)
 	}
 	

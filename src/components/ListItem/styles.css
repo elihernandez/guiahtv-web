@@ -246,7 +246,7 @@
       min-height: 100%;
       height: auto;
       background: rgba($rgba-color-guide-black, 1);
-      border-radius: 8px;
+      border-radius: 3px;
       display: flex;
       flex-direction: column;
       padding: .7vw 2vw;

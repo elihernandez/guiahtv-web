@@ -5,14 +5,14 @@
       width: 100%;
       min-height: 300px !important;
       overflow: hidden;
-      padding: 0 $full-padding-content;
+      padding: 0;
 
       .spinner-mui{
             height: 300px !important;
       }
 
       .seasons-menu{
-            padding: 0 0 !important;
+            padding: 0 $full-padding-content !important;
       }
 
       .popper-menu-wrapper{

@@ -1,3 +1,5 @@
+@import '../../../../scss/style-base.css';
+
 .wrapper-radio{
 
       .guide-radio{
@@ -5,10 +7,12 @@
             width: 100%;
             position: absolute;
             bottom: 90px;
+            padding: 0;
 
             .tabs-wrapper{
+                  
                   header{
-                        padding: 0 50px;
+                        padding: 0 $full-padding-content;;
 
                         &.MuiPaper-root span{
                               font-size: .8vw !important;

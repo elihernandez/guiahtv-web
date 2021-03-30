@@ -5067,7 +5067,7 @@ input::-ms-input-placeholder{
       min-height: 100%;
       height: auto;
       background: rgba(24,25,28, 1);
-      border-radius: 8px;
+      border-radius: 3px;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -5256,6 +5256,7 @@ input::-ms-input-placeholder{
       width: 100%;
       height: auto;
       margin: 40px 0;
+      padding: 0 90px;
 }
 
 .list .title-list{
@@ -5286,18 +5287,7 @@ input::-ms-input-placeholder{
                               margin-bottom: 50px;
                         }
 
-.list .slick-slide{
-            opacity: 0.4;
-            -webkit-transition: all 300ms ease-in-out;
-            transition: all 300ms ease-in-out
-      }
-
-.list .slick-slide.slick-active{
-                  opacity: 1;
-            }
-
 .list.list-season{
-            padding: 0 0;
             margin: 25px 0;
       }
 
@@ -5416,46 +5406,60 @@ input::-ms-input-placeholder{
                             flex-wrap: wrap;
                   }
 
-.list-card{
-      padding: 0 45px;
-      margin: 25px 0
-}
+.list.list-card{
+            margin: 25px 0
+      }
 
-.list-card.portrait .list-items .background-item{
-                        height: 325px;
+.list.list-card.portrait .list-items .background-item{
+                              height: 325px;
+                        }
+
+.list.list-card.portrait .item-link{
+                        -webkit-box-flex: 0;
+                            -ms-flex: 0 0 calc(100% / 7);
+                                flex: 0 0 calc(100% / 7);
                   }
 
-.list-card.portrait .item-link{
-                  -webkit-box-flex: 0;
-                      -ms-flex: 0 0 calc(100% / 7);
-                          flex: 0 0 calc(100% / 7);
+.list.list-card.landscape{
+      
+                  /* .direction-prev{
+                        background: linear-gradient(to right, rgba($rgba-color-guide-black, 1), rgba($rgba-color-guide-black, 0));
+                        left: -45px;
+                        height: 23vw;
+                        top: .36vw;
+                  }
+            
+                  .direction-next{
+                        background: linear-gradient(to left, rgba($rgba-color-guide-black, 1), rgba($rgba-color-guide-black, 0));
+                        right: -45px;
+                        height: 23vw;
+                        top: .36vw;
+                  } */
             }
 
-.list-card.landscape .list-items .background-item{
+.list.list-card.landscape .list-items{
+      
+                  }
+
+.list.list-card.landscape .background-item{
                         height: 11vw;
                   }
 
-.list-card.landscape .item-link{
-                  -webkit-box-flex: 0;
-                      -ms-flex: 0 0 calc(100% / 5);
-                          flex: 0 0 calc(100% / 5);
-                  /* border: 1px solid red; */
-            }
+.list.list-card.landscape .item-link{
+                        -webkit-box-flex: 0;
+                            -ms-flex: 0 0 calc(100% / 5);
+                                flex: 0 0 calc(100% / 5);
+                        /* border: 1px solid red; */
+                  }
 
-.list-card.landscape .direction-prev{
-                  background: -webkit-gradient(linear, left top, right top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
-                  background: linear-gradient(to right, rgba(24,25,28, 1), rgba(24,25,28, 0));
-                  left: -45px;
-                  height: 23vw;
-                  top: .36vw;
-            }
+.list .slick-slide{
+            opacity: 0.4;
+            -webkit-transition: all 300ms ease-in-out;
+            transition: all 300ms ease-in-out
+      }
 
-.list-card.landscape .direction-next{
-                  background: -webkit-gradient(linear, right top, left top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
-                  background: linear-gradient(to left, rgba(24,25,28, 1), rgba(24,25,28, 0));
-                  right: -45px;
-                  height: 23vw;
-                  top: .36vw;
+.list .slick-slide.slick-active{
+                  opacity: 1;
             }
 
 .direction{
@@ -5977,7 +5981,7 @@ input::-ms-input-placeholder{
       overflow: hidden;
       width: 100%;
       top: 65px;
-      padding: 0 90px;
+      padding: 0;
 }
 /* #13171a */
 
@@ -6325,7 +6329,7 @@ input::-ms-input-placeholder{
       width: 100%;
       min-height: 300px !important;
       overflow: hidden;
-      padding: 0 90px;
+      padding: 0;
 }
 
 .seasons-content-wrapper .spinner-mui{
@@ -6333,7 +6337,7 @@ input::-ms-input-placeholder{
       }
 
 .seasons-content-wrapper .seasons-menu{
-            padding: 0 0 !important;
+            padding: 0 90px !important;
       }
 
 .seasons-content-wrapper .popper-menu-wrapper div[x-placement]{
@@ -6559,27 +6563,38 @@ input::-ms-input-placeholder{
       padding: 0 !important;
 }
 
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
 .wrapper-radio .guide-radio{
             min-height: 300px;
             width: 100%;
             position: absolute;
             bottom: 90px;
+            padding: 0;
       }
 
-            .wrapper-radio .guide-radio .tabs-wrapper header{
-                        padding: 0 50px
+.wrapper-radio .guide-radio .tabs-wrapper header{
+                        padding: 0 90px
                   }
 
-            .wrapper-radio .guide-radio .tabs-wrapper header.MuiPaper-root span{
+.wrapper-radio .guide-radio .tabs-wrapper header.MuiPaper-root span{
                               font-size: .8vw !important;
                               font-family: "Poppins", sans-serif !important;
                         }
 
-            .wrapper-radio .guide-radio .tabs-wrapper header.MuiPaper-root{
+.wrapper-radio .guide-radio .tabs-wrapper header.MuiPaper-root{
                               background: transparent !important;
                         }
 
-            .wrapper-radio .guide-radio .tabs-wrapper header.MuiTab-wrapper{
+.wrapper-radio .guide-radio .tabs-wrapper header.MuiTab-wrapper{
                              font-size: .8vw !important;
                              font-family: 'Poppins' sans-serif !important;
                         }
@@ -8452,7 +8467,7 @@ input::-ms-input-placeholder{
       overflow: hidden;
       width: 100%;
       top: 65px;
-      padding: 0 90px;
+      padding: 0;
 }
 .wrapper-zonakids{
       position: relative;
@@ -8500,7 +8515,8 @@ input::-ms-input-placeholder{
 
 .search-form{
     position: relative;
-    padding: 10px;
+    padding: 10px 90px;
+    margin-top: 25px;
 }
 
 /* border: 1px solid blue; */
@@ -8594,7 +8610,8 @@ input::-ms-input-placeholder{
     position: relative;
     top: 65px;
     /* border: 1px solid red; */
-    padding: 25px 90px;
+    padding: 0;
+    overflow-x: hidden;
 }
 .page-404 .page-404-wrapper{
             position: relative;

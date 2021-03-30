@@ -96,32 +96,6 @@ export function ListSeason({ data, listType }) {
 			</div>
 		</div>
 	)
-
-	// const { category } = data
-
-	// const settings = {
-	// 	dots: false,
-	// 	infinite: false,
-	// 	slidesToShow: 5,
-	// 	slidesToScroll: 5,
-	// 	swipeToSlide: false,
-	// 	focusOnSelect: true,
-	// 	speed: 500,
-	// 	initialSlide: 0
-	// }
-	
-	// return (
-	// 	<div className="list list-season wrap landscape">
-	// 		<TitleList title={category} />
-	// 		<SlickSlider settings={settings}>
-	// 			{data.cmData.map((dataItem) => {
-	// 				return (
-	// 					<Item key={dataItem.Registro} posterType={data.poster_type} data={dataItem} listType={listType} titleCategory={data.category} />
-	// 				)
-	// 			})}
-	// 		</SlickSlider>
-	// 	</div>
-	// )
 }
 
 export function ListCards({ data, listType, listStyle }) {
@@ -194,45 +168,92 @@ export function ListCards({ data, listType, listStyle }) {
 }
 
 export function ListRadio({ data, listType }) {
-	const { poster_type, cmData } = data
-	const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
-	const classes = poster_type == 0 ? 'list list-card portrait' : 'list list-card landscape'
-	const refList = useRef()
+	const { category, poster_type } = data
+	const classes = poster_type == 0 ? 'list list-card portrait' : 'list  list-card landscape'
+
+	let slidesToShow
+
+	switch(poster_type){
+	case '0':
+		slidesToShow = 7
+		break
+	case '1':
+		slidesToShow = 5
+		break
+	default:
+		slidesToShow = 7
+		break				
+	}
+
+	const settings = {
+		dots: false,
+		infinite: false,
+		slidesToShow: slidesToShow,
+		slidesToScroll: slidesToShow,
+		swipeToSlide: true,
+		focusOnSelect: true,
+		speed: 500
+	}
 
 	return (
 		<div className={classes}>
-			<div className="list-content">
-				<div className="list-items" ref={refList}>
-					{
-						cmData.map((data) => {
-							return <Item key={data.Registro} data={data} posterType={poster_type} listType={listType} />
-						})
-					}
-				</div>
-				<DirectionsPage totalPages={totalPages} refList={refList} />
-			</div>
+			<TitleList title={category} />
+			<SlickSlider settings={settings}>
+				{data.cmData.map((dataItem) => {
+					return (
+						<Item key={dataItem.Registro} posterType={data.poster_type} data={dataItem} listType={listType} titleCategory={data.category} />
+					)
+				})}
+			</SlickSlider>
 		</div>
 	)
 }
 
 export function ListChannel({ data, listType }) {
-	const { poster_type, cmData, category } = data
-	const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
-	const classes = poster_type == 0 ? 'list list-card portrait' : 'list list-card landscape'
-	const refList = useRef()
+	// const { poster_type, cmData, category } = data
+	// const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
+	// const classes = poster_type == 0 ? 'list list-card portrait' : 'list list-card landscape'
+	// const refList = useRef()
+
+	// return (
+	// 	<div className={classes}>
+	// 		<div className="list-content">
+	// 			<div className="list-items" ref={refList}>
+	// 				{
+	// 					cmData.map((data) => {
+	// 						return <Item key={data.Registro} data={data} category={category} posterType={poster_type} listType={listType} />
+	// 					})
+	// 				}
+	// 			</div>
+	// 			<DirectionsPage totalPages={totalPages} refList={refList} />
+	// 		</div>
+	// 	</div>
+	// )
+
+	const { category, poster_type } = data
+	const classes = 'list  list-card landscape'
+	const slidesToShow = 5
+
+	const settings = {
+		dots: false,
+		infinite: false,
+		slidesToShow: slidesToShow,
+		slidesToScroll: slidesToShow,
+		swipeToSlide: true,
+		focusOnSelect: true,
+		speed: 500
+	}
 
 	return (
 		<div className={classes}>
-			<div className="list-content">
-				<div className="list-items" ref={refList}>
-					{
-						cmData.map((data) => {
-							return <Item key={data.Registro} data={data} category={category} posterType={poster_type} listType={listType} />
-						})
-					}
-				</div>
-				<DirectionsPage totalPages={totalPages} refList={refList} />
-			</div>
+			<TitleList title={category} />
+			<SlickSlider settings={settings}>
+				{data.cmData.map((dataItem) => {
+					return (
+						<Item key={dataItem.Registro} posterType={data.poster_type} data={dataItem} listType={listType} titleCategory={data.category} />
+					)
+				})}
+			</SlickSlider>
 		</div>
 	)
 }
