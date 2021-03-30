@@ -1,0 +1,9 @@
+@import '../../../../scss/style-base.css';
+
+.content-catalogue.zonakids{
+      position: absolute;
+      overflow: hidden;
+      width: 100%;
+      top: $height-top-menu;
+      padding: 0 $full-padding-content;
+}

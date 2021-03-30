@@ -40,7 +40,6 @@ export function ButtonsMenu() {
 	}
 
 	return (
-		
 		<div className="buttons-menu-wrapper">
 			<SlickSlider settings={settings}>
 				{data.map(({ titulo, ContentType, PosterCardUrlLandscape }, index) => {

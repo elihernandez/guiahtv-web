@@ -1,3 +1,5 @@
+@import '../../scss/style-base.css';
+
 .slick-slider{
     position: relative;
     width: 100%;
@@ -6,6 +8,7 @@
         overflow: visible;
 
         .slick-track{
+            margin: 0;
 
             .slick-slide{
                 &>div{
@@ -16,6 +19,46 @@
             }
         }
     }
+
+    .slick-arrow{
+        height: 100%;
+        width: $full-padding-content;
+        display: flex;
+        justify-content: center;
+        z-index: 2;
+
+        &.slick-prev{
+            left: -$full-padding-content;
+        }
+
+        &.slick-next{
+            right: -$full-padding-content;
+        }
+
+        &.slick-disabled{
+            display: none;
+        }
+
+        &::before{
+            content: none;
+        }
+        
+        button{
+            opacity: 0.65;
+
+            i{
+                color: $color-white;
+                font-size: 1.8vw;
+            }
+
+
+            &:hover{
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+    }
+
 }
 
 .carousel-indicators{

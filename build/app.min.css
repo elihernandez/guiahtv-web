@@ -2635,22 +2635,80 @@ input::-ms-input-placeholder{
 .spotlight-wrapper svg{
         padding: 50px;
     }
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
 .slick-slider{
     position: relative;
     width: 100%;
+
 }
 
-    .slick-slider .slick-list{
+.slick-slider .slick-list{
         overflow: visible;
     }
 
-    .slick-slider .slick-list .slick-track .slick-slide>div{
+.slick-slider .slick-list .slick-track{
+            margin: 0;
+        }
+
+.slick-slider .slick-list .slick-track .slick-slide>div{
                     position: relative;
                     width: 100%;
                     height: 100%;
                 }
 
-    .carousel-indicators{
+.slick-slider .slick-arrow{
+        height: 100%;
+        width: 90px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        z-index: 2
+    }
+
+.slick-slider .slick-arrow.slick-prev{
+            left: -90px;
+        }
+
+.slick-slider .slick-arrow.slick-next{
+            right: -90px;
+        }
+
+.slick-slider .slick-arrow.slick-disabled{
+            display: none;
+        }
+
+.slick-slider .slick-arrow::before{
+            content: none;
+        }
+
+.slick-slider .slick-arrow button{
+            opacity: 0.65;
+        }
+
+.slick-slider .slick-arrow button i{
+                color: #f7f7f7;
+                font-size: 1.8vw;
+            }
+
+.slick-slider .slick-arrow button:hover{
+                opacity: 1;
+                -webkit-transform: scale(1.2);
+                        transform: scale(1.2);
+            }
+
+.carousel-indicators{
     position: absolute;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2667,7 +2725,7 @@ input::-ms-input-placeholder{
     top: 0;
 }
 
-    .carousel-indicators .carousel-indicators-list{
+.carousel-indicators .carousel-indicators-list{
         position: absolute;
         list-style: none;
         display: -webkit-inline-box;
@@ -2678,7 +2736,7 @@ input::-ms-input-placeholder{
         bottom: 5%;
     }
 
-    .carousel-indicators .carousel-indicators-list .carousel-item{
+.carousel-indicators .carousel-indicators-list .carousel-item{
             width: .5vw;
             height: .5vw;
             border-radius: 50%;
@@ -2686,11 +2744,11 @@ input::-ms-input-placeholder{
             margin: 5px
         }
 
-    .carousel-indicators .carousel-indicators-list .carousel-item.active{
+.carousel-indicators .carousel-indicators-list .carousel-item.active{
                 background-color: rgba(255, 255, 255, 1);
             }
 
-    .carousel-control-prev{
+.carousel-control-prev{
     position: absolute;
     color: rgba(255, 255, 255, 0.5);
     left: 0;
@@ -2715,14 +2773,14 @@ input::-ms-input-placeholder{
         align-content: center
 }
 
-    .carousel-control-prev:hover{
+.carousel-control-prev:hover{
         background: -webkit-gradient(linear,  left top, right top,  from(rgba(24,25,28, 0.75)), to(transparent));
         background: linear-gradient(90deg,  rgba(24,25,28, 0.75), transparent);
         cursor: pointer;
         color: white;
     }
 
-    .carousel-control-next{
+.carousel-control-next{
     position: absolute;
     color: rgba(255, 255, 255, 0.3);
     right: 0;
@@ -2747,7 +2805,7 @@ input::-ms-input-placeholder{
         align-content: center
 }
 
-    .carousel-control-next:hover{
+.carousel-control-next:hover{
         background: -webkit-gradient(linear,  right top, left top,  from(rgba(24,25,28, 0.75)), to(transparent));
         background: linear-gradient(-90deg,  rgba(24,25,28, 0.75), transparent);
         cursor: pointer;
@@ -2783,6 +2841,15 @@ input::-ms-input-placeholder{
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
 }
+
+.buttons-menu-wrapper .slick-list{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
 
 .buttons-menu-wrapper .item-button{
         position: relative;
@@ -4739,15 +4806,11 @@ input::-ms-input-placeholder{
                         width: 100%;
                         -webkit-backface-visibility: hidden;
                                 backface-visibility: hidden;
-                        /* border: 4px solid transparent; */
-                        -webkit-transform: scale(0.96);
-                                transform: scale(0.96);
                         -webkit-transition: all 300ms ease-out;
                         transition: all 300ms ease-out;
                         overflow: hidden;
                         border-radius: 4px;
                         background: #424242;
-                        /* box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px -10px; */
                         -webkit-box-shadow: rgba(0, 0, 0, 0.69) 0px 1.3vw 1.6vw -0.5vw, rgba(0, 0, 0, 0.73) 0px .9vw 0.5vw -0.5vw;
                                 box-shadow: rgba(0, 0, 0, 0.69) 0px 1.3vw 1.6vw -0.5vw, rgba(0, 0, 0, 0.73) 0px .9vw 0.5vw -0.5vw;
                   }
@@ -4769,7 +4832,6 @@ input::-ms-input-placeholder{
                               background: #424242;
                               color: #f7f7f7;
                               text-align: center;
-                              /* box-shadow: 0 4px 8px 0 rgba(0,0,0,1); */
                         }
 
 .list .item-link .item .background-item::after{
@@ -4860,8 +4922,8 @@ input::-ms-input-placeholder{
                           box-shadow: rgba(0, 0, 0, 0.69) 0px 1.3vw 1.6vw -0.5vw, rgba(0, 0, 0, 0.73) 0px .9vw 0.5vw -0.5vw;
                   -webkit-backface-visibility: hidden;
                           backface-visibility: hidden;
-                  -webkit-transform: scale(0.96);
-                          transform: scale(0.96);
+                  -webkit-transform: scale(0.95);
+                          transform: scale(0.95);
                   -webkit-transition: all 300ms ease;
                   transition: all 300ms ease
             }
@@ -5189,99 +5251,88 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.title-list{
-      font-size: 1.1vw;
-      font-weight: 600;
-      letter-spacing: .5px;
-      margin: 10px 0 10px 14px;
-}
-
 .list{
       position: relative;
-      display: inline-table;
       width: 100%;
       height: auto;
-      overflow-y: hidden;
-      /* padding: 0 45px; */
-      padding: 1.5vw 45px;
+      margin: 40px 0;
 }
 
-.list .list-content{
-            position: relative;
-            width: 100%;
-            height: 100%;
+.list .title-list{
+            font-size: 1.1vw;
+            font-weight: 600;
+            letter-spacing: .5px;
+            margin: 10px 0 10px 14px;
       }
 
-.list .list-content .list-items{
+.list.list-catalogue.portrait .background-item{
+                        height: 17vw;
+                        -webkit-transform: scale(0.93);
+                                transform: scale(0.93);
+                  }
+
+.list.list-catalogue.landscape .background-item{
+                        height: 11vw;
+                        -webkit-transform: scale(0.95);
+                                transform: scale(0.95);
+                  }
+
+.list.list-catalogue.wrap.landscape .list-items{
+                        -ms-flex-wrap: wrap;
+                            flex-wrap: wrap;
+                  }
+
+.list.list-catalogue.wrap.landscape .list-items .item{
+                              margin-bottom: 50px;
+                        }
+
+.list .slick-slide{
+            opacity: 0.4;
+            -webkit-transition: all 300ms ease-in-out;
+            transition: all 300ms ease-in-out
+      }
+
+.list .slick-slide.slick-active{
+                  opacity: 1;
+            }
+
+.list.list-season{
+            padding: 0 0;
+            margin: 25px 0;
+      }
+
+.list.list-season .list-content{
                   position: relative;
                   width: 100%;
-                  display: -webkit-box;
-                  display: -ms-flexbox;
-                  display: flex;
             }
 
-.list-catalogue{
-      /* padding: 0 45px; */
-}
-
-.list-catalogue.portrait .list-items .background-item{
-                        height: 18vw;
+.list.list-season .list-content .list-items{
+                        position: relative;
+                        width: 100%;
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
                   }
 
-.list-catalogue.portrait .item-link{
-                  -webkit-box-flex: 0;
-                      -ms-flex: 0 0 calc(100% / 7);
-                          flex: 0 0 calc(100% / 7);
-                  /* height: 20vw; */
-            }
-
-/* margin-bottom: 40px; */
-
-/* height: 14vw; */
-
-.list-catalogue.landscape .list-items .background-item{
-                        height: 12vw;
-                  }
-
-.list-catalogue.landscape .item-link{
-                  -webkit-box-flex: 0;
-                      -ms-flex: 0 0 calc(100% / 5);
-                          flex: 0 0 calc(100% / 5);
-            }
-
-.list-catalogue.wrap.landscape .list-items{
-                  -ms-flex-wrap: wrap;
-                      flex-wrap: wrap;
-            }
-
-.list-catalogue.wrap.landscape .list-items .item{
-                        margin-bottom: 50px;
-                  }
-
-.list-season{
-      padding: 0 50px;
-      margin: 25px 0
-}
-
-.list-season.portrait .list-items .background-item{
+.list.list-season.portrait .background-item{
                         height: 325px;
                   }
 
-.list-season.portrait .item-link{
-                  -webkit-box-flex: 0;
-                      -ms-flex: 0 0 calc(100% / 7);
-                          flex: 0 0 calc(100% / 7);
-            }
+.list.list-season.portrait .item-link{
+                        -webkit-box-flex: 0;
+                            -ms-flex: 0 0 calc(100% / 7);
+                                flex: 0 0 calc(100% / 7);
+                  }
 
-.list-season.landscape .list-items .background-item{
-                        height: 12vw;
+.list.list-season.landscape .background-item{
+                        height: 11vw;
                         -webkit-transform: scale(1);
                                 transform: scale(1);
                         -webkit-box-shadow: none;
                                 box-shadow: none
                   }
 
-.list-season.landscape .list-items .background-item::after{
+.list.list-season.landscape .background-item::after{
                               border-radius: 4px;
                               border: none;
                               top: 0px;
@@ -5294,79 +5345,76 @@ input::-ms-input-placeholder{
                               transition: border 300ms ease-out 0s;
                         }
 
-.list-season.landscape .list-items .background-item{
+.list.list-season.landscape .background-item{
                         /* transform: scale(0.93); */
                   }
 
-.list-season.landscape .list-items .background-item img{
+.list.list-season.landscape .background-item img{
                               -o-object-fit: fill;
                                  object-fit: fill;
                         }
 
-.list-season.landscape .item-link{
-                  -webkit-box-flex: 0;
-                      -ms-flex: 0 0 calc(100% / 5);
-                          flex: 0 0 calc(100% / 5);
-                  margin-bottom: 3vw;
-
-            }
-
-.list-season.landscape .item-link .item{
-                        -webkit-transform: scale(0.96);
-                                transform: scale(0.96);
-                        border-radius: 8px;
-                        background: -webkit-gradient(linear, left top, left bottom, from(#232526), to(#18191c));
-                        background: linear-gradient(to bottom, #232526, #18191c);
-                        -webkit-transition: all 300ms ease-in-out;
-                        transition: all 300ms ease-in-out;
-                        -webkit-box-shadow: rgba(0, 0, 0, 0.69) 0px 1.3vw 1.6vw -0.5vw, rgba(0, 0, 0, 0.73) 0px .9vw 0.5vw -0.5vw;
-                                box-shadow: rgba(0, 0, 0, 0.69) 0px 1.3vw 1.6vw -0.5vw, rgba(0, 0, 0, 0.73) 0px .9vw 0.5vw -0.5vw;
-                        -webkit-backface-visibility: hidden;
-                                backface-visibility: hidden
+.list.list-season.landscape .item-link{
+                        -webkit-box-flex: 0;
+                            -ms-flex: 0 0 calc(100% / 5);
+                                flex: 0 0 calc(100% / 5);
+                        margin-bottom: 3vw;
+      
                   }
 
-.list-season.landscape .item-link .item:hover .background-item{
-                                    -webkit-box-shadow: none;
-                                            box-shadow: none
-                              }
+.list.list-season.landscape .item-link .item{
+                              -webkit-transform: scale(0.95);
+                                      transform: scale(0.95);
+                              border-radius: 8px;
+                              background: -webkit-gradient(linear, left top, left bottom, from(#232526), to(#18191c));
+                              background: linear-gradient(to bottom, #232526, #18191c);
+                              -webkit-transition: all 300ms ease-in-out;
+                              transition: all 300ms ease-in-out;
+                              -webkit-box-shadow: rgba(0, 0, 0, 0.69) 0px 1.3vw 1.6vw -0.5vw, rgba(0, 0, 0, 0.73) 0px .9vw 0.5vw -0.5vw;
+                                      box-shadow: rgba(0, 0, 0, 0.69) 0px 1.3vw 1.6vw -0.5vw, rgba(0, 0, 0, 0.73) 0px .9vw 0.5vw -0.5vw;
+                              -webkit-backface-visibility: hidden;
+                                      backface-visibility: hidden;
+                              height: 21vw
+                        }
 
-.list-season.landscape .item-link .item:hover .background-item::after{
-                                          border: none;
+.list.list-season.landscape .item-link .item:hover .background-item{
+                                          -webkit-box-shadow: none;
+                                                  box-shadow: none
                                     }
 
-.list-season.landscape .item-link .item::after{
-                              border-radius: 8px;
-                              border: 4px solid transparent;
-                              top: 0px;
-                              right: 0px;
-                              bottom: 0px;
-                              left: 0px;
-                              z-index: 2;
-                              content: "";
-                              position: absolute;
-                              -webkit-transition: border 300ms ease-out 0s;
-                              transition: border 300ms ease-out 0s;
-                        }
+.list.list-season.landscape .item-link .item:hover .background-item::after{
+                                                border: none;
+                                          }
 
-.list-season.landscape .item-link .item:hover{
-                              -webkit-transform: scale(1);
-                                      transform: scale(1);
-                              -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 2.1vw 2.6vw -0.9vw, rgba(0, 0, 0, 0.72) 0px 1.6vw 1.2vw -0.5vw;
-                                      box-shadow: rgba(0, 0, 0, 0.8) 0px 2.1vw 2.6vw -0.9vw, rgba(0, 0, 0, 0.72) 0px 1.6vw 1.2vw -0.5vw
-                        }
-
-.list-season.landscape .item-link .item:hover::after{
-                                    border: 4px solid #f7f7f7;
+.list.list-season.landscape .item-link .item::after{
+                                    border-radius: 8px;
+                                    border: 4px solid transparent;
+                                    top: 0px;
+                                    right: 0px;
+                                    bottom: 0px;
+                                    left: 0px;
+                                    z-index: 2;
+                                    content: "";
+                                    position: absolute;
+                                    -webkit-transition: border 300ms ease-out 0s;
+                                    transition: border 300ms ease-out 0s;
                               }
 
-.list-season.wrap.landscape .list-items{
-                  -ms-flex-wrap: wrap;
-                      flex-wrap: wrap;
-      
-                  /* .item{
-                        margin-bottom: 50px;
-                  } */
-            }
+.list.list-season.landscape .item-link .item:hover{
+                                    -webkit-transform: scale(1);
+                                            transform: scale(1);
+                                    -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 2.1vw 2.6vw -0.9vw, rgba(0, 0, 0, 0.72) 0px 1.6vw 1.2vw -0.5vw;
+                                            box-shadow: rgba(0, 0, 0, 0.8) 0px 2.1vw 2.6vw -0.9vw, rgba(0, 0, 0, 0.72) 0px 1.6vw 1.2vw -0.5vw
+                              }
+
+.list.list-season.landscape .item-link .item:hover::after{
+                                          border: 4px solid #f7f7f7;
+                                    }
+
+.list.list-season.wrap.landscape .list-items{
+                        -ms-flex-wrap: wrap;
+                            flex-wrap: wrap;
+                  }
 
 .list-card{
       padding: 0 45px;
@@ -5914,12 +5962,22 @@ input::-ms-input-placeholder{
                   }
 
 
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
 .content-catalogue.alacarta{
       position: absolute;
       overflow: hidden;
-      /* padding: 0 45px; */
-      /* padding-left: 45px;
-      padding-right: 45px; */
+      width: 100%;
+      top: 65px;
+      padding: 0 90px;
 }
 /* #13171a */
 
@@ -6038,7 +6096,7 @@ input::-ms-input-placeholder{
             position: absolute;
             top: 0;
             width: 100%;
-            padding: 10vw 0 0 50px;
+            padding: 10vw 0 0 90px;
       }
 
 .info-wrapper .info-movie .group-title{
@@ -6180,7 +6238,7 @@ input::-ms-input-placeholder{
       }
 
 .info-wrapper .tabs-info-wrapper .MuiTabs-root{
-                  padding: 0 50px !important;
+                  padding: 0 90px !important;
             }
 
 .info-wrapper .MuiPaper-elevation4{
@@ -6252,47 +6310,69 @@ input::-ms-input-placeholder{
                   background-color: black !important;
             } */
       }
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
 .seasons-content-wrapper{
       position: relative;
       width: 100%;
       min-height: 300px !important;
+      overflow: hidden;
+      padding: 0 90px;
 }
 
-      .seasons-content-wrapper .spinner-mui{
+.seasons-content-wrapper .spinner-mui{
             height: 300px !important;
       }
 
-      .seasons-content-wrapper .seasons-menu{
-            padding: 0 65px !important;
+.seasons-content-wrapper .seasons-menu{
+            padding: 0 0 !important;
       }
 
-      .seasons-content-wrapper .popper-menu-wrapper div[x-placement]{
+.seasons-content-wrapper .popper-menu-wrapper div[x-placement]{
                   z-index: 1;
                   min-width: 170px;
             }
 
-      .seasons-content-wrapper .popper-menu-wrapper .MuiPaper-root{
+.seasons-content-wrapper .popper-menu-wrapper .MuiPaper-root{
                   background-color: #424242 !important;
             }
 
-      .seasons-content-wrapper .popper-menu-wrapper .MuiPaper-root .MuiTab-wrapper{
+.seasons-content-wrapper .popper-menu-wrapper .MuiPaper-root .MuiTab-wrapper{
                         font-size: .8vw !important;
                   }
 
-      .seasons-content-wrapper .popper-menu-wrapper .MuiMenuItem-root{
+.seasons-content-wrapper .popper-menu-wrapper .MuiMenuItem-root{
                   padding: 10px 15px;
                   font-size: 15px;
                   border-radius: 4px
             }
 
-      .seasons-content-wrapper .popper-menu-wrapper .MuiMenuItem-root:hover{
+.seasons-content-wrapper .popper-menu-wrapper .MuiMenuItem-root:hover{
                         background-color: #616161;
                   }
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
 .info-contact-wrapper{
       position: relative;
       width: 100%;
       min-height: 300px !important;
-      padding: 25px 50px;
+      padding: 25px 90px;
       color: white;
       display: -webkit-box;
       display: -ms-flexbox;
@@ -6303,43 +6383,43 @@ input::-ms-input-placeholder{
               flex-direction: row;
 }
 
-      .info-contact-wrapper .group-section{
+.info-contact-wrapper .group-section{
             position: relative;
             width: 40%;
             font-size: .9vw;
             margin-right: 5vw;
       }
 
-      .info-contact-wrapper .group-section i{
+.info-contact-wrapper .group-section i{
                   margin-right: 25px;
                   font-size: 1vw;
             }
 
-      .info-contact-wrapper .title-group{
+.info-contact-wrapper .title-group{
             font-weight: 600;
             font-size: 26px;
       }
 
-      .info-contact-wrapper .description-group{
+.info-contact-wrapper .description-group{
             font-weight: 500;
             font-size: 16px;
             margin-top: 25px;
       }
 
-      .info-contact-wrapper .phone-group{
+.info-contact-wrapper .phone-group{
             margin-bottom: 15px;
       }
 
-      .info-contact-wrapper .web-group{
+.info-contact-wrapper .web-group{
             margin-bottom: 25px;
       }
 
-      .info-contact-wrapper .web-group a{
+.info-contact-wrapper .web-group a{
                   color: white;
                   text-decoration: none;
             }
 
-      .info-contact-wrapper .social-media-group{
+.info-contact-wrapper .social-media-group{
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -6349,7 +6429,7 @@ input::-ms-input-placeholder{
                     flex-direction: column;
       }
 
-      .info-contact-wrapper .social-media-group a{
+.info-contact-wrapper .social-media-group a{
                   color: white;
                   text-decoration: none;
                   margin-bottom: 20px;
@@ -6361,7 +6441,7 @@ input::-ms-input-placeholder{
                           align-items: center;
             }
 
-      .info-contact-wrapper .social-media-group i{
+.info-contact-wrapper .social-media-group i{
                   font-size: 20px;
                   cursor: pointer;
             }
@@ -8357,7 +8437,23 @@ input::-ms-input-placeholder{
                                           color: #797979;
                                     }
 
+/* #13171a */
 
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
+.content-catalogue.zonakids{
+      position: absolute;
+      overflow: hidden;
+      width: 100%;
+      top: 65px;
+      padding: 0 90px;
+}
 .wrapper-zonakids{
       position: relative;
       width: 100%;
@@ -8404,7 +8500,7 @@ input::-ms-input-placeholder{
 
 .search-form{
     position: relative;
-    padding: 10px 45px;
+    padding: 10px;
 }
 
 /* border: 1px solid blue; */
@@ -8498,7 +8594,7 @@ input::-ms-input-placeholder{
     position: relative;
     top: 65px;
     /* border: 1px solid red; */
-    padding: 25px 0;
+    padding: 25px 90px;
 }
 .page-404 .page-404-wrapper{
             position: relative;

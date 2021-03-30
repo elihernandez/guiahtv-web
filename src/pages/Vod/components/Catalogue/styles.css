@@ -1,7 +1,9 @@
+@import '../../../../scss/style-base.css';
+
 .content-catalogue.alacarta{
       position: absolute;
       overflow: hidden;
-      /* padding: 0 45px; */
-      /* padding-left: 45px;
-      padding-right: 45px; */
+      width: 100%;
+      top: $height-top-menu;
+      padding: 0 $full-padding-content;
 }

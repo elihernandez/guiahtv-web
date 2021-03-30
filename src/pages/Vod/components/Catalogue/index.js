@@ -1,10 +1,7 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { List } from '../../../../components/List'
-import { Item } from '../../../../components/ListItem'
+// import { Item } from '../../../../components/ListItem'
 import { CSSTransition } from 'react-transition-group'
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 import './styles.css'
 
 // function ListMovies({ data }){
@@ -44,8 +41,6 @@ export function Catalogue({ data }) {
 		setShow(true)
 	}, [])
 
-	console.log(data)
-
 	return (
 		<CSSTransition in={show} timeout={100} classNames="fade" unmountOnExit>
 			<div className="content-catalogue alacarta">
@@ -58,6 +53,12 @@ export function Catalogue({ data }) {
 		</CSSTransition>
 	)
 }
+
+// {
+// 	data.map((category) => {
+// 		return <List key={category.category} data={category} listType="catalogue" wrap={false} />
+// 	})
+// }
 
 // {
 //       data.map((category) => {

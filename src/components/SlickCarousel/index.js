@@ -28,22 +28,24 @@ export function NextArrowSlider(props) {
 	)
 }
 
-export function SlickSlider({ children, settings = {
-	dots: true,
-	infinite: true,
-	speed: 500,
-	autoplay: true,
-	autoplaySpeed: 6000,
-	slidesToShow: 1,
-	slidesToScroll: 1,
-	variableWidth: false,
-	pauseOnHover: true,
-	swipeToSlide: true,
-	prevArrow: <PrevArrowSlider />,
-	nextArrow: <NextArrowSlider />,
-} 
+export function SlickSlider({ children, 
+	settings = {
+		dots: true,
+		infinite: false,
+		speed: 500,
+		autoplay: true,
+		autoplaySpeed: 6000,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		variableWidth: false,
+		pauseOnHover: true,
+		swipeToSlide: true,
+	}
 }){
 
+	settings.prevArrow = <PrevArrowSlider />
+	settings.nextArrow = <NextArrowSlider />
+	
 	return (	
 		<Slider {...settings}>
 			{ children }

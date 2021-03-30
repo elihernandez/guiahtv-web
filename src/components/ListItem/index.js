@@ -33,6 +33,9 @@ export function Item({ data, posterType, listType, titleCategory, category }) {
 	case 'channel':
 		Item = <ItemCardChannel posterType={posterType} data={data} category={category} />
 		break
+	case 'catalogue-slide':
+		Item = <ItemCatalogue posterType={posterType} data={data} />
+		break
 	}
 
 	return Item

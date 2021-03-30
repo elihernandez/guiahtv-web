@@ -1,102 +1,87 @@
 @import '../../scss/style-base.css';
 
-.title-list{
-      font-size: 1.1vw;
-      font-weight: 600;
-      letter-spacing: .5px;
-      margin: 10px 0 10px 14px;
-}
-
 .list{
       position: relative;
-      display: inline-table;
       width: 100%;
       height: auto;
-      overflow-y: hidden;
-      /* padding: 0 45px; */
-      padding: 1.5vw 45px;
+      margin: 40px 0;
 
-      .list-content{
-            position: relative;
-            width: 100%;
-            height: 100%;
+      .title-list{
+            font-size: 1.1vw;
+            font-weight: 600;
+            letter-spacing: .5px;
+            margin: 10px 0 10px 14px;
+      }
 
-            .list-items{
+      &.list-catalogue{
+      
+            &.portrait{
+      
+                  .background-item{
+                        height: 17vw;
+                        transform: scale(0.93);
+                  }
+            }
+      
+            &.landscape{
+      
+                  .background-item{
+                        height: 11vw;
+                        transform: scale(0.95);
+                  }
+            }
+      
+            &.wrap.landscape {
+      
+                  .list-items{
+                        flex-wrap: wrap;
+            
+                        .item{
+                              margin-bottom: 50px;
+                        }
+                  }
+            }
+      }
+
+      .slick-slide{
+            opacity: 0.4;
+            transition: all 300ms ease-in-out;
+
+            &.slick-active{
+                  opacity: 1;
+            }
+      }
+
+      &.list-season{
+            padding: 0 0;
+            margin: 25px 0;
+
+            .list-content{
                   position: relative;
                   width: 100%;
-                  display: flex;
-            }
-      }
-}
 
-.list-catalogue{
-      /* padding: 0 45px; */
-
-      &.portrait{
-            .list-items{
-                  
-
-                  .background-item{
-                        height: 18vw;
+                  .list-items{
+                        position: relative;
+                        width: 100%;
+                        display: flex;
                   }
             }
-
-            .item-link{
-                  flex: 0 0 calc(100% / 7);
-                  /* height: 20vw; */
-            }
-      }
-
-      &.landscape{
-            /* margin-bottom: 40px; */
-
-            .list-items{
-                  /* height: 14vw; */
-
-                  .background-item{
-                        height: 12vw;
-                  }
-            }
-
-            .item-link{
-                  flex: 0 0 calc(100% / 5);
-            }
-      }
-
-      &.wrap.landscape {
-
-            .list-items{
-                  flex-wrap: wrap;
       
-                  .item{
-                        margin-bottom: 50px;
-                  }
-            }
-      }
-}
+            &.portrait{
 
-.list-season{
-      padding: 0 50px;
-      margin: 25px 0;
-
-      &.portrait{
-            .list-items{
-               
                   .background-item{
                         height: 325px;
                   }
-            }
-
-            .item-link{
-                  flex: 0 0 calc(100% / 7);
-            }
-      }
-
-      &.landscape{
-            .list-items{
       
+                  .item-link{
+                        flex: 0 0 calc(100% / 7);
+                  }
+            }
+      
+            &.landscape{
+
                   .background-item{
-                        height: 12vw;
+                        height: 11vw;
                         transform: scale(1);
                         box-shadow: none;
 
@@ -114,64 +99,62 @@
                         }
                         /* transform: scale(0.93); */
                   }
-            }
-
-            .item-link{
-                  flex: 0 0 calc(100% / 5);
-                  margin-bottom: 3vw;
+      
+                  .item-link{
+                        flex: 0 0 calc(100% / 5);
+                        margin-bottom: 3vw;
+                        
+                        .item{
+                              transform: scale(0.95);
+                              border-radius: 8px;
+                              background: linear-gradient(to bottom, $color-black-1, $color-black-2);
+                              transition: all 300ms ease-in-out;
+                              box-shadow: rgb(0 0 0 / 69%) 0px 1.3vw 1.6vw -0.5vw, rgb(0 0 0 / 73%) 0px .9vw 0.5vw -0.5vw;
+                              backface-visibility: hidden;
+                              height: 21vw;
+      
+                              &:hover{
+                                    .background-item{
+                                          box-shadow: none;
+      
+                                          
+                                          &::after{
+                                                border: none;
+                                          }
+                                    }
+                              }
+                              &::after{
+                                    border-radius: 8px;
+                                    border: 4px solid transparent;
+                                    inset: 0px;
+                                    z-index: 2;
+                                    content: "";
+                                    position: absolute;
+                                    transition: border 300ms ease-out 0s;
+                              }
+            
+                              &:hover{
+                                    transform: scale(1);
+                                    box-shadow: rgb(0 0 0 / 80%) 0px 2.1vw 2.6vw -0.9vw, rgb(0 0 0 / 72%) 0px 1.6vw 1.2vw -0.5vw;
                   
-                  .item{
-                        transform: scale(0.96);
-                        border-radius: 8px;
-                        background: linear-gradient(to bottom, $color-black-1, $color-black-2);
-                        transition: all 300ms ease-in-out;
-                        box-shadow: rgb(0 0 0 / 69%) 0px 1.3vw 1.6vw -0.5vw, rgb(0 0 0 / 73%) 0px .9vw 0.5vw -0.5vw;
-                        backface-visibility: hidden;
-
-                        &:hover{
-                              .background-item{
-                                    box-shadow: none;
-
-                                    
                                     &::after{
-                                          border: none;
+                                          border: 4px solid $color-white;
                                     }
                               }
                         }
-                        &::after{
-                              border-radius: 8px;
-                              border: 4px solid transparent;
-                              inset: 0px;
-                              z-index: 2;
-                              content: "";
-                              position: absolute;
-                              transition: border 300ms ease-out 0s;
-                        }
       
-                        &:hover{
-                              transform: scale(1);
-                              box-shadow: rgb(0 0 0 / 80%) 0px 2.1vw 2.6vw -0.9vw, rgb(0 0 0 / 72%) 0px 1.6vw 1.2vw -0.5vw;
-            
-                              &::after{
-                                    border: 4px solid $color-white;
-                              }
-                        }
                   }
-
             }
-      }
-
-      &.wrap.landscape {
-
-            .list-items{
-                  flex-wrap: wrap;
       
-                  /* .item{
-                        margin-bottom: 50px;
-                  } */
+            &.wrap.landscape {  
+                  .list-items{
+                        flex-wrap: wrap;
+                  }
             }
       }
 }
+
+
 
 .list-card{
       padding: 0 45px;

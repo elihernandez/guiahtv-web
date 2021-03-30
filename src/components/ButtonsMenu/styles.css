@@ -9,6 +9,11 @@
     align-items: center;
     flex: 1 1 auto;
 
+    .slick-list{
+        display: flex;
+        justify-content: center;
+    }
+
     .item-button{
         position: relative;
         height: 100%;

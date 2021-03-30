@@ -1,9 +1,6 @@
 import React, { Fragment, useState, useEffect, useRef } from 'react'
 import { Item } from '../ListItem'
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-import { LazyImage } from '../Image'
+import { SlickSlider } from '../SlickCarousel'
 const cssTransition = require('css-transition')
 import './styles.css'
 
@@ -22,7 +19,7 @@ export function List({ data, listType, wrap }) {
 
 	switch (listType) {
 	case 'catalogue':
-		List = <ListCatalogue data={data} listType={listType} />
+		List = <ListCatalogue data={data} listType={listType} wrap={wrap} />
 		break
 	case 'season':
 		List = <ListSeason data={data} listType={listType} />
@@ -33,66 +30,73 @@ export function List({ data, listType, wrap }) {
 	case 'channel':
 		List = <ListChannel data={data} listType={listType} />
 		break
-	case 'catalogue-slide':
-		List = <ListCatalogueSlide data={data} listType={listType} wrap={wrap} />
-		break
 	}
 
 	return List
 }
 
-export function ListCatalogueSlide({ data, listType, wrap }) {
+export function ListCatalogue({ data, listType }) {
+	const { category, poster_type } = data
+	const classes = poster_type == 0 ? 'list list-catalogue portrait' : 'list  list-catalogue landscape'
+
+	let slidesToShow
+
+	switch(poster_type){
+	case '0':
+		slidesToShow = 7
+		break
+	case '1':
+		slidesToShow = 5
+		break
+	default:
+		slidesToShow = 7
+		break				
+	}
 
 	const settings = {
 		dots: false,
 		infinite: false,
-		autoplay: false,
-		slidesToShow: 8,
-		slidesToScroll: 8,
-		variableWidth: false,
+		slidesToShow: slidesToShow,
+		slidesToScroll: slidesToShow,
 		swipeToSlide: true,
 	}
 
 	return (
-		<Slider {...settings}>
-			{data.cmData.map(({ Registro, HDPosterUrlPortrait, Title}) => {
-				return (
-					<div key={Registro} style={{ width: '100%' }}>
-						<LazyImage
-							img={HDPosterUrlPortrait}
-							alt={`${Title}-image`}
-							type="webp"
-							recoverType="png"
-						/>
-					</div>
-				)
-			})}
-		</Slider>
-	)
-}
-
-export function ListCatalogue({ data, listType }) {
-	const { category, poster_type, cmData } = data
-	const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
-	const classes = poster_type == 0 ? 'list list-catalogue portrait' : 'list  list-catalogue landscape'
-	const refList = useRef()
-
-	return (
 		<div className={classes}>
 			<TitleList title={category} />
-			<div className="list-content">
-				<div className="list-items" ref={refList}>
-					{
-						cmData.map((data) => {
-							return <Item key={data.Registro} data={data} posterType={poster_type} listType={listType} titleCategory={category} />
-						})
-					}
-				</div>
-				<DirectionsPage totalPages={totalPages} refList={refList} />
-			</div>
+			<SlickSlider settings={settings}>
+				{data.cmData.map((dataItem) => {
+					return (
+						<Item key={dataItem.Registro} posterType={data.poster_type} data={dataItem} listType={listType} titleCategory={data.category} />
+					)
+				})}
+			</SlickSlider>
 		</div>
 	)
 }
+
+// export function ListCatalogue({ data, listType }) {
+// 	const { category, poster_type, cmData } = data
+// 	const totalPages = poster_type == 0 ? getPages(cmData, 7) : getPages(cmData, 5)
+// 	const classes = poster_type == 0 ? 'list list-catalogue portrait' : 'list  list-catalogue landscape'
+// 	const refList = useRef()
+
+// 	return (
+// 		<div className={classes}>
+// 			<TitleList title={category} />
+// 			<div className="list-content">
+// 				<div className="list-items" ref={refList}>
+// 					{
+// 						cmData.map((data) => {
+// 							return <Item key={data.Registro} data={data} posterType={poster_type} listType={listType} titleCategory={category} />
+// 						})
+// 					}
+// 				</div>
+// 				<DirectionsPage totalPages={totalPages} refList={refList} />
+// 			</div>
+// 		</div>
+// 	)
+// }
 
 export function ListSeason({ data, listType }) {
 	const { category, poster_type, cmData } = data
