@@ -8,6 +8,7 @@ import { setResumePosVideo } from '../../../../services/setResumePosVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { Content } from '../Content'
 import { EndingMovie } from '../EndingMovie'
+import { isSuscribed } from '../../../../js/Auth'
 import { setProgressMovie } from '../../../../js/Time'
 import './styles.css'
 
@@ -91,7 +92,9 @@ export function Player({ state, dispatchVod }) {
 
 		return () => {
 			if(history.action == 'POP'){
-				requestPositionVideo()
+				if(isSuscribed(credentials)){
+					requestPositionVideo()
+				}
 			}
 		}
 	}, [currentTime])
