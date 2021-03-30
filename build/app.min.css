@@ -2228,423 +2228,6 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.spotlight-wrapper{
-    position: relative;
-    width: 100%;
-    height: auto;
-    height: 30vw;
-}
-
-.spotlight-wrapper .slick-slider{
-        position: relative;
-        -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
-    }
-
-.spotlight-wrapper .slick-slider .slick-list{
-            display: block !important;
-            overflow: visible !important;
-            padding: 0 !important;
-        }
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track{
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: flex;
-            }
-
-/* transition: all 500ms ease-in-out; */
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide{
-                    display: -webkit-box;
-                    display: -ms-flexbox;
-                    display: flex;
-                    height: auto;
-                    padding: 0 10px;
-                    /* margin: 0 100px; */
-                    -webkit-transform: scale(0.85);
-                            transform: scale(0.85);
-                    -webkit-transition: all 500ms ease-in-out;
-                    transition: all 500ms ease-in-out;
-                    height: 30vw;
-                }
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide div{
-                        display: -webkit-box;
-                        display: -ms-flexbox;
-                        display: flex;
-                        position: relative;
-                        /* background: $color-grey-5; */
-                        width: 100%;
-                        height: 100%;
-                        border-radius: 6px;
-                    }
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide div div{
-                            display: -webkit-box !important;
-                            display: -ms-flexbox !important;
-                            display: flex !important;
-                            position: relative;
-                            width: 100%;
-                            height: 100%;
-                            border-radius: 6px;
-                        }
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide div:after{
-                            content: '';
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            border-radius: 4px;
-                            background: rgba(0, 0, 0, 0.1);
-                            -webkit-transition: background 300ms linear;
-                            transition: background 300ms linear;
-                        }
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide.slick-active{
-                        -webkit-transform: scale(1);
-                                transform: scale(1);
-                        -webkit-transition: all 500ms ease-in-out;
-                        transition: all 500ms ease-in-out;
-                    }
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide.slick-active div{
-                            position: relative;
-                        }
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide.slick-active div div{
-                                display: -webkit-box !important;
-                                display: -ms-flexbox !important;
-                                display: flex !important;
-                                position: relative;
-                            }
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide.slick-active div:after{
-                                content: '';
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 100%;
-                                background: rgba(0, 0, 0, 0);
-                            }
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide.slick-cloned{
-                        height: 30vw;
-                        -webkit-transition: all 500ms ease-in-out;
-                        transition: all 500ms ease-in-out;
-                    }
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide span{
-                        position: relative;
-                        width: 100%;
-                        height: 100%;
-                        border-radius: 6px;
-                    }
-
-.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide img{
-                        position: relative;
-                        width: 100%;
-                        height: 100%;
-                        border-radius: 6px;
-                        -o-object-fit: cover;
-                           object-fit: cover;
-                        -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 25px -10px;
-                                box-shadow: rgba(0, 0, 0, 0.05) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 25px -10px;
-                    }
-
-.spotlight-wrapper .slick-slider .slick-dots{
-            bottom: 5%;
-        }
-
-.spotlight-wrapper .slick-slider .slick-dots li{
-                margin: 0;
-            }
-
-.spotlight-wrapper .slick-slider .slick-dots li button:before{
-                    font-size: .6vw;
-                    color: rgba(255, 255, 255, 0.5);
-                }
-
-.spotlight-wrapper .slick-slider .slick-dots li.slick-active button:before{
-                        opacity: 1;
-                    }
-
-.spotlight-wrapper .slick-slider .slick-arrow{
-            z-index: 1;
-            top: 0;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                    flex-direction: column;
-            -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                    justify-content: center;
-            -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-            /* width: 90px; */
-            width: 80px;
-            height: 100%
-        }
-
-.spotlight-wrapper .slick-slider .slick-arrow:before{
-                content: none;
-            }
-
-.spotlight-wrapper .slick-slider .slick-arrow.slick-prev{
-                -webkit-transform: translate(-100%, 0);
-                        transform: translate(-100%, 0);
-                left: 0;
-            }
-
-.spotlight-wrapper .slick-slider .slick-arrow.slick-next{
-                -webkit-transform: translate(100%, 0);
-                        transform: translate(100%, 0);
-                right: 0;
-            }
-
-.spotlight-wrapper .slick-slider .slick-arrow button{
-                background: transparent;
-                position: relative;
-                border: none;
-                cursor: pointer;
-                width: 2.5vw;
-                padding: 0;
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-pack: center;
-                    -ms-flex-pack: center;
-                        justify-content: center;
-            }
-
-.spotlight-wrapper .slick-slider .slick-arrow button i{
-                    font-size: 1.8vw;
-                    color: rgba(255, 255, 255, 0.5);
-                }
-
-.spotlight-wrapper .slick-slider .slick-arrow:hover i{
-                    font-size: 2.3vw;
-                    color: #f7f7f7;
-                }
-
-.spotlight-wrapper .slider-spotlight{
-        position: relative;
-        height: auto;
-        width: 100%;
-    }
-
-.spotlight-wrapper .slider-spotlight .carousel-content{
-            position: relative;
-            width: 100%;
-            height: auto;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: horizontal;
-            -webkit-box-direction: normal;
-                -ms-flex-direction: row;
-                    flex-direction: row;
-            -webkit-box-pack: start;
-                -ms-flex-pack: start;
-                    justify-content: flex-start;
-            padding: 0 10vw;
-        }
-
-.spotlight-wrapper .slider-spotlight .carousel-content .carousel-content-list{
-                position: relative;
-                /* width: 80%;
-                left: 10%; */
-                width: 100%;
-                height: auto;
-                list-style: none;
-                padding: 0 !important;
-                margin: 0 !important;
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-orient: horizontal;
-                -webkit-box-direction: normal;
-                    -ms-flex-direction: row;
-                        flex-direction: row;
-                -webkit-box-pack: start;
-                    -ms-flex-pack: start;
-                        justify-content: flex-start;
-                -webkit-box-align: start;
-                    -ms-flex-align: start;
-                        align-items: flex-start;
-                -ms-flex-line-pack: start;
-                    align-content: flex-start;
-                overflow: visible;
-            }
-
-/* height: 30vw; */
-
-.spotlight-wrapper .slider-spotlight .carousel-content .carousel-content-list .carousel-item{
-                    position: relative;
-                    -webkit-box-flex: 0;
-                        -ms-flex: 0 0 calc(100% / 1);
-                            flex: 0 0 calc(100% / 1);
-                    height: auto;
-                    opacity: 0;
-                    -webkit-transition: all 1300ms ease;
-                    transition: all 1300ms ease;
-                    display: -webkit-box;
-                    display: -ms-flexbox;
-                    display: flex;
-                    -webkit-box-orient: horizontal;
-                    -webkit-box-direction: normal;
-                        -ms-flex-direction: row;
-                            flex-direction: row;
-                    -webkit-box-pack: center;
-                        -ms-flex-pack: center;
-                            justify-content: center;
-                    opacity: 1;     
-                    padding: 0 1vw;
-                }
-
-/* picture{
-                        position: relative;
-                        display: flex;
-                        justify-content: center;
-                    } */
-
-.spotlight-wrapper .slider-spotlight .carousel-content .carousel-content-list .carousel-item img{
-                        position: relative;
-                        top: 0;
-                        width: 100%;
-                        height: 27vw;
-                        border-radius: 10px;
-                        -o-object-fit: cover;
-                           object-fit: cover;
-                        /* background: $color-grey-5; */
-                        -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 25px -10px;
-                                box-shadow: rgba(0, 0, 0, 0.05) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 25px -10px;
-                    }
-
-.spotlight-wrapper .slider-spotlight .carousel-indicators{
-            position: absolute;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: horizontal;
-            -webkit-box-direction: normal;
-                -ms-flex-direction: row;
-                    flex-direction: row;
-            -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                    justify-content: center;
-            width: 100%;
-            height: 27vw;
-            top: 0;
-        }
-
-.spotlight-wrapper .slider-spotlight .carousel-indicators .carousel-indicators-list{
-                position: absolute;
-                list-style: none;
-                display: -webkit-inline-box;
-                display: -ms-inline-flexbox;
-                display: inline-flex;
-                padding: 0 !important;
-                margin: 0 !important;
-                bottom: 5%;
-            }
-
-.spotlight-wrapper .slider-spotlight .carousel-indicators .carousel-indicators-list .carousel-item{
-                    width: .5vw;
-                    height: .5vw;
-                    border-radius: 50%;
-                    background-color: rgba(255, 255, 255, 0.5);
-                    margin: 5px
-                }
-
-.spotlight-wrapper .slider-spotlight .carousel-indicators .carousel-indicators-list .carousel-item.active{
-                        background-color: rgba(255, 255, 255, 1);
-                    }
-
-.spotlight-wrapper .slider-spotlight .carousel-control-prev{
-            position: absolute;
-            color: rgba(255, 255, 255, 0.5);
-            left: 0;
-            top: 0;
-            height: 27vw;
-            width: 9vw;
-            font-size: 2vw;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                    flex-direction: column;
-            -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                    justify-content: center;
-            -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-            -ms-flex-line-pack: center;
-                align-content: center
-        }
-
-.spotlight-wrapper .slider-spotlight .carousel-control-prev:hover{
-                background: -webkit-gradient(linear,  left top, right top,  from(rgba(24,25,28, 0.75)), to(transparent));
-                background: linear-gradient(90deg,  rgba(24,25,28, 0.75), transparent);
-                cursor: pointer;
-                color: white;
-            }
-
-.spotlight-wrapper .slider-spotlight .carousel-control-next{
-            position: absolute;
-            color: rgba(255, 255, 255, 0.3);
-            right: 0;
-            top: 0;
-            height: 27vw;
-            width: 9vw;
-            font-size: 2vw;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                    flex-direction: column;
-            -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                    justify-content: center;
-            -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-            -ms-flex-line-pack: center;
-                align-content: center
-        }
-
-.spotlight-wrapper .slider-spotlight .carousel-control-next:hover{
-                background: -webkit-gradient(linear,  right top, left top,  from(rgba(24,25,28, 0.75)), to(transparent));
-                background: linear-gradient(-90deg,  rgba(24,25,28, 0.75), transparent);
-                cursor: pointer;
-                color: white;
-            }
-
-.spotlight-wrapper svg{
-        padding: 50px;
-    }
-/* #13171a */
-
-/* App */
-
-/* Top Menu */
-
-/* Music */
-
-/* Radio */
-
 .slick-slider{
     position: relative;
     width: 100%;
@@ -2707,110 +2290,134 @@ input::-ms-input-placeholder{
                 -webkit-transform: scale(1.2);
                         transform: scale(1.2);
             }
+/* #13171a */
 
-.carousel-indicators{
-    position: absolute;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
+.spotlight-wrapper{
+    position: relative;
     width: 100%;
     height: auto;
-    top: 0;
+    height: 30vw;
 }
 
-.carousel-indicators .carousel-indicators-list{
-        position: absolute;
-        list-style: none;
-        display: -webkit-inline-box;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        padding: 0 !important;
-        margin: 0 !important;
-        bottom: 5%;
+.spotlight-wrapper .slick-slider{
+        position: relative;
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
     }
 
-.carousel-indicators .carousel-indicators-list .carousel-item{
-            width: .5vw;
-            height: .5vw;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            margin: 5px
+.spotlight-wrapper .slick-slider .slick-list{
+            display: block !important;
+            overflow: visible !important;
+            padding: 0 !important;
         }
 
-.carousel-indicators .carousel-indicators-list .carousel-item.active{
-                background-color: rgba(255, 255, 255, 1);
+.spotlight-wrapper .slick-slider .slick-list .slick-track{
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
             }
 
-.carousel-control-prev{
-    position: absolute;
-    color: rgba(255, 255, 255, 0.5);
-    left: 0;
-    top: 0;
-    height: auto;
-    width: 9vw;
-    font-size: 2vw;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -ms-flex-line-pack: center;
-        align-content: center
-}
+.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide{
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    height: auto;
+                    padding: 0 10px;
+                    -webkit-transform: scale(1);
+                            transform: scale(1);
+                    -webkit-transition: all 300ms ease-in-out;
+                    transition: all 300ms ease-in-out;
+                    height: 30vw;
+                    opacity: 0.5;
+                }
 
-.carousel-control-prev:hover{
-        background: -webkit-gradient(linear,  left top, right top,  from(rgba(24,25,28, 0.75)), to(transparent));
-        background: linear-gradient(90deg,  rgba(24,25,28, 0.75), transparent);
-        cursor: pointer;
-        color: white;
-    }
+.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide div{
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 6px;
+                    }
 
-.carousel-control-next{
-    position: absolute;
-    color: rgba(255, 255, 255, 0.3);
-    right: 0;
-    top: 0;
-    height: auto;
-    width: 9vw;
-    font-size: 2vw;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -ms-flex-line-pack: center;
-        align-content: center
-}
+.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide div div{
+                            display: -webkit-box !important;
+                            display: -ms-flexbox !important;
+                            display: flex !important;
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 6px;
+                        }
 
-.carousel-control-next:hover{
-        background: -webkit-gradient(linear,  right top, left top,  from(rgba(24,25,28, 0.75)), to(transparent));
-        background: linear-gradient(-90deg,  rgba(24,25,28, 0.75), transparent);
-        cursor: pointer;
-        color: white;
-    }
+.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide.slick-active{
+                        -webkit-transform: scale(1);
+                                transform: scale(1);
+                        opacity: 1;
+                        -webkit-transition: all 300ms ease-in-out;
+                        transition: all 300ms ease-in-out;
+                    }
+
+.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide.slick-active div{
+                            position: relative;
+                        }
+
+.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide.slick-active div div{
+                                display: -webkit-box !important;
+                                display: -ms-flexbox !important;
+                                display: flex !important;
+                                position: relative;
+                            }
+
+.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide.slick-cloned{
+                        height: 30vw;
+                        -webkit-transition: all 300ms ease-in-out;
+                        transition: all 300ms ease-in-out;
+                    }
+
+.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide span{
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 6px;
+                    }
+
+.spotlight-wrapper .slick-slider .slick-list .slick-track .slick-slide img{
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 6px;
+                        -o-object-fit: cover;
+                           object-fit: cover;
+                        -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 25px -10px;
+                                box-shadow: rgba(0, 0, 0, 0.05) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 25px -10px;
+                    }
+
+.spotlight-wrapper .slick-slider .slick-dots{
+            bottom: 5%;
+        }
+
+.spotlight-wrapper .slick-slider .slick-dots li{
+                margin: 0;
+            }
+
+.spotlight-wrapper .slick-slider .slick-dots li button:before{
+                    font-size: .6vw;
+                    color: rgba(255, 255, 255, 0.5);
+                }
+
+.spotlight-wrapper .slick-slider .slick-dots li.slick-active button:before{
+                        opacity: 1;
+                    }
 /* #13171a */
 
 /* App */
@@ -5454,79 +5061,6 @@ input::-ms-input-placeholder{
                   opacity: 1;
             }
 
-.direction{
-      position: absolute;
-      height: 100%;
-      top: 0;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-          -ms-flex-direction: column;
-              flex-direction: column;
-      -webkit-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center;
-      -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center;
-      width: 45px;
-      cursor: pointer;
-      opacity: 1;
-      -webkit-transition: all 300ms ease;
-      transition: all 300ms ease;
-}
-
-.direction i{
-            color: #f7f7f7;
-            font-size: 1.6vw
-      }
-
-.direction i:hover{
-                  font-size: 1.8vw;
-            }
-
-.portrait .direction i{
-                  padding: 10vw 1vw;
-            }
-
-.portrait .direction-prev{
-            background: -webkit-gradient(linear, left top, right top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
-            background: linear-gradient(to right, rgba(24,25,28, 1), rgba(24,25,28, 0));
-            left: -45px;
-            height: 17.4vw;
-            top: .34vw;
-      }
-
-.portrait .direction-next{
-            background: -webkit-gradient(linear, right top, left top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
-            background: linear-gradient(to left, rgba(24,25,28, 1), rgba(24,25,28, 0));
-            right: -45px;
-            height: 17.4vw;
-            top: .34vw;
-      }
-
-.landscape .direction i{
-                  padding: 5vw 1vw;
-            }
-
-.landscape .direction-prev{
-            background: -webkit-gradient(linear, left top, right top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
-            background: linear-gradient(to right, rgba(24,25,28, 1), rgba(24,25,28, 0));
-            left: -45px;
-            height: 11.6vw;
-            top: .23vw;
-      }
-
-.landscape .direction-next{
-            background: -webkit-gradient(linear, right top, left top, from(rgba(24,25,28, 1)), to(rgba(24,25,28, 0)));
-            background: linear-gradient(to left, rgba(24,25,28, 1), rgba(24,25,28, 0));
-            right: -45px;
-            height: 11.6vw;
-            top: .23vw;
-      }
-
 .list-cards{
       position: relative;
       width: 100%;
@@ -5956,8 +5490,6 @@ input::-ms-input-placeholder{
 .list-covers .list-content .direction.direction-next{
                         right: -2.2%;
                   }
-
-
 /* #13171a */
 
 /* App */

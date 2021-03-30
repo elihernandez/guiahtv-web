@@ -17,21 +17,19 @@
 
             .slick-track{
                 display: flex;
-                /* transition: all 500ms ease-in-out; */
         
                 .slick-slide{
                     display: flex;
                     height: auto;
                     padding: 0 10px;
-                    /* margin: 0 100px; */
-                    transform: scale(0.85);
-                    transition: all 500ms ease-in-out;
+                    transform: scale(1);
+                    transition: all 300ms ease-in-out;
                     height: 30vw;
+                    opacity: 0.5;
 
                     div{
                         display: flex;
                         position: relative;
-                        /* background: $color-grey-5; */
                         width: 100%;
                         height: 100%;
                         border-radius: 6px;
@@ -43,23 +41,12 @@
                             height: 100%;
                             border-radius: 6px;
                         }
-
-                        &:after{
-                            content: '';
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            border-radius: 4px;
-                            background: rgba(0, 0, 0, 0.1);
-                            transition: background 300ms linear;
-                        }
                     }
 
                     &.slick-active{
                         transform: scale(1);
-                        transition: all 500ms ease-in-out;
+                        opacity: 1;
+                        transition: all 300ms ease-in-out;
 
                         div{
                             position: relative;
@@ -68,22 +55,12 @@
                                 display: flex !important;
                                 position: relative;
                             }
-    
-                            &:after{
-                                content: '';
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 100%;
-                                background: rgba(0, 0, 0, 0);
-                            }
                         }
                     }
 
                     &.slick-cloned{
                         height: 30vw;
-                        transition: all 500ms ease-in-out;
+                        transition: all 300ms ease-in-out;
                     }
 
                     span{
@@ -123,196 +100,5 @@
                 }
             }
         }
-
-        .slick-arrow{
-            z-index: 1;
-            top: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            /* width: 90px; */
-            width: 80px;
-            height: 100%;
-
-            &:before{
-                content: none;
-            }
-
-            &.slick-prev{
-                transform: translate(-100%, 0);
-                left: 0;
-            }
-
-            &.slick-next{
-                transform: translate(100%, 0);
-                right: 0;
-            }
-                
-            button{
-                background: transparent;
-                position: relative;
-                border: none;
-                cursor: pointer;
-                width: 2.5vw;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-
-                i{
-                    font-size: 1.8vw;
-                    color: rgba(255, 255, 255, 0.5);
-                }
-            }
-
-            &:hover{
-                i{
-                    font-size: 2.3vw;
-                    color: $color-white;
-                }
-            }
-        }
-    }
-
-    .slider-spotlight{
-        position: relative;
-        height: auto;
-        width: 100%;
-        
-        .carousel-content{
-            position: relative;
-            width: 100%;
-            height: auto;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            padding: 0 10vw;
-
-            .carousel-content-list{
-                position: relative;
-                /* width: 80%;
-                left: 10%; */
-                width: 100%;
-                height: auto;
-                list-style: none;
-                padding: 0 !important;
-                margin: 0 !important;
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
-                align-items: flex-start;
-                align-content: flex-start;
-                overflow: visible;
-                /* height: 30vw; */
-
-                .carousel-item{
-                    position: relative;
-                    flex: 0 0 calc(100% / 1);
-                    height: auto;
-                    opacity: 0;
-                    transition: all 1300ms ease;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    opacity: 1;     
-                    padding: 0 1vw;
-                  
-
-                    /* picture{
-                        position: relative;
-                        display: flex;
-                        justify-content: center;
-                    } */
-        
-                    img{
-                        position: relative;
-                        top: 0;
-                        width: 100%;
-                        height: 27vw;
-                        border-radius: 10px;
-                        object-fit: cover;
-                        /* background: $color-grey-5; */
-                        box-shadow: rgb(0 0 0 / 5%) 0px 26px 30px -10px, rgb(0 0 0 / 10%) 0px 16px 25px -10px;
-                    }
-                }
-            }
-        }
-    
-        .carousel-indicators{
-            position: absolute;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            width: 100%;
-            height: 27vw;
-            top: 0;
-
-            .carousel-indicators-list{
-                position: absolute;
-                list-style: none;
-                display: inline-flex;
-                padding: 0 !important;
-                margin: 0 !important;
-                bottom: 5%;
-        
-                .carousel-item{
-                    width: .5vw;
-                    height: .5vw;
-                    border-radius: 50%;
-                    background-color: rgba(255, 255, 255, 0.5);
-                    margin: 5px;
-        
-                    &.active{
-                        background-color: rgba(255, 255, 255, 1);
-                    }
-                }
-            }
-        }
-
-        .carousel-control-prev{
-            position: absolute;
-            color: rgba(255, 255, 255, 0.5);
-            left: 0;
-            top: 0;
-            height: 27vw;
-            width: 9vw;
-            font-size: 2vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            align-content: center;
-
-            &:hover{
-                background: linear-gradient(90deg,  rgba(24,25,28, 0.75), transparent);
-                cursor: pointer;
-                color: white;
-            }
-        }
-
-        .carousel-control-next{
-            position: absolute;
-            color: rgba(255, 255, 255, 0.3);
-            right: 0;
-            top: 0;
-            height: 27vw;
-            width: 9vw;
-            font-size: 2vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            align-content: center;
-
-            &:hover{
-                background: linear-gradient(-90deg,  rgba(24,25,28, 0.75), transparent);
-                cursor: pointer;
-                color: white;
-            }
-        }
-    }
-
-    svg{
-        padding: 50px;
     }
 }

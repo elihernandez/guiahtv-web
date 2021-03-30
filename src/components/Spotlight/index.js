@@ -1,35 +1,8 @@
 import React from 'react'
 import { useAxios } from '../../hooks/useAxios'
-// import { getSpotlight, getSpotlight2 } from '../../services/getSpotlight'
 import { LazyImage } from '../Image'
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import { SlickSlider } from '../SlickCarousel'
 import './styles.css'
-
-function SamplePrevArrow(props) {
-	const { className, onClick } = props
-
-	return (
-		<div className={className} onClick={onClick}>
-			<button type="button" aria-label="angle-left">
-				<i className="fas fa-angle-left" />
-			</button>
-		</div>
-	)
-}
-
-function SampleNextArrow(props) {
-	const { className, onClick } = props
-
-	return (
-		<div className={className} onClick={onClick}>
-			<button type="button" aria-label="angle-right">
-				<i className="fas fa-angle-right" />
-			</button>
-		</div>
-	)
-}
 
 export function Spotlight() {
 	const { data } = useAxios('/sl/leon/home_spotlight')
@@ -45,14 +18,12 @@ export function Spotlight() {
 		variableWidth: false,
 		pauseOnHover: true,
 		swipeToSlide: true,
-		prevArrow: <SamplePrevArrow />,
-		nextArrow: <SampleNextArrow />,
 	}
 
 	return (
 		<div className="spotlight-wrapper">
 			{data.length > 0 && (
-				<Slider {...settings}>
+				<SlickSlider settings={settings}>
 					{data.map(({ Registro, ImgLandscape }, index) => {
 						return (
 							<div key={Registro} style={{ width: '100%' }}>
@@ -65,7 +36,7 @@ export function Spotlight() {
 							</div>
 						)
 					})}
-				</Slider>
+				</SlickSlider>
 			)}
 		</div>
 	)
