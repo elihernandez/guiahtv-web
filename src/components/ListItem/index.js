@@ -16,7 +16,7 @@ import './styles.css'
 
 export function Item({ data, posterType, listType, titleCategory, category }) {
 	let Item = () => null
-	const { path, url } = useRouteMatch()
+	const { url } = useRouteMatch()
 	const { ContentType } = data
 	const type = typeContent(ContentType)
 
@@ -42,6 +42,7 @@ export function Item({ data, posterType, listType, titleCategory, category }) {
 }
 
 function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
+	let urlNavLink
 	const { Title, Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length, ShortDescriptionLine1 } = data
 	const { dispatchVod } = useContext(VodContext)
 
@@ -52,12 +53,11 @@ function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
 			dispatchVod({ type: 'setMovie', payload: data })
 		}
 
-		if (isEpisode(ShortDescriptionLine1)) {
-			dispatchVod({ type: 'setMovie', payload: data })
-		}
+		// if (isEpisode(ShortDescriptionLine1)) {
+		// 	dispatchVod({ type: 'setMovie', payload: data })
+		// }
 	}
 
-	let urlNavLink
 	if (titleCategory == 'Continuar Viendo') {
 		if(containsString(ContentType, 'kids')){
 			urlNavLink = `zonakids/${type}/${Registro}/video`

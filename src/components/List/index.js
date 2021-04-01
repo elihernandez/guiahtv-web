@@ -26,21 +26,8 @@ export function List({ data, listType, wrap }) {
 
 export function ListCatalogue({ data, listType }) {
 	const { category, poster_type } = data
-	const classes = poster_type == 0 ? 'list list-catalogue portrait' : 'list  list-catalogue landscape'
-
-	let slidesToShow
-
-	switch(poster_type){
-	case '0':
-		slidesToShow = 7
-		break
-	case '1':
-		slidesToShow = 5
-		break
-	default:
-		slidesToShow = 7
-		break				
-	}
+	const slidesToShow = poster_type == 0 ? 7 : 5
+	const classes = `list list-catalogue ${poster_type == 0 ? 'portrait' : 'landscape'}`
 
 	const settings = {
 		dots: false,
@@ -87,9 +74,9 @@ export function ListSeason({ data, listType }) {
 }
 
 export function ListRadio({ data, listType }) {
-	const slidesToShow = 5
 	const { category } = data
-	const classes = 'list  list-card landscape'
+	const slidesToShow = 5
+	const classes = 'list list-card landscape'
 
 	const settings = {
 		dots: false,
@@ -117,8 +104,8 @@ export function ListRadio({ data, listType }) {
 
 export function ListChannel({ data, listType }) {
 	const { category } = data
-	const classes = 'list  list-card landscape'
 	const slidesToShow = 5
+	const classes = 'list list-card landscape'
 
 	const settings = {
 		dots: false,

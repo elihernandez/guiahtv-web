@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import { CSSTransition } from 'react-transition-group'
 import './styles.css'
 
 export function LoaderSpinner({ color }) {
@@ -43,15 +44,21 @@ export function LoaderLogoSpinner({ color }) {
 }
 
 export function LoaderSpinnerMUI({ text, placementText }) {
-	const classText = text != undefined ? placementText : ''
-	const classContent = placementText == 'top' || 'bottom' ? 'column' : 'row'
+	const [show, setShow] = useState(false)
+	const classContent = placementText == ('top' || 'bottom') ? 'column' : 'row'
+
+	useEffect(() => {
+		setShow(true)
+	}, [])
 
 	return (
-		<div className={`spinner-mui ${classContent}`}>
-			<CircularProgress disableShrink />
-			{text &&
-                <p className="text-loading">{text}</p>
-			}
-		</div>
+		<CSSTransition in={show} timeout={100} classNames="fade" unmountOnExit>
+			<div className={`spinner-mui ${classContent}`}>
+				<CircularProgress disableShrink />
+				{text &&
+					<p className="text-loading">{text}</p>
+				}
+			</div>
+		</CSSTransition>
 	)
 }
