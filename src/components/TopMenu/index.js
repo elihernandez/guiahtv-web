@@ -58,7 +58,7 @@ export const TopMenu = () => {
 	}, [])
 
 	return (
-		<div id="top-menu" className={`top-menu ${scroll ? 'bgcolor' : ''}`} ref={topMenuRef}>
+		<div id="top-menu" className={`top-menu ${scroll ? 'bgcolor' : 'bggradient'}`} ref={topMenuRef}>
 			
 			<div className="section-wrapper">
 				<LeftContent />

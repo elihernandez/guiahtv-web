@@ -4,7 +4,7 @@ import Hls from 'hls.js'
 
 export function useHls(video, url, dispatch, movie) {
 	const config = {
-		debug: process.env.NODE_ENV !== 'production' ? true : false,
+		debug: process.env.NODE_ENV !== 'production' ? false : false,
 		initialLiveManifestSize: 3,
 		liveBackBufferLength: 900,
 		enableWorker: true,

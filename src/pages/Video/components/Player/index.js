@@ -10,6 +10,7 @@ import { Content } from '../Content'
 import { EndingMovie } from '../EndingMovie'
 import { isSuscribed } from '../../../../js/Auth'
 import { setProgressMovie } from '../../../../js/Time'
+import canAutoPlay from 'can-autoplay'
 import './styles.css'
 
 export function Player({ state, dispatchVod }) {
@@ -41,13 +42,23 @@ export function Player({ state, dispatchVod }) {
 		setError('Contenido no disponible por el momento')
 	}
 
-	const onCanPlay = () => {
-		video.current.muted = false
-		video.current.play()
-	}
+	canAutoPlay
+		.video({muted: false})
+		.then(({result, error}) => {
+			if(loading){
+				setTimeout(() => {
+					video.current.muted = false
+					video.current.play()
+				}, 2000)
+			}
+			if(result === false){
+				console.warn('Error did occur: ', error)
+			}
+		})
 
 	useEffect(() => {
 		const requestLink = async () => {
+			dispatch({ type: 'setEndingMovie', payload: false })
 			dispatch({ type: 'updateVideoRef', payload: video })
 			dispatch({ type: 'updateActive', payload: false })
 			dispatch({ type: 'updateLoading', payload: true })
@@ -66,7 +77,7 @@ export function Player({ state, dispatchVod }) {
 		requestLink()
 
             
-	}, [])
+	}, [movieVod])
 
 	useEffect(() => {
 		const requestPositionVideo = async () => {
@@ -91,8 +102,8 @@ export function Player({ state, dispatchVod }) {
 		}
 
 		return () => {
-			if(history.action == 'POP'){
-				if(isSuscribed(credentials)){
+			if(history.action === 'POP'){
+				if(isSuscribed(credentials)){ 
 					requestPositionVideo()
 				}
 			}
@@ -103,7 +114,7 @@ export function Player({ state, dispatchVod }) {
 	return (
 		<div className="player">
 			<div className="player-wrapper">
-				<video loop={false} ref={video} preload="auto" muted="muted" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} onCanPlay={onCanPlay} />
+				<video ref={video} preload="auto" muted="muted" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
 				{loading &&
                     <LoaderSpinnerMUI />
 				}
@@ -114,7 +125,7 @@ export function Player({ state, dispatchVod }) {
 				}
 				<Content />
 				{endingMovie &&
-					<EndingMovie/>
+					<EndingMovie endingMovie={endingMovie}/>
 				}
 			</div>
 		</div>

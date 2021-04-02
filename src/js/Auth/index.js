@@ -7,9 +7,9 @@ export function isAuth(credentials){
 }
 
 export function isSuscribed(credentials){
-	if(credentials.susmes && parseInt(credentials.susmes) === 1){
-		return true
+	if(credentials.susmes && parseInt(credentials.susmes) !== 1){
+		return false
 	}
 
-	return false
+	return true
 }

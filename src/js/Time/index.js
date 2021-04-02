@@ -64,29 +64,31 @@ export function isLive(inicio, fin){
 	return false
 }
 
-export function timerEvent(Inicio, Fin){
+export function timerEvent(Inicio){
+	// Fin
 	var startTime = moment(Inicio)
 	var actualTime = moment()
 	var h = startTime.diff(actualTime, 'hours')
 	var minutes = startTime.diff(actualTime, 'minutes')
 	var m = minutes - (h * 60)
+	let time
 
 	if(h == 0 && m == 0){
-		var time = 'Un momento'
+		time = 'Un momento'
 	}else{
 		if(h > 0){
 			if(m > 0){
 				if(h == 1){
-					var time = h+' hora y '+m+' minutos'
+					time = h+' hora y '+m+' minutos'
 				}else{
-					var time = h+' horas y '+m+' minutos'
+					time = h+' horas y '+m+' minutos'
 				}
                         
 			}else{
-				var time = h+' horas'
+				time = h+' horas'
 			}
 		}else{
-			var time = m+' minutos'
+			time = m+' minutos'
 		}
 	}
      

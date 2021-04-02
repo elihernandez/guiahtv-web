@@ -81,6 +81,7 @@
     "@use-it/event-listener": "^0.1.6",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
+    "can-autoplay": "^3.0.0",
     "css-transition": "0.0.3",
     "detect-browser": "^5.2.0",
     "dom-node-polyfills": "^1.0.0",

@@ -41,10 +41,10 @@ function ProgressBarTime({ videoRef, currentTime, duration, dispatch }) {
 	return <Slider value={currentTime} onChange={handleChange} min={0} max={duration} aria-labelledby="continuous-slider" />
 }
 
-function TimeMovie({ videoRef, duration, dispatch }) {
+function TimeMovie({ videoRef, duration, dispatch, endingMovie}) {
 	const [actualTime, setActualTime] = useState(null)
 
-	const timeUpdate = useCallback(() => {
+	const timeUpdate = () => {
 		if (videoRef.current) {
 			let hours = Math.floor(videoRef.current.currentTime / 3600)
 			let minutes = Math.floor((videoRef.current.currentTime % 3600) / 60)
@@ -61,15 +61,19 @@ function TimeMovie({ videoRef, duration, dispatch }) {
 				setActualTime(hours + ':' + minutes + ':' + seconds)
 			}
                   
-			if(videoRef.current.currentTime > (videoRef.current.duration - 6)){
-				dispatch({ type: 'setEndingMovie', payload: true })
+			// if(videoRef.current.currentTime > 1){
+			// 	dispatch({ type: 'setEndingMovie', payload: true })
+			// }     
+			if(videoRef.current.currentTime > (videoRef.current.duration - 12)){
+				if(endingMovie === false){
+					dispatch({ type: 'setEndingMovie', payload: true })
+				}
 			}     
-			// console.log(videoRef.current.currentTime)
 
 			dispatch({ type: 'setCurrentTime', payload: videoRef.current.currentTime })
 			dispatch({ type: 'setDuration', payload: videoRef.current.duration })
 		}
-	}, [])
+	}
 
 	useEffect(() => {
 		if (videoRef) {
@@ -102,7 +106,7 @@ function TimeMovie({ videoRef, duration, dispatch }) {
 export function Controls() {
 	const [show, setShow] = useState(false)
 	const { stateVideo, dispatch } = useContext(VideoContext)
-	const { hls, active, playing, videoRef, currentTime, volume, muteVolume, audioTracks, audioTrackActive, subtitleTracks, subtitleTrackActive } = stateVideo
+	const { hls, active, playing, videoRef, currentTime, volume, muteVolume, audioTracks, audioTrackActive, subtitleTracks, subtitleTrackActive, endingMovie } = stateVideo
 	const [duration, setDuration] = useState(null)
 
 	useEffect(() => {
@@ -139,7 +143,7 @@ export function Controls() {
 								}
 								<ButtonsFullScreen />
 								<div className="group-time">
-									<TimeMovie videoRef={videoRef} duration={duration} dispatch={dispatch} />
+									<TimeMovie videoRef={videoRef} duration={duration} dispatch={dispatch} endingMovie={endingMovie} />
 								</div>
 							</div>
 						</div>
