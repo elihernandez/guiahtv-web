@@ -12,13 +12,13 @@ export function Content({ children }) {
 	const [isVisible, setIsVisible] = useState(true)
 
 	const fadeInContent = () => {
-		setIsVisible(true)
+		// setIsVisible(true)
 		document.querySelector('.top-menu').style.opacity = 1
 		document.body.style.cursor = ''
 	}
 
 	const fadeOutContent = () => {
-		setIsVisible(false)
+		// setIsVisible(false)
 		document.querySelector('.top-menu').style.opacity = 0
 		document.body.style.cursor = 'none'
 	}

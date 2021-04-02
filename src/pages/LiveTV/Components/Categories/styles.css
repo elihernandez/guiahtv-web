@@ -3,7 +3,7 @@
 .navbar-guide-tv{
 
       .section-wrapper{ 
-            padding: 0 50px;
+            padding: 0 $full-padding-content;
       
             .navbar-list{
                   display: flex;

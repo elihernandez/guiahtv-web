@@ -1,7 +1,7 @@
 @import '../../../../scss/style-base.css';
 
 .info-channel-wrapper{
-      padding: 7vw 65px 0 50px;
+      padding: 7vw $full-padding-content 0 $full-padding-content;
       display: flex;
       flex-direction: row;
       justify-content: space-between;

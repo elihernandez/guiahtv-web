@@ -117,7 +117,9 @@ function ButtonPIP(){
 	}
       
 	const onExitPip = () => {
-		document.querySelector('video').play()
+		setTimeout(() => {
+			document.querySelector('video').play()
+		}, 1000)
 		setActive(false)
 	}
 
@@ -132,7 +134,7 @@ function ButtonPIP(){
 	}, [])
 
 	return (
-		<Tooltip title={active ? 'Maximizar video' : 'Minimizar video'} placement="top-start">
+		<Tooltip title={active ? 'Reproducción en pestaña' : 'Reproducción en segundo plano'} placement="top-start">
 			<span className="pip-icon icon" onClick={handleClick}>
 				<img src={pipIcon} />
 			</span>

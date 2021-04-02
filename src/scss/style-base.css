@@ -46,3 +46,6 @@ $height-player-music: 100px;
 
 /* Radio */
 $height-player-audio: 100px;
+
+$border-radius: 4px;
+$border-color: 3px solid $color-white;

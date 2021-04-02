@@ -59,7 +59,7 @@ export function Channels({ data }) {
 			pages = Math.ceil(pages)
 		}
 
-		setTotalPages(pages)
+		setTotalPages(pages - 1)
 	}
 
 	const validateUrl = () => {
@@ -281,7 +281,7 @@ export function Channels({ data }) {
                         </div>
 			}
 			{
-				(totalPages > 0) && (page < totalPages) &&
+				(totalPages > 1) && (page < totalPages) &&
                         <div className="direction direction-next" onClick={handleClickRight}>
                         	<i className="fas fa-chevron-right"></i>
                         </div>

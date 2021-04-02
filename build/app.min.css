@@ -2282,7 +2282,7 @@ input::-ms-input-placeholder{
 
 .slick-slider .slick-arrow button i{
                 color: #f7f7f7;
-                font-size: 1.8vw;
+                font-size: 1.4vw;
             }
 
 .slick-slider .slick-arrow button:hover{
@@ -2626,7 +2626,7 @@ input::-ms-input-placeholder{
 /* Radio */
 
 .navbar-guide-tv .section-wrapper{ 
-            padding: 0 50px;
+            padding: 0 90px;
       }
 
 .navbar-guide-tv .section-wrapper .navbar-list{
@@ -4360,7 +4360,7 @@ input::-ms-input-placeholder{
       width: 100%;
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
-      padding: 0 50px;
+      padding: 0 90px;
 }
 
 .channels .channels-wrapper{
@@ -4401,23 +4401,17 @@ input::-ms-input-placeholder{
             -webkit-box-align: center;
                 -ms-flex-align: center;
                     align-items: center;
-            width: 50px;
+            width: 90px;
             cursor: pointer;
-            opacity: 0;
+            opacity: 0.65;
             -webkit-transition: all .3s ease;
             transition: all .3s ease;
       }
 
 .channels .direction i{
-                  color: white;
-                  font-size: 1.3vw;
-                  padding: 1vw;
-                  background: rgba(24,25,28, 0.25)
+                  color: #f7f7f7;
+                  font-size: 1.4vw;
             }
-
-.channels .direction i:hover{
-                        background: rgba(24,25,28, 0.75);
-                  }
 
 .channels .direction.direction-prev{
                   left: 0;
@@ -4427,13 +4421,14 @@ input::-ms-input-placeholder{
                   right: 0;
             }
 
-.channels:hover .direction-prev{
+.channels .direction:hover{
                   opacity: 1;
             }
 
-.channels:hover .direction-next{
-                  opacity: 1;                      
-            }
+.channels .direction:hover i{
+                        -webkit-transform: scale(1.2);
+                                transform: scale(1.2);
+                  }
 
 .channels.active-enter {
             opacity: 0;
@@ -4478,9 +4473,6 @@ input::-ms-input-placeholder{
 .guide{
       position: relative;
 }
-
-/* overflow: hidden;
-      height: 25vw; */
 
 .guide .content-button-guide{
             position: relative;
@@ -4535,8 +4527,6 @@ input::-ms-input-placeholder{
       position: relative;
       height: 100%;
       width: 100%
-      /* border: 1px solid red; */
-      /* background: linear-gradient(to top, black, transparent); */
 }
 
 .guide-wrapper.active-enter {
@@ -4623,7 +4613,7 @@ input::-ms-input-placeholder{
 /* Radio */
 
 .info-channel-wrapper{
-      padding: 7vw 65px 0 50px;
+      padding: 7vw 90px 0 90px;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -4796,17 +4786,27 @@ input::-ms-input-placeholder{
                               -webkit-box-shadow: none !important;
                                       box-shadow: none !important;
                         }
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
 .info-timer-wrapper{
-      padding: 125px 50px 0 50px;
+      padding: 7vw 90px 0 90px;
 }
-      
-      .info-timer-wrapper .text-info{
+
+.info-timer-wrapper .text-info{
             color: rgba(179, 179, 179);
             font-weight: 400;
             font-size: 18px;
       }
-      
-      .info-timer-wrapper .current-timer{
+
+.info-timer-wrapper .current-timer{
             color: white;
             font-weight: 600;
             font-size: 35px;

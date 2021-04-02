@@ -1,5 +1,7 @@
+@import '../../../../scss/style-base.css';
+
 .info-timer-wrapper{
-      padding: 125px 50px 0 50px;
+      padding: 7vw $full-padding-content 0 $full-padding-content;
       
       .text-info{
             color: rgba(179, 179, 179);

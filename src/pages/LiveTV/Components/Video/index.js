@@ -4,7 +4,7 @@ import UserContext from '../../../../context/UserContext'
 import { getVideo } from '../../../../services/getVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { isLive } from '../../../../js/Time'
-import { Player } from '../../../../components/Player' 
+import canAutoPlay from 'can-autoplay'
 import backgroundTvImg from '../../../../assets/images/logos/guiahtv/backTVnuevologo.jpg'
 import './styles.css'
 
@@ -14,8 +14,7 @@ export function Video() {
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
 	const { stateVideo, dispatch } = useContext(VideoContext)
-	const { dataChannel, timerChannel } = stateVideo
-	// let { timeoutErrorRef } = stateVideo
+	const { dataChannel, timerChannel, loadingChannel, activeChannel } = stateVideo
 	const {error, setError} = useHls(video, url, dispatch)
 
 	const onPlayingVideo = () => {
@@ -31,13 +30,21 @@ export function Video() {
 		dispatch({ type: 'updateLoading', payload: false })
 		dispatch({ type: 'updateData', payload: null })
 		setError('Señal no disponible por el momento')
-		// clearTimeoutError(timeoutErrorRef)
 	}
 
-	const onCanPlay = () => {
-		video.current.muted = false
-		video.current.play()
-	}
+	canAutoPlay
+		.video({muted: false})
+		.then(({result, error}) => {
+			if(loadingChannel && activeChannel){
+				setTimeout(() => {
+					video.current.muted = false
+					video.current.play()
+				}, 2000)
+			}
+			if(result === false){
+				console.warn('Error did occur: ', error)
+			}
+		})
 
 	const handleErrorImage = (e) => {
 		e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/backTVnuevologo.jpg'
@@ -96,16 +103,16 @@ export function Video() {
 	return (
 		<div className="video">
 			<div className="video-wrapper">
-				<video loop={true} ref={video} autoPlay muted="muted" preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} onCanPlay={onCanPlay} />
-				{     error &&
-                              <div className="error-message">
-                              	<h2 className="text-error">{error}</h2>
-                              </div>
+				<video loop={true} ref={video} autoPlay muted="muted" preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
+				{error &&
+					<div className="error-message">
+						<h2 className="text-error">{error}</h2>
+					</div>
 				}
-				{     stateVideo.activeTimer &&
-                              <div className="preview-poster">
-                              	<img onError={handleErrorImage} src={timerChannel.PreviewPoster}/>
-                              </div>
+				{stateVideo.activeTimer &&
+					<div className="preview-poster">
+						<img onError={handleErrorImage} src={timerChannel.PreviewPoster}/>
+					</div>
 				}
 			</div>
 		</div>

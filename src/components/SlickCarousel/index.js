@@ -10,7 +10,7 @@ export function PrevArrowSlider(props) {
 	return (
 		<div className={className} onClick={onClick}>
 			<button type="button" aria-label="angle-left">
-				<i className="fas fa-angle-left" />
+				<i className="fas fa-chevron-left" />
 			</button>
 		</div>
 	)
@@ -22,7 +22,7 @@ export function NextArrowSlider(props) {
 	return (
 		<div className={className} onClick={onClick}>
 			<button type="button" aria-label="angle-right">
-				<i className="fas fa-angle-right" />
+				<i className="fas fa-chevron-right" />
 			</button>
 		</div>
 	)
