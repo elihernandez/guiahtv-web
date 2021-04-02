@@ -8,30 +8,36 @@
             width: 100%;
             display: flex;
             justify-content: center;
+            align-items: center;
             background: linear-gradient(to top, rgba($rgba-color-guide-black, 1), transparent);
-            bottom: 0;
-            height: 5vw;
+            height: 7vw;
 
             .button-guide{
-                  background: transparent;
+                  position: relative;
                   display: flex;
                   flex-direction: column;
                   align-items: center;
-                  box-shadow: none;
-                  transform: scale(0.9);
+                  align-content: center;
                   font-size: 1vw;
-                  transition: none;
-                  border: none;
                   color: $color-white;
                   cursor: pointer;
+                  padding: .5vw 1vw;
+                  height: auto;
+                  font-weight: 500;
+                  top: 0;
 
                   i{
                         font-size: 2.2vw;
                   }
 
                   &:hover{
-                        transform: scale(1);
-                        opacity: 1;
+                        background: $color-white;
+                        border-radius: 4px;
+                        color: black;
+
+                        i{
+                           display: none;
+                        }
                   }
             }
       }

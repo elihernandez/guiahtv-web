@@ -4483,14 +4483,16 @@ input::-ms-input-placeholder{
             -webkit-box-pack: center;
                 -ms-flex-pack: center;
                     justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             background: -webkit-gradient(linear, left bottom, left top, from(rgba(24,25,28, 1)), to(transparent));
             background: linear-gradient(to top, rgba(24,25,28, 1), transparent);
-            bottom: 0;
-            height: 5vw;
+            height: 7vw;
       }
 
 .guide .content-button-guide .button-guide{
-                  background: transparent;
+                  position: relative;
                   display: -webkit-box;
                   display: -ms-flexbox;
                   display: flex;
@@ -4501,16 +4503,15 @@ input::-ms-input-placeholder{
                   -webkit-box-align: center;
                       -ms-flex-align: center;
                           align-items: center;
-                  -webkit-box-shadow: none;
-                          box-shadow: none;
-                  -webkit-transform: scale(0.9);
-                          transform: scale(0.9);
+                  -ms-flex-line-pack: center;
+                      align-content: center;
                   font-size: 1vw;
-                  -webkit-transition: none;
-                  transition: none;
-                  border: none;
                   color: #f7f7f7;
                   cursor: pointer;
+                  padding: .5vw 1vw;
+                  height: auto;
+                  font-weight: 500;
+                  top: 0;
             }
 
 .guide .content-button-guide .button-guide i{
@@ -4518,10 +4519,14 @@ input::-ms-input-placeholder{
                   }
 
 .guide .content-button-guide .button-guide:hover{
-                        -webkit-transform: scale(1);
-                                transform: scale(1);
-                        opacity: 1;
+                        background: #f7f7f7;
+                        border-radius: 4px;
+                        color: black;
                   }
+
+.guide .content-button-guide .button-guide:hover i{
+                           display: none;
+                        }
 
 .guide-wrapper{
       position: relative;
@@ -4601,6 +4606,8 @@ input::-ms-input-placeholder{
                   position: relative;
                   width: 100%;
                   height: 100%;
+                  -o-object-fit: cover;
+                     object-fit: cover;
             }
 /* #13171a */
 
@@ -6146,6 +6153,15 @@ input::-ms-input-placeholder{
             padding: 0;
       }
 
+.wrapper-radio .guide-radio .tabs-wrapper .list{
+                        margin-top: 0;
+                        margin-bottom: 40px;
+                  }
+
+.wrapper-radio .guide-radio .tabs-wrapper .title-list{
+                        display: none;
+                  }
+
 .wrapper-radio .guide-radio .tabs-wrapper header{
                         padding: 0 90px
                   }
@@ -6240,6 +6256,7 @@ input::-ms-input-placeholder{
       }
 
 .info-audio-wrapper .thumbnail-content{
+            position: relative;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -6248,14 +6265,22 @@ input::-ms-input-placeholder{
                     align-items: center;
       }
 
+.info-audio-wrapper .thumbnail-content picture{
+                  position: relative;
+                  display: -webkit-box;
+                  display: -ms-flexbox;
+                  display: flex;
+            }
+
 .info-audio-wrapper .thumbnail-radio{
             position: relative;
             width: auto;
-            height: 35px;
-            max-height: 35px;
+            height: 2.5vw;
+            max-height: 2.5vw;
             -o-object-fit: contain;
                object-fit: contain;
             margin-left: 35px;
+            border-radius: 4px;
             /* margin-left: 15px; */
       }
 /* #13171a */
