@@ -8,7 +8,6 @@ import { InfoChannel } from './Components/InfoChannel'
 import { TimerChannel } from './Components/Timer'
 import { LoaderVideo } from './Components/LoaderVideo'
 import { exitFullScreen } from '../../js/Screen'
-import { hideTopMenuNavbar, showTopMenuNavbar } from '../../js/TopMenu'
 const pip = require('picture-in-picture')
 import './styles.css'
 
@@ -84,10 +83,8 @@ const reducer = (state, action) => {
 export function LiveTV() {
 
 	useEffect(() => {
-		showTopMenuNavbar()
 
 		return () => {
-			hideTopMenuNavbar()
 			exitFullScreen()
 			if( pip.supported && pip.isActive(document.querySelector('video'))) pip.exit(document.querySelector('video')) 
 		}

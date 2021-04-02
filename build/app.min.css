@@ -300,9 +300,6 @@
                 }
 
 .top-menu .section-wrapper .left-content .navbar-top-menu{
-                -webkit-transition: all .3s ease;
-                transition: all .3s ease;
-                opacity: 0;
                 margin-left: 25px;
             }
 

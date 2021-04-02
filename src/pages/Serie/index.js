@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { InfoSerie } from '../../components/InfoContent'
 import { TabsContent } from './components/Tabs'
 import { CSSTransition } from 'react-transition-group'
-import { showTopMenu } from '../../js/TopMenu'
 
 export function ContentSerie({data}){
 	const [show, setShow] = useState(false)
@@ -10,7 +9,6 @@ export function ContentSerie({data}){
 
 	useEffect(() => {
 		setShow(true)
-		showTopMenu()
 	}, [])
 
 	return (

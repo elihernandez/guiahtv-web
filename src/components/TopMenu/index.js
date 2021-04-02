@@ -1,15 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useLocation, NavLink} from 'react-router-dom'
+import { useLocation, NavLink } from 'react-router-dom'
 import { Navbar } from '../Navbar/index'
 import { UserMenu } from '../UserMenu/index'
 import Logo from '../Logo/index'
 import RadioIcon from '@material-ui/icons/Radio'
 import { containsString } from '../../js/String'
+import { CSSTransition } from 'react-transition-group'
 import './styles.css'
 
 function LeftContent() {
 	let location = useLocation()
-	if(!containsString(location.pathname, 'tv')) location = '/tv'
+	const { pathname } = location
+	const [showNavbar, setShowNavbar] = useState(false)
+	const classItems = 'navbar-link-top-menu'
+	const classNavbar = 'navbar-top-menu'
+
+	if(!containsString(pathname, 'tv')) location = '/tv'
 
 	const navLinks = [
 		{ title: 'En vivo', href: location, icon: <i className="fas fa-tv"></i> },
@@ -18,13 +24,23 @@ function LeftContent() {
 		{ title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i> }
 	]
 
-	const classItems = 'navbar-link-top-menu'
-	const classNavbar = 'navbar-top-menu'
+	useEffect(() => {
+		switch(pathname){
+		case '/':
+			setShowNavbar(false)
+			break
+		default:
+			setShowNavbar(true)
+			break
+		}
+	}, [pathname])
 
 	return (
 		<div className="left-content">
 			<Logo color="purple" size="sm" />
-			<Navbar navLinks={navLinks} classNavbar={classNavbar} classItems={classItems} />
+			<CSSTransition in={showNavbar} timeout={0} classNames="fade" unmountOnExit>
+				<Navbar navLinks={navLinks} classNavbar={classNavbar} classItems={classItems} />
+			</CSSTransition>
 		</div>
 	)
 }
@@ -59,12 +75,10 @@ export const TopMenu = () => {
 
 	return (
 		<div id="top-menu" className={`top-menu ${scroll ? 'bgcolor' : 'bggradient'}`} ref={topMenuRef}>
-			
 			<div className="section-wrapper">
 				<LeftContent />
 				<RightContent />
 			</div>
-			
 		</div>
 	)
 }

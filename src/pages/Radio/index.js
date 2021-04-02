@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { RadioContextProvider } from '../../context/RadioContext'
 import { AudioContextProvider } from '../../context/AudioContext'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import { Guide } from './components/Guide'
 import { Player } from './components/Player'
-import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
-import { hideTopMenuNavbar, showTopMenuNavbar } from '../../js/TopMenu'
 import './styles.css'
 
 const initialState = {
@@ -82,15 +80,6 @@ const reducer = (state, action) => {
 
 export function Radio(){
 	const { url } = useRouteMatch()
-
-	useEffect(() => {
-		showTopMenuNavbar()
-
-		return () => {
-			hideTopMenuNavbar()
-			if(isFullScreenElement()) exitFullScreen()
-		}
-	})
 
 	return (
 		<div className="wrapper-radio">
