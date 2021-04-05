@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
@@ -6,6 +6,18 @@ import Tab from '@material-ui/core/Tab'
 import Box from '@material-ui/core/Box'
 import './styles.css'
 
+function findTabRadio(data, contentId){
+	let tabContent
+	data.map((categories, indexC) => {
+		categories.cmData.map((station) => {
+			if(station.Registro === contentId){
+				tabContent = indexC
+			}
+		})
+	})
+
+	return tabContent
+}
 function TabPanel(props) {
 	const { children, value, index, ...other } = props
     
@@ -39,27 +51,18 @@ function a11yProps(index) {
 	}
 }
 
-export function CustomTabs({data}){
+export function CustomTabs({data, initialTab}){
 	const [value, setValue] = useState(0)
-    
+	
 	const handleChange = (event, newValue) => {
 		setValue(newValue)
 	}
-    
-	const handleChangeIndex = (index) => {
-		setValue(index)
-	}
 
-	const [anchorEl, setAnchorEl] = useState(null)
-	const open = Boolean(anchorEl)
-
-	const handleClick = (event) => {
-		setAnchorEl(event.currentTarget)
-	}
-
-	const handleClose = () => {
-		setAnchorEl(null)
-	}
+	useEffect(() => {
+		if(initialTab){
+			setValue(initialTab)
+		}
+	}, [])
 
 	return (
 		<div className="tabs-wrapper">
@@ -76,7 +79,6 @@ export function CustomTabs({data}){
 						data.map(({title}, index) => {
 							return <Tab key={`${title}-${index}`} disableRipple={false} label={title} {...a11yProps(index)} />
 						})
-
 					}
 				</Tabs>
 			</AppBar>

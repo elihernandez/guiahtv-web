@@ -7,7 +7,8 @@
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "esbuild": "node esbuild.js"
+    "esbuild": "node esbuild.js",
+    "electron": "electron ."
   },
   "keywords": [],
   "author": "Eliezer Hernández",

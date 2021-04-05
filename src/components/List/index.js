@@ -3,7 +3,7 @@ import { Item } from '../ListItem'
 import { SlickSlider } from '../SlickCarousel'
 import './styles.css'
 
-export function List({ data, listType, wrap }) {
+export function List({ data, listType, wrap, indexList, tabValues }) {
 	let List = () => null
 
 	switch (listType) {
@@ -14,7 +14,7 @@ export function List({ data, listType, wrap }) {
 		List = <ListSeason data={data} listType={listType} wrap={wrap} />
 		break
 	case 'radio':
-		List = <ListRadio data={data} listType={listType} />
+		List = <ListRadio data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
 		break
 	case 'channel':
 		List = <ListChannel data={data} listType={listType} />
@@ -73,18 +73,20 @@ export function ListSeason({ data, listType }) {
 	)
 }
 
-export function ListRadio({ data, listType }) {
+export function ListRadio({ data, listType, indexList, tabValues }) {
 	const { category } = data
 	const slidesToShow = 5
+	const totalItems = data.cmData.length
+	const initialSlide = getInitialSlide(totalItems, slidesToShow, indexList, tabValues)
 	const classes = 'list list-card landscape'
-
 	const settings = {
 		dots: false,
 		infinite: false,
 		slidesToShow: slidesToShow,
 		slidesToScroll: slidesToShow,
 		swipeToSlide: true,
-		focusOnSelect: true,
+		focusOnSelect: false,
+		initialSlide: initialSlide,
 		speed: 500
 	}
 
@@ -133,6 +135,18 @@ export function ListChannel({ data, listType }) {
 
 export function TitleList({ title }) {
 	return <h6 className="title-list">{title}</h6>
+}
+
+function getInitialSlide(totalItems, slidesToShow, indexList, tabValues){
+	let initialSlide = 0
+	if(totalItems > slidesToShow){
+		if(indexList === tabValues.tabContent){
+			const slides = tabValues.initialSlide / slidesToShow
+			initialSlide = slidesToShow * Math.trunc(slides)
+		}
+	}
+
+	return initialSlide
 }
 
 // function getPages(cmData, maxItems) {
