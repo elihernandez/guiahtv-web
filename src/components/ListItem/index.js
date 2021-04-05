@@ -12,6 +12,7 @@ import { imgSourceSetJpg } from '../../js/Image'
 import { isEvent } from '../../pages/LiveTV/Components/Channel'
 import { CSSTransition } from 'react-transition-group'
 import { LazyImage } from '../Image'
+import { AnimatedBars } from '../AnimatedBars'
 import './styles.css'
 
 export function Item({ data, posterType, listType, titleCategory, category }) {
@@ -115,29 +116,29 @@ function ItemSeason({ url, posterType, data }) {
 }
 
 function ItemCard({ posterType, data }) {
-	const history = useHistory()
 	const { Title, ContactID, Description, Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
+	const urlNavLink = `/radio/${Registro}`
 	const { dispatchRadio } = useContext(RadioContext)
 	const { dispatchAudio } = useContext(AudioContext)
 	const [contactInfo, setContactInfo] = useState([])
 	const [moreInfoActive, setMoreInfoActive] = useState(false)
 	const [readMoreActive, setReadMoreActive] = useState(false)
 
-	const handleClick = (e) => {
-		if (e.nativeEvent.target.tabIndex != 0) {
-			history.push(`/radio/${Registro}`)
+	const handleClick = () => {
+		if(dispatchRadio && dispatchAudio){
 			dispatchRadio({ type: 'setCurrentStation', payload: data })
 			dispatchAudio({ type: 'setData', payload: data })
 		}
 	}
 
 	return (
-		<div className="item-link">
-			<div className="item" onClick={handleClick}>
-
+		<NavLink to={urlNavLink} className="item-link" activeClassName="active" onClick={handleClick}>
+			<div className="item">
 				<TitleItem title={Title} />
 				<div className="background-item">
 					<Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
+					<div className="icon-active"><i class="far fa-pause-circle"></i></div>
+					<AnimatedBars />
 					{ResumePos &&
 						<div className="progress-bar-content">
 							<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
@@ -149,7 +150,7 @@ function ItemCard({ posterType, data }) {
 				<ReadMore readMoreActive={readMoreActive} Name={Title} Description={Description} setReadMoreActive={setReadMoreActive} />
 				<Buttons contactId={ContactID} description={Description} setContactInfo={setContactInfo} setMoreInfoActive={setMoreInfoActive} setReadMoreActive={setReadMoreActive} />
 			</div>
-		</div>
+		</NavLink>
 	)
 }
 

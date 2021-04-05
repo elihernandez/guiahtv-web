@@ -6,7 +6,8 @@ import './styles.css'
 export function UserMenu() {
 	const [cookies, setCookie, removeCookie] = useCookies()
 
-	const handleLogout = () => {
+	const handleLogout = (e) => {
+		e.preventDefault()
 		removeCookie('memclid', { path: '/' })
 		removeCookie('memclem', { path: '/' })
 		location.reload()

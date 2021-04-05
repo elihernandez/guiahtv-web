@@ -5,11 +5,12 @@ import UserContext from '../../../../context/UserContext'
 import { getLinkRadioStation } from '../../../../services/getLinkRadioStation'
 // import { useHls } from '../../../../hooks/useHls'
 import { containsString } from '../../../../js/String'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { Controls } from '../Controls'
 import './styles.css'
 
 export function Player() {
+	const history = useHistory()
 	const audio = useRef()
 	const { contentId } = useParams()
 	const { stateUser } = useContext(UserContext)
@@ -36,6 +37,7 @@ export function Player() {
 		dispatchAudio({ type: 'setError', payload: 'Estación de radio no disponible por el momento' })
 		dispatchAudio({ type: 'setActive', payload: false })
 		dispatchAudio({ type: 'setPlaying', payload: false })
+		history.replace('/radio')
 	}
 
 	const onCanPlay = () => {
@@ -62,13 +64,16 @@ export function Player() {
 					dispatchAudio({ type: 'setData', payload: null })
 					dispatchAudio({ type: 'setError', payload: 'Reproduciendo radio en ventana externa' })
 					dispatchAudio({ type: 'setPlaying', payload: false })
+					history.replace('/radio')
 					window.open(response.Url, '_blank')
 				}
 			} catch (e) {
+				console.log(e)
 				dispatchAudio({ type: 'setLoading', payload: false })
 				dispatchAudio({ type: 'setData', payload: null })
 				dispatchAudio({ type: 'setError', payload: 'Estación de radio no disponible por el momento' })
 				dispatchAudio({ type: 'setPlaying', payload: false })
+				history.replace('/radio')
 				// setError(e.message)
 			}
 		}

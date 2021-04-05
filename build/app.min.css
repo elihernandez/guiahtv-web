@@ -3217,6 +3217,89 @@ input::-ms-input-placeholder{
 .channel-link.active .content-play{
                   opacity: 1;
             }
+.animated-bar-wave {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 1vw;
+    height: 2vw;
+}
+    
+    @-webkit-keyframes grow {
+        0%,
+        100% {
+            -webkit-transform: scaleY(1);
+                    transform: scaleY(1);
+        }
+    
+        50% {
+            -webkit-transform: scaleY(2);
+                    transform: scaleY(2);
+        }
+    }
+
+    .animated-bar-wave span {
+        width: 0.3em;
+        height: 1em;
+        background-color: white;
+    }
+
+    .animated-bar-wave span:nth-of-type(1) {
+        -webkit-animation: grow 1s -0.45s ease-in-out infinite;
+                animation: grow 1s -0.45s ease-in-out infinite;
+    }
+
+    .animated-bar-wave span:nth-of-type(2) {
+        -webkit-animation: grow 1s -0.3s ease-in-out infinite;
+                animation: grow 1s -0.3s ease-in-out infinite;
+    }
+
+    .animated-bar-wave span:nth-of-type(3) {
+        -webkit-animation: grow 1s -0.15s ease-in-out infinite;
+                animation: grow 1s -0.15s ease-in-out infinite;
+    }
+
+    .animated-bar-wave span:nth-of-type(4) {
+        -webkit-animation: grow 1s ease-in-out infinite;
+                animation: grow 1s ease-in-out infinite;
+    }
+
+    @-webkit-keyframes grow {
+        0%,
+        100% {
+            -webkit-transform: scaleY(1);
+                    transform: scaleY(1);
+        }
+    
+        50% {
+            -webkit-transform: scaleY(2);
+                    transform: scaleY(2);
+        }
+    }
+
+    @keyframes grow {
+        0%,
+        100% {
+            -webkit-transform: scaleY(1);
+                    transform: scaleY(1);
+        }
+    
+        50% {
+            -webkit-transform: scaleY(2);
+                    transform: scaleY(2);
+        }
+    }
+  
 /* #13171a */
 
 /* App */
@@ -3417,8 +3500,26 @@ input::-ms-input-placeholder{
                                 transform: scale(1) !important;
                         border-radius: 0 !important;
                         -webkit-box-shadow: none !important;
-                                box-shadow: none !important;
+                                box-shadow: none !important
                   }
+
+.list-card .item-link .item .background-item::after{
+                              position: inherit !important;
+                        }
+
+.list-card .item-link .item .background-item .lazy-load-image-background::after{
+                                    -webkit-transition: all 300ms ease-in-out;
+                                    transition: all 300ms ease-in-out;
+                                    top: 0px;
+                                    right: 0px;
+                                    bottom: 0px;
+                                    left: 0px;
+                                    z-index: 2;
+                                    content: "";
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                              }
 
 .list-card .item-link .item .background-item span{
                               display: inline;
@@ -3429,13 +3530,30 @@ input::-ms-input-placeholder{
                               border-radius: 0 !important;
                               -o-object-fit: cover !important;
                                  object-fit: cover !important;
-                              /* border-top-left-radius: 6px !important;
-                              border-top-right-radius: 6px !important; */
                         }
 
-.list-card .item-link .item .background-item::after{
-                              position: inherit !important;
+.list-card .item-link .item .background-item .animated-bar-wave {
+                              position: absolute;
+                              bottom: 10%;
+                              left: 8%;
+                              width: 1.5vw;
+                              height: .75vw;
+                              opacity: 0;
+                              z-index: 2;
                         }
+
+.list-card .item-link .item .background-item .icon-active{
+                              position: absolute;
+                              left: 5%;
+                              bottom: 5%;
+                              display: none;
+                              z-index: 2;
+                        }
+
+.list-card .item-link .item .background-item .icon-active i{
+                                 color: white;
+                                 font-size: 1.5vw;   
+                              }
 
 .list-card .item-link .item::-webkit-scrollbar {
                         -webkit-appearance: none;
@@ -3457,6 +3575,32 @@ input::-ms-input-placeholder{
 .list-card .item-link .item::-webkit-scrollbar-track {
                         border-radius: 10px;  
                   }
+
+.list-card .item-link.active .background-item{
+      
+                        /* .icon-active{
+                             display: inline-block !important;
+                        } */
+                  }
+
+.list-card .item-link.active .background-item .lazy-load-image-background::after{
+                                    -webkit-transition: all 300ms ease-in-out;
+                                    transition: all 300ms ease-in-out;
+                                    top: 0px;
+                                    right: 0px;
+                                    bottom: 0px;
+                                    left: 0px;
+                                    z-index: 2;
+                                    content: "";
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                    background: rgba(0, 0, 0, 0.3);
+                              }
+
+.list-card .item-link.active .background-item .animated-bar-wave {
+                              opacity: 1 !important;
+                        }
 
 .title-content{
       position: relative;
