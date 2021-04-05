@@ -12,23 +12,28 @@ export function toggleFullScreen(){
 
 export function changeFullScreen() {
 	screenfull.on('change', () => {
-		if(isFirefox){
-			if (!window.screenTop && !window.screenY) {
-				console.log('change 1')
-				document.getElementById('top-menu').style.display = 'none'
-			} else {
-				console.log('change 2')
-				document.getElementById('top-menu').style.display = ''
-			}
+		if(isFullScreenElement()){
+			document.getElementById('top-menu').style.display = 'none'
 		}else{
-			if (!window.screenTop && !window.screenY) {
-				console.log('change 1')
-				document.getElementById('top-menu').style.display = ''
-			} else {
-				console.log('change 2')
-				document.getElementById('top-menu').style.display = 'none'
-			}
+			document.getElementById('top-menu').style.display = ''
 		}
+		// if(isFirefox){
+		// 	if (!window.screenTop && !window.screenY) {
+		// 		// console.log('change 1')
+		// 		document.getElementById('top-menu').style.display = 'none'
+		// 	} else {
+		// 		// console.log('change 2')
+		// 		document.getElementById('top-menu').style.display = ''
+		// 	}
+		// }else{
+		// 	if (!window.screenTop && !window.screenY) {
+		// 		console.log('change 1')
+		// 		document.getElementById('top-menu').style.display = ''
+		// 	} else {
+		// 		console.log('change 2')
+		// 		document.getElementById('top-menu').style.display = 'none'
+		// 	}
+		// }
 	})
 }
 
