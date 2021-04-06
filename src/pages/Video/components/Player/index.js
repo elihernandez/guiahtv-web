@@ -38,18 +38,16 @@ export function Player({ state, dispatchVod }) {
 	const onErrorVideo = (e) => {
 		console.log(e.nativeEvent.code)
 		dispatch({ type: 'updateLoading', payload: false })
-		// dispatch({ type: 'updateData', payload: null })
 		setError('Contenido no disponible por el momento')
 	}
 
 	canAutoPlay
-		.video({muted: false})
+		.video({timeout: 1500, muted: false})
 		.then(({result, error}) => {
-			if(loading){
+			if(result && loading){
 				setTimeout(() => {
-					video.current.muted = false
 					video.current.play()
-				}, 2000)
+				}, 1500)
 			}
 			if(result === false){
 				console.warn('Error did occur: ', error)
@@ -75,8 +73,6 @@ export function Player({ state, dispatchVod }) {
 		}
 
 		requestLink()
-
-            
 	}, [movieVod])
 
 	useEffect(() => {
@@ -110,11 +106,10 @@ export function Player({ state, dispatchVod }) {
 		}
 	}, [currentTime])
 
-
 	return (
 		<div className="player">
 			<div className="player-wrapper">
-				<video ref={video} preload="auto" muted="muted" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
+				<video ref={video} preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
 				{loading &&
                     <LoaderSpinnerMUI />
 				}

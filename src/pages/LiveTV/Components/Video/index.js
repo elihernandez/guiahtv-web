@@ -14,7 +14,7 @@ export function Video() {
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
 	const { stateVideo, dispatch } = useContext(VideoContext)
-	const { dataChannel, timerChannel, loadingChannel, activeChannel } = stateVideo
+	const { dataChannel, timerChannel, loadingChannel } = stateVideo
 	const {error, setError} = useHls(video, url, dispatch)
 
 	const onPlayingVideo = () => {
@@ -33,13 +33,10 @@ export function Video() {
 	}
 
 	canAutoPlay
-		.video({muted: false})
+		.video({timeout: 1500, muted: false})
 		.then(({result, error}) => {
-			if(loadingChannel && activeChannel){
-				setTimeout(() => {
-					video.current.muted = false
-					video.current.play()
-				}, 2000)
+			if(result && loadingChannel){
+				video.current.play()
 			}
 			if(result === false){
 				console.warn('Error did occur: ', error)
@@ -47,7 +44,7 @@ export function Video() {
 		})
 
 	const handleErrorImage = (e) => {
-		e.nativeEvent.target.src = 'build/assets/images/logos/guiahtv/backTVnuevologo.jpg'
+		e.nativeEvent.target.src = backgroundTvImg
 	}
 
 	useEffect(() => {
@@ -61,7 +58,6 @@ export function Video() {
 					if(response == 'error') throw new Error('No se pudo obtener la información.')
 					const url = response.Url
 					setUrl(url)
-					// setTimeoutError()
 				} catch (e) {
 					dispatch({ type: 'updateLoading', payload: false })
 					dispatch({ type: 'updateData', payload: null })
@@ -103,7 +99,7 @@ export function Video() {
 	return (
 		<div className="video">
 			<div className="video-wrapper">
-				<video loop={true} ref={video} autoPlay muted="muted" preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
+				<video loop={true} ref={video} preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
 				{error &&
 					<div className="error-message">
 						<h2 className="text-error">{error}</h2>

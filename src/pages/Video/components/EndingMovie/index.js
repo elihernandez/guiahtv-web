@@ -6,21 +6,63 @@ import VideoContext from '../../../../context/VideoContext'
 import UserContext from '../../../../context/UserContext'
 import { setResumePosVideo } from '../../../../services/setResumePosVideo'
 import { isEpisode } from '../../../../js/String' 
+import { getSeasons } from '../../../../services/getSeasons'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import './styles.css'
 
-function findNextEpisode(actualMovie, seasonMovie){
-	let nextEpisode
-	const length = seasonMovie.length - 1
-	const index = seasonMovie.findIndex((element) => element.Registro === actualMovie.Registro)
+function lengthSeason(season){
+	return season.length - 1
+}
+
+function isLastEpisodeOfSeason(movie, season){
+	const length = lengthSeason(season)
+	const index = season.findIndex((element) => element.Registro === movie.Registro)
 
 	if(index !== length){
-		nextEpisode = seasonMovie[index + 1]
-	}else{
-		nextEpisode = null
+		return false
+	}
+
+	return true
+}
+
+function findNextEpisode(movie, season){
+	let nextEpisode = null
+	const index = season.findIndex((element) => element.Registro === movie.Registro)
+
+	if(!isLastEpisodeOfSeason(movie, season)){
+		nextEpisode = season[index + 1]
 	}
 
 	return nextEpisode
+}
+
+function isLastSeasonOfSerie(season, seasons){
+	const length = lengthSeason(seasons)
+	const index = seasons.findIndex((element) => element.Title === season.category)
+
+	if(index !== length){
+		return false
+	}
+
+	return true
+}
+
+function findNextSeason(movie, season, seasons){
+	let nextSeason = null
+	// console.log(seasons)
+	// console.log(season)
+	const index = seasons.findIndex((element) => element.Title === season.category)
+
+	if(!isLastSeasonOfSerie(season, seasons)){
+		nextSeason = seasons[index + 1]
+	}
+	// console.log(nextSeason)
+
+	return nextSeason
+}
+
+function getPositionVideoMil(currentTime){
+	return Math.round(currentTime * 1000)
 }
 
 export function EndingMovie(){
@@ -32,25 +74,51 @@ export function EndingMovie(){
 	const {stateVod, dispatchVod} = useContext(VodContext)
 	const {stateVideo, dispatch} = useContext(VideoContext)
 	const {currentTime, endingMovie, videoRef} = stateVideo
-	const {movieVod, seasonVod} = stateVod
+	const {movieVod, seasonVod, serieVod} = stateVod
 	const [progress, setProgress] = useState(5)
 	const [time, setTime] = useState(5)
 	const [show, setShow] = useState(false)
 	const [nextEpisode, setNextEpisode] = useState(null)
+	const [nextSeason, setNextSeason] = useState(null)
 
-	const onClick =() => {
-		videoRef.current.pause()
-		setTimeout(() => {
-			dispatch({ type: 'setEndingMovie', payload: false })
-			const positionVideoMil = Math.round(currentTime * 1000)
-			setResumePosVideo(movieVod.Registro, positionVideoMil, credentials)
-			if(nextEpisode){
-				dispatchVod({ type: 'setMovie', payload: nextEpisode })
-			}else{
-				history.goBack()
+	const validateData = async () => {
+		try{
+			if(isEpisode(movieVod.ContentType)){
+				if(!isLastEpisodeOfSeason(movieVod, seasonVod.cmData)){
+					setNextEpisode(findNextEpisode(movieVod, seasonVod.cmData))
+				}
+				// else{
+				// 	const seasons = await getSeasons(movieVod.ContentTypeOrder)
+				// 	console.log(seasons)
+				// 	setNextSeason(findNextSeason(movieVod, seasonVod, seasons))
+				// }
 			}
-			setShow(false)
-		}, 1000)
+			setShow(true)
+		}catch(e){
+			return null
+		}
+	}
+
+	const handleEndingMovie = () => {
+		videoRef.current.pause()
+		if(show){
+
+			setTimeout(() => {
+				dispatch({ type: 'setEndingMovie', payload: false })
+				const positionVideoMil = getPositionVideoMil(currentTime)
+				setResumePosVideo(movieVod.Registro, positionVideoMil, credentials)
+				if(nextEpisode){
+					dispatchVod({ type: 'setMovie', payload: nextEpisode })
+				}else{
+					history.goBack()
+				}
+				setShow(false)
+			}, 1500)
+		}
+	}
+
+	const handleClick =() => {
+		handleEndingMovie()
 	}
 
 	const timeInterval = () => {
@@ -62,8 +130,7 @@ export function EndingMovie(){
 	}
 
 	const progressInterval = () => {
-		progressIntervalRef.current = setTimeout(() => {
-			
+		progressIntervalRef.current = setTimeout(() => {	
 			if(progress < 100){
 				setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 1))
 			}
@@ -72,10 +139,16 @@ export function EndingMovie(){
 
 	useEffect(() => {
 		if(endingMovie === true){
+			validateData()
+		}
+	}, [endingMovie])
+
+	useEffect(() => {
+		if(endingMovie === true){
 			progressInterval()
 
 			if(progress === 100){
-				onClick()
+				handleEndingMovie()
 			}
 		}
 
@@ -94,18 +167,9 @@ export function EndingMovie(){
 		}
 	}, [time])
 
-	useEffect(() => {
-		if(endingMovie === true){
-			if(isEpisode(movieVod.ContentType)){
-				setNextEpisode(findNextEpisode(movieVod, seasonVod.cmData))
-			}
-			setShow(true)
-		}
-	}, [endingMovie])
-
 	return (
 		<CSSTransition in={show} timeout={300} classNames="fade" unmountOnExit>
-			<div className="ending-movie-info-wrapper" onClick={onClick}>
+			<div className="ending-movie-info-wrapper" onClick={handleClick}>
 				{nextEpisode &&
 					<div className="background-next-episode">
 						<img src={nextEpisode.HDPosterUrlLandscape} alt="Imagen del siguiente episodio" />

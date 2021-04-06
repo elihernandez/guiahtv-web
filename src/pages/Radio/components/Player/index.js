@@ -3,7 +3,6 @@ import AudioContext from '../../../../context/AudioContext'
 import RadioContext from '../../../../context/RadioContext'
 import UserContext from '../../../../context/UserContext'
 import { getLinkRadioStation } from '../../../../services/getLinkRadioStation'
-// import { useHls } from '../../../../hooks/useHls'
 import { containsString } from '../../../../js/String'
 import { useParams, useHistory } from 'react-router-dom'
 import { Controls } from '../Controls'
@@ -18,7 +17,6 @@ export function Player() {
 	const { stateAudio, dispatchAudio } = useContext(AudioContext)
 	const { stateRadio } = useContext(RadioContext)
 	const { dataRadio } = stateRadio 
-	// const { error, setError } = useHls(audio, url, dispatchAudio)
 
 	const onPlayingVideo = () => {
 		dispatchAudio({ type: 'setActive', payload: true })
@@ -44,7 +42,7 @@ export function Player() {
 		audio.current.play() 
 		audio.current.muted = false
 	}
- 
+
 	useEffect(() => {
 		const requestLink = async () => {
 			audio.current.pause()
@@ -56,7 +54,6 @@ export function Player() {
 			try {
 				const response = await getLinkRadioStation(contentId, credentials)
 				if (response == 'error') throw new Error('No se pudo obtener la información')
-				// console.log(response.Url)
 				if(containsString(response.Url, 'https')){
 					audio.current.src = response.Url
 				}else{
@@ -97,7 +94,7 @@ export function Player() {
 
 	return (
 		<div className="player-content">
-			<audio ref={audio} type="application/x-mpegURL" muted="muted" autoPlay onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} onCanPlay={onCanPlay} />
+			<audio ref={audio} type="application/x-mpegURL" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} onCanPlay={onCanPlay} />
 			<Controls stateAudio={stateAudio} dispatchAudio={dispatchAudio} />
 		</div>
 	)
