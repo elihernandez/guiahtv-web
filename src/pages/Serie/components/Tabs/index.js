@@ -106,12 +106,12 @@ export function TabsContent({serieId, contactId}) {
 			</AppBar>
 			<TabPanel value={value} index={0}>
 				{seasons &&
-                              <Seasons seasons={seasons} serieId={serieId}/>
+                	<Seasons seasons={seasons} serieId={serieId}/>
 				}
 			</TabPanel>
 			<TabPanel value={value} index={1}>
 				{info &&
-                              <Info data={info} />   
+                    <Info data={info} />   
 				}
 			</TabPanel>
 		</div>

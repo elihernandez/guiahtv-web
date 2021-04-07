@@ -3,12 +3,12 @@
 .seasons-content-wrapper{
       position: relative;
       width: 100%;
-      min-height: 300px !important;
+      min-height: 600px !important;
       overflow: hidden;
       padding: 0;
 
       .spinner-mui{
-            height: 300px !important;
+            height: 500px !important;
       }
 
       .seasons-menu{

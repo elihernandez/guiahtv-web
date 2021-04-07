@@ -60,11 +60,11 @@ export function PopperMenu({textButton, itemsMenu}){
 								{
 									itemsMenu.map(({title, href, func}) => {
 										if(func != ''){
-											return <a key={title} href={href} target="_blank">
+											return <a key={title} href={href} target="_blank" rel="noreferrer" onClick={handleClose}>
 												<MenuItem onClick={func}>{title}</MenuItem>
 											</a>
 										}else{
-											return <a key={title} href={href} target="_blank">
+											return <a key={title} href={href} target="_blank" rel="noreferrer" onClick={handleClose}>
 												<MenuItem className="body-3">{title}</MenuItem>
 											</a>
 										}
