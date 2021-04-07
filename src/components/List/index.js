@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Item } from '../ListItem'
 import { SlickSlider } from '../SlickCarousel'
 import './styles.css'
@@ -79,6 +79,8 @@ export function ListRadio({ data, listType, indexList, tabValues }) {
 	const totalItems = data.cmData.length
 	const initialSlide = getInitialSlide(totalItems, slidesToShow, indexList, tabValues)
 	const classes = 'list list-card landscape'
+	const [pageActive, setPageActive] = useState(null)
+	
 	const settings = {
 		dots: false,
 		infinite: false,
@@ -87,12 +89,14 @@ export function ListRadio({ data, listType, indexList, tabValues }) {
 		swipeToSlide: true,
 		focusOnSelect: false,
 		initialSlide: initialSlide,
-		speed: 500
+		speed: 500,
+		afterChange: current => setPageActive(current)
 	}
 
 	return (
 		<div className={classes}>
 			<TitleList title={category} />
+			<TabsIndicators slidesToShow={slidesToShow} data={data.cmData} pageActive={pageActive} initialSlide={initialSlide} />
 			<SlickSlider settings={settings}>
 				{data.cmData.map((dataItem) => {
 					return (
@@ -137,7 +141,7 @@ export function TitleList({ title }) {
 	return <h6 className="title-list">{title}</h6>
 }
 
-function getInitialSlide(totalItems, slidesToShow, indexList, tabValues){
+const getInitialSlide = (totalItems, slidesToShow, indexList, tabValues) => {
 	let initialSlide = 0
 	if(totalItems > slidesToShow){
 		if(indexList === tabValues.tabContent){
@@ -148,6 +152,47 @@ function getInitialSlide(totalItems, slidesToShow, indexList, tabValues){
 
 	return initialSlide
 }
+
+const TabsIndicators = ({slidesToShow, data, initialSlide, pageActive}) => {
+	const length = data.length
+	const pages = Math.trunc(length / slidesToShow)
+	const items = []
+	for (let index = 0; index < pages; index++) {
+		items.push(index)
+	}
+
+	const [start, setStart] = useState(false)
+	const [indicatorActive, setIndicatorActive] = useState(null)
+
+	useEffect(() => {
+		const indicatorActive =  Math.trunc(initialSlide / slidesToShow)
+		setIndicatorActive(indicatorActive)
+		setStart(true)
+	}, [initialSlide])
+
+	useEffect(() => {
+		if(start){
+			const indicatorActive =  Math.trunc(pageActive / slidesToShow)
+			setIndicatorActive(indicatorActive)
+		}
+	}, [pageActive])
+
+	return (
+		<div className="tabs-indicators">
+			<ul className="list-indicators">
+				{
+					items.map((element) => {
+						return <li 
+							key={element} 
+							className={`item-indicator ${element === indicatorActive ? 'active' : ''}`}>
+						</li>
+					})
+				}
+			</ul>
+		</div>
+	)
+}
+
 
 // function getPages(cmData, maxItems) {
 // 	let pages = cmData.length / maxItems

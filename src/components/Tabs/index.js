@@ -5,19 +5,6 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Box from '@material-ui/core/Box'
 import './styles.css'
-
-function findTabRadio(data, contentId){
-	let tabContent
-	data.map((categories, indexC) => {
-		categories.cmData.map((station) => {
-			if(station.Registro === contentId){
-				tabContent = indexC
-			}
-		})
-	})
-
-	return tabContent
-}
 function TabPanel(props) {
 	const { children, value, index, ...other } = props
     

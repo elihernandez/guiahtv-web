@@ -10,6 +10,7 @@
             padding: 0;
 
             .tabs-wrapper{
+                
 
                   .list{
                         margin-top: 0;
@@ -21,7 +22,8 @@
                   }
                   
                   header{
-                        padding: 0 $full-padding-content;;
+                        width: 85%;
+                        padding: 0 $full-padding-content;
 
                         &.MuiPaper-root span{
                               font-size: .8vw !important;

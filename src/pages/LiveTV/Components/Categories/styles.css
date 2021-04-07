@@ -1,6 +1,7 @@
 @import '../../../../scss/style-base.css';
 
 .navbar-guide-tv{
+      /* border: 1px solid blue; */
 
       .section-wrapper{ 
             padding: 0 $full-padding-content;

@@ -137,7 +137,7 @@ function ItemCard({ posterType, data }) {
 				<TitleItem title={Title} />
 				<div className="background-item">
 					<Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
-					<div className="icon-active"><i class="far fa-pause-circle"></i></div>
+					<div className="icon-active"><i className="far fa-pause-circle"></i></div>
 					<AnimatedBars />
 					{ResumePos &&
 						<div className="progress-bar-content">

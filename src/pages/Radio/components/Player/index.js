@@ -94,7 +94,7 @@ export function Player() {
 
 	return (
 		<div className="player-content">
-			<audio ref={audio} type="application/x-mpegURL" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} onCanPlay={onCanPlay} />
+			<audio ref={audio} type="application/x-mpegURL" muted onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} onCanPlay={onCanPlay} />
 			<Controls stateAudio={stateAudio} dispatchAudio={dispatchAudio} />
 		</div>
 	)

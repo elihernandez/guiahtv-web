@@ -2622,6 +2622,8 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
+/* border: 1px solid blue; */
+
 .navbar-guide-tv .section-wrapper{ 
             padding: 0 90px;
       }
@@ -4056,6 +4058,47 @@ input::-ms-input-placeholder{
                   opacity: 1;
             }
 
+.list .tabs-indicators{
+            position: absolute;
+            width: 15%;
+            right: 0;
+            top: -14%;
+            height: 13%;
+            padding-right: calc(90px + 1vw);
+      }
+
+.list .tabs-indicators .list-indicators{
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  display: -webkit-box;
+                  display: -ms-flexbox;
+                  display: flex;
+                  -webkit-box-orient: horizontal;
+                  -webkit-box-direction: normal;
+                      -ms-flex-direction: row;
+                          flex-direction: row;
+                  -webkit-box-pack: end;
+                      -ms-flex-pack: end;
+                          justify-content: flex-end;
+                  -webkit-box-align: center;
+                      -ms-flex-align: center;
+                          align-items: center;
+                  grid-gap: 3px;
+                  gap: 3px;
+            }
+
+.list .tabs-indicators .list-indicators .item-indicator{
+                        position: relative;
+                        width: 1vw;
+                        height: .1vw;
+                        background: #424242
+                  }
+
+.list .tabs-indicators .list-indicators .item-indicator.active{
+                              background: white;
+                        }
+
 .list-cards{
       position: relative;
       width: 100%;
@@ -4673,6 +4716,7 @@ input::-ms-input-placeholder{
       position: relative;
       height: 100%;
       width: 100%
+      /* border: 1px solid red; */
 }
 
 .guide-wrapper.active-enter {
@@ -6304,6 +6348,7 @@ input::-ms-input-placeholder{
                   }
 
 .wrapper-radio .guide-radio .tabs-wrapper header{
+                        width: 85%;
                         padding: 0 90px
                   }
 
