@@ -188,7 +188,7 @@
       }
 
       .slick-slide{
-            opacity: 0.5;
+            opacity: 0.25;
             transition: all 300ms ease-in-out;
 
             &.slick-active{

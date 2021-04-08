@@ -86,6 +86,10 @@ export function useHls(video, url, dispatch, movie) {
 				hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, function(event, data){
 					dispatch({ type: 'setAudioTracks', payload: data })
 				})
+
+				hls.on(Hls.Events.MEDIA_DETACHING, function(){
+					video.current.pause()
+				})
                         
 				hls.on(Hls.Events.SUBTITLE_TRACKS_UPDATED, function(event, data){
 					dispatch({ type: 'setSubtitleTracks', payload: data })

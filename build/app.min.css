@@ -4032,7 +4032,7 @@ input::-ms-input-placeholder{
                   }
 
 .list .slick-slide{
-            opacity: 0.5;
+            opacity: 0.25;
             -webkit-transition: all 300ms ease-in-out;
             transition: all 300ms ease-in-out
       }
@@ -8224,19 +8224,31 @@ input::-ms-input-placeholder{
     top: 65px;
     padding: 0;
 }
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
 .page-404 .page-404-wrapper{
             position: relative;
-            width: calc(100% - 100px);
-            min-height: calc(100vh - 70px);
-            padding: 25px 25px;
+            width: 100%;
+            height: 100vh;
+            padding: 50px 25px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column
       }
-      
-            .page-404 .page-404-wrapper .logo img{
-                  width: 200px;
-                  height: auto;
-            }
-      
-            @media (max-width: 768px) {
+
+@media (max-width: 768px) {
                   .page-404 .page-404-wrapper .logo {
                         display: -webkit-box;
                         display: -ms-flexbox;
@@ -8256,13 +8268,12 @@ input::-ms-input-placeholder{
                               height: auto;
                         }
             }
-      
-            .page-404 .page-404-wrapper .message-container{
-                  position: relative;
-                  width: calc(100vw - 50px);
-                  padding-top: 150px; 
-                  display: -webkit-box; 
-                  display: -ms-flexbox; 
+
+.page-404 .page-404-wrapper .message-container{
+                  -ms-flex-item-align: center;
+                      align-self: center;
+                  display: -webkit-box;
+                  display: -ms-flexbox;
                   display: flex;
                   -webkit-box-orient: vertical;
                   -webkit-box-direction: normal;
@@ -8274,54 +8285,55 @@ input::-ms-input-placeholder{
                   -webkit-box-align: center;
                       -ms-flex-align: center;
                           align-items: center;
+                  margin-top: 125px;
             }
-      
-            .page-404 .page-404-wrapper .message-container .title-text{
-                        font-size: 70px;
+
+.page-404 .page-404-wrapper .message-container .title-text{
+                        font-size: 50px;
                         font-weight: 600;
                         text-align: center;
                   }
-      
-            @media (max-width: 425px) {
+
+@media (max-width: 425px) {
                         .page-404 .page-404-wrapper .message-container .title-text{
                               font-size: 45px;
                         }
                   }
-      
-            .page-404 .page-404-wrapper .message-container p{
+
+.page-404 .page-404-wrapper .message-container p{
                         max-width: 1000px;
-                        font-size: 25px;
+                        font-size: 22px;
                         font-weight: 300;
                         text-align: center;
                         margin-top: 25px !important;
                   }
-      
-            @media (max-width: 425px) {
+
+@media (max-width: 425px) {
                         .page-404 .page-404-wrapper .message-container p{
                               font-size: 20px;
                         }
                   }
-      
-            .page-404 .page-404-wrapper .message-container .btn-link-to-home{
-                        color: rgba(255, 255, 255, 0.5);
+
+.page-404 .page-404-wrapper .message-container .btn-link-to-home{
+                        color: #9e9e9e;
                         font-size: 25px;
                         margin-top: 50px;
                         border-radius: 5px;
                         padding: 12px 30px;
-                        border: 2px solid rgba(255, 255, 255, 0.5);
+                        border: 2px solid #9e9e9e;
                         background: transparent;
                         -webkit-transition: all .15s ease;
                         transition: all .15s ease
                   }
-      
-            .page-404 .page-404-wrapper .message-container .btn-link-to-home:hover{
+
+.page-404 .page-404-wrapper .message-container .btn-link-to-home:hover{
                               cursor: pointer;
                               color: black;
-                              border: 3px solid rgba(255, 255, 255, 1);
-                              background: white;
+                              border: 2px solid #f7f7f7;
+                              background: #f7f7f7;
                         }
-      
-            @media (max-width: 425px) {
+
+@media (max-width: 425px) {
                         .page-404 .page-404-wrapper .message-container .btn-link-to-home{
                               font-size: 20px;
                         }
