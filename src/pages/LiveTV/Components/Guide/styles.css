@@ -2,6 +2,7 @@
 
 .guide{
       position: relative;
+      overflow: hidden;
 
       .content-button-guide{
             position: relative;
@@ -38,6 +39,38 @@
                         i{
                            display: none;
                         }
+                  }
+            }
+      }
+
+      .tabs-wrapper{
+                
+
+            .list{
+                  margin-top: 0;
+                  margin-bottom: 15px;
+            }
+
+            .title-list{
+                  display: none;
+            }
+            
+            header{
+                  width: 85%;
+                  padding: 0 $full-padding-content;
+
+                  &.MuiPaper-root span{
+                        font-size: .8vw !important;
+                        font-family: "Poppins", sans-serif !important;
+                  }
+
+                  &.MuiPaper-root{
+                        background: transparent !important;
+                  }
+
+                  &.MuiTab-wrapper{
+                       font-size: .8vw !important;
+                       font-family: 'Poppins' sans-serif !important;
                   }
             }
       }

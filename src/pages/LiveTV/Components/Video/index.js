@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect, useRef } from 'react'
+import { useParams } from 'react-router-dom'
 import VideoContext from '../../../../context/VideoContext'
 import UserContext from '../../../../context/UserContext'
+import LiveTVContext from '../../../../context/LiveTvContext'
 import { getVideo } from '../../../../services/getVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { isLive } from '../../../../js/Time'
@@ -10,7 +12,10 @@ import './styles.css'
 
 export function Video() {
 	const video = useRef()
+	const { channelId } = useParams()
 	const [url, setUrl] = useState()
+	const { state } = useContext(LiveTVContext)
+	const { dataTV } = state
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
 	const { stateVideo, dispatch } = useContext(VideoContext)
@@ -48,7 +53,7 @@ export function Video() {
 	}
 
 	useEffect(() => {
-		if (dataChannel) {
+		if(dataChannel){
 			const requestVideo = async () => {
 				dispatch({ type: 'updateActive', payload: false })
 				dispatch({ type: 'updateLoading', payload: true })
@@ -64,7 +69,7 @@ export function Video() {
 					setError(e.message)
 				}
 			}
-
+	
 			switch (dataChannel.ContentType) {
 			case 'leon_livetv_Channel':
 				requestVideo()
@@ -90,11 +95,18 @@ export function Video() {
 				break
 			}
 		}
-
-		return () => {
-			// clearTimeoutError()
-		}
 	}, [dataChannel])
+
+	useEffect(() => {
+
+		dataTV.map((categories) => {
+			categories.cmData.map((channel) => {
+				if(channelId == channel.Id){
+					dispatch({ type: 'updateData', payload: channel })
+				}
+			})
+		})
+	}, [channelId])
 
 	return (
 		<div className="video">
@@ -114,117 +126,3 @@ export function Video() {
 		</div>
 	)
 }
-
-// export function Video() {
-// 	const videoRef = useRef(null)
-// 	const [url, setUrl] = useState()
-// 	const { stateUser } = useContext(UserContext)
-// 	const { credentials } = stateUser
-// 	const { stateVideo, dispatch } = useContext(VideoContext)
-// 	const { dataChannel, timerChannel } = stateVideo
-// 	const { PreviewPoster } = timerChannel
-// 	const {success, error, audioTracks, subtitleTracks} = useHls(videoRef, url)
-// 	console.log(success, error, audioTracks, subtitleTracks)
-
-// 	const onPlayingVideo = () => {
-// 		dispatch({ type: 'updateActive', payload: true })
-// 		dispatch({ type: 'updateLoading', payload: false })
-// 	}
-
-// 	const onWaitingVideo = () => {
-// 		dispatch({ type: 'updateLoading', payload: true })
-// 	}
-
-// 	const onErrorVideo = () => {
-// 		dispatch({ type: 'updateLoading', payload: false })
-// 		dispatch({ type: 'updateData', payload: null })
-// 		// setError('Señal no disponible por el momento')
-// 	}
-
-// 	const onCanPlay = () => {
-// 		videoRef.current.muted = false
-// 		videoRef.current.play()
-// 	}
-
-// 	const handleErrorImage = (e) => {
-// 		e.nativeEvent.target.src = backgroundTvImg
-// 	}
-
-// 	const requestVideo = async () => {
-// 		dispatch({ type: 'updateActive', payload: false })
-// 		dispatch({ type: 'updateLoading', payload: true })
-// 		setUrl(null)
-// 		try {
-// 			const response = await getVideo(dataChannel, credentials)
-// 			if(response == 'error') throw new Error('No se pudo obtener la información.')
-// 			const url = response.Url
-// 			setUrl(url)
-// 			// setTimeoutError()
-// 		} catch (e) {
-// 			dispatch({ type: 'updateLoading', payload: false })
-// 			dispatch({ type: 'updateData', payload: null })
-// 			// setError(e.message)
-// 		}
-// 	}
-
-// 	const showTimerEvent = () => {
-// 		setUrl(null)
-// 		dispatch({ type: 'updateActive', payload: false })
-// 		dispatch({ type: 'updateLoading', payload: true })
-// 		setTimeout(() => {
-// 			dispatch({ type: 'updateLoading', payload: false })
-// 			dispatch({ type: 'updateTimer', active: true, timer: dataChannel })
-// 		}, 1000)
-// 	}
-
-// 	useEffect(() => {
-// 		if (dataChannel) {
-// 			switch (dataChannel.ContentType) {
-// 			case 'leon_livetv_Channel':
-// 				requestVideo()
-// 				break
-// 			case 'leon_livetv_Event':
-// 				if(isLive(dataChannel.Inicio, dataChannel.Fin)){
-// 					requestVideo()
-// 				}else{
-// 					showTimerEvent()
-// 				}
-// 				break
-// 			case 'leon_livetv_Radio':
-// 				requestVideo()
-// 				break
-// 			default: 
-// 				requestVideo()
-// 				break
-// 			}
-// 		}
-// 	}, [dataChannel])
-
-// 	return (
-// 		<div className="video">
-// 			<div className="video-wrapper">
-// 				<video
-// 					loop={true}
-// 					ref={videoRef}
-// 					autoPlay
-// 					muted="muted"
-// 					preload="auto"
-// 					onPlaying={onPlayingVideo}
-// 					onWaiting={onWaitingVideo}
-// 					onError={onErrorVideo}
-// 					onCanPlay={onCanPlay}
-// 				/>
-// 				{error &&
-// 					<div className="error-message">
-// 						<h2 className="text-error">{error}</h2>
-// 					</div>
-// 				}
-// 				{stateVideo.activeTimer &&
-// 					<div className="preview-poster">
-// 						<img onError={handleErrorImage} src={PreviewPoster}/>
-// 					</div>
-// 				}
-// 			</div>
-// 		</div>
-// 	)
-// }

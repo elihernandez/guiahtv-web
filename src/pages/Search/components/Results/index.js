@@ -20,14 +20,18 @@ function TypeList({ dataCategory }){
 	}
 
 	if(containsString(contentType, 'radio')){
+		const indexList = 0
+		const tabValues = {}
 		return (
-			<List key={dataCategory.category} data={dataCategory} listType="radio" /> 
+			<List key={dataCategory.category} data={dataCategory} listType="radio" indexList={indexList} tabValues={tabValues} /> 
 		)
 	}
 
 	if(containsString(contentType, 'livetv')){
+		const indexList = 0
+		const tabValues = {}
 		return (
-			<List key={dataCategory.category} data={dataCategory} listType="channel" /> 
+			<List key={dataCategory.category} data={dataCategory} listType="channel" indexList={indexList} tabValues={tabValues} /> 
 		)
 	}
 	

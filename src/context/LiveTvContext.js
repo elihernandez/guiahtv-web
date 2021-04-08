@@ -4,7 +4,7 @@ const Context = React.createContext({})
 
 export function LiveTvContextProvider({children}){
 	const initialState = {  
-		dataTV: null,
+		dataTV: [],
 		currentPage: 0,
 		currentCategory : null,
 		guideOnce: false,

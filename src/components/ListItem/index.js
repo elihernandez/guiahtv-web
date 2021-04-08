@@ -3,6 +3,8 @@ import { NavLink, useRouteMatch, useHistory } from 'react-router-dom'
 import VodContext from '../../context/VodContext'
 import RadioContext from '../../context/RadioContext'
 import AudioContext from '../../context/AudioContext'
+import VideoContext from '../../context/VideoContext'
+import LiveTvContext from '../../context/LiveTvContext'
 import { getContactInfo } from '../../services/getContactInfo'
 import { getProgressMovie } from '../../js/Time'
 import { limitString, isLimitString, isSerie, isEpisode, typeContent, replaceString, containsString, createUrlString } from '../../js/String'
@@ -154,34 +156,47 @@ function ItemCard({ posterType, data }) {
 	)
 }
 
-function ItemCardChannel({ posterType, data, category }) {
-	const history = useHistory()
-	const { ContentType, Name, Title, ContactID, Description, Registro, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
-	const { dispatchRadio } = useContext(RadioContext)
-	const { dispatchAudio } = useContext(AudioContext)
+function ItemCardChannel({ posterType, data }) {
+	// console.log(data)
+	// const history = useHistory()
+	// const { dispatch } = useContext(VideoContext)
+	// const { dataChannel } = stateVideo
+	// const { dispatchTV } = useContext(LiveTvContext)
+	const { Id, Title, Name, ContactID, Description, Registro, Poster, HDPosterUrlLandscape, ResumePos, Length } = data
+	const image = Poster ? Poster : HDPosterUrlLandscape
+	const channelId = Id ? Id : Registro
+	const urlNavLink = `/tv/${createUrlString(channelId)}`
 	const [contactInfo, setContactInfo] = useState([])
 	const [moreInfoActive, setMoreInfoActive] = useState(false)
 	const [readMoreActive, setReadMoreActive] = useState(false)
 
-	const handleClick = (e) => {
-		if (e.nativeEvent.target.tabIndex != 0) {
-			if(isEvent(ContentType)){
-				history.push(`/tv/${createUrlString(replaceString(category, 'TV - ', ''))}/${Registro}`)
-			}else{
-				history.push(`/tv/${createUrlString(replaceString(category, 'TV - ', ''))}/${createUrlString(Title)}`)
-			}
+	// const handleClick = (e) => {
+	// 	if (e.nativeEvent.target.tabIndex != 0) {
+	// 		if(isEvent(ContentType)){
+	// 			history.push(`/tv/${createUrlString(replaceString(category, 'TV - ', ''))}/${Registro}`)
+	// 		}else{
+	// 			history.push(`/tv/${createUrlString(replaceString(category, 'TV - ', ''))}/${createUrlString(Title)}`)
+	// 		}
 
-			dispatchRadio({ type: 'setCurrentStation', payload: data })
-			dispatchAudio({ type: 'setData', payload: data })
-		}
+	// 		dispatchRadio({ type: 'setCurrentStation', payload: data })
+	// 		dispatchAudio({ type: 'setData', payload: data })
+	// 	}
+	// }
+
+	const handleClick = () => {
+		// if(dispatch){
+		// 	dispatch({ type: 'updateData', payload: data })
+		// }
+		// dispatchTV({ type: 'updatePage', payload: page })
+		// dispatchTV({ type: 'updateCategory', payload: categoria })
 	}
 
 	return (
-		<div className="item-link">
-			<div className="item" onClick={handleClick}>
-				<TitleItem title={Title} />
+		<NavLink to={urlNavLink} className="item-link" activeClassName="active" onClick={handleClick}>
+			<div className="item">
+				<TitleItem title={Name} />
 				<div className="background-item">
-					<Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
+					<Img title={Title} posterType={posterType} imgPortrait={image} imgLandscape={image} />
 					{ResumePos &&
 						<div className="progress-bar-content">
 							<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
@@ -193,7 +208,7 @@ function ItemCardChannel({ posterType, data, category }) {
 				<ReadMore readMoreActive={readMoreActive} Name={Title} Description={Description} setReadMoreActive={setReadMoreActive} />
 				<Buttons contactId={ContactID} description={Description} setContactInfo={setContactInfo} setMoreInfoActive={setMoreInfoActive} setReadMoreActive={setReadMoreActive} />
 			</div>
-		</div>
+		</NavLink>
 	)
 }
 
@@ -269,9 +284,9 @@ function ProgressBar({ resumePos, length }) {
 	return (
 		<Fragment>
 			{resumePos &&
-                        <div className="progress-bar-content">
-                        	<LinearProgress variant="determinate" value={getProgressMovie(resumePos, length)} />
-                        </div>
+				<div className="progress-bar-content">
+					<LinearProgress variant="determinate" value={getProgressMovie(resumePos, length)} />
+				</div>
 			}
 		</Fragment>
 	)

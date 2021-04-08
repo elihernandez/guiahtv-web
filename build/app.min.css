@@ -2612,6 +2612,17 @@ input::-ms-input-placeholder{
     overflow-x: hidden;
 }
 
+.content-guide-loader{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 26vw;
+}
+
+      .content-guide-loader svg{
+            position: absolute;
+            bottom: 0;
+      }
 /* #13171a */
 
 /* App */
@@ -2622,86 +2633,58 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-/* border: 1px solid blue; */
-
-.navbar-guide-tv .section-wrapper{ 
+.tabs-wrapper header{
+            background: transparent !important;
             padding: 0 90px;
       }
 
-.navbar-guide-tv .section-wrapper .navbar-list{
-                  display: -webkit-box;
-                  display: -ms-flexbox;
-                  display: flex;
-                  -webkit-box-orient: horizontal;
-                  -webkit-box-direction: normal;
-                      -ms-flex-direction: row;
-                          flex-direction: row;
+.MuiPaper-root{
+      /* background-color: transparent !important; */
+      -webkit-box-shadow: none !important;
+              box-shadow: none !important;
+}
+
+.MuiPaper-root span{
+            font-size: .8vw;
+            font-weight: 600;
+      }
+
+.MuiPaper-root button{
+            -ms-flex-preferred-size: none !important;
+                flex-basis: none !important;
+            -webkit-box-shadow: none !important;
+                    box-shadow: none !important;
+      }
+
+.MuiPaper-root .MuiTabs-indicator{
+            background-color: #f7f7f7 !important;
+      }
+
+.MuiPaper-root .MuiTab-fullWidth{
+            -ms-flex-preferred-size: none !important;
+                flex-basis: none !important;
+            -webkit-box-flex: 0 !important;
+                -ms-flex-positive: 0 !important;
+                    flex-grow: 0 !important;
+            color: #424242 !important;
+      }
+
+.MuiPaper-root .MuiTab-wrapper{
+            color: #757575;
+      }
+
+.MuiPaper-root .Mui-selected .MuiTab-wrapper{
+                  color: #f7f7f7 !important;
             }
 
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item{
-                        margin: 0 0;
-                        min-width: 4vw;
-                        -webkit-transition: all .3s ease;
-                        transition: all .3s ease;
-                        text-transform: uppercase;
-                        letter-spacing: 1px;
-                        border-radius: 3px;
-                        text-align: center;
-                        cursor: pointer;
-                  }
+.MuiPaper-root .MuiTab-root{
+            min-width: 11vw !important;
+      }
 
-/* border: 1px solid pink; */
+.MuiBox-root{
+      padding: 0 !important;
+}
 
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link{
-                              text-decoration: none;
-                              display: -webkit-box;
-                              display: -ms-flexbox;
-                              display: flex;
-                              -webkit-box-orient: horizontal;
-                              -webkit-box-direction: normal;
-                                  -ms-flex-direction: row;
-                                      flex-direction: row;
-                              -webkit-box-align: center;
-                                  -ms-flex-align: center;
-                                      align-items: center;
-                              padding: .8vw 1vw;
-                              border-radius: 5px;
-                        }
-
-/* border: 1px solid green; */
-
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link i, .navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link p{
-                                    font-size: .8vw;
-                                    font-weight: 500;
-                                    margin: 0 0;
-                                    color: rgba(247,247,247, 0.7);
-                                    -webkit-transition: all .15s ease;
-                                    transition: all .15s ease;
-                              }
-
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link.active{
-                                    background: rgba(16,15,16, 0.75);
-                              }
-
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link.active i{
-                                          color: #f7f7f7;
-                                    }
-
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link.active p{
-                                          color: #f7f7f7;
-                                    }
-
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover{
-                                    background: rgba(16,15,16, 0.85);
-                              }
-
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover i{
-                                          color: #f7f7f7;
-                                    }
-
-.navbar-guide-tv .section-wrapper .navbar-list .navbar-item .navbar-link:hover p{
-                                          color: #f7f7f7;
-                                    }
 /* #13171a */
 
 /* App */
@@ -3457,7 +3440,7 @@ input::-ms-input-placeholder{
                   position: relative;
                   background: -webkit-gradient(linear, left top, left bottom, from(#232526), to(#18191c));
                   background: linear-gradient(to bottom, #232526, #18191c);
-                  border-radius: 4px;
+                  border-radius: 6px;
                   height: 24vw;
                   cursor: pointer;
                   overflow-y: auto;
@@ -3472,7 +3455,7 @@ input::-ms-input-placeholder{
             }
 
 .list-card .item-link .item::after{
-                        border-radius: 4px;
+                        border-radius: 6px;
                         border: 4px solid transparent;
                         top: 0px;
                         right: 0px;
@@ -4038,7 +4021,7 @@ input::-ms-input-placeholder{
                   }
 
 .list.list-card.landscape .background-item{
-                        height: 11vw;
+                        height: 10vw;
                   }
 
 .list.list-card.landscape .item-link{
@@ -4049,7 +4032,7 @@ input::-ms-input-placeholder{
                   }
 
 .list .slick-slide{
-            opacity: 0.4;
+            opacity: 0.5;
             -webkit-transition: all 300ms ease-in-out;
             transition: all 300ms ease-in-out
       }
@@ -4538,124 +4521,9 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.channels{
-      position: relative;
-      height: 100%;
-      width: 100%;
-      -webkit-box-sizing: border-box;
-              box-sizing: border-box;
-      padding: 0 90px;
-}
-
-.channels .channels-wrapper{
-            position: relative;
-            width: 100%;
-            height: 100%;
-      }
-
-.channels .channels-wrapper .content-channels{
-                  position: relative;
-                  width: 100%;
-                  height: auto;
-                  display: -webkit-box;
-                  display: -ms-flexbox;
-                  display: flex;
-                  -webkit-box-orient: horizontal;
-                  -webkit-box-direction: normal;
-                      -ms-flex-direction: row;
-                          flex-direction: row;
-                  -webkit-transition: all .3s ease;
-                  transition: all .3s ease;
-            }
-
-.channels .direction{
-            position: absolute;
-            height: 100%;
-            top: 0;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                    flex-direction: column;
-            -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                    justify-content: center;
-            -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-            width: 90px;
-            cursor: pointer;
-            opacity: 0.65;
-            -webkit-transition: all .3s ease;
-            transition: all .3s ease;
-      }
-
-.channels .direction i{
-                  color: #f7f7f7;
-                  font-size: 1.4vw;
-            }
-
-.channels .direction.direction-prev{
-                  left: 0;
-            }
-
-.channels .direction.direction-next{
-                  right: 0;
-            }
-
-.channels .direction:hover{
-                  opacity: 1;
-            }
-
-.channels .direction:hover i{
-                        -webkit-transform: scale(1.2);
-                                transform: scale(1.2);
-                  }
-
-.channels.active-enter {
-            opacity: 0;
-      }
-
-.channels.active-enter-active {
-            opacity: 1;
-            -webkit-transition: opacity 300ms;
-            transition: opacity 300ms;
-      }
-
-.channels.active-exit {
-            opacity: 1;
-      }
-
-.channels.active-exit-active {
-            opacity: 1;
-            -webkit-transition: opacity 300ms;
-            transition: opacity 300ms;
-      } 
-.content-guide-loader{
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 26vw;
-}
-
-      .content-guide-loader svg{
-            position: absolute;
-            bottom: 0;
-      }
-/* #13171a */
-
-/* App */
-
-/* Top Menu */
-
-/* Music */
-
-/* Radio */
-
 .guide{
       position: relative;
+      overflow: hidden;
 }
 
 .guide .content-button-guide{
@@ -4711,6 +4579,34 @@ input::-ms-input-placeholder{
 .guide .content-button-guide .button-guide:hover i{
                            display: none;
                         }
+
+.guide .tabs-wrapper .list{
+                  margin-top: 0;
+                  margin-bottom: 15px;
+            }
+
+.guide .tabs-wrapper .title-list{
+                  display: none;
+            }
+
+.guide .tabs-wrapper header{
+                  width: 85%;
+                  padding: 0 90px
+            }
+
+.guide .tabs-wrapper header.MuiPaper-root span{
+                        font-size: .8vw !important;
+                        font-family: "Poppins", sans-serif !important;
+                  }
+
+.guide .tabs-wrapper header.MuiPaper-root{
+                        background: transparent !important;
+                  }
+
+.guide .tabs-wrapper header.MuiTab-wrapper{
+                       font-size: .8vw !important;
+                       font-family: 'Poppins' sans-serif !important;
+                  }
 
 .guide-wrapper{
       position: relative;
@@ -6263,63 +6159,6 @@ input::-ms-input-placeholder{
       height: auto;
       min-height: 100vh;
 }
-/* #13171a */
-
-/* App */
-
-/* Top Menu */
-
-/* Music */
-
-/* Radio */
-
-.MuiPaper-root{
-      /* background-color: transparent !important; */
-      -webkit-box-shadow: none !important;
-              box-shadow: none !important;
-}
-
-.MuiPaper-root span{
-            font-size: .8vw;
-            font-weight: 600;
-      }
-
-.MuiPaper-root button{
-            -ms-flex-preferred-size: none !important;
-                flex-basis: none !important;
-            -webkit-box-shadow: none !important;
-                    box-shadow: none !important;
-      }
-
-.MuiPaper-root .MuiTabs-indicator{
-            background-color: #f7f7f7 !important;
-      }
-
-.MuiPaper-root .MuiTab-fullWidth{
-            -ms-flex-preferred-size: none !important;
-                flex-basis: none !important;
-            -webkit-box-flex: 0 !important;
-                -ms-flex-positive: 0 !important;
-                    flex-grow: 0 !important;
-            color: #424242 !important;
-      }
-
-.MuiPaper-root .MuiTab-wrapper{
-            color: #757575;
-      }
-
-.MuiPaper-root .Mui-selected .MuiTab-wrapper{
-                  color: #f7f7f7 !important;
-            }
-
-.MuiPaper-root .MuiTab-root{
-            min-width: 11vw !important;
-      }
-
-.MuiBox-root{
-      padding: 0 !important;
-}
-
 /* #13171a */
 
 /* App */
@@ -8340,7 +8179,7 @@ input::-ms-input-placeholder{
 /* border: 1px solid red; */
 
 .search-results .list-card .item{
-            height: 11vw;
+            height: 10vw;
         }
 
 .search-results .list-card .title-content{

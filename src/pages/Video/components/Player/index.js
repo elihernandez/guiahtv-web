@@ -14,12 +14,12 @@ import canAutoPlay from 'can-autoplay'
 import './styles.css'
 
 export function Player({ state, dispatchVod }) {
-	const history = useHistory()
 	const video = useRef()
-	const { dataVod, movieVod } = state
+	const history = useHistory()
 	const [url, setUrl] = useState()
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
+	const { dataVod, movieVod } = state
 	const { stateVideo, dispatch } = useContext(VideoContext)
 	const { loading, currentTime, duration, endingMovie } = stateVideo
 	const { error, setError } = useHls(video, url, dispatch, movieVod)
@@ -110,17 +110,17 @@ export function Player({ state, dispatchVod }) {
 		<div className="player">
 			<div className="player-wrapper">
 				<video ref={video} preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
-				{loading &&
-                    <LoaderSpinnerMUI />
+				{endingMovie &&
+					<EndingMovie endingMovie={endingMovie}/>
 				}
+				<Content />
 				{error &&
 					<div className="error-message">
 						<h2 className="text-error">{error}</h2>
 					</div>
 				}
-				<Content />
-				{endingMovie &&
-					<EndingMovie endingMovie={endingMovie}/>
+				{loading &&
+                    <LoaderSpinnerMUI />
 				}
 			</div>
 		</div>

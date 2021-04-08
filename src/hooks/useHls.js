@@ -7,7 +7,7 @@ export function useHls(video, url, dispatch, movie) {
 		debug: process.env.NODE_ENV !== 'production' ? false : false,
 		initialLiveManifestSize: 3,
 		liveBackBufferLength: 900,
-		enableWorker: true,
+		enableWorker: false,
 		nudgeMaxRetry: 10,
 		manifestLoadingMaxRetry: 10,
 		fragLoadingRetryDelay: 3000,

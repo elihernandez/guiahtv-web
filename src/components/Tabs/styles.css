@@ -1,5 +1,12 @@
 @import '../../scss/style-base.css';
 
+.tabs-wrapper{
+      header{
+            background: transparent !important;
+            padding: 0 $full-padding-content;
+      }
+}
+
 .MuiPaper-root{
       /* background-color: transparent !important; */
       box-shadow: none !important;

@@ -8,7 +8,8 @@ import { InfoChannel } from './Components/InfoChannel'
 import { TimerChannel } from './Components/Timer'
 import { LoaderVideo } from './Components/LoaderVideo'
 import { exitFullScreen } from '../../js/Screen'
-const pip = require('picture-in-picture')
+import { Switch, Route, useRouteMatch } from 'react-router-dom'
+import { exitPip } from '../../js/PictureInPicture'
 import './styles.css'
 
 const initialState = {
@@ -81,12 +82,13 @@ const reducer = (state, action) => {
 }
 
 export function LiveTV() {
-
+	let { path } = useRouteMatch()
+	
 	useEffect(() => {
 
 		return () => {
 			exitFullScreen()
-			if( pip.supported && pip.isActive(document.querySelector('video'))) pip.exit(document.querySelector('video')) 
+			exitPip(document.querySelector('video'))
 		}
 	}, [])
 
@@ -95,14 +97,18 @@ export function LiveTV() {
 			<LiveTvContextProvider>
 				<VideoContextProvider state={initialState} reducer={reducer}>
 					<div className="section-content w-padding-top">
-						<Content>
-							<div className="background-overlay" />
-							<LoaderVideo />
-							<InfoChannel />
-							<TimerChannel />
-							<GuideChannels />
-						</Content>
-						<Video />
+						<Switch>
+							<Route exact path={`${path}/:channelId?`} >
+								<Content>
+									<div className="background-overlay" />
+									<LoaderVideo />
+									<InfoChannel />
+									<TimerChannel />
+									<GuideChannels />
+								</Content>
+								<Video />
+							</Route>
+						</Switch>
 					</div>
 				</VideoContextProvider>
 			</LiveTvContextProvider>

@@ -17,7 +17,7 @@ export function List({ data, listType, wrap, indexList, tabValues }) {
 		List = <ListRadio data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
 		break
 	case 'channel':
-		List = <ListChannel data={data} listType={listType} />
+		List = <ListChannel data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
 		break
 	}
 
@@ -108,28 +108,33 @@ export function ListRadio({ data, listType, indexList, tabValues }) {
 	)
 }
 
-export function ListChannel({ data, listType }) {
+export function ListChannel({ data, listType, indexList, tabValues }) {
 	const { category } = data
 	const slidesToShow = 5
+	const totalItems = data.cmData.length
+	const initialSlide = getInitialSlide(totalItems, slidesToShow, indexList, tabValues)
 	const classes = 'list list-card landscape'
-
+	const [pageActive, setPageActive] = useState(null)
+	
 	const settings = {
 		dots: false,
 		infinite: false,
 		slidesToShow: slidesToShow,
 		slidesToScroll: slidesToShow,
 		swipeToSlide: true,
-		focusOnSelect: true,
-		speed: 500
+		focusOnSelect: false,
+		initialSlide: initialSlide,
+		speed: 500,
+		afterChange: current => setPageActive(current)
 	}
-
 	return (
 		<div className={classes}>
 			<TitleList title={category} />
+			<TabsIndicators slidesToShow={slidesToShow} data={data.cmData} pageActive={pageActive} initialSlide={initialSlide} />
 			<SlickSlider settings={settings}>
 				{data.cmData.map((dataItem) => {
 					return (
-						<Item key={dataItem.Registro} posterType={data.poster_type} data={dataItem} listType={listType} titleCategory={data.category} />
+						<Item key={dataItem.Id ? dataItem.Id : dataItem.Registro} posterType={data.poster_type} data={dataItem} listType={listType} titleCategory={data.category} />
 					)
 				})}
 			</SlickSlider>

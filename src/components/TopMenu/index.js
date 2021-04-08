@@ -5,7 +5,6 @@ import { UserMenu } from '../UserMenu/index'
 import Logo from '../Logo/index'
 import RadioIcon from '@material-ui/icons/Radio'
 import { containsString } from '../../js/String'
-import { CSSTransition } from 'react-transition-group'
 import './styles.css'
 
 function LeftContent() {
@@ -38,9 +37,7 @@ function LeftContent() {
 	return (
 		<div className="left-content">
 			<Logo color="purple" size="sm" />
-			<CSSTransition in={showNavbar} timeout={0} classNames="fade" unmountOnExit>
-				<Navbar navLinks={navLinks} classNavbar={classNavbar} classItems={classItems} />
-			</CSSTransition>
+			<Navbar navLinks={navLinks} classNavbar={classNavbar} classItems={classItems} show={showNavbar} />
 		</div>
 	)
 }
