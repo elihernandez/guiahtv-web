@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Content } from './Components/Content'
 import { LiveTvContextProvider } from '../../context/LiveTvContext'
 import { VideoContextProvider } from '../../context/VideoContext'
-import { GuideChannels } from './Components/Guide'
+import { Guide } from './Components/Guide'
 import { Video } from './Components/Video'
 import { InfoChannel } from './Components/InfoChannel'
 import { TimerChannel } from './Components/Timer'
@@ -104,7 +104,7 @@ export function LiveTV() {
 									<LoaderVideo />
 									<InfoChannel />
 									<TimerChannel />
-									<GuideChannels />
+									<Guide />
 								</Content>
 								<Video />
 							</Route>

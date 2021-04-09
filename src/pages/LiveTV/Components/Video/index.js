@@ -98,7 +98,6 @@ export function Video() {
 	}, [dataChannel])
 
 	useEffect(() => {
-
 		dataTV.map((categories) => {
 			categories.cmData.map((channel) => {
 				if(channelId == channel.Id){

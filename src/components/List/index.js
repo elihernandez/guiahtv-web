@@ -127,6 +127,7 @@ export function ListChannel({ data, listType, indexList, tabValues }) {
 		speed: 500,
 		afterChange: current => setPageActive(current)
 	}
+
 	return (
 		<div className={classes}>
 			<TitleList title={category} />
@@ -160,7 +161,7 @@ const getInitialSlide = (totalItems, slidesToShow, indexList, tabValues) => {
 
 const TabsIndicators = ({slidesToShow, data, initialSlide, pageActive}) => {
 	const length = data.length
-	const pages = Math.trunc(length / slidesToShow)
+	const pages = Math.ceil(length / slidesToShow)
 	const items = []
 	for (let index = 0; index < pages; index++) {
 		items.push(index)
@@ -170,14 +171,14 @@ const TabsIndicators = ({slidesToShow, data, initialSlide, pageActive}) => {
 	const [indicatorActive, setIndicatorActive] = useState(null)
 
 	useEffect(() => {
-		const indicatorActive =  Math.trunc(initialSlide / slidesToShow)
+		const indicatorActive =  Math.ceil(initialSlide / slidesToShow)
 		setIndicatorActive(indicatorActive)
 		setStart(true)
 	}, [initialSlide])
 
 	useEffect(() => {
 		if(start){
-			const indicatorActive =  Math.trunc(pageActive / slidesToShow)
+			const indicatorActive =  Math.ceil(pageActive / slidesToShow)
 			setIndicatorActive(indicatorActive)
 		}
 	}, [pageActive])
@@ -197,7 +198,6 @@ const TabsIndicators = ({slidesToShow, data, initialSlide, pageActive}) => {
 		</div>
 	)
 }
-
 
 // function getPages(cmData, maxItems) {
 // 	let pages = cmData.length / maxItems

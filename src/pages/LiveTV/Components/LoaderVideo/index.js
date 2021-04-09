@@ -4,20 +4,14 @@ import VideoContext from '../../../../context/VideoContext'
 import { CSSTransition } from 'react-transition-group'
 
 export function LoaderVideo() {
-      const { stateVideo } = useContext(VideoContext)
-      const { loadingChannel } = stateVideo
+	const { stateVideo } = useContext(VideoContext)
+	const { loadingChannel } = stateVideo
 
-      return (
-            <CSSTransition in={loadingChannel} timeout={100} classNames="active" unmountOnExit>
-                  <div className="loader-video">
-                        <LoaderSpinnerMUI/>
-                  </div>
-            </CSSTransition>
-      )
-      // return (
-            
-      //             <div className="loader-video">
-      //                   <LoaderSpinnerMUI/>
-      //             </div>   
-      // )
+	return (
+		<CSSTransition in={loadingChannel} timeout={100} classNames="active" unmountOnExit>
+			<div className="loader-video">
+				<LoaderSpinnerMUI/>
+			</div>
+		</CSSTransition>
+	)
 }

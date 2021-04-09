@@ -2613,16 +2613,16 @@ input::-ms-input-placeholder{
 }
 
 .content-guide-loader{
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 26vw;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 26vw;
 }
 
-      .content-guide-loader svg{
-            position: absolute;
-            bottom: 0;
-      }
+    .content-guide-loader svg{
+          position: absolute;
+          bottom: 0;
+    }
 /* #13171a */
 
 /* App */
@@ -3369,8 +3369,8 @@ input::-ms-input-placeholder{
                               left: 0px;
                               content: "";
                               position: absolute;
-                              -webkit-transition: border 300ms ease-out 0s;
-                              transition: border 300ms ease-out 0s;
+                              -webkit-transition: all 300ms ease-out 0s;
+                              transition: all 300ms ease-out 0s;
                         }
 
 .list .item-link .item .background-item .progress-bar-content{
@@ -4032,14 +4032,38 @@ input::-ms-input-placeholder{
                   }
 
 .list .slick-slide{
-            opacity: 0.25;
+            opacity: 1;
             -webkit-transition: all 300ms ease-in-out;
-            transition: all 300ms ease-in-out
+            transition: all 300ms ease-in-out;
       }
+
+.list .slick-slide .background-item::after{
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        background: rgba(0, 0, 0, 0.5);
+                        -webkit-transition: all 300ms ease-in-out;
+                        transition: all 300ms ease-in-out;
+                  }
 
 .list .slick-slide.slick-active{
                   opacity: 1;
             }
+
+.list .slick-slide.slick-active .background-item::after{
+                              content: '';
+                              position: absolute;
+                              top: 0;
+                              right: 0;
+                              bottom: 0;
+                              left: 0;
+                              background: transparent;
+                              -webkit-transition: all 300ms ease-in-out;
+                              transition: all 300ms ease-in-out;
+                        }
 
 .list .tabs-indicators{
             position: absolute;

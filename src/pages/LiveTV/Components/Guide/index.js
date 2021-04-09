@@ -1,29 +1,28 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { getLiveTV } from '../../../../services/getLiveTV'
-import LiveTVContext from '../../../../context/LiveTvContext'
-import UserContext from '../../../../context/UserContext'
-// import { Categories } from '../Categories'
-// import { Channels } from '../Channels'
-import { GuideLoader } from '../Loader'
 import { CSSTransition } from 'react-transition-group'
+import LiveTVContext from '../../../../context/LiveTvContext'
+import VideoContext from '../../../../context/VideoContext'
+import UserContext from '../../../../context/UserContext'
+import { GuideLoader } from './components/Loader'
 import { CustomTabs } from '../../../../components/Tabs'
 import { List } from '../../../../components/List'
+import { getLiveTV } from '../../../../services/getLiveTV'
 import './styles.css'
 
 function findInitialValues(data, contentId){
-	let initialSlide, tabContent
+	let initialSlide = 0
+	let tabContent = 0
 	
 	data.map((categories, indexC) => {
 		categories.cmData.map((element, index) => {
-			const channelId = element.Id ?  element.Id : element.Registro
+			const channelId = element.Id ? element.Id : element.Registro
 			if(channelId == contentId){
 				initialSlide = index
 				tabContent = indexC
 			}
 		})
 	})
-
 	return { initialSlide, tabContent }
 }
 
@@ -47,13 +46,15 @@ function getDataArray(data, findedValues){
 	return dataTabs
 }
 
-export function GuideChannels() {
-	let { channelId } = useParams()
-	let history = useHistory()
+export function Guide() {
+	const { channelId } = useParams() 
+	const history = useHistory()
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
 	const { state, dispatchTV } = useContext(LiveTVContext)
-	const { guideOnce } = state
+	const { dataTV, guideOnce } = state
+	const { stateVideo } = useContext(VideoContext)
+	const { dataChannel } = stateVideo
 	const [loading, setLoading] = useState(false)
 	const [showGuide, setShowGuide] = useState(false)
 	const [showButtonGuide, setShowButtonGuide] = useState(false)
@@ -91,9 +92,12 @@ export function GuideChannels() {
 
 	const initLoading = async() => {
 		const response = await requestData()
+		const firstChannel = findFirstChannel(response)
 		if(!channelId){
-			const firstChannel = findFirstChannel(response)
 			history.replace(`/tv/${firstChannel.Id}`)
+		}else{
+			history.replace('/tv/')
+			history.replace(`/tv/${channelId}`)
 		}
 		dispatchTV({ type: 'setGuideOnce', payload: true })
 		handleDataTV(response)
@@ -105,6 +109,12 @@ export function GuideChannels() {
 		}
 	}, [])
 
+	useEffect(() => {
+		let id = undefined
+		if(dataChannel) id = dataChannel.Id ? dataChannel.Id : dataChannel.Registro
+		if(id != channelId) handleDataTV(dataTV)
+	}, [channelId])
+
 	return (
 		<div className="guide">
 			{loading && 
@@ -112,7 +122,7 @@ export function GuideChannels() {
 			}
 			{!showButtonGuide &&
 				<div className="content-button-guide">
-					<button type="button" className="button-guide" onClick={()=> handleClick()}>
+					<button type="button" className="button-guide" onClick={() => handleClick()}>
 						<i className="fas fa-chevron-up" />
 							Mostrar guía
 					</button>
@@ -130,19 +140,3 @@ export function GuideChannels() {
 		</div>
 	)
 }
-
-// {dataTV &&
-// 	<Fragment>
-// 		<Switch>
-// 			<Route exact path={`${path}`} >
-// 				<CustomTabs data={data} initialTab={0} />
-// 			</Route>
-// 			<Route exact path={`${path}/:categoria/:canal?`} >
-// 				<CustomTabs data={data} initialTab={0} />
-// 			</Route>
-// 		</Switch>
-// 	</Fragment>
-// }
-// <Categories data={dataTV} />
-// <CustomTabs data={data} initialTab={0} />
-// <Channels data={dataTV} />

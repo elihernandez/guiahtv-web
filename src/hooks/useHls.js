@@ -98,6 +98,7 @@ export function useHls(video, url, dispatch, movie) {
 		}
 
 		return (() => {
+			hls.detachMedia()
 			hls.destroy()
 		})
 	}, [url, recover])

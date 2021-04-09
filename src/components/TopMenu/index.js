@@ -20,6 +20,7 @@ function LeftContent() {
 		{ title: 'En vivo', href: location, icon: <i className="fas fa-tv"></i> },
 		{ title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-film"></i> },
 		{ title: 'Radio', href: '/radio', icon: <RadioIcon /> },
+		// { title: 'Musica', href: '/musica', icon: <RadioIcon /> },
 		{ title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i> }
 	]
 
