@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
-import { Content } from './Components/Content'
+import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import { LiveTvContextProvider } from '../../context/LiveTvContext'
 import { VideoContextProvider } from '../../context/VideoContext'
+import { Content } from './Components/Content'
+import { Info } from './Components/Info'
+import { Timer } from './Components/Timer'
 import { Guide } from './Components/Guide'
+import { Loader } from './Components/Loader'
 import { Video } from './Components/Video'
-import { InfoChannel } from './Components/InfoChannel'
-import { TimerChannel } from './Components/Timer'
-import { LoaderVideo } from './Components/LoaderVideo'
 import { exitFullScreen } from '../../js/Screen'
-import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import { exitPip } from '../../js/PictureInPicture'
 import './styles.css'
 
@@ -101,10 +101,10 @@ export function LiveTV() {
 							<Route exact path={`${path}/:channelId?`} >
 								<Content>
 									<div className="background-overlay" />
-									<LoaderVideo />
-									<InfoChannel />
-									<TimerChannel />
+									<Info />
+									<Timer />
 									<Guide />
+									<Loader />
 								</Content>
 								<Video />
 							</Route>

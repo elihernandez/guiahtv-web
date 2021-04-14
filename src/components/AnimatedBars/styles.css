@@ -1,41 +1,49 @@
 .animated-bar-wave {
     display: flex;
     flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-between;
-    width: 1vw;
+    justify-content: flex-end;
+    align-items: flex-end;
+    align-content: flex-end;
+    width: 5vw;
     height: 2vw;
 
     span {
         width: 0.3em;
-        height: 1em;
+        height: .5em;
         background-color: white;
+        padding: 0 0.2em;
     }
     
     span:nth-of-type(1) {
-        animation: grow 1s -0.45s ease-in-out infinite;
+        animation: grow 1s -0.6s ease-in-out infinite;
     }
     
     span:nth-of-type(2) {
-        animation: grow 1s -0.3s ease-in-out infinite;
+        animation: grow 1s -0.45s ease-in-out infinite;
     }
     
     span:nth-of-type(3) {
-        animation: grow 1s -0.15s ease-in-out infinite;
+        animation: grow 1s -0.30s ease-in-out infinite;
     }
     
     span:nth-of-type(4) {
+        animation: grow 1s -0.15s ease-in-out infinite;
+    }
+
+    span:nth-of-type(5) {
         animation: grow 1s ease-in-out infinite;
     }
     
     @keyframes grow {
         0%,
         100% {
-            transform: scaleY(1);
+            /* transform: scaleY(1); */
+            height: 1.2em; 
         }
     
         50% {
-            transform: scaleY(2);
+            /* transform: scaleY(2); */
+            height: 1.8em;
         }
     }
 }

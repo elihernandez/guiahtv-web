@@ -36,14 +36,14 @@ export function useHls(video, url, dispatch, movie) {
 						dispatch({ type: 'setHls', payload: hls })
 					})
 				})
-            
+			
 				hls.on(Hls.Events.ERROR, function (event, data) {
 					if(process.env.NODE_ENV !== 'production'){
 						console.log(event, data)
 					}
 
 					dispatch({ type: 'updateLoading', payload: false })
-                              
+								
 					if(event == 'hlsError' && data.details == 'manifestLoadError'){
 						hls.destroy()
 						dispatch({ type: 'updateLoading', payload: false })
@@ -90,7 +90,7 @@ export function useHls(video, url, dispatch, movie) {
 				hls.on(Hls.Events.MEDIA_DETACHING, function(){
 					video.current.pause()
 				})
-                        
+						
 				hls.on(Hls.Events.SUBTITLE_TRACKS_UPDATED, function(event, data){
 					dispatch({ type: 'setSubtitleTracks', payload: data })
 				})

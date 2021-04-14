@@ -64,8 +64,15 @@ export function isLive(inicio, fin){
 	return false
 }
 
+export function isEvent(type){
+	if(type == 'leon_livetv_Event'){
+		return true
+	}
+
+	return false
+}
+
 export function timerEvent(Inicio){
-	// Fin
 	var startTime = moment(Inicio)
 	var actualTime = moment()
 	var h = startTime.diff(actualTime, 'hours')
@@ -73,22 +80,38 @@ export function timerEvent(Inicio){
 	var m = minutes - (h * 60)
 	let time
 
-	if(h == 0 && m == 0){
+	if(h === 0 && m === 0){
 		time = 'Un momento'
 	}else{
 		if(h > 0){
 			if(m > 0){
-				if(h == 1){
-					time = h+' hora y '+m+' minutos'
+				if(h === 1){
+					if(m === 1){
+						time = h+' hora y '+m+' minuto'
+					}else{
+						time = h+' hora y '+m+' minutos'
+					}
 				}else{
-					time = h+' horas y '+m+' minutos'
+					if(m === 1){
+						time = h+' horas y '+m+' minuto'
+					}else{
+						time = h+' horas y '+m+' minutos'
+					}
 				}
                         
 			}else{
-				time = h+' horas'
+				if(h === 1){
+					time = h+' hora'
+				}else{
+					time = h+' horas'
+				}
 			}
 		}else{
-			time = m+' minutos'
+			if(m === 1){
+				time = m+' minuto'
+			}else{
+				time = m+' minutos'
+			}
 		}
 	}
      

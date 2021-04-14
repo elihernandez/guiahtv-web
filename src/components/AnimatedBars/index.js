@@ -8,6 +8,7 @@ export function AnimatedBars(){
 			<span></span>
 			<span></span>
 			<span></span>
+			<span></span>
 		</div>
 	)
 }

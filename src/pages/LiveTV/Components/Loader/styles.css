@@ -1,0 +1,12 @@
+.loader-video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 1;
+    overflow: hidden;
+
+    .MuiCircularProgress-root{
+        margin-bottom: 25vh;
+    }
+}

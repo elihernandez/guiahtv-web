@@ -1,0 +1,78 @@
+@import '../../../../scss/style-base.css';
+
+.info-channel{
+      position: absolute;
+      z-index: 3;
+      width: 100%;
+      
+      .info-channel-wrapper{
+            position: relative;
+            padding: 7vw $full-padding-content 0 $full-padding-content;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+      
+            .right-buttons{
+                  position: relative;
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+            
+                  .icon{
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        
+                        i{
+                              font-size: 22px;
+                              color: $color-white;
+                        }
+      
+                        img{
+                              position: relative;
+                              width: auto;
+                              height: 20px;
+                        }
+                  }
+            }
+      }
+}
+
+#tyh-ugk{
+      .MuiTooltip-tooltip{
+            width: 200px;
+            padding: 2.5px 20px !important;
+      
+            .MuiSlider-root{
+                  color: $color-white !important;
+            
+                  .MuiSlider-rail{
+                        height: 6px !important;
+                        background-color: $color-grey-2 !important;
+                  }
+            
+                  .MuiSlider-track{
+                        height: 6px !important;
+                  }
+            
+                  .MuiSlider-thumb{
+                        height: 16px !important;
+                        width: 16px !important;
+                        margin-top: -5px !important;
+            
+                        &.MuiSlider-active{
+                              box-shadow: none !important;
+                        }
+            
+                        &.Mui-focusVisible{
+                              box-shadow: none !important;
+                        }
+            
+                        &:hover{
+                              box-shadow: none !important;
+                        }
+                  }
+            }
+      }
+}

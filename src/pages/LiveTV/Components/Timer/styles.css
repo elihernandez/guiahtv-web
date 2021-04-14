@@ -1,17 +1,23 @@
 @import '../../../../scss/style-base.css';
 
-.info-timer-wrapper{
-      padding: 7vw $full-padding-content 0 $full-padding-content;
-      
-      .text-info{
-            color: rgba(179, 179, 179);
-            font-weight: 400;
-            font-size: 18px;
-      }
+.info-timer{
+      position: absolute;
+      z-index: 3;
+      width: 100%; 
 
-      .current-timer{
-            color: white;
-            font-weight: 600;
-            font-size: 35px;
+      .info-timer-wrapper{
+            padding: 7vw $full-padding-content 0 $full-padding-content;
+            
+            .text-info{
+                  color: rgba(179, 179, 179);
+                  font-weight: 400;
+                  font-size: 18px;
+            }
+      
+            .current-timer{
+                  color: white;
+                  font-weight: 600;
+                  font-size: 35px;
+            }
       }
 }

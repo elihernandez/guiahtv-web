@@ -1,57 +1,9 @@
 @import '../../scss/style-base.css';
 
-.loader-tv{
-      position: absolute;
-      width: 100%;
-      height: 100vh;
-      background: #18191c;
-}
-
 .wrapper-livetv{
       position: relative;
       width: 100%;
       height: 100vh;
-      
-      .video{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            z-index: 1;
-      }
-      
-      .content-tv{
-            position: absolute;
-            z-index: 2;
-            top: 0;
-            width: 100%;
-            height: 100%;
-
-            .content-tv-wrapper{
-                  transition: all .5s ease;
-
-                  &.fade.active-enter {
-                        opacity: 0;
-                  }
-                  &.fade.active-enter-active {
-                        opacity: 0.5;
-                        /* transition: opacity 500ms ease; */
-                  }
-                  &.fade.active-enter-done {
-                        opacity: 1;
-                  }
-                  &.fade.active-exit {
-                        opacity: 1;
-                  }
-                  &.fade.active-exit-active {
-                        opacity: 0.5;
-                        /* transition: opacity 500ms ease; */
-                  }    
-                  &.fade.active-exit-done {
-                        opacity: 0;
-                  }  
-            }
-      }
 
       .background-overlay{
             position: absolute;
@@ -59,58 +11,6 @@
             height: 100%;
             top: 0;
             z-index: 2;
-            background: rgba(24,25,28, 0.45);
+            background: rgba(0, 0, 0, 0.40);
       }
-
-      .loader-video{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            /* top: $height-top-menu; */
-            z-index: 2;
-            opacity: 1;
-            margin-bottom: 50vh;
-            /* border: 1px solid red; */
-      }
-
-      .info-channel{
-            position: relative;
-            z-index: 2;  
-      }
-
-      .info-timer{
-            position: relative;
-            z-index: 2;  
-      }
-
-      .guide{
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: auto;
-            overflow-x: hidden;
-            transition: all .3s ease;
-            z-index: 2;
-      } 
-
-      .active-enter {
-            opacity: 0;
-      }
-      .active-enter-active {
-            opacity: 1;
-            transition: opacity 150ms;
-      }
-      .active-enter-done {
-            opacity: 1;
-      }
-      .active-exit {
-            opacity: 1;
-      }
-      .active-exit-active {
-            opacity: 0;
-            transition: opacity 150ms;
-      }    
-      .active-exit-done {
-            opacity: 0;
-      }  
 }

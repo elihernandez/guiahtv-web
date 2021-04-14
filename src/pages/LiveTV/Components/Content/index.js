@@ -1,10 +1,9 @@
 import React, { useRef, useState, useContext, useEffect, useCallback } from 'react'
-import VideoContext from '../../../../context/VideoContext'
 import { CSSTransition } from 'react-transition-group'
+import VideoContext from '../../../../context/VideoContext'
+import './styles.css'
 
 export function Content({ children }) {
-	let positionX = useRef(0)
-	let positionY = useRef(0)
 	const contentRef = useRef()
 	const timerRef = useRef(null)
 	const { stateVideo } = useContext(VideoContext)
@@ -35,12 +34,12 @@ export function Content({ children }) {
 
 	const handleClick = (e) => {       
 		if (e.target == document.querySelector('.background-overlay') ||
-                  e.target == document.querySelector('.info-channel-wrapper') ||
-                  e.target == document.querySelector('.info-channel') ||
-                  e.target == document.querySelector('.text-info') ||
-                  e.target == document.querySelector('.channel-name') ||
-                  e.target == document.querySelector('.navbar-list')
-		) {
+			e.target == document.querySelector('.info-channel-wrapper') ||
+			e.target == document.querySelector('.info-channel') ||
+			e.target == document.querySelector('.text-info') ||
+			e.target == document.querySelector('.channel-name') ||
+			e.target == document.querySelector('.navbar-list')
+		){
 			if (isVisible && activeChannel) {
 				clearTimeout(timerRef.current)
 				fadeOutContent()
@@ -62,7 +61,7 @@ export function Content({ children }) {
 			contentRef.current.removeEventListener('click', handleClick)
 			clearTimeout(timerRef.current)
 		}
-	}, [handleUserMouseMove, positionX, positionY])
+	}, [handleUserMouseMove])
 
 	return (
 		<div className="content-tv" ref={contentRef}>

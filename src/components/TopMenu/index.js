@@ -18,9 +18,9 @@ function LeftContent() {
 
 	const navLinks = [
 		{ title: 'En vivo', href: location, icon: <i className="fas fa-tv"></i> },
-		{ title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-film"></i> },
-		{ title: 'Radio', href: '/radio', icon: <RadioIcon /> },
-		// { title: 'Musica', href: '/musica', icon: <RadioIcon /> },
+		{ title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-popcorn"></i> },
+		{ title: 'Radio', href: '/radio', icon: <i className="fas fa-radio"></i> },
+		{ title: 'Musica', href: '/musica', icon: <i className="fas fa-headphones"></i> },
 		{ title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i> }
 	]
 

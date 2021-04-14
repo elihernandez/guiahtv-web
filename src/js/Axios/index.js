@@ -5,8 +5,17 @@ import { isEmptyArray } from '../Array'
 
 const instance = axios.create({
 	baseURL: config.API_URL,
-	timeout: 10000
+	timeout: 20000
 })
+
+instance.interceptors.request.use(
+	function (config) {
+    	return config
+	}, 
+	function (error) {
+		return Promise.reject(error)
+	}
+)
 
 instance.interceptors.response.use(
 	function (response) {
@@ -18,10 +27,16 @@ instance.interceptors.response.use(
 			return response.data
 		}
 	}, 
-	function () {
-		throw new Error()
+	function (e) {
+		console.log(e.code)
+		// switch(e.code){
+		// case 'ECONNABORTED':
+		// 	throw new Error('Error de conexión')
+		// default: 
+		// 	break
+		// }
+		return Promise.reject(e)
 	}
 )
-
 
 export default instance

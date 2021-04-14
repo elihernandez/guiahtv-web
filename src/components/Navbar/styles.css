@@ -27,11 +27,14 @@
 
                     i, p, svg{
                         font-size: 14px;
-                        font-weight: 600;
                         margin: 0 10px;
                         color: $color-grey-3;
                         transition: all .15s ease;
                         margin-bottom: 1px;
+                    }
+
+                    p{
+                        font-weight: 600;
                     }
 
                     svg{

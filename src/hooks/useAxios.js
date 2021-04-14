@@ -33,7 +33,7 @@ function getURL(section, { memclid }) {
 	return apiURL
 }
 
-export function useAxios(section){
+export function useAxios(section, sendRequest = true){
 	const { stateUser, dispatchUser } = useContext(UserContext)
 	const { credentials } = stateUser
 	const [loading, setLoading] = useState(false)
@@ -55,20 +55,23 @@ export function useAxios(section){
 				setData(response)
 				setLoading(false)
 			} catch (error) {
-				setError('No se pudo cargar el contenido.')
 				setLoading(false)
-				// if(count != 3){
-				//       setError(errorMessage(onClickRequest))
-				// }else{
-				//       setError(errorMessageTwo())
-				// }
+				if(count != 3){
+					setError(1)
+				    //setError(errorMessage(onClickRequest))
+				}else{
+					setError(2)
+				    //setError(errorMessageTwo())
+				}
 			}
 		}
 
-		if(count <= 3){
+		if(count <= 3 && sendRequest){
+			setError(false)
+			setData([])
 			getData()
 		}
-	}, [section, count])
+	}, [section, count, sendRequest])
 
 	return { loading, data, error, onClickRequest }
 }

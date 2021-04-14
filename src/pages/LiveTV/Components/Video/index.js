@@ -54,6 +54,7 @@ export function Video() {
 
 	useEffect(() => {
 		if(dataChannel){
+			setError(false)
 			const requestVideo = async () => {
 				dispatch({ type: 'updateActive', payload: false })
 				dispatch({ type: 'updateLoading', payload: true })
@@ -82,9 +83,9 @@ export function Video() {
 					dispatch({ type: 'updateActive', payload: false })
 					dispatch({ type: 'updateLoading', payload: true })
 					setTimeout(() => {
-						dispatch({ type: 'updateLoading', payload: false })
-						dispatch({ type: 'updateTimer', active: true, timer: dataChannel })
 					}, 1000)
+					dispatch({ type: 'updateLoading', payload: false })
+					dispatch({ type: 'updateTimer', active: true, timer: dataChannel })
 				}
 				break
 			case 'leon_livetv_Radio':
@@ -98,14 +99,20 @@ export function Video() {
 	}, [dataChannel])
 
 	useEffect(() => {
-		dataTV.map((categories) => {
-			categories.cmData.map((channel) => {
-				if(channelId == channel.Id){
-					dispatch({ type: 'updateData', payload: channel })
-				}
+		let id = undefined 
+		if(dataChannel){
+			id = dataChannel.Id ? dataChannel.Id : dataChannel.Registro
+		}
+		if(id != channelId){
+			dataTV.map((categories) => {
+				categories.cmData.map((channel) => {
+					if(channelId == channel.Id){
+						dispatch({ type: 'updateData', payload: channel })
+					}
+				})
 			})
-		})
-	}, [channelId])
+		}
+	}, [channelId, dataTV])
 
 	return (
 		<div className="video">

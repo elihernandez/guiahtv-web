@@ -1,0 +1,17 @@
+@import '../../../../../../scss/style-base.css';
+
+.title-channel{
+    position: relative;
+
+      .text-info{
+            color: $color-grey-2;
+            font-weight: 400;
+            font-size: 1vw;
+      }
+
+      .channel-name{
+            color: $color-white;
+            font-weight: 600;
+            font-size: 2vw;
+      }
+}

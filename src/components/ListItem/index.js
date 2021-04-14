@@ -1,20 +1,23 @@
 import React, { Fragment, useState, useContext } from 'react'
-import { NavLink, useRouteMatch, useHistory } from 'react-router-dom'
+import { NavLink, useRouteMatch, useHistory, useParams } from 'react-router-dom'
 import VodContext from '../../context/VodContext'
 import RadioContext from '../../context/RadioContext'
 import AudioContext from '../../context/AudioContext'
 import VideoContext from '../../context/VideoContext'
 import LiveTvContext from '../../context/LiveTvContext'
 import { getContactInfo } from '../../services/getContactInfo'
-import { getProgressMovie } from '../../js/Time'
-import { limitString, isLimitString, isSerie, isEpisode, typeContent, replaceString, containsString, createUrlString } from '../../js/String'
+import { getProgressMovie, isLive, isEvent, getProgressTimeEvent, getEventTime } from '../../js/Time'
+import {  limitString, isLimitString, isSerie, isEpisode, typeContent, replaceString, containsString, createUrlString } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { imgSourceSetJpg } from '../../js/Image'
-import { isEvent } from '../../pages/LiveTV/Components/Channel'
 import { CSSTransition } from 'react-transition-group'
 import { LazyImage } from '../Image'
 import { AnimatedBars } from '../AnimatedBars'
+import { LoaderSpinnerMUI } from '../Loader'
+import imgRecoverErrorTV from '../../assets/images/backgrounds/onerror/error-tv.png'
+import imgRecoverErrorPortrait from '../../assets/images/backgrounds/onerror/error-portrait.png'
+import imgRecoverErrorLandscape from '../../assets/images/backgrounds/onerror/error-landscape.png'
 import './styles.css'
 
 export function Item({ data, posterType, listType, titleCategory, category }) {
@@ -157,58 +160,84 @@ function ItemCard({ posterType, data }) {
 }
 
 function ItemCardChannel({ posterType, data }) {
-	// console.log(data)
-	// const history = useHistory()
-	// const { dispatch } = useContext(VideoContext)
-	// const { dataChannel } = stateVideo
-	// const { dispatchTV } = useContext(LiveTvContext)
-	const { Id, Title, Name, ContactID, Description, Registro, Poster, HDPosterUrlLandscape, ResumePos, Length } = data
+	const { channelId } = useParams()
+	const { stateVideo = [] } = useContext(VideoContext)
+	const { loadingChannel = false, activeChannel = false} = stateVideo
+	const { Id, Title, Name, Inicio, Fin, ContactID, Description, Registro, Poster, HDPosterUrlLandscape, ResumePos, Length, ContentType } = data
 	const image = Poster ? Poster : HDPosterUrlLandscape
-	const channelId = Id ? Id : Registro
-	const urlNavLink = `/tv/${createUrlString(channelId)}`
+	const urlId = Id ? Id : Registro
+	const urlNavLink = `/tv/${createUrlString(urlId)}`
 	const [contactInfo, setContactInfo] = useState([])
 	const [moreInfoActive, setMoreInfoActive] = useState(false)
 	const [readMoreActive, setReadMoreActive] = useState(false)
 
-	// const handleClick = (e) => {
-	// 	if (e.nativeEvent.target.tabIndex != 0) {
-	// 		if(isEvent(ContentType)){
-	// 			history.push(`/tv/${createUrlString(replaceString(category, 'TV - ', ''))}/${Registro}`)
-	// 		}else{
-	// 			history.push(`/tv/${createUrlString(replaceString(category, 'TV - ', ''))}/${createUrlString(Title)}`)
-	// 		}
-
-	// 		dispatchRadio({ type: 'setCurrentStation', payload: data })
-	// 		dispatchAudio({ type: 'setData', payload: data })
-	// 	}
-	// }
-
-	const handleClick = () => {
-		// if(dispatch){
-		// 	dispatch({ type: 'updateData', payload: data })
-		// }
-		// dispatchTV({ type: 'updatePage', payload: page })
-		// dispatchTV({ type: 'updateCategory', payload: categoria })
-	}
-
 	return (
-		<NavLink to={urlNavLink} className="item-link" activeClassName="active" onClick={handleClick}>
+		<NavLink to={urlNavLink} className="item-link" activeClassName="active">
 			<div className="item">
 				<TitleItem title={Name} />
 				<div className="background-item">
-					<Img title={Title} posterType={posterType} imgPortrait={image} imgLandscape={image} />
+					<Img title={Title} posterType={posterType} imgPortrait={image} imgLandscape={image} imgError={imgRecoverErrorTV} />
+					{	urlId == channelId &&
+						<StatusItem loading={loadingChannel} active={activeChannel}/>
+					}
 					{ResumePos &&
 						<div className="progress-bar-content">
 							<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
 						</div>
 					}
 				</div>
+				<ProgressTime type={ContentType} startTime={Inicio} EndTime={Fin} />
+				<EventTimeContent type={ContentType} startTime={Inicio} EndTime={Fin} />
 				<DescriptionItem description={Description} />
 				<ContactInfo moreInfoActive={moreInfoActive} contactInfo={contactInfo} setMoreInfoActive={setMoreInfoActive} />
 				<ReadMore readMoreActive={readMoreActive} Name={Title} Description={Description} setReadMoreActive={setReadMoreActive} />
 				<Buttons contactId={ContactID} description={Description} setContactInfo={setContactInfo} setMoreInfoActive={setMoreInfoActive} setReadMoreActive={setReadMoreActive} />
 			</div>
 		</NavLink>
+	)
+}
+
+function ProgressTime({ type, startTime, EndTime }){
+	if(!isEvent(type)){
+		return null
+	}
+
+	return (
+		<div className="progress-time-content" style={{ opacity: isLive(startTime, EndTime) ? '1' : '0'}}>
+			<div className="progress-time-current" style={{ width: getProgressTimeEvent(startTime, EndTime) }}></div>
+		</div>
+	)
+}
+
+function EventTimeContent({ type, startTime, EndTime }){
+	if(!isEvent(type)){
+		return null
+	}
+
+	return (
+		<div className="event-time-content">
+			<p className="event-time-channel">
+				<i className="far fa-clock"></i>{getEventTime(startTime, EndTime)}
+			</p>
+			{isLive(startTime, EndTime) &&
+				<div className="button-live">EN VIVO</div>
+			}
+		</div>
+	)
+}
+
+function StatusItem({ loading, active}){
+	return (
+		<div className="status-content">
+			{	loading &&
+				<LoaderSpinnerMUI />	
+			}
+			{	active &&
+				<span className="icon-play-active">
+					<i className="fad fa-pause-circle"></i>
+				</span>	
+			}
+		</div>
 	)
 }
 
@@ -223,61 +252,28 @@ function TitleItem({ title }) {
 function DescriptionItem({ description }) {
 	return (
 		<div className="description-content">
-			<h3 className="description-item">{limitString(description, 80)}</h3>
+			<h3 className="description-item">{limitString(description, 100)}</h3>
 		</div>
 	)
 }
 
-function Img({ title, posterType, imgPortrait, imgLandscape }) {
+function Img({ title, posterType, imgPortrait, imgLandscape, imgError }) {
 	const altImg = `img-${title}`
-	const handleError = (e) => {
-		let srcImg = ''
-		switch (posterType) {
-		case '0':
-			srcImg = 'build/assets/images/logos/guiahtv/vod-error-portrait.png'
-			break
-		case '1':
-			srcImg = 'build/assets/images/logos/guiahtv/GuiahAzulPerf.png'
-			break
-		default:
-			srcImg = 'build/assets/images/logos/guiahtv/GuiahAzulPerf.png'
-			break
-		}
-		e.nativeEvent.target.src = srcImg
-		e.nativeEvent.target.classList.add('image-recover')
-	}
-	// <img alt={`img-${title}`} onError={handleError} src={imgPortrait} />
-	// <img alt={`img-${title}`} onError={handleError} src={imgLandscape} />
+
 	return (
 		<Fragment>
 			{posterType == 0 &&
-                        <LazyImage img={imgPortrait} alt={altImg} type="webp" recoverType="jpg" />
+                <LazyImage img={imgPortrait} alt={altImg} type="webp" recoverType="jpg" imgError={imgError ? imgError : imgRecoverErrorPortrait} />
 			}
 			{posterType == 1 &&
-                        <LazyImage img={imgLandscape} alt={altImg} type="webp" recoverType="jpg" />
-                        // <picture>
-                        //       <source srcSet={imgLandscape} type="image/webp" />
-                        //       <source srcSet={imgSourceSetJpg(imgLandscape, 'webp')} type="image/jpeg" />
-                        //       <img src="build/assets/images/logos/guiahtv/GuiahAzulPerf.png" alt={`img-${title}`} />
-                        // </picture>
+                <LazyImage img={imgLandscape} alt={altImg} type="webp" recoverType="jpg" imgError={imgError ? imgError : imgRecoverErrorLandscape} />
 			}
 			{posterType == 2 &&
-				<LazyImage img={imgLandscape} alt={altImg} type="webp" recoverType="jpg" />
-				// <picture>
-				//       <source srcSet={imgLandscape} type="image/webp" />
-				//       <source srcSet={imgSourceSetJpg(imgLandscape, 'webp')} type="image/jpeg" />
-				//       <img src="build/assets/images/logos/guiahtv/GuiahAzulPerf.png" alt={`img-${title}`} />
-				// </picture>
+				<LazyImage img={imgLandscape} alt={altImg} type="webp" recoverType="jpg" imgError={imgError ? imgError : imgRecoverErrorLandscape} />
 			}
 		</Fragment>
 	)
 }
-
-// <picture>
-//       <source srcSet={imgPortrait} type="image/webp" />
-//       <source srcSet={imgSourceSetJpg(imgPortrait, 'webp')} type="image/jpeg" />
-//       <img src="build/assets/images/logos/guiahtv/vod-error-portrait.png" alt={`img-${title}`} />
-// </picture>
 
 function ProgressBar({ resumePos, length }) {
 
@@ -306,7 +302,8 @@ function Info({ title, description }) {
 }
 
 function Buttons({ contactId, description, setContactInfo, setMoreInfoActive, setReadMoreActive }) {
-	const handleClickShowMoreInfo = () => {
+	const handleClickShowMoreInfo = (e) => {
+		e.preventDefault()
 		const getInfoContact = async () => {
 			try {
 				const data = await getContactInfo(contactId)
@@ -320,7 +317,8 @@ function Buttons({ contactId, description, setContactInfo, setMoreInfoActive, se
 		getInfoContact()
 	}
 
-	const handleClickShowReadMore = () => {
+	const handleClickShowReadMore = (e) => {
+		e.preventDefault()
 		setReadMoreActive(true)
 	}
 
@@ -332,26 +330,28 @@ function Buttons({ contactId, description, setContactInfo, setMoreInfoActive, se
 				</span>
 			</Tooltip>
 
-			{isLimitString(description, 80) &&
-                        <Tooltip title="Leer más" placement="top-start">
-                        	<span tabIndex="0" onClick={handleClickShowReadMore}>
-                        		<i className="fas fa-ellipsis-h" tabIndex="0" />
-                        	</span>
-                        </Tooltip>
+			{	isLimitString(description, 80) &&
+				<Tooltip title="Leer más" placement="top-start">
+					<span tabIndex="0" onClick={handleClickShowReadMore}>
+						<i className="fas fa-ellipsis-h" tabIndex="0" />
+					</span>
+				</Tooltip>
 			}
 		</div>
 	)
 }
 
 function ReadMore({ readMoreActive, Name, Description, setReadMoreActive }) {
-	const handleClickHideReadMore = () => {
+
+	const handleClickHideReadMore = (e) => {
+		e.preventDefault()
 		setReadMoreActive(false)
 	}
 
 	return (
 		<Fragment>
-			{     readMoreActive
-				? <CSSTransition in={readMoreActive} timeout={100} classNames="fade" unmountOnExit>
+			{   readMoreActive
+				? 	<CSSTransition in={readMoreActive} timeout={100} classNames="fade" unmountOnExit>
 					<div className="contact-info-item" tabIndex="0">
 						<div className="content-button-close" tabIndex="0">
 							<span className="button-close" onClick={handleClickHideReadMore} tabIndex="0">
@@ -362,7 +362,7 @@ function ReadMore({ readMoreActive, Name, Description, setReadMoreActive }) {
 						<h3 className="description" tabIndex="0">{Description}</h3>
 					</div>
 				</CSSTransition>
-				: null
+				: 	null
 			}
 		</Fragment>
 	)
@@ -370,7 +370,8 @@ function ReadMore({ readMoreActive, Name, Description, setReadMoreActive }) {
 
 function ContactInfo({ moreInfoActive, contactInfo, setMoreInfoActive }) {
 
-	const handleClickHideMoreInfo = () => {
+	const handleClickHideMoreInfo = (e) => {
+		e.preventDefault()
 		setMoreInfoActive(false)
 	}
 

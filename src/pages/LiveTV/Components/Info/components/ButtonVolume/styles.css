@@ -1,0 +1,47 @@
+@import '../../../../../../scss/style-base.css';
+
+.container-volume{
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      align-content: center;
+      width: 70px;
+
+      .volume-icon{
+            margin-left: 25px;
+            min-width: 100px;
+      }
+
+      .MuiSlider-root{
+          color: $color-white !important;
+          margin-top: -7.5px;
+
+            .MuiSlider-rail{
+                  height: 6px;
+                  background-color: $color-grey-2;
+            }
+
+            .MuiSlider-track{
+                  height: 6px;
+            }
+
+            .MuiSlider-thumb{
+                  height: 16px;
+                  width: 16px;
+                  margin-top: -5px;
+
+                  &.MuiSlider-active{
+                        box-shadow: none;
+                  }
+
+                  &.Mui-focusVisible{
+                        box-shadow: none;
+                  }
+
+                  &:hover{
+                        box-shadow: none;
+                  }
+            }
+      }
+}
