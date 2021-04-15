@@ -5,7 +5,7 @@ import imgLogoPurple from '../../assets/images/logos/guiahtv/guiahtv-logo-purple
 import logoForeground from '../../assets/images/logos/guiahtv/logo_foreground.png'
 import './styles.css'
 
-export default function Logo({ color = 'blue', size = 'md' }) {
+export default function Logo({ color = 'purple', size = 'md' }) {
 	let src
 	switch(color){
 	case 'blue':

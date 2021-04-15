@@ -19,23 +19,23 @@ export function Info() {
 	}, [])
 
 	return (
-	      <CSSTransition in={show} timeout={50} classNames="fade-50" unmountOnExit>
-	            <div className="wrapper-main-home">
-	                  <Header />
-	                  <div className="main-section">
-	                        <div className="wrapper-background" />
-	                        <div className="gradient-overlay" />
-	                        <div className="main-info">
-	                              <Logo color="purple" size="md" />
-	                              <H1 className="title-text large-title-1">El mejor contenido espiritual y de valores reunidos en una sola plataforma para toda la familia.</H1>
-	                              <H2 className="subtitle-text title-3">Disfruta en donde quieras, cancela cuando quieras.</H2>
-	                              <PlansPrices />
-	                        </div>
-	                  </div>
-                    
-	                  <Footer />
-	            </div>
-	      </CSSTransition>
+		<CSSTransition in={show} timeout={50} classNames="fade-50" unmountOnExit>
+			<div className="wrapper-main-home">
+				<Header />
+				<div className="main-section">
+					<div className="wrapper-background" />
+					<div className="gradient-overlay" />
+					<div className="main-info">
+						<Logo color="purple" size="md" />
+						<H1 className="title-text large-title-1">El mejor contenido espiritual y de valores reunidos en una sola plataforma para toda la familia.</H1>
+						<H2 className="subtitle-text title-3">Disfruta en donde quieras, cancela cuando quieras.</H2>
+						<PlansPrices />
+					</div>
+				</div>
+					
+				<Footer />
+			</div>
+		</CSSTransition>
 	)
 
 	// return (
