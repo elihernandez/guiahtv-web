@@ -35,6 +35,10 @@
       &.outline-white{
             background: $color-white;
             color: $color-guide-black;
+
+            &:hover{
+                  background: rgba(255, 255, 255, 0.75); 
+            }
       }
 
       &.transparent{

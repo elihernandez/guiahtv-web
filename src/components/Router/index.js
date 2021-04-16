@@ -10,6 +10,7 @@ import { VideoOnDemand } from '../../pages/Vod/index'
 import { Radio } from '../../pages/Radio/index'
 import { Music } from '../../pages/Music/index'
 import { Zonakids } from '../../pages/Zonakids/index'
+import { ProfilesPage } from '../../pages/Profiles'
 import { SearchPage } from '../../pages/Search'
 import { Page404 } from '../../pages/404/index'
 import { ErrorAuth } from '../../pages/ErrorAuth/index'
@@ -88,9 +89,9 @@ export function BaseRouter() {
 					</CheckAuth>
 				</Route>
 
-				<Route path="/zonakids">
+				<Route path="/radio">
 					<CheckAuth credentials={credentials}>
-						<Zonakids />
+						<Radio />
 					</CheckAuth>
 				</Route>
 
@@ -100,9 +101,15 @@ export function BaseRouter() {
 					</CheckAuth>
 				</Route>
 
-				<Route path="/radio">
+				<Route path="/zonakids">
 					<CheckAuth credentials={credentials}>
-						<Radio />
+						<Zonakids />
+					</CheckAuth>
+				</Route>
+
+				<Route path="/perfiles">
+					<CheckAuth credentials={credentials}>
+						<ProfilesPage />
 					</CheckAuth>
 				</Route>
 
@@ -111,7 +118,6 @@ export function BaseRouter() {
 						<SearchPage />
 					</CheckAuth>
 				</Route>
-
 
 				<Route exact path="/obtener-app">
 					{isBrowser &&

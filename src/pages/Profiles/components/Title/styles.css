@@ -1,0 +1,11 @@
+@import '../../../../scss/style-base.css';
+
+.title{
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.subtitle{
+    font-weight: 500;
+    color: $color-grey-2;
+}

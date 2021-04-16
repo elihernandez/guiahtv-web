@@ -112,7 +112,6 @@ module.exports = (env, { mode }) => ({
 		new MiniCSSExtract({
 			filename: (mode === 'production' ? 'app.min.[contenthash].css' : 'app.min.css'),
 			chunkFilename: (mode === 'production' ? 'main.min.[contenthash].css' : 'main.min.css'),
-		}),
-		new ESBuildPlugin()
+		})
 	].filter(Boolean)
 })

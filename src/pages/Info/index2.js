@@ -5,10 +5,11 @@ import { Footer } from '../../components/Footer/index'
 import { CSSTransition } from 'react-transition-group'
 import { Header } from './components/Header'
 import { PlansPrices } from './components/Plans'
-import { AboutUs } from './components/AboutUs'
-import { Sections } from './components/Sections'
-import { Platforms } from './components/Platforms'
-import { Prices } from './components/Prices'
+// import { AboutUs } from './components/AboutUs'
+// import { Sections } from './components/Sections'
+// import { Platforms } from './components/Platforms'
+// import { Prices } from './components/Prices'
+import backgroundHome from '../../assets/images/backgrounds/background-login.jpg'
 import './styles2.css'
 
 export function Info() {
@@ -23,7 +24,9 @@ export function Info() {
 			<div className="wrapper-main-home">
 				<Header />
 				<div className="main-section">
-					<div className="wrapper-background" />
+					<div className="wrapper-background">
+						<img src={backgroundHome} alt="Background contenido de app" />
+					</div>
 					<div className="gradient-overlay" />
 					<div className="main-info">
 						<Logo color="purple" size="md" />

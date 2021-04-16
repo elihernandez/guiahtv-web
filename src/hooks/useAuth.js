@@ -11,8 +11,8 @@ export function useAuth() {
 	const [cookies, setCookie] = useCookies()
 
 	useEffect(() => {
-		if (!cookies.platform) setCookie('platform', 'Web Browser', { path: '/', maxAge: maxAge }) 
-		if (!cookies.deviceType) setCookie('deviceType', capitalizeFirstLetter(browser.name), { path: '/', maxAge: minAge, })
+		if (!cookies.platform) setCookie('platform', capitalizeFirstLetter(browser.name), { path: '/', maxAge: maxAge }) 
+		if (!cookies.deviceType) setCookie('deviceType', 'Web browser', { path: '/', maxAge: minAge, })
 		if (!cookies.deviceVersion) setCookie('deviceVersion', browser.version, { path: '/', maxAge: minAge, })
 		if (!cookies.uuid) setCookie('uuid', uuidv4(), { path: '/', maxAge: maxAge, })
 		if (!cookies.userAgent) setCookie('userAgent', window.navigator.userAgent, { path: '/', maxAge: minAge, })

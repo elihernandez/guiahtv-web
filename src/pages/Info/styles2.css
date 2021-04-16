@@ -17,10 +17,16 @@
             position: absolute;
             z-index: 1;
             width: 100%;
-            min-height: 100%;
-            background-image: url(../../assets/images/backgrounds/background-login.jpg);
+            height: 100%;
+            overflow: hidden;
+            /* background-image: url(../../assets/images/backgrounds/background-login.jpg);
             background-size: 100%;
-            background-repeat: no-repeat;
+            background-repeat: no-repeat; */
+
+            img{
+                  position: relative;
+                  object-fit: fill;
+            }
       }
 
       .gradient-overlay{

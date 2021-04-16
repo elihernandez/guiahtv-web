@@ -7,7 +7,8 @@ export function Button({
 	color='primary',
 	size='width-auto',
 	classes,
-	type
+	type,
+	onClick
 }){
 	const className = `button-ui 
             ${uppercase ? 'uppercase' : ''}
@@ -16,7 +17,7 @@ export function Button({
             ${classes}
       `
 	return(
-		<button type={type} className={className}>{children}</button>
+		<button type={type} className={className} onClick={onClick}>{children}</button>
 	)
 }
 
