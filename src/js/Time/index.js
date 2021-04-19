@@ -160,3 +160,27 @@ export function setProgressMovie(currentTime, movie, data, dispatch){
 	let positionVideoMil = Math.round(currentTime * 1000)
 	dispatch({type: 'setData', payload: updateData(movieId, data, positionVideoMil)})
 }
+
+export function secondsToString(seconds) {
+	let time
+	let hour = Math.floor(seconds / 3600)
+	hour = (hour < 10)? '0' + hour : hour
+
+	let minute = Math.floor((seconds / 60) % 60)
+	minute = (minute < 10)? '0' + minute : minute
+
+	let second =  Math.floor(seconds % 60)
+	second = (second < 10)? '0' + second : second
+
+	if(hour != '00'){
+		time = hour + ':' + minute + ':' + second
+	}else{
+		if(minute != '00'){
+			time = minute + ':' + second
+		}else{
+			time =  '0:' + second
+		}
+	}
+
+	return time
+}

@@ -2,29 +2,36 @@ import React, { useState, useEffect, useContext } from 'react'
 import { getUtcOffsetLocal } from '../js/Time'
 import { validateSuscription } from '../js/Auth/validateSuscription'
 import UserContext from '../context/UserContext'
+import config from '../../config'
 import axios from '../js/Axios'
 import styled from 'styled-components'
 
-function getURL(section, { memclid }) {
+function getURL(section, { memclid }, params) {
 	let apiURL
 	switch (section) {
 	case 'spotlight':
-		apiURL = '/sl/leon/home_spotlight'
+		apiURL = `${config.API_URL}/sl/leon/home_spotlight`
 		break
 	case 'buttons-menu':
-		apiURL = '/cs/leon_home_bm'
+		apiURL = `${config.API_URL}/cs/leon_home_bm`
 		break
 	case 'livetv':
-		apiURL = `/cmdata/leon/livetvplus/${memclid}/${getUtcOffsetLocal()}`
+		apiURL = `${config.API_URL}/cmdata/leon/livetvplus/${memclid}/${getUtcOffsetLocal()}`
 		break
 	case 'catalogue-vod':
-		apiURL = `/cmdata/leon/entplus/${memclid}`
+		apiURL = `${config.API_URL}/cmdata/leon/entplus/${memclid}`
 		break
 	case 'radio':
-		apiURL = `/cdata/leon/radio/${memclid}`
+		apiURL = `${config.API_URL}/cdata/leon/radio/${memclid}`
 		break
 	case 'catalogue-zonakids':
-		apiURL = `/cdata/leon/kids/${memclid}`
+		apiURL = `${config.API_URL}/cdata/leon/kids/${memclid}`
+		break
+	case 'music-home':
+		apiURL = `https://api.guiah.tv/music/home/${memclid}`
+		break
+	case 'track-link':
+		apiURL = `https://api.guiah.tv/get/trackLink/${params.trackId}/${memclid}`
 		break
 	default:
 		break
@@ -33,7 +40,7 @@ function getURL(section, { memclid }) {
 	return apiURL
 }
 
-export function useAxios(section, sendRequest = true){
+export function useAxios(section, sendRequest = true, params = {}){
 	const { stateUser, dispatchUser } = useContext(UserContext)
 	const { credentials } = stateUser
 	const [loading, setLoading] = useState(false)
@@ -49,7 +56,7 @@ export function useAxios(section, sendRequest = true){
 		async function getData() {
 			try {
 				setLoading(true)
-				const url = getURL(section, credentials)
+				const url = getURL(section, credentials, params)
 				const response = await axios.get(url)
 				validateSuscription(response, dispatchUser)
 				setData(response)

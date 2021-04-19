@@ -1,13 +1,11 @@
 @import '../../scss/style-base.css';
 
-$width-sidebar-music: 300px;
-
 .wrapper-music{
       position: absolute;
       width: 100%;
+      top: $height-top-menu;
       height: calc(100vh - ($height-top-menu + $height-player-music));
       /* border: 1px solid red; */
-      box-sizing: border-box;
 
       .music-content{
             width: 100%;
@@ -15,71 +13,6 @@ $width-sidebar-music: 300px;
             position: relative;
             display: flex;
             flex-direction: row;
-            box-sizing: border-box;
-            /* border: 1px solid green; */
-
-            .sidebar-music{
-                  width: $width-sidebar-music;
-                  max-width: $width-sidebar-music;
-                  height: 100%;
-                  padding: 25px 25px;
-                  /* border: 1px solid blue; */
-
-                  /* .list-section{
-                        &:last-child{ 
-                        }
-
-                        .list-title{
-                        }
-
-                        .list-menu{
-                        
-                              a{
-                                    .list-item{
-                                          i{
-                                          }
-                                    }
-
-                                    &.active{
-                                          .list-item{
-                                          }   
-                                    }
-                              }
-                        }
-                  } */
-            }
-
-            .content-section{
-                  position: relative;
-                  width: calc(100vw - $width-sidebar-music);
-                  height: 100%;
-                  padding: 25px 25px;
-                  overflow-y: scroll;
-                  box-sizing: border-box;
-
-
-                  &::-webkit-scrollbar {
-                        -webkit-appearance: none;
-                  }
-      
-                  &::-webkit-scrollbar:vertical{
-                        width: 6px;
-                  }
-      
-                  &::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
-                        display: none;
-                  }
-      
-                  &::-webkit-scrollbar-thumb {
-                        background-color: #797979;
-                        border-radius: 20px;
-                  }
-      
-                  &::-webkit-scrollbar-track {
-                        border-radius: 10px;  
-                  }
-            }
       }
-
 }
 

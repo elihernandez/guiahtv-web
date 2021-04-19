@@ -4,7 +4,7 @@ import config from '../../../config.js'
 import { isEmptyArray } from '../Array'
 
 const instance = axios.create({
-	baseURL: config.API_URL,
+	// baseURL: config.API_URL,
 	timeout: 20000
 })
 

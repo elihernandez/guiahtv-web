@@ -86,7 +86,7 @@ const productionPlugins = [
 module.exports = (env, { mode }) => ({
 	output: {
 		path: path.resolve(process.cwd(), __dirname + '/build'),
-		filename:  (mode === 'production' ? 'app.min.[contenthash].js' : 'app.min.js'),
+		filename:  (mode === 'production' ? 'app.min.[contenthash].js' : 'app.min.[contenthash].js'),
 		publicPath: (mode !== 'production' ? config.devPath : config.prodPath),
 	},
 	watch: (mode === 'production' ? false : true),

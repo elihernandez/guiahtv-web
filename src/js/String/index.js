@@ -65,7 +65,7 @@ export function isEpisode(str) {
 	return false
 }
 
-export function typeContent(str) {
+export function typeContent(str = '') {
 	if (str.includes('series')) {
 		return 'serie'
 	} else {

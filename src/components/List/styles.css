@@ -14,6 +14,14 @@
             margin: 10px 0 10px 14px;
       }
 
+      .description-list{
+            font-size: 0.8vw;
+            font-weight: 500;
+            letter-spacing: .5px;
+            margin: -10px 0 10px 14px;
+            color: $color-grey-3;
+      }
+
       &.list-catalogue{
       
             &.portrait{
@@ -139,6 +147,23 @@
             &.wrap.landscape {  
                   .list-items{
                         flex-wrap: wrap;
+                  }
+            }
+      }
+
+      &.list-tracks{
+            padding: 0 $full-padding-content 0 calc($full-padding-content / 2);
+            margin: 25px 0;
+
+            &.square{
+
+                  .background-item{
+                        height: 11vw;
+                        transform: scale(0.93);
+                  }
+      
+                  .item-link{
+                        flex: 0 0 calc(100% / 7);
                   }
             }
       }

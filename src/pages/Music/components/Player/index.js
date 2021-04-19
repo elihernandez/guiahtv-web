@@ -1,121 +1,101 @@
-import React, { useState } from 'react'
+import React, { useRef, useState, useContext, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { useAxios } from '../../../../hooks/useAxios'
+import { useHls } from '../../../../hooks/useHls'
+import AudioContext from '../../../../context/AudioContext'
+import { ProgressTime } from './components/ProgressTime'
+import { InfoSong } from './components/InfoSong'
+import { TimeSong } from './components/TimeSong'
+import { ButtonsPlayer } from './components/Buttons'
+import { VolumeBar } from './components/VolumeBar'
+import { Extras } from './components/Extras'
 import './styles.css'
 
-function Extras() {
-      return (
-            <div className="adds">
-                  <ul>
-                        <li>
-                              <i className="far fa-heart"></i>
-                        </li>
-                        <li>
-                              <i className="fas fa-bars"></i>
-                        </li>
-                  </ul>
-            </div>
-      )
-}
-
-function VolumeMusic() {
-      return (
-            <div className="volume-music-content">
-                  <i className="fas fa-volume-up"></i>
-                  <div className="wrapper-volume-music">
-                        <div className="volume-content">
-                              <div className="current-volume">
-                                    <div className="drop-volume">
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-            </div>
-      )
-}
-
-function ButtonsPlayer() {
-      const [play, setPlay] = useState(true)
-
-      const handleClick = () => {
-            if (play) {
-                  setPlay(false)
-            } else {
-                  setPlay(true)
-            }
-      }
-
-      return (
-            <div className="buttons-player">
-                  <ul className="list-buttons">
-                        <li className="button-item">
-                              <i className="fas fa-redo"></i>
-                        </li>
-                        <li className="button-item">
-                              <i className="fas fa-backward"></i>
-                        </li>
-                        <li className="button-item active" onClick={handleClick}>
-                              {play
-                                    ? <i className="fas fa-play"></i>
-                                    : <i className="fas fa-pause"></i>
-                              }
-
-                        </li>
-                        <li className="button-item">
-                              <i className="fas fa-forward"></i>
-                        </li>
-                        <li className="button-item">
-                              <i className="fas fa-random"></i>
-                        </li>
-                  </ul>
-            </div>
-      )
-}
-
-function SongTime() {
-      return (
-            <div className="current-music-time">
-                  <h3>1:32 - 4:25</h3>
-            </div>
-      )
-}
-
-function SongInfo() {
-      return (
-            <div className="current-music-info">
-                  <div className="image-artist">
-                        <img src="build/assets/images/backgrounds/wendy_montilla.jpeg" alt="image-artist" />
-                  </div>
-                  <div className="info-artist">
-                        <h2>Sólo para ti - Haz morada</h2>
-                        <h3>Wendy Montilla</h3>
-                  </div>
-            </div>
-      )
-}
-
-function ProgressTime() {
-      return (
-            <div className="progress-content">
-                  <div className="current-progress">
-                  </div>
-            </div>
-      )
+function findTrack(data, trackId){
+	let dataTrack
+	
+	data.map((category) => {
+		category.tracks.map((track) => {
+			if(track.regID == trackId){
+				dataTrack = track
+			}
+		})
+	})
+	return dataTrack
 }
 
 export function Player() {
-      return (
-            <div className="player-wrapper">
-                  <div className="progress-time-wrapper">
-                        <ProgressTime />
-                  </div>
-                  <div className="player-content-wrapper">
-                        <div className="player-content">
-                              <SongInfo />
-                              <SongTime />
-                              <ButtonsPlayer />
-                              <VolumeMusic />
-                              <Extras />
-                        </div>
-                  </div>
-            </div>
-      )
+	const audioRef = useRef(null)
+	const { trackId } = useParams()
+	const { stateAudio, dispatchAudio } = useContext(AudioContext)
+	const { data, track } = stateAudio
+	const [params, setParams] = useState({})
+	const [url, setUrl] = useState()
+	const [sendRequest, setSendRequest] = useState(false)
+	const { data: response } = useAxios('track-link', sendRequest, params)
+	useHls(audioRef, url)
+
+	useEffect(() => {
+		const dataTrack = findTrack(data, trackId)
+		dispatchAudio({ type: 'setTrack', payload: dataTrack })
+		dispatchAudio({ type: 'setAudioRef', payload: audioRef })
+	}, [trackId, data])
+
+	useEffect(() => {
+		if(track && track.regID){
+			setParams({trackId: track.regID})
+			setSendRequest(true)
+		}
+	}, [track])
+
+	useEffect(() => {
+		if(response.url){
+			setSendRequest(false)
+			setUrl(response.url)
+		}
+	}, [response])
+
+	const onCanPlay = () => {
+		audioRef.current.play() 
+		audioRef.current.muted = false
+	}
+
+	const onPlaying = () => {
+		dispatchAudio({ type: 'setPlaying', payload: true })
+	}
+
+	const onPause = () => {
+		dispatchAudio({ type: 'setPlaying', payload: false })
+	}
+
+	return (
+		<div className="player-wrapper">
+			<audio
+				muted
+				type="application/x-mpegURL"
+				ref={audioRef}
+				onCanPlay={onCanPlay}
+				onPlaying={onPlaying}
+				onPause={onPause} />
+			<div className="progress-time-wrapper">
+				<ProgressTime />
+			</div>
+			<div className="player-content-wrapper">
+				<div className="player-content">
+					<div className="group-controls info">
+						<InfoSong />
+						<TimeSong />
+					</div>
+					<div className="group-controls controls">
+						<ButtonsPlayer />
+					</div>
+					<div className="group-controls buttons">
+						<VolumeBar />
+						<Extras />
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	)
 }

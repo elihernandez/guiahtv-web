@@ -4,7 +4,7 @@ import './styles.css'
 
 function Item({ title, url, icon }) {
 	return (
-		<NavLink exact to={url} activeClassName="active">
+		<NavLink to={url} activeClassName="active">
 			<li className="list-item">
 				<i className={icon} />
 				{title}

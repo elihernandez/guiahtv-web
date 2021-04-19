@@ -1,0 +1,30 @@
+@import '../../../../scss/style-base.css';
+
+.content-section{
+    position: relative;
+    width: calc(100vw - $width-sidebar-music);
+    height: 100%;
+    overflow-y: scroll;
+    /* border: 1px solid blue; */
+
+      &::-webkit-scrollbar {
+            -webkit-appearance: none;
+      }
+
+      &::-webkit-scrollbar:vertical{
+            width: 6px;
+      }
+
+      &::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+            display: none;
+      }
+
+      &::-webkit-scrollbar-thumb {
+            background-color: #797979;
+            border-radius: 20px;
+      }
+
+      &::-webkit-scrollbar-track {
+            border-radius: 10px;  
+      }
+}

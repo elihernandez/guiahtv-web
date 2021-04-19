@@ -19,6 +19,9 @@ export function List({ data, listType, wrap, indexList, tabValues }) {
 	case 'channel':
 		List = <ListChannel data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
 		break
+	case 'tracks':
+		List = <ListTracks data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
+		break
 	}
 
 	return List
@@ -143,8 +146,47 @@ export function ListChannel({ data, listType, indexList, tabValues }) {
 	)
 }
 
+export function ListTracks({ data, listType, indexList, tabValues }) {
+	// const { category, poster_type } = data
+	// console.log(data)
+	const posterType = 2
+	const { title, description } = data
+	const slidesToShow = 7
+	const classes = 'list list-tracks square'
+
+	const settings = {
+		dots: false,
+		infinite: false,
+		slidesToShow: slidesToShow,
+		slidesToScroll: slidesToShow,
+		swipeToSlide: true,
+		focusOnSelect: true,
+		speed: 500
+	}
+
+	return (
+		<div className={classes}>
+			<TitleList title={title} />
+			{	description &&
+				<DescriptionList description={description} />
+			}
+			<SlickSlider settings={settings}>
+				{data.tracks.map((track) => {
+					return (
+						<Item key={track.regID} posterType={data.posterType} data={track} listType={listType} titleCategory={data.title} />
+					)
+				})}
+			</SlickSlider>
+		</div>
+	)
+}
+
 export function TitleList({ title }) {
 	return <h6 className="title-list">{title}</h6>
+}
+
+export function DescriptionList({ description }) {
+	return <h6 className="description-list">{description}</h6>
 }
 
 const getInitialSlide = (totalItems, slidesToShow, indexList, tabValues) => {

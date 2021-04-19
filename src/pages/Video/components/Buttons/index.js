@@ -205,16 +205,16 @@ export function ButtonVolume({ volume, muteVolume, dispatch }) {
 			<Tooltip title="Volumen" placement="top-start">
 				<button type="button" className="content-button-icon" onClick={handleClick} onMouseOver={handleOver}>
 					{muteVolume &&
-                                    <i className="fas fa-volume-mute"></i>
+                        <i className="fas fa-volume-mute"></i>
 					}
 					{volume == 0 && !muteVolume &&
-                                    <i className="fas fa-volume-off"></i>
+                        <i className="fas fa-volume-off"></i>
 					}
 					{volume > 0 && volume <= 60 && !muteVolume &&
-                                    <i className="fas fa-volume-down"></i>
+                        <i className="fas fa-volume-down"></i>
 					}
 					{volume > 60 && !muteVolume &&
-                                    <i className="fas fa-volume-up"></i>
+                        <i className="fas fa-volume-up"></i>
 					}
 				</button>
 			</Tooltip>

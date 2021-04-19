@@ -1,0 +1,9 @@
+@import '../../../../scss/style-base.css';
+
+.sidebar-music{
+    width: $width-sidebar-music;
+    max-width: $width-sidebar-music;
+    height: 100%;
+    padding: 25px 25px;
+    /* border: 1px solid red; */
+}

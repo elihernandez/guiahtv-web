@@ -42,6 +42,9 @@ export function Item({ data, posterType, listType, titleCategory, category }) {
 	case 'catalogue-slide':
 		Item = <ItemCatalogue posterType={posterType} data={data} />
 		break
+	case 'tracks':
+		Item = <ItemTrack posterType={posterType} data={data} />
+		break
 	}
 
 	return Item
@@ -192,6 +195,28 @@ function ItemCardChannel({ posterType, data }) {
 				<ContactInfo moreInfoActive={moreInfoActive} contactInfo={contactInfo} setMoreInfoActive={setMoreInfoActive} />
 				<ReadMore readMoreActive={readMoreActive} Name={Title} Description={Description} setReadMoreActive={setReadMoreActive} />
 				<Buttons contactId={ContactID} description={Description} setContactInfo={setContactInfo} setMoreInfoActive={setMoreInfoActive} setReadMoreActive={setReadMoreActive} />
+			</div>
+		</NavLink>
+	)
+}
+
+function ItemTrack({ posterType, data }) {
+	const location = useRouteMatch()
+	const { path } = location
+	const { regID, title, description, portadaURL, portadaLandscapeURL } = data
+
+	return (
+		<NavLink to={`${path}/${regID}`} className="item-link">
+			<div className="item">
+				<div className="background-item">
+					<Img title={title} posterType={posterType} imgPortrait={portadaURL} imgLandscape={portadaLandscapeURL} />
+					<div className="hover-play">
+						<span>
+							<i className="fas fa-play" />
+						</span>
+					</div>
+				</div>
+				<Info title={title} description={description} />
 			</div>
 		</NavLink>
 	)

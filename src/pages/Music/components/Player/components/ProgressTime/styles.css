@@ -1,0 +1,21 @@
+@import '../../../../../../scss/style-base.css';
+
+.MuiSlider-root{
+    color:  $color-guide-blue !important;
+    padding: 0 !important;
+    position: absolute !important;
+    z-index: 2;
+    
+    .MuiSlider-rail{
+        height: 5px;
+        background-color: $color-grey-5;
+    }
+
+    .MuiSlider-track{
+        height: 5px;
+    }
+
+    .MuiSlider-thumb{
+        margin-top: -4px;
+    }
+}

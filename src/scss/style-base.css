@@ -42,7 +42,8 @@ $height-top-menu: 65px;
 $height-header: $height-top-menu;
 
 /* Music */
-$height-player-music: 100px;
+$height-player-music: 85px;
+$width-sidebar-music: 300px;
 
 /* Radio */
 $height-player-audio: 100px;

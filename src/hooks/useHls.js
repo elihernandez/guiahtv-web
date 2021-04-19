@@ -13,7 +13,7 @@ const config = {
 	levelLoadingRetryDelay: 3000,
 }
 
-export function useHls(video, url, dispatch, movie) {
+export function useHls(video, url, dispatch = false, movie = false) {
 	const hls = new Hls(config)
 	const [error, setError] = useState(false)
 
@@ -33,7 +33,9 @@ export function useHls(video, url, dispatch, movie) {
 								dispatch({ type: 'updateVideoRef', payload: video })
 							}
 						}
-						dispatch({ type: 'setHls', payload: hls })
+						if(dispatch){
+							dispatch({ type: 'setHls', payload: hls })
+						}
 					})
 				})
 
@@ -82,11 +84,15 @@ export function useHls(video, url, dispatch, movie) {
 				})
 
 				hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, function(event, data){
-					dispatch({ type: 'setAudioTracks', payload: data })
+					if(dispatch){
+						dispatch({ type: 'setAudioTracks', payload: data })
+					}
 				})
 						
 				hls.on(Hls.Events.SUBTITLE_TRACKS_UPDATED, function(event, data){
-					dispatch({ type: 'setSubtitleTracks', payload: data })
+					if(dispatch){
+						dispatch({ type: 'setSubtitleTracks', payload: data })
+					}
 				})
 			}
 		}

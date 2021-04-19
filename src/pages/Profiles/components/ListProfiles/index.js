@@ -8,6 +8,7 @@ export function ListProfiles({ editProfiles }){
 			<ul className="list-profiles">
 				<li className="profile-item">
 					<div className="img-profile">
+						<div className="thumbnail-gradient" />
 						<img src="https://via.placeholder.com/150/24f355" />
 						{   editProfiles &&
                             <span className="edit-icon">
@@ -19,6 +20,7 @@ export function ListProfiles({ editProfiles }){
 				</li>
 				<li className="profile-item">
 					<div className="img-profile">
+						<div className="thumbnail-gradient" />
 						<img src="https://via.placeholder.com/150/24f355" />
 						{   editProfiles &&
                             <span className="edit-icon">
@@ -30,6 +32,7 @@ export function ListProfiles({ editProfiles }){
 				</li>
 				<li className="profile-item">
 					<div className="img-profile">
+						<div className="thumbnail-gradient" />
 						<img src="https://via.placeholder.com/150/24f355" />
 						{   editProfiles &&
                             <span className="edit-icon">
@@ -41,6 +44,7 @@ export function ListProfiles({ editProfiles }){
 				</li>
 				<li className="profile-item">
 					<div className="img-profile">
+						<div className="thumbnail-gradient" />
 						<img src="https://via.placeholder.com/150/24f355" />
 						{   editProfiles &&
                             <span className="edit-icon">

@@ -1,0 +1,13 @@
+.current-music-time{
+    position: relative;
+    display: flex;
+
+    h3{
+        position: relative;
+        font-size: 17px;
+        font-weight: 600;  
+        color: #bdbdbd;
+        min-width: 70px;
+        text-align: center;
+    } 
+}
