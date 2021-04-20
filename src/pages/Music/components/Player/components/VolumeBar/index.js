@@ -30,7 +30,7 @@ export function VolumeBar() {
 			<Tooltip title={mute ? 'Desactivar silenciar' : 'Silenciar'} placement="top-start">
 				<button type="button" className="content-button-icon" onClick={handleClick}>
 					{mute &&
-						<i className="fas fa-volume-mute" />
+						<i className="fas fa-volume-mute mute" />
 					}
 					{volume <= 10 && !mute &&
 						<i className="fas fa-volume-off" />
@@ -52,6 +52,7 @@ export function VolumeBar() {
 					onChange={handleChange}
 					value={volume}
 					aria-labelledby="vertical-slider"
+					disabled={mute ? true : false}
 				/>
 			</div>
 		</div>

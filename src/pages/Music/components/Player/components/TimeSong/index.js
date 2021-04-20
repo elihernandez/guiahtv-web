@@ -5,8 +5,8 @@ import './styles.css'
 
 export function TimeSong() {
 	const { stateAudio } = useContext(AudioContext)
-	const { audioRef } = stateAudio
-	const [currentTime, setCurrentTime] = useState('0:00')
+	const { audioRef, track } = stateAudio
+	const [currentTime, setCurrentTime] = useState(null)
 	const [duration, setDuration] = useState(0)
 
 	const updateDuration = () => {
@@ -29,13 +29,15 @@ export function TimeSong() {
 		}
 	}, [audioRef])
 
-	if(!audioRef){
+	if(!track){
 		return null
 	}
 
 	return (
 		<div className="current-music-time">
-			<h3>{currentTime ? currentTime : ''}</h3> <p>-</p> <h3>{duration ? duration : ''}</h3>
+			<h3>{currentTime ? currentTime : ''}</h3>
+			<p>{currentTime ? '-' : ''}</p>
+			<h3>{currentTime ? duration : ''}</h3>
 		</div>
 	)
 }

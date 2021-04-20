@@ -1,16 +1,15 @@
 import React, { Fragment, useState, useContext } from 'react'
-import { NavLink, useRouteMatch, useHistory, useParams } from 'react-router-dom'
+import { NavLink, useRouteMatch, useParams } from 'react-router-dom'
 import VodContext from '../../context/VodContext'
 import RadioContext from '../../context/RadioContext'
 import AudioContext from '../../context/AudioContext'
 import VideoContext from '../../context/VideoContext'
-import LiveTvContext from '../../context/LiveTvContext'
+// import LiveTvContext from '../../context/LiveTvContext'
 import { getContactInfo } from '../../services/getContactInfo'
 import { getProgressMovie, isLive, isEvent, getProgressTimeEvent, getEventTime } from '../../js/Time'
-import {  limitString, isLimitString, isSerie, isEpisode, typeContent, replaceString, containsString, createUrlString } from '../../js/String'
+import {  limitString, isLimitString, isSerie, typeContent, replaceString, containsString, createUrlString } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
-import { imgSourceSetJpg } from '../../js/Image'
 import { CSSTransition } from 'react-transition-group'
 import { LazyImage } from '../Image'
 import { AnimatedBars } from '../AnimatedBars'
@@ -201,20 +200,54 @@ function ItemCardChannel({ posterType, data }) {
 }
 
 function ItemTrack({ posterType, data }) {
-	const location = useRouteMatch()
-	const { path } = location
+	const { url } = useRouteMatch()
+	const { stateAudio } = useContext(AudioContext)
+	const { audioRef, playing } = stateAudio
+	const [matchTrack, setMatchTrack] = useState(false)
 	const { regID, title, description, portadaURL, portadaLandscapeURL } = data
 
+	const handleClick = () => {
+		if(matchTrack){
+			if(playing){
+				audioRef.current.pause()
+			}else{
+				audioRef.current.play()
+			}
+		}
+	}
+
 	return (
-		<NavLink to={`${path}/${regID}`} className="item-link">
+		<NavLink 
+			to={`${url}/${regID}`}
+			className="item-link"
+			activeClassName="active"
+			isActive={(match) => {
+				if(match){
+					setMatchTrack(true)
+					return true
+				}else{
+					setMatchTrack(false)
+					return false
+				}
+			}}
+			onClick={handleClick}
+		>
 			<div className="item">
 				<div className="background-item">
 					<Img title={title} posterType={posterType} imgPortrait={portadaURL} imgLandscape={portadaLandscapeURL} />
 					<div className="hover-play">
-						<span>
-							<i className="fas fa-play" />
-						</span>
+						<span><i className="fas fa-play"/></span>
 					</div>
+					{	matchTrack && playing &&
+						<div className="active-play">
+							<span><i className="fas fa-pause pause-icon"/></span>
+						</div>
+					}
+					{	matchTrack && !playing &&
+						<div className="active-play">
+							<span><i className="fas fa-play play-icon"/></span>
+						</div>
+					}
 				</div>
 				<Info title={title} description={description} />
 			</div>

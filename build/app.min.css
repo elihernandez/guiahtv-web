@@ -3039,6 +3039,56 @@ input::-ms-input-placeholder{
                                           left: 2px;
                                     }
 
+.list-tracks .item-link .item .background-item .active-play{
+                              position: absolute;
+                              top: 0;
+                              width: 100%;
+                              height: 100%;
+                              background-color: rgba(0, 0, 0, 0.5);
+                              display: -webkit-box;
+                              display: -ms-flexbox;
+                              display: flex;
+                              -webkit-box-pack: center;
+                                  -ms-flex-pack: center;
+                                      justify-content: center;
+                              -webkit-box-align: center;
+                                  -ms-flex-align: center;
+                                      align-items: center;
+                              -webkit-transition: all 300ms ease-in-out;
+                              transition: all 300ms ease-in-out;
+                        }
+
+.list-tracks .item-link .item .background-item .active-play span{
+                                    position: relative;
+                                    width: 50px;
+                                    height: 50px;
+                                    border: 2px solid #f7f7f7;
+                                    border-radius: 50%;
+                                    display: -webkit-box !important;
+                                    display: -ms-flexbox !important;
+                                    display: flex !important;
+                                    -webkit-box-pack: center;
+                                        -ms-flex-pack: center;
+                                            justify-content: center;
+                                    -webkit-box-align: center;
+                                        -ms-flex-align: center;
+                                            align-items: center;
+                              }
+
+.list-tracks .item-link .item .background-item .active-play span i{
+                                          position: relative;
+                                          color: #f7f7f7;
+                                          font-size: 22px
+                                    }
+
+.list-tracks .item-link .item .background-item .active-play span i.pause-icon{
+                                                left: 0;
+                                          }
+
+.list-tracks .item-link .item .background-item .active-play span i.play-icon{
+                                                left: 2px;
+                                          }
+
 .list-tracks .item-link .item .info-item{
                         position: relative;
                         width: 100%;
@@ -5856,11 +5906,15 @@ input::-ms-input-placeholder{
 /* Radio */
 
 .MuiSlider-root{
-    color:  #00aeef !important;
+    color: #00aeef !important;
     padding: 0 !important;
     position: absolute !important;
     z-index: 2;
 }
+
+/* &.Mui-disabled{
+        color: rgba($rgba-color-guide-blue, 0.5) !important;
+    } */
 
 .MuiSlider-root .MuiSlider-rail{
         height: 5px;
@@ -5872,8 +5926,13 @@ input::-ms-input-placeholder{
     }
 
 .MuiSlider-root .MuiSlider-thumb{
-        margin-top: -4px;
+        margin-top: -4px
     }
+
+.MuiSlider-root .MuiSlider-thumb.Mui-disabled{
+            width: 0;
+            height: 0;
+        }
 .current-music-time{
     position: relative;
     display: -webkit-box;
@@ -5883,12 +5942,81 @@ input::-ms-input-placeholder{
 
     .current-music-time h3{
         position: relative;
-        font-size: 17px;
-        font-weight: 600;  
+        font-size: 15px;
+        font-weight: 500;  
         color: #bdbdbd;
-        min-width: 70px;
+        min-width: 60px;
         text-align: center;
     }
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
+.buttons-player .list-buttons{
+          list-style: none;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+              -ms-flex-direction: row;
+                  flex-direction: row;
+    }
+
+.buttons-player .list-buttons .button-item{
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                margin: 0 20px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: row;
+                        flex-direction: row;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
+                border-radius: 50%;
+                color: #bdbdbd;
+                cursor: pointer
+          }
+
+.buttons-player .list-buttons .button-item.active{
+                    background: #00aeef;
+                    color: white;
+                    font-size: 22px;
+                }
+
+.buttons-player .list-buttons .button-item i.fa-play{
+                    margin-left: 4px !important;
+                }
+
+.buttons-player .list-buttons .button-item .repeat{
+                    color: #00aeef;
+                }
+
+.buttons-player .list-buttons .button-item .repeat-one{
+                    color: #00aeef;
+                }
+
+.buttons-player .list-buttons .button-item .random{
+                    color: #bdbdbd
+                }
+
+.buttons-player .list-buttons .button-item .random.active{
+                        color: #00aeef;
+                    }
 .content-button-icon{
     position: relative;
     width: 75px;
@@ -6033,50 +6161,6 @@ input::-ms-input-placeholder{
                                     color: #bdbdbd;
                               }
 
-.player-wrapper .player-content-wrapper .player-content .buttons-player .list-buttons{
-                              list-style: none;
-                              display: -webkit-box;
-                              display: -ms-flexbox;
-                              display: flex;
-                              -webkit-box-orient: horizontal;
-                              -webkit-box-direction: normal;
-                                  -ms-flex-direction: row;
-                                      flex-direction: row;
-                        }
-
-.player-wrapper .player-content-wrapper .player-content .buttons-player .list-buttons .button-item{
-                                    width: 50px;
-                                    height: 50px;
-                                    font-size: 20px;
-                                    margin: 0 20px;
-                                    display: -webkit-box;
-                                    display: -ms-flexbox;
-                                    display: flex;
-                                    -webkit-box-orient: horizontal;
-                                    -webkit-box-direction: normal;
-                                        -ms-flex-direction: row;
-                                            flex-direction: row;
-                                    -webkit-box-pack: center;
-                                        -ms-flex-pack: center;
-                                            justify-content: center;
-                                    -webkit-box-align: center;
-                                        -ms-flex-align: center;
-                                            align-items: center;
-                                    border-radius: 50%;
-                                    color: #bdbdbd;
-                                    cursor: pointer
-                              }
-
-.player-wrapper .player-content-wrapper .player-content .buttons-player .list-buttons .button-item.active{
-                                          background: #00aeef;
-                                          color: white;
-                                          font-size: 22px;
-                                    }
-
-.player-wrapper .player-content-wrapper .player-content .buttons-player .list-buttons .button-item i.fa-play{
-                                          margin-left: 4px !important;
-                                    }
-
 .player-wrapper .player-content-wrapper .player-content .volume-music-content{
                         display: -webkit-box;
                         display: -ms-flexbox;
@@ -6094,8 +6178,12 @@ input::-ms-input-placeholder{
 .player-wrapper .player-content-wrapper .player-content .volume-music-content i{
                               font-size: 20px;
                               margin: 0 20px;
-                              color: #bdbdbd;
+                              color: #bdbdbd
                         }
+
+.player-wrapper .player-content-wrapper .player-content .volume-music-content i.mute{
+                                    color: #00aeef;
+                              }
 
 .player-wrapper .player-content-wrapper .player-content .volume-music-content .wrapper-volume-music{
                               position: relative;
@@ -6523,8 +6611,18 @@ input::-ms-input-placeholder{
                     -ms-flex-align: center;
                         align-items: center;
                 padding: 4px;
-                background: #424242;
+                background: #424242
             }
+
+.list-profiles-wrapper .list-profiles .profile-item .img-profile:hover{
+                    cursor: pointer;
+                    -webkit-transform: scale(1.05, 1.05);
+                            transform: scale(1.05, 1.05);
+                }
+
+.list-profiles-wrapper .list-profiles .profile-item .img-profile:hover .thumbnail-gradient{
+                        opacity: 1;
+                    }
 
 .list-profiles-wrapper .list-profiles .profile-item .img-profile .thumbnail-gradient{
                     position: absolute;
@@ -6545,16 +6643,6 @@ input::-ms-input-placeholder{
                     border-radius: 50%;
                     padding: 4px;
                 }
-
-.list-profiles-wrapper .list-profiles .profile-item .img-profile:hover{
-                    cursor: pointer;
-                    -webkit-transform: scale(1.05, 1.05);
-                            transform: scale(1.05, 1.05);
-                }
-
-.list-profiles-wrapper .list-profiles .profile-item .img-profile:hover .thumbnail-gradient{
-                        opacity: 1;
-                    }
 
 .list-profiles-wrapper .list-profiles .profile-item .img-profile .edit-icon{
                     position: absolute;

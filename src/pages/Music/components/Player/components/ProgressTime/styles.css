@@ -1,10 +1,14 @@
 @import '../../../../../../scss/style-base.css';
 
 .MuiSlider-root{
-    color:  $color-guide-blue !important;
+    color: $color-guide-blue !important;
     padding: 0 !important;
     position: absolute !important;
     z-index: 2;
+
+    /* &.Mui-disabled{
+        color: rgba($rgba-color-guide-blue, 0.5) !important;
+    } */
     
     .MuiSlider-rail{
         height: 5px;
@@ -17,5 +21,10 @@
 
     .MuiSlider-thumb{
         margin-top: -4px;
+
+        &.Mui-disabled{
+            width: 0;
+            height: 0;
+        }
     }
 }

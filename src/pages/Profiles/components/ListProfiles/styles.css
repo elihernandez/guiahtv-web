@@ -33,6 +33,15 @@
                 padding: 4px;
                 background: $color-grey-5;
 
+                &:hover{
+                    cursor: pointer;
+                    transform: scale(1.05, 1.05);
+
+                    .thumbnail-gradient{
+                        opacity: 1;
+                    }
+                }
+
                 .thumbnail-gradient{
                     position: absolute;
                     width: 100%;
@@ -49,15 +58,6 @@
                     width: 100%;
                     border-radius: 50%;
                     padding: 4px;
-                }
-
-                &:hover{
-                    cursor: pointer;
-                    transform: scale(1.05, 1.05);
-
-                    .thumbnail-gradient{
-                        opacity: 1;
-                    }
                 }
 
                 .edit-icon{

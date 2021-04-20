@@ -110,10 +110,15 @@ const initialState = {
 	hlsRef: null,
 	data: [],
 	track: [],
+	listTrack: [],
 	loading: false,
 	playing: false,
 	muted: false,
 	volume: 50,
+	repeat: false,
+	repeatOne: false,
+	random: false,
+	randomTracks: [],
 	error: false
 }
 
@@ -143,6 +148,12 @@ const reducer = (state, action) => {
 			track: action.payload,
 		}
 	}
+	case 'setListTrack': {
+		return {
+			...state,
+			listTrack: action.payload,
+		}
+	}
 	case 'setLoading': {
 		return {
 			...state,
@@ -167,6 +178,24 @@ const reducer = (state, action) => {
 			muted: action.payload,
 		}
 	}
+	case 'setRepeat': {
+		return {
+			...state,
+			repeat: action.payload,
+		}
+	}
+	case 'setRepeatOne': {
+		return {
+			...state,
+			repeatOne: action.payload,
+		}
+	}
+	case 'setRandom': {
+		return {
+			...state,
+			random: action.payload,
+		}
+	}
 	case 'setError': {
 		return {
 			...state,
@@ -179,14 +208,6 @@ const reducer = (state, action) => {
 
 export function Music() {
 	let { url } = useRouteMatch()
-
-	useEffect(() => {
-
-		return () => {
-			exitFullScreen()
-			exitPip(document.querySelector('video'))
-		}
-	}, [])
 	
 	return (
 		<AudioContextProvider state={initialState} reducer={reducer}>
@@ -195,7 +216,7 @@ export function Music() {
 					<SidebarMusic/>
 					<Sections />
 					<Switch>
-						<Route path={`${url}/:section/:trackId?`} >
+						<Route path={`${url}/:inicio/:trackId?`} >
 							<Player />
 						</Route>
 					</Switch>
