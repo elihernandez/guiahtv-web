@@ -7,7 +7,8 @@
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "esbuild": "node esbuild.js"
+    "esbuild": "node esbuild.js",
+    "dependencies:check": "depcheck"
   },
   "keywords": [],
   "author": "Eliezer Hernández",
@@ -93,6 +94,7 @@
     "md5": "^2.3.0",
     "mediaelement": "^4.2.16",
     "moment": "^2.29.1",
+    "npm-gui": "^3.0.3",
     "picture-in-picture": "^1.0.2",
     "postcss-css-variables": "^0.17.0",
     "postcss-nested-vars": "^1.0.0",

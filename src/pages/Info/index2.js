@@ -3,6 +3,7 @@ import Logo from '../../components/Logo/index'
 import { H1, H2 } from '../../components/Typography/index'
 import { Footer } from '../../components/Footer/index'
 import { CSSTransition } from 'react-transition-group'
+import { LazyImage } from '../../components/Image'
 import { Header } from './components/Header'
 import { PlansPrices } from './components/Plans'
 // import { AboutUs } from './components/AboutUs'
@@ -25,7 +26,7 @@ export function Info() {
 				<Header />
 				<div className="main-section">
 					<div className="wrapper-background">
-						<img src={backgroundHome} alt="Background contenido de app" />
+						<LazyImage img={backgroundHome} alt='Background contenido de app' type="jpg" recoverType="jpg" />
 					</div>
 					<div className="gradient-overlay" />
 					<div className="main-info">

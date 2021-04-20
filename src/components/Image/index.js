@@ -4,7 +4,7 @@ import {imgTypeReplace} from '../../js/Image'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/opacity.css'
 
-export function LazyImage({img, alt, type, recoverType, imgError}){
+export function LazyImage({img, alt, type, recoverType, imgError = '', effect = 'opacity'}){
 	let src = img
 
 	if(isIE){
@@ -39,7 +39,7 @@ export function LazyImage({img, alt, type, recoverType, imgError}){
 	return (
 		<LazyLoadImage
 			alt={alt}
-			effect="opacity"
+			effect={effect}
 			src={src}
 			placeholder={null}
 			onError={onError}
