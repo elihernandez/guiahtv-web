@@ -201,8 +201,8 @@ function ItemCardChannel({ posterType, data }) {
 
 function ItemTrack({ posterType, data }) {
 	const { url } = useRouteMatch()
-	const { stateAudio } = useContext(AudioContext)
-	const { audioRef, playing } = stateAudio
+	const { stateAudio, dispatchAudio } = useContext(AudioContext)
+	const { audioRef, playing, pauseList } = stateAudio
 	const [matchTrack, setMatchTrack] = useState(false)
 	const { regID, title, description, portadaURL, portadaLandscapeURL } = data
 
@@ -214,26 +214,32 @@ function ItemTrack({ posterType, data }) {
 				audioRef.current.play()
 			}
 		}
+
+		if(pauseList){
+			dispatchAudio({ type: 'setPauseList', payload: false })
+		}
 	}
 
 	return (
-		<NavLink 
-			to={`${url}/${regID}`}
-			className="item-link"
-			activeClassName="active"
-			isActive={(match) => {
-				if(match){
-					setMatchTrack(true)
-					return true
-				}else{
-					setMatchTrack(false)
-					return false
-				}
-			}}
-			onClick={handleClick}
-		>
+		<div className="item-link">
 			<div className="item">
-				<div className="background-item">
+				<NavLink
+					to={`${url}/${regID}`}
+					className="background-item"
+					activeClassName="active"
+					isActive={(match) => {
+						setTimeout(() => {
+							if(match){
+								setMatchTrack(true)
+								return true
+							}else{
+								setMatchTrack(false)
+								return false
+							}
+						}, 100)
+					}}
+					onClick={handleClick}
+				>
 					<Img title={title} posterType={posterType} imgPortrait={portadaURL} imgLandscape={portadaLandscapeURL} />
 					<div className="hover-play">
 						<span><i className="fas fa-play"/></span>
@@ -248,10 +254,10 @@ function ItemTrack({ posterType, data }) {
 							<span><i className="fas fa-play play-icon"/></span>
 						</div>
 					}
-				</div>
+				</NavLink>
 				<Info title={title} description={description} />
 			</div>
-		</NavLink>
+		</div>
 	)
 }
 

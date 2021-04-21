@@ -29,10 +29,12 @@ export function ProgressTime() {
 	}, [audioRef])
 
 	return (
-		<div className="progress-content">
-			{	track &&
-				<Slider value={value} onChange={handleChange} min={0} max={duration} aria-labelledby="continuous-slider" />
-			}
+		<div className="progress-time-wrapper">
+			<div className="progress-content">
+				{	track &&
+					<Slider value={value} onChange={handleChange} min={0} max={duration} aria-labelledby="continuous-slider" />
+				}
+			</div>
 		</div>
 	)
 }

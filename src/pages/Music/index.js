@@ -117,8 +117,9 @@ const initialState = {
 	volume: 50,
 	repeat: false,
 	repeatOne: false,
+	pauseList: false,
 	random: false,
-	randomTracks: [],
+	listRandomTracks: [],
 	error: false
 }
 
@@ -190,10 +191,22 @@ const reducer = (state, action) => {
 			repeatOne: action.payload,
 		}
 	}
+	case 'setPauseList': {
+		return {
+			...state,
+			pauseList: action.payload,
+		}
+	}
 	case 'setRandom': {
 		return {
 			...state,
 			random: action.payload,
+		}
+	}
+	case 'setListRandomTracks': {
+		return {
+			...state,
+			listRandomTracks: action.payload,
 		}
 	}
 	case 'setError': {

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import AudioContext from '../../../../../../context/AudioContext'
 import Tooltip from '@material-ui/core/Tooltip'
 import { limitString, isLimitString } from '../../../../../../js/String'
+import './styles.css'
 
 export function InfoSong() {
 	const { stateAudio } = useContext(AudioContext)

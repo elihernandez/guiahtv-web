@@ -403,6 +403,12 @@
                                     }
                               }
                         }
+
+                        &:hover{
+                              .hover-play{
+                                    opacity: 1;
+                              }
+                        }
                   }
 
                   .info-item{
@@ -436,10 +442,6 @@
                         .background-item{
                               box-shadow: rgb(0 0 0 / 69%) 0px 1.3vw 1.6vw -0.5vw, rgb(0 0 0 / 73%) 0px .9vw 0.5vw -0.5vw;
                               transform: scale(0.93);
-
-                              .hover-play{
-                                    opacity: 1;
-                              }
                         }
                   }
             }

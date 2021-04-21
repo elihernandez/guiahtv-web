@@ -3,7 +3,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCSSExtract = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const { ESBuildPlugin } = require('esbuild-loader')
+// const { ESBuildPlugin } = require('esbuild-loader')
 const path = require('path')
 var config = require('./config')
 
