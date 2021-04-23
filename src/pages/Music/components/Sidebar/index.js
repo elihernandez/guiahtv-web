@@ -17,7 +17,11 @@ export function SidebarMusic(){
                 		icon: 'fas fa-home',
                 		title: 'Inicio'
                 	},
-                  	// { url: `${url}/recomendado`, icon: 'fas fa-headphones-alt', title: 'Recomendado'},
+                  	// {
+                	// 	url: `${url}/recomendado`,
+                	//   	icon: 'fas fa-headphones-alt',
+                	//   	title: 'Recomendado'
+                	// },
                   	// { url: `${url}/genero`, icon: 'fas fa-compact-disc', title: 'Género'},
                   	// { url: `${url}/buscar`, icon: 'fas fa-search', title: 'Buscar'}
                 ]

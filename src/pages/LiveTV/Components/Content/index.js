@@ -25,7 +25,7 @@ export function Content({ children }) {
 	const handleUserMouseMove = useCallback(() => {
 		if (activeChannel) {
 			clearTimeout(timerRef.current)
-			timerRef.current = setTimeout(() => fadeOutContent(), 6000)
+			timerRef.current = setTimeout(() => fadeOutContent(), 3000)
 			fadeInContent()
 		} else {
 			clearTimeout(timerRef.current)

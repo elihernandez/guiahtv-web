@@ -16,14 +16,14 @@ export function Player() {
 	const audioRef = useRef(null)
 	const history = useHistory()
 	const match = useRouteMatch()
+	const [url, setUrl] = useState('')
+	const [params, setParams] = useState({})
+	const [sendRequest, setSendRequest] = useState(false)
 	const { collectionID, trackId } = useParams()
 	const { stateAudio, dispatchAudio } = useContext(AudioContext)
 	const { data, track, listTrack, repeat, repeatOne, pauseList, random, listRandomTracks } = stateAudio
-	const [params, setParams] = useState({})
-	const [sendRequest, setSendRequest] = useState(false)
-	const [url, setUrl] = useState()
 	const { data: response } = useAxios('track-link', sendRequest, params)
-	useHls(audioRef, url)
+	const { error } = useHls(audioRef, url)
 
 	useEffect(() => {
 		dispatchAudio({ type: 'setAudioRef', payload: audioRef })
@@ -40,18 +40,26 @@ export function Player() {
 	}, [trackId, collectionID, data])
 
 	useEffect(() => {
-		if(track && track.regID){
+		if(track?.regID){
 			setParams({trackId: track.regID})
 			setSendRequest(true)
 		}
 	}, [track])
 
 	useEffect(() => {
-		if(response.url){
+		if(response?.url){
 			setSendRequest(false)
 			setUrl(response.url)
 		}
 	}, [response])
+
+	useEffect(() => {
+		if(error){
+			dispatchAudio({ type: 'setError', payload: 'No se puede reproducir este contenido' })
+		}else{
+			dispatchAudio({ type: 'setError', payload: false })
+		}
+	}, [error])
 
 	const onCanPlay = () => {
 		if(!pauseList){

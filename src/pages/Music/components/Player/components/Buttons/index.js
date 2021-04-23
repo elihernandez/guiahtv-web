@@ -17,7 +17,7 @@ const RandomButton = ({ state, dispatch }) => {
 	}
 
 	return (
-		<Tooltip title={random ? 'Desactivar reproducción aleatoria' : 'Activar reproducción aleatoria'} placement="top-start">
+		<Tooltip title={random ? 'Desactivar reproducción aleatoria' : 'Activar reproducción aleatoria'} placement="top-start" enterDelay={1000} enterNextDelay={1000}>
 			<li className="button-item" onClick={handleClick}>
 				<i className={`far fa-random random ${random ? 'active' : ''}`}></i>
 			</li>
@@ -50,7 +50,7 @@ const RepeatButton = ({ state, dispatch }) => {
 	}
 
 	return (
-		<Tooltip title={tooltipText} placement="top-start">
+		<Tooltip title={tooltipText} placement="top-start" enterDelay={1000} enterNextDelay={1000}>
 			<li className="button-item" onClick={handleClick}>
 				{	!repeat && !repeatOne &&
 					<i className="far fa-repeat-alt no-repeat"></i>
@@ -66,7 +66,7 @@ const RepeatButton = ({ state, dispatch }) => {
 	)
 }
 
-const StepBackwardButton = ({ state, dispatch }) => {
+const StepBackwardButton = ({ state, dispatch }) => { 
 	const history = useHistory()
 	const { trackId } = useParams()
 	const match = useRouteMatch()
@@ -110,7 +110,7 @@ const StepBackwardButton = ({ state, dispatch }) => {
 	}
 
 	return (
-		<Tooltip title='Anterior' placement="top-start">
+		<Tooltip title='Anterior' placement="top-start" enterDelay={1000} enterNextDelay={1000}>
 			<li className="button-item" onClick={handleClick}>
 				<i className="fas fa-step-backward"></i>
 			</li>
@@ -158,7 +158,7 @@ const StepForwardButton = ({ state, dispatch }) => {
 	}
 
 	return (
-		<Tooltip title='Siguiente' placement="top-start">
+		<Tooltip title='Siguiente' placement="top-start" enterDelay={1000} enterNextDelay={1000}>
 			<li className="button-item" onClick={handleClick}>
 				<i className="fas fa-step-forward"></i>
 			</li>
@@ -170,7 +170,7 @@ const PlayPauseButtons = ({ state, dispatch }) => {
 	const { audioRef, playing, track } = state
 
 	const handleClick = () => {
-		if(track){
+		if(track && track.length > 0){
 			if (playing) {
 				audioRef.current.pause()
 				dispatch({ type: 'setPlaying', payload: false })
@@ -182,7 +182,7 @@ const PlayPauseButtons = ({ state, dispatch }) => {
 	}
 
 	return (
-		<Tooltip title={playing ? 'Pausar' : 'Reanudar'} placement="top-start">
+		<Tooltip title={playing ? 'Pausar' : 'Reanudar'} placement="top-start" enterDelay={1000} enterNextDelay={1000}>
 			<li className="button-item active" onClick={handleClick}>
 				{playing
 					? <i className="fas fa-pause"></i>

@@ -23,7 +23,10 @@ const javascriptRules = {
 					}
 				]
 			],
-			plugins: ['@babel/plugin-proposal-optional-chaining', '@babel/transform-runtime']
+			plugins: [
+				'@babel/plugin-proposal-optional-chaining',
+				'@babel/transform-runtime'
+			]
 		}
 	}
 }

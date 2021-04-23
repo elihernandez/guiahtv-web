@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
-import { Home } from '../Home'
+import { Home } from './components/Home'
 import './styles.css'
 
 export function Sections(){

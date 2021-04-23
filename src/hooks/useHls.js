@@ -97,6 +97,10 @@ export function useHls(video, url, dispatch = false, movie = false) {
 			}
 		}
 
+		if(url === null){
+			setError(true)
+		}
+
 		return (() => {
 			hls.detachMedia()
 			hls.destroy()

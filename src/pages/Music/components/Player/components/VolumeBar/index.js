@@ -5,10 +5,10 @@ import Slider from '@material-ui/core/Slider'
 import './styles.css'
 
 export function VolumeBar() {
-	const [volume, setVolume] = useState(50)
-	const [mute, setMute] = useState(false)
 	const { stateAudio } = useContext(AudioContext)
 	const { audioRef, track } = stateAudio
+	const [volume, setVolume] = useState(50)
+	const [mute, setMute] = useState(false)
 
 	const handleChange = (event, newValue) => {
 		setVolume(newValue)
@@ -27,7 +27,7 @@ export function VolumeBar() {
 
 	return (
 		<div className="volume-music-content">
-			<Tooltip title={mute ? 'Desactivar silenciar' : 'Silenciar'} placement="top-start">
+			<Tooltip title={mute ? 'Desactivar silenciar' : 'Silenciar'} placement="top-start" enterDelay={1000} enterNextDelay={1000}>
 				<button type="button" className="content-button-icon" onClick={handleClick}>
 					{mute &&
 						<i className="fas fa-volume-mute mute" />
@@ -50,7 +50,7 @@ export function VolumeBar() {
 				<Slider
 					orientation="horizontal"
 					onChange={handleChange}
-					value={volume}
+					value={track.length === 0 ? 0 : volume}
 					aria-labelledby="vertical-slider"
 					disabled={mute || track.length === 0 ? true : false}
 				/>

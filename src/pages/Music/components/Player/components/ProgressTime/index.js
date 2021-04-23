@@ -43,9 +43,14 @@ export function ProgressTime() {
 	return (
 		<div className="progress-time-wrapper">
 			<div className="progress-content">
-				{	track.length > 0 &&
-					<Slider value={value} onChange={handleChange} min={0} max={duration} aria-labelledby="continuous-slider" />
-				}
+				<Slider
+					value={value}
+					onChange={handleChange}
+					min={0}
+					max={duration}
+					aria-labelledby="continuous-slider"
+					disabled={track.length === 0 ? true : false}
+				/>
 			</div>
 		</div>
 	)

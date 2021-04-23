@@ -5951,13 +5951,18 @@ input::-ms-input-placeholder{
                 margin-top: -5px;
                 width: 15px;
                 height: 15px;
-                background-color: #f7f7f7
+                background-color: #f7f7f7;
+                opacity: 0
             }
 
 .progress-time-wrapper .progress-content .MuiSlider-root .MuiSlider-thumb.Mui-disabled{
                     width: 0;
                     height: 0;
                 }
+
+.progress-time-wrapper .progress-content:hover .MuiSlider-thumb{
+                opacity: 1;
+            }
 .current-music-info{
     position: relative;
     display: -webkit-box;
@@ -6122,14 +6127,13 @@ input::-ms-input-placeholder{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    margin-right: 50px;
+    width: 250px;
 }
 
 .volume-music-content .content-button-icon{
@@ -6210,13 +6214,18 @@ input::-ms-input-placeholder{
                 margin-top: -5px;
                 width: 15px;
                 height: 15px;
-                background-color: #f7f7f7
+                background-color: #f7f7f7;
+                opacity: 0
             }
 
 .volume-music-content .wrapper-volume-music .MuiSlider-root .MuiSlider-thumb.Mui-disabled{
                     width: 0;
                     height: 0;
                 }
+
+.volume-music-content .wrapper-volume-music:hover .MuiSlider-thumb{
+                opacity: 1;
+            }
 
 
 
@@ -6319,33 +6328,12 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.content-section{
+.content-section {
     position: relative;
     width: calc(100vw - 300px);
     height: 100%;
-    overflow-y: scroll
+    overflow-y: scroll;
 }
-
-.content-section::-webkit-scrollbar {
-            -webkit-appearance: none;
-      }
-
-.content-section::-webkit-scrollbar:vertical{
-            width: 6px;
-      }
-
-.content-section::-webkit-scrollbar-button:increment,.content-section .contenedor::-webkit-scrollbar-button {
-            display: none;
-      }
-
-.content-section::-webkit-scrollbar-thumb {
-            background-color: #797979;
-            border-radius: 20px;
-      }
-
-.content-section::-webkit-scrollbar-track {
-            border-radius: 10px;  
-      }
 /* #13171a */
 
 /* App */
