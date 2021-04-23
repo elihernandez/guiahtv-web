@@ -1,4 +1,4 @@
-@import '../../../../../scss/style-base.css';
+@import '../../../../../styles/style-base.css';
 
 .control-volume-wrapper{
       position: relative;
@@ -24,7 +24,7 @@
             }
       }
 
-      .MuiSlider-root{
+      /* .MuiSlider-root{
             color: white;
 
             .MuiSlider-rail{
@@ -47,6 +47,46 @@
                   &:hover{
                         box-shadow: none !important;
                   }
+            }
+      } */
+      .MuiSlider-root{
+            height: 6px;
+            color: $color-guide-blue !important;
+      
+            .MuiSlider-rail{
+                  height: 6px !important;
+                  background-color: $color-grey-2 !important;
+            }
+      
+            .MuiSlider-track{
+                  height: 6px !important;
+            }
+      
+            .MuiSlider-thumb{
+                  height: 15px !important;
+                  width: 15px !important;
+                  margin-top: -5px !important;
+                  color: $color-white !important;
+                  opacity: 0;
+      
+                  &.MuiSlider-active{
+                        box-shadow: none !important;
+                  }
+      
+                  &.Mui-focusVisible{
+                        box-shadow: none !important;
+                  }
+      
+                  &:hover{
+                        box-shadow: none !important;
+                  }
+            }
+      }
+
+      
+      &:hover{
+            .MuiSlider-thumb{
+               opacity: 1;
             }
       }
 }

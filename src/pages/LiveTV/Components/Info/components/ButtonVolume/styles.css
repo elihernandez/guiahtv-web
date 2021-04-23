@@ -1,6 +1,6 @@
-@import '../../../../../../scss/style-base.css';
+@import '../../../../../../styles/style-base.css';
 
-.container-volume{
+.container-volume-tv{
       position: relative;
       display: flex;
       flex-direction: row;
@@ -13,35 +13,47 @@
             min-width: 100px;
       }
 
+      .MuiTooltip-tooltip{
+            width: 200px !important;
+            padding: 2.5px 20px !important;
+      }
+      
       .MuiSlider-root{
-          color: $color-white !important;
-          margin-top: -7.5px;
-
+            color: $color-guide-blue !important;
+      
             .MuiSlider-rail{
-                  height: 6px;
-                  background-color: $color-grey-2;
+                  height: 6px !important;
+                  background-color: $color-grey-2 !important;
             }
-
+      
             .MuiSlider-track{
-                  height: 6px;
+                  height: 6px !important;
             }
-
+      
             .MuiSlider-thumb{
-                  height: 16px;
-                  width: 16px;
-                  margin-top: -5px;
-
+                  height: 15px !important;
+                  width: 15px !important;
+                  margin-top: -5px !important;
+                  color: $color-white !important;
+                  opacity: 0;
+      
                   &.MuiSlider-active{
-                        box-shadow: none;
+                        box-shadow: none !important;
                   }
-
+      
                   &.Mui-focusVisible{
-                        box-shadow: none;
+                        box-shadow: none !important;
                   }
-
+      
                   &:hover{
-                        box-shadow: none;
+                        box-shadow: none !important;
                   }
+            }
+      }
+
+      &:hover{
+            .MuiSlider-thumb{
+               opacity: 1;
             }
       }
 }

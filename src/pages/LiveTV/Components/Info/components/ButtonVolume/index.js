@@ -33,7 +33,7 @@ export function ButtonVolume({ volume, muteVolume, dispatch }) {
 	}, [value])
 
 	return (
-		<div className="container-volume">
+		<div className="container-volume-tv">
 			<Tooltip 
 				title={<Slider value={value} onChange={handleChange} aria-labelledby="continuous-slider" />}
 				placement="left"

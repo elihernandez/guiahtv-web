@@ -1,4 +1,4 @@
-@import '../../../../scss/style-base.css';
+@import '../../../../styles/style-base.css';
 
 .info-channel{
       position: absolute;
@@ -43,36 +43,43 @@
       .MuiTooltip-tooltip{
             width: 200px;
             padding: 2.5px 20px !important;
+      }
+      .MuiSlider-root{
+            color: $color-guide-blue !important;
       
-            .MuiSlider-root{
+            .MuiSlider-rail{
+                  height: 6px !important;
+                  background-color: $color-grey-2 !important;
+            }
+      
+            .MuiSlider-track{
+                  height: 6px !important;
+            }
+      
+            .MuiSlider-thumb{
+                  height: 15px !important;
+                  width: 15px !important;
+                  margin-top: -5px !important;
                   color: $color-white !important;
-            
-                  .MuiSlider-rail{
-                        height: 6px !important;
-                        background-color: $color-grey-2 !important;
+                  opacity: 0;
+      
+                  &.MuiSlider-active{
+                        box-shadow: none !important;
                   }
-            
-                  .MuiSlider-track{
-                        height: 6px !important;
+      
+                  &.Mui-focusVisible{
+                        box-shadow: none !important;
                   }
-            
-                  .MuiSlider-thumb{
-                        height: 16px !important;
-                        width: 16px !important;
-                        margin-top: -5px !important;
-            
-                        &.MuiSlider-active{
-                              box-shadow: none !important;
-                        }
-            
-                        &.Mui-focusVisible{
-                              box-shadow: none !important;
-                        }
-            
-                        &:hover{
-                              box-shadow: none !important;
-                        }
+      
+                  &:hover{
+                        box-shadow: none !important;
                   }
             }
       }
-}
+      
+      &:hover{
+            .MuiSlider-thumb{
+               opacity: 1;
+            }
+      }
+} 

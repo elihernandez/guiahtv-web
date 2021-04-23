@@ -1,4 +1,4 @@
-@import '../../../../../../scss/style-base.css';
+@import '../../../../../../styles/style-base.css';
 
 .volume-music-content{
     display: flex;
@@ -66,10 +66,6 @@
             padding: 0 !important;
             position: absolute !important;
             z-index: 2;
-        
-            /* &.Mui-disabled{
-                color: rgba($rgba-color-guide-blue, 0.5) !important;
-            } */
             
             .MuiSlider-rail{
                 height: 5px;

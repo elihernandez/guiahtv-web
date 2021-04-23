@@ -51,7 +51,7 @@ export function VolumeBar() {
 					orientation="horizontal"
 					onChange={handleChange}
 					value={track.length === 0 ? 0 : volume}
-					aria-labelledby="vertical-slider"
+					aria-labelledby="music-player-slider"
 					disabled={mute || track.length === 0 ? true : false}
 				/>
 			</div>

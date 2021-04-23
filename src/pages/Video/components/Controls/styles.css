@@ -1,4 +1,4 @@
-@import '../../../../scss/style-base.css';
+@import '../../../../styles/style-base.css';
 
 .controls-player{
       position: absolute;
@@ -71,43 +71,54 @@
                               min-width: 120px;
                               text-align: center;
                         }
+
                         .container-volume{
                               position: absolute;
-                              /*height: 100px; 
-                              width: 5px;
-                              bottom: 50px;
-                              left: 18px; */
                               height: 150px; 
                               width: 50px;
                               bottom: 5px;
                               left: 0px;
 
-                              .MuiSlider-root.MuiSlider-vertical{
+                              .MuiSlider-root{
+                                    color: $color-guide-blue !important;
                                     width: 7px !important;
-                                    color: white !important;
                                     padding: 0 !important;
                                     left: 18px;
                                     height: 70% !important;
-
+                              
                                     .MuiSlider-rail{
-                                          width: 7px !important;
+                                          width: 6px !important;
+                                          height: 100% !important;
+                                          background-color: $color-grey-2 !important;
                                     }
-
+                              
                                     .MuiSlider-track{
-                                          width: 7px !important;
+                                          width: 6px !important;
                                     }
-
+                              
                                     .MuiSlider-thumb{
-                                          width: 16px !important;
-                                          height: 16px !important;
-
+                                          height: 15px !important;
+                                          width: 15px !important;
+                                          color: $color-white !important;
+                                          opacity: 0;
+                              
+                                          &.MuiSlider-active{
+                                                box-shadow: none !important;
+                                          }
+                              
+                                          &.Mui-focusVisible{
+                                                box-shadow: none !important;
+                                          }
+                              
                                           &:hover{
                                                 box-shadow: none !important;
                                           }
-                                          
-                                          &.MuiSlider-active{
-                                                box-shadow: rgba(255, 255, 255, 0.5) !important;
-                                          }
+                                    }
+                              }
+
+                              &:hover{
+                                    .MuiSlider-thumb{
+                                       opacity: 1;
                                     }
                               }
                         }
