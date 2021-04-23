@@ -6,32 +6,44 @@ import './styles.css'
 
 export function ProgressTime() {
 	const { stateAudio } = useContext(AudioContext)
-	const { audioRef, track} = stateAudio
+	const { audioRef, track } = stateAudio
 	const [value, setValue] = useState(0)
 	const [duration, setDuration] = useState(0)
+	const [change, setChange] = useState(false)
+
+	const onMouseUp = () => {
+		if(change){
+			setChange(false)
+			audioRef.current.currentTime = value
+		}
+	}
 
 	const handleChange = (event, newValue) => {
-		audioRef.current.currentTime = newValue
+		setChange(true)
 		setValue(newValue)
 	}
 
 	const updateTime = () => {
-		setValue(audioRef.current.currentTime)
+		if(!change){
+			setValue(audioRef.current.currentTime)
+		}
 		setDuration(audioRef.current.duration)
 	}
 
 	useEffect(() => {
 		document.querySelector('audio').addEventListener('timeupdate', updateTime)
+		window.addEventListener('mouseup', onMouseUp)
 		
 		return () => {
 			document.querySelector('audio').removeEventListener('timeupdate', updateTime)
+			window.removeEventListener('mouseup', onMouseUp)
 		}
-	}, [audioRef])
+	}, [audioRef, change, value])
 
 	return (
 		<div className="progress-time-wrapper">
 			<div className="progress-content">
-				{	track &&
+				{	track.length > 0 &&
 					<Slider value={value} onChange={handleChange} min={0} max={duration} aria-labelledby="continuous-slider" />
 				}
 			</div>

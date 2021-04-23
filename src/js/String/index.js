@@ -5,6 +5,13 @@ export function createUrlString(string) {
 	return href
 }
 
+export function createStringParam(string) {
+	let href = string.toLowerCase()
+	href = href.replace(/ /g, '-')
+
+	return href
+}
+
 export function shortString(string) {
 	if (string.length > 80) {
 		string = string.substring(0, 80)

@@ -11,14 +11,12 @@ function LeftContent({showNavbar	}) {
 	const { pathname } = location
 	const classItems = 'navbar-link-top-menu'
 	const classNavbar = 'navbar-top-menu'
-
-	if(!containsString(pathname, 'tv')) location = '/tv'
 	
 	const navLinks = [
-		{ title: 'En vivo', href: location, icon: <i className="fas fa-tv"></i> },
+		{ title: 'En vivo', href: pathname.includes('tv') ? location : '/tv', icon: <i className="fas fa-tv"></i> },
 		{ title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-popcorn"></i> },
 		{ title: 'Radio', href: '/radio', icon: <i className="fas fa-radio"></i> },
-		{ title: 'Musica', href: '/musica/inicio', icon: <i className="fas fa-headphones"></i> },
+		{ title: 'Musica', href: pathname.includes('musica') ? location : '/musica/inicio', icon: <i className="fas fa-headphones"></i> },
 		{ title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i> }
 	]
 

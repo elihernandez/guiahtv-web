@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { Fragment, useEffect, useContext } from 'react'
 import AudioContext from '../../../../context/AudioContext'
 import { useAxios } from '../../../../hooks/useAxios'
 import { List } from '../../../../components/List'
@@ -10,17 +10,16 @@ export function Home(){
 	useEffect(() => {
 		if(data.musicSections){
 			dispatchAudio({ type: 'setData', payload: data.musicSections })
-			
 		}
 	}, [data])
 
 	return (
-		<div>
+		<Fragment>
 			{   data.musicSections &&
 				data.musicSections.map((sectionData) => {
 					return <List key={sectionData.title} data={sectionData} listType={sectionData.contentType} indexList={0} tabValues={0}/>
 				})
 			}
-		</div>
+		</Fragment>
 	)
 }

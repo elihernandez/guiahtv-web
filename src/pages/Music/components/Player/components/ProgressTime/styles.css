@@ -8,7 +8,7 @@
     .progress-content{
         width: 100%;
         height: 5px;
-        background: #424242;
+        /* background: #424242; */
         /* background: rgba(255, 255, 255, 0.4); */
 
         .current-progress{
@@ -41,6 +41,7 @@
                 margin-top: -5px;
                 width: 15px;
                 height: 15px;
+                background-color: $color-white;
         
                 &.Mui-disabled{
                     width: 0;

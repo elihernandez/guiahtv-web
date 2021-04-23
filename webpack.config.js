@@ -3,7 +3,6 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCSSExtract = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-// const { ESBuildPlugin } = require('esbuild-loader')
 const path = require('path')
 var config = require('./config')
 
@@ -29,15 +28,6 @@ const javascriptRules = {
 	}
 }
 
-// const javascriptRules = {
-//   test: /\.js$/,
-//   exclude: /node_modules/,
-//   loader: 'esbuild-loader',
-//   options: {
-//     target: 'es2016' // Syntax to compile to (see options below for possible values)
-//   }
-// }
-
 const stylesRules = {
 	test: /\.css$/i,
 	use: [
@@ -54,7 +44,7 @@ const filesRules = {
 		{
 			loader: 'file-loader',
 			options: {
-				name: '[name].[contenthash].[ext]',
+				name: '[name].[ext]',
 				outputPath: 'assets/images/'
 			},
 		},
@@ -67,7 +57,7 @@ const fontsRules = {
 		{
 			loader: 'file-loader',
 			options: {
-				name: '[name].[contenthash].[ext]',
+				name: '[name].[ext]',
 				outputPath: 'assets/fonts/'
 			},
 		},
@@ -86,8 +76,8 @@ const productionPlugins = [
 module.exports = (env, { mode }) => ({
 	output: {
 		path: path.resolve(process.cwd(), __dirname + '/build'),
-		filename:  (mode === 'production' ? 'app.min.[contenthash].js' : 'app.min.[contenthash].js'),
-		publicPath: (mode !== 'production' ? config.devPath : config.prodPath),
+		filename:  (mode === 'production' ? 'app.min.[contenthash].js' : 'app.min.js'),
+		publicPath: (mode === 'production' ? config.prodPath : config.devPath),
 	},
 	watch: (mode === 'production' ? false : true),
 	module: {

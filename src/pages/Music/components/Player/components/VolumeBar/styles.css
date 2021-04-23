@@ -13,10 +13,20 @@
         i{
             font-size: 20px;
             margin: 0 20px;
-            color: #bdbdbd;
+            color: $color-grey-2;
     
             &.mute{
                 color: $color-guide-blue;
+            }
+        }
+
+        &:hover{
+            i{
+                color: $color-white;
+        
+                &.mute{
+                    color: $color-guide-blue-hover;
+                }
             }
         }
     }
@@ -74,6 +84,7 @@
                 margin-top: -5px;
                 width: 15px;
                 height: 15px;
+                background-color: $color-white;
         
                 &.Mui-disabled{
                     width: 0;

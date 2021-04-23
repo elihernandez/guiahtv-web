@@ -16,7 +16,7 @@ export function Player() {
 	const audioRef = useRef(null)
 	const history = useHistory()
 	const match = useRouteMatch()
-	const { trackId } = useParams()
+	const { collectionID, trackId } = useParams()
 	const { stateAudio, dispatchAudio } = useContext(AudioContext)
 	const { data, track, listTrack, repeat, repeatOne, pauseList, random, listRandomTracks } = stateAudio
 	const [params, setParams] = useState({})
@@ -30,10 +30,14 @@ export function Player() {
 	}, [audioRef])
 
 	useEffect(() => {
-		const { dataTrack, listTrack } = findTrack(data, trackId)
-		dispatchAudio({ type: 'setTrack', payload: dataTrack })
-		dispatchAudio({ type: 'setListTrack', payload: listTrack })
-	}, [trackId, data])
+		if(trackId && collectionID){
+			const { dataTrack, listTrack } = findTrack(data, collectionID, trackId)
+			if(dataTrack && listTrack){
+				dispatchAudio({ type: 'setTrack', payload: dataTrack })
+				dispatchAudio({ type: 'setListTrack', payload: listTrack })
+			}
+		}
+	}, [trackId, collectionID, data])
 
 	useEffect(() => {
 		if(track && track.regID){

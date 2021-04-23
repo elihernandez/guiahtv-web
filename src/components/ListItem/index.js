@@ -7,7 +7,7 @@ import VideoContext from '../../context/VideoContext'
 // import LiveTvContext from '../../context/LiveTvContext'
 import { getContactInfo } from '../../services/getContactInfo'
 import { getProgressMovie, isLive, isEvent, getProgressTimeEvent, getEventTime } from '../../js/Time'
-import {  limitString, isLimitString, isSerie, typeContent, replaceString, containsString, createUrlString } from '../../js/String'
+import {  limitString, isLimitString, isSerie, typeContent, replaceString, containsString, createUrlString, createStringParam } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { CSSTransition } from 'react-transition-group'
@@ -42,7 +42,7 @@ export function Item({ data, posterType, listType, titleCategory, category }) {
 		Item = <ItemCatalogue posterType={posterType} data={data} />
 		break
 	case 'tracks':
-		Item = <ItemTrack posterType={posterType} data={data} />
+		Item = <ItemTrack posterType={posterType} titleCategory={titleCategory} data={data} />
 		break
 	}
 
@@ -199,12 +199,13 @@ function ItemCardChannel({ posterType, data }) {
 	)
 }
 
-function ItemTrack({ posterType, data }) {
+function ItemTrack({ posterType, titleCategory, data }) {
 	const { url } = useRouteMatch()
 	const { stateAudio, dispatchAudio } = useContext(AudioContext)
 	const { audioRef, playing, pauseList } = stateAudio
 	const [matchTrack, setMatchTrack] = useState(false)
 	const { regID, title, description, portadaURL, portadaLandscapeURL } = data
+	const categoryParam = createStringParam(titleCategory)
 
 	const handleClick = () => {
 		if(matchTrack){
@@ -218,13 +219,15 @@ function ItemTrack({ posterType, data }) {
 		if(pauseList){
 			dispatchAudio({ type: 'setPauseList', payload: false })
 		}
+
+		dispatchAudio({ type: 'setListRandomTracks', payload: [] })
 	}
 
 	return (
 		<div className="item-link">
 			<div className="item">
 				<NavLink
-					to={`${url}/${regID}`}
+					to={`${url}/${categoryParam}/${regID}`}
 					className="background-item"
 					activeClassName="active"
 					isActive={(match) => {

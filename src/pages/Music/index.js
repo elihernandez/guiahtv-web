@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 // import { Sidebar } from '../../components/Sidebar/index'
 // import { List } from './components/List/index'
 // import { Artist } from './components/Artist/index'
@@ -7,8 +7,8 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import { AudioContextProvider } from '../../context/AudioContext'
 import { Player } from './components/Player/index'
 import { Sections } from './components/Sections'
-import { exitFullScreen } from '../../js/Screen'
-import { exitPip } from '../../js/PictureInPicture'
+// import { exitFullScreen } from '../../js/Screen'
+// import { exitPip } from '../../js/PictureInPicture'
 import { SidebarMusic } from './components/Sidebar'
 import './styles.css'
 import './artist.css'
@@ -229,7 +229,7 @@ export function Music() {
 					<SidebarMusic/>
 					<Sections />
 					<Switch>
-						<Route path={`${url}/:inicio/:trackId?`} >
+						<Route path={`${url}/:inicio/:collectionID?/:trackId?`} >
 							<Player />
 						</Route>
 					</Switch>

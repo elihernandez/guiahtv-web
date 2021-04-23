@@ -1,49 +1,74 @@
 @import '../../../../../../scss/style-base.css';
 
 .buttons-player{
+
     .list-buttons{
-          list-style: none;
-          display: flex;
-          flex-direction: row;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
 
-          .button-item{
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-                margin: 0 20px;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                border-radius: 50%;
+        .button-item{
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            margin: 0 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color: $color-grey-1;
+            cursor: pointer;
+
+            &.active{
+                background: $color-guide-blue;
+                color: white;
+                font-size: 22px;
+            }
+
+            i.fa-play{
+                margin-left: 4px;
+                color: $color-white;
+            }
+
+            i.fa-pause{
+                color: $color-white;
+            }
+
+            .repeat{
+                color: $color-guide-blue;
+            }
+
+            .repeat-one{
+                color: $color-guide-blue;
+            }
+
+            .random{
                 color: #bdbdbd;
-                cursor: pointer;
-
+                
                 &.active{
-                    background: $color-guide-blue;
-                    color: white;
-                    font-size: 22px;
+                    color: $color-guide-blue;
                 }
+            }
 
-                i.fa-play{
-                    margin-left: 4px !important;
+            i{
+                color: $color-grey-2;
+
+            }
+
+            &:hover{
+                i{
+                    color: $color-white;
                 }
 
                 .repeat{
-                    color: $color-guide-blue;
+                    color: $color-guide-blue-hover;
                 }
-
+    
                 .repeat-one{
-                    color: $color-guide-blue;
+                    color: $color-guide-blue-hover;
                 }
-
-                .random{
-                    color: #bdbdbd;
-                    
-                    &.active{
-                        color: $color-guide-blue;
-                    }
-                }
-          }
+            }
+        }
     }
 }

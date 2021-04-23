@@ -171,7 +171,7 @@ export function ListTracks({ data, listType, indexList, tabValues }) {
 				<DescriptionList description={description} />
 			}
 			<SlickSlider settings={settings}>
-				{data.tracks.map((track) => {
+				{data.tracks.map((track, index) => {
 					return (
 						<Item key={track.regID} posterType={data.posterType} data={track} listType={listType} titleCategory={data.title} />
 					)

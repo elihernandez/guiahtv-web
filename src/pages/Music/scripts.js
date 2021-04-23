@@ -1,17 +1,20 @@
-import { replaceString } from '../../js/String'
+import { replaceString, createStringParam } from '../../js/String'
 
-function findTrack(data, trackId){
+function findTrack(data, collectionID, trackId){
 	let dataTrack
 	let listTrack
 	
 	data.map((category) => {
-		category.tracks.map((track) => {
-			if((track.regID == trackId) && !listTrack){
-				dataTrack = track
-				listTrack = category
-			}
-		})
+		if(createStringParam(category.title) == collectionID){
+			category.tracks.map((track) => {
+				if((track.regID == trackId) && !listTrack){
+					dataTrack = track
+					listTrack = category
+				}
+			})
+		}
 	})
+
 	return { dataTrack, listTrack }
 }
 

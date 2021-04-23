@@ -1,20 +1,26 @@
 import React from 'react'
-import { useRouteMatch } from 'react-router-dom'
+import { useRouteMatch, useLocation } from 'react-router-dom'
 import { Sidebar } from '../../../../components/Sidebar'
 import './styles.css'
 
 export function SidebarMusic(){
-	let { url } = useRouteMatch()
+	const { url } = useRouteMatch()
+	const location = useLocation()
+
 	const links = [
 		{
 			listTitle: 'Música',
 			data: 
-                  [
-                  	{ url: `${url}/inicio`, icon: 'fas fa-home', title: 'Inicio'},
+                [
+                  	{ 
+                		url: location.pathname.includes(`${url}/inicio`) ? location.pathname : `${url}/inicio`,
+                		icon: 'fas fa-home',
+                		title: 'Inicio'
+                	},
                   	// { url: `${url}/recomendado`, icon: 'fas fa-headphones-alt', title: 'Recomendado'},
                   	// { url: `${url}/genero`, icon: 'fas fa-compact-disc', title: 'Género'},
                   	// { url: `${url}/buscar`, icon: 'fas fa-search', title: 'Buscar'}
-                  ]
+                ]
 		},
 		// {
 		// 	listTitle: 'Mi biblioteca',

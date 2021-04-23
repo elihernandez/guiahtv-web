@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { useHistory, useParams, useRouteMatch } from 'react-router-dom'
 import AudioContext from '../../../../../../context/AudioContext'
 import Tooltip from '@material-ui/core/Tooltip'
-import { resetTrack, getPrevTrack, getNextTrack } from '../../../../scripts'
+import { resetTrack, getPrevTrack, getNextTrack, getRandomTrack } from '../../../../scripts'
 import './styles.css'
 
 const RandomButton = ({ state, dispatch }) => {
@@ -70,7 +70,7 @@ const StepBackwardButton = ({ state, dispatch }) => {
 	const history = useHistory()
 	const { trackId } = useParams()
 	const match = useRouteMatch()
-	const { audioRef, listTrack, track, repeat, repeatOne } = state
+	const { audioRef, listTrack, track, repeat, repeatOne, random, listRandomTracks } = state
 
 	const handleHistoryPush = (url) => {
 		history.push(url)
@@ -91,14 +91,21 @@ const StepBackwardButton = ({ state, dispatch }) => {
 	const handleClick = () => {
 		const { url, isTheFirstTrack } = getPrevTrack(listTrack, trackId, track, match)
 
-		if(isTheFirstTrack){
-			if(repeat || repeatOne){
-				handleCurrentTime(url)
-			}else{
-				resetTrack(audioRef)
-			}
+		if(random){
+			const { url, listRandom } = getRandomTrack(listTrack, track, listRandomTracks, match)
+			dispatch({ type: 'setListRandomTracks', payload: listRandom })
+			handleHistoryPush(url)
 		}else{
-			handleCurrentTime(url)
+			if(isTheFirstTrack){
+				if(repeat || repeatOne){
+					handleCurrentTime(url)
+				}else{
+					resetTrack(audioRef)
+				}
+				dispatch({ type: 'setPauseList', payload: false })
+			}else{
+				handleCurrentTime(url)
+			}
 		}
 	}
 
@@ -115,7 +122,7 @@ const StepForwardButton = ({ state, dispatch }) => {
 	const history = useHistory()
 	const { trackId } = useParams()
 	const match = useRouteMatch()
-	const { listTrack, track, repeat, repeatOne } = state
+	const { listTrack, track, repeat, repeatOne, random, listRandomTracks } = state
 
 	const handleHistoryPush = (url) => {
 		history.push(url)
@@ -126,20 +133,27 @@ const StepForwardButton = ({ state, dispatch }) => {
 	}
 
 	const handleClick = () => {
-		const { url, isTheLastTrack } = getNextTrack(listTrack, trackId, track, match)
-
-		if(isTheLastTrack){
-			if(repeat){
-				handleHistoryPush(url)
-			}else if(repeatOne){
-				handleHistoryPush(url)
+		const { url, isTheLastTrack } = getNextTrack(listTrack, track.regID, track, match)
+		
+		if(random){
+			const { url, listRandom } = getRandomTrack(listTrack, track, listRandomTracks, match)
+			dispatch({ type: 'setListRandomTracks', payload: listRandom })
+			handleHistoryPush(url)
+		}else{
+			if(isTheLastTrack){
+				if(repeat){
+					handleHistoryPush(url)
+				}else if(repeatOne){
+					handleHistoryPush(url)
+				}else{
+					dispatch({ type: 'setPauseList', payload: true })
+					dispatch({ type: 'setPlaying', payload: false })
+					handleHistoryPush(url)
+				}
 			}else{
-				dispatch({ type: 'setPauseList', payload: true })
-				dispatch({ type: 'setPlaying', payload: false })
+				dispatch({ type: 'setPauseList', payload: false })
 				handleHistoryPush(url)
 			}
-		}else{
-			handleHistoryPush(url)
 		}
 	}
 
@@ -153,15 +167,17 @@ const StepForwardButton = ({ state, dispatch }) => {
 }
 
 const PlayPauseButtons = ({ state, dispatch }) => {
-	const { audioRef, playing } = state
+	const { audioRef, playing, track } = state
 
 	const handleClick = () => {
-		if (playing) {
-			audioRef.current.pause()
-			dispatch({ type: 'setPlaying', payload: false })
-		} else {
-			audioRef.current.play()
-			dispatch({ type: 'setPlaying', payload: true })
+		if(track){
+			if (playing) {
+				audioRef.current.pause()
+				dispatch({ type: 'setPlaying', payload: false })
+			} else {
+				audioRef.current.play()
+				dispatch({ type: 'setPlaying', payload: true })
+			}
 		}
 	}
 

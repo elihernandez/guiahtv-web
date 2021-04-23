@@ -8,7 +8,7 @@ export function VolumeBar() {
 	const [volume, setVolume] = useState(50)
 	const [mute, setMute] = useState(false)
 	const { stateAudio } = useContext(AudioContext)
-	const { audioRef } = stateAudio
+	const { audioRef, track } = stateAudio
 
 	const handleChange = (event, newValue) => {
 		setVolume(newValue)
@@ -52,7 +52,7 @@ export function VolumeBar() {
 					onChange={handleChange}
 					value={volume}
 					aria-labelledby="vertical-slider"
-					disabled={mute ? true : false}
+					disabled={mute || track.length === 0 ? true : false}
 				/>
 			</div>
 		</div>
