@@ -5,7 +5,7 @@ import './styles.css'
 
 export function Home() {
 	return (
-		<div className="wrapper-home top-header">
+		<div className="wrapper-home">
 			<Spotlight />
 			<ButtonsMenu />
 		</div>

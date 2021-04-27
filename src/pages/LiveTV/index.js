@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import { LiveTvContextProvider } from '../../context/LiveTvContext'
 import { VideoContextProvider } from '../../context/VideoContext'
-import { Content } from './Components/Content'
-import { Info } from './Components/Info'
-import { Timer } from './Components/Timer'
-import { Guide } from './Components/Guide'
-import { Loader } from './Components/Loader'
-import { Video } from './Components/Video'
+import { Content } from './components/Content'
+import { Info } from './components/Info'
+import { Timer } from './components/Timer'
+import { Guide } from './components/Guide'
+import { Loader } from './components/Loader'
+import { Video } from './components/Video'
 import { exitFullScreen } from '../../js/Screen'
 import { exitPip } from '../../js/PictureInPicture'
 import './styles.css'
@@ -98,7 +98,7 @@ export function LiveTV() {
 				<VideoContextProvider state={initialState} reducer={reducer}>
 					<div className="section-content w-padding-top">
 						<Switch>
-							<Route exact path={`${path}/:channelId?`} >
+							<Route path={`${path}/:channelId?`} >
 								<Content>
 									<div className="background-overlay" />
 									<Info />

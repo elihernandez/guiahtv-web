@@ -4,6 +4,7 @@
     position: relative;
     min-height: calc(100vh - $height-header);
     padding: 0 $full-padding-content;
+    top: $height-top-menu;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;

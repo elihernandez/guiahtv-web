@@ -139,7 +139,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# Build web app
+# Build Web App
 build/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,node

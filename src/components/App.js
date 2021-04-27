@@ -5,7 +5,7 @@ import { UserContextProvider } from '../context/UserContext'
 import SpatialNavigation from 'react-js-spatial-navigation'
 // require('spatial-navigation-js')
 // require('../js/SpatialNavigation')
-import '../scss/app.css'
+import '../styles/app.css'
 
 export default function App() {
 	return (
@@ -20,4 +20,3 @@ export default function App() {
 		</div>    
 	)
 }
-

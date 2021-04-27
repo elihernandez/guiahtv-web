@@ -15,7 +15,6 @@ import { SearchPage } from '../pages/Search'
 import { ErrorAuth } from '../pages/ErrorAuth'
 import { GetApp } from '../pages/GetApp'
 import { Page404 } from '../pages/404'
-import { isAuth } from '../js/Auth'
 import { CheckAuth } from './components/CheckAuth'
 import { CheckDevice } from './components/CheckDevice'
 import { devBasenameRouter, prodBasenameRouter } from '../../config'
@@ -31,18 +30,23 @@ export function BaseRouter() {
 		<BrowserRouter basename={basename}>
 			<Switch>
 				<Route exact path="/">
-					{isAuth(credentials)
-						? <CheckAuth credentials={credentials}>
+					{	credentials?.memclid
+						?
+						<CheckAuth credentials={credentials}>
 							<Home />
 						</CheckAuth>
-						: <CheckDevice>
+						: 
+						<CheckDevice>
 							<Info />
 						</CheckDevice>
 					}
 				</Route>
 
 				<Route path="/login">
-					{credentials.memclid ? <Redirect to="/" /> : <Login />}
+					{	credentials?.memclid
+						? <Redirect to="/" />
+						: <Login />
+					}
 				</Route>
 
 				<Route path="/tv">

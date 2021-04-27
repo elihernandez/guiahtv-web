@@ -1,26 +1,26 @@
 import React, { useState, useContext, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom'
+import canAutoPlay from 'can-autoplay'
 import VideoContext from '../../../../context/VideoContext'
 import UserContext from '../../../../context/UserContext'
 import LiveTVContext from '../../../../context/LiveTvContext'
 import { getVideo } from '../../../../services/getVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { isLive } from '../../../../js/Time'
-import canAutoPlay from 'can-autoplay'
 import backgroundTvImg from '../../../../assets/images/logos/guiahtv/backTVnuevologo.jpg'
 import './styles.css'
 
 export function Video() {
 	const video = useRef()
-	const { channelId } = useParams()
 	const [url, setUrl] = useState()
+	const { channelId } = useParams()
 	const { state } = useContext(LiveTVContext)
 	const { dataTV } = state
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
 	const { stateVideo, dispatch } = useContext(VideoContext)
 	const { dataChannel, timerChannel, loadingChannel } = stateVideo
-	const {error, setError} = useHls(video, url, dispatch)
+	const { error, setError } = useHls(video, url, dispatch)
 
 	const onPlayingVideo = () => {
 		dispatch({ type: 'updateActive', payload: true })
@@ -47,10 +47,6 @@ export function Video() {
 				console.warn('Error did occur: ', error)
 			}
 		})
-
-	const handleErrorImage = (e) => {
-		e.nativeEvent.target.src = backgroundTvImg
-	}
 
 	useEffect(() => {
 		if(dataChannel){
@@ -83,9 +79,9 @@ export function Video() {
 					dispatch({ type: 'updateActive', payload: false })
 					dispatch({ type: 'updateLoading', payload: true })
 					setTimeout(() => {
+						dispatch({ type: 'updateLoading', payload: false })
+						dispatch({ type: 'updateTimer', active: true, timer: dataChannel })
 					}, 1000)
-					dispatch({ type: 'updateLoading', payload: false })
-					dispatch({ type: 'updateTimer', active: true, timer: dataChannel })
 				}
 				break
 			case 'leon_livetv_Radio':
@@ -125,7 +121,11 @@ export function Video() {
 				}
 				{stateVideo.activeTimer &&
 					<div className="preview-poster">
-						<img onError={handleErrorImage} src={timerChannel.PreviewPoster}/>
+						<img
+							onError={(e) => {
+								e.nativeEvent.target.src = backgroundTvImg
+							}}
+							src={timerChannel.PreviewPoster}/>
 					</div>
 				}
 			</div>

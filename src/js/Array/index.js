@@ -1,15 +1,23 @@
 export function isArrayEmpty(array){
-      if(array.length == 0){
-            return true
-      }
+	if(array.length == 0){
+		return true
+	}
 
-      return false
+	return false
 }
 
 export function isEmptyArray(array){
-      if(array.length == 0){
-            return true
-      }
+	if(array.length === 0){
+		return true
+	}
 
-      return false
+	return false
+}
+
+export function isNotEmptyArray(array){
+	if(array.length !== 0){
+		return true
+	}
+
+	return false
 }

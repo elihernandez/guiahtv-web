@@ -6,9 +6,9 @@ import './styles.css'
 export function Content({ children }) {
 	const contentRef = useRef()
 	const timerRef = useRef(null)
+	const [isVisible, setIsVisible] = useState(true)
 	const { stateVideo } = useContext(VideoContext)
 	const { activeChannel } = stateVideo
-	const [isVisible, setIsVisible] = useState(true)
 
 	const fadeInContent = () => {
 		setIsVisible(true)

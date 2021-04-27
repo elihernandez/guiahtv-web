@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import axios from '../js/Axios'
+import UserContext from '../context/UserContext'
+// import { ErrorMessage } from '../components/ErrorMessage'
 import { getUtcOffsetLocal } from '../js/Time'
 import { validateSuscription } from '../js/Auth/validateSuscription'
-import UserContext from '../context/UserContext'
 import config from '../../config'
-import axios from '../js/Axios'
-import styled from 'styled-components'
 
 function getURL(section, { memclid }, params) {
 	let apiURL
@@ -48,7 +48,7 @@ export function useAxios(section, sendRequest = true, params = {}){
 	const [error, setError] = useState(false)
 	const [count, setCount] = useState(0)
 
-	const onClickRequest = () => {
+	const handleRequest = () => {
 		setCount(count + 1)
 	}
 
@@ -80,54 +80,5 @@ export function useAxios(section, sendRequest = true, params = {}){
 		}
 	}, [section, count, sendRequest])
 
-	return { loading, data, error, onClickRequest }
-}
-
-const Wrapper = styled.div`
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-`
-
-const Text = styled.p`
-      font-size: 1vw;
-      text-align: center;
-      margin: .5vw 0;
-`
-
-const Button = styled.button`
-      font-size: .75vw;
-      text-align: center;
-      color: white;
-      border: .125vw solid white;
-      padding: .5vw;
-      border-radius: 4px;
-      margin: .5vw 0;
-      transition: all 150ms ease-in-out;
-
-      &:hover {
-            background: white;
-            color: black;
-      }
-`
-
-const errorMessage = (onClick) => {
-	return (
-		<Wrapper>
-			<Text>No se pudo cargar el contenido</Text>
-			<Button onClick={onClick}>Volver a intentar</Button>
-		</Wrapper>
-	)
-}
-
-const errorMessageTwo = () => {
-	return (
-		<Wrapper>
-			<Text>No se pudo cargar el contenido</Text>
-		</Wrapper>
-	)
+	return { loading, data, error, handleRequest }
 }

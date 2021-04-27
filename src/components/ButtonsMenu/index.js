@@ -42,12 +42,12 @@ export function ButtonsMenu() {
 	return (
 		<div className="buttons-menu-wrapper">
 			<SlickSlider settings={settings}>
-				{data.map(({ titulo, ContentType, PosterCardUrlLandscape }, index) => {
+				{data.map(({ titulo, ContentType, PosterCardUrlLandscape }) => {
 					if (ContentType !== 'leon_music') {
 						return (
 							<div
 								key={ContentType}
-								className={`item-button ${index === 0 ? 'active' : ''}`}
+								className="item-button"
 								onClick={() => handleClick(ContentType)}
 							>
 								<picture>
@@ -56,10 +56,7 @@ export function ButtonsMenu() {
 										type="image/webp"
 									/>
 									<source
-										srcSet={imgSourceSetPng(
-											PosterCardUrlLandscape,
-											'png'
-										)}
+										srcSet={imgSourceSetPng(PosterCardUrlLandscape,'png')}
 										type="image/png"
 									/>
 									<img

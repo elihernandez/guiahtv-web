@@ -57,7 +57,7 @@ export function FormLogin({ onSubmit }) {
 						<p className="body-3">Recuérdame</p>
 					</label>
 				</div>
-				<Link className="link-help body-3" href="https://guiah.tv/axs/ForgotPassword">¿Necesitas ayuda?</Link>
+				<Link className="link-help body-3" href="https://cuenta.guiah.tv/ForgotPassword">¿Necesitas ayuda?</Link>
 			</div>
 		</form>
 	)

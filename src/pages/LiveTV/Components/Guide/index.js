@@ -1,74 +1,40 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory, useParams, useRouteMatch } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 import LiveTVContext from '../../../../context/LiveTvContext'
 import VideoContext from '../../../../context/VideoContext'
 import { useAxios } from '../../../../hooks/useAxios'
 import { GuideLoader } from './components/Loader'
+import { ButtonLoader } from './components/Button'
 import { CustomTabs } from '../../../../components/Tabs'
-import { List } from '../../../../components/List'
-import { LoaderButton } from './components/LoaderButton'
+import { findInitialValues, findFirstChannel, getDataArray } from './scripts'
+import { isNotEmptyArray } from '../../../../js/Array'
 import './styles.css'
 
-function findInitialValues(data, contentId){
-	let initialSlide = 0
-	let tabContent = 0
-	
-	data.map((categories, indexC) => {
-		categories.cmData.map((element, index) => {
-			const channelId = element.Id ? element.Id : element.Registro
-			if(channelId == contentId){
-				initialSlide = index
-				tabContent = indexC
-			}
-		})
-	})
-	return { initialSlide, tabContent }
-}
-
-function findFirstChannel(data){
-	return data[0].cmData[0]
-}
-
-function getDataArray(data, findedValues){
-	const dataTabs = []
-
-	data.map((category, index) => {
-		dataTabs.push(
-			{
-				title: category.category,
-				content:  <List key={category.category} data={category} listType="channel" indexList={index} tabValues={findedValues} />
-				
-			}
-		)
-	})
-
-	return dataTabs
-}
-
 export function Guide() {
-	const { channelId } = useParams() 
 	const history = useHistory()
+	const { url } = useRouteMatch()
+	const { channelId } = useParams() 
 	const { state, dispatchTV } = useContext(LiveTVContext)
 	const { guideOnce } = state
-	const { stateVideo } = useContext(VideoContext)
-	const { dataChannel } = stateVideo
-	const [showGuideLoader, setShowGuideLoader] = useState(false)
-	const [showGuide, setShowGuide] = useState(false)
+	// const { stateVideo } = useContext(VideoContext)
+	// const { dataChannel } = stateVideo
 	const [dataTabs, setDataTabs] = useState(null)
-	const [initialValues, setInitialValues] = useState({ initialSlide: 0, tabContent: 0})
+	const [showGuide, setShowGuide] = useState(false)
 	const [sendRequest, setSendRequest] = useState(false)
-	const { data, error, onClickRequest } = useAxios('livetv', sendRequest)
+	const [showGuideLoader, setShowGuideLoader] = useState(false)
+	const [initialValues, setInitialValues] = useState({ initialSlide: 0, tabContent: 0})
+	const { data, error, handleRequest } = useAxios('livetv', sendRequest)
 
-	const handleClick = () => {
+	const handleSendRequest = () => {
 		setSendRequest(true)
 	}
 
-	const handleData = (response) => {
-		const findedValues = findInitialValues(response, channelId)
+	const handleData = (data) => {
+		const findedValues = findInitialValues(data, channelId)
 		setInitialValues(findedValues)
-		const data = getDataArray(response,findedValues)
-		setDataTabs(data)
+		const dataTabs = getDataArray(data, findedValues)
+		setDataTabs(dataTabs)
 		setTimeout(() => {
 			setShowGuideLoader(false)
 			setShowGuide(true)
@@ -81,9 +47,8 @@ export function Guide() {
 	const loadChannel = (data) => {
 		if(!channelId){
 			const firstChannel = findFirstChannel(data)
-			history.replace(`/tv/${firstChannel.Id}`)
+			history.replace(`${url}/${firstChannel.Id}`)
 		}
-		handleData(data)
 	}
 
 	useEffect(() => {
@@ -92,20 +57,19 @@ export function Guide() {
 			setSendRequest(true)
 			dispatchTV({ type: 'setGuideOnce', payload: true })
 		}
-	}, [])
 
-	useEffect(() => {
-		if(data.length > 0){
+		if(isNotEmptyArray(data)){
 			dispatchTV({ type: 'updateData', payload: data })
 			loadChannel(data)
+			handleData(data)
 		}
 	}, [data])
 
-	useEffect(() => {
-		let id = undefined
-		if(dataChannel) id = dataChannel.Id ? dataChannel.Id : dataChannel.Registro
-		if(id != channelId) handleData(data)		
-	}, [channelId, dataChannel])
+	// useEffect(() => {
+	// 	let id = undefined
+	// 	if(dataChannel) id = dataChannel.Id ? dataChannel.Id : dataChannel.Registro
+	// 	if(id != channelId) handleData(data)		
+	// }, [channelId, dataChannel])
 
 	useEffect(() =>{
 		if(sendRequest){
@@ -126,7 +90,7 @@ export function Guide() {
                 <GuideLoader />
 			}
 			{	!showGuide && !showGuideLoader && guideOnce &&
-				<LoaderButton error={error} onClickRequest={onClickRequest} handleClick={handleClick} />
+				<ButtonLoader error={error} handleRequest={handleRequest} handleSendRequest={handleSendRequest} />
 			}
 			{	showGuide && !error &&
 				<CSSTransition in={showGuide} timeout={300} classNames="fade" unmountOnExit>

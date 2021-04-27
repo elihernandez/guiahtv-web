@@ -1,18 +1,18 @@
-import React, { useContext, useState, useEffect } from 'react'
-import VideoContext from '../../../../context/VideoContext'
+import React, { useRef, useContext, useState, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import VideoContext from '../../../../context/VideoContext'
 import { timerEvent, isLive } from '../../../../js/Time'
 import './styles.css'
 
 export function Timer() {
-	let interval
+	const intervalTimer = useRef(null)
 	const { stateVideo, dispatch } = useContext(VideoContext)
 	const { timerChannel, activeTimer } = stateVideo
 	const [time, setTime] = useState('')
 
 	useEffect(() => {
 		if (activeTimer){
-			interval = setInterval(() => {
+			intervalTimer.current = setInterval(() => {
 				if(isLive(timerChannel.Inicio, timerChannel.Fin)){
 					dispatch({ type: 'updateData', payload: timerChannel })
 				}else{
@@ -22,7 +22,7 @@ export function Timer() {
 		}
 
 		return () => {
-			clearInterval(interval)
+			clearInterval(intervalTimer.current)
 		}
 	}, [activeTimer])
 
