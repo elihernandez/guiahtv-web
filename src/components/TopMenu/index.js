@@ -3,7 +3,7 @@ import { useLocation, NavLink } from 'react-router-dom'
 import { Navbar } from '../Navbar/index'
 import { UserMenu } from '../UserMenu/index'
 import Logo from '../Logo/index'
-import { containsString } from '../../js/String'
+// import { containsString } from '../../js/String'	
 import './styles.css'
 
 function LeftContent({showNavbar	}) {
@@ -43,7 +43,7 @@ function RightContent() {
 }
 
 export const TopMenu = () => {
-	let location = useLocation()
+	const location = useLocation()
 	const topMenuRef = useRef(null)
 	const { pathname } = location
 	const [showLeftContent, setShowLeftContent] = useState(false)
@@ -61,22 +61,31 @@ export const TopMenu = () => {
 		}
 	}, [])
 
+	const hideTopMenu = () => {
+		setShowLeftContent(true)
+		setShowNavbar(false)
+		setShowRightContent(true)
+	}
+
+	const showTopMenu = () => {
+		setShowLeftContent(true)
+		setShowNavbar(true)
+		setShowRightContent(true)
+	}
+
 	useEffect(() => {
 		switch(pathname){
 		case '/':
-			setShowLeftContent(true)
-			setShowNavbar(false)
-			setShowRightContent(true)
+			hideTopMenu()
 			break
 		case '/perfiles':
-			setShowLeftContent(true)
-			setShowNavbar(false)
-			setShowRightContent(false)
+			hideTopMenu()
+			break
+		case '/perfiles/editar':
+			hideTopMenu()
 			break
 		default:
-			setShowLeftContent(true)
-			setShowRightContent(true)
-			setShowNavbar(true)
+			showTopMenu()
 			break
 		}
 	}, [pathname])

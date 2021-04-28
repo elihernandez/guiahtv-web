@@ -275,8 +275,8 @@ h6{
       -webkit-transition: all 150ms ease;
       transition: all 150ms ease;
       border-radius: 4px;
-      -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
-              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+      -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
+              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
       font-family: "Poppins", sans-serif !important;
       letter-spacing: .5px;
       font-weight: 400;
@@ -311,6 +311,7 @@ h6{
 
 .button-ui.outline-white:hover{
                   background: rgba(255, 255, 255, 0.75); 
+                  
             }
 
 .button-ui.transparent{
@@ -322,8 +323,12 @@ h6{
 .button-ui.transparent:hover{
                   background: #f7f7f7;
                   color: black;
-                  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.75);
-                          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.75);
+                  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
+                          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
+            }
+
+.button-ui.transparent.outline{
+                  border: 1px solid #f7f7f7;
             }
 
 .button-ui.gradient{
@@ -6412,6 +6417,25 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
+.title{
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.subtitle{
+    font-weight: 500;
+    color: #9e9e9e;
+}
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
 .list-profiles-wrapper{
     position: relative;
     width: 100%;
@@ -6553,15 +6577,108 @@ input::-ms-input-placeholder{
 
 /* Radio */
 
-.title{
-    font-weight: 600;
-    margin-bottom: 20px;
+.edit-profile-wrapper{
+    position: relative;
 }
 
-.subtitle{
-    font-weight: 500;
-    color: #9e9e9e;
-}
+.edit-profile-wrapper .profile-item .group-form{
+            margin: 10px 0;
+            position: relative;
+            width: 20vw;
+        }
+
+.edit-profile-wrapper .profile-item .group-form input{
+                width: 100%;
+                background-color: transparent;
+                border: 2px solid #9e9e9e;
+                border-radius: 5px;
+                margin: 25px 0;
+                padding: 15px 15px;
+                color: #f7f7f7;
+                -webkit-user-select: initial !important;
+                   -moz-user-select: initial !important;
+                    -ms-user-select: initial !important;
+                        user-select: initial !important
+            }
+
+.edit-profile-wrapper .profile-item .group-form input::-moz-placeholder{
+                    color: #757575;
+                }
+
+.edit-profile-wrapper .profile-item .group-form input:-ms-input-placeholder{
+                    color: #757575;
+                }
+
+input::-webkit-input-placeholder{
+                    color: #757575;
+                }
+
+input::-moz-placeholder{
+                    color: #757575;
+                }
+
+input:-ms-input-placeholder{
+                    color: #757575;
+                }
+
+input::-ms-input-placeholder{
+                    color: #757575;
+                }
+
+.edit-profile-wrapper .profile-item .group-form input::placeholder{
+                    color: #757575;
+                }
+
+.edit-profile-wrapper .profile-item .group-form input::-ms-reveal,
+                .edit-profile-wrapper .profile-item .group-form input::-ms-clear {
+                    color: #f7f7f7 !important;
+                }
+
+.edit-profile-wrapper .profile-item .group-form .input-name-profile{
+    
+            }
+
+.edit-profile-wrapper .profile-item .group-form .group-form-text{
+                color: #9e9e9e;
+            }
+
+.edit-profile-wrapper .profile-item .group-form .group-pin-inputs{
+                position: relative;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: justify;
+                    -ms-flex-pack: justify;
+                        justify-content: space-between;
+            }
+
+.edit-profile-wrapper .profile-item .group-form .group-pin-inputs .input-pin{
+                    width: 4vw;
+                    text-align: center;
+                }
+
+.edit-profile-wrapper .profile-item .group-form .group-content-kids{
+                position: relative;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
+            }
+
+.edit-profile-wrapper .profile-item .group-form .group-content-kids .check-content-kids{
+                    margin: 0 1vw;
+                    height: 1vw;
+                    width: 1vw;
+                    border: none;
+                    outline: none;
+                }
+
+.edit-profile-wrapper .action-buttons button{
+            margin: 0 .5vw;
+        }
+
 /* #13171a */
 
 /* App */

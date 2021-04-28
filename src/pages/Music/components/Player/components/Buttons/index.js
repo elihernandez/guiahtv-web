@@ -92,9 +92,13 @@ const StepBackwardButton = ({ state, dispatch }) => {
 		const { url, isTheFirstTrack } = getPrevTrack(listTrack, trackId, track, match)
 
 		if(random){
-			const { url, listRandom } = getRandomTrack(listTrack, track, listRandomTracks, match)
-			dispatch({ type: 'setListRandomTracks', payload: listRandom })
-			handleHistoryPush(url)
+			if(audioRef.current.currentTime >= 2){
+				resetTrack(audioRef)
+			}else{
+				const { url, listRandom } = getRandomTrack(listTrack, track, listRandomTracks, match)
+				dispatch({ type: 'setListRandomTracks', payload: listRandom })
+				handleHistoryPush(url)
+			}
 		}else{
 			if(isTheFirstTrack){
 				if(repeat || repeatOne){

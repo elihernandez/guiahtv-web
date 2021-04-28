@@ -1,0 +1,72 @@
+@import '../../../../styles/style-base.css';
+
+.edit-profile-wrapper{
+    position: relative;
+    
+    .profile-item{
+        .group-form{
+            margin: 10px 0;
+            position: relative;
+            width: 20vw;
+    
+            input{
+                width: 100%;
+                background-color: transparent;
+                border: 2px solid $color-grey-2;
+                border-radius: 5px;
+                margin: 25px 0;
+                padding: 15px 15px;
+                color: $color-white;
+                user-select: initial !important;
+            
+                &::placeholder{
+                    color: $color-grey-3;
+                }
+                
+                &::-ms-reveal,
+                &::-ms-clear {
+                    color: $color-white !important;
+                }
+            }
+            
+            .input-name-profile{
+    
+            }
+        
+            .group-form-text{
+                color: $color-grey-2;
+            }
+    
+            .group-pin-inputs{
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+    
+                .input-pin{
+                    width: 4vw;
+                    text-align: center;
+                }
+            }
+    
+            .group-content-kids{
+                position: relative;
+                display: flex;
+                align-items: center;
+    
+                .check-content-kids{
+                    margin: 0 1vw;
+                    height: 1vw;
+                    width: 1vw;
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    .action-buttons{
+        button{
+            margin: 0 .5vw;
+        }
+    }
+}
