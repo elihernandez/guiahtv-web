@@ -24,7 +24,7 @@ function resetTrack(audioRef){
 
 function findIndexTrack(data, trackId){
 	let indexTrack
-	data.tracks.map((track, index) => {
+	data.map((track, index) => {
 		if(track.regID == trackId){
 			indexTrack = index
 		}
@@ -34,7 +34,7 @@ function findIndexTrack(data, trackId){
 }
 
 function isLastTrack(data, indexTrack){
-	const length = data.tracks.length - 1
+	const length = data.length - 1
 
 	if(indexTrack == length){
 		return true
@@ -53,12 +53,12 @@ function isFirstTrack(indexTrack){
 
 function findNextTrack(data, trackId){
 	let nextTrack
-	data.tracks.map((track, index) => {
+	data.map((track, index) => {
 		if(track.regID == trackId){
 			if(isLastTrack(data, index)){
-				nextTrack = data.tracks[0]
+				nextTrack = data[0]
 			}else{
-				nextTrack = data.tracks[index + 1]
+				nextTrack = data[index + 1]
 			}
 		}
 	})
@@ -68,12 +68,12 @@ function findNextTrack(data, trackId){
 
 function findPrevTrack(data, trackId){
 	let prevTrack
-	data.tracks.map((track, index) => {
+	data.map((track, index) => {
 		if(track.regID == trackId){
 			if(isFirstTrack(index)){
-				prevTrack = data.tracks[data.tracks.length - 1]
+				prevTrack = data[data.length - 1]
 			}else{
-				prevTrack = data.tracks[index - 1]
+				prevTrack = data[index - 1]
 			}
 		}
 	})
@@ -81,38 +81,28 @@ function findPrevTrack(data, trackId){
 	return prevTrack
 }
 
-function getNextTrack(listTrack, trackId, track, match){
-	let url
+function getNextTrack(listTrack, trackId){
 	let isTheLastTrack = false
 	const indexTrack = findIndexTrack(listTrack, trackId)
+	const nextTrack = findNextTrack(listTrack, trackId)
 	
-	if(!isLastTrack(listTrack, indexTrack)){
-		const nextTrack = findNextTrack(listTrack, trackId)
-		url = getUrlString(match, track, nextTrack)
-	}else{
-		const nextTrack = findNextTrack(listTrack, trackId)
-		url = getUrlString(match, track, nextTrack)
+	if(isLastTrack(listTrack, indexTrack)){
 		isTheLastTrack = true
 	}
 	
-	return { url, isTheLastTrack }
+	return { nextTrack, isTheLastTrack }
 }
 
-function getPrevTrack(listTrack, trackId, track, match){
-	let url
+function getPrevTrack(listTrack, trackId){
 	let isTheFirstTrack = false
 	const indexTrack = findIndexTrack(listTrack, trackId)
+	const prevTrack = findPrevTrack(listTrack, trackId)
 	
-	if(!isFirstTrack(indexTrack)){
-		const prevTrack = findPrevTrack(listTrack, trackId)
-		url = getUrlString(match, track, prevTrack)
-	}else{
-		const prevTrack = findPrevTrack(listTrack, trackId)
-		url = getUrlString(match, track, prevTrack)
+	if(isFirstTrack(indexTrack)){
 		isTheFirstTrack = true
 	}
 	
-	return { url, isTheFirstTrack }
+	return { prevTrack, isTheFirstTrack }
 }
 
 function getUrlString(match, track, nextTrack){
@@ -128,49 +118,49 @@ function listIsEmpty(list){
 }
 
 function listIsFull(listTrack, listRandom){
-	if(listTrack.tracks.length === listRandom.length){
+	if(listTrack.length === listRandom.length){
 		return true
 	}
 
 	return false
 }
 
-function getRandomTrack(listTrack, track, listRandom, match){
+function getRandomTrack(listTrack, track, listRandom){
 	let numRandom
 	let randomTrack
 	const indexTrack = findIndexTrack(listTrack, track.regID)
     
 	if(listIsEmpty(listRandom)){
-		numRandom = getRandomNum(0, listTrack.tracks.length)
+		numRandom = getRandomNum(0, listTrack.length)
 		while(numRandom === indexTrack){
-			numRandom = getRandomNum(0, listTrack.tracks.length)
+			numRandom = getRandomNum(0, listTrack.length)
 		}
 
-		randomTrack = listTrack.tracks[numRandom]
+		randomTrack = listTrack[numRandom]
 	}else{
 		if(listIsFull(listTrack, listRandom)){
 			listRandom.splice(0, listRandom.length)
-			numRandom = getRandomNum(0, listTrack.tracks.length)
+			numRandom = getRandomNum(0, listTrack.length)
 			while(numRandom === indexTrack){
-				numRandom = getRandomNum(0, listTrack.tracks.length)
+				numRandom = getRandomNum(0, listTrack.length)
 			}
 
-			randomTrack = listTrack.tracks[numRandom]
+			randomTrack = listTrack[numRandom]
 		}else{
-			numRandom = getRandomNum(0, listTrack.tracks.length)
-			let selectedTrack = listTrack.tracks[numRandom]
+			numRandom = getRandomNum(0, listTrack.length)
+			let selectedTrack = listTrack[numRandom]
 			while(listRandom.includes(selectedTrack)){
-				numRandom = getRandomNum(0, listTrack.tracks.length)
-				selectedTrack = listTrack.tracks[numRandom]
+				numRandom = getRandomNum(0, listTrack.length)
+				selectedTrack = listTrack[numRandom]
 			}
 			randomTrack = selectedTrack
 		}
 	}
 
 	listRandom.push(randomTrack)
-	const url = getUrlString(match, track, randomTrack)
-
-	return { url, listRandom }
+	// const url = getUrlString(match, track, randomTrack)
+	console.log(randomTrack)
+	return { randomTrack, listRandom }
 }
 
 function getRandomNum(min, max) {

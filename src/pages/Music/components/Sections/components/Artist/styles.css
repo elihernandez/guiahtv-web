@@ -1,0 +1,109 @@
+@import "../../../../../../styles/style-base.css";
+
+.artist-info{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 40px;
+
+    .artist-info-wrapper{
+        position: relative;
+        width: auto;
+        height: 100%;
+        display: flex;
+        align-items: flex-end;   
+
+        .cover-artist{
+            position: relative;
+            width: 250px;
+            height: 250px;
+
+            .cover-img{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 4px;
+            }
+        }
+        
+        .info-artist{
+            position: relative;
+            padding: 20px;
+            width: 80%;
+        
+            .text-artist{
+                font-size: 1vw;
+                color: $color-grey-4;
+                font-weight: 400;
+            }
+        
+            .name-artist{
+                font-size: 2.6vw;
+                font-weight: 700;
+            }
+        
+            .description-artist{
+                font-size: 1vw;
+                color: $color-grey-2;
+                font-weight: 400;
+            }
+        }
+    }
+    
+}
+
+.about-artist-info{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 40px;
+
+    .text-artist{
+        font-size: 1.2vw;
+        font-weight: 700;
+        margin-bottom: 1vw;
+    }
+
+    .about-artist-info-wrapper{
+        position: relative;
+        width: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: row;   
+        background-color: #18191c;
+        border-radius: 4px;
+        padding: 30px;
+
+        .cover-artist{
+            position: relative;
+            width: 200px;
+            height: 200px;
+
+            .cover-img{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 4px;
+            }
+        }
+    
+        .info-artist{
+            position: relative;
+            width: 85%;
+        
+            .name-artist{
+                font-size: 2.6vw;
+                font-weight: 700;
+            }
+        
+            .description-artist{
+                font-size: .9vw;
+                color: $color-grey-2;
+                font-weight: 400;
+                padding: 10px 20px;
+            }
+        }
+    }
+}

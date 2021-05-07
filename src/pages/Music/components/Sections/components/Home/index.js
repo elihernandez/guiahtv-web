@@ -1,18 +1,10 @@
-import React, { Fragment, useEffect, useContext } from 'react'
-import AudioContext from '../../../../../../context/AudioContext'
+import React, { Fragment } from 'react'
 import { useAxios } from '../../../../../../hooks/useAxios'
 import { List } from '../../../../../../components/List'
 import { LoaderSpinnerMUI } from '../../../../../../components/Loader'
 
 export function Home(){
 	const { loading, data } = useAxios('music-home')
-	const { dispatchAudio } = useContext(AudioContext)
-
-	useEffect(() => {
-		if(data.musicSections){
-			dispatchAudio({ type: 'setData', payload: data.musicSections })
-		}
-	}, [data])
 
 	if(loading){
 		return <LoaderSpinnerMUI />

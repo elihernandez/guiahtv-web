@@ -50,9 +50,9 @@ export function VolumeBar() {
 				<Slider
 					orientation="horizontal"
 					onChange={handleChange}
-					value={track.length === 0 ? 0 : volume}
+					value={track?.length === 0 ? 0 : volume}
 					aria-labelledby="music-player-slider"
-					disabled={mute || track.length === 0 ? true : false}
+					disabled={mute || track?.length === 0 ? true : false}
 				/>
 			</div>
 		</div>

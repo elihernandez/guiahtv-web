@@ -1,36 +1,68 @@
+@import '../../../../../../styles/style-base.css';
+
 .current-music-info{
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      align-items: center;
+      flex: 1 1 auto;
 
-    .image-artist{
-          position: relative;
-          height: 60px;
-          width: 60px;
+      .image-artist{
+            position: relative;
+            height: 60px;
+            width: 60px;
 
-          img{
-                width: 100%;
-                height: 100%;
-                border-radius: 2px;
-          }
-    }
+            img{
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 2px;
+            }
+      }
 
-    .info-artist{
-          position: relative;
-          min-width: 300px;
-          margin-left: 15px;
+      .info-artist{
+            position: relative;
+            min-width: 300px;
+            margin-left: 15px;
 
-          h2{
-                font-size: 17px;
-                font-weight: 500;  
-          } 
+            h2{
+                  font-size: 17px;
+                  font-weight: 500;  
+            } 
 
-          h3{
-                font-size: 14px;
-                font-weight: 500;  
-                color: #bdbdbd;
-          } 
-    }
+            h3{
+                  font-size: 14px;
+                  font-weight: 500;  
+                  color: #bdbdbd;
+            } 
+
+            .artists{
+                  position: relative;
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 5px;
+
+                  a{
+                        text-decoration: none;
+
+                        .artist-item{
+                              position: relative;
+                              width: 100%;
+                              font-size: .8vw;
+                              font-weight: 500;
+                              color: $color-grey-2;
+                              line-height: 1vw;
+
+                              &:hover{
+                                    text-decoration: underline;
+                                    cursor: pointer;
+                              }
+                        }
+                  }
+            }
+      }
+}
+
+.current-music-time{
+      width: 18%;
 }

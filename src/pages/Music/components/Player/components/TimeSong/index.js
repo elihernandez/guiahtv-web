@@ -1,11 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react'
 import AudioContext from '../../../../../../context/AudioContext'
+import MusicContext from '../../../../../../context/MusicContext'
 import { secondsToString } from '../../../../../../js/Time'
 import './styles.css'
 
 export function TimeSong() {
 	const { stateAudio } = useContext(AudioContext)
-	const { audioRef, track } = stateAudio
+	const { audioRef } = stateAudio
+	const { stateMusic } = useContext(MusicContext)
+	const { track } = stateMusic
 	const [currentTime, setCurrentTime] = useState(null)
 	const [duration, setDuration] = useState(0)
 

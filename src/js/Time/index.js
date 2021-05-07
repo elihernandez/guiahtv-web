@@ -184,3 +184,26 @@ export function secondsToString(seconds) {
 
 	return time
 }
+
+export function minutesToHoursString(seconds){
+	let string
+	// let seconds = minutes * 60
+	let minutes = Math.floor((seconds / 60) % 60)
+	let hours = Math.floor(minutes / 60)
+
+	if(hours > 0){
+		if(minutes > 0){
+			string = `${hours} h ${minutes} min`
+		}else{
+			string = `${hours} h`
+		}
+	}else{
+		string = `${minutes} min`
+	}
+
+	return string
+}
+
+export function getYearDate(date){
+	return moment(date).year()
+}

@@ -327,7 +327,7 @@
       
             .item{
 
-                  height: auto;
+                  min-height: 20vw;
       
                   .background-item{
             
@@ -338,22 +338,22 @@
 
                         .hover-play{
                               position: absolute;
-                              top: 0;
-                              width: 100%;
-                              height: 100%;
-                              background-color: rgba(0, 0, 0, 0.5);
+                              bottom: 0;
+                              right: 0;
+                              padding: 1vw;
                               display: flex;
-                              justify-content: center;
-                              align-items: center;
+                              justify-content: flex-end;
+                              align-items: flex-end;
                               opacity: 0;
-                              transition: all 300ms ease-in-out;
-
+                              transition: opacity 300ms ease-in-out;
+                              z-index: 2;
+                            
                               span{
                                     position: relative;
                                     width: 50px;
                                     height: 50px;
-                                    border: 2px solid $color-white;
                                     border-radius: 50%;
+                                    background: $color-guide-blue;
                                     display: flex !important;
                                     justify-content: center;
                                     align-items: center;
@@ -365,25 +365,31 @@
                                           left: 2px;
                                     }
                               }
+
+                              &:hover{
+                                    transform: scale(1.075, 1.075);
+                              }
                         }
 
                         .active-play{
                               position: absolute;
-                              top: 0;
-                              width: 100%;
-                              height: 100%;
-                              background-color: rgba(0, 0, 0, 0.5);
+                              bottom: 0;
+                              right: 0;
+                              padding: 1vw;
                               display: flex;
-                              justify-content: center;
-                              align-items: center;
-                              transition: all 300ms ease-in-out;
+                              justify-content: flex-end;
+                              align-items: flex-end;
+                              opacity: 1;
+                              transform: scale(1);
+                              /* transition: all 300ms ease-in-out; */
+                              z-index: 2;
 
                               span{
                                     position: relative;
                                     width: 50px;
                                     height: 50px;
-                                    border: 2px solid $color-white;
                                     border-radius: 50%;
+                                    background: $color-guide-blue;
                                     display: flex !important;
                                     justify-content: center;
                                     align-items: center;
@@ -402,11 +408,19 @@
                                           }
                                     }
                               }
+
+                              &:hover{
+                                    transform: scale(1.075, 1.075);
+                              }
                         }
 
                         &:hover{
                               .hover-play{
                                     opacity: 1;
+                              }
+
+                              &::after{
+                                    border: 4px solid $color-white;
                               }
                         }
                   }
@@ -422,18 +436,54 @@
                               margin: 10px 0;
                   
                               .name-item{
-                                    font-size: .7vw;
+                                    font-size: .8vw;
                                     font-weight: 500;
+
+                                    &:hover{
+                                          cursor: inherit;
+                                    }
                               }
                         }
                   
                         .group-description-item{
+                              position: relative;
                               margin: 0 0;
                   
                               .description-item{
-                                    font-size: .7vw;
+                                    font-size: .8vw;
                                     font-weight: 500;
                                     color: $color-grey-2;
+
+                                    &:hover{
+                                          text-decoration: underline;
+                                          cursor: pointer;
+                                    }
+                              }
+
+                              .artists{
+                                    margin: 0 0;
+                                    position: relative;
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    gap: 5px;
+
+                                    a{
+                                          text-decoration: none;
+            
+                                          .artist-item{
+                                                position: relative;
+                                                width: 100%;
+                                                font-size: .8vw;
+                                                font-weight: 500;
+                                                color: $color-grey-2;
+                                                line-height: 1vw;
+      
+                                                &:hover{
+                                                      text-decoration: underline;
+                                                      cursor: pointer;
+                                                }
+                                          }
+                                    }
                               }
                         }
                   }
@@ -442,7 +492,144 @@
                         .background-item{
                               box-shadow: rgb(0 0 0 / 69%) 0px 1.3vw 1.6vw -0.5vw, rgb(0 0 0 / 73%) 0px .9vw 0.5vw -0.5vw;
                               transform: scale(0.93);
+
+                              &::after{
+                                    border: 4px solid transparent;
+                              }
                         }
+                  }
+            }
+      }
+}
+
+.list-tracks-album{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 0px 40px 40px 40px;
+
+      .item-link{
+            position: relative;
+            width: 100%;
+
+            .item{
+                  position: relative;
+                  width: 100%;
+                  height: auto;
+                  text-decoration: none;
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 5px;
+                  padding: 12px;
+                  border: 2px solid rgba(255, 255, 255, 0.05);
+                  border-radius: 4px;
+
+                  .number-track{
+                        font-size: 0.8vw;
+                        color: $color-white;
+                        width: 5%;
+                        text-align: center;
+                        display: flex;
+                        justify-content: center;
+
+                        span {
+                              position: relative;
+                              display: block;
+                              border: 2px solid transparent;
+                              border-radius: 50%;
+                              width: 2.2vw;
+                              height: 2.2vw;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+
+                              .fa-play{
+                                    position: relative;
+                                    left: 1px;
+                              }
+
+                              &:hover{
+                                    border: 2px solid $color-white;
+                              }
+                        }
+                  }
+
+                  .info-track{
+                        font-size: 1vw;
+                        display: flex;
+                        flex: 1 1 auto;
+                        flex-direction: column;
+                       
+                        .title-track{
+                              position: relative;
+                              font-size: 0.8vw;
+                              font-weight: 500;
+                              color: $color-white;
+                        }
+
+                        .artists-track{
+
+                              .artists{
+                                    position: relative;
+                                    display: flex;
+                                    gap: 5px;
+
+                                    a{
+                                          text-decoration: none;
+                                    }
+
+                                    .artist-item{
+                                          color: $color-grey-3;
+                                          font-size: 0.8vw;
+                                          font-weight: 500;
+
+                                          &:hover{
+                                                cursor: pointer;
+                                                text-decoration: underline;
+                                          }
+                                    }
+                              }
+                        }
+                  }
+
+                  .album-track{
+                        width: 30%;
+                        
+                        a{
+                              font-size: 0.8vw;
+                              color: $color-white;
+                              text-decoration: none;
+
+                              &:hover{
+                                    text-decoration: underline;
+                              }
+                        }
+                  }
+
+                  .like-track{
+                        width: 4%;
+                        font-size: 0.8vw;
+                        color: $color-white;
+                        text-align: center;
+                  }
+
+                  .time-track{
+                        width: 4%;
+                        font-size: 0.8vw;
+                        color: $color-white;
+                        text-align: center;
+                  }
+
+                  .menu-track{
+                        width: 4%;
+                        font-size: 0.8vw;
+                        color: $color-white;
+                        text-align: center;
+                  }
+
+                  &:hover{
+                        border: 2px solid $color-white;  
+                        cursor: pointer;
                   }
             }
       }

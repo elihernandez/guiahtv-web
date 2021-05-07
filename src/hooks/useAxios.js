@@ -30,6 +30,15 @@ function getURL(section, { memclid }, params) {
 	case 'music-home':
 		apiURL = `https://api.guiah.tv/music/home/${memclid}`
 		break
+	case 'music-artist':
+		apiURL = `https://api.guiah.tv/get/artist/${params.artistID}`
+		break
+	case 'music-album':
+		apiURL = `https://api.guiah.tv/get/album/${params.albumID}`
+		break
+	case 'music-playlist':
+		apiURL = `https://api.guiah.tv/get/playlist/${params.playlistID}`
+		break
 	case 'track-link':
 		apiURL = `https://api.guiah.tv/get/trackLink/${params.trackId}/${memclid}`
 		break

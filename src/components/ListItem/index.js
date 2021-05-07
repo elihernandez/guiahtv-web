@@ -1,12 +1,15 @@
-import React, { Fragment, useState, useContext } from 'react'
-import { NavLink, useRouteMatch, useParams } from 'react-router-dom'
+import React, { Fragment, useState, useContext, useEffect } from 'react'
+import { NavLink, Link, useRouteMatch, useParams, useHistory } from 'react-router-dom'
+import { v4 as uuid } from 'uuid'
 import VodContext from '../../context/VodContext'
 import RadioContext from '../../context/RadioContext'
 import AudioContext from '../../context/AudioContext'
 import VideoContext from '../../context/VideoContext'
+import MusicContext from '../../context/MusicContext'
+import { useAxios } from '../../hooks/useAxios'
 // import LiveTvContext from '../../context/LiveTvContext'
 import { getContactInfo } from '../../services/getContactInfo'
-import { getProgressMovie, isLive, isEvent, getProgressTimeEvent, getEventTime } from '../../js/Time'
+import { getProgressMovie, isLive, isEvent, getProgressTimeEvent, getEventTime, secondsToString } from '../../js/Time'
 import {  limitString, isLimitString, isSerie, typeContent, replaceString, containsString, createUrlString, createStringParam } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -19,7 +22,7 @@ import imgRecoverErrorPortrait from '../../assets/images/backgrounds/onerror/err
 import imgRecoverErrorLandscape from '../../assets/images/backgrounds/onerror/error-landscape.png'
 import './styles.css'
 
-export function Item({ data, posterType, listType, titleCategory, category }) {
+export function Item({ data, posterType, listType, titleCategory, category, listTracks, collection }) {
 	let Item = () => null
 	const { url } = useRouteMatch()
 	const { ContentType } = data
@@ -42,7 +45,19 @@ export function Item({ data, posterType, listType, titleCategory, category }) {
 		Item = <ItemCatalogue posterType={posterType} data={data} />
 		break
 	case 'tracks':
-		Item = <ItemTrack posterType={posterType} titleCategory={titleCategory} data={data} />
+		Item = <ItemCollectionTrack posterType={posterType} titleCategory={titleCategory} data={data} listTracks={listTracks} collection={collection} />
+		break
+	case 'playlists':
+		Item = <ItemPlaylist posterType={posterType} titleCategory={titleCategory} data={data} listTracks={listTracks} />
+		break
+	case 'albums':
+		Item = <ItemAlbum posterType={posterType} data={data} />
+		break
+	case 'tracksAlbum':
+		Item = <ItemTrackAlbum posterType={posterType} titleCategory={titleCategory} data={data} />
+		break
+	case 'tracksPlaylist':
+		Item = <ItemTrackPlaylist posterType={posterType} titleCategory={titleCategory} data={data} />
 		break
 	}
 
@@ -199,15 +214,17 @@ function ItemCardChannel({ posterType, data }) {
 	)
 }
 
-function ItemTrack({ posterType, titleCategory, data }) {
-	const { url } = useRouteMatch()
+function ItemCollectionTrack({ posterType, data, listTracks, collection }) {
+	const { regID, title, albumID, artists, portadaURL, portadaLandscapeURL } = data
+	const [ matchTrack, setMatchTrack ] = useState(false)
 	const { stateAudio, dispatchAudio } = useContext(AudioContext)
 	const { audioRef, playing, pauseList } = stateAudio
-	const [matchTrack, setMatchTrack] = useState(false)
-	const { regID, title, description, portadaURL, portadaLandscapeURL } = data
-	const categoryParam = createStringParam(titleCategory)
+	const { stateMusic, dispatchMusic } = useContext(MusicContext)
+	const { track, collection: list } = stateMusic
+	data.id = collection.id
 
-	const handleClick = () => {
+	const handleClick = (e) => {
+		e.preventDefault()
 		if(matchTrack){
 			if(playing){
 				audioRef.current.pause()
@@ -223,16 +240,27 @@ function ItemTrack({ posterType, titleCategory, data }) {
 		dispatchAudio({ type: 'setListRandomTracks', payload: [] })
 	}
 
+	const handlePlay = (e) => {
+		e.preventDefault()
+
+		dispatchMusic({ type: 'setTrack', payload: data })
+		dispatchMusic({ type: 'setCollection', payload: collection })
+		dispatchMusic({ type: 'setListTracks', payload: listTracks })
+	}
+
 	return (
 		<div className="item-link">
 			<div className="item">
 				<NavLink
-					to={`${url}/${categoryParam}/${regID}`}
+					to={{
+						pathname: `/musica/album/${albumID}`,
+						state: { trackID: regID }
+					}}
 					className="background-item"
 					activeClassName="active"
-					isActive={(match) => {
+					isActive={() => {
 						setTimeout(() => {
-							if(match){
+							if(	(data.regID == track.regID) && (data.id == list.id)){
 								setMatchTrack(true)
 								return true
 							}else{
@@ -240,25 +268,295 @@ function ItemTrack({ posterType, titleCategory, data }) {
 								return false
 							}
 						}, 100)
-					}}
-					onClick={handleClick}
-				>
-					<Img title={title} posterType={posterType} imgPortrait={portadaURL} imgLandscape={portadaLandscapeURL} />
-					<div className="hover-play">
-						<span><i className="fas fa-play"/></span>
-					</div>
-					{	matchTrack && playing &&
-						<div className="active-play">
-							<span><i className="fas fa-pause pause-icon"/></span>
-						</div>
-					}
-					{	matchTrack && !playing &&
-						<div className="active-play">
-							<span><i className="fas fa-play play-icon"/></span>
-						</div>
-					}
+					}}>
+					<Img title={title} posterType={posterType} imgSquare={portadaURL} imgLandscape={portadaLandscapeURL} />
+					<MatchTrack matchTrack={matchTrack} playing={playing} handleClick={handleClick} handlePlay={handlePlay}/>
 				</NavLink>
-				<Info title={title} description={description} />
+				<InfoTrack title={title} artists={artists} />
+			</div>
+		</div>
+	)
+}
+
+function ItemPlaylist({ posterType, data, listTracks }) {
+	// const { url } = useRouteMatch()
+	const { regID, title, artists, portadaURL, portadaLandscapeURL } = data
+	const [ matchTrack, setMatchTrack ] = useState(false)
+	const { stateAudio, dispatchAudio } = useContext(AudioContext)
+	const { audioRef, playing, pauseList } = stateAudio
+	const { stateMusic, dispatchMusic } = useContext(MusicContext)
+	const { track } = stateMusic
+	// data.id = uuid()
+
+	const handleClick = (e) => {
+		e.preventDefault()
+		if(matchTrack){
+			if(playing){
+				audioRef.current.pause()
+			}else{
+				audioRef.current.play()
+			}
+		}
+
+		if(pauseList){
+			dispatchAudio({ type: 'setPauseList', payload: false })
+		}
+
+		dispatchAudio({ type: 'setListRandomTracks', payload: [] })
+	}
+
+	const handlePlay = (e) => {
+		e.preventDefault()
+		// dispatchMusic({ type: 'setRoute', payload: url })
+		dispatchMusic({ type: 'setTrack', payload: data })
+		dispatchMusic({ type: 'setListTracks', payload: listTracks })
+	}
+
+	return (
+		<div className="item-link">
+			<div className="item">
+				<NavLink
+					to={{
+						pathname: `/musica/playlist/${regID}`,
+						state: { trackID: regID }
+					}}
+					className="background-item"
+					activeClassName="active"
+					isActive={() => {
+						setTimeout(() => {
+							if(track.regID === regID){
+								setMatchTrack(true)
+								return true
+							}else{
+								setMatchTrack(false)
+								return false
+							}
+						}, 100)
+					}}>
+					<Img title={title} posterType={posterType} imgSquare={portadaURL} imgLandscape={portadaLandscapeURL} />
+					<MatchTrack matchTrack={matchTrack} playing={playing} handleClick={handleClick} handlePlay={handlePlay}/>
+				</NavLink>
+				<InfoTrack title={title} artists={artists} />
+			</div>
+		</div>
+	)
+}
+
+function ItemAlbum({ posterType, data }) {	
+	const [params, setParams] = useState(false)
+	const [sendRequestAlbum, setSendRequestAlbum] = useState(false)
+	const { data: dataAlbum } = useAxios('music-album', sendRequestAlbum, params)
+	const { albumID, title, portadaURL } = data
+	const [matchTrack, setMatchTrack] = useState(false)
+	const { stateAudio, dispatchAudio } = useContext(AudioContext)
+	const { audioRef, playing, pauseList } = stateAudio
+	const { stateMusic, dispatchMusic } = useContext(MusicContext)
+	const { album, collection } = stateMusic
+
+	const handleClick = (e) => {
+		e.preventDefault()
+		if(matchTrack){
+			if(playing){
+				audioRef.current.pause()
+			}else{
+				audioRef.current.play()
+			}
+		}
+
+		if(pauseList){
+			dispatchAudio({ type: 'setPauseList', payload: false })
+		}
+
+		dispatchAudio({ type: 'setListRandomTracks', payload: [] })
+	}
+
+	const handlePlay = (e) => {
+		e.preventDefault()
+		setParams({ albumID: data.albumID })
+		setSendRequestAlbum(true)
+	}
+
+	useEffect(() => {
+		if(dataAlbum.length > 0){
+			dataAlbum.albumID = data.albumID
+			dataAlbum.id = uuid()
+			dispatchAudio({ type: 'setPlaying', payload: true })
+			dispatchAudio({ type: 'setPause', payload: false })
+			dispatchMusic({ type: 'setAlbum', payload: dataAlbum })
+			dispatchMusic({ type: 'setListTracks', payload: dataAlbum.tracks })
+			dispatchMusic({ type: 'setCollection', payload: dataAlbum })
+			dataAlbum.tracks[0].id = dataAlbum.id
+			dispatchMusic({ type: 'setTrack', payload: dataAlbum.tracks[0] })
+		}
+	}, [dataAlbum])
+
+	return (
+		<div className="item-link">
+			<div className="item">
+				<NavLink
+					to={`/musica/album/${albumID}`}
+					className="background-item"
+					activeClassName="active"
+					isActive={() => {
+						setTimeout(() => {
+							if((album?.albumID == albumID) && (album.id == collection.id)){
+								setMatchTrack(true)
+								return true
+							}else{
+								setMatchTrack(false)
+								return false
+							}
+						}, 100)
+					}}>
+					<Img title={title} posterType={posterType} imgSquare={portadaURL} imgLandscape={portadaURL} />
+					<MatchTrack matchTrack={matchTrack} playing={playing} handleClick={handleClick} handlePlay={handlePlay}/>
+				</NavLink>
+				<InfoAlbum title={title} />
+			</div>
+		</div>
+	)
+}
+
+function ItemTrackAlbum({ data }) {
+	const { title, length, artists, trackNumber } = data
+	const { stateAudio, dispatchAudio } = useContext(AudioContext)
+	const { audioRef, playing, pauseList } = stateAudio
+	const { stateMusic, dispatchMusic } = useContext(MusicContext)
+	const { album, track, collection } = stateMusic
+	// data.id = uuid()
+	
+	const handlePlay = (e) => {
+		e.preventDefault()
+		if(e.nativeEvent.target.nodeName != 'P' && e.nativeEvent.target.nodeName != 'A'){
+			data.id = album.id
+			dispatchMusic({ type: 'setTrack', payload: data})
+			dispatchMusic({ type: 'setListTracks', payload: album.tracks})
+			dispatchMusic({ type: 'setCollection', payload: album})
+		}
+	}
+
+	const handleClick = (e) => {
+		e.preventDefault()
+		if(playing){
+			audioRef.current.pause()
+		}else{
+			audioRef.current.play()
+		}
+
+		if(pauseList){
+			dispatchAudio({ type: 'setPauseList', payload: false })
+		}
+
+		dispatchAudio({ type: 'setListRandomTracks', payload: [] })
+	}
+
+	return (
+		<div className="item-link">
+			<div className="item" onClick={handlePlay}>
+				<div className="number-track">
+					{ (data.regID == track.regID) && (track.id == collection.id) ? (
+						<span onClick={handleClick}>
+							{playing ? (
+								<i className="fas fa-pause" />
+							) : (
+								<i className="fas fa-play" />
+							)}
+						</span>
+					) : (
+						trackNumber
+					) }
+				</div>
+				<div className="info-track">
+					<h3 className="title-track">{title}</h3>
+					<h4 className="artists-track">
+						<ArtistsTrack artists={artists} />
+					</h4>
+				</div>
+				<div className="time-track">
+					{secondsToString(length)}
+				</div>
+				<div className="like-track">
+					<span><i className="fal fa-heart"></i></span>
+				</div>
+				
+				<div className="menu-track">
+					<span><i className="far fa-ellipsis-h"></i></span>
+				</div>
+			</div>
+		</div>
+	)
+}
+
+function ItemTrackPlaylist({ data }) {
+	const { title, length, artists, trackNumber, albumTitle, albumID } = data
+	const { stateAudio, dispatchAudio } = useContext(AudioContext)
+	const { audioRef, playing, pauseList } = stateAudio
+	const { stateMusic, dispatchMusic } = useContext(MusicContext)
+	const { playlist, track } = stateMusic
+	// data.id = uuid()
+
+	const handlePlay = (e) => {
+		e.preventDefault()
+		if(e.nativeEvent.target.nodeName != 'P' && e.nativeEvent.target.nodeName != 'A'){
+			dispatchMusic({ type: 'setTrack', payload: data})
+			dispatchMusic({ type: 'setListTracks', payload: playlist.tracks})
+		}
+	}
+
+	const handleClick = (e) => {
+		e.preventDefault()
+		if(playing){
+			audioRef.current.pause()
+		}else{
+			audioRef.current.play()
+		}
+
+		if(pauseList){
+			dispatchAudio({ type: 'setPauseList', payload: false })
+		}
+
+		dispatchAudio({ type: 'setListRandomTracks', payload: [] })
+	}
+
+	return (
+		<div className="item-link">
+			<div className="item" onClick={handlePlay}>
+				<div className="number-track">
+					{track?.regID == data.regID ? (
+						<span onClick={handleClick}>
+							{playing ? (
+								<i className="fas fa-pause" />
+							) : (
+								<i className="fas fa-play" />
+							)}
+						</span>
+					) : (
+						trackNumber
+					) }
+				</div>
+				<div className="info-track">
+					<h3 className="title-track">{title}</h3>
+					<h4 className="artists-track">
+						<ArtistsTrack artists={artists} />
+					</h4>
+				</div>
+				<div className="album-track">
+					<Link to={{
+						pathname: `/musica/album/${albumID}`
+					}}>
+						{ albumTitle }
+					</Link>
+				</div>
+				<div className="time-track">
+					{secondsToString(length)}
+				</div>
+				<div className="like-track">
+					<span><i className="fal fa-heart"></i></span>
+				</div>
+				
+				<div className="menu-track">
+					<span><i className="far fa-ellipsis-h"></i></span>
+				</div>
 			</div>
 		</div>
 	)
@@ -324,7 +622,7 @@ function DescriptionItem({ description }) {
 	)
 }
 
-function Img({ title, posterType, imgPortrait, imgLandscape, imgError }) {
+function Img({ title, posterType, imgPortrait, imgLandscape, imgSquare, imgError }) {
 	const altImg = `img-${title}`
 
 	return (
@@ -336,7 +634,7 @@ function Img({ title, posterType, imgPortrait, imgLandscape, imgError }) {
                 <LazyImage img={imgLandscape} alt={altImg} type="webp" recoverType="jpg" imgError={imgError ? imgError : imgRecoverErrorLandscape} />
 			}
 			{posterType == 2 &&
-				<LazyImage img={imgLandscape} alt={altImg} type="webp" recoverType="jpg" imgError={imgError ? imgError : imgRecoverErrorLandscape} />
+				<LazyImage img={imgSquare} alt={altImg} type="webp" recoverType="jpg" imgError={imgError ? imgError : imgRecoverErrorLandscape} />
 			}
 		</Fragment>
 	)
@@ -365,6 +663,58 @@ function Info({ title, description }) {
 				<p className="description-item">{limitString(description, 80)}</p>
 			</div>
 		</div>
+	)
+}
+
+function InfoTrack({ title, artists }) {
+
+	return (
+		<div className="info-item">
+			<div className="group-name-item">
+				<h6 className="name-item">{	limitString(title, 40)}</h6>
+			</div>
+			{artists && (
+				<div className="group-description-item">
+					<ArtistsTrack artists={artists} />
+				</div>
+			)}
+		</div>
+	)
+	// <p className="description-item">{limitString(artists, 80)}</p>
+}
+
+function InfoAlbum({ title }) {
+
+	return (
+		<div className="info-item">
+			<div className="group-name-item">
+				<h6 className="name-item">{title}</h6>
+			</div>
+			<div className="group-description-item">
+				
+			</div>
+		</div>
+	)
+	// <p className="description-item">{limitString(artists, 80)}</p>
+}
+
+function MatchTrack({matchTrack, playing, handleClick, handlePlay}){
+	return (
+		<Fragment>
+			<div className="hover-play" onClick={handlePlay}>
+				<span><i className="fas fa-play"/></span>
+			</div>
+			{	matchTrack && playing &&
+			<div className="active-play" onClick={handleClick}>
+				<span><i className="fas fa-pause pause-icon"/></span>
+			</div>
+			}
+			{	matchTrack && !playing &&
+			<div className="active-play" onClick={handleClick}>
+				<span><i className="fas fa-play play-icon"/></span>
+			</div>
+			}
+		</Fragment>
 	)
 }
 
@@ -516,4 +866,46 @@ function ContactInfo({ moreInfoActive, contactInfo, setMoreInfoActive }) {
 			}
 		</Fragment>
 	)
+}
+
+function ArtistsTrack({artists}){
+	return (
+		<div className="artists">		
+			{artists.length > 0 ? (
+				artists.map((artist, index) => {
+					// const nameParam = createStringParam(artist.title)
+					if(artists.length - 1 === index){
+						return (
+							<Link key={artist.artistID} to={{
+								pathname: `/musica/artista/${artist.artistID}`,
+								state: { artistID: artist.artistID, nameArtist: artist.title }
+							}}>
+								<p className="artist-item">{artist.title}</p>
+							</Link>
+						)
+					}else{
+						return (
+							<Link key={artist.artistID} to={{
+								pathname: `/musica/artista/${artist.artistID}`,
+								state: { artistID: artist.artistID }
+							}}>
+								<p className="artist-item">{artist.title + ', '}</p>
+							</Link>
+						)
+					}
+				})
+			):(
+				<Link to={{
+					pathname: `/musica/artista/${artists.artistID}`,
+					state: { artistID: artists.artistID }
+				}}>
+					<p className="artist-item">{artists.title}</p>
+				</Link>
+			)}
+		</div>
+	)
+}
+
+export {
+	ArtistsTrack
 }

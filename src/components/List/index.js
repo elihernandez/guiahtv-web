@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Item } from '../ListItem'
 import { SlickSlider } from '../SlickCarousel'
+import { v4 as uuid } from 'uuid'
 import './styles.css'
 
 export function List({ data, listType, wrap, indexList, tabValues }) {
+	
 	let List = () => null
 
 	switch (listType) {
@@ -20,7 +22,19 @@ export function List({ data, listType, wrap, indexList, tabValues }) {
 		List = <ListChannel data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
 		break
 	case 'tracks':
-		List = <ListTracks data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
+		List = <ListCollectionTracks data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
+		break
+	case 'playlists':
+		List = <ListPlaylists data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
+		break
+	case 'albums':
+		List = <ListAlbums data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
+		break
+	case 'tracksAlbum':
+		List = <ListTracksAlbum data={data} listType='tracksAlbum' indexList={indexList} tabValues={tabValues} />
+		break
+	case 'tracksPlaylist':
+		List = <ListTracksPlaylist data={data} listType='tracksPlaylist' indexList={indexList} tabValues={tabValues} />
 		break
 	}
 
@@ -138,7 +152,7 @@ export function ListChannel({ data, listType, indexList, tabValues }) {
 			<SlickSlider settings={settings}>
 				{data.cmData.map((dataItem) => {
 					return (
-						<Item key={dataItem.Id ? dataItem.Id : dataItem.Registro} posterType={data.poster_type} data={dataItem} listType={listType} titleCategory={data.category} />
+						<Item key={dataItem.Id ? dataItem.Id : dataItem.Registro} posterType={1} data={dataItem} listType={listType} titleCategory={data.category} />
 					)
 				})}
 			</SlickSlider>
@@ -146,11 +160,76 @@ export function ListChannel({ data, listType, indexList, tabValues }) {
 	)
 }
 
-export function ListTracks({ data, listType, indexList, tabValues }) {
-	// const { category, poster_type } = data
-	// console.log(data)
+export function ListCollectionTracks({ data, listType, indexList, tabValues }) {
 	const posterType = 2
+	const slidesToShow = 7
+	const classes = 'list list-tracks square'
 	const { title, description } = data
+	data.id = uuid()
+
+	const settings = {
+		dots: false,
+		infinite: false,
+		slidesToShow: slidesToShow,
+		slidesToScroll: slidesToShow,
+		swipeToSlide: true,
+		focusOnSelect: true,
+		speed: 500
+	}
+
+	console.log(data)
+	return (
+		<div className={classes}>
+			<TitleList title={title} />
+			{description && (
+				<DescriptionList description={description} />
+			)}
+			<SlickSlider settings={settings}>
+				{data.tracks.map((track) => {
+					return (
+						<Item key={track.regID} posterType={posterType} data={track} listType={listType} titleCategory={data.title} listTracks={data.tracks} collection={data} />
+					)
+				})}
+			</SlickSlider>
+		</div>
+	)
+}
+
+export function ListPlaylists({ data, listType, indexList, tabValues }) {
+	const posterType = 2
+	const slidesToShow = 7
+	const classes = 'list list-tracks square'
+	const { title, description } = data
+
+	const settings = {
+		dots: false,
+		infinite: false,
+		slidesToShow: slidesToShow,
+		slidesToScroll: slidesToShow,
+		swipeToSlide: true,
+		focusOnSelect: true,
+		speed: 500
+	}
+
+	return (
+		<div className={classes}>
+			<TitleList title={title} />
+			{description && (
+				<DescriptionList description={description} />
+			)}
+			<SlickSlider settings={settings}>
+				{data.playLists.map((playlist) => {
+					return (
+						<Item key={playlist.regID} posterType={posterType} data={playlist} listType={listType} titleCategory={data.title} listTracks={data.tracks} />
+					)
+				})}
+			</SlickSlider>
+		</div>
+	)
+}
+
+export function ListAlbums({ data, listType, indexList, tabValues }) {
+	const posterType = 2
 	const slidesToShow = 7
 	const classes = 'list list-tracks square'
 
@@ -166,17 +245,63 @@ export function ListTracks({ data, listType, indexList, tabValues }) {
 
 	return (
 		<div className={classes}>
-			<TitleList title={title} />
-			{	description &&
-				<DescriptionList description={description} />
-			}
+			<TitleList title='Álbumes' />
 			<SlickSlider settings={settings}>
-				{data.tracks.map((track, index) => {
+				{data.albums.map((album) => {
 					return (
-						<Item key={track.regID} posterType={data.posterType} data={track} listType={listType} titleCategory={data.title} />
+						<Item key={album.albumID} posterType={posterType} data={album} listType={listType} />
 					)
 				})}
 			</SlickSlider>
+		</div>
+	)
+}
+
+export function ListTracksAlbum({ data, listType, indexList, tabValues }) {
+	const posterType = 0
+	const classes = 'list-tracks-album'
+
+	return (
+		<div className={classes}>
+			<div className="header-table-tracks">
+				<ul className="header">
+					<li className="number-item">#</li>
+					<li className="title-item">Título</li>
+					<li className="time-item"><i className="fal fa-clock"></i></li>
+					<li className="like-item"></li>
+					<li className="menu-item"></li>
+				</ul>
+			</div>
+			{data.tracks.map((track) => {
+				return (
+					<Item key={track.regID} posterType={posterType} data={track} listType={listType} />
+				)
+			})}
+		</div>
+	)
+}
+
+export function ListTracksPlaylist({ data, listType, indexList, tabValues }) {
+	const posterType = 0
+	const classes = 'list-tracks-album'
+
+	return (
+		<div className={classes}>
+			<div className="header-table-tracks">
+				<ul className="header">
+					<li className="number-item">#</li>
+					<li className="title-item">Título</li>
+					<li className="album-item">Álbum</li>
+					<li className="time-item"><i className="fal fa-clock"></i></li>
+					<li className="like-item"></li>
+					<li className="menu-item"></li>
+				</ul>
+			</div>
+			{data.tracks.map((track) => {
+				return (
+					<Item key={track.regID} posterType={posterType} data={track} listType={listType} />
+				)
+			})}
 		</div>
 	)
 }

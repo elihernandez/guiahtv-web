@@ -53,25 +53,4 @@
             }
 
       }
-
-      &::-webkit-scrollbar {
-            -webkit-appearance: none;
-      }
-
-      &::-webkit-scrollbar:vertical{
-            width: 6px;
-      }
-
-      &::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
-            display: none;
-      }
-
-      &::-webkit-scrollbar-thumb {
-            background-color: #797979;
-            border-radius: 20px;
-      }
-
-      &::-webkit-scrollbar-track {
-            border-radius: 10px;  
-      }
 }

@@ -1,11 +1,15 @@
 export function validateSuscription(response, dispatch){
 	let data = response
 	let suscriptionStatus
-
+	
 	if(response.suscriptionStatus){
 		suscriptionStatus = response.suscriptionStatus
+	}else if(response[0]) {
+		if(response[0].SuscriptionStatus){
+			suscriptionStatus = response[0].SuscriptionStatus
+		}
 	}else{
-		suscriptionStatus = response[0].SuscriptionStatus
+		return response
 	}
 
 	switch(suscriptionStatus) {

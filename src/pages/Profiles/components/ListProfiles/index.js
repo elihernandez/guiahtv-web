@@ -1,5 +1,9 @@
 import React from 'react'
 import { useHistory, useRouteMatch } from 'react-router-dom'
+import gente1 from '../../../../assets/images/backgrounds/gente1.png'
+import gente7 from '../../../../assets/images/backgrounds/gente7.png'
+import gente8 from '../../../../assets/images/backgrounds/gente8.png'
+import paloma2 from '../../../../assets/images/backgrounds/paloma2.png'
 import './styles.css'
 
 export function ListProfiles({ editProfiles }){
@@ -18,7 +22,7 @@ export function ListProfiles({ editProfiles }){
 				<li className="profile-item">
 					<div className="img-profile" onClick={changeEdit}>
 						<div className="thumbnail-gradient" />
-						<img src="https://via.placeholder.com/150/24f355" />
+						<img src={gente1} />
 						{   editProfiles &&
 						<span className="edit-icon">
 							<i className="fas fa-pen"></i>
@@ -30,7 +34,7 @@ export function ListProfiles({ editProfiles }){
 				<li className="profile-item">
 					<div className="img-profile" onClick={changeEdit}>
 						<div className="thumbnail-gradient" />
-						<img src="https://via.placeholder.com/150/24f355" />
+						<img src={gente7} />
 						{   editProfiles &&
 						<span className="edit-icon">
 							<i className="fas fa-pen"></i>
@@ -42,7 +46,7 @@ export function ListProfiles({ editProfiles }){
 				<li className="profile-item">
 					<div className="img-profile" onClick={changeEdit}>
 						<div className="thumbnail-gradient" />
-						<img src="https://via.placeholder.com/150/24f355" />
+						<img src={gente8}/>
 						{   editProfiles &&
 						<span className="edit-icon">
 							<i className="fas fa-pen"></i>
@@ -54,7 +58,7 @@ export function ListProfiles({ editProfiles }){
 				<li className="profile-item">
 					<div className="img-profile" onClick={changeEdit}>
 						<div className="thumbnail-gradient" />
-						<img src="https://via.placeholder.com/150/24f355" />
+						<img src={paloma2} />
 						{   editProfiles &&
 						<span className="edit-icon">
 							<i className="fas fa-pen"></i>

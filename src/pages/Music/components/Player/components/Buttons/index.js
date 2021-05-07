@@ -1,18 +1,19 @@
 import React, { useContext, useState } from 'react'
-import { useHistory, useParams, useRouteMatch } from 'react-router-dom'
 import AudioContext from '../../../../../../context/AudioContext'
+import MusicContext from '../../../../../../context/MusicContext'
 import Tooltip from '@material-ui/core/Tooltip'
 import { resetTrack, getPrevTrack, getNextTrack, getRandomTrack } from '../../../../scripts'
 import './styles.css'
 
-const RandomButton = ({ state, dispatch }) => {
-	const { random } = state
+const RandomButton = ({ props }) => {
+	const { stateAudio, dispatchAudio } = props
+	const { random } = stateAudio
 
 	const handleClick = () => {
 		if(random){
-			dispatch({ type: 'setRandom', payload: false })
+			dispatchAudio({ type: 'setRandom', payload: false })
 		}else{
-			dispatch({ type: 'setRandom', payload: true })
+			dispatchAudio({ type: 'setRandom', payload: true })
 		}
 	}
 
@@ -25,26 +26,27 @@ const RandomButton = ({ state, dispatch }) => {
 	)
 }
 
-const RepeatButton = ({ state, dispatch }) => {
-	const { repeat, repeatOne } = state
+const RepeatButton = ({ props }) => {
+	const { stateAudio, dispatchAudio } = props
+	const { repeat, repeatOne } = stateAudio
 	const [tooltipText, setTooltipText] = useState('Activar repetición')
 
 	const handleClick = () => {
 		if(!repeat && !repeatOne){
-			dispatch({ type: 'setRepeat', payload: true })
-			dispatch({ type: 'setRepeatOne', payload: false })
+			dispatchAudio({ type: 'setRepeat', payload: true })
+			dispatchAudio({ type: 'setRepeatOne', payload: false })
 			setTooltipText('Repetir una canción')
 		}
 		
 		if(repeat && !repeatOne){
-			dispatch({ type: 'setRepeat', payload: false })
-			dispatch({ type: 'setRepeatOne', payload: true })
+			dispatchAudio({ type: 'setRepeat', payload: false })
+			dispatchAudio({ type: 'setRepeatOne', payload: true })
 			setTooltipText('Desactivar repetición')
 		}
 		
 		if(!repeat && repeatOne){
-			dispatch({ type: 'setRepeat', payload: false })
-			dispatch({ type: 'setRepeatOne', payload: false })
+			dispatchAudio({ type: 'setRepeat', payload: false })
+			dispatchAudio({ type: 'setRepeatOne', payload: false })
 			setTooltipText('Activar repetición')
 		}
 	}
@@ -66,49 +68,67 @@ const RepeatButton = ({ state, dispatch }) => {
 	)
 }
 
-const StepBackwardButton = ({ state, dispatch }) => { 
-	const history = useHistory()
-	const { trackId } = useParams()
-	const match = useRouteMatch()
-	const { audioRef, listTrack, track, repeat, repeatOne, random, listRandomTracks } = state
+const StepBackwardButton = ({ props }) => { 
+	const { stateAudio, dispatchAudio, stateMusic, dispatchMusic } = props
+	const { audioRef,  repeat, repeatOne, random } = stateAudio
+	const { listTracks, track, listRandomTracks } = stateMusic
 
-	const handleHistoryPush = (url) => {
-		history.push(url)
+	const handleChangeRepeat = () => {
 		if(repeatOne){
-			dispatch({ type: 'setRepeat', payload: true })
-			dispatch({ type: 'setRepeatOne', payload: false })
+			dispatchAudio({ type: 'setRepeat', payload: true })
+			dispatchAudio({ type: 'setRepeatOne', payload: false })
 		}
 	}
 
-	const handleCurrentTime = (url) => {
+	const handleCurrentTime = (prevTrack) => {
 		if(audioRef.current.currentTime >= 2){
 			resetTrack(audioRef)
 		}else{
-			handleHistoryPush(url)
+			handleChangeRepeat()
+			dispatchMusic({ type: 'setTrack', payload: prevTrack })
 		}
 	}
 
 	const handleClick = () => {
-		const { url, isTheFirstTrack } = getPrevTrack(listTrack, trackId, track, match)
+		const { prevTrack, isTheFirstTrack } = getPrevTrack(listTracks, track.regID, track)
 
 		if(random){
-			if(audioRef.current.currentTime >= 2){
-				resetTrack(audioRef)
+			if(listTracks.length > 1){
+				if(audioRef.current.currentTime >= 2){
+					resetTrack(audioRef)
+				}else{
+					const { randomTrack, listRandom } = getRandomTrack(listTracks, track, listRandomTracks)
+					dispatchMusic({ type: 'setListRandomTracks', payload: listRandom })
+					dispatchMusic({ type: 'setTrack', payload: randomTrack })
+					handleChangeRepeat()
+				}
 			}else{
-				const { url, listRandom } = getRandomTrack(listTrack, track, listRandomTracks, match)
-				dispatch({ type: 'setListRandomTracks', payload: listRandom })
-				handleHistoryPush(url)
+				resetTrack(audioRef)
+				if(!repeat && !repeatOne){
+					dispatchAudio({ type: 'setPauseList', payload: true })
+					dispatchAudio({ type: 'setPlaying', payload: false })
+				}
+				handleChangeRepeat()
 			}
 		}else{
-			if(isTheFirstTrack){
-				if(repeat || repeatOne){
-					handleCurrentTime(url)
+			if(listTracks.length > 1){
+				if(isTheFirstTrack){
+					if(repeat || repeatOne){
+						handleCurrentTime(prevTrack)
+					}else{
+						resetTrack(audioRef)
+					}
+					dispatchAudio({ type: 'setPauseList', payload: false })
 				}else{
-					resetTrack(audioRef)
+					handleCurrentTime(prevTrack)
 				}
-				dispatch({ type: 'setPauseList', payload: false })
 			}else{
-				handleCurrentTime(url)
+				resetTrack(audioRef)
+				if(!repeat && !repeatOne){
+					dispatchAudio({ type: 'setPauseList', payload: true })
+					dispatchAudio({ type: 'setPlaying', payload: false })
+				}
+				handleChangeRepeat()
 			}
 		}
 	}
@@ -122,41 +142,61 @@ const StepBackwardButton = ({ state, dispatch }) => {
 	)
 }
 
-const StepForwardButton = ({ state, dispatch }) => {
-	const history = useHistory()
-	const { trackId } = useParams()
-	const match = useRouteMatch()
-	const { listTrack, track, repeat, repeatOne, random, listRandomTracks } = state
+const StepForwardButton = ({ props }) => {
+	const { stateAudio, dispatchAudio, stateMusic, dispatchMusic } = props
+	const { audioRef, repeat, repeatOne, random } = stateAudio
+	const { listTracks, track, listRandomTracks} = stateMusic
 
-	const handleHistoryPush = (url) => {
-		history.push(url)
+	const handleChangeRepeat = () => {
 		if(repeatOne){
-			dispatch({ type: 'setRepeat', payload: true })
-			dispatch({ type: 'setRepeatOne', payload: false })
+			dispatchAudio({ type: 'setRepeat', payload: true })
+			dispatchAudio({ type: 'setRepeatOne', payload: false })
 		}
 	}
 
 	const handleClick = () => {
-		const { url, isTheLastTrack } = getNextTrack(listTrack, track.regID, track, match)
-		
+		const { nextTrack, isTheLastTrack } = getNextTrack(listTracks, track.regID, track)
+
+		console.log(isTheLastTrack)
 		if(random){
-			const { url, listRandom } = getRandomTrack(listTrack, track, listRandomTracks, match)
-			dispatch({ type: 'setListRandomTracks', payload: listRandom })
-			handleHistoryPush(url)
+			if(listTracks.length > 1){
+				const { randomTrack, listRandom } = getRandomTrack(listTracks, track, listRandomTracks)
+				dispatchMusic({ type: 'setListRandomTracks', payload: listRandom })
+				dispatchMusic({ type: 'setTrack', payload: randomTrack })
+				handleChangeRepeat()
+			}else{
+				resetTrack(audioRef)
+				if(!repeat && !repeatOne){
+					dispatchAudio({ type: 'setPauseList', payload: true })
+					dispatchAudio({ type: 'setPlaying', payload: false })
+				}
+				handleChangeRepeat()
+			}
 		}else{
-			if(isTheLastTrack){
-				if(repeat){
-					handleHistoryPush(url)
-				}else if(repeatOne){
-					handleHistoryPush(url)
+			if(listTracks.length > 1){
+				if(isTheLastTrack){
+					if(repeat){
+						handleChangeRepeat()
+					}else if(repeatOne){
+						handleChangeRepeat()
+					}else{
+						dispatchAudio({ type: 'setPauseList', payload: true })
+						dispatchAudio({ type: 'setPlaying', payload: false })
+						handleChangeRepeat()
+					}
+					dispatchMusic({ type: 'setTrack', payload: nextTrack })
 				}else{
-					dispatch({ type: 'setPauseList', payload: true })
-					dispatch({ type: 'setPlaying', payload: false })
-					handleHistoryPush(url)
+					dispatchAudio({ type: 'setPauseList', payload: false })
+					dispatchMusic({ type: 'setTrack', payload: nextTrack })
+					handleChangeRepeat()
 				}
 			}else{
-				dispatch({ type: 'setPauseList', payload: false })
-				handleHistoryPush(url)
+				resetTrack(audioRef)
+				if(!repeat && !repeatOne){
+					dispatchAudio({ type: 'setPauseList', payload: true })
+					dispatchAudio({ type: 'setPlaying', payload: false })
+				}
+				handleChangeRepeat()
 			}
 		}
 	}
@@ -170,17 +210,19 @@ const StepForwardButton = ({ state, dispatch }) => {
 	)
 }
 
-const PlayPauseButtons = ({ state, dispatch }) => {
-	const { audioRef, playing, track } = state
+const PlayPauseButtons = ({ props }) => {
+	const { stateAudio, dispatchAudio, stateMusic } = props
+	const { audioRef, playing } = stateAudio
+	const { track } = stateMusic
 
 	const handleClick = () => {
-		if(track && track.length > 0){
+		if(track){
 			if (playing) {
 				audioRef.current.pause()
-				dispatch({ type: 'setPlaying', payload: false })
+				dispatchAudio({ type: 'setPlaying', payload: false })
 			} else {
 				audioRef.current.play()
-				dispatch({ type: 'setPlaying', payload: true })
+				dispatchAudio({ type: 'setPlaying', payload: true })
 			}
 		}
 	}
@@ -199,15 +241,23 @@ const PlayPauseButtons = ({ state, dispatch }) => {
 
 export function ButtonsPlayer() {
 	const { stateAudio, dispatchAudio } = useContext(AudioContext)
+	const { stateMusic, dispatchMusic } = useContext(MusicContext)
+
+	const props = { 
+		stateAudio: stateAudio,
+		dispatchAudio: dispatchAudio,
+		stateMusic: stateMusic,
+		dispatchMusic: dispatchMusic,
+	}
 
 	return (
 		<div className="buttons-player">
 			<ul className="list-buttons">
-				<RandomButton state={stateAudio} dispatch={dispatchAudio} />
-				<StepBackwardButton state={stateAudio} dispatch={dispatchAudio} />
-				<PlayPauseButtons state={stateAudio} dispatch={dispatchAudio} />
-				<StepForwardButton state={stateAudio} dispatch={dispatchAudio} />
-				<RepeatButton state={stateAudio} dispatch={dispatchAudio} />
+				<RandomButton props={props} />
+				<StepBackwardButton props={props} />
+				<PlayPauseButtons props={props} />
+				<StepForwardButton props={props} />
+				<RepeatButton props={props} />
 			</ul>
 		</div>
 	)

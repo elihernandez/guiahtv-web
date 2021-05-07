@@ -152,7 +152,7 @@
       }
 
       &.list-tracks{
-            padding: 0 $full-padding-content 0 calc($full-padding-content / 2);
+            padding: 0 $padding-content 0 $padding-content;
             margin: 25px 0;
 
             &.square{
@@ -166,7 +166,21 @@
                         flex: 0 0 calc(100% / 7);
                   }
             }
-      }
+
+            .slick-arrow{
+                  width: $padding-content;
+          
+                  &.slick-prev{
+                      left: -$padding-content;
+                  }
+          
+                  &.slick-next{
+                      right: -$padding-content;
+                  }
+            }
+            
+           
+      }   
 
       &.list-card{
       
@@ -271,6 +285,58 @@
                               background: white;
                         }
                   }
+            }
+      }
+}
+
+.header-table-tracks{
+      position: relative;
+      width: 100%;
+
+      .header{
+            position: relative;
+            width: 100%;
+            padding: 12px;
+            display: flex;
+
+            .number-item{
+                  font-size: 0.8vw;
+                  color: $color-grey-2;
+                  width: 5%;
+                  text-align: center;
+            }
+
+            .title-item{
+                  flex: 1 1 auto;
+                  font-size: 0.8vw;
+                  color: $color-grey-2;
+            }
+
+            .album-item{
+                  width: 30%;
+                  font-size: 0.8vw;
+                  color: $color-grey-2;
+            }
+
+            .time-item{
+                  width: 4%;
+                  font-size: 0.8vw;
+                  color: $color-grey-2;
+                  text-align: center;
+            }
+
+            .like-item{
+                  width: 4%;
+                  font-size: 0.8vw;
+                  color: $color-grey-2;
+                  text-align: center;
+            }
+
+            .menu-item{
+                  width: 4%;
+                  font-size: 0.8vw;
+                  color: $color-grey-2;
+                  text-align: center;
             }
       }
 }

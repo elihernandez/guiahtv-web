@@ -49,7 +49,7 @@ export function ProgressTime() {
 					min={0}
 					max={duration}
 					aria-labelledby="continuous-slider"
-					disabled={track.length === 0 ? true : false}
+					disabled={track?.length === 0 ? true : false}
 				/>
 			</div>
 		</div>

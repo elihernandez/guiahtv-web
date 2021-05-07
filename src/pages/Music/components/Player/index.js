@@ -1,6 +1,7 @@
 import React, { useRef, useState, useContext, useEffect } from 'react'
 import { useParams, useRouteMatch, useHistory } from 'react-router-dom'
 import AudioContext from '../../../../context/AudioContext'
+import MusicContext from '../../../../context/MusicContext'
 import { useAxios } from '../../../../hooks/useAxios'
 import { useHls } from '../../../../hooks/useHls'
 import { ProgressTime } from './components/ProgressTime'
@@ -21,7 +22,9 @@ export function Player() {
 	const [sendRequest, setSendRequest] = useState(false)
 	const { collectionID, trackId } = useParams()
 	const { stateAudio, dispatchAudio } = useContext(AudioContext)
-	const { data, track, listTrack, repeat, repeatOne, pauseList, random, listRandomTracks } = stateAudio
+	const { repeat, repeatOne, pauseList, random } = stateAudio
+	const { stateMusic } = useContext(MusicContext)
+	const { route, data, track, listTrack, listRandomTracks } = stateMusic
 	const { data: response } = useAxios('track-link', sendRequest, params)
 	const { error } = useHls(audioRef, url)
 
@@ -41,6 +44,7 @@ export function Player() {
 
 	useEffect(() => {
 		if(track?.regID){
+			// history.push(`${route}`, { trackID: track.regID })
 			setParams({trackId: track.regID})
 			setSendRequest(true)
 		}
