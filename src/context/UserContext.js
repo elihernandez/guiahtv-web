@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useReducer } from 'react'
-import { useAuth } from '../hooks/useAuth'
+import { useUserAuth } from '../hooks/useUserAuth'
 import { isArrayEmpty } from '../js/Array'
 const Context = createContext({})
 
@@ -34,7 +34,7 @@ const reducer = (state, action) => {
 }
 
 export function UserContextProvider({ children }) {
-	const cookies = useAuth()
+	const cookies = useUserAuth()
 	const [stateUser, dispatchUser] = useReducer(reducer, initialState)
 
 	useEffect(() => {
@@ -42,9 +42,9 @@ export function UserContextProvider({ children }) {
 	}, [cookies])
 
 	return <Context.Provider value={{ stateUser, dispatchUser }}>
-		{!isArrayEmpty(stateUser.credentials) &&
-                  children
-		}
+		{!isArrayEmpty(stateUser.credentials) && (
+			children
+		)}
 	</Context.Provider>
 }
 

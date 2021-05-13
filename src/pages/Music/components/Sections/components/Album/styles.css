@@ -46,7 +46,6 @@
             .more-info-album{
                 position: relative;
                 display: flex;
-                gap: 25px;
             }
         
             .description-album{

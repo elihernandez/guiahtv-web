@@ -51,8 +51,8 @@ export function Album(){
 								<h2 className="text-album">Álbum</h2>
 								<h3 className="name-album">{dataAlbum.title}</h3>
 								<div className="more-info-album">
-									<p>{getYearDate(dataAlbum.releaseDate)}</p>
-									<p>{dataAlbum.totalItems} canciones </p>
+									<p>{getYearDate(dataAlbum.releaseDate)}&nbsp;&nbsp;-&nbsp;&nbsp;</p>
+									<p>{dataAlbum.totalItems}&nbsp;canciones,&nbsp;</p>
 									<p>{minutesToHoursString(dataAlbum.length)}</p>
 								</div>
 							</div>

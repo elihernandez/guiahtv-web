@@ -82,13 +82,13 @@ export function useHls(video, url, dispatch = false, movie = false) {
 					// }
 				})
 
-				hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, function(event, data){
+				hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, function(_event, data){
 					if(dispatch){
 						dispatch({ type: 'setAudioTracks', payload: data })
 					}
 				})
 						
-				hls.on(Hls.Events.SUBTITLE_TRACKS_UPDATED, function(event, data){
+				hls.on(Hls.Events.SUBTITLE_TRACKS_UPDATED, function(_event, data){
 					if(dispatch){
 						dispatch({ type: 'setSubtitleTracks', payload: data })
 					}
@@ -100,10 +100,11 @@ export function useHls(video, url, dispatch = false, movie = false) {
 			setError(true)
 		}
 
-		return (() => {
+		return () => {
 			hls.detachMedia()
 			hls.destroy()
-		})
+		}
+		
 	}, [url])
 
 	return { error, setError }

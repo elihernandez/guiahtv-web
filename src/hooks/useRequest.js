@@ -9,8 +9,7 @@ function getURL(section, credentials) {
 	let apiURL
 	switch (section) {
 	case 'livetv':
-		let utcOffsetLocal = getUtcOffsetLocal()
-		apiURL = `${API_URL}/cmdata/leon/livetvplus/${credentials.memclid}/${utcOffsetLocal}`
+		apiURL = `${API_URL}/cmdata/leon/livetvplus/${credentials.memclid}/${getUtcOffsetLocal()}`
 		break
 	case 'alacarta':
 		apiURL = `${API_URL}/cmdata/leon/entplus/${credentials.memclid}`
