@@ -49,29 +49,28 @@ export function useHls(video, url, dispatch = false, movie = false) {
 					}	
 								
 					if(event == 'hlsError' && data.details == 'manifestLoadError'){
-						hls.destroy()
 						dispatch({ type: 'updateLoading', payload: false })
-						// dispatch({ type: 'updateData', payload: null })
 						dispatch({ type: 'setHls', payload: null })
 						setError('Señal no disponible por el momento')
+						hls.destroy()
 					}
 
 					if(data.details == 'bufferStalledError'){
+						dispatch({ type: 'updateLoading', payload: false })
 						hls.startLoad()
-						dispatch({ type: 'updateLoading', payload: true })
 					}
 
 					if(data.details == 'audioTrackLoadError'){
+						dispatch({ type: 'updateLoading', payload: false })
 						hls.recoverMediaError()
 						hls.startLoad()
-						dispatch({ type: 'updateLoading', payload: true })
 					}
 
 					if(data.response && data.response.code == 403){
+						dispatch({ type: 'updateLoading', payload: false })
 						setTimeout(() => {
 							hls.startLoad()
 						}, 1000)
-						dispatch({ type: 'updateLoading', payload: true })
 					}
 					// if (data.fatal) {
 					//       switch (data.type) {

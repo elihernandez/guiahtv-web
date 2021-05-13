@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react'
-import { NavLink, Link, useRouteMatch, useParams, useHistory } from 'react-router-dom'
+import { NavLink, Link, useRouteMatch, useParams } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import VodContext from '../../context/VodContext'
 import RadioContext from '../../context/RadioContext'
@@ -7,10 +7,9 @@ import AudioContext from '../../context/AudioContext'
 import VideoContext from '../../context/VideoContext'
 import MusicContext from '../../context/MusicContext'
 import { useAxios } from '../../hooks/useAxios'
-// import LiveTvContext from '../../context/LiveTvContext'
 import { getContactInfo } from '../../services/getContactInfo'
 import { getProgressMovie, isLive, isEvent, getProgressTimeEvent, getEventTime, secondsToString } from '../../js/Time'
-import {  limitString, isLimitString, isSerie, typeContent, replaceString, containsString, createUrlString, createStringParam } from '../../js/String'
+import {  limitString, isLimitString, isSerie, typeContent, replaceString, containsString, createUrlString } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { CSSTransition } from 'react-transition-group'
@@ -64,9 +63,9 @@ export function Item({ data, posterType, listType, titleCategory, category, list
 	return Item
 }
 
-function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
+function ItemCatalogue({ type, posterType, data, titleCategory }) {
 	let urlNavLink
-	const { Title, Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length, ShortDescriptionLine1 } = data
+	const { Title, Registro, ContentType, HDPosterUrlPortrait, HDPosterUrlLandscape, ResumePos, Length } = data
 	const { dispatchVod } = useContext(VodContext)
 
 	const handleClick = () => {
@@ -75,10 +74,6 @@ function ItemCatalogue({ url, type, posterType, data, titleCategory }) {
 		} else {
 			dispatchVod({ type: 'setMovie', payload: data })
 		}
-
-		// if (isEpisode(ShortDescriptionLine1)) {
-		// 	dispatchVod({ type: 'setMovie', payload: data })
-		// }
 	}
 
 	if (titleCategory == 'Continuar Viendo') {
@@ -214,14 +209,15 @@ function ItemCardChannel({ posterType, data }) {
 	)
 }
 
-function ItemCollectionTrack({ posterType, data, listTracks, collection }) {
-	const { regID, title, albumID, artists, portadaURL, portadaLandscapeURL } = data
+function ItemCollectionTrack({ posterType, data, collection }) {
+	const { title, albumID, artists, portadaURL, portadaLandscapeURL } = data
 	const [ matchTrack, setMatchTrack ] = useState(false)
 	const { stateAudio, dispatchAudio } = useContext(AudioContext)
 	const { audioRef, playing, pauseList } = stateAudio
 	const { stateMusic, dispatchMusic } = useContext(MusicContext)
 	const { track, collection: list } = stateMusic
-	data.id = collection.id
+	// data.id = collection.id
+	data.type = 'playlist'
 
 	const handleClick = (e) => {
 		e.preventDefault()
@@ -242,10 +238,21 @@ function ItemCollectionTrack({ posterType, data, listTracks, collection }) {
 
 	const handlePlay = (e) => {
 		e.preventDefault()
+		// dispatchMusic({ type: 'setTrack', payload: data })
+		// dispatchMusic({ type: 'setCollection', payload: collection })
+		// dispatchMusic({ type: 'setListTracks', payload: listTracks })
 
-		dispatchMusic({ type: 'setTrack', payload: data })
+		collection.playlistID = collection.musicCollectionID
+		data.id = collection.id
+		console.log(collection)
+		console.log(collection.id)
+		console.log(data.id)
+		dispatchAudio({ type: 'setPlaying', payload: true })
+		dispatchAudio({ type: 'setPause', payload: false })
+		dispatchMusic({ type: 'setPlaylist', payload: collection })
+		dispatchMusic({ type: 'setListTracks', payload: collection.tracks })
 		dispatchMusic({ type: 'setCollection', payload: collection })
-		dispatchMusic({ type: 'setListTracks', payload: listTracks })
+		dispatchMusic({ type: 'setTrack', payload: collection.tracks[0] })
 	}
 
 	return (
@@ -253,78 +260,13 @@ function ItemCollectionTrack({ posterType, data, listTracks, collection }) {
 			<div className="item">
 				<NavLink
 					to={{
-						pathname: `/musica/album/${albumID}`,
-						state: { trackID: regID }
+						pathname: `/musica/album/${albumID}`
 					}}
 					className="background-item"
 					activeClassName="active"
 					isActive={() => {
 						setTimeout(() => {
 							if(	(data.regID == track.regID) && (data.id == list.id)){
-								setMatchTrack(true)
-								return true
-							}else{
-								setMatchTrack(false)
-								return false
-							}
-						}, 100)
-					}}>
-					<Img title={title} posterType={posterType} imgSquare={portadaURL} imgLandscape={portadaLandscapeURL} />
-					<MatchTrack matchTrack={matchTrack} playing={playing} handleClick={handleClick} handlePlay={handlePlay}/>
-				</NavLink>
-				<InfoTrack title={title} artists={artists} />
-			</div>
-		</div>
-	)
-}
-
-function ItemPlaylist({ posterType, data, listTracks }) {
-	// const { url } = useRouteMatch()
-	const { regID, title, artists, portadaURL, portadaLandscapeURL } = data
-	const [ matchTrack, setMatchTrack ] = useState(false)
-	const { stateAudio, dispatchAudio } = useContext(AudioContext)
-	const { audioRef, playing, pauseList } = stateAudio
-	const { stateMusic, dispatchMusic } = useContext(MusicContext)
-	const { track } = stateMusic
-	// data.id = uuid()
-
-	const handleClick = (e) => {
-		e.preventDefault()
-		if(matchTrack){
-			if(playing){
-				audioRef.current.pause()
-			}else{
-				audioRef.current.play()
-			}
-		}
-
-		if(pauseList){
-			dispatchAudio({ type: 'setPauseList', payload: false })
-		}
-
-		dispatchAudio({ type: 'setListRandomTracks', payload: [] })
-	}
-
-	const handlePlay = (e) => {
-		e.preventDefault()
-		// dispatchMusic({ type: 'setRoute', payload: url })
-		dispatchMusic({ type: 'setTrack', payload: data })
-		dispatchMusic({ type: 'setListTracks', payload: listTracks })
-	}
-
-	return (
-		<div className="item-link">
-			<div className="item">
-				<NavLink
-					to={{
-						pathname: `/musica/playlist/${regID}`,
-						state: { trackID: regID }
-					}}
-					className="background-item"
-					activeClassName="active"
-					isActive={() => {
-						setTimeout(() => {
-							if(track.regID === regID){
 								setMatchTrack(true)
 								return true
 							}else{
@@ -423,7 +365,7 @@ function ItemTrackAlbum({ data }) {
 	const { audioRef, playing, pauseList } = stateAudio
 	const { stateMusic, dispatchMusic } = useContext(MusicContext)
 	const { album, track, collection } = stateMusic
-	// data.id = uuid()
+	data.type = 'album'
 	
 	const handlePlay = (e) => {
 		e.preventDefault()
@@ -454,7 +396,7 @@ function ItemTrackAlbum({ data }) {
 		<div className="item-link">
 			<div className="item" onClick={handlePlay}>
 				<div className="number-track">
-					{ (data.regID == track.regID) && (track.id == collection.id) ? (
+					{ (data.regID == track.regID) && (track.id == collection.id) && (track.type == 'album') ? (
 						<span onClick={handleClick}>
 							{playing ? (
 								<i className="fas fa-pause" />
@@ -487,19 +429,96 @@ function ItemTrackAlbum({ data }) {
 	)
 }
 
+function ItemPlaylist({ posterType, data }) {
+	const [params, setParams] = useState(false)
+	const [sendRequestPlaylist, setSendRequestPlaylist] = useState(false)
+	const { data: dataPlaylist } = useAxios('music-playlist', sendRequestPlaylist, params)
+	const { regID, title, portadaURL } = data
+	const [matchTrack, setMatchTrack] = useState(false)
+	const { stateAudio, dispatchAudio } = useContext(AudioContext)
+	const { audioRef, playing, pauseList } = stateAudio
+	const { stateMusic, dispatchMusic } = useContext(MusicContext)
+	const { playlist, collection } = stateMusic
+
+	const handleClick = (e) => {
+		e.preventDefault()
+		if(matchTrack){
+			if(playing){
+				audioRef.current.pause()
+			}else{
+				audioRef.current.play()
+			}
+		}
+
+		if(pauseList){
+			dispatchAudio({ type: 'setPauseList', payload: false })
+		}
+
+		dispatchAudio({ type: 'setListRandomTracks', payload: [] })
+	}
+
+	const handlePlay = (e) => {
+		e.preventDefault()
+		setParams({ playlistID: data.regID })
+		setSendRequestPlaylist(true)
+	}
+
+	useEffect(() => {
+		if(dataPlaylist.length > 0){
+			dataPlaylist.playlistID = data.regID
+			dataPlaylist.id = uuid()
+			dispatchAudio({ type: 'setPlaying', payload: true })
+			dispatchAudio({ type: 'setPause', payload: false })
+			dispatchMusic({ type: 'setPlaylist', payload: dataPlaylist })
+			dispatchMusic({ type: 'setListTracks', payload: dataPlaylist.tracks })
+			dispatchMusic({ type: 'setCollection', payload: dataPlaylist })
+			dataPlaylist.tracks[0].id = dataPlaylist.id
+			dispatchMusic({ type: 'setTrack', payload: dataPlaylist.tracks[0] })
+		}
+	}, [dataPlaylist])
+
+	return (
+		<div className="item-link">
+			<div className="item">
+				<NavLink
+					to={`/musica/playlist/${regID}`}
+					className="background-item"
+					activeClassName="active"
+					isActive={() => {
+						setTimeout(() => {
+							if((playlist?.playlistID == regID) && (playlist.id == collection.id)){
+								setMatchTrack(true)
+								return true
+							}else{
+								setMatchTrack(false)
+								return false
+							}
+						}, 100)
+					}}>
+					<Img title={title} posterType={posterType} imgSquare={portadaURL} imgLandscape={portadaURL} />
+					<MatchTrack matchTrack={matchTrack} playing={playing} handleClick={handleClick} handlePlay={handlePlay}/>
+				</NavLink>
+				<InfoAlbum title={title} />
+			</div>
+		</div>
+	)
+}
+
 function ItemTrackPlaylist({ data }) {
 	const { title, length, artists, trackNumber, albumTitle, albumID } = data
 	const { stateAudio, dispatchAudio } = useContext(AudioContext)
 	const { audioRef, playing, pauseList } = stateAudio
 	const { stateMusic, dispatchMusic } = useContext(MusicContext)
-	const { playlist, track } = stateMusic
-	// data.id = uuid()
+	const { playlist, track, collection } = stateMusic
+	data.type = 'playlist'
 
 	const handlePlay = (e) => {
 		e.preventDefault()
 		if(e.nativeEvent.target.nodeName != 'P' && e.nativeEvent.target.nodeName != 'A'){
+			data.id = playlist.id
 			dispatchMusic({ type: 'setTrack', payload: data})
 			dispatchMusic({ type: 'setListTracks', payload: playlist.tracks})
+			dispatchMusic({ type: 'setCollection', payload: playlist })
 		}
 	}
 
@@ -522,7 +541,7 @@ function ItemTrackPlaylist({ data }) {
 		<div className="item-link">
 			<div className="item" onClick={handlePlay}>
 				<div className="number-track">
-					{track?.regID == data.regID ? (
+					{ (track?.regID == data.regID) && (track.id == collection.id) && (track.type == 'playlist') ? (
 						<span onClick={handleClick}>
 							{playing ? (
 								<i className="fas fa-pause" />

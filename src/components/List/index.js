@@ -166,6 +166,7 @@ export function ListCollectionTracks({ data, listType, indexList, tabValues }) {
 	const classes = 'list list-tracks square'
 	const { title, description } = data
 	data.id = uuid()
+	console.log(data)
 
 	const settings = {
 		dots: false,
@@ -177,7 +178,6 @@ export function ListCollectionTracks({ data, listType, indexList, tabValues }) {
 		speed: 500
 	}
 
-	console.log(data)
 	return (
 		<div className={classes}>
 			<TitleList title={title} />

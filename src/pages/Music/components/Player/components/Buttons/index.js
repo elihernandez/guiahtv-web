@@ -145,7 +145,7 @@ const StepBackwardButton = ({ props }) => {
 const StepForwardButton = ({ props }) => {
 	const { stateAudio, dispatchAudio, stateMusic, dispatchMusic } = props
 	const { audioRef, repeat, repeatOne, random } = stateAudio
-	const { listTracks, track, listRandomTracks} = stateMusic
+	const { listTracks, track, listRandomTracks, collection } = stateMusic
 
 	const handleChangeRepeat = () => {
 		if(repeatOne){
@@ -156,6 +156,7 @@ const StepForwardButton = ({ props }) => {
 
 	const handleClick = () => {
 		const { nextTrack, isTheLastTrack } = getNextTrack(listTracks, track.regID, track)
+		nextTrack.id = collection.id
 
 		console.log(isTheLastTrack)
 		if(random){

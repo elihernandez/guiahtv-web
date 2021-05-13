@@ -22,12 +22,13 @@ export function Playlist(){
 			dispatchMusic({ type: 'setPlaylist', payload: data })
 		}
 
+		console.log(playlist?.playlistID == playlistID)
 		if(playlist?.playlistID == playlistID){
 			setDataPlaylist(playlist)
 		}else{
 			if(data.tracks){
 				data.playlistID = parseInt(playlistID)
-				// data.id = uuid()
+				data.id = uuid()
 				dispatchMusic({ type: 'setPlaylist', payload: data })
 				setDataPlaylist(data)
 			}

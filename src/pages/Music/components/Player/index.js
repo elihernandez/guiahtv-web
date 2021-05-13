@@ -23,8 +23,8 @@ export function Player() {
 	const { collectionID, trackId } = useParams()
 	const { stateAudio, dispatchAudio } = useContext(AudioContext)
 	const { repeat, repeatOne, pauseList, random } = stateAudio
-	const { stateMusic } = useContext(MusicContext)
-	const { route, data, track, listTrack, listRandomTracks } = stateMusic
+	const { stateMusic, dispatchMusic } = useContext(MusicContext)
+	const { data, track, listTracks, listRandomTracks } = stateMusic
 	const { data: response } = useAxios('track-link', sendRequest, params)
 	const { error } = useHls(audioRef, url)
 
@@ -89,23 +89,18 @@ export function Player() {
 		if(repeatOne){
 			resetTrack(audioRef)
 		}else if(random){
-			const { url, listRandom } = getRandomTrack(listTrack, track, listRandomTracks, match)
-			dispatchAudio({ type: 'setListRandomTracks', payload: listRandom })
-			history.push(url)
+			const { randomTrack, listRandom } = getRandomTrack(listTracks, track, listRandomTracks)
+			dispatchMusic({ type: 'setListRandomTracks', payload: listRandom })
+			dispatchMusic({ type: 'setTrack', payload: randomTrack })
 		}else if(repeat){
-			const { url, isTheLastTrack } = getNextTrack(listTrack, trackId, track, match)
-			if(isTheLastTrack){
-				history.push(url)
-			}else{
-				history.push(url)
-			}
+			const { nextTrack } = getNextTrack(listTracks, track.regID, track)
+			dispatchMusic({ type: 'setTrack', payload: nextTrack })
 		}else if(!repeat) {
-			const { url, isTheLastTrack } = getNextTrack(listTrack, trackId, track, match)
+			const { nextTrack, isTheLastTrack } = getNextTrack(listTracks, track.regID, track)
+			dispatchMusic({ type: 'setTrack', payload: nextTrack })
 			if(isTheLastTrack){
 				dispatchAudio({ type: 'setPauseList', payload: true })
-				history.push(url)
-			}else{
-				history.push(url)
+				dispatchAudio({ type: 'setPlaying', payload: false })
 			}
 		}
 	}
