@@ -5,7 +5,6 @@ import { v4 as uuid } from 'uuid'
 import './styles.css'
 
 export function List({ data, listType, wrap, indexList, tabValues }) {
-	
 	let List = () => null
 
 	switch (listType) {
@@ -25,6 +24,9 @@ export function List({ data, listType, wrap, indexList, tabValues }) {
 		List = <ListCollectionTracks data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
 		break
 	case 'playlists':
+		List = <ListPlaylists data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
+		break
+	case 'myplaylists':
 		List = <ListPlaylists data={data} listType={listType} indexList={indexList} tabValues={tabValues} />
 		break
 	case 'albums':
@@ -166,7 +168,6 @@ export function ListCollectionTracks({ data, listType, indexList, tabValues }) {
 	const classes = 'list list-tracks square'
 	const { title, description } = data
 	data.id = uuid()
-	console.log(data)
 
 	const settings = {
 		dots: false,

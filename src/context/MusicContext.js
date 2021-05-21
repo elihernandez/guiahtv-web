@@ -9,8 +9,18 @@ export function MusicContextProvider({ children }) {
 		artist: {},
 		album: {},
 		playlist: {},
+		myPlaylists: [],
 		listTracks: [],
-		listRandomTracks: []
+		listRandomTracks: [],
+		modal: {
+			isModalActive: false,
+			data: {
+				name: '',
+				description: '',
+				isPublic: false
+			},
+			type: 'create'
+		}
 	}
 
 	const reducer = (state, action) => {
@@ -51,10 +61,22 @@ export function MusicContextProvider({ children }) {
 				playlist: action.payload,
 			}
 		}
+		case 'setMyPlaylists': {
+			return {
+				...state,
+				myPlaylists: action.payload,
+			}
+		}
 		case 'setListRandomTracks': {
 			return {
 				...state,
 				listRandomTracks: action.payload,
+			}
+		}
+		case 'setModal': {
+			return {
+				...state,
+				modal: action.payload,
 			}
 		}
 		default: return state

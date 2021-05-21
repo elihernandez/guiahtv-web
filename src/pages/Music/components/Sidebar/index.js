@@ -1,11 +1,64 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useRouteMatch, useLocation } from 'react-router-dom'
+import UserContext from '../../../../context/UserContext'
+import MusicContext from '../../../../context/MusicContext'
+import { getMyPlaylists } from '../../../../services/getMyPlaylists'
 import { Sidebar } from '../../../../components/Sidebar'
+import { limitString } from '../../../../js/String'
 import './styles.css'
+import { Fragment } from 'react'
 
 export function SidebarMusic(){
-	const { url } = useRouteMatch()
 	const location = useLocation()
+	const { url } = useRouteMatch()
+	const { stateUser } = useContext(UserContext)
+	const { stateMusic, dispatchMusic } = useContext(MusicContext)
+	const { myPlaylists } = stateMusic
+	// const [myPlaylists, setMyplaylists] = useState(null)
+
+	const handleOpenModal = () => {
+		const modal = {
+			isModalActive: true,
+			data: {
+				name: '',
+				description: '',
+				isPublic: false
+			},
+			type: 'create'
+		}
+		dispatchMusic({ type: 'setModal', payload: modal })
+	}
+
+	useEffect(() => {
+		const request = async() => {
+			try{
+				const response = await getMyPlaylists(stateUser)
+				const data = [{ 
+					handleClick: handleOpenModal,
+					icon: 'far fa-plus-circle',
+					title: 'Crear playlist',
+					type: 'button'
+				}]
+
+				if(response?.playLists){
+					response.playLists.map((playlist) => {
+						data.push({
+							regID: playlist.regID,
+							url: `${url}/playlist/${playlist.regID}`,
+							icon: '',
+							title: limitString(playlist.title, 17),
+							type: 'link'
+						})
+					})
+				}
+				dispatchMusic({ type: 'setMyPlaylists', payload: data })
+			}catch(e){
+				console.log(e)
+			}
+		}
+
+		request()
+	}, [])
 
 	const links = [
 		{
@@ -15,13 +68,20 @@ export function SidebarMusic(){
                   	{ 
                 		url: location.pathname.includes(`${url}/inicio`) ? location.pathname : `${url}/inicio`,
                 		icon: 'fas fa-home',
-                		title: 'Inicio'
+                		title: 'Inicio',
+                		type: 'link'
                 	}
                 ]
+		},
+		{
+			listTitle: 'Playlists',
+			data: myPlaylists,  
 		}
 	]
 
 	return (
-		<Sidebar classes="sidebar-music" links={links} />
+		<Fragment>
+			<Sidebar classes="sidebar-music" links={links} />
+		</Fragment>
 	)
 }

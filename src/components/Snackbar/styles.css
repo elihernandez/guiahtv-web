@@ -1,0 +1,52 @@
+@import '../../styles/style-base.css';
+
+.snackbar-message{
+    .MuiSnackbarContent-message{
+
+        p{
+            display: flex;
+            align-items: center;
+        }
+
+        i{
+            font-size: 18px;
+            margin-left: 10px;
+        }
+    }
+
+    .snackbar-success{    
+        .MuiPaper-root{
+            background: #388e3c !important;
+        }
+    }
+    
+    .snackbar-warning{
+        
+        .MuiPaper-root{
+            background: #fbc02d !important;
+        }
+    }
+    
+    
+    .snackbar-danger{
+        
+        .MuiPaper-root{
+            background: #d32f2f !important;
+        }
+    }
+    
+    .snackbar-info{
+        
+        .MuiPaper-root{
+            background: linear-gradient(270deg, $color-violet 0%, $color-guide-blue 100%) !important;
+        }
+    }
+    
+    .snackbar-default{
+        
+        
+    }
+}
+
+
+

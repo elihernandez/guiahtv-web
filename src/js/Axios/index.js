@@ -20,7 +20,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
 	function (response) {
 		if(response.status === 200){
-			if(isEmptyArray(response.data)){
+			if(response?.length && isEmptyArray(response.data)){
 				throw new Error()
 			}
 

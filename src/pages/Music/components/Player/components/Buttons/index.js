@@ -90,6 +90,10 @@ const StepBackwardButton = ({ props }) => {
 	}
 
 	const handleClick = () => {
+		if(Object.keys(track).length === 0){
+			return 
+		}
+
 		const { prevTrack, isTheFirstTrack } = getPrevTrack(listTracks, track.regID, track)
 
 		if(random){
@@ -155,10 +159,13 @@ const StepForwardButton = ({ props }) => {
 	}
 
 	const handleClick = () => {
+		if(Object.keys(track).length === 0){
+			return 
+		}
+		
 		const { nextTrack, isTheLastTrack } = getNextTrack(listTracks, track.regID, track)
 		nextTrack.id = collection.id
 
-		console.log(isTheLastTrack)
 		if(random){
 			if(listTracks.length > 1){
 				const { randomTrack, listRandom } = getRandomTrack(listTracks, track, listRandomTracks)
@@ -217,7 +224,7 @@ const PlayPauseButtons = ({ props }) => {
 	const { track } = stateMusic
 
 	const handleClick = () => {
-		if(track){
+		if(Object.keys(track).length !== 0){
 			if (playing) {
 				audioRef.current.pause()
 				dispatchAudio({ type: 'setPlaying', payload: false })

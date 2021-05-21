@@ -10,7 +10,7 @@ export function VolumeBar() {
 	const [volume, setVolume] = useState(50)
 	const [mute, setMute] = useState(false)
 
-	const handleChange = (event, newValue) => {
+	const handleChange = (_event, newValue) => {
 		setVolume(newValue)
 		audioRef.current.volume = newValue / 100
 	}

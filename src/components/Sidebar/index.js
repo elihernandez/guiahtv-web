@@ -2,7 +2,17 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './styles.css'
 
-function Item({ title, url, icon }) {
+function Button({ title, handleClick, icon }) {
+	return (
+
+		<li className="list-item" onClick={handleClick}>
+			<i className={icon} />
+			{title}
+		</li>
+	)
+}
+
+function Link({ title, url, icon }) {
 	return (
 		<NavLink
 			to={url}
@@ -21,9 +31,13 @@ function List({ title, data }) {
 		<div className="list-section">
 			<h3 className="list-title">{title}</h3>
 			<ul className="list-menu">
-				{
-					data.map(({ title, url, icon }) => {
-						return <Item key={title} title={title} url={url} icon={icon} />
+				{data !== null &&
+					data.map(({ title, url, handleClick, icon, type }) => {
+						if(type === 'link'){
+							return <Link key={title} title={title} url={url} icon={icon} />
+						}else{
+							return <Button key={title} title={title} handleClick={handleClick} icon={icon} />
+						}
 					})
 				}
 			</ul>

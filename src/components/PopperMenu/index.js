@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
 import './styles.css'
 
-export function PopperMenu({textButton, itemsMenu}){
+export function PopperMenu({textButton, itemsMenu, placement = 'bottom'}){
 	const anchorRef = useRef(null)
 	const [open, setOpen] = useState(false)
     
@@ -51,9 +51,8 @@ export function PopperMenu({textButton, itemsMenu}){
 			>
 				{textButton}
 			</Button>
-			<Popper open={open} anchorEl={anchorRef.current} placement="bottom" role={undefined} transition disablePortal >
+			<Popper open={open} anchorEl={anchorRef.current} placement={placement} role={undefined} transition disablePortal >
 				{({ TransitionProps, placement }) => (
-             
 					<Paper>
 						<ClickAwayListener onClickAway={handleClose}>
 							<MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>

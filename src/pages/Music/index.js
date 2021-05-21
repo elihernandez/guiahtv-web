@@ -1,9 +1,12 @@
 import React from 'react'
-import { AudioContextProvider } from '../../context/AudioContext'
 import { MusicContextProvider } from '../../context/MusicContext'
+import { AudioContextProvider } from '../../context/AudioContext'
+import { GlobalContextProvider } from '../../context/GlobalContext'
 import { Player } from './components/Player/index'
 import { Sections } from './components/Sections'
 import { SidebarMusic } from './components/Sidebar'
+import { PlaylistModal } from './components/Modal'
+import { TopSnackbar } from '../../components/Snackbar'
 import './styles.css'
 
 const initialState = {
@@ -97,13 +100,17 @@ export function Music() {
 	return (
 		<MusicContextProvider>
 			<AudioContextProvider state={initialState} reducer={reducer}>
-				<div className="wrapper-music">
-					<div className="music-content">
-						<SidebarMusic/>
-						<Sections />
-						<Player />
+				<GlobalContextProvider>
+					<div className="wrapper-music">
+						<div className="music-content">
+							<SidebarMusic/>
+							<Sections />
+							<Player />
+						</div>
+						<PlaylistModal />
+						<TopSnackbar />
 					</div>
-				</div>
+				</GlobalContextProvider>
 			</AudioContextProvider>
 		</MusicContextProvider>
 	)

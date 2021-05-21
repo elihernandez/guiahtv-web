@@ -28,20 +28,6 @@
                         text-decoration: none;
                         color: white;
 
-                        .list-item{
-                              font-weight: 500;
-                              font-size: 15px;
-                              padding: 10px 20px;
-                              border-radius: 50px;
-                              margin: 15px 0;
-
-                              i{
-                                    margin-right: 20px;
-                                    min-width: 25px;
-                                    text-align: center;
-                              }
-                        }
-
                         &.active{
                               .list-item{
                                     background: $color-guide-blue; 
@@ -50,7 +36,24 @@
                         }
                   }
 
-            }
+                  .list-item{
+                        font-weight: 500;
+                        font-size: 15px;
+                        padding: 10px 20px;
+                        border-radius: 50px;
+                        margin: 15px 0;
 
+                        i{
+                              margin-right: 20px;
+                              min-width: 25px;
+                              text-align: center;
+                        }
+
+                        &:hover{
+                              background: $color-grey-5; 
+                              cursor: pointer;
+                        }
+                  }
+            }
       }
 }

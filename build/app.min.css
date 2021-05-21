@@ -4659,7 +4659,7 @@ input::-ms-input-placeholder{
                                     }
 
 .MuiPaper-root{
-      background-color: #424242 !important;
+      background-color: #424242;
 }
 
 .tracks-content{
@@ -6630,6 +6630,29 @@ input::-ms-input-placeholder{
                 border-radius: 4px;
             }
 
+.album-info .album-info-wrapper .cover-album .edit-buttons{
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+            }
+
+.album-info .album-info-wrapper .cover-album .edit-buttons .edit-button{
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    background-color: #424242;
+                }
+
+.album-info .album-info-wrapper .cover-album .edit-buttons .edit-button i{
+                        color: #f7f7f7;
+                    }
+
+.album-info .album-info-wrapper .cover-album .edit-buttons .edit-button:hover{
+                        -webkit-transform: scale(1.1,1.1);
+                                transform: scale(1.1,1.1);
+                        background-color: #616161;
+                    }
+
 .album-info .album-info-wrapper .info-album{
             position: relative;
             padding: 20px;
@@ -6640,7 +6663,50 @@ input::-ms-input-placeholder{
                 font-size: 1vw;
                 color: #757575;
                 font-weight: 400;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
             }
+
+.album-info .album-info-wrapper .info-album .text-album .MuiButton-root{
+                    min-width: auto !important;
+
+                }
+
+.album-info .album-info-wrapper .info-album .text-album .MuiPaper-root{
+                    min-width: 120px !important;
+                }
+
+.album-info .album-info-wrapper .info-album .text-album button{
+                    margin-left: 15px;
+                    color: white;
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-pack: center;
+                        -ms-flex-pack: center;
+                            justify-content: center;
+                    -webkit-box-align: center;
+                        -ms-flex-align: center;
+                            align-items: center;
+                    background: #424242;
+                }
+
+.album-info .album-info-wrapper .info-album .text-album button i{
+                        font-size: 15px !important;
+                        margin-top: 3px;
+                        margin-left: 1px;
+                    }
+
+.album-info .album-info-wrapper .info-album .text-album button:hover{
+                        background: #616161;
+                    }
 
 .album-info .album-info-wrapper .info-album .name-album{
                 font-size: 2.6vw;
@@ -6707,7 +6773,6 @@ input::-ms-input-placeholder{
 
 .sidebar .list-section{
             margin-bottom: 75px !important
-
       }
 
 .sidebar .list-section:last-child{
@@ -6725,33 +6790,37 @@ input::-ms-input-placeholder{
 
 .sidebar .list-section .list-menu{
                   list-style: none;
-
             }
 
 .sidebar .list-section .list-menu a{
                         text-decoration: none;
-                        color: white;
+                        color: white
                   }
-
-.sidebar .list-section .list-menu a .list-item{
-                              font-weight: 500;
-                              font-size: 15px;
-                              padding: 10px 20px;
-                              border-radius: 50px;
-                              margin: 15px 0;
-                        }
-
-.sidebar .list-section .list-menu a .list-item i{
-                                    margin-right: 20px;
-                                    min-width: 25px;
-                                    text-align: center;
-                              }
 
 .sidebar .list-section .list-menu a.active .list-item{
                                     background: #00aeef; 
                                     -webkit-box-shadow: 0 5px 20px rgba(0,0,0, 0.25); 
                                             box-shadow: 0 5px 20px rgba(0,0,0, 0.25); 
                               }
+
+.sidebar .list-section .list-menu .list-item{
+                        font-weight: 500;
+                        font-size: 15px;
+                        padding: 10px 20px;
+                        border-radius: 50px;
+                        margin: 15px 0;
+                  }
+
+.sidebar .list-section .list-menu .list-item i{
+                              margin-right: 20px;
+                              min-width: 25px;
+                              text-align: center;
+                        }
+
+.sidebar .list-section .list-menu .list-item:hover{
+                              background: #424242; 
+                              cursor: pointer;
+                        }
 /* #13171a */
 
 /* App */
@@ -6769,6 +6838,229 @@ input::-ms-input-placeholder{
     padding: 25px 25px;
     /* border: 1px solid red; */
 }
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
+.modal-playlist{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+
+.modal-playlist .modal-paper{
+        background-color: #232526;
+        border: 2px solid #424242 !important;
+        border-radius: 4px;
+        width: 22%;
+        padding: 16px 32px 8px !important;
+    }
+
+.modal-playlist .modal-paper .header-modal{
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+        }
+
+.modal-playlist .modal-paper .header-modal .title-modal{
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+.modal-playlist .modal-paper .header-modal i{
+                font-size: 20px;
+                color: #616161;
+            }
+
+.modal-playlist .modal-paper .form-modal{
+            margin-top: 10px;
+            position: relative;
+        }
+
+.modal-playlist .modal-paper .form-modal .group-form{
+                position: relative;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
+                margin: 15px 0
+            }
+
+.modal-playlist .modal-paper .form-modal .group-form.checkbox{
+                    -webkit-box-orient: horizontal;
+                    -webkit-box-direction: normal;
+                        -ms-flex-direction: row;
+                            flex-direction: row;
+                    -webkit-box-pack: start;
+                        -ms-flex-pack: start;
+                            justify-content: flex-start;
+                }
+
+.modal-playlist .modal-paper .form-modal .group-form.button{
+                    margin-top: 50px;
+                    -webkit-box-orient: horizontal;
+                    -webkit-box-direction: normal;
+                        -ms-flex-direction: row;
+                            flex-direction: row;
+                    -webkit-box-pack: end;
+                        -ms-flex-pack: end;
+                            justify-content: flex-end;
+                }
+
+.modal-playlist .modal-paper .form-modal .label-name-playlist{
+                color: #9e9e9e;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+.modal-playlist .modal-paper .form-modal .name-playlist{
+                position: relative;
+                width: 100%;
+                background: #424242;
+                border: none;
+                color: white;
+                padding: 8px 10px;
+                font-size: 14px;
+                border-radius: 4px;
+            }
+
+.modal-playlist .modal-paper .form-modal .label-description-playlist{
+                color: #9e9e9e;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+.modal-playlist .modal-paper .form-modal .description-playlist{
+                position: relative;
+                width: 100%;
+                background: #424242;
+                border: none;
+                color: white;
+                padding: 8px 10px;
+                font-size: 14px;
+                border-radius: 4px;
+                font-family: "Poppins", sans-serif !important;
+            }
+
+.modal-playlist .modal-paper .form-modal .label-public-playlist{
+                color: #9e9e9e;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+.modal-playlist .modal-paper .form-modal .public-playlist{
+                position: relative;
+                width: 25px;
+                background: #424242;
+                border: none;
+                color: white;
+                padding: 8px 10px;
+                font-size: 14px;
+                border-radius: 4px;
+                font-family: "Poppins", sans-serif !important;
+            }
+
+.modal-playlist .modal-paper .form-modal .submit-button{
+                position: relative;
+                width: 100px;
+                color: white;
+                background: #00aeef;
+                padding: 10px;
+                border-radius: 50px;
+                font-size: 15px;
+                font-weight: 500
+            }
+
+.modal-playlist .modal-paper .form-modal .submit-button:hover{
+                    -webkit-transform: scale(1.1);
+                            transform: scale(1.1);
+                }
+
+.modal-playlist .modal-paper .form-modal .cancel-button{
+                position: relative;
+                width: 100px;
+                color: white;
+                background: transparent;
+                padding: 10px;
+                border-radius: 50px;
+                font-size: 15px;
+                font-weight: 500;
+                margin-right: 10px
+            }
+
+.modal-playlist .modal-paper .form-modal .cancel-button:hover{
+                    background: #f7f7f7;
+                    color: black;
+                    -webkit-transform: scale(1.1);
+                            transform: scale(1.1);
+                }
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
+.snackbar-message .MuiSnackbarContent-message p{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+        }
+
+.snackbar-message .MuiSnackbarContent-message i{
+            font-size: 18px;
+            margin-left: 10px;
+        }
+
+.snackbar-message .snackbar-success .MuiPaper-root{
+            background: #388e3c !important;
+        }
+
+.snackbar-message .snackbar-warning .MuiPaper-root{
+            background: #fbc02d !important;
+        }
+
+.snackbar-message .snackbar-danger .MuiPaper-root{
+            background: #d32f2f !important;
+        }
+
+.snackbar-message .snackbar-info .MuiPaper-root{
+            background: -webkit-gradient(linear, right top, left top, from(#6a26cd), to(#00aeef)) !important;
+            background: linear-gradient(270deg, #6a26cd 0%, #00aeef 100%) !important;
+        }
+
+.snackbar-message .snackbar-default{
+        
+        
+    }
+
+
+
 
 /* #13171a */
 

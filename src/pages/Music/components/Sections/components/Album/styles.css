@@ -25,6 +25,28 @@
                 object-fit: cover;
                 border-radius: 4px;
             }
+
+            .edit-buttons{
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+
+                .edit-button{
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    background-color: $color-grey-5;
+
+                    i{
+                        color: $color-white;
+                    }
+
+                    &:hover{
+                        transform: scale(1.1,1.1);
+                        background-color: $color-grey-4;
+                    }
+                }
+            }
         }
         
         .info-album{
@@ -36,6 +58,39 @@
                 font-size: 1vw;
                 color: $color-grey-3;
                 font-weight: 400;
+                display: flex;
+                align-items: center;
+
+                .MuiButton-root{
+                    min-width: auto !important;
+
+                }
+                
+                .MuiPaper-root{
+                    min-width: 120px !important;
+                }
+
+                button{
+                    margin-left: 15px;
+                    color: white;
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: $color-grey-5;
+
+                    i{
+                        font-size: 15px !important;
+                        margin-top: 3px;
+                        margin-left: 1px;
+                    }
+
+                    &:hover{
+                        background: $color-grey-4;
+                    }
+                }
             }
         
             .name-album{

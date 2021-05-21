@@ -14,7 +14,7 @@ function getURL(section, { memclid }, params) {
 		'catalogue-vod': `${config.API_URL}/cmdata/leon/entplus/${memclid}`,
 		'radio': `${config.API_URL}/cdata/leon/radio/${memclid}`,
 		'catalogue-zonakids': `${config.API_URL}/cdata/leon/kids/${memclid}`,
-		'music-home': `https://api.guiah.tv/music/home/${memclid}`,
+		'music-home': `https://api.guiah.tv/music/home/${memclid}/1`,
 		'music-artist': `https://api.guiah.tv/get/artist/${params.artistID}`,
 		'music-album': `https://api.guiah.tv/get/album/${params.albumID}`,
 		'music-playlist': `https://api.guiah.tv/get/playlist/${params.playlistID}`,

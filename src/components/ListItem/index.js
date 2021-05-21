@@ -49,6 +49,9 @@ export function Item({ data, posterType, listType, titleCategory, category, list
 	case 'playlists':
 		Item = <ItemPlaylist posterType={posterType} titleCategory={titleCategory} data={data} listTracks={listTracks} />
 		break
+	case 'myplaylists':
+		Item = <ItemPlaylist posterType={posterType} titleCategory={titleCategory} data={data} listTracks={listTracks} />
+		break
 	case 'albums':
 		Item = <ItemAlbum posterType={posterType} data={data} />
 		break
