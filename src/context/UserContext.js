@@ -4,6 +4,8 @@ import { isArrayEmpty } from '../js/Array'
 const Context = createContext({})
 
 const initialState = {
+	memclid: null,
+	memclem: null,
 	credentials: [],
 	suscriptionStatus: null,
 	errorAuth: false

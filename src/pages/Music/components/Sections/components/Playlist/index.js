@@ -1,47 +1,23 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
-import MusicContext from '../../../../../../context/MusicContext'
 import { useAxios } from '../../../../../../hooks/useAxios'
+import MusicContext from '../../../../../../context/MusicContext'
+import { PlaylistMenu } from '../../../Menu'
 import { List } from '../../../../../../components/List'
 import { LoaderSpinnerMUI } from '../../../../../../components/Loader'
-import { PopperMenu } from '../../../../../../components/PopperMenu'
 import { minutesToHoursString, getYearDate } from '../../../../../../js/Time'
-import Tooltip from '@material-ui/core/Tooltip'
 import './styles.css'
 
 export function Playlist(){
 	const { playlistID } = useParams()
 	const params = { playlistID: playlistID }
-	const { stateMusic, dispatchMusic } = useContext(MusicContext)
-	const { playlist } = stateMusic
+	const [isEditPlaylist, setIsEditPlaylist] = useState(false)
 	const [dataPlaylist, setDataPlaylist] = useState([])
+	const { stateMusic, dispatchMusic } = useContext(MusicContext)
+	const { playlist, myPlaylists } = stateMusic
 	const sendRequestPlaylist = playlist?.playlistID == playlistID ? false : true
 	const { loading, data } = useAxios('music-playlist', sendRequestPlaylist, params)
-
-	const handleOpenEditModal = (e) => {
-		e.preventDefault()
-
-		const modal = {
-			isModalActive: true,
-			data: { name: dataPlaylist.title, description: dataPlaylist.description, isPublic: false },
-			type: 'edit'
-		}
-
-		dispatchMusic({ type: 'setModal', payload: modal })
-	}
-
-	const handleOpenDeleteModal = (e) => {
-		e.preventDefault()
-
-		const modal = {
-			isModalActive: true,
-			data: { name: dataPlaylist.title, description: dataPlaylist.description, isPublic: false },
-			type: 'delete'
-		}
-
-		dispatchMusic({ type: 'setModal', payload: modal })
-	}
 
 	useEffect(() => {
 		if(data.length){
@@ -60,14 +36,24 @@ export function Playlist(){
 		}
 	}, [data])
 
+	const isMyPlaylist = (playlist, myPlaylists) => {
+		if(myPlaylists.find(element => element.regID === playlist.musicCollectionID)){
+			return true
+		}
+		return false
+	}
+
+	useEffect(() => {
+		if(playlist?.musicCollectionID && myPlaylists.length > 0 && isMyPlaylist(playlist, myPlaylists)){
+			setIsEditPlaylist(true)
+		}else{
+			setIsEditPlaylist(false)
+		}
+	}, [playlist, myPlaylists])
+
 	if(loading){
 		return <LoaderSpinnerMUI />
 	}
-
-	const itemsMenu = [
-		{ title: 'Editar', href: '#', func: handleOpenEditModal },
-		{ title: 'Eliminar', href: '#', func: handleOpenDeleteModal },
-	]
 
 	return (
 		<Fragment>
@@ -78,22 +64,16 @@ export function Playlist(){
 					</div>
 					<div className="info-album">
 						<h2 className="text-album">Playlist
-							<Tooltip title="Opciones de playlist" placement="top-start" enterDelay={500} enterNextDelay={500}>
-								<PopperMenu textButton={<i className="fas fa-ellipsis-h"/>} itemsMenu={itemsMenu} placement="bottom-start"/>
-							</Tooltip>
+							{isEditPlaylist &&
+								<PlaylistMenu dataPlaylist={dataPlaylist} />
+							}
 						</h2>
 						<h3 className="name-album">{dataPlaylist.title}</h3>
 						<h3 className="description-album">{dataPlaylist.description}</h3>
 						<div className="more-info-album">
-							<p>{getYearDate(dataPlaylist.releaseDate)}&nbsp;&nbsp;-&nbsp;&nbsp;</p>
-							{dataPlaylist?.tracks ? (
-								<p>{dataPlaylist.totalItems}&nbsp;canciones</p>
-							) : (
-								<p>&nbsp;Sin canciones</p>
-							)}
-							{dataPlaylist?.tracks && (
-								<p>&nbsp;,{minutesToHoursString(dataPlaylist.length)}</p>
-							)}
+							<ReleaseDate dataPlaylist={dataPlaylist} />
+							<TotalSongs dataPlaylist={dataPlaylist} />
+							<Length dataPlaylist={dataPlaylist} />
 						</div>
 					</div>
 				</div>
@@ -105,10 +85,28 @@ export function Playlist(){
 	)
 }
 
-{/* <div className="edit-buttons">
-<Tooltip title="Editar información de playlist" placement="top-start" enterDelay={1000} enterNextDelay={1000}>
-	<button type="button" className="edit-button" onClick={handleOpenModal}>
-		<i className="fas fa-pen"></i>
-	</button>
-</Tooltip>
-</div> */}
+const ReleaseDate = ({ dataPlaylist }) => {
+	return <p>{getYearDate(dataPlaylist.releaseDate)}&nbsp;&nbsp;-&nbsp;&nbsp;</p>
+}
+
+const TotalSongs = ({ dataPlaylist }) => {
+	return (
+		<Fragment>
+			{dataPlaylist?.tracks ? (
+				<p>{dataPlaylist.totalItems}&nbsp;canciones</p>
+			) : (
+				<p>&nbsp;Sin canciones</p>
+			)}
+		</Fragment>
+	)
+}
+
+const Length = ({ dataPlaylist }) => {
+	return (
+		<Fragment>
+			{dataPlaylist?.tracks && (
+				<p>&nbsp;,{minutesToHoursString(dataPlaylist.length)}</p>
+			)}
+		</Fragment>
+	)
+}

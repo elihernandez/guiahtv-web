@@ -35,7 +35,7 @@ export function Login() {
 			// Se guardan cookies de credenciales
 			setCookie('memclem', username, { path: '/', maxAge: `${check ? 60 * 60 * 24 * 365 : 60 * 60 * 24}` })
 			setCookie('memclid', SuscriberID, { path: '/', maxAge: `${check ? 60 * 60 * 24 * 365 : 60 * 60 * 24}` })
-			location.reload()
+			// location.reload()
 			break
 		case 3: // Password incorrecta
 			setLoading(false)

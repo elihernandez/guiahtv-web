@@ -102,6 +102,12 @@
                 border-radius: 4px;
                 font-family: "Poppins", sans-serif !important;
             }
+
+            .label-delete-message{
+                color: $color-grey-2;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
     
             .submit-button{
                 position: relative;

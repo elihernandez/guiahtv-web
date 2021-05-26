@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Header } from '../Header'
 import { SnackbarAuth } from '../SnackbarAuth'
 
-const Main = ({ children }) => {
+export const Main = ({ children }) => {
 	return (
 		<Fragment>
 			<Header />
@@ -13,5 +13,3 @@ const Main = ({ children }) => {
 		</Fragment>
 	)
 }
-
-export { Main }

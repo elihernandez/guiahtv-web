@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Redirect } from 'react-router-dom' 
 import { isBrowser, isMobile } from 'react-device-detect'
 
-const CheckDevice = ({ children }) => {
+export const CheckDevice = ({ children }) => {
 	return (
 		<Fragment>
 			{isBrowser &&
@@ -14,5 +14,3 @@ const CheckDevice = ({ children }) => {
 		</Fragment>
 	)
 }
-
-export { CheckDevice }

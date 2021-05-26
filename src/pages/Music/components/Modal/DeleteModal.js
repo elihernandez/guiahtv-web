@@ -76,7 +76,7 @@ export const DeleteModal = ({ open, data }) => {
 						</div>
 						<form className="form-modal" onSubmit={handleSubmit}>
 							<div className="group-form">
-								<p>¿Quieres eliminar {title}? Esta acción no se puede deshacer.</p>
+								<p className="label-delete-message">¿Quieres eliminar {title}? Esta acción no se puede deshacer.</p>
 							</div>
 							<div className="group-form button">
 								<button type="button" className="cancel-button" onClick={handleClose}>Cancelar</button>
