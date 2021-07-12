@@ -1,0 +1,59 @@
+@import "../../../../styles/style-base.css";
+
+.list-tracks-album {
+    .MuiButton-root {
+        min-width: auto !important;
+    }
+
+    .MuiPaper-root {
+        min-width: 120px !important;
+    }
+
+    .popper-menu-wrapper{
+        margin: 0 5px;
+
+        li{
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+        }
+
+        button {
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            i {
+                font-size: 15px !important;
+                margin-top: 3px;
+                margin-left: 1px;
+            }
+    
+            &:hover {
+                background: $color-grey-5;
+            }
+
+        }
+
+        .MuiButtonBase-root{
+
+            > div {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        > div {
+            z-index: 2;
+            min-width: 275px;
+        }
+    }
+
+}

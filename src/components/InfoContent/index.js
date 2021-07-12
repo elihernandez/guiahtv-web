@@ -1,25 +1,31 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
+import VodContext from '../../context/VodContext'
 import { useRouteMatch, useHistory } from 'react-router-dom'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { getProgressMovie } from '../../js/Time'
-import { imgSourceSetJpg } from '../../js/Image'
+import { LazyImage } from '../Image'
 import Imdb from '../../assets/images/clasifications-movies/imdb.png'
 import PG13 from '../../assets/images/clasifications-movies/PG13.png'
 import PG from '../../assets/images/clasifications-movies/PG.png'
 import G from '../../assets/images/clasifications-movies/G.png'
 import R from '../../assets/images/clasifications-movies/R.png'
-// import { LazyLoadImage } from 'react-lazy-load-image-component'
-import { LazyImage } from '../Image'
 import 'react-lazy-load-image-component/src/effects/opacity.css'
 import './styles.css'
 
 export function InfoMovie({ data }) {
-	const { url } = useRouteMatch()
 	const history = useHistory()
+	const { url } = useRouteMatch()
+	const { stateVod, dispatchVod } = useContext(VodContext)
 	const { HdBackgroundImageUrl, Title, Description, Categories, Artist, Director, ReleaseDate, Length, Rating, StarRating, ResumePos } = data
 	const textButton = ResumePos == '' ? 'Ver ahora' : 'Reanudar'
 
 	const handleClick = () => {
+		history.push(`${url}/video`)
+	}
+
+	const handleClickBeginning = () => {
+		stateVod.movieVod.ResumePos = 0
+		dispatchVod({ type: 'setMovie', payload: stateVod.movieVod })
 		history.push(`${url}/video`)
 	}
 
@@ -101,6 +107,11 @@ export function InfoMovie({ data }) {
 							<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
 						</div>
 					</button>
+					{ResumePos != '' &&
+						<button type="button" className="button-cw" onClick={handleClickBeginning}>
+							Desde el comienzo
+						</button>
+					}
 				</div>
 			</div>
 		</Fragment>

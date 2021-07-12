@@ -13,8 +13,6 @@ export function Info() {
 		dataChannel: data, 
 		activeChannel: active, 
 		fullScreen,
-		volume, 
-		muteVolume
 	} = stateVideo
 
 	return (
@@ -23,7 +21,7 @@ export function Info() {
 				<div className="info-channel-wrapper">
 					<TitleChannel data={data} active={active} />
 					<div className="right-buttons">
-						<ButtonVolume volume={volume} muteVolume={muteVolume} dispatch={dispatch} />
+						<ButtonVolume />
 						<ButtonPip />
 						<ButtonFullScreen dispatch={dispatch} fullScreen={fullScreen} />
 					</div>

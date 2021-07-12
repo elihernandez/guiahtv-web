@@ -1,0 +1,18 @@
+@import "../../../../styles/style-base.css";
+
+.like-track{
+    width: 35px;
+    height: 35px;
+    font-size: 0.8vw;
+    color: $color-white;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+
+    &:hover {
+        background: $color-grey-5;
+    }
+}

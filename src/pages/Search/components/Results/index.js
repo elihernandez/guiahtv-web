@@ -7,15 +7,19 @@ import './styles.css'
 function TypeList({ dataCategory }){
 	const contentType = dataCategory.cmData[0].ContentType 
 
-	if(containsString(contentType, 'alacarta_movie')){
+	if(containsString(contentType, 'movie')){
 		return <List key={dataCategory.category} data={dataCategory} listType="catalogue" /> 
 	}
 
-	if(containsString(contentType, 'alacarta_series')){
+	if(containsString(contentType, 'serie')){
 		return <List key={dataCategory.category} data={dataCategory} listType="catalogue" /> 
 	}
 
-	if(containsString(contentType, 'kids')){
+	if(containsString(contentType, 'movie_kids')){
+		return <List key={dataCategory.category} data={dataCategory} listType="catalogue" /> 
+	}
+
+	if(containsString(contentType, 'series_kids')){
 		return <List key={dataCategory.category} data={dataCategory} listType="catalogue" /> 
 	}
 

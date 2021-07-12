@@ -9,7 +9,7 @@ export function PlansPrices(){
 			<div className="plans">
 				<div className="card-plan price-month">
 					<Link className="link-register" href="https://cuenta.guiah.tv/Login">
-						<Button type="button" uppercase={true} color="gradient" classes="btn-register body-3">Pruébalo sin costo</Button>
+						<Button type="button" uppercase={true} color="gradient" classes="btn-register body-3">Pruébalo ahora</Button>
 					</Link>
 				</div>
                         

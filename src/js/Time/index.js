@@ -98,10 +98,12 @@ export function getProgressMovie(ResumePos, Length){
 	return time
 }
 
-function updateData(movieId, data, positionVideoMil){
+function updateData(movie, data, positionVideoMil){
+	const contentType = movie.ContentType
+	const movieId = movie.Registro
 	data.map(({cmData}, indexC) => {
-		cmData.map(({Registro}, indexM) => {
-			if(movieId == Registro){
+		cmData.map(({Registro, ContentType}, indexM) => {
+			if(movieId == Registro && contentType == ContentType){
 				data[indexC].cmData[indexM].ResumePos = positionVideoMil
 			}
 		})
@@ -111,9 +113,8 @@ function updateData(movieId, data, positionVideoMil){
 }
 
 export function setProgressMovie(currentTime, movie, data, dispatch){
-	const movieId = movie.Registro
 	let positionVideoMil = Math.round(currentTime * 1000)
-	dispatch({type: 'setData', payload: updateData(movieId, data, positionVideoMil)})
+	dispatch({type: 'setData', payload: updateData(movie, data, positionVideoMil)})
 }
 
 export function secondsToString(seconds) {

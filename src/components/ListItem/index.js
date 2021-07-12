@@ -9,7 +9,7 @@ import MusicContext from '../../context/MusicContext'
 import { useAxios } from '../../hooks/useAxios'
 import { getContactInfo } from '../../services/getContactInfo'
 import { getProgressMovie, isLive, isEvent, getProgressTimeEvent, getEventTime, secondsToString } from '../../js/Time'
-import {  limitString, isLimitString, isSerie, typeContent, replaceString, containsString, createUrlString } from '../../js/String'
+import {  limitString, isLimitString, isSerie, typeContent, replaceString, containsString, createUrlString, isContinueWatching } from '../../js/String'
 import Tooltip from '@material-ui/core/Tooltip'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { CSSTransition } from 'react-transition-group'
@@ -19,6 +19,8 @@ import { LoaderSpinnerMUI } from '../Loader'
 import imgRecoverErrorTV from '../../assets/images/backgrounds/onerror/error-tv.png'
 import imgRecoverErrorPortrait from '../../assets/images/backgrounds/onerror/error-portrait.png'
 import imgRecoverErrorLandscape from '../../assets/images/backgrounds/onerror/error-landscape.png'
+import { SongMenu } from '../../pages/Music/components/SongMenu'
+import { LikeSongButton } from '../../pages/Music/components/LikeSong'
 import './styles.css'
 
 export function Item({ data, posterType, listType, titleCategory, category, listTracks, collection }) {
@@ -79,11 +81,11 @@ function ItemCatalogue({ type, posterType, data, titleCategory }) {
 		}
 	}
 
-	if (titleCategory == 'Continuar Viendo') {
+	if (isContinueWatching(ContentType)) {
 		if(containsString(ContentType, 'kids')){
-			urlNavLink = `zonakids/${type}/${Registro}/video`
+			urlNavLink = `zonakids/${type}/${Registro}`
 		}else{
-			urlNavLink = `alacarta/${type}/${Registro}/video`
+			urlNavLink = `alacarta/${type}/${Registro}`
 		}
 	} else {
 		if(containsString(ContentType, 'kids')){
@@ -99,7 +101,7 @@ function ItemCatalogue({ type, posterType, data, titleCategory }) {
 			<div className="item" onClick={handleClick}>
 				<div className="background-item">
 					<Img title={Title} posterType={posterType} imgPortrait={HDPosterUrlPortrait} imgLandscape={HDPosterUrlLandscape} />
-					{ResumePos &&
+					{ResumePos && isContinueWatching(ContentType) &&
 						<div className="progress-bar-content">
 							<LinearProgress variant="determinate" value={getProgressMovie(ResumePos, Length)} />
 						</div>
@@ -372,7 +374,7 @@ function ItemTrackAlbum({ data }) {
 	
 	const handlePlay = (e) => {
 		e.preventDefault()
-		if(e.nativeEvent.target.nodeName != 'P' && e.nativeEvent.target.nodeName != 'A'){
+		if(e.nativeEvent.target.nodeName != 'P' && e.nativeEvent.target.nodeName != 'A' && !e.nativeEvent.target.className.includes('popper') && e.nativeEvent.target.nodeName != 'BUTTON' && e.nativeEvent.target.nodeName != 'I' && e.nativeEvent.target.nodeName != 'SPAN'){
 			data.id = album.id
 			dispatchMusic({ type: 'setTrack', payload: data})
 			dispatchMusic({ type: 'setListTracks', payload: album.tracks})
@@ -420,13 +422,8 @@ function ItemTrackAlbum({ data }) {
 				<div className="time-track">
 					{secondsToString(length)}
 				</div>
-				<div className="like-track">
-					<span><i className="fal fa-heart"></i></span>
-				</div>
-				
-				<div className="menu-track">
-					<span><i className="far fa-ellipsis-h"></i></span>
-				</div>
+				<LikeSongButton />
+				<SongMenu />
 			</div>
 		</div>
 	)

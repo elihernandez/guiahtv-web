@@ -1,9 +1,12 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useContext } from 'react'
+import VideoContext from '../../../../../../context/VideoContext'
 import Tooltip from '@material-ui/core/Tooltip'
 import Slider from '@material-ui/core/Slider'
 import './styles.css'
 
-export function ButtonVolume({ volume, muteVolume, dispatch }) {
+export function ButtonVolume() {
+	const {stateVideo, dispatch } = useContext(VideoContext)
+	const { volume, muteVolume } = stateVideo
 	const [value, setValue] = useState(volume)
 
 	const handleChange = (event, newValue) => {

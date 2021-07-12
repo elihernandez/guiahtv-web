@@ -31,6 +31,7 @@
     "css-loader": "^4.3.0",
     "css-minimizer-webpack-plugin": "^1.1.5",
     "cssnano": "^4.1.10",
+    "cypress": "^7.6.0",
     "esbuild": "^0.8.26",
     "esbuild-loader": "^2.7.0",
     "eslint": "^7.21.0",

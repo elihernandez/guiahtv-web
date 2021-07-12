@@ -1,40 +1,25 @@
 /* @import './fonts/Roboto/styles.css'; */
 /* @import './fonts/HurmeGeometricSans/styles.css'; */
-@import './fonts/Poppins/styles.css';
-@import './fade-transition.css';
-@import './fontawesome.css';
-@import './style-base.css';
+@import "./fonts/Poppins/styles.css";
+@import "./fade-transition.css";
+@import "./fontawesome.css";
+@import "./style-base.css";
 
 html,
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", sans-serif !important;
-  background: $color-black-1; 
-
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif !important;
+    background: $color-black-1;
+    font-size:  62.5%;
 }
 
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-}
-
-::-webkit-scrollbar:vertical{
-  width: 8px;
-}
-
-::-webkit-scrollbar-button:increment,::-webkit-scrollbar-button {
-  display: none;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #797979;
-  border-radius: 20px;
-}
-
-::-webkit-scrollbar-track {
-  border-radius: 10px;  
+@media (max-width: 1280px) {
+    html {
+      font-size: 50%; /* 19px */
+    }
 }
 
 h1,
@@ -46,70 +31,91 @@ h6,
 p,
 ul,
 ol {
-  margin: 0;
-  padding: 0;
-  color: $color-white;
-  list-style: none;
+    margin: 0;
+    padding: 0;
+    color: $color-white;
+    list-style: none;
 }
 
-*{
-  box-sizing: border-box;
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  outline: none;
+* {
+    box-sizing: border-box;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
 }
 
-input{
-  font-family: "Poppins", sans-serif !important;
-  font-weight: 400;
+input {
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 400;
 }
 
-button{
-  border: none;
-  background: transparent;
-  cursor: pointer;
+button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+    width: 8px;
+}
+
+::-webkit-scrollbar-button:increment,
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
 }
 
 .app-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: $color-black-1; 
-  /* overflow-x: hidden; */
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: $color-black-1;
 }
 
 .focusable {
-  outline: none !important;
+    outline: none !important;
 }
 
-.disabled{
-  pointer-events: none;
-  opacity: 0.25;
+.disabled {
+    pointer-events: none;
+    opacity: 0.25;
 }
 
-.MuiTooltip-popper{
-  /* width: 200px !important; */
+.MuiTooltip-popper {
+    /* width: 200px !important; */
 
-  .MuiTooltip-tooltip{
-    font-size: 14px !important;
-    /* width: 200px !important;
+    .MuiTooltip-tooltip {
+        font-size: 14px !important;
+        /* width: 200px !important;
     height: 50px !important; */
-  }
+    }
 }
 
-.section-content{
-  position: relative;
-  width: 100%;
-  height: 100%;
+.section-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
-.top-header{
-  top: $height-top-menu;
+.top-header {
+    top: $height-top-menu;
 }
 
 html > div[style] {
-  display: none !important;
+    display: none !important;
 }

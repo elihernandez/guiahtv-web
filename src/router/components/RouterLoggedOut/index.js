@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { isBrowser, isMobile } from 'react-device-detect'
-import { Info } from '../../../pages/Info'
+import { InfoPage } from '../../../pages/Info'
 import { Login } from '../../../pages/Login'
 import { GetApp } from '../../../pages/GetApp'
 import { Page404 } from '../../../pages/404'
@@ -12,7 +12,7 @@ export const RouterLoggedOut = () => {
 		<Switch>
 			<Route exact path="/">
 				<CheckDevice>
-					<Info />
+					<InfoPage />
 				</CheckDevice>
 			</Route>
 

@@ -26,7 +26,7 @@
                     align-items: center;
 
                     i, p, svg{
-                        font-size: 14px;
+                        font-size: 1.4rem;
                         margin: 0 10px;
                         color: $color-grey-3;
                         transition: all .15s ease;

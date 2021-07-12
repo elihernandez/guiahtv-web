@@ -4,7 +4,7 @@ import { CookiesProvider } from 'react-cookie'
 import { UserContextProvider } from '../context/UserContext'
 import '../styles/app.css'
 
-export default function App() {
+export const App = () => {
 	return (
 		<div className="app-content">
 			<CookiesProvider>         

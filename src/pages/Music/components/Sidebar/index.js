@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { Fragment, useEffect, useContext } from 'react'
 import { useRouteMatch, useLocation } from 'react-router-dom'
 import UserContext from '../../../../context/UserContext'
 import MusicContext from '../../../../context/MusicContext'
@@ -6,7 +6,6 @@ import { getMyPlaylists } from '../../../../services/getMyPlaylists'
 import { Sidebar } from '../../../../components/Sidebar'
 import { limitString } from '../../../../js/String'
 import './styles.css'
-import { Fragment } from 'react'
 
 export function SidebarMusic(){
 	const location = useLocation()
@@ -14,7 +13,6 @@ export function SidebarMusic(){
 	const { stateUser } = useContext(UserContext)
 	const { stateMusic, dispatchMusic } = useContext(MusicContext)
 	const { myPlaylists } = stateMusic
-	// const [myPlaylists, setMyplaylists] = useState(null)
 
 	const handleOpenModal = () => {
 		const modal = {
@@ -45,8 +43,8 @@ export function SidebarMusic(){
 						data.push({
 							regID: playlist.regID,
 							url: `${url}/playlist/${playlist.regID}`,
-							icon: '',
-							title: limitString(playlist.title, 17),
+							icon: null,
+							title: limitString(playlist.title, 25),
 							type: 'link'
 						})
 					})

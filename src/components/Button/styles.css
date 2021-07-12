@@ -59,9 +59,10 @@
       }
 
       &.gradient{
-            /* background: linear-gradient(270deg, $color-guide-blue 0%, $color-guide-purple 100%); */
-            background: linear-gradient(270deg, $color-violet 0%, $color-guide-blue 100%);
-            /* background: linear-gradient(270deg,  #6a26cd 0%, #00aeef 100%); */
-            /* background: linear-gradient(270deg, $color-guide-purple 0%, $color-guide-blue 100%); */
+            background: linear-gradient(270deg, rgba($rgba-color-violet, 1) 0%, rgba($rgba-color-guide-blue, 1) 100%);
+            
+            &:hover{
+                  background: linear-gradient(270deg, rgba($rgba-color-violet, 0.85) 0%, rgba($rgba-color-guide-blue, 0.85) 100%);
+            }
       }
 }

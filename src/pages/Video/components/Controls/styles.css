@@ -70,6 +70,10 @@
                               position: relative;
                               min-width: 120px;
                               text-align: center;
+
+                              p{
+                                    font-size: 17px;
+                              }
                         }
 
                         .container-volume{
@@ -187,6 +191,7 @@
       position: relative;
       display: flex;
       padding: 25px 20px;
+      background-color: #424242;
 
       .audios-content{
             min-width: 225px;

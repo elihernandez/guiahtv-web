@@ -17,7 +17,8 @@ function LeftContent({showNavbar	}) {
 		{ title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-popcorn"></i> },
 		{ title: 'Radio', href: '/radio', icon: <i className="fas fa-radio"></i> },
 		{ title: 'Musica', href: pathname.includes('musica') ? location : '/musica/inicio', icon: <i className="fas fa-headphones"></i> },
-		{ title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i> }
+		{ title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i> },
+		// { title: 'PPV', href: pathname.includes('tv') ? location : '/tv', icon: <i className="fas fa-play-circle"></i> }
 	]
 
 	return (

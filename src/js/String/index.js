@@ -56,6 +56,23 @@ export function capitalizeFirstLetter(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
+export function isMovie(str) {
+	if (str.includes('movie') || str.includes('pelicula')) {
+		return true
+	}
+
+	return false
+}
+
+export function isContinueWatching(str) {
+	if (str.includes('cw')) {
+		return true
+	}
+
+	return false
+}
+
+
 export function isSerie(str) {
 	if (str.includes('series')) {
 		return true

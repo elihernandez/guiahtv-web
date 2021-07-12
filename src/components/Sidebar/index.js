@@ -4,9 +4,10 @@ import './styles.css'
 
 function Button({ title, handleClick, icon }) {
 	return (
-
 		<li className="list-item" onClick={handleClick}>
-			<i className={icon} />
+			{icon && (
+				<i className={icon} />
+			)}
 			{title}
 		</li>
 	)
@@ -19,7 +20,9 @@ function Link({ title, url, icon }) {
 			activeClassName="active"
 		>
 			<li className="list-item">
-				<i className={icon} />
+				{icon && (
+					<i className={icon} />
+				)}
 				{title}
 			</li>
 		</NavLink>

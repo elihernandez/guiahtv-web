@@ -4,6 +4,7 @@ import { imgSourceSetPng } from '../../js/Image'
 import { useHistory } from 'react-router-dom'
 import { useAxios } from '../../hooks/useAxios'
 import { SlickSlider } from '../SlickCarousel'
+import backgroundMovies from '../../assets/images/backgrounds/background-movies.jpg'
 import './styles.css'
 
 export function ButtonsMenu() {
@@ -27,6 +28,9 @@ export function ButtonsMenu() {
 		case 'leon_kids':
 			history.push('/zonakids')
 			break
+		case 'leon_ppv':
+			history.push('/tv')
+			break
 		default:
 			break
 		}
@@ -43,7 +47,7 @@ export function ButtonsMenu() {
 		<div className="buttons-menu-wrapper">
 			<SlickSlider settings={settings}>
 				{data.map(({ titulo, ContentType, PosterCardUrlLandscape }) => {
-					if (ContentType !== 'leon_music') {
+					if (ContentType !== 'leon_music' && ContentType !== 'leon_ppv') {
 						return (
 							<div
 								key={ContentType}
@@ -74,3 +78,129 @@ export function ButtonsMenu() {
 		</div>
 	)
 }
+
+// export const ButtonsMenu = () => {
+// 	const history = useHistory()
+// 	const { data } = useAxios('buttons-menu')
+
+// 	const handleClick = (contentType) => {
+// 		switch (contentType) {
+// 		case 'leon_livetv':
+// 			history.push('/tv')
+// 			break
+// 		case 'leon_movies':
+// 			history.push('/alacarta')
+// 			break
+// 		case 'leon_radio':
+// 			history.push('/radio')
+// 			break
+// 		case 'leon_music':
+// 			history.push('/musica')
+// 			break
+// 		case 'leon_kids':
+// 			history.push('/zonakids')
+// 			break
+// 		default:
+// 			break
+// 		}
+// 	}
+
+// 	const settings = {
+// 		dots: false,
+// 		infinite: false,
+// 		slidesToShow: 5,
+// 		slidesToScroll: 5,
+// 	}
+
+// 	return (
+// 		<div className="buttons-menu-wrapper">
+// 			<div className="button">	
+// 				<span>
+// 					<i className="fal fa-tv" /> 
+// 				</span>
+// 				<h1>Tv en vivo</h1>
+// 			</div>
+// 			<div className="button">
+// 				<span>
+// 					<i className="fal fa-popcorn" /> 
+// 				</span>
+// 				<h1>A la carta</h1>
+// 			</div>
+// 			<div className="button">
+// 				<span>
+// 					<i className="fal fa-radio" /> 
+// 				</span>
+// 				<h1>Radio</h1>
+// 			</div>
+// 			<div className="button">
+// 				<span>
+// 					<i className="fal fa-headphones" /> 
+// 				</span>
+// 				<h1>Música</h1>
+// 			</div>
+// 			<div className="button">
+// 				<span>
+// 					<i className="fal fa-child" /> 
+// 				</span>
+// 				<h1>Zona kids</h1>
+// 			</div>
+// 		</div>
+// 	)
+// }
+
+// export const ButtonsMenu = () => {
+// 	const history = useHistory()
+// 	const { data } = useAxios('buttons-menu')
+
+// 	const handleClick = (contentType) => {
+// 		switch (contentType) {
+// 		case 'leon_livetv':
+// 			history.push('/tv')
+// 			break
+// 		case 'leon_movies':
+// 			history.push('/alacarta')
+// 			break
+// 		case 'leon_radio':
+// 			history.push('/radio')
+// 			break
+// 		case 'leon_music':
+// 			history.push('/musica')
+// 			break
+// 		case 'leon_kids':
+// 			history.push('/zonakids')
+// 			break
+// 		default:
+// 			break
+// 		}
+// 	}
+
+// 	const settings = {
+// 		dots: false,
+// 		infinite: false,
+// 		slidesToShow: 5,
+// 		slidesToScroll: 5,
+// 	}
+
+// 	return (
+// 		<div className="buttons-menu-wrapper">
+// 			<div className="button">	
+// 				<span>
+// 					<img src={backgroundMovies} />
+// 					<h1>A la carta</h1>
+// 				</span>
+// 			</div>
+// 			<div className="button">
+				
+// 			</div>
+// 			<div className="button">
+			
+// 			</div>
+// 			<div className="button">
+			
+// 			</div>
+// 			<div className="button">
+				
+// 			</div>
+// 		</div>
+// 	)
+// }

@@ -23,35 +23,40 @@
 
             .list-menu{
                   list-style: none;
-            
-                  a{
-                        text-decoration: none;
-                        color: white;
-
-                        &.active{
-                              .list-item{
-                                    background: $color-guide-blue; 
-                                    box-shadow: 0 5px 20px rgba(0,0,0, 0.25); 
-                              }   
-                        }
-                  }
 
                   .list-item{
                         font-weight: 500;
                         font-size: 15px;
                         padding: 10px 20px;
-                        border-radius: 50px;
+                        border-radius: 4px;
                         margin: 15px 0;
+                        font-size: 15px;
+                        color: $color-grey-3;
+                        transition: all .15s ease;
 
                         i{
-                              margin-right: 20px;
+                              margin-right: 15px;
                               min-width: 25px;
                               text-align: center;
                         }
 
                         &:hover{
-                              background: $color-grey-5; 
+                              /* background: $color-grey-5;  */
+                              color: $color-white;
                               cursor: pointer;
+                        }
+                  }
+
+                  a{
+                        text-decoration: none;
+                        color: $color-white;
+
+                        &.active{
+                              .list-item{
+                                    color: $color-white;
+                                    background: $color-grey-5; 
+                                    /* box-shadow: 0 5px 20px rgba(0,0,0, 0.25);  */
+                              }   
                         }
                   }
             }

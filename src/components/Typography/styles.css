@@ -23,41 +23,45 @@ h6{
 }
 
 .large-title-1{
-      font-size: 40px;
+      font-size: 4rem;
 }
 
 .large-title-2{
-      font-size: 35px;
+      font-size: 3.5rem;
 }
 
 .large-title-3{
-      font-size: 30px;
+      font-size: 3rem;
 }
 
 .title-1{
-      font-size: 26px;
+      font-size: 2.6rem;
 }
 
 .title-2{
-      font-size: 23px;
+      font-size: 2.3rem;
 }
 
 .title-3{
-      font-size: 20px;
+      font-size: 2rem;
 }
 
 .body-1{
-      font-size: 18px;
+      font-size: 1.8rem;
 }
 
 .body-2{
-      font-size: 16px;
+      font-size: 1.6rem;
 }
 
 .body-3{
-      font-size: 14px;
+      font-size: 1.4rem;
 }
 
 .caption{
-      font-size: 12px;
+      font-size: 1.2rem;
+}
+
+.sub-caption{
+      font-size: 1rem;
 }

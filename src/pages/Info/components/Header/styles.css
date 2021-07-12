@@ -3,10 +3,8 @@
 .header-home{
       position: fixed;
       width: 100%;
-      height: $height-header;
-      z-index: 999;
+      height: $height-header;     
       display: flex;
-      flex-direction: row;
       justify-content: flex-end;
       align-items: center;
       padding: 0 50px;

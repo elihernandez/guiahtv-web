@@ -101,6 +101,10 @@
             .more-info-album{
                 position: relative;
                 display: flex;
+
+                p{
+                    font-size: 1vw;
+                }
             }
         
             .description-album{

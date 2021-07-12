@@ -9,13 +9,14 @@ import { ContentMovie } from '../../pages/Movie'
 import { ContentSerie } from '../../pages/Serie'
 import { CSSTransition } from 'react-transition-group'
 import { VideoVod } from '../../pages/Video'
+import { isSerie, isMovie } from '../../js/String'
 import './styles.css'
 
 export function searchSerie(data, contentId) {
 	let content
 	data.map(({ cmData }) => {
 		cmData.map((serie) => {
-			if (serie.Registro == contentId) {
+			if (serie.Registro == contentId && isSerie(serie.ContentType)) {
 				if (!content) {
 					content = serie
 				}
@@ -30,7 +31,7 @@ export function searchMovie(data, contentId) {
 	let content
 	data.map(({ cmData }) => {
 		cmData.map((movie) => {
-			if (movie.Registro == contentId) {
+			if (movie.Registro == contentId && isMovie(movie.ContentType)) {
 				if (!content) {
 					content = movie
 				}
@@ -81,11 +82,11 @@ export function InfoContent() {
 	return (
 		<Fragment>
 			{content == 'movie' && movieVod &&
-                        <ContentMovie data={movieVod} />
+                <ContentMovie data={movieVod} />
                        
 			}
 			{content == 'serie' && serieVod &&
-                        <ContentSerie data={serieVod} />
+                <ContentSerie data={serieVod} />
 			}
 		</Fragment>
 	)
@@ -107,9 +108,9 @@ export function CatalogueVod({ requestApi }) {
 					<Route exact path={`${url}`} >
 						<div className={`content-catalogue ${requestApi}`}>
 							{data && !loading &&
-                                                data.map((category) => {
-                                                	return <List key={category.category} data={category} listType="catalogue" />
-                                                })
+								data.map((category) => {
+									return <List key={category.category} data={category} listType="catalogue" />
+								})
 							}
 						</div>
 					</Route>

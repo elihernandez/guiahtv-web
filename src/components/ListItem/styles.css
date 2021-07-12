@@ -606,15 +606,9 @@
                         }
                   }
 
-                  .like-track{
-                        width: 4%;
-                        font-size: 0.8vw;
-                        color: $color-white;
-                        text-align: center;
-                  }
-
                   .time-track{
                         width: 4%;
+                        margin: 0 5px;
                         font-size: 0.8vw;
                         color: $color-white;
                         text-align: center;
@@ -678,6 +672,7 @@
             padding: 2px 12.5px;
             background: $color-black-1;
             margin-right: 10px;
+            font-size: 15px;
 
             i{
                   color: $color-white;
