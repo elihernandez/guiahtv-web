@@ -30,7 +30,7 @@ export function SearchForm({ value, setValue, setResults, setLoading }){
 			}else{
 				setLoading(false)
 			}
-		}, 400)
+		}, 1000)
 
 		return () => clearTimeout(interval) 
 	}, [value])

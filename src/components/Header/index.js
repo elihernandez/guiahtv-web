@@ -3,9 +3,9 @@ import { TopMenu } from '../TopMenu'
 import './styles.css'
 
 export function Header(){
-      return (
-            <header>
-                  <TopMenu />
-            </header>
-      )
+	return (
+		<header>
+			<TopMenu />
+		</header>
+	)
 }
