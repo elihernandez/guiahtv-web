@@ -1,19 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const ErrorMessage = (onClick) => {
+export const ErrorMessageReload = ({ message, onClick }) => {
 	return (
 		<Wrapper>
-			<Text>No se pudo cargar el contenido</Text>
+			<Text>{message}</Text>
 			<Button onClick={onClick}>Volver a intentar</Button>
 		</Wrapper>
 	)
 }
 
-export const ErrorMessageTwo = () => {
+export const ErrorMessageDefault = ({ message }) => {
 	return (
 		<Wrapper>
-			<Text>No se pudo cargar el contenido</Text>
+			<Text>{ message }</Text>
 		</Wrapper>
 	)
 }
@@ -30,17 +30,18 @@ const Wrapper = styled.div`
 `
 
 const Text = styled.p`
-    font-size: 1vw;
+    font-size: 20px;
     text-align: center;
     margin: .5vw 0;
 `
 
 const Button = styled.button`
-    font-size: .75vw;
+    font-size: 16px;
     text-align: center;
     color: white;
     border: .125vw solid white;
-    padding: .5vw;
+    font-family: "Poppins", sans-serif;
+    padding: 10px 20px;
     border-radius: 4px;
     margin: .5vw 0;
     transition: all 150ms ease-in-out;

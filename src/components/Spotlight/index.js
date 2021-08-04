@@ -5,7 +5,7 @@ import { SlickSlider } from '../SlickCarousel'
 import './styles.css'
 
 export function Spotlight() {
-	const { data } = useAxios('spotlight')
+	const { data, error } = useAxios('spotlight')
 
 	const settings = {
 		dots: true,
@@ -21,20 +21,24 @@ export function Spotlight() {
 
 	return (
 		<div className="spotlight-wrapper">
-			<SlickSlider settings={settings}>
-				{data.map(({ Registro, ImgLandscape }) => {
-					return (
-						<div key={Registro} style={{ width: '100%' }}>
-							<LazyImage
-								img={ImgLandscape}
-								alt={`spotlight-image-${Registro}`}
-								type="webp"
-								recoverType="png"
-							/>
-						</div>
-					)
-				})}
-			</SlickSlider>
+			{error ? (
+				error
+			) : (
+				<SlickSlider settings={settings}>
+					{data.map(({ Registro, ImgLandscape }) => {
+						return (
+							<div key={Registro} style={{ width: '100%' }}>
+								<LazyImage
+									img={ImgLandscape}
+									alt={`spotlight-image-${Registro}`}
+									type="webp"
+									recoverType="png"
+								/>
+							</div>
+						)
+					})}
+				</SlickSlider>
+			)}
 		</div>
 	)
 }
