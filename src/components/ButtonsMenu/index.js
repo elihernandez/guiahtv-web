@@ -9,7 +9,7 @@ import './styles.css'
 
 export function ButtonsMenu() {
 	const history = useHistory()
-	const { data } = useAxios('buttons-menu')
+	const { data, error } = useAxios('buttons-menu')
 
 	const handleClick = (contentType) => {
 		switch (contentType) {
@@ -45,36 +45,40 @@ export function ButtonsMenu() {
 
 	return (
 		<div className="buttons-menu-wrapper">
-			<SlickSlider settings={settings}>
-				{data.map(({ titulo, ContentType, PosterCardUrlLandscape }) => {
-					if (ContentType !== 'leon_music' && ContentType !== 'leon_ppv') {
-						return (
-							<div
-								key={ContentType}
-								className="item-button"
-								onClick={() => handleClick(ContentType)}
-							>
-								<picture>
-									<source
-										srcSet={PosterCardUrlLandscape}
-										type="image/webp"
-									/>
-									<source
-										srcSet={imgSourceSetPng(PosterCardUrlLandscape,'png')}
-										type="image/png"
-									/>
-									<img
-										src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
-										alt={`${ContentType}-image`}
-										className="image-button"
-									/>
-								</picture>
-								<H6 className="title-button title-2">{titulo}</H6>
-							</div>
-						)
-					}
-				})}
-			</SlickSlider>
+			{error ? (
+				error
+			) : (
+				<SlickSlider settings={settings}>
+					{data.map(({ titulo, ContentType, PosterCardUrlLandscape }) => {
+						if (ContentType !== 'leon_music' && ContentType !== 'leon_ppv' && ContentType !== null) {
+							return (
+								<div
+									key={ContentType}
+									className="item-button"
+									onClick={() => handleClick(ContentType)}
+								>
+									<picture>
+										<source
+											srcSet={PosterCardUrlLandscape}
+											type="image/webp"
+										/>
+										<source
+											srcSet={imgSourceSetPng(PosterCardUrlLandscape,'png')}
+											type="image/png"
+										/>
+										<img
+											src="build/assets/images/logos/guiahtv/error-tv-landscape.png"
+											alt={`${ContentType}-image`}
+											className="image-button"
+										/>
+									</picture>
+									<H6 className="title-button title-2">{titulo}</H6>
+								</div>
+							)
+						}
+					})}
+				</SlickSlider>
+			)}
 		</div>
 	)
 }

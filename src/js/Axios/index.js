@@ -1,11 +1,9 @@
 
 import axios from 'axios'
-import config from '../../../config.js'
 import { isEmptyArray } from '../Array'
 
 const instance = axios.create({
-	// baseURL: config.API_URL,
-	timeout: 20000
+	timeout: 10000
 })
 
 instance.interceptors.request.use(
@@ -20,21 +18,38 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
 	function (response) {
 		if(response.status === 200){
-			if(response?.length && isEmptyArray(response.data)){
-				throw new Error()
+			if(response?.length || response.data.length === 0 || isEmptyArray(response.data)){
+				throw new Error(1)
 			}
-
-			return response.data
 		}
+
+		if(response.status >= 400 && response.status <= 499){
+			throw new Error(2)
+		}
+
+		if(response.status >= 500 && response.status <= 599){
+			throw new Error(3)
+		}
+
+		return response.data
 	}, 
 	function (e) {
-		console.log(e.code)
-		// switch(e.code){
-		// case 'ECONNABORTED':
-		// 	throw new Error('Error de conexión')
-		// default: 
-		// 	break
-		// }
+		const { code, message } = e
+		
+		if(code === 'ECONNABORTED'){
+			if(message === 'Network Error'){
+				throw new Error(4)
+			}
+
+			if(message === 'Request aborted'){
+				throw new Error(5)
+			}
+
+			if(message.includes('timeout')){
+				throw new Error(6)
+			}
+		}
+
 		return Promise.reject(e)
 	}
 )
