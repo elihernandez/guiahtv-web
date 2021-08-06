@@ -4,6 +4,7 @@ import { VideoContextProvider } from '../../context/VideoContext'
 import { Player } from './components/Player'
 import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
 import { hideTopMenu, showTopMenu } from '../../js/TopMenu'
+import { PipBackground } from '../../components/PipBackground'
 const pip = require('picture-in-picture')
 import './styles.css'
 
@@ -24,7 +25,8 @@ const initialState = {
 	audioTrackActive: 0,
 	subtitleTracks: null,
 	subtitleTrackActive: -1,
-	endingMovie: false
+	endingMovie: false,
+	isPipActive: false
 }
 
 const reducer = (state, action) => {
@@ -129,6 +131,12 @@ const reducer = (state, action) => {
 			endingMovie: action.payload
 		}
 	}
+	case 'setIsPipActive' : {
+		return {
+			...state,
+			isPipActive: action.payload
+		}
+	}
 	default: return state
 	}
 }
@@ -148,16 +156,19 @@ export function VideoVod({ state, dispatchVod }) {
 		return () => {
 			showTopMenu()
 			if(isFullScreenElement()) exitFullScreen()
-			if(pip.supported && pip.isActive(document.querySelector('video'))) pip.exit(document.querySelector('video')) 
+			if(pip.supported && pip.isActive(document.querySelector('video'))) {
+				pip.exit(document.querySelector('video'))
+			}
 		}
 	}, [])
-
+	
 	return (
 		<VideoContextProvider state={initialState} reducer={reducer}>
 			<div className="video">
 				<div className="video-wrapper">
 					<Player state={state} dispatchVod={dispatchVod}/>
 				</div>
+				<PipBackground />
 			</div>
 		</VideoContextProvider>
 	)

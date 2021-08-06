@@ -10,7 +10,7 @@ export function UserMenu() {
 		e.preventDefault()
 		removeCookie('memclid', { path: '/' })
 		removeCookie('memclem', { path: '/' })
-		location.reload()
+		location.assign('/login')
 	}
 
 	const textButton = <span className="body-3">Mi perfil&nbsp;&nbsp;&nbsp;<i className='fas fa-user-circle' /></span>

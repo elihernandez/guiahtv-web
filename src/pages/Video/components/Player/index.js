@@ -11,6 +11,7 @@ import { EndingMovie } from '../EndingMovie'
 import { isSuscribed } from '../../../../js/Auth'
 import { setProgressMovie } from '../../../../js/Time'
 import canAutoPlay from 'can-autoplay'
+import localforage from 'localforage'
 import './styles.css'
 
 export function Player({ state, dispatchVod }) {
@@ -98,9 +99,25 @@ export function Player({ state, dispatchVod }) {
 		}
 
 		return () => {
+
+			const requestLastEpisode = async() => {
+				try {
+					
+					const value = await localforage.getItem('lastEpisode')
+					if(!value){
+						const episode = await localforage.setItem('lastEpisode', 5)
+						console.log(episode)
+					}
+				} catch (err) {
+					// This code runs if there were any errors.
+					console.log(err)
+				}
+			}
+
 			if(history.action === 'POP'){
-				if(isSuscribed(credentials)){ 
+				if(isSuscribed(credentials)){
 					requestPositionVideo()
+					requestLastEpisode()
 				}
 			}
 		}

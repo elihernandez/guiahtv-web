@@ -33,9 +33,10 @@
             position: relative;
             width: 100%;
 
-            p{
-                  font-size: 18px;
-                  font-weight: 500;
+            .text-info{
+                  color: white;
+                  font-weight: 400;
+                  font-size: 1.4vw;
             }
 
             .name{

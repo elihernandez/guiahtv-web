@@ -17,7 +17,7 @@ export function FormLogin({ onSubmit }) {
 			<div className="group-form">
 				<label htmlFor="username" />
 				<input
-					type="text"
+					type="email"
 					className="username body-3"
 					name="username"
 					id="username"

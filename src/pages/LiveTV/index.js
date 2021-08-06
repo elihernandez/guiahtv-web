@@ -21,7 +21,8 @@ const initialState = {
 	volume: 50,
 	muteVolume: false,
 	fullScreen: false,
-	timeoutErrorRef: null
+	timeoutErrorRef: null,
+	isPipActive: false
 }
 
 const reducer = (state, action) => {
@@ -77,6 +78,14 @@ const reducer = (state, action) => {
 			timeoutErrorRef: action.payload
 		}
 	}
+
+	case 'setIsPipActive' : {
+		return {
+			...state,
+			isPipActive: action.payload
+		}
+	}
+	
 	default: return state
 	}
 }
