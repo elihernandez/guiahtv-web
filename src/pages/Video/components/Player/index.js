@@ -20,7 +20,7 @@ export function Player({ state, dispatchVod }) {
 	const [url, setUrl] = useState()
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
-	const { dataVod, movieVod } = state
+	const { dataVod, movieVod, seasonVod, serieVod } = state
 	const { stateVideo, dispatch } = useContext(VideoContext)
 	const { loading, currentTime, duration, endingMovie } = stateVideo
 	const { error, setError } = useHls(video, url, dispatch, movieVod)
@@ -101,17 +101,22 @@ export function Player({ state, dispatchVod }) {
 		return () => {
 
 			const requestLastEpisode = async() => {
-				try {
-					
-					const value = await localforage.getItem('lastEpisode')
-					if(!value){
-						const episode = await localforage.setItem('lastEpisode', 5)
-						console.log(episode)
+				const data = {
+					serie: {
+						id: serieVod.Registro
+					},
+					season: {
+						id: seasonVod.id,
+						title: seasonVod.category
+					},
+					episode: {
+						id: movieVod.Registro,
+						title: movieVod.Title,
+						ResumePos: movieVod.ResumePos
 					}
-				} catch (err) {
-					// This code runs if there were any errors.
-					console.log(err)
 				}
+
+				await localforage.setItem(`serie-${serieVod.Registro}`, data)
 			}
 
 			if(history.action === 'POP'){

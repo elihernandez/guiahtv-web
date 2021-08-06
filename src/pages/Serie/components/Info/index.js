@@ -4,57 +4,57 @@ import Tooltip from '@material-ui/core/Tooltip'
 import './styles.css'
 
 export function Info({ data }) {
-      const {
-            ContactDescription,
-            ContactFon,
-            ContactWeb,
-            ContactFb,
-            ContactIG,
-            ContactTw,
-            ContactLoc
-      } = data
+	const {
+		ContactDescription,
+		ContactFon,
+		ContactWeb,
+		ContactFb,
+		ContactIG,
+		ContactTw,
+		ContactLoc
+	} = data
 
-      return (
-            <div className="info-contact-wrapper">
-                  <div className="group-section">
-                        <div className="description">
-                              <p className="">{ContactDescription}</p>
-                        </div>
-                  </div>
-                  <div className="group-section">
-                        <div className="phone-group"><i className="fas fa-phone-alt" />Télefono de contacto: &nbsp;&nbsp;&nbsp;{ContactFon}</div>
-                        <div className="web-group"><i className="fas fa-globe" />Sitio web: &nbsp;&nbsp;&nbsp;<a href={ContactWeb}>{ContactWeb}</a></div>
-                        <div className="social-media-group">
-                              {ContactFb &&
+	return (
+		<div className="info-contact-wrapper">
+			<div className="group-section">
+				<div className="description">
+					<p className="">{ContactDescription}</p>
+				</div>
+			</div>
+			<div className="group-section">
+				<div className="phone-group"><i className="fas fa-phone-alt" />Télefono de contacto: &nbsp;&nbsp;&nbsp;{ContactFon}</div>
+				<div className="web-group"><i className="fas fa-globe" />Sitio web: &nbsp;&nbsp;&nbsp;<a href={ContactWeb}>{ContactWeb}</a></div>
+				<div className="social-media-group">
+					{ContactFb &&
                                     <Tooltip title="Facebook" placement="top-start">
-                                          <a href={`https://www.facebook.com/${ContactFb}`} target="_blank">
-                                                <i className="fab fa-facebook-square" /> Facebook
-                                          </a>
+                                    	<a href={`https://www.facebook.com/${ContactFb}`} target="_blank">
+                                    		<i className="fab fa-facebook-square" /> Facebook
+                                    	</a>
                                     </Tooltip>
-                              }
-                              {ContactIG &&
+					}
+					{ContactIG &&
                                     <Tooltip title="Instagram" placement="top-start">
-                                          <a href={`https://www.instagram.com/${ContactIG}`} target="_blank">
-                                                <i className="fab fa-instagram" /> Instagram
-                                          </a>
+                                    	<a href={`https://www.instagram.com/${ContactIG}`} target="_blank">
+                                    		<i className="fab fa-instagram" /> Instagram
+                                    	</a>
                                     </Tooltip>
-                              }
-                              {ContactTw &&
+					}
+					{ContactTw &&
                                     <Tooltip title="Twitter" placement="top-start">
-                                          <a href={`https://www.twitter.com/${ContactTw}`} target="_blank">
-                                                <i className="fab fa-twitter-square" /> Twitter
-                                          </a>
+                                    	<a href={`https://www.twitter.com/${ContactTw}`} target="_blank">
+                                    		<i className="fab fa-twitter-square" /> Twitter
+                                    	</a>
                                     </Tooltip>
-                              }
-                              {ContactLoc &&
+					}
+					{ContactLoc &&
                                     <Tooltip title="Ubicación" placement="top-start">
-                                          <a href={`https://www.google.com/maps/place/${replaceString(ContactLoc, ",", "+")}`} target="_blank">
-                                                <i className="fas fa-map-marker-alt" /> Ubicación
-                                          </a>
+                                    	<a href={`https://www.google.com/maps/place/${replaceString(ContactLoc, ',', '+')}`} target="_blank">
+                                    		<i className="fas fa-map-marker-alt" /> Ubicación
+                                    	</a>
                                     </Tooltip>
-                              }
-                        </div>
-                  </div>
-            </div>
-      )
+					}
+				</div>
+			</div>
+		</div>
+	)
 }

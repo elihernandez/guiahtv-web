@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
 import VodContext from '../../context/VodContext'
 import { useRouteMatch, useHistory } from 'react-router-dom'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -10,6 +10,7 @@ import PG from '../../assets/images/clasifications-movies/PG.png'
 import G from '../../assets/images/clasifications-movies/G.png'
 import R from '../../assets/images/clasifications-movies/R.png'
 import 'react-lazy-load-image-component/src/effects/opacity.css'
+import localforage from 'localforage'
 import './styles.css'
 
 export function InfoMovie({ data }) {
@@ -120,6 +121,16 @@ export function InfoMovie({ data }) {
 
 export function InfoSerie({ data }) {
 	const { HdBackgroundImageUrl, Title, Description, Categories } = data
+
+	useEffect(() => {
+		const getItem = async () => {
+			const value = await localforage.getItem(`serie-${data.Registro}`)
+			console.log(value)
+		}
+
+		getItem()
+	}, [])
+
 	return (
 		<Fragment>
 			<div className="background">
@@ -142,7 +153,7 @@ export function InfoSerie({ data }) {
 				</div>
 				<div className="group info">
 					{Categories &&
-                                    <p className="genre">{Categories}</p>
+                        <p className="genre">{Categories}</p>
 					}
 				</div>
 				{Description &&

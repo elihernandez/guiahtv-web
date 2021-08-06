@@ -28,6 +28,7 @@ export function Seasons({ seasons, serieId }) {
 				})
 				dispatchVod({
 					type: 'setSeason', payload: {
+						id: TitleSeason,
 						category: Title,
 						poster_type: 1,
 						cmData: response
@@ -64,6 +65,7 @@ export function Seasons({ seasons, serieId }) {
 				})
 				dispatchVod({
 					type: 'setSeason', payload: {
+						id: TitleSeason,
 						category: Title,
 						poster_type: 1,
 						cmData: response
