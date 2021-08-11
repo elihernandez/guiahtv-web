@@ -23,10 +23,12 @@ const Wrapper = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: auto 0;
 `
 
 const Text = styled.p`

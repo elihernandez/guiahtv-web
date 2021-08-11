@@ -5,6 +5,7 @@ import RadioContext from '../../../../context/RadioContext'
 import { useRequest } from '../../../../hooks/useRequest'
 import { CustomTabs } from '../../../../components/Tabs'
 import { List } from '../../../../components/List'
+import { useAxios } from '../../../../hooks/useAxios'
 import './styles.css'
 
 function findInitialValues(data, contentId){
@@ -28,6 +29,7 @@ export function Guide(){
 	const [ tabs, setTabs ] = useState(null)
 	const [initialValues, setInitialValues] = useState({})
 	const dataTabs = []
+	const { error } = useAxios('radio')
 
 	useEffect(() => {
 		if(data){
@@ -51,13 +53,16 @@ export function Guide(){
 	}, [data, contentId])
 
 	return (
-		<div className="guide-radio">
-			{loading &&
-            	<LoaderSpinnerMUI />
-			}
-			{tabs &&
-            	<CustomTabs data={tabs} initialTab={initialValues.tabContent} />
-			}
-		</div>
+		error ? (error) : (
+			<div className="guide-radio">
+				{loading &&
+					<LoaderSpinnerMUI />
+				}
+				{tabs &&
+					<CustomTabs data={tabs} initialTab={initialValues.tabContent} />
+				}
+			</div>
+		)
+		
 	)
 }

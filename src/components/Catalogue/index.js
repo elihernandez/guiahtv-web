@@ -82,11 +82,11 @@ export function InfoContent() {
 	return (
 		<Fragment>
 			{content == 'movie' && movieVod &&
-                <ContentMovie data={movieVod} />
-                       
+				<ContentMovie data={movieVod} />
+					
 			}
 			{content == 'serie' && serieVod &&
-                <ContentSerie data={serieVod} />
+				<ContentSerie data={serieVod} />
 			}
 		</Fragment>
 	)
@@ -109,7 +109,9 @@ export function CatalogueVod({ requestApi }) {
 						<div className={`content-catalogue ${requestApi}`}>
 							{data && !loading &&
 								data.map((category) => {
-									return <List key={category.category} data={category} listType="catalogue" />
+									return (
+										<List key={category.category} data={category} listType="catalogue" />
+									)
 								})
 							}
 						</div>
@@ -127,7 +129,6 @@ export function CatalogueVod({ requestApi }) {
 }
 
 export function CatalogueRadio({ requestApi }) {
-
 	const { stateRadio, dispatchRadio } = useContext(RadioContext)
 	const { dataRadio } = stateRadio
 	const { loading, data } = useRequest(requestApi, dispatchRadio, dataRadio)
@@ -141,9 +142,9 @@ export function CatalogueRadio({ requestApi }) {
 
 				<div className={`content-catalogue ${requestApi}`}>
 					{data && !loading &&
-                                    data.map((category, index) => {
-                                    	return <List key={`${category.category}-${index}`} data={category} listType="radio" />
-                                    })
+						data.map((category, index) => {
+							return <List key={`${category.category}-${index}`} data={category} listType="radio" />
+						})
 					}
 				</div>
 
