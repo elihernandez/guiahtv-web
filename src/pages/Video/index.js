@@ -148,8 +148,6 @@ export function VideoVod({ state, dispatchVod }) {
 	const { movieVod } = state
 	const { error } = useAxios('catalogue-vod')
 
-	console.log(movieVod)
-
 	if (!movieVod) {
 		history.push(url.replace('/video', ''))
 	}

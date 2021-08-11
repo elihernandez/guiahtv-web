@@ -156,7 +156,9 @@ export function InfoSerie({ data }) {
 								</div>
 								<div className="resume">
 									<h2 key="title">Continuar viendo: {value.episode.title}</h2>
-									<div className="buttons"><ButtonResume data = {value.episode}/></div>
+									<div className="buttons">
+										<ButtonResume data = {value.episode}/>
+									</div>
 								</div>
 							</div>
 							

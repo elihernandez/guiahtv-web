@@ -13,6 +13,7 @@ import { setProgressMovie } from '../../../../js/Time'
 import canAutoPlay from 'can-autoplay'
 import localforage from 'localforage'
 import { useAxios } from '../../../../hooks/useAxios'
+import { isEpisode } from '../../../../js/String'
 import './styles.css'
 
 export function Player({ state, dispatchVod }) {
@@ -127,7 +128,9 @@ export function Player({ state, dispatchVod }) {
 			if(history.action === 'POP'){
 				if(isSuscribed(credentials)){
 					requestPositionVideo()
-					requestLastEpisode()
+					if(isEpisode(movieVod.ContentType)){
+						requestLastEpisode()
+					}
 				}
 			}
 		}
