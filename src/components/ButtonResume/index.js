@@ -13,11 +13,12 @@ export function ButtonResume ({data}) {
 	const textButton = ResumePos == '' ? 'Ver ahora' : 'Reanudar'
 
 	const handleClick = () => {
-		const { seasonVod } = stateVod
-		const episode = seasonVod.cmData.find(element => element.Registro == id)
-		dispatchVod({ type: 'setMovie', payload: episode })
+		if(!data.ContentType){
+			const { seasonVod } = stateVod
+			const episode = seasonVod.cmData.find(element => element.Registro == id)
+			dispatchVod({ type: 'setMovie', payload: episode })
+		}
 		history.push(`${url}/video`)
-		console.log(episode)
 	}
 
 	const handleClickBeginning = () => {

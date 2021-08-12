@@ -85,22 +85,24 @@ export function Guide() {
 	}, [error])
 
 	return (
-		<div className="guide">
-			{	showGuideLoader && 
-                <GuideLoader />
-			}
-			{	!showGuide && !showGuideLoader && guideOnce &&
-				<ButtonLoader error={error} handleRequest={handleRequest} handleSendRequest={handleSendRequest} />
-			}
-			{	showGuide && !error &&
-				<CSSTransition in={showGuide} timeout={300} classNames="fade" unmountOnExit>
-					<div className="guide-wrapper">
-						{dataTabs &&
-							<CustomTabs data={dataTabs} initialTab={initialValues.tabContent} />
-						}
-					</div>
-				</CSSTransition>
-			}
-		</div>
+		error ? (error) : (
+			<div className="guide">
+				{	showGuideLoader && 
+					<GuideLoader />
+				}
+				{	!showGuide && !showGuideLoader && guideOnce &&
+					<ButtonLoader error={error} handleRequest={handleRequest} handleSendRequest={handleSendRequest} />
+				}
+				{	showGuide && !error &&
+					<CSSTransition in={showGuide} timeout={300} classNames="fade" unmountOnExit>
+						<div className="guide-wrapper">
+							{dataTabs &&
+								<CustomTabs data={dataTabs} initialTab={initialValues.tabContent} />
+							}
+						</div>
+					</CSSTransition>
+				}
+			</div>
+		)
 	)
 }

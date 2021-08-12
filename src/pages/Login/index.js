@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import { CSSTransition } from 'react-transition-group'
 import Logo from '../../components/Logo/index'
@@ -19,6 +20,7 @@ export function Login() {
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
 	const [error, setError] = useState(null)
+	const history = useHistory()
 
 	const validateResponse = ({ ResponseCode, SuscriberID = 'error' }, username, check) => {
 		switch (ResponseCode) {
@@ -35,7 +37,7 @@ export function Login() {
 			// Se guardan cookies de credenciales
 			setCookie('memclem', username, { path: '/', maxAge: `${check ? 60 * 60 * 24 * 365 : 60 * 60 * 24}` })
 			setCookie('memclid', SuscriberID, { path: '/', maxAge: `${check ? 60 * 60 * 24 * 365 : 60 * 60 * 24}` })
-			// location.reload()
+			history.push('/')
 			break
 		case 3: // Password incorrecta
 			setLoading(false)

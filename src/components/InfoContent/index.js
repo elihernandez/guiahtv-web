@@ -107,7 +107,6 @@ export function InfoSerie({ data }) {
 		const getItem = async () => {
 			const value = await localforage.getItem(`serie-${data.Registro}`)
 			setValue(value)
-			console.log(value)
 		}
 
 		getItem()

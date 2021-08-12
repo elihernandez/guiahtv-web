@@ -1,16 +1,20 @@
 import React from 'react'
 import { useCookies } from 'react-cookie'
+import { useHistory } from 'react-router-dom'
 import { PopperMenu } from '../PopperMenu'
 import './styles.css'
+// import { devBasenameRouter, prodBasenameRouter } from '../../../config'
+// const basename = process.env.NODE_ENV !== 'production' ? devBasenameRouter : prodBasenameRouter
 
 export function UserMenu() {
 	const [cookies, setCookie, removeCookie] = useCookies()
+	const history = useHistory()
 
 	const handleLogout = (e) => {
 		e.preventDefault()
 		removeCookie('memclid', { path: '/' })
 		removeCookie('memclem', { path: '/' })
-		location.assign('/login')
+		history.push('/login')
 	}
 
 	const textButton = <span className="body-3">Mi perfil&nbsp;&nbsp;&nbsp;<i className='fas fa-user-circle' /></span>

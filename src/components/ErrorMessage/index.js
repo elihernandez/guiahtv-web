@@ -1,19 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const ErrorMessageReload = ({ message, onClick }) => {
+export const ErrorMessageReload = ({ message, subMessage, onClick }) => {
 	return (
 		<Wrapper>
 			<Text>{message}</Text>
+            <SubText>{subMessage}</SubText>
 			<Button onClick={onClick}>Volver a intentar</Button>
 		</Wrapper>
 	)
 }
 
-export const ErrorMessageDefault = ({ message }) => {
+export const ErrorMessageDefault = ({ message, subMessage }) => {
 	return (
 		<Wrapper>
 			<Text>{ message }</Text>
+            <SubText>{subMessage}</SubText>
 		</Wrapper>
 	)
 }
@@ -33,6 +35,12 @@ const Wrapper = styled.div`
 
 const Text = styled.p`
     font-size: 20px;
+    text-align: center;
+    margin: .5vw 0;
+`
+
+const SubText = styled.p`
+    font-size: 16px;
     text-align: center;
     margin: .5vw 0;
 `
