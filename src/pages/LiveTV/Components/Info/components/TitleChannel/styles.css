@@ -4,9 +4,9 @@
     position: relative;
 
       .text-info{
-            color: $color-grey-2;
+            color: $color-white;
             font-weight: 400;
-            font-size: 1vw;
+            font-size: 1.4vw;
       }
 
       .channel-name{

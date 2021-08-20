@@ -4,6 +4,7 @@ import canAutoPlay from 'can-autoplay'
 import VideoContext from '../../../../context/VideoContext'
 import UserContext from '../../../../context/UserContext'
 import LiveTVContext from '../../../../context/LiveTvContext'
+import { PipBackground } from '../../../../components/PipBackground'
 import { getVideo } from '../../../../services/getVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { isLive } from '../../../../js/Time'
@@ -129,6 +130,7 @@ export function Video() {
 					</div>
 				}
 			</div>
+			<PipBackground />
 		</div>
 	)
 }

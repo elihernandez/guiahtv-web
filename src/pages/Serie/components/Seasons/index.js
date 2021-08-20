@@ -5,6 +5,7 @@ import { getChapters } from '../../../../services/getChapters'
 import { PopperMenu } from '../../../../components/PopperMenu'
 import { List } from '../../../../components/List'
 import { LoaderSpinnerMUI } from '../../../../components/Loader'
+import localforage from 'localforage'
 import './styles.css'
 
 export function Seasons({ seasons, serieId }) {
@@ -15,7 +16,9 @@ export function Seasons({ seasons, serieId }) {
 	const [loading, setLoading] = useState(false)
 	const textButton = <span>Temporadas&nbsp;&nbsp;&nbsp;<i className='fas fa-caret-down' /></span>
 	const itemsMenu = []
-
+	
+	//useEffect value serie
+	
 	seasons.map(({ Title, TitleSeason }) => {
 
 		const requestData = async () => {
@@ -28,6 +31,7 @@ export function Seasons({ seasons, serieId }) {
 				})
 				dispatchVod({
 					type: 'setSeason', payload: {
+						id: TitleSeason,
 						category: Title,
 						poster_type: 1,
 						cmData: response
@@ -50,12 +54,20 @@ export function Seasons({ seasons, serieId }) {
 	})
 
 	useEffect(() => {
-		const firstSeason = seasons[0]
-		const { Title, TitleSeason } = firstSeason
 
 		const requestData = async () => {
 			setLoading(true)
 			try {
+				const value = await localforage.getItem(`serie-${serieId}`)
+				
+				if(value)
+					var firstSeason = seasons.find(element => element.id == value.season.id)
+				else
+					firstSeason = seasons[0]
+				
+				const { Title, TitleSeason } = firstSeason
+
+				
 				const response = await getChapters(serieId, TitleSeason, credentials)
 				setChapters({
 					category: Title,
@@ -64,6 +76,7 @@ export function Seasons({ seasons, serieId }) {
 				})
 				dispatchVod({
 					type: 'setSeason', payload: {
+						id: TitleSeason,
 						category: Title,
 						poster_type: 1,
 						cmData: response

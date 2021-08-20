@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Item } from '../ListItem'
 import { SlickSlider } from '../SlickCarousel'
 import { v4 as uuid } from 'uuid'
+import { useAxios } from '../../hooks/useAxios'
 import './styles.css'
 
 export function List({ data, listType, wrap, indexList, tabValues }) {

@@ -115,6 +115,8 @@ function updateData(movie, data, positionVideoMil){
 export function setProgressMovie(currentTime, movie, data, dispatch){
 	let positionVideoMil = Math.round(currentTime * 1000)
 	dispatch({type: 'setData', payload: updateData(movie, data, positionVideoMil)})
+	movie.ResumePos = positionVideoMil
+	dispatch({type: 'setMovie', payload: movie})
 }
 
 export function secondsToString(seconds) {

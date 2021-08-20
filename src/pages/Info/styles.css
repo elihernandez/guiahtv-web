@@ -23,9 +23,14 @@
             background-size: 100%;
             background-repeat: no-repeat; */
 
+            span{
+                  width: 100%;
+            }
+
             img{
                   position: relative;
                   object-fit: fill;
+                  width: 100%;
             }
       }
 

@@ -1,24 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
+import VideoContext from '../../../../../../context/VideoContext'
 import Tooltip from '@material-ui/core/Tooltip'
 import { isPipSupported, togglePip } from '../../../../../../js/PictureInPicture'
 import pipIcon from '../../../../../../assets/icons/noun_pip.png'
 
 export function ButtonPip(){
-	const [active, setActive] = useState(false)
+	//const [active, setActive] = useState(false)
+
+	const { stateVideo, dispatch } = useContext(VideoContext)
+	const { isPipActive } = stateVideo
 
 	const handleClick = () => {
 		togglePip(document.querySelector('video'))
 	}
 
 	const onEnterPip = () => {
-		setActive(true)
+		dispatch({ 
+			type: 'setIsPipActive',
+			payload: true
+		})
 	}
       
 	const onExitPip = () => {
 		setTimeout(() => {
 			document.querySelector('video').play()
 		}, 1000)
-		setActive(false)
+		dispatch({ 
+			type: 'setIsPipActive',
+			payload: false
+		})
 	}
 
 	useEffect(() => {
@@ -36,7 +46,7 @@ export function ButtonPip(){
 	}
 
 	return (
-		<Tooltip title={active ? 'Reproducción en pestaña' : 'Reproducción en segundo plano'} placement="top-start">
+		<Tooltip title={isPipActive ? 'Reproducción en pestaña' : 'Reproducción en segundo plano'} placement="top-start">
 			<span className="pip-icon icon" onClick={handleClick}>
 				<img alt="Icono de pantalla en pantalla" src={pipIcon} />
 			</span>
