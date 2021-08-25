@@ -8,7 +8,7 @@ import './styles.css'
 export function Catalogue({ loading, data }) {
 	const { error } = useAxios('catalogue-zonakids')
 	return (
-		error ? (error) : (
+		error ? (<div className="content-error">{error}</div>) : (
 			<Fragment>
 				<CSSTransition in={loading} timeout={300} classNames="fade" unmountOnExit>
 					<LoaderSpinnerMUI />

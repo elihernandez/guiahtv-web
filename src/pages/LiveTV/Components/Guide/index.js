@@ -85,7 +85,8 @@ export function Guide() {
 	}, [error])
 
 	return (
-		error ? (error) : (
+		error ? (
+			<div className="guide-error">{error}</div>) : (
 			<div className="guide">
 				{	showGuideLoader && 
 					<GuideLoader />

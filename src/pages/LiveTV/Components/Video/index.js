@@ -9,6 +9,7 @@ import { getVideo } from '../../../../services/getVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { isLive } from '../../../../js/Time'
 import backgroundTvImg from '../../../../assets/images/logos/guiahtv/backTVnuevologo.jpg'
+import { useAxios } from '../../../../hooks/useAxios'
 import './styles.css'
 
 export function Video() {
@@ -22,6 +23,7 @@ export function Video() {
 	const { stateVideo, dispatch } = useContext(VideoContext)
 	const { dataChannel, timerChannel, loadingChannel } = stateVideo
 	const { error, setError } = useHls(video, url, dispatch)
+	const { errors } = useAxios('livetv')
 
 	const onPlayingVideo = () => {
 		dispatch({ type: 'updateActive', payload: true })
@@ -37,6 +39,8 @@ export function Video() {
 		dispatch({ type: 'updateData', payload: null })
 		setError('Señal no disponible por el momento')
 	}
+
+	errors && video.current.pause()
 
 	canAutoPlay
 		.video({timeout: 1500, muted: false})

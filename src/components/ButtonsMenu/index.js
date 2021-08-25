@@ -2,14 +2,12 @@ import React from 'react'
 import { H6 } from '../Typography'
 import { imgSourceSetPng } from '../../js/Image'
 import { useHistory } from 'react-router-dom'
-import { useAxios } from '../../hooks/useAxios'
 import { SlickSlider } from '../SlickCarousel'
-import backgroundMovies from '../../assets/images/backgrounds/background-movies.jpg'
 import './styles.css'
 
-export function ButtonsMenu() {
+export function ButtonsMenu({data}) {
 	const history = useHistory()
-	const { data, error } = useAxios('buttons-menu')
+	//const { data, error } = useAxios('buttons-menu')
 
 	const handleClick = (contentType) => {
 		switch (contentType) {
@@ -45,9 +43,7 @@ export function ButtonsMenu() {
 
 	return (
 		<div className="buttons-menu-wrapper">
-			{error ? (
-				error
-			) : (
+			{
 				<SlickSlider settings={settings}>
 					{data.map(({ titulo, ContentType, PosterCardUrlLandscape }) => {
 						if (ContentType !== 'leon_music' && ContentType !== 'leon_ppv' && ContentType !== null) {
@@ -78,7 +74,7 @@ export function ButtonsMenu() {
 						}
 					})}
 				</SlickSlider>
-			)}
+			}
 		</div>
 	)
 }

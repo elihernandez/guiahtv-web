@@ -10,6 +10,7 @@ import { ContentSerie } from '../../pages/Serie'
 import { CSSTransition } from 'react-transition-group'
 import { VideoVod } from '../../pages/Video'
 import { isSerie, isMovie } from '../../js/String'
+import { useAxios } from '../../hooks/useAxios'
 import './styles.css'
 
 export function searchSerie(data, contentId) {
@@ -47,6 +48,7 @@ export function InfoContent() {
 	const { dataVod, movieVod, seasonVod, serieVod } = stateVod
 	const [loading, setLoading] = useState(true)
 	const [content, setContent] = useState('')
+	const { error } = useAxios('catalogue-zonakids')
 
 	useEffect(() => {
 		if (dataVod) {
@@ -80,15 +82,18 @@ export function InfoContent() {
 	}
 
 	return (
-		<Fragment>
-			{content == 'movie' && movieVod &&
-				<ContentMovie data={movieVod} />
-					
-			}
-			{content == 'serie' && serieVod &&
-				<ContentSerie data={serieVod} />
-			}
-		</Fragment>
+		error ? ( <div className="content-error">{error}</div>) : (
+			<Fragment>
+				{content == 'movie' && movieVod &&
+					<ContentMovie data={movieVod} />
+						
+				}
+				{content == 'serie' && serieVod &&
+					<ContentSerie data={serieVod} />
+				}
+			</Fragment>
+		)
+		
 	)
 }
 

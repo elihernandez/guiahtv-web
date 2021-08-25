@@ -16,7 +16,7 @@ export function InfoMovie({ data }) {
 	const { HdBackgroundImageUrl, Title, Description, Categories, Artist, Director, ReleaseDate, Length, Rating, StarRating, ResumePos } = data
 	const { error } = useAxios('catalogue-vod')
 	return (
-		error ? (error) : (
+		error ? (<div className="info-error">{error}</div>) : (
 			<Fragment>
 				<div className="background">
 					<ImgBackground title={Title} img={HdBackgroundImageUrl} type="movie" />
@@ -113,7 +113,7 @@ export function InfoSerie({ data }) {
 	}, [])
 
 	return (
-		error ? (error) : (
+		error ? (<div className="info-error">{error}</div>) : (
 			<Fragment>
 				<div className="background">
 					<ImgBackground title={Title} img={HdBackgroundImageUrl} type="serie" />
@@ -176,7 +176,7 @@ function ImgBackground({ title, img, type }) {
 	const {error} = useAxios('catalogue-vod')
 
 	return (
-		error ? (error) : (
+		error ? (<div className="info-error">{error}</div>) : (
 			<Fragment>
 				{type == 'movie' &&
 							<LazyImage img={img} alt={alt} type="webp" recoverType="jpg" />

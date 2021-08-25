@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { VodContextProvider } from '../../context/VodContext'
 import { Content } from './components/Content'
 import './styles.css'

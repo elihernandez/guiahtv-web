@@ -104,7 +104,7 @@ export function LiveTV() {
 	}, [])
 
 	return (
-		error ? (error) : (
+		error ? (<div className="livetv-error">{error}</div>) : (
 			<div className="wrapper-livetv">
 				<LiveTvContextProvider>
 					<VideoContextProvider state={initialState} reducer={reducer}>
