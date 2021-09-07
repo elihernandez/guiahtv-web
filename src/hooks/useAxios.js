@@ -17,6 +17,32 @@ export function useAxios(section, sendRequest = true, params = {}){
 		setCount(count + 1)
 	}
 
+	const Countdown = () =>{
+		
+		var secs
+		if(count < 1) secs = 30
+		else if(count == 1) secs = 45
+		else secs = 60
+		
+		const [seconds, setSeconds] = useState(secs)
+
+		useEffect(() => {
+			if (seconds > 0) {
+				setTimeout(() => setSeconds(seconds - 1), 1000)
+			} else {
+				setCount(count + 1)
+			}
+		})
+
+		return (
+			<div className="counter">
+				<div className="counter">
+					{seconds} segundos.
+				</div>
+			</div>
+		)
+	}
+
 	// const fetchData = async () => {
 	// 	const url = getURL(section, credentials, params)
 	// 	return await axios.get(url)
@@ -46,18 +72,18 @@ export function useAxios(section, sendRequest = true, params = {}){
 
 			var subMessage = ''
 
-			if(code <= 3)
-				subMessage = 'Favor de intentar nuevamente.'
+			if(count < 3)
+				subMessage = 'Se volverá a intentar en '
 			else
-				subMessage = 'Favor de verificar su conexión e intentar nuevamente.'
+				subMessage = 'Favor de intentar más tarde.'
 			
 
 			setLoading(false)
 
 			if(count != 3){
-				setError(<ErrorMessageReload message={message} subMessage={subMessage} onClick={handleRequest} />)
+				setError(<ErrorMessageReload message={message} subMessage={subMessage} onClick={handleRequest} Countdown={Countdown}/>)
 			}else{
-				setError(<ErrorMessageDefault message={message} subMessage={subMessage} onClick={handleRequest} />)
+				setError(<ErrorMessageDefault message={message} subMessage={subMessage} onClick={handleRequest} Countdown={Countdown}/>)
 			}
 		}
 	}

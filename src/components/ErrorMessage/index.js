@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const ErrorMessageReload = ({ message, subMessage, onClick }) => {
+export const ErrorMessageReload = ({ message, subMessage, onClick, Countdown }) => {
 	return (
 		<Wrapper>
 			<Text>{message}</Text>
-            <SubText>{subMessage}</SubText>
+            <SubText>{subMessage}&nbsp;<Countdown /> </SubText>
 			<Button onClick={onClick}>Volver a intentar</Button>
 		</Wrapper>
 	)
@@ -17,6 +17,7 @@ export const ErrorMessageDefault = ({ message, subMessage }) => {
 			<Text>{ message }</Text>
             <SubText>{subMessage}</SubText>
 		</Wrapper>
+        
 	)
 }
 
@@ -44,6 +45,7 @@ const SubText = styled.p`
     font-size: 1.8rem;
     text-align: center;
     margin: .5vw 0;
+    display: flex;
 `
 
 const Button = styled.button`
