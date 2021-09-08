@@ -86,14 +86,12 @@ export function InfoContent() {
 			<Fragment>
 				{content == 'movie' && movieVod &&
 					<ContentMovie data={movieVod} />
-						
 				}
 				{content == 'serie' && serieVod &&
 					<ContentSerie data={serieVod} />
 				}
 			</Fragment>
 		)
-		
 	)
 }
 

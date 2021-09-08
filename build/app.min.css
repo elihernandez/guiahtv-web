@@ -882,6 +882,17 @@ h6{
 .buttons-menu-wrapper .item-button.focusable:focus:after{
                     border: 4px solid #f7f7f7;
                 }
+.content-home-loader{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 26vw;
+}
+
+    .content-home-loader svg{
+          position: absolute;
+          bottom: 0;
+    }
 /* #13171a */
 
 /* App */

@@ -5,7 +5,7 @@ export const ErrorMessageReload = ({ message, subMessage, onClick, Countdown }) 
 	return (
 		<Wrapper>
 			<Text>{message}</Text>
-            <SubText>{subMessage}&nbsp;<Countdown /> </SubText>
+            <SubText>{subMessage}&nbsp;<Countdown /></SubText>
 			<Button onClick={onClick}>Volver a intentar</Button>
 		</Wrapper>
 	)

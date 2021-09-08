@@ -151,7 +151,7 @@
                         }
 
                         .lazy-load-image-background{
-
+                              
                               &::after{
                                     transition: all 300ms ease-in-out;
                                     inset: 0px;

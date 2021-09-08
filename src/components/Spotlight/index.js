@@ -32,6 +32,7 @@ export function Spotlight({data}) {
 								recoverType="png"
 							/>
 						</div>
+						
 					)
 				})}
 			</SlickSlider>
