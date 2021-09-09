@@ -299,9 +299,9 @@ export function ListTracksPlaylist({ data, listType, indexList, tabValues }) {
 					<li className="menu-item"></li>
 				</ul>
 			</div>
-			{data.tracks.map((track) => {
+			{data.tracks.map((track, index) => {
 				return (
-					<Item key={track.regID} posterType={posterType} data={track} listType={listType} />
+					<Item key={track.regID} index={index} posterType={posterType} data={track} listType={listType} />
 				)
 			})}
 		</div>

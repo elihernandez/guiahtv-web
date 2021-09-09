@@ -13,10 +13,11 @@
         margin: 0 5px;
 
         li{
-            font-size: 15px;
+            font-size: 14px;
             display: flex;
             justify-content: space-between;
             font-weight: 500;
+            font-family: "Poppins" !important;
         }
 
         button {
@@ -27,6 +28,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: "Poppins" !important;
     
             i {
                 font-size: 15px !important;
@@ -38,6 +40,30 @@
                 background: $color-grey-5;
             }
 
+        }
+
+        .MuiList-root{
+            padding: 0;
+
+            button{
+                width: 100%;
+                border-radius: 0%;
+                background: transparent;
+                padding: 0;
+                justify-content: flex-start;
+                font-family: "Poppins" !important;
+
+                i{
+                    margin-right: 16px;
+                    font-size: 16px !important;
+                }
+
+                span{
+                    font-size: 14px;
+                    font-weight: 500;
+                    justify-content: flex-start !important;
+                }
+            }
         }
 
         .MuiButtonBase-root{
@@ -56,4 +82,34 @@
         }
     }
 
+}
+
+.MuiPaper-root{
+    background-color: #424242 !important;
+    padding: 0 0;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.50) !important;
+
+    .MuiBox-root{
+        padding: 8px 16px !important;
+
+        &:hover{
+            background: #616161;    
+        }
+
+        &.button-separated{
+            border-bottom: 2px solid #616161;
+        }
+    }
+
+    p{
+        font-size: 14px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        font-weight: 500;
+        font-family: "Poppins" !important;
+    }
 }

@@ -73,7 +73,7 @@ export function Playlist(){
 						<div className="more-info-album">
 							<ReleaseDate dataPlaylist={dataPlaylist} />
 							<TotalSongs dataPlaylist={dataPlaylist} />
-							<Length dataPlaylist={dataPlaylist} />
+							{/* <Length dataPlaylist={dataPlaylist} /> */}
 						</div>
 					</div>
 				</div>
@@ -105,7 +105,7 @@ const Length = ({ dataPlaylist }) => {
 	return (
 		<Fragment>
 			{dataPlaylist?.tracks && (
-				<p>&nbsp;,{minutesToHoursString(dataPlaylist.length)}</p>
+				<p>,&nbsp;{minutesToHoursString(dataPlaylist.length)}</p>
 			)}
 		</Fragment>
 	)
