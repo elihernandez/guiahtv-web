@@ -10,6 +10,7 @@ import { Loader } from './components/Loader'
 import { Video } from './components/Video'
 import { exitFullScreen } from '../../js/Screen'
 import { exitPip } from '../../js/PictureInPicture'
+import { useAxios } from '../../hooks/useAxios'
 import './styles.css'
 
 const initialState = {
@@ -21,7 +22,8 @@ const initialState = {
 	volume: 50,
 	muteVolume: false,
 	fullScreen: false,
-	timeoutErrorRef: null
+	timeoutErrorRef: null,
+	isPipActive: false
 }
 
 const reducer = (state, action) => {
@@ -77,12 +79,21 @@ const reducer = (state, action) => {
 			timeoutErrorRef: action.payload
 		}
 	}
+
+	case 'setIsPipActive' : {
+		return {
+			...state,
+			isPipActive: action.payload
+		}
+	}
+	
 	default: return state
 	}
 }
 
 export function LiveTV() {
 	let { path } = useRouteMatch()
+	const { error } = useAxios('livetv')
 	
 	useEffect(() => {
 
@@ -93,25 +104,28 @@ export function LiveTV() {
 	}, [])
 
 	return (
-		<div className="wrapper-livetv">
-			<LiveTvContextProvider>
-				<VideoContextProvider state={initialState} reducer={reducer}>
-					<div className="section-content w-padding-top">
-						<Switch>
-							<Route path={`${path}/:channelId?`} >
-								<Content>
-									<div className="background-overlay" />
-									<Info />
-									<Timer />
-									<Guide />
-									<Loader />
-								</Content>
-								<Video />
-							</Route>
-						</Switch>
-					</div>
-				</VideoContextProvider>
-			</LiveTvContextProvider>
-		</div>
+		error ? (<div className="livetv-error">{error}</div>) : (
+			<div className="wrapper-livetv">
+				<LiveTvContextProvider>
+					<VideoContextProvider state={initialState} reducer={reducer}>
+						<div className="section-content w-padding-top">
+							<Switch>
+								<Route path={`${path}/:channelId?`} >
+									<Content>
+										<div className="background-overlay" />
+										<Info />
+										<Timer />
+										<Guide />
+										<Loader />
+									</Content>
+									<Video />
+								</Route>
+							</Switch>
+						</div>
+					</VideoContextProvider>
+				</LiveTvContextProvider>
+			</div>
+		)
+		
 	)
 }

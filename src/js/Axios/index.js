@@ -34,20 +34,18 @@ instance.interceptors.response.use(
 		return response.data
 	}, 
 	function (e) {
-		const { code, message } = e
+		const { message } = e
 		
-		if(code === 'ECONNABORTED'){
-			if(message === 'Network Error'){
-				throw new Error(4)
-			}
+		if(message === 'Network Error'){
+			throw new Error(4)
+		}
 
-			if(message === 'Request aborted'){
-				throw new Error(5)
-			}
+		if(message === 'Request aborted'){
+			throw new Error(5)
+		}
 
-			if(message.includes('timeout')){
-				throw new Error(6)
-			}
+		if(message.includes('timeout')){
+			throw new Error(6)
 		}
 
 		return Promise.reject(e)

@@ -58,6 +58,7 @@
             .info-wrapper{
                   position: relative;
                   width: 50%;
+                  height: 100%;
 
                   .info{
                         position: relative;

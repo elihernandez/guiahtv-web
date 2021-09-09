@@ -882,6 +882,17 @@ h6{
 .buttons-menu-wrapper .item-button.focusable:focus:after{
                     border: 4px solid #f7f7f7;
                 }
+.content-home-loader{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 26vw;
+}
+
+    .content-home-loader svg{
+          position: absolute;
+          bottom: 0;
+    }
 /* #13171a */
 
 /* App */
@@ -929,9 +940,9 @@ h6{
 }
 
 .title-channel .text-info{
-            color: #9e9e9e;
+            color: #f7f7f7;
             font-weight: 400;
-            font-size: 1vw;
+            font-size: 1.4vw;
       }
 
 .title-channel .channel-name{
@@ -3566,6 +3577,18 @@ h6{
                        font-family: 'Poppins' sans-serif !important;
                   }
 
+.guide-error{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease;
+      z-index: 3;
+      background: black;
+}
+
 .guide-wrapper{
       position: relative;
       height: 100%;
@@ -3668,6 +3691,18 @@ h6{
                         -o-object-fit: cover;
                            object-fit: cover;
                   }
+      
+      .video .video-error{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+            z-index: 3;
+            background: black;
+      }
 /* #13171a */
 
 /* App */
@@ -3692,6 +3727,18 @@ h6{
             z-index: 2;
             background: rgba(0, 0, 0, 0.40);
       }
+
+.livetv-error{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease;
+      z-index: 3;
+      background: black;
+}
 .info-content{
       position: absolute;
       width: 100%;
@@ -3747,9 +3794,10 @@ h6{
             width: 100%;
       }
 
-      .info-content .title-content p{
-                  font-size: 18px;
-                  font-weight: 500;
+      .info-content .title-content .text-info{
+                  color: white;
+                  font-weight: 400;
+                  font-size: 1.4vw;
             }
 
       .info-content .title-content .name{
@@ -4027,7 +4075,7 @@ h6{
       display: -ms-flexbox;
       display: flex;
       padding: 25px 20px;
-      background-color: #424242;
+      background-color: #424242;  
 }
 
 .tracks-content .audios-content{
@@ -4085,6 +4133,34 @@ h6{
 .tracks-content .list-tracks .track-item.active i{
                               opacity: 1;
                         }
+
+.tracks-content.fade-enter {
+            opacity: 0;
+        }
+
+.tracks-content.fade-enter-active {
+            opacity: 1;
+            -webkit-transition: opacity 150ms;
+            transition: opacity 150ms;
+      }
+
+.tracks-content.fade-enter-done {
+            opacity: 1;
+      }
+
+.tracks-content.fade-exit {
+            opacity: 1;
+      }
+
+.tracks-content.fade-exit-active {
+            opacity: 0;
+            -webkit-transition: opacity 150ms;
+            transition: opacity 150ms;
+      }
+
+.tracks-content.fade-exit-done {
+            opacity: 0;
+      }
 .content-video{
       position: absolute;
       width: 100%;
@@ -4316,6 +4392,37 @@ h6{
             width: 100%;
             height: 100%;
       }
+
+      .video .pip-bg{
+            background: black;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top:0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -ms-flex-line-pack: center;
+                align-content: center;
+            font-size: 1.7vw;
+            padding: .5vw 1vw;
+            font-weight: 500;
+      }
+
+      .video .pip-bg p{
+                  -webkit-box-pack: center;
+                      -ms-flex-pack: center;
+                          justify-content: center;
+                  margin: auto;
+            }
+
 /* #13171a */
 
 /* App */
@@ -4333,6 +4440,18 @@ h6{
       top: 65px;
       padding: 0;
 }
+
+.content-error{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease;
+      z-index: 3;
+      background: black;
+}
 /* #13171a */
 
 /* App */
@@ -4346,6 +4465,7 @@ h6{
 .info-wrapper{
       position: absolute;
       width: 100%;
+      height: 100%;
 }
 
 .info-wrapper .background{
@@ -4621,10 +4741,163 @@ h6{
                               color: #18191c;
                         }
 
+.info-wrapper .info-resume{
+            position: absolute;
+            top: 30vw;
+            width: 100%;
+            height: 15vw;
+            padding: 1vw 0 0 90px;
+            //border: 1px solid red;
+      }
+
+.info-wrapper .info-resume .group-resume{
+                  position: relative;
+                  width: 60%;
+                  display: -webkit-box;
+                  display: -ms-flexbox;
+                  display: flex;
+                  grid-gap: 20px;
+                  gap: 20px;
+                  -webkit-box-orient: horizontal;
+                  -webkit-box-direction: normal;
+                      -ms-flex-direction: row;
+                          flex-direction: row;
+            }
+
+.info-wrapper .info-resume .group-resume .resume{
+                        letter-spacing: 1px;
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-orient: vertical;
+                        -webkit-box-direction: normal;
+                            -ms-flex-direction: column;
+                                flex-direction: column;
+                        padding: 0 30px;
+
+                  }
+
+.info-wrapper .info-resume .group-resume .resume h2{
+                              display: -webkit-box;
+                              display: -ms-flexbox;
+                              display: flex;
+                              font-size: 1.3vw;
+                              font-weight: 500;
+                              position: relative;
+                        }
+
+.info-wrapper .info-resume .group-resume .resume .buttons{
+                              display: -webkit-box;
+                              display: -ms-flexbox;
+                              display: flex;
+                              -webkit-box-orient: horizontal;
+                              -webkit-box-direction: normal;
+                                  -ms-flex-direction: row;
+                                      flex-direction: row;
+                              -ms-flex-line-pack: justify;
+                                  align-content: space-between;
+                              width: 100%;
+                        }
+
+.info-wrapper .info-resume .group-resume .resume .buttons .button-watch{
+                                    background: white;
+                                    color: #18191c;
+                                    text-transform: uppercase;
+                                    font-size: .8vw;
+                                    padding: 1.1vw 2.1vw;
+                                    font-weight: 600;
+                                    max-width: 12vw;
+                                    letter-spacing: 1px;
+                                    display: -webkit-box;
+                                    display: -ms-flexbox;
+                                    display: flex;
+                                    -webkit-box-orient: horizontal;
+                                    -webkit-box-direction: normal;
+                                        -ms-flex-direction: row;
+                                            flex-direction: row;
+                                    -webkit-box-pack: center;
+                                        -ms-flex-pack: center;
+                                            justify-content: center;
+                                    -webkit-box-align: center;
+                                        -ms-flex-align: center;
+                                            align-items: center;
+                                    position: relative;
+                                    border-radius: 4px;
+                                    margin: 20px 10px 0 0;
+                              }
+
+.info-wrapper .info-resume .group-resume .resume .buttons .button-watch i{
+                                          font-size: .8vw;
+                                          margin-right: 10px;
+                                    }
+
+.info-wrapper .info-resume .group-resume .resume .buttons .button-watch .progress-bar-content{
+                                          position: absolute;
+                                          height: auto;
+                                          width: 100%;
+                                          bottom: 0;
+                                    }
+
+.info-wrapper .info-resume .group-resume .resume .buttons .button-watch .progress-bar-content .MuiLinearProgress-root{
+                                                width: 100%;
+                                                background-color: white;
+                                                height: 6px;
+                                                border-radius: 2px;
+                                                border-bottom-left-radius: 4px;
+                                                border-bottom-right-radius: 4px;
+                                          }
+
+.info-wrapper .info-resume .group-resume .resume .buttons .button-watch .progress-bar-content .MuiLinearProgress-root .MuiLinearProgress-bar{
+                                                      background: -webkit-gradient(linear, left top, right top, color-stop(70%, #00aeef), color-stop(115%, #6a26cd));
+                                                      background: linear-gradient(to right, #00aeef 70%, #6a26cd 115%);
+                                                      border-radius: 2px;
+                                                }
+
+.info-wrapper .info-resume .group-resume .resume .buttons .button-cw{
+                                    background: #5e5e5e;
+                                    color: #f7f7f7;
+                                    text-transform: uppercase;
+                                    font-size: .8vw;
+                                    padding: 1.1vw 2.1vw;
+                                    font-weight: 600;
+                                    max-width: 14vw;
+                                    letter-spacing: 1px;
+                                    display: -webkit-box;
+                                    display: -ms-flexbox;
+                                    display: flex;
+                                    -webkit-box-orient: horizontal;
+                                    -webkit-box-direction: normal;
+                                        -ms-flex-direction: row;
+                                            flex-direction: row;
+                                    -webkit-box-pack: center;
+                                        -ms-flex-pack: center;
+                                            justify-content: center;
+                                    -webkit-box-align: center;
+                                        -ms-flex-align: center;
+                                            align-items: center;
+                                    position: relative;
+                                    border-radius: 4px;
+                                    margin: 20px 0 0 10px
+                              }
+
+.info-wrapper .info-resume .group-resume .resume .buttons .button-cw:hover{
+                                          background: #f7f7f7;
+                                          color: #18191c;
+                                    }
+
+.info-wrapper .info-resume .group-resume .resume-img img{
+                        height: 10vw;
+                        width: auto;
+                        border-radius: 8px;
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                  }
+
 .info-wrapper .tabs-info-wrapper{
             position: absolute;
             width: 100%;
-            top: 32vw;
+            top: 45vw;
       }
 
 .info-wrapper .tabs-info-wrapper .MuiTabs-root{
@@ -4700,6 +4973,101 @@ h6{
                   background-color: black !important;
             } */
       }
+
+.info-error{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease;
+      z-index: 3;
+      background: black;
+}
+/* #13171a */
+
+/* App */
+
+/* Top Menu */
+
+/* Music */
+
+/* Radio */
+
+.button-ui{
+      border: none;
+      color: #f7f7f7;
+      -webkit-transition: all 150ms ease;
+      transition: all 150ms ease;
+      border-radius: 4px;
+      -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
+              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
+      font-family: "Poppins", sans-serif !important;
+      letter-spacing: .5px;
+      font-weight: 400;
+      padding: 15px 45px;
+      cursor: pointer;
+      -webkit-transition: all 300ms ease-in-out;
+      transition: all 300ms ease-in-out
+}
+
+.button-ui.width-auto{
+            width: auto;
+      }
+
+.button-ui.full-width{
+            width: 100%;
+      }
+
+.button-ui.uppercase{
+            text-transform: uppercase;
+      }
+
+.button-ui.primary{
+            background: #00aeef;
+      }
+
+.button-ui.secondary{
+            background: #662d91;
+      }
+
+.button-ui.outline-white{
+            background: #f7f7f7;
+            color: #18191c
+      }
+
+.button-ui.outline-white:hover{
+                  background: rgba(255, 255, 255, 0.75); 
+                  
+            }
+
+.button-ui.transparent{
+            background: transparent;
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0)
+      }
+
+.button-ui.transparent:hover{
+                  background: #f7f7f7;
+                  color: black;
+                  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
+                          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
+            }
+
+.button-ui.transparent.outline{
+                  border: 1px solid #f7f7f7;
+            }
+
+.button-ui.gradient{
+            background: -webkit-gradient(linear, right top, left top, from(rgba(106, 38, 205, 1)), to(rgba(0, 174, 239, 1)));
+            background: linear-gradient(270deg, rgba(106, 38, 205, 1) 0%, rgba(0, 174, 239, 1) 100%)
+      }
+
+.button-ui.gradient:hover{
+                  background: -webkit-gradient(linear, right top, left top, from(rgba(106, 38, 205, 0.85)), to(rgba(0, 174, 239, 0.85)));
+                  background: linear-gradient(270deg, rgba(106, 38, 205, 0.85) 0%, rgba(0, 174, 239, 0.85) 100%);
+            }
 /* #13171a */
 
 /* App */
@@ -4916,6 +5284,18 @@ h6{
            /* overflow-y: scroll; */
          
       }
+
+.content-error{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease;
+      z-index: 3;
+      background: black;
+}
 .wrapper-alacarta{
       position: relative;
       width: 100%;
@@ -4967,6 +5347,18 @@ h6{
                              font-size: .8vw !important;
                              font-family: 'Poppins' sans-serif !important;
                         }
+
+.wrapper-radio .guide-error{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+            z-index: 3;
+            background: black;
+      }
 
 .button-play-wrapper{
       position: relative;
@@ -6524,11 +6916,36 @@ h6{
       top: 65px;
       padding: 0;
 }
+
+.content-error{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease;
+      z-index: 3;
+      background: black;
+}
+
 .wrapper-zonakids{
       position: relative;
       width: 100%;
       min-height: 100vh;
       height: auto;
+}
+
+.content-error{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease;
+      z-index: 3;
+      background: black;
 }
 
 .active-enter {
@@ -6558,89 +6975,6 @@ h6{
 .active-exit-done {
       opacity: 0;
 } 
-/* #13171a */
-
-/* App */
-
-/* Top Menu */
-
-/* Music */
-
-/* Radio */
-
-.button-ui{
-      border: none;
-      color: #f7f7f7;
-      -webkit-transition: all 150ms ease;
-      transition: all 150ms ease;
-      border-radius: 4px;
-      -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
-              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
-      font-family: "Poppins", sans-serif !important;
-      letter-spacing: .5px;
-      font-weight: 400;
-      padding: 15px 45px;
-      cursor: pointer;
-      -webkit-transition: all 300ms ease-in-out;
-      transition: all 300ms ease-in-out
-}
-
-.button-ui.width-auto{
-            width: auto;
-      }
-
-.button-ui.full-width{
-            width: 100%;
-      }
-
-.button-ui.uppercase{
-            text-transform: uppercase;
-      }
-
-.button-ui.primary{
-            background: #00aeef;
-      }
-
-.button-ui.secondary{
-            background: #662d91;
-      }
-
-.button-ui.outline-white{
-            background: #f7f7f7;
-            color: #18191c
-      }
-
-.button-ui.outline-white:hover{
-                  background: rgba(255, 255, 255, 0.75); 
-                  
-            }
-
-.button-ui.transparent{
-            background: transparent;
-            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
-                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0)
-      }
-
-.button-ui.transparent:hover{
-                  background: #f7f7f7;
-                  color: black;
-                  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
-                          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
-            }
-
-.button-ui.transparent.outline{
-                  border: 1px solid #f7f7f7;
-            }
-
-.button-ui.gradient{
-            background: -webkit-gradient(linear, right top, left top, from(rgba(106, 38, 205, 1)), to(rgba(0, 174, 239, 1)));
-            background: linear-gradient(270deg, rgba(106, 38, 205, 1) 0%, rgba(0, 174, 239, 1) 100%)
-      }
-
-.button-ui.gradient:hover{
-                  background: -webkit-gradient(linear, right top, left top, from(rgba(106, 38, 205, 0.85)), to(rgba(0, 174, 239, 0.85)));
-                  background: linear-gradient(270deg, rgba(106, 38, 205, 0.85) 0%, rgba(0, 174, 239, 0.85) 100%);
-            }
 /* #13171a */
 
 /* App */
@@ -7076,6 +7410,55 @@ input::-ms-input-placeholder{
     top: 65px;
     padding: 0;
 }
+
+.search-page form{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        width: 100%;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+    }
+
+.search-page .input-group{
+        width: 100%;
+    }
+
+.back-content{
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-radius: 50%;
+}
+
+.back-content i{
+          color: white;
+          font-size: 28px;
+    }
+
+.back-content:hover{
+          -webkit-transform: scale(1.2);
+                  transform: scale(1.2);
+    }
 .logo-guiahtv{
       display: -webkit-box;
       display: -ms-flexbox;
@@ -7339,6 +7722,7 @@ input::-ms-input-placeholder{
 .get-app-wrapper .container-wrapper .info-wrapper{
                   position: relative;
                   padding: 0 30px;
+                  height: 100%;
             }
 
 .get-app-wrapper .container-wrapper .info-wrapper .message{
@@ -7915,10 +8299,15 @@ header{
             background-size: 100%;
             background-repeat: no-repeat; */
 
+.wrapper-main-home .wrapper-background span{
+                  width: 100%;
+            }
+
 .wrapper-main-home .wrapper-background img{
                   position: relative;
                   -o-object-fit: fill;
                      object-fit: fill;
+                  width: 100%;
             }
 
 .wrapper-main-home .gradient-overlay{
@@ -24890,6 +25279,17 @@ button {
     position: relative;
     width: 100%;
     height: 100%;
+}
+.content-error{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    z-index: 3;
+    background: black;
 }
 .top-header {
     top: 65px;

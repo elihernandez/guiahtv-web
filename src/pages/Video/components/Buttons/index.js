@@ -1,4 +1,5 @@
-import React, { Fragment, useRef, useState, useEffect } from 'react'
+import React, { Fragment, useRef, useState, useEffect, useContext } from 'react'
+import VideoContext from '../../../../context/VideoContext'
 // import { useHistory } from 'react-router-dom'
 import Tooltip from '@material-ui/core/Tooltip'
 import Slider from '@material-ui/core/Slider'
@@ -223,7 +224,11 @@ export function ButtonVolume({ volume, muteVolume, dispatch }) {
 }
 
 export function ButtonPIP(){
-	const [active, setActive] = useState(false)
+
+	const { stateVideo, dispatch } = useContext(VideoContext)
+	const { isPipActive } = stateVideo
+
+	//const [active, setActive] = useState(false)
 
 	const handleClick = () => {
 		if(pip.isActive(document.querySelector('video'))){
@@ -235,12 +240,18 @@ export function ButtonPIP(){
 	}
 
 	const onEnterPip = () => {
-		setActive(true)
+		dispatch({ 
+			type: 'setIsPipActive',
+			payload: true
+		})
 	}
       
 	const onExitPip = () => {
 		document.querySelector('video').play()
-		setActive(false)
+		dispatch({ 
+			type: 'setIsPipActive',
+			payload: false
+		})
 	}
 
 	useEffect(() => {
@@ -254,7 +265,7 @@ export function ButtonPIP(){
 	}, [])
 
 	return (
-		<Tooltip title={active ? 'Maximizar video' : 'Minimizar video'} placement="top-start">
+		<Tooltip title={isPipActive ? 'Maximizar video' : 'Minimizar video'} placement="top-start">
 			<button type="button" className="content-button-icon" onClick={handleClick}>
 				<img src={pipIcon} />
 			</button>
@@ -310,7 +321,7 @@ function AudioTracks({ hls, audios, dispatch, audioTrackActive }) {
 	return (
 		<ul className="list-tracks" ref={listAudiosRef}>
 			{audioTracks.length > 0
-				?     <Fragment>
+				?<Fragment>
 					{
 						audioTracks.map((data, index) => {
 							return <ItemAudio key={data.id} data={data} index={index} handleClick={changeAudioTrack} audioTrackActive={audioTrackActive}/>
@@ -374,42 +385,54 @@ export function ButtonTracks({ hls, audios, subtitles, dispatch, audioTrackActiv
 	const [anchorEl] = useState(null)
 	const open = Boolean(anchorEl)
 	const id = open ? 'transitions-popper' : undefined
-      
+	const [showPopup, setShowPopup] = useState(true)
+    
+	const handleOver = () => {
+		setShowPopup(true)
+	}
+
+	const handleBlur = () => {
+		setShowPopup(false)
+	}
+
 	useEffect(() => {
 	}, [])
       
 	return (
 		<Fragment>
+			
 			<PopupState variant="popover" popupId="tracks-popup-popover">
 				{(popupState) => (
-					<div>
+					<div className="pop-up">
 						<Tooltip title="Audios / Subtítulos" placement="top-start">
-							<button aria-describedby={id} type="button" className="content-button-icon" {...bindTrigger(popupState)}>
+							<button aria-describedby={id} type="button" className="content-button-icon" {...bindTrigger(popupState)} onMouseOver={handleOver}>
 								<img alt="Icono de audios y subtítulos" src={imgTracks} />
 							</button>
 						</Tooltip>
-						<Popover
-							{...bindPopover(popupState)}
-							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'left',
-							}}
-							transformOrigin={{
-								vertical: 'bottom',
-								horizontal: 'center',
-							}}
-						>
-							<div className="tracks-content">
-								<div className="audios-content">
-									<h4 className="name-list">Audios</h4>
-									<AudioTracks hls={hls} audios={audios} dispatch={dispatch} audioTrackActive={audioTrackActive} />
+						<CSSTransition in={showPopup} timeout={300} classNames="fade" unmountOnExit>
+							<Popover 
+								{...bindPopover(popupState)}
+								anchorOrigin={{
+									vertical: 'top',
+									horizontal: 'left',
+								}}
+								transformOrigin={{
+									vertical: 'bottom',
+									horizontal: 'center',
+								}}
+							>
+								<div className="tracks-content" onMouseLeave={handleBlur}>
+									<div className="audios-content">
+										<h4 className="name-list">Audios</h4>
+										<AudioTracks hls={hls} audios={audios} dispatch={dispatch} audioTrackActive={audioTrackActive} />
+									</div>
+									<div className="subtitles-content">
+										<h4 className="name-list">Subtítulos</h4>
+										<SubtitleTracks hls={hls} subtitles={subtitles} dispatch={dispatch} subtitleTrackActive={subtitleTrackActive}/>
+									</div>
 								</div>
-								<div className="subtitles-content">
-									<h4 className="name-list">Subtítulos</h4>
-									<SubtitleTracks hls={hls} subtitles={subtitles} dispatch={dispatch} subtitleTrackActive={subtitleTrackActive}/>
-								</div>
-							</div>
-						</Popover>
+							</Popover>
+						</CSSTransition>
 					</div>
 				)}
 			</PopupState>

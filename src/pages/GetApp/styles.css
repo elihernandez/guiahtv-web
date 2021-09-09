@@ -49,6 +49,7 @@
             .info-wrapper{
                   position: relative;
                   padding: 0 30px;
+                  height: 100%;
       
                   .message{
                         font-size: 20px;

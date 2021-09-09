@@ -10,6 +10,7 @@ import { ContentSerie } from '../../pages/Serie'
 import { CSSTransition } from 'react-transition-group'
 import { VideoVod } from '../../pages/Video'
 import { isSerie, isMovie } from '../../js/String'
+import { useAxios } from '../../hooks/useAxios'
 import './styles.css'
 
 export function searchSerie(data, contentId) {
@@ -47,6 +48,7 @@ export function InfoContent() {
 	const { dataVod, movieVod, seasonVod, serieVod } = stateVod
 	const [loading, setLoading] = useState(true)
 	const [content, setContent] = useState('')
+	const { error } = useAxios('catalogue-zonakids')
 
 	useEffect(() => {
 		if (dataVod) {
@@ -80,15 +82,16 @@ export function InfoContent() {
 	}
 
 	return (
-		<Fragment>
-			{content == 'movie' && movieVod &&
-                <ContentMovie data={movieVod} />
-                       
-			}
-			{content == 'serie' && serieVod &&
-                <ContentSerie data={serieVod} />
-			}
-		</Fragment>
+		error ? ( <div className="content-error">{error}</div>) : (
+			<Fragment>
+				{content == 'movie' && movieVod &&
+					<ContentMovie data={movieVod} />
+				}
+				{content == 'serie' && serieVod &&
+					<ContentSerie data={serieVod} />
+				}
+			</Fragment>
+		)
 	)
 }
 
@@ -109,7 +112,9 @@ export function CatalogueVod({ requestApi }) {
 						<div className={`content-catalogue ${requestApi}`}>
 							{data && !loading &&
 								data.map((category) => {
-									return <List key={category.category} data={category} listType="catalogue" />
+									return (
+										<List key={category.category} data={category} listType="catalogue" />
+									)
 								})
 							}
 						</div>
@@ -127,7 +132,6 @@ export function CatalogueVod({ requestApi }) {
 }
 
 export function CatalogueRadio({ requestApi }) {
-
 	const { stateRadio, dispatchRadio } = useContext(RadioContext)
 	const { dataRadio } = stateRadio
 	const { loading, data } = useRequest(requestApi, dispatchRadio, dataRadio)
@@ -141,9 +145,9 @@ export function CatalogueRadio({ requestApi }) {
 
 				<div className={`content-catalogue ${requestApi}`}>
 					{data && !loading &&
-                                    data.map((category, index) => {
-                                    	return <List key={`${category.category}-${index}`} data={category} listType="radio" />
-                                    })
+						data.map((category, index) => {
+							return <List key={`${category.category}-${index}`} data={category} listType="radio" />
+						})
 					}
 				</div>
 

@@ -29,7 +29,7 @@ export function Info(){
 					<i className="fas fa-arrow-left" />
 				</div>
 				<div className="title-content">
-					<p>Estás viendo:</p>
+					<h3 className="text-info">Estás viendo:</h3>
 					{data &&
                                     title
 					}
