@@ -18,8 +18,14 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
 	function (response) {
 		if(response.status === 200){
-			if(response?.length || response.data.length === 0 || isEmptyArray(response.data)){
-				throw new Error(1)
+			if(typeof response.data === 'object'){
+				if(Object.entries(response).length === 0 || Object.entries(response.data).length === 0){
+					throw new Error(1)
+				}
+			}else{
+				if(isEmptyArray(response.data)){
+					throw new Error(1)
+				}
 			}
 		}
 
