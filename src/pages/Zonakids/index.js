@@ -8,7 +8,7 @@ import './styles.css'
 export function Zonakids() {
 	const { error } = useAxios('catalogue-zonakids')
 	return (
-		error ? (error) : (
+		error ? (<div className="content-error">{error}</div>) : (
 			<div className="wrapper-zonakids">
 				<VodContextProvider>
 					<Content />

@@ -140,7 +140,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # Build Web App
-build
+build/
 build/app.min.css
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,node

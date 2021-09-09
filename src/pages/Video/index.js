@@ -165,7 +165,7 @@ export function VideoVod({ state, dispatchVod }) {
 	}, [])
 	
 	return (
-		error ? (error) : (
+		error ? (<div className="video-error">{error}</div>) : (
 			<VideoContextProvider state={initialState} reducer={reducer}>
 				<div className="video">
 					<div className="video-wrapper">

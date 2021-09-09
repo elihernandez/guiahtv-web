@@ -17,45 +17,78 @@ export function useAxios(section, sendRequest = true, params = {}){
 		setCount(count + 1)
 	}
 
-	useEffect(() => {
-		async function getData() {
-			try {
-				const url = getURL(section, credentials, params)
-				const response = await axios.get(url)
-				validateSuscription(response, dispatchUser)
-				setData(response)
-				setLoading(false)
-			} catch (e) {
-				const code = parseInt(e.message)
+	const Countdown = () =>{
+		
+		var secs
+		if(count < 1) secs = 30
+		else if(count == 1) secs = 45
+		else secs = 60
+		
+		const [seconds, setSeconds] = useState(secs)
 
-				const listMessages = {
-					1: 'No se pudo cargar la información.', // Error en petición o servidor no responde nada
-					2: 'Ocurrió un problema.', // Error del cliente
-					3: 'Ocurrió un problema.', // Error del servidor
-					4: 'Ha ocurrido un error de conexión.', // Error de conexión
-					5: 'Se ha interrumpido la conexión.', // Conexión abortada
-					6: 'No se pudo conectar con el servidor.'// Error de timeout
-				}
+		useEffect(() => {
+			if (seconds > 0) {
+				setTimeout(() => setSeconds(seconds - 1), 1000)
+			} else {
+				setCount(count + 1)
+			}
+		})
 
-				const message = listMessages[code] || 'Ocurrió un error inesperado.'
+		return (
+			<div className="counter">
+				<div className="counter">
+					{seconds} segundos.
+				</div>
+			</div>
+		)
+	}
 
-				var subMessage = ''
+	// const fetchData = async () => {
+	// 	const url = getURL(section, credentials, params)
+	// 	return await axios.get(url)
+	// }
+	
+	async function getData() {
+		try {
+			const url = getURL(section, credentials, params)
+			const response = await axios.get(url)
+			validateSuscription(response, dispatchUser)
+			setData(response)
+			setLoading(false)
+			return response
+		} catch (e) {
+			const code = parseInt(e.message)
 
-				if(code <= 3)
-					subMessage = 'Favor de intentar nuevamente.'
-				else
-					subMessage = 'Favor de verificar su conexión e intentar nuevamente.'
-				
+			const listMessages = {
+				1: 'No se pudo cargar la información.', // Error en petición o servidor no responde nada
+				2: 'Ocurrió un problema.', // Error del cliente
+				3: 'Ocurrió un problema.', // Error del servidor
+				4: 'Ha ocurrido un error de conexión.', // Error de conexión
+				5: 'Se ha interrumpido la conexión.', // Conexión abortada
+				6: 'No se pudo conectar con el servidor.'// Error de timeout
+			}
 
-				setLoading(false)
+			const message = listMessages[code] || 'Ocurrió un error inesperado.'
 
-				if(count != 3){
-					setError(<ErrorMessageReload message={message} subMessage={subMessage} onClick={handleRequest} />)
-				}else{
-					setError(<ErrorMessageDefault message={message} subMessage={subMessage} onClick={handleRequest} />)
-				}
+			var subMessage = ''
+
+			if(count < 3)
+				subMessage = 'Se volverá a intentar en '
+			else
+				subMessage = 'Favor de intentar más tarde.'
+			
+
+			setLoading(false)
+
+			if(count != 3){
+				setError(<ErrorMessageReload message={message} subMessage={subMessage} onClick={handleRequest} Countdown={Countdown}/>)
+			}else{
+				setError(<ErrorMessageDefault message={message} subMessage={subMessage} onClick={handleRequest} Countdown={Countdown}/>)
 			}
 		}
+	}
+	
+	useEffect(() => {
 
 		if(count <= 3 && sendRequest){
 			setLoading(true)
@@ -69,6 +102,7 @@ export function useAxios(section, sendRequest = true, params = {}){
 		loading, 
 		data, 
 		error, 
-		handleRequest 
+		handleRequest,
+		getData
 	}
 }

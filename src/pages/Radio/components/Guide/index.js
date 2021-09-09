@@ -53,7 +53,7 @@ export function Guide(){
 	}, [data, contentId])
 
 	return (
-		error ? (error) : (
+		error ? (<div className="guide-error">{error}</div>) : (
 			<div className="guide-radio">
 				{loading &&
 					<LoaderSpinnerMUI />

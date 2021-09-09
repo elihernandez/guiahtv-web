@@ -13,7 +13,7 @@ export function Catalogue({ data }) {
 	}, [])
 
 	return (
-		error ? (error) : (
+		error ? (<div className="content-error">{error}</div>) : (
 			<CSSTransition in={show} timeout={100} classNames="fade" unmountOnExit>
 				<div className="content-catalogue alacarta">
 					{
