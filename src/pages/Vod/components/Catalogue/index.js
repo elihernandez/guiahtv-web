@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { List } from '../../../../components/List'
 import { CSSTransition } from 'react-transition-group'
 import './styles.css'
-import { useAxios } from '../../../../hooks/useAxios'
 
-export function Catalogue({ data }) {
+export function Catalogue({ data, error }) {
 	const [show, setShow] = useState(false)
-	const { error } = useAxios( 'catalogue-vod' )
 
 	useEffect(() => {
 		setShow(true)

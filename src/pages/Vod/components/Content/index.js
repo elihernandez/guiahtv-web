@@ -10,7 +10,7 @@ import { useAxios } from '../../../../hooks/useAxios'
 export function Content() {
 	const { url } = useRouteMatch()
 	const { stateVod, dispatchVod } = useContext(VodContext)
-	const { loading, data } = useAxios('catalogue-vod')
+	const { loading, data, error } = useAxios('catalogue-vod')
 	
 	useEffect(() => {
 		dispatchVod({ type: 'setData', payload: data })
@@ -24,7 +24,7 @@ export function Content() {
 				}
                         
 				{!loading && data &&
-                    <Catalogue data={data} />
+                    <Catalogue data={data} error={error} />
 				}
 			</Route>
 			<Route exact path={`${url}/:contentType/:contentId`} >

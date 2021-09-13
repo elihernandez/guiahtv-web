@@ -1,8 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { LoaderSpinnerMUI } from '../../../../components/Loader'
-import RadioContext from '../../../../context/RadioContext'
-import { useRequest } from '../../../../hooks/useRequest'
+// import RadioContext from '../../../../context/RadioContext'
+// import { useRequest } from '../../../../hooks/useRequest'
 import { CustomTabs } from '../../../../components/Tabs'
 import { List } from '../../../../components/List'
 import { useAxios } from '../../../../hooks/useAxios'
@@ -23,13 +23,10 @@ function findInitialValues(data, contentId){
 
 export function Guide(){
 	let { contentId } = useParams()
-	const { stateRadio, dispatchRadio } = useContext(RadioContext)
-	const { dataRadio } = stateRadio 
-	const { loading, data } = useRequest('radio', dispatchRadio, dataRadio)
 	const [ tabs, setTabs ] = useState(null)
 	const [initialValues, setInitialValues] = useState({})
 	const dataTabs = []
-	const { error } = useAxios('radio')
+	const { loading, data, error } = useAxios('radio')
 
 	useEffect(() => {
 		if(data){
