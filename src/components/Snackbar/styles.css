@@ -17,14 +17,14 @@
 
     .snackbar-success{    
         .MuiPaper-root{
-            background: #388e3c !important;
+            background: #4e8450 !important;
         }
     }
     
     .snackbar-warning{
         
         .MuiPaper-root{
-            background: #fbc02d !important;
+            background: #c4b35d !important;
         }
     }
     
@@ -32,7 +32,7 @@
     .snackbar-danger{
         
         .MuiPaper-root{
-            background: #d32f2f !important;
+            background: #bc5952 !important;
         }
     }
     
