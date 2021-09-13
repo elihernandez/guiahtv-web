@@ -12,7 +12,6 @@ import { isSuscribed } from '../../../../js/Auth'
 import { setProgressMovie } from '../../../../js/Time'
 import canAutoPlay from 'can-autoplay'
 import localforage from 'localforage'
-import { useAxios } from '../../../../hooks/useAxios'
 import { isEpisode } from '../../../../js/String'
 import './styles.css'
 
@@ -26,8 +25,6 @@ export function Player({ state, dispatchVod }) {
 	const { stateVideo, dispatch } = useContext(VideoContext)
 	const { loading, currentTime, duration, endingMovie } = stateVideo
 	const { error, setError } = useHls(video, url, dispatch, movieVod)
-	const { errors } = useAxios('getLinkLeon')
-
 
 	const onPlayingVideo = () => {
 		dispatch({ type: 'updateData', payload: movieVod })
@@ -137,7 +134,7 @@ export function Player({ state, dispatchVod }) {
 	}, [currentTime])
 
 	return (
-		errors ? (errors) : (
+		error ? (error) : (
 			<div className="player">
 				<div className="player-wrapper">
 					<video ref={video} preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
