@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Detector } from 'react-detect-offline'
-import { useHistory } from 'react-router-dom'
 import Snackbar from '@material-ui/core/Snackbar'
 import './styles.css'
 
@@ -15,14 +14,20 @@ const Connection = () => {
 		setOpen(false)
 	}
 
-	const handleChange = () => {
+	const handleChange = (online) => {
 		setOpen(true)
+		
+		if(online){
+			setTimeout(() => {
+				window.location.reload()
+			}, 2000)
+		}
 	}
 
 	return (
 		<div>
 			<Detector
-				onChange={handleChange} 
+				onChange={(online) => handleChange(online)} 
 				render={({ online }) => (
 					<Message open={open} online={online} handleClose={handleClose} />
 				)}	
@@ -32,16 +37,6 @@ const Connection = () => {
 }
 
 const Message = ({open, online, handleClose}) => {
-	const history = useHistory()
-	const { location } = history
-	const { pathname } = location
-
-	useEffect(() => {
-		// if(online){
-		// 	console.log('Se estableció la conexión')
-		// 	history.replace(pathname)
-		// }
-	}, [online])
 
 	const styles = {
 		'font-size': '1.6rem',
