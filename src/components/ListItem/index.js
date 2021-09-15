@@ -63,6 +63,9 @@ export function Item({ data, posterType, listType, titleCategory, category, list
 	case 'tracksPlaylist':
 		Item = <ItemTrackPlaylist posterType={posterType} titleCategory={titleCategory} data={data} index={index} />
 		break
+	case 'artist':
+		Item = <ItemArtist posterType={posterType} titleCategory={titleCategory} data={data} index={index} />
+		break
 	}
 
 	return Item
@@ -497,6 +500,26 @@ function ItemPlaylist({ posterType, data }) {
 					}}>
 					<Img title={title} posterType={posterType} imgSquare={portadaURL} imgLandscape={portadaURL} />
 					<MatchTrack matchTrack={matchTrack} playing={playing} handleClick={handleClick} handlePlay={handlePlay}/>
+				</NavLink>
+				<InfoAlbum title={title} />
+			</div>
+		</div>
+	)
+}
+
+function ItemArtist({ posterType, data }){
+	const { artistID, title, portadaURL } = data
+
+	return (
+		<div className="item-link">
+			<div className="item">
+				<NavLink
+					to={`/musica/artista/${artistID}`}
+					className="background-item"
+					activeClassName="active"
+				>
+					<Img title={title} posterType={posterType} imgSquare={portadaURL} imgLandscape={portadaURL} />
+					
 				</NavLink>
 				<InfoAlbum title={title} />
 			</div>
