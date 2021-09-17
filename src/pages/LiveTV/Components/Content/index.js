@@ -58,7 +58,7 @@ export function Content({ children }) {
             
 		return () => {
 			document.removeEventListener('mousemove', handleUserMouseMove)
-			contentRef.current.removeEventListener('click', handleClick)
+			contentRef.current ? contentRef.current.removeEventListener('click', handleClick) : null
 			clearTimeout(timerRef.current)
 		}
 	}, [handleUserMouseMove])

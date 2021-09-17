@@ -1726,8 +1726,8 @@ h6{
 .MuiPaper-root{
     background-color: #424242 !important;
     padding: 0 0;
-    -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.50) !important;
-            box-shadow: 0 0 16px rgba(0, 0, 0, 0.50) !important;
+    -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.50);
+            box-shadow: 0 0 16px rgba(0, 0, 0, 0.50);
 }
 
 .MuiPaper-root .MuiBox-root{
@@ -3630,6 +3630,8 @@ h6{
 
 .guide .tabs-wrapper header.MuiPaper-root{
                         background: transparent !important;
+                        -webkit-box-shadow: none !important;
+                                box-shadow: none !important;
                   }
 
 .guide .tabs-wrapper header.MuiTab-wrapper{
@@ -5401,6 +5403,8 @@ h6{
 
 .wrapper-radio .guide-radio .tabs-wrapper header.MuiPaper-root{
                               background: transparent !important;
+                              -webkit-box-shadow: none !important;
+                                      box-shadow: none !important;
                         }
 
 .wrapper-radio .guide-radio .tabs-wrapper header.MuiTab-wrapper{
@@ -6745,6 +6749,10 @@ h6{
 	    -ms-flex-pack: center;
 	        justify-content: center;
 }
+
+.modal-playlist .MuiBackdrop-root{
+        background-color: rgba(0, 0, 0, 0.85);
+    }
 
 .modal-playlist .modal-paper{
         background-color: #232526;
