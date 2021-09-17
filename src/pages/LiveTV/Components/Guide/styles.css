@@ -32,6 +32,7 @@
 
                   &.MuiPaper-root{
                         background: transparent !important;
+                        box-shadow: none !important;
                   }
 
                   &.MuiTab-wrapper{
