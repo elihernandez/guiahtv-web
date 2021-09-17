@@ -9,11 +9,19 @@ var config = require('./config')
 const javascriptRules = {
 	test: /\.js$/,
 	exclude: /node_modules/,
+	// use: {
+	// 	loader: 'swc-loader'
+	// }
 	use: {
 		loader: 'babel-loader',
 		options: {
 			presets: [
-				'@babel/preset-react',
+				[
+					'@babel/preset-react',
+					{
+						runtime: 'automatic'
+					}
+				],
 				[
 					'@babel/preset-env',
 					{
@@ -25,6 +33,7 @@ const javascriptRules = {
 			],
 			plugins: [
 				'@babel/plugin-proposal-optional-chaining',
+				'@babel/plugin-transform-react-inline-elements',
 				'@babel/transform-runtime'
 			]
 		}
@@ -88,7 +97,7 @@ module.exports = (env, { mode }) => ({
 			javascriptRules,
 			stylesRules,
 			filesRules,
-			fontsRules,
+			fontsRules
 		]
 	},
 	devServer: {

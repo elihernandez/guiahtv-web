@@ -1,0 +1,36 @@
+{
+    "jsc": {
+        "parser": {
+            "syntax": "ecmascript",
+            "jsx": true,
+            "dynamicImport": true,
+            "privateMethod": false,
+            "functionBind": false,
+            "exportDefaultFrom": true,
+            "exportNamespaceFrom": true,
+            "decorators": false,
+            "decoratorsBeforeExport": false,
+            "topLevelAwait": false,
+            "importMeta": false
+        },
+        "transform": {
+            "react": {
+                "runtime": "automatic",
+                "useBuiltins": true
+            }
+        },
+        "target": "es5",
+        "loose": false,
+        "externalHelpers": true,
+        "keepClassNames": false
+    },
+    "minify": true,
+    "env": {
+        "targets": {
+            "chrome": "38",
+            "ie": "11"
+        },
+        "mode": "entry",
+        "coreJs": 3
+    }
+}
