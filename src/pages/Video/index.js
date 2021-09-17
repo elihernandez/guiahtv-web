@@ -5,7 +5,6 @@ import { Player } from './components/Player'
 import { exitFullScreen, isFullScreenElement } from '../../js/Screen'
 import { hideTopMenu, showTopMenu } from '../../js/TopMenu'
 import { PipBackground } from '../../components/PipBackground'
-import { useAxios } from '../../hooks/useAxios'
 const pip = require('picture-in-picture')
 import './styles.css'
 
@@ -146,7 +145,6 @@ export function VideoVod({ state, dispatchVod }) {
 	const history = useHistory()
 	const { url } = useRouteMatch()
 	const { movieVod } = state
-	const { error } = useAxios('catalogue-vod')
 
 	if (!movieVod) {
 		history.push(url.replace('/video', ''))
@@ -165,16 +163,13 @@ export function VideoVod({ state, dispatchVod }) {
 	}, [])
 	
 	return (
-		error ? (<div className="video-error">{error}</div>) : (
-			<VideoContextProvider state={initialState} reducer={reducer}>
-				<div className="video">
-					<div className="video-wrapper">
-						<Player state={state} dispatchVod={dispatchVod}/>
-					</div>
-					<PipBackground />
+		<VideoContextProvider state={initialState} reducer={reducer}>
+			<div className="video">
+				<div className="video-wrapper">
+					<Player state={state} dispatchVod={dispatchVod}/>
 				</div>
-			</VideoContextProvider>
-		)
-		
+				<PipBackground />
+			</div>
+		</VideoContextProvider>
 	)
 }

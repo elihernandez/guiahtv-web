@@ -10,7 +10,6 @@ import { Loader } from './components/Loader'
 import { Video } from './components/Video'
 import { exitFullScreen } from '../../js/Screen'
 import { exitPip } from '../../js/PictureInPicture'
-import { useAxios } from '../../hooks/useAxios'
 import './styles.css'
 
 const initialState = {
@@ -93,7 +92,6 @@ const reducer = (state, action) => {
 
 export function LiveTV() {
 	let { path } = useRouteMatch()
-	const { error } = useAxios('livetv')
 	
 	useEffect(() => {
 
@@ -104,28 +102,25 @@ export function LiveTV() {
 	}, [])
 
 	return (
-		error ? (<div className="livetv-error">{error}</div>) : (
-			<div className="wrapper-livetv">
-				<LiveTvContextProvider>
-					<VideoContextProvider state={initialState} reducer={reducer}>
-						<div className="section-content w-padding-top">
-							<Switch>
-								<Route path={`${path}/:channelId?`} >
-									<Content>
-										<div className="background-overlay" />
-										<Info />
-										<Timer />
-										<Guide />
-										<Loader />
-									</Content>
-									<Video />
-								</Route>
-							</Switch>
-						</div>
-					</VideoContextProvider>
-				</LiveTvContextProvider>
-			</div>
-		)
-		
+		<div className="wrapper-livetv">
+			<LiveTvContextProvider>
+				<VideoContextProvider state={initialState} reducer={reducer}>
+					<div className="section-content w-padding-top">
+						<Switch>
+							<Route path={`${path}/:channelId?`} >
+								<Content>
+									<div className="background-overlay" />
+									<Info />
+									<Timer />
+									<Guide />
+									<Loader />
+								</Content>
+								<Video />
+							</Route>
+						</Switch>
+					</div>
+				</VideoContextProvider>
+			</LiveTvContextProvider>
+		</div>
 	)
 }

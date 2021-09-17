@@ -4,6 +4,7 @@ import UserContext from '../context/UserContext'
 import { ErrorAuth } from '../pages/ErrorAuth'
 import { RouterLogged } from './components/RouterLogged'
 import { RouterLoggedOut } from './components/RouterLoggedOut'
+import Connection from '../components/Connection'
 import { devBasenameRouter, prodBasenameRouter } from '../../config'
 const basename = process.env.NODE_ENV !== 'production' ? devBasenameRouter : prodBasenameRouter
 
@@ -15,11 +16,14 @@ export function BaseRouter() {
 
 	return (
 		<BrowserRouter basename={basename}>
-			{credentials.memclem && credentials.memclid ? (
-				<RouterLogged />
-			) : (
-				<RouterLoggedOut />
-			)}
+			<>
+				<Connection/>
+				{credentials.memclem && credentials.memclid ? (
+					<RouterLogged />
+				) : (
+					<RouterLoggedOut />
+				)}
+			</>
 		</BrowserRouter>
 	)
 }

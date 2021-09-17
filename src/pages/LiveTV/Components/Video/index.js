@@ -9,7 +9,6 @@ import { getVideo } from '../../../../services/getVideo'
 import { useHls } from '../../../../hooks/useHls'
 import { isLive } from '../../../../js/Time'
 import backgroundTvImg from '../../../../assets/images/logos/guiahtv/backTVnuevologo.jpg'
-import { useAxios } from '../../../../hooks/useAxios'
 import './styles.css'
 
 export function Video() {
@@ -23,7 +22,6 @@ export function Video() {
 	const { stateVideo, dispatch } = useContext(VideoContext)
 	const { dataChannel, timerChannel, loadingChannel } = stateVideo
 	const { error, setError } = useHls(video, url, dispatch)
-	const { errors } = useAxios('livetv')
 
 	const onPlayingVideo = () => {
 		dispatch({ type: 'updateActive', payload: true })
@@ -40,7 +38,7 @@ export function Video() {
 		setError('Señal no disponible por el momento')
 	}
 
-	errors && video.current.pause()
+	error && video.current.pause()
 
 	canAutoPlay
 		.video({timeout: 1500, muted: false})
@@ -119,11 +117,6 @@ export function Video() {
 		<div className="video">
 			<div className="video-wrapper">
 				<video loop={true} ref={video} preload="auto" onPlaying={onPlayingVideo} onWaiting={onWaitingVideo} onError={onErrorVideo} />
-				{error &&
-					<div className="error-message">
-						<h2 className="text-error">{error}</h2>
-					</div>
-				}
 				{stateVideo.activeTimer &&
 					<div className="preview-poster">
 						<img

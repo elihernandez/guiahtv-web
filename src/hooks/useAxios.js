@@ -89,7 +89,6 @@ export function useAxios(section, sendRequest = true, params = {}){
 	}
 	
 	useEffect(() => {
-
 		if(count <= 3 && sendRequest){
 			setLoading(true)
 			setError(false)

@@ -2,11 +2,10 @@ import React, { Fragment } from 'react'
 import { LoaderSpinnerMUI } from '../../../../components/Loader'
 import { List } from '../../../../components/List'
 import { CSSTransition } from 'react-transition-group'
-import { useAxios } from '../../../../hooks/useAxios'
 import './styles.css'
 
-export function Catalogue({ loading, data }) {
-	const { error } = useAxios('catalogue-zonakids')
+export function Catalogue({ loading, data, error }) {
+
 	return (
 		error ? (<div className="content-error">{error}</div>) : (
 			<Fragment>

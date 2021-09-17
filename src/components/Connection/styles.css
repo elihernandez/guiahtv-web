@@ -1,0 +1,26 @@
+.MuiSnackbarContent-message{
+
+    p{
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+    }
+
+    i{
+        font-size: 18px;
+        margin-left: 10px;
+    }
+}
+
+    .snackbar-success{    
+        .MuiPaper-root{
+            background: #4e8450 !important;
+        }
+    }
+
+    .snackbar-warning{
+        
+        .MuiPaper-root{
+            background: #bc5952 !important;
+        }
+    }
