@@ -5,6 +5,10 @@
 	align-items: center;
 	justify-content: center;
 
+    .MuiBackdrop-root{
+        background-color: rgba(0, 0, 0, 0.85);
+    }
+
     .modal-paper{
         background-color: $color-background-app;
         border: 2px solid $color-grey-5 !important;

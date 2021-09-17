@@ -170,7 +170,10 @@ export const PlaylistModal = () => {
 	return ReactDOM.createPortal(
 		<Fragment>
 			{modal.type === 'create' && (
-				<CreateModal open={modal.isModalActive} data={modal.data} type={modal.type} />
+				<CreateModal open={modal.isModalActive} data={modal.data} type={modal.type}  />
+			)}
+			{ modal.type === 'create-ws' && (
+				<CreateModal open={modal.isModalActive} data={modal.data} type={modal.type} track={modal.track} />
 			)}
 			{modal.type === 'edit' && (
 				<EditModal open={modal.isModalActive} data={modal.data} type={modal.type} />

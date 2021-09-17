@@ -4,12 +4,13 @@ import UserContext from '../../../../context/UserContext'
 import MusicContext from '../../../../context/MusicContext'
 import GlobalContext from '../../../../context/GlobalContext'
 import { postPlaylist } from '../../../../services/postPlaylist'
+import { postTrackToPlaylist } from '../../../../services/postMusicTrackToPlaylist'
 import Modal from '@material-ui/core/Modal'
 import Backdrop from '@material-ui/core/Backdrop'
 import Fade from '@material-ui/core/Fade'
 import './styles.css'
 
-export const CreateModal = ({ open, data }) => {
+export const CreateModal = ({ open, data, type, track = [] }) => {
 	const history = useHistory()
 	const { stateUser } = useContext(UserContext)
 	const { credentials } = stateUser
@@ -28,6 +29,20 @@ export const CreateModal = ({ open, data }) => {
 		dispatchMusic({ type: 'setModal', payload: false })
 	}
 
+	const addToMyPlaylistsArray = (response) => {
+
+		const newPlaylist = {
+			regID: response.regID,
+			icon: '',
+			title: response.title,
+			type: 'link',
+			url: `/musica/playlist/${response.regID}`
+		}
+
+		myPlaylists.splice(1, 0, newPlaylist)
+		dispatchMusic({ type: 'setMyPlaylists', payload: myPlaylists })
+	}
+
 	const handleSubmit = async(e) => {
 		e.preventDefault()
 		
@@ -35,8 +50,32 @@ export const CreateModal = ({ open, data }) => {
 			const response = await postPlaylist(credentials.memclid, { title, description, isPublic })
 			if(response.title === title && response.description === description && response.isPublic === isPublic){
 				history.replace(`/musica/playlist/${response.regID}`)
-				myPlaylists.push({ regID: response.regID, icon: '', title: response.title, type: 'link', url: `/musica/playlist/${response.regID} `})
-				dispatchMusic({ type: 'setMyPlaylists', payload: myPlaylists })
+
+				addToMyPlaylistsArray(response)
+
+				globalDispatch({ type: 'setSnackbarOptions', payload: { open: true, type: 'default', message: <p>La playlist se creó correctamente. <i className="fad fa-check-circle"></i></p> }})
+				handleClose()
+			}else{
+				throw Error()
+			}
+		}catch(e){
+			globalDispatch({ type: 'setSnackbarOptions', payload: { open: true, type: 'default', message: <p>No se pudo crear la playlist. <i className="fad fa-times-circle"></i></p> }})
+			handleClose()
+			console.log('Error')
+		}
+	}
+
+	const handleSubmitWSong = async (e) => {
+		e.preventDefault()
+
+		try{
+			const response = await postPlaylist(credentials.memclid, { title, description, isPublic })
+			await postTrackToPlaylist(credentials.memclid, track.regID, response.regID)
+			if(response.title === title && response.description === description && response.isPublic === isPublic){
+				history.replace(`/musica/playlist/${response.regID}`)
+
+				addToMyPlaylistsArray(response)
+
 				globalDispatch({ type: 'setSnackbarOptions', payload: { open: true, type: 'default', message: <p>La playlist se creó correctamente. <i className="fad fa-check-circle"></i></p> }})
 				handleClose()
 			}else{
@@ -71,7 +110,7 @@ export const CreateModal = ({ open, data }) => {
 								<i className="fal fa-times" />
 							</button>
 						</div>
-						<form className="form-modal" onSubmit={handleSubmit}>
+						<form className="form-modal" onSubmit={type === 'create-ws' ? handleSubmitWSong : handleSubmit}>
 							<div className="group-form">
 								<label htmlFor="name-playlist" className="label-name-playlist">Nombre de playlist</label>
 								<input type="text" className="name-playlist" autoFocus required value={title} onChange={(e) => setTitle(e.target.value)} />

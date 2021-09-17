@@ -31,12 +31,7 @@ export function SidebarMusic(){
 		const request = async() => {
 			try{
 				const response = await getMyPlaylists(stateUser)
-				const data = [{ 
-					handleClick: handleOpenModal,
-					icon: 'far fa-plus-circle',
-					title: 'Crear playlist',
-					type: 'button'
-				}]
+				const data = []
 
 				if(response?.playLists){
 					response.playLists.map((playlist) => {
@@ -49,7 +44,15 @@ export function SidebarMusic(){
 						})
 					})
 				}
-				dispatchMusic({ type: 'setMyPlaylists', payload: data })
+
+				data.push({ 
+					handleClick: handleOpenModal,
+					icon: 'far fa-plus-circle',
+					title: 'Crear playlist',
+					type: 'button'
+				})
+
+				dispatchMusic({ type: 'setMyPlaylists', payload: data.reverse() })
 			}catch(e){
 				console.log(e)
 			}

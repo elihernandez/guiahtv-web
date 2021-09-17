@@ -106,39 +106,18 @@ function PopoverPopupState({ track }) {
 	}
 
 	const handleAddToPlaylistNew = () => {
-
-		const dataPlaylist = {
-			'title': track.title,
-			'description': '',
-			'isPublic': false
+		const modal = {
+			isModalActive: true,
+			data: {
+				name: '',
+				description: '',
+				isPublic: false
+			},
+			type: 'create-ws',
+			track
 		}
 
-		postPlaylist(credentials.memclid, dataPlaylist)
-			.then(response => {
-				const { regID } = response
-
-				myPlaylists.push({
-					regID: response.regID,
-					url: `/musica/playlist/${response.regID}`,
-					icon: null,
-					title: limitString(response.title, 25),
-					type: 'link'
-				})
-
-				dispatchMusic({ type: 'setMyPlaylists', payload: myPlaylists })
-
-				postTrackToPlaylist(credentials.memclid, track.regID, regID)
-					.then(response => {
-						globalDispatch({ type: 'setSnackbarOptions', payload: { open: true, type: 'success', message: <p>La canción se agregó a la playlist. <i className="fad fa-check-circle"></i></p> } })
-					})
-					.catch(error => {
-						console.log(error)
-						globalDispatch({ type: 'setSnackbarOptions', payload: { open: true, type: 'danger', message: <p>No se pudo agregar la canción a la playlist. <i className="fad fa-check-circle"></i></p> } })
-					})
-			})
-			.catch(error => {
-				globalDispatch({ type: 'setSnackbarOptions', payload: { open: true, type: 'danger', message: <p>No se pudo crear una nueva playlist. <i className="fad fa-check-circle"></i></p> } })
-			})
+		dispatchMusic({ type: 'setModal', payload: modal })
 	}
 
 	return (
