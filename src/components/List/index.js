@@ -316,9 +316,7 @@ export function ListArtist({ data, listType, indexList, tabValues }) {
 	const slidesToShow = 7
 	const classes = 'list list-tracks square'
 	const { title, description } = data
-
-	console.log(data)
-
+	
 	const settings = {
 		dots: false,
 		infinite: false,

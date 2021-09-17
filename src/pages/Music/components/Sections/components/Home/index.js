@@ -13,8 +13,8 @@ export function Home(){
 	return (
 		<Fragment>
 			{   data?.musicSections &&
-				data.musicSections.map((sectionData) => {
-					return <List key={sectionData.title} data={sectionData} listType={sectionData.contentType} indexList={0} tabValues={0}/>
+				data.musicSections.map((sectionData, index) => {
+					return <List key={`${sectionData.title}-${index}`} data={sectionData} listType={sectionData.contentType} indexList={0} tabValues={0}/>
 				})
 			}
 		</Fragment>

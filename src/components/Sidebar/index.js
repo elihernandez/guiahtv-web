@@ -35,11 +35,11 @@ function List({ title, data }) {
 			<h3 className="list-title">{title}</h3>
 			<ul className="list-menu">
 				{data !== null &&
-					data.map(({ title, url, handleClick, icon, type }) => {
+					data.map(({ title, url, handleClick, icon, type }, index) => {
 						if(type === 'link'){
-							return <Link key={title} title={title} url={url} icon={icon} />
+							return <Link key={`${title}-${index}`} title={title} url={url} icon={icon} />
 						}else{
-							return <Button key={title} title={title} handleClick={handleClick} icon={icon} />
+							return <Button key={`${title}-${index}`} title={title} handleClick={handleClick} icon={icon} />
 						}
 					})
 				}
