@@ -1,3 +1,4 @@
+import Hls from 'hls.js'
 import React, { useEffect, useContext, useRef } from 'react'
 import AudioContext from '../../../../context/AudioContext'
 import RadioContext from '../../../../context/RadioContext'
@@ -9,6 +10,7 @@ import { Controls } from '../Controls'
 import './styles.css'
 
 export function Player() {
+	const hls = new Hls()
 	const history = useHistory()
 	const audio = useRef()
 	const { contentId } = useParams()
@@ -54,15 +56,26 @@ export function Player() {
 			try {
 				const response = await getLinkRadioStation(contentId, credentials)
 				if (response == 'error') throw new Error('No se pudo obtener la información')
-				if(containsString(response.Url, 'https')){
-					audio.current.src = response.Url
+				if(containsString(response.Url, 'm3u8')){
+					hls.attachMedia(audio.current)
+
+					hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+						hls.loadSource(response.Url)
+						hls.on(Hls.Events.MANIFEST_PARSED, function () {
+							
+						})
+					})
 				}else{
-					dispatchAudio({ type: 'setLoading', payload: false })
-					dispatchAudio({ type: 'setData', payload: null })
-					dispatchAudio({ type: 'setError', payload: 'Reproduciendo radio en ventana externa' })
-					dispatchAudio({ type: 'setPlaying', payload: false })
-					history.replace('/radio')
-					window.open(response.Url, '_blank')
+					if(containsString(response.Url, 'https')){
+						audio.current.src = response.Url
+					}else{
+						dispatchAudio({ type: 'setLoading', payload: false })
+						dispatchAudio({ type: 'setData', payload: null })
+						dispatchAudio({ type: 'setError', payload: 'Reproduciendo radio en ventana externa' })
+						dispatchAudio({ type: 'setPlaying', payload: false })
+						history.replace('/radio')
+						window.open(response.Url, '_blank')
+					}
 				}
 			} catch (e) {
 				console.log(e)
