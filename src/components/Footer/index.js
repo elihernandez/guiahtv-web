@@ -58,7 +58,7 @@ export function Footer() {
 	return (
 		<div className="footer-app">
 			<div className="footer-wrapper">
-				<Logo color="purple" size="sm" />
+				<Logo color="blue" size="sm" />
 				<h5 className="services-text body-3">
                               MÚSICA | TV EN VIVO | PELÍCULAS | CONCIERTOS | CLÍNICAS | SERIES |
                               ZONA KIDS | PPV Y MUCHO MÁS

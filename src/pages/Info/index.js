@@ -17,7 +17,7 @@ export function InfoPage() {
 				</div>
 				<div className="gradient-overlay" />
 				<div className="main-info">
-					<Logo color="purple" size="md" />
+					<Logo color="blue" size="md" />
 					<h1 className="title-text large-title-1">El mejor contenido espiritual y de valores reunidos en una sola plataforma para toda la familia.</h1>
 					<h2 className="subtitle-text title-3">Disfruta en donde quieras, cancela cuando quieras.</h2>
 					<PlansPrices />

@@ -558,27 +558,27 @@
                         opacity: 1;
                     }
 h1{
-      font-size: 2.5rem;
+      font-size: 3.2rem;
 }
     
 h2{
-      font-size: 2.24rem;
+      font-size: 2.4rem;
 }
     
 h3{
-      font-size: 2rem;
+      font-size: 2.4rem;
 }
     
 h4{
-      font-size: 1.78rem;
+      font-size: 1.6rem;
 }
     
 h5{
-      font-size: 1.59rem;
+      font-size: 1.6rem;
 }
     
 h6{
-      font-size: 1.42rem;
+      font-size: 1.4rem;
 }
     
 .large-title-1{
@@ -586,27 +586,27 @@ h6{
 }
     
 .large-title-2{
-      font-size: 3.5rem;
+      font-size: 3.2rem;
 }
     
 .large-title-3{
-      font-size: 3rem;
+      font-size: 2.4rem;
 }
     
 .title-1{
-      font-size: 2.6rem;
+      font-size: 3.2rem;
 }
     
 .title-2{
-      font-size: 2.3rem;
+      font-size: 2.4rem;
 }
     
 .title-3{
-      font-size: 2rem;
+      font-size: 1.6rem;
 }
     
 .body-1{
-      font-size: 1.8rem;
+      font-size: 1.6rem;
 }
     
 .body-2{
@@ -614,15 +614,15 @@ h6{
 }
     
 .body-3{
-      font-size: 1.4rem;
+      font-size: 1.6rem;
 }
     
 .caption{
-      font-size: 1.2rem;
+      font-size: 1.4rem;
 }
     
 .sub-caption{
-      font-size: 1rem;
+      font-size: 1.2rem;
 }
 
 /* #13171a */
@@ -1278,7 +1278,7 @@ h6{
 }
 
 .MuiPaper-root span{
-            font-size: .8vw;
+            font-size: 1.4rem;
             font-weight: 600;
       }
 
@@ -1303,7 +1303,7 @@ h6{
       }
 
 .MuiPaper-root .MuiTab-wrapper{
-            color: #757575;
+            color: #f7f7f7;
       }
 
 .MuiPaper-root .Mui-selected .MuiTab-wrapper{
@@ -1311,7 +1311,7 @@ h6{
             }
 
 .MuiPaper-root .MuiTab-root{
-            min-width: 11vw !important;
+            min-width: 200px !important;
       }
 
 .MuiBox-root{
@@ -3564,7 +3564,7 @@ h6{
             }
 
 .guide .tabs-wrapper header.MuiPaper-root span{
-                        font-size: .8vw !important;
+                        font-size: 1.4rem !important;
                         font-family: "Poppins", sans-serif !important;
                   }
 
@@ -3573,7 +3573,7 @@ h6{
                   }
 
 .guide .tabs-wrapper header.MuiTab-wrapper{
-                       font-size: .8vw !important;
+                       font-size: 1.4rem !important;
                        font-family: 'Poppins' sans-serif !important;
                   }
 
@@ -4965,7 +4965,6 @@ h6{
 
                   .MuiButton-label{
                         color: white !important;
-                        font-size: 14px !important;
                   }
             }
 
@@ -5006,7 +5005,7 @@ h6{
       font-family: "Poppins", sans-serif !important;
       letter-spacing: .5px;
       font-weight: 400;
-      padding: 15px 45px;
+      padding: 16px 40px;
       cursor: pointer;
       -webkit-transition: all 300ms ease-in-out;
       transition: all 300ms ease-in-out
@@ -5162,7 +5161,7 @@ h6{
             }
 
 .seasons-content-wrapper .popper-menu-wrapper .MuiPaper-root .MuiTab-wrapper{
-                        font-size: .8vw !important;
+                        font-size: 1.4rem !important;
                   }
 
 .seasons-content-wrapper .popper-menu-wrapper .MuiMenuItem-root{
@@ -5335,7 +5334,7 @@ h6{
                   }
 
 .wrapper-radio .guide-radio .tabs-wrapper header.MuiPaper-root span{
-                              font-size: .8vw !important;
+                              font-size: 1.4rem !important;
                               font-family: "Poppins", sans-serif !important;
                         }
 
@@ -5344,7 +5343,7 @@ h6{
                         }
 
 .wrapper-radio .guide-radio .tabs-wrapper header.MuiTab-wrapper{
-                             font-size: .8vw !important;
+                             font-size: 1.4rem !important;
                              font-family: 'Poppins' sans-serif !important;
                         }
 
@@ -5426,7 +5425,7 @@ h6{
 }
 
 .info-audio-wrapper p{
-            font-size: 14px;
+            font-size: 16px;
             color: #9e9e9e;
       }
 
@@ -5902,7 +5901,7 @@ h6{
             }
 
 .current-music-info .info-artist h3{
-                  font-size: 14px;
+                  font-size: 16px;
                   font-weight: 500;  
                   color: #bdbdbd;
             }
@@ -7726,7 +7725,7 @@ input::-ms-input-placeholder{
             }
 
 .get-app-wrapper .container-wrapper .info-wrapper .message{
-                        font-size: 20px;
+                        font-size: 24px;
                         font-weight: 600;
                         text-align: center;
                         margin: 15px 0;
@@ -7965,7 +7964,7 @@ input::-ms-input-placeholder{
                     }
 
 .navbar .section-wrapper .navbar-list .navbar-item .navbar-link svg{
-                        font-size: 18px;
+                        font-size: 1.4rem;
                         margin-bottom: 2px;
                     }
 
@@ -8139,19 +8138,19 @@ input::-ms-input-placeholder{
                 -webkit-box-align: center;
                     -ms-flex-align: center;
                         align-items: center;
-                font-size: 14px;
+                font-size: 1.4rem;
             }
 
 .top-menu .section-wrapper .right-content span i{
-                    font-size: 20px
+                    font-size: 1.4rem
                 }
 
 .top-menu .section-wrapper .right-content span i.fa-search{
-                        font-size: 15px;
+                        font-size: 1.4rem;
                     }
 
 .top-menu .section-wrapper .right-content span i.fa-user-circle{
-                        font-size: 20px !important;
+                        font-size: 1.4rem !important;
                     }
 /* #13171a */
 
@@ -8201,13 +8200,13 @@ header{
       }
 
 .header-home button.btn-register{
-                  padding: .5vw 1vw;
+                  padding: 16px 24px;
                   margin-left: 15px;
                   /* border: 2px solid $color-white; */
             }
 
 .header-home button.btn-login{
-                  padding: .5vw 1vw;
+                  padding: 8px 16px;
                   margin-left: 15px;
                   border: 2px solid #f7f7f7;
             }
@@ -8328,7 +8327,7 @@ header{
       }
 
 .wrapper-main-home .button-ui{
-            padding: .8vw 1.5vw;
+            padding: 16px 24px;
       }
 
 @media (max-width: 1440px) {
@@ -8451,19 +8450,19 @@ header{
       }
 
             .main-info .title-text{
-                  font-size: 35px;
+                  font-size: 32px;
                   line-height: 50px;
             }
 
             .main-info .subtitle-text{
-                  font-size: 22px;  
+                  font-size: 24px;  
             }
                   .main-info .group-buttons-actions p{
-                        font-size: 15px;
+                        font-size: 16px;
                   }
       
                   .main-info .group-buttons-actions button{
-                        font-size: 17px;
+                        font-size: 16px;
                   }
 }
 
@@ -8481,14 +8480,14 @@ header{
 
             .main-info .title-text{
                   font-weight: 600;
-                  font-size: 28px;
+                  font-size: 24px;
                   text-align: center;
                   line-height: 40px;
             }
       
             .main-info .subtitle-text{
                   font-weight: 300;
-                  font-size: 20px;
+                  font-size: 16px;
                   text-align: center;
             }
 
@@ -8510,7 +8509,7 @@ header{
             }
       
                   .main-info .group-buttons-actions p{
-                        font-size: 15px;
+                        font-size: 16px;
                         font-weight: 300;
                         text-align: center; 
                         margin-right: 0 !important;      
@@ -8537,7 +8536,7 @@ header{
       
             .main-info .subtitle-text{
                   font-weight: 300;
-                  font-size: 18px;
+                  font-size: 16px;
                   text-align: center;
             }    
 }
@@ -8545,7 +8544,7 @@ header{
 @media (max-width: 320px) {
             .main-info .title-text{
                   font-weight: 600;
-                  font-size: 20px;
+                  font-size: 24px;
                   text-align: center;
                   line-height: 30px;
             }
@@ -8558,17 +8557,18 @@ header{
 }
 .group-form-error{
       border-radius: 5px;
-      background: #e87c03;
+      background: #ffeb3b;
       padding: 12px 15px;
       margin-bottom: 10px;
   }
 
       .group-form-error .text-error{
           font-size: 16px;
+          color: #100f10;
       }
 
       .group-form-error .text-error .link-error{
-              color: white;
+              color: #100f10;
           }
 /* #13171a */
 
@@ -8647,9 +8647,9 @@ header{
                     width: 100%;
                     background-color: transparent;
                     border: 2px solid #9e9e9e;
-                    border-radius: 5px;
+                    border-radius: 4px;
                     margin: 10px 0;
-                    padding: 15px 15px;
+                    padding: 16px 24px;
                     color: #f7f7f7;
                     -webkit-user-select: initial !important;
                        -moz-user-select: initial !important;
@@ -8690,8 +8690,12 @@ input::-ms-input-placeholder{
                         color: #f7f7f7 !important;
                     }
 
+.wrapper-login .content-login form .group-form input:active{
+                        border: 2px solid #1E1D1E !important;
+                    }
+
 .wrapper-login .content-login form .btn-submit-login{
-                margin-top: 30px;
+                margin: 10px 0px;
             }
 
 .wrapper-login .content-login .group-info{
@@ -8703,12 +8707,6 @@ input::-ms-input-placeholder{
                 -ms-flex-pack: justify;
                     justify-content: space-between;
         }
-
-.wrapper-login .content-login .group-info .link-help{
-                font-weight: 300;
-                text-decoration: none;
-                color: #9e9e9e;
-            }
 
 .wrapper-login .content-login .group-info .group-rememberme{
                 position: relative;
@@ -8759,7 +8757,14 @@ input::-ms-input-placeholder{
 .wrapper-login .content-login .bottom-info p{
                 font-weight: 400;
                 color: #9e9e9e;
-                font-size: 14px;
+                font-size: 16px;
+            }
+
+.wrapper-login .content-login .bottom-info .link-help{
+                font-weight: 300;
+                text-decoration: none;
+                color: #f7f7f7;
+                font-weight: 400;
             }
 
 .wrapper-login .content-login .bottom-info .link-register{
@@ -25293,7 +25298,7 @@ button {
 }
 /* width: 200px !important; */
 .MuiTooltip-popper .MuiTooltip-tooltip {
-        font-size: 14px !important;
+        font-size: 16px !important;
         /* width: 200px !important;
     height: 50px !important; */
     }

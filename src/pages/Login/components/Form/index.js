@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Button } from '../../../../components/Button/index'
-import { Link } from '../../../../components/Link/index'
 
 export function FormLogin({ onSubmit }) {
 	const [username, setUsername] = useState('')
@@ -54,10 +53,9 @@ export function FormLogin({ onSubmit }) {
 						data-uia="checkbox-rememberme"
 						onChange={(e) => setCheck(e.nativeEvent.target.checked)} />
 					<label htmlFor="checkbox-rememberme">
-						<p className="body-3">Recuérdame</p>
+						<p className="body-3">Recordar usuario</p>
 					</label>
 				</div>
-				<Link className="link-help body-3" href="https://cuenta.guiah.tv/ForgotPassword">¿Necesitas ayuda?</Link>
 			</div>
 		</form>
 	)

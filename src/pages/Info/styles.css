@@ -51,7 +51,7 @@
       }
 
       .button-ui{
-            padding: .8vw 1.5vw;
+            padding: 16px 24px;
       }
 }
 
@@ -158,21 +158,21 @@
             width: 55%;
 
             .title-text{
-                  font-size: 35px;
+                  font-size: 32px;
                   line-height: 50px;
             }
 
             .subtitle-text{
-                  font-size: 22px;  
+                  font-size: 24px;  
             }
 
             .group-buttons-actions{
                   p{
-                        font-size: 15px;
+                        font-size: 16px;
                   }
       
                   button{
-                        font-size: 17px;
+                        font-size: 16px;
                   }
             }
       }
@@ -189,14 +189,14 @@
 
             .title-text{
                   font-weight: 600;
-                  font-size: 28px;
+                  font-size: 24px;
                   text-align: center;
                   line-height: 40px;
             }
       
             .subtitle-text{
                   font-weight: 300;
-                  font-size: 20px;
+                  font-size: 16px;
                   text-align: center;
             }
 
@@ -209,7 +209,7 @@
                   text-align: center;
       
                   p{
-                        font-size: 15px;
+                        font-size: 16px;
                         font-weight: 300;
                         text-align: center; 
                         margin-right: 0 !important;      
@@ -242,7 +242,7 @@
       
             .subtitle-text{
                   font-weight: 300;
-                  font-size: 18px;
+                  font-size: 16px;
                   text-align: center;
             }
       }    
@@ -252,7 +252,7 @@
       .main-info{
             .title-text{
                   font-weight: 600;
-                  font-size: 20px;
+                  font-size: 24px;
                   text-align: center;
                   line-height: 30px;
             }
