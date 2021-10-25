@@ -128,7 +128,7 @@ export function Player() {
 					</div>
 					<div className="group-controls buttons">
 						<VolumeBar />
-						<Extras />
+						{/* <Extras /> */}
 					</div>
 				</div>
 			</div>

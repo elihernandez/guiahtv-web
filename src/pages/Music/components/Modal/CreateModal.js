@@ -78,7 +78,7 @@ export const CreateModal = ({ open, data }) => {
 							</div>
 							<div className="group-form">
 								<label htmlFor="description-playlist" className="label-description-playlist">Descripción de playlist</label>
-								<textarea type="text" className="description-playlist" rows="7" required value={description} onChange={(e) => setDescription(e.target.value)}/>
+								<textarea type="text" className="description-playlist" rows="7" value={description} onChange={(e) => setDescription(e.target.value)}/>
 							</div>
 							<div className="group-form checkbox">
 								<input type="checkbox" className="public-playlist" defaultChecked={isPublic} onChange={(e) => setIsPublic(e.target.checked)} />

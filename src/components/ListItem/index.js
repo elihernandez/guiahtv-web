@@ -23,7 +23,7 @@ import { SongMenu } from '../../pages/Music/components/SongMenu'
 import { LikeSongButton } from '../../pages/Music/components/LikeSong'
 import './styles.css'
 
-export function Item({ data, posterType, listType, titleCategory, category, listTracks, collection }) {
+export function Item({ data, posterType, listType, titleCategory, category, listTracks, collection, index }) {
 	let Item = () => null
 	const { url } = useRouteMatch()
 	const { ContentType } = data
@@ -61,7 +61,10 @@ export function Item({ data, posterType, listType, titleCategory, category, list
 		Item = <ItemTrackAlbum posterType={posterType} titleCategory={titleCategory} data={data} />
 		break
 	case 'tracksPlaylist':
-		Item = <ItemTrackPlaylist posterType={posterType} titleCategory={titleCategory} data={data} />
+		Item = <ItemTrackPlaylist posterType={posterType} titleCategory={titleCategory} data={data} index={index} />
+		break
+	case 'artist':
+		Item = <ItemArtist posterType={posterType} titleCategory={titleCategory} data={data} index={index} />
 		break
 	}
 
@@ -374,7 +377,7 @@ function ItemTrackAlbum({ data }) {
 	
 	const handlePlay = (e) => {
 		e.preventDefault()
-		if(e.nativeEvent.target.nodeName != 'P' && e.nativeEvent.target.nodeName != 'A' && !e.nativeEvent.target.className.includes('popper') && e.nativeEvent.target.nodeName != 'BUTTON' && e.nativeEvent.target.nodeName != 'I' && e.nativeEvent.target.nodeName != 'SPAN'){
+		if(e.nativeEvent.target.nodeName != 'P' && e.nativeEvent.target.nodeName != 'A' && !e.nativeEvent.target.className.includes('popper') && e.nativeEvent.target.nodeName != 'BUTTON' && e.nativeEvent.target.nodeName != 'I' && e.nativeEvent.target.nodeName != 'SPAN' && !e.nativeEvent.target.className.includes('MuiListItem-button') && !e.nativeEvent.target.ariaHidden === true && !e.nativeEvent.target.className.includes('MuiBox-root') && !e.nativeEvent.target.className.includes('MuiPaper-root')){
 			data.id = album.id
 			dispatchMusic({ type: 'setTrack', payload: data})
 			dispatchMusic({ type: 'setListTracks', payload: album.tracks})
@@ -422,8 +425,8 @@ function ItemTrackAlbum({ data }) {
 				<div className="time-track">
 					{secondsToString(length)}
 				</div>
-				<LikeSongButton />
-				<SongMenu />
+				{/* <LikeSongButton /> */}
+				<SongMenu track={data} type="album" />
 			</div>
 		</div>
 	)
@@ -504,7 +507,27 @@ function ItemPlaylist({ posterType, data }) {
 	)
 }
 
-function ItemTrackPlaylist({ data }) {
+function ItemArtist({ posterType, data }){
+	const { artistID, title, portadaURL } = data
+
+	return (
+		<div className="item-link">
+			<div className="item">
+				<NavLink
+					to={`/musica/artista/${artistID}`}
+					className="background-item"
+					activeClassName="active"
+				>
+					<Img title={title} posterType={posterType} imgSquare={portadaURL} imgLandscape={portadaURL} />
+					
+				</NavLink>
+				<InfoAlbum title={title} />
+			</div>
+		</div>
+	)
+}
+
+function ItemTrackPlaylist({ data, index }) {
 	const { title, length, artists, trackNumber, albumTitle, albumID } = data
 	const { stateAudio, dispatchAudio } = useContext(AudioContext)
 	const { audioRef, playing, pauseList } = stateAudio
@@ -514,7 +537,7 @@ function ItemTrackPlaylist({ data }) {
 
 	const handlePlay = (e) => {
 		e.preventDefault()
-		if(e.nativeEvent.target.nodeName != 'P' && e.nativeEvent.target.nodeName != 'A'){
+		if(e.nativeEvent.target.nodeName != 'P' && e.nativeEvent.target.nodeName != 'A' && !e.nativeEvent.target.className.includes('popper') && e.nativeEvent.target.nodeName != 'BUTTON' && e.nativeEvent.target.nodeName != 'I' && e.nativeEvent.target.nodeName != 'SPAN' && !e.nativeEvent.target.className.includes('MuiListItem-button') && !e.nativeEvent.target.ariaHidden === true && !e.nativeEvent.target.className.includes('MuiBox-root') && !e.nativeEvent.target.className.includes('MuiPaper-root')){
 			data.id = playlist.id
 			dispatchMusic({ type: 'setTrack', payload: data})
 			dispatchMusic({ type: 'setListTracks', payload: playlist.tracks})
@@ -550,7 +573,7 @@ function ItemTrackPlaylist({ data }) {
 							)}
 						</span>
 					) : (
-						trackNumber
+						index + 1
 					) }
 				</div>
 				<div className="info-track">
@@ -569,13 +592,8 @@ function ItemTrackPlaylist({ data }) {
 				<div className="time-track">
 					{secondsToString(length)}
 				</div>
-				<div className="like-track">
-					<span><i className="fal fa-heart"></i></span>
-				</div>
-				
-				<div className="menu-track">
-					<span><i className="far fa-ellipsis-h"></i></span>
-				</div>
+				{/* <LikeSongButton /> */}
+				<SongMenu track={data} type="playlist" />
 			</div>
 		</div>
 	)

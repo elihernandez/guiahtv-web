@@ -1638,7 +1638,7 @@ h6{
     }
 
 .list-tracks-album .popper-menu-wrapper li{
-            font-size: 15px;
+            font-size: 14px;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -1646,6 +1646,7 @@ h6{
                 -ms-flex-pack: justify;
                     justify-content: space-between;
             font-weight: 500;
+            font-family: "Poppins" !important;
         }
 
 .list-tracks-album .popper-menu-wrapper button {
@@ -1662,6 +1663,7 @@ h6{
             -webkit-box-align: center;
                 -ms-flex-align: center;
                     align-items: center;
+            font-family: "Poppins" !important;
 
         }
 
@@ -1674,6 +1676,34 @@ h6{
 .list-tracks-album .popper-menu-wrapper button:hover {
                 background: #424242;
             }
+
+.list-tracks-album .popper-menu-wrapper .MuiList-root{
+            padding: 0;
+        }
+
+.list-tracks-album .popper-menu-wrapper .MuiList-root button{
+                width: 100%;
+                border-radius: 0%;
+                background: transparent;
+                padding: 0;
+                -webkit-box-pack: start;
+                    -ms-flex-pack: start;
+                        justify-content: flex-start;
+                font-family: "Poppins" !important;
+            }
+
+.list-tracks-album .popper-menu-wrapper .MuiList-root button i{
+                    margin-right: 16px;
+                    font-size: 16px !important;
+                }
+
+.list-tracks-album .popper-menu-wrapper .MuiList-root button span{
+                    font-size: 14px;
+                    font-weight: 500;
+                    -webkit-box-pack: start !important;
+                        -ms-flex-pack: start !important;
+                            justify-content: flex-start !important;
+                }
 
 .list-tracks-album .popper-menu-wrapper .MuiButtonBase-root > div {
                 width: 100%;
@@ -1693,6 +1723,36 @@ h6{
             min-width: 275px;
         }
 
+.MuiPaper-root{
+    background-color: #424242 !important;
+    padding: 0 0;
+    -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.50) !important;
+            box-shadow: 0 0 16px rgba(0, 0, 0, 0.50) !important;
+}
+
+.MuiPaper-root .MuiBox-root{
+        padding: 8px 16px !important
+    }
+
+.MuiPaper-root .MuiBox-root:hover{
+            background: #616161;    
+        }
+
+.MuiPaper-root .MuiBox-root.button-separated{
+            border-bottom: 2px solid #616161;
+        }
+
+.MuiPaper-root p{
+        font-size: 14px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        font-weight: 500;
+        font-family: "Poppins" !important;
+    }
 /* #13171a */
 
 /* App */
@@ -6160,21 +6220,46 @@ h6{
 
 
 .adds ul{
-            list-style: none;
+        list-style: none;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+    }
+
+        .adds ul li{
+            margin: 0 25px;
+            font-size: 20px;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
-            -webkit-box-orient: horizontal;
-            -webkit-box-direction: normal;
-                -ms-flex-direction: row;
-                    flex-direction: row;
-    }
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            cursor: pointer;
+        }
 
-            .adds ul li{
-                margin: 0 25px;
-                font-size: 20px;
+        .adds ul li i{
                 color: #bdbdbd;
+                font-size: 16px;
             }
+
+        .adds ul li:hover{
+                background: #212121;
+            }
+
+        .adds ul li:hover i{
+                    color: white;
+                }
 /* #13171a */
 
 /* App */
