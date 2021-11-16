@@ -35,22 +35,22 @@ const Wrapper = styled.div`
 `
 
 const Text = styled.p`
-    fontSize: 3.6rem;
-    textAlign: center;
+    font-size: 3.6rem;
+    text-align: center;
     margin: 8px 0;
 `
 
 const SubText = styled.div`
-   fontSize: 2.4rem;
-    textAlign: center;
+   font-size: 2.4rem;
+    text-align: center;
     margin: 8px 0;
     display: flex;
     color: whitesmoke;
 `
 
 const Button = styled.button`
-    fontSize: 2.4rem;
-    textAlign: center;
+    font-size: 2.4rem;
+    text-align: center;
     color: white;
     border: .125vw solid white;
     font-family: "Poppins", sans-serif;

@@ -48,10 +48,10 @@
                 input{
                     width: 100%;
                     background-color: transparent;
-                    border: 2px solid $color-grey-2;
-                    border-radius: 5px;
+                    border: 2px solid #9e9e9e;
+                    border-radius: 4px;
                     margin: 10px 0;
-                    padding: 15px 15px;
+                    padding: 16px 24px;
                     color: $color-white;
                     user-select: initial !important;
 
@@ -63,11 +63,15 @@
                     &::-ms-clear {
                         color: $color-white !important;
                     }
+
+                    &:active{
+                        border: 2px solid #1E1D1E !important;
+                    }
                 }
             }
 
             .btn-submit-login{
-                margin-top: 30px;
+                margin: 10px 0px;
             }
         }
 
@@ -75,12 +79,6 @@
             margin-top: 12px;
             display: flex;
             justify-content: space-between;
-
-            .link-help{
-                font-weight: 300;
-                text-decoration: none;
-                color: $color-grey-2;
-            }
 
             .group-rememberme{
                 position: relative;
@@ -123,7 +121,14 @@
             p{
                 font-weight: 400;
                 color: $color-grey-2;
-                font-size: 14px;
+                font-size: 16px;
+            }
+
+            .link-help{
+                font-weight: 300;
+                text-decoration: none;
+                color: $color-white;
+                font-weight: 400;
             }
 
             .link-register{

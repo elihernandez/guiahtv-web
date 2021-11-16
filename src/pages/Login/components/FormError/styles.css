@@ -1,14 +1,15 @@
 .group-form-error{
       border-radius: 5px;
-      background: #e87c03;
+      background: #ffeb3b;
       padding: 12px 15px;
       margin-bottom: 10px;
 
       .text-error{
           font-size: 16px;
+          color: #100f10;
 
           .link-error{
-              color: white;
+              color: #100f10;
           }
       }
   }

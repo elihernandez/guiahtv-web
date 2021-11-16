@@ -94,13 +94,14 @@ export function Login() {
 					? <LoaderSpinnerMUI />
 					: <Fragment>
 						<div className="content-login">
-							<Logo color="purple" size="md" />
-							<H1 className="title-form title-1">Inicia sesión</H1>
+							<Logo color="blue" size="md" />
+							<H1 className="title-form title-1">Inicio de sesión</H1>
 							{error &&
                                 <FormError error={error} />
 							}
 							<FormLogin onSubmit={handleSubmit} />
 							<div className="bottom-info">
+								<Link className="link-help body-3" href="https://cuenta.guiah.tv/ForgotPassword">¿Olvidaste tu contraseña?</Link>
 								<p className="body-3">¿Primera vez en Guíah TV?
 									<Link className="link-register body-3" href="https://cuenta.guiah.tv/registro">Registrarme</Link>
 								</p>

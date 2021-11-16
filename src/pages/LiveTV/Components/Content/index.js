@@ -6,6 +6,7 @@ import './styles.css'
 export function Content({ children }) {
 	const contentRef = useRef()
 	const timerRef = useRef(null)
+	const timeHideGuide = 6000
 	const [isVisible, setIsVisible] = useState(true)
 	const { stateVideo } = useContext(VideoContext)
 	const { activeChannel } = stateVideo
@@ -25,7 +26,7 @@ export function Content({ children }) {
 	const handleUserMouseMove = useCallback(() => {
 		if (activeChannel) {
 			clearTimeout(timerRef.current)
-			timerRef.current = setTimeout(() => fadeOutContent(), 3000)
+			timerRef.current = setTimeout(() => fadeOutContent(), timeHideGuide)
 			fadeInContent()
 		} else {
 			clearTimeout(timerRef.current)

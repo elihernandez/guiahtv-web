@@ -12,7 +12,7 @@
       box-shadow: none !important;
 
       span{
-            font-size: .8vw;
+            font-size: 1.4rem;
             font-weight: 600;
       }
     
@@ -32,7 +32,7 @@
       }
 
       .MuiTab-wrapper{
-            color: $color-grey-3;
+            color: $color-white;
       }
 
       .Mui-selected{
@@ -42,7 +42,7 @@
       }
 
       .MuiTab-root{
-            min-width: 11vw !important;
+            min-width: 200px !important;
       }
 }
 

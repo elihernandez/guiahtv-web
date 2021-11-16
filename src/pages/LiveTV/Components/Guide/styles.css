@@ -26,7 +26,7 @@
                   padding: 0 $full-padding-content;
 
                   &.MuiPaper-root span{
-                        font-size: .8vw !important;
+                        font-size: 1.4rem !important;
                         font-family: "Poppins", sans-serif !important;
                   }
 
@@ -36,7 +36,7 @@
                   }
 
                   &.MuiTab-wrapper{
-                       font-size: .8vw !important;
+                       font-size: 1.4rem !important;
                        font-family: 'Poppins' sans-serif !important;
                   }
             }
