@@ -3,23 +3,35 @@ import { useLocation, NavLink } from 'react-router-dom'
 import { Navbar } from '../Navbar/index'
 import { UserMenu } from '../UserMenu/index'
 import Logo from '../Logo/index'
+import { devBasenameRouter } from '../../../config'
 // import { containsString } from '../../js/String'	
 import './styles.css'
 
 function LeftContent({showNavbar	}) {
+	let navLinks = []
 	let location = useLocation()
 	const { pathname } = location
 	const classItems = 'navbar-link-top-menu'
 	const classNavbar = 'navbar-top-menu'
 	
-	const navLinks = [
-		{ title: 'En vivo', href: pathname.includes('tv') ? location : '/tv', icon: <i className="fas fa-tv"></i> },
-		{ title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-popcorn"></i> },
-		{ title: 'Radio', href: '/radio', icon: <i className="fas fa-radio"></i> },
-		{ title: 'Musica', href: pathname.includes('musica') ? location : '/musica/inicio', icon: <i className="fas fa-headphones"></i> },
-		{ title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i> },
-		// { title: 'PPV', href: pathname.includes('tv') ? location : '/tv', icon: <i className="fas fa-play-circle"></i> }
-	]
+	
+	if(devBasenameRouter === 'guiahtv-web/'){
+		navLinks = [
+			{ title: 'En vivo', href: pathname.includes('tv') ? location : '/tv', icon: <i className="fas fa-tv"></i> },
+			{ title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-popcorn"></i> },
+			{ title: 'Radio', href: '/radio', icon: <i className="fas fa-radio"></i> },
+			{ title: 'Musica', href: pathname.includes('musica') ? location : '/musica/inicio', icon: <i className="fas fa-headphones"></i> },
+			{ title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i> },
+			// { title: 'PPV', href: pathname.includes('tv') ? location : '/tv', icon: <i className="fas fa-play-circle"></i> }
+		]
+	}else{
+		navLinks = [
+			{ title: 'En vivo', href: pathname.includes('tv') ? location : '/tv', icon: <i className="fas fa-tv"></i> },
+			{ title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-popcorn"></i> },
+			{ title: 'Radio', href: '/radio', icon: <i className="fas fa-radio"></i> },
+			{ title: 'Zona kids', href: '/zonakids', icon: <i className="fas fa-child"></i> },
+		]
+	}
 
 	return (
 		<div className="left-content">
