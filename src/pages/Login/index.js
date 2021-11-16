@@ -22,16 +22,17 @@ export function Login() {
 	const [error, setError] = useState(null)
 	const history = useHistory()
 
-	const validateResponse = ({ ResponseCode, SuscriberID = 'error' }, username, check) => {
+	const validateResponse = (response, username, check) => {
+		const { IsSuscribed, Response, ResponseCode, SuscriberID = 'error' } = response
+
 		switch (ResponseCode) {
 		case 0: // Usuario no encontrado
 			setLoading(false)
 			// Se muestra mensaje de error
 			setError(<p className="text-error">
-                    No podemos encontrar una cuenta con esta dirección de email.
-                    Reinténtalo o <Link className="link-error" href="https://guiah.tv/axs/registro">crea una cuenta nueva.</Link>
+		            No podemos encontrar una cuenta con esta dirección de email.
+		            Reinténtalo o <Link className="link-error" href="https://guiah.tv/axs/registro">crea una cuenta nueva.</Link>
 			</p>)
-
 			break
 		case 2: // Usuario suscrito
 			// Se guardan cookies de credenciales
@@ -57,7 +58,7 @@ export function Login() {
 		default: // Error desconocido
 			setLoading(false)
 			// Se muestra mensaje de error
-			setError(<p className="text-error">Ocurrió un problema inesperado. Vuelve a intentarlo.</p>)
+			setError(<p className="text-error">{Response}</p>)
 			break
 		}
 	}
