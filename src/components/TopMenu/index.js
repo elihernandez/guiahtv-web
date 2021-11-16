@@ -3,7 +3,7 @@ import { useLocation, NavLink } from 'react-router-dom'
 import { Navbar } from '../Navbar/index'
 import { UserMenu } from '../UserMenu/index'
 import Logo from '../Logo/index'
-import { devBasenameRouter } from '../../../config'
+import { mode } from '../../../config'
 // import { containsString } from '../../js/String'	
 import './styles.css'
 
@@ -15,7 +15,7 @@ function LeftContent({showNavbar	}) {
 	const classNavbar = 'navbar-top-menu'
 	
 	
-	if(devBasenameRouter === 'guiahtv-web/'){
+	if(mode === 'development'){
 		navLinks = [
 			{ title: 'En vivo', href: pathname.includes('tv') ? location : '/tv', icon: <i className="fas fa-tv"></i> },
 			{ title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-popcorn"></i> },
