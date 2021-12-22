@@ -36,20 +36,24 @@ export function Video() {
 		dispatch({ type: 'updateLoading', payload: false })
 		dispatch({ type: 'updateData', payload: null })
 		setError('Señal no disponible por el momento')
+		console.log('gadfsadf')
+	}
+
+	const onCanAutoPlay = () => {
+		canAutoPlay
+			.video({timeout: 1500, muted: false})
+			.then(({result, error}) => {
+				if(result){
+					video.current.play()
+					console.log('play')
+				}
+				if(result === false){
+					console.warn('Error did occur: ', error)
+				}
+			})
 	}
 
 	error && video.current.pause()
-
-	canAutoPlay
-		.video({timeout: 1500, muted: false})
-		.then(({result, error}) => {
-			if(result && loadingChannel){
-				video.current.play()
-			}
-			if(result === false){
-				console.warn('Error did occur: ', error)
-			}
-		})
 
 	useEffect(() => {
 		if(dataChannel){
@@ -63,6 +67,7 @@ export function Video() {
 					if(response == 'error') throw new Error('No se pudo obtener la información.')
 					const url = response.Url
 					setUrl(url)
+					onCanAutoPlay()
 				} catch (e) {
 					dispatch({ type: 'updateLoading', payload: false })
 					dispatch({ type: 'updateData', payload: null })
