@@ -131,6 +131,13 @@ export function Video() {
 							src={timerChannel.PreviewPoster}/>
 					</div>
 				}
+				{error &&
+					<div className="video-error">
+						<div className="error-message">
+							<h2 className="text-error">{error}</h2>
+						</div>
+					</div>
+				}
 			</div>
 			<PipBackground />
 		</div>
