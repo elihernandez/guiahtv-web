@@ -4,7 +4,7 @@
       position: relative;
       width: 100%;
       min-height: 600px !important;
-      overflow: hidden;
+      overflow: visible;
       padding: 0;
 
       .spinner-mui{
@@ -23,7 +23,9 @@
             }
 
             .MuiPaper-root{
-                  background-color: #424242 !important;     
+                  background-color: #424242 !important;
+                  height: 360px;
+                  overflow-y: scroll;
 
                   .MuiTab-wrapper{
                         font-size: 1.4rem !important;
