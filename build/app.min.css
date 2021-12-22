@@ -5220,7 +5220,8 @@ h6{
 
 .seasons-content-wrapper .popper-menu-wrapper .MuiPaper-root{
                   background-color: #424242 !important;
-                  height: 360px;
+                  max-height: 360px;
+                  padding-left: 7px;
                   overflow-y: scroll;
             }
 
