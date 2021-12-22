@@ -15,7 +15,7 @@ function LeftContent({showNavbar	}) {
 	const classNavbar = 'navbar-top-menu'
 	
 	
-	if(mode === 'development'){
+	if(mode === 'dev'){
 		navLinks = [
 			{ title: 'En vivo', href: pathname.includes('tv') ? location : '/tv', icon: <i className="fas fa-tv"></i> },
 			{ title: 'A la carta', href: '/alacarta', icon: <i className="fas fa-popcorn"></i> },

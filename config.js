@@ -3,7 +3,7 @@ module.exports = {
 	DEV_URL: 'https://bf7552c5e88e.ngrok.io/api',
 	// devBasenameRouter: '',
 	// devPath: 'build/',
-	mode: 'prod',
+	mode: 'dev',
 	devBasenameRouter: 'guiahtv-web/',
 	devPath: '/guiahtv-web/build/',
 	// prodBasenameRouter: 'watch/dev/',

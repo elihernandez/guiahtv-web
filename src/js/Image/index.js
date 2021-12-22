@@ -1,7 +1,7 @@
-import { isIE, isSafari, isEdge, isFirefox, isChrome, isOpera, browserVersion } from "react-device-detect"
+import { isIE, isSafari, isEdge, isFirefox, isChrome, isOpera, browserVersion } from 'react-device-detect'
 
 export function imgSourceSetJpg(img, type){
-      return img.replace(type, 'jpg')
+	return img.replace(type, 'jpg')
 }
 
 export function imgSourceSetPng(img, type){

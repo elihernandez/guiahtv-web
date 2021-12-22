@@ -113,7 +113,6 @@
             border-right: .5vh solid transparent;
             animation: spinner 1s linear infinite;
         }
-          
     }
 
     @keyframes spinner {
