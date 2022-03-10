@@ -25,6 +25,7 @@ export function Player({ state, dispatchVod }) {
 	const { stateVideo, dispatch } = useContext(VideoContext)
 	const { loading, currentTime, duration, endingMovie } = stateVideo
 	const { error, setError } = useHls(video, url, dispatch, movieVod)
+	const [ locationKeys, setLocationKeys ] = useState([])
 
 	const onPlayingVideo = () => {
 		dispatch({ type: 'updateData', payload: movieVod })
@@ -104,7 +105,7 @@ export function Player({ state, dispatchVod }) {
 			const requestLastEpisode = async() => {
 				const data = {
 					serie: {
-						id: serieVod.Registro
+						id: serieVod.Registro,
 					},
 					season: {
 						id: seasonVod.id,
@@ -122,16 +123,29 @@ export function Player({ state, dispatchVod }) {
 				await localforage.setItem(`serie-${serieVod.Registro}`, data)
 			}
 
-			if(history.action === 'POP'){
+			if(history.goBack){
 				if(isSuscribed(credentials)){
 					requestPositionVideo()
-					if(isEpisode(movieVod.ContentType)){
-						requestLastEpisode()
-					}
+					requestLastEpisode()
+					
 				}
 			}
+
+			if (history.action === 'POP') {
+				if (locationKeys[1] === location.key) {
+				  setLocationKeys(([ _, ...keys ]) => keys)
+		  
+				  // Handle forward event
+		  
+				} else {
+				  setLocationKeys((keys) => [ location.key, ...keys ])
+		  
+					requestPositionVideo()
+					requestLastEpisode()
+		  
+				}}
 		}
-	}, [currentTime])
+	}, [currentTime, locationKeys, ])
 
 	return (
 		error ? (error) : (

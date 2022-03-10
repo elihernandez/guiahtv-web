@@ -89,6 +89,13 @@ export function isEpisode(str) {
 	return false
 }
 
+export function isDynamic(str) {
+	if(str.includes('dyn')){
+		return true
+	}
+	return false
+}
+
 export function typeContent(str = '') {
 	if (str.includes('series')) {
 		return 'serie'

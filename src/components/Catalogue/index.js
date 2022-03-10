@@ -9,7 +9,7 @@ import { ContentMovie } from '../../pages/Movie'
 import { ContentSerie } from '../../pages/Serie'
 import { CSSTransition } from 'react-transition-group'
 import { VideoVod } from '../../pages/Video'
-import { isSerie, isMovie } from '../../js/String'
+import { isSerie, isMovie, isDynamic, isContinueWatching } from '../../js/String'
 import { useAxios } from '../../hooks/useAxios'
 import './styles.css'
 
@@ -17,7 +17,7 @@ export function searchSerie(data, contentId) {
 	let content
 	data.map(({ cmData }) => {
 		cmData.map((serie) => {
-			if (serie.Registro == contentId && isSerie(serie.ContentType)) {
+			if (serie.Registro == contentId && isSerie(serie.ContentType) && !isDynamic(serie.ContentType) && !isContinueWatching(serie.ContentType)) {
 				if (!content) {
 					content = serie
 				}

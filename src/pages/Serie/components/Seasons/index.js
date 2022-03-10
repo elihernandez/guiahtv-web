@@ -89,6 +89,7 @@ export function Seasons({ seasons, serieId }) {
 		}
 
 		requestData()
+
 	}, [])
 
 	return (

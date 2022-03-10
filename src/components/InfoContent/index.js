@@ -11,6 +11,7 @@ import localforage from 'localforage'
 import { useAxios } from '../../hooks/useAxios'
 import './styles.css'
 import { Button } from '../Button'
+import { isDynamic, isContinueWatching } from '../../js/String'
 
 export function InfoMovie({ data }) {
 	const { HdBackgroundImageUrl, Title, Description, Categories, Artist, Director, ReleaseDate, Length, Rating, StarRating, ResumePos } = data
@@ -154,6 +155,7 @@ export function InfoSerie({ data }) {
 									<img src={value.episode.image} />
 								</div>
 								<div className="resume">
+								    {/* <p>{value.Categories}</p> */}
 									<h2 key="title">Continuar viendo: {value.episode.title}</h2>
 									<div className="buttons">
 										<ButtonResume data = {value.episode}/>
@@ -161,9 +163,9 @@ export function InfoSerie({ data }) {
 								</div>
 							</div>
 							
-						) : (<div></div>)
-					
-					
+						) : (<div className="buttons">
+							<ButtonResume data = {data}/>
+						</div>)
 					}
 				</div>
 			</Fragment>
