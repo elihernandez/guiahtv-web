@@ -62,7 +62,7 @@ export const TopMenu = () => {
 	const [showLeftContent, setShowLeftContent] = useState(false)
 	const [showRightContent, setShowRightContent] = useState(false)
 	const [showNavbar, setShowNavbar] = useState(false)
-	const [scroll, setScroll] = useState(0)
+	const [scroll, setScroll] = useState(false)
 
 	useEffect(() => {
 		window.onscroll = function () {
